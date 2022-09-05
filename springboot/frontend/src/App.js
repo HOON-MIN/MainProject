@@ -1,9 +1,14 @@
-import React, {useState,useEffect} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import logo from "./logo.svg";
+import "./App.css";
+import Header from "./component/header";
+import Login from "./component/login";
+import axios from "axios";
 
 function App() {
-  const [message, setMessage] = useState("");
+  const [date, setDate] = useState([]);
+  const [users, setUsers] = useState();
 
   useEffect(() => {
     axios({
@@ -12,17 +17,17 @@ function App() {
     }).then((response) => setUsers(response.data));
   });
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((response) => response.text())
-      .then((date) => {
-        setDate(date);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/hello")
+  //     .then((response) => response.text())
+  //     .then((date) => {
+  //       setDate(date);
+  //     });
+  // }, []);
   return (
     <BrowserRouter>
       <Header />
-      {date}
+
       <Routes>
         <Route
           path="/"
