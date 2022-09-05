@@ -2,6 +2,7 @@ package com.main.ateam.mybatis;
 
 import java.io.IOException;
 
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,8 +20,9 @@ public class MyBatisConfig {
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 		SqlSessionFactoryBean ssf=new SqlSessionFactoryBean();
+		ssf.setDataSource(dataSource);
 		PathMatchingResourcePatternResolver resolver= new PathMatchingResourcePatternResolver();
-		ssf.setMapperLocations(resolver.getResources("classpath:mybatis/mpper/*.xml"));
+		ssf.setMapperLocations(resolver.getResources("classpath:mybatis/mapper/*.xml"));
 		ssf.setTypeAliasesPackage("com.main.ateam.vo");
 		return ssf.getObject();
 	}
