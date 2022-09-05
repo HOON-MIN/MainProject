@@ -20,7 +20,7 @@ public class MyBatisConfig {
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 		SqlSessionFactoryBean ssf=new SqlSessionFactoryBean();
 		PathMatchingResourcePatternResolver resolver= new PathMatchingResourcePatternResolver();
-		ssf.setMapperLocations(resolver.getResources("classpath:mybatis/mpper/*.xml"));
+		ssf.setMapperLocations(resolver.getResources("classpath:mybatis/mapper/*.xml"));
 		ssf.setTypeAliasesPackage("com.main.ateam.vo");
 		return ssf.getObject();
 	}
