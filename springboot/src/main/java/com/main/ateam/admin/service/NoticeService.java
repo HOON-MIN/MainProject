@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.main.ateam.admin.controller.dao.NoticeDaoInter;
+import com.main.ateam.admin.dao.NoticeDaoInter;
 import com.main.ateam.vo.NoticeVO;
 
 public class NoticeService {

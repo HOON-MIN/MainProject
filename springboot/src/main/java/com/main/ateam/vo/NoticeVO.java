@@ -1,5 +1,8 @@
 package com.main.ateam.vo;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("nvo")
 public class NoticeVO {
 	private int nnum;
 	private String writer;
