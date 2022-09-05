@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.main.ateam.admin.dao.NoticeDaoInter;
 import com.main.ateam.vo.NoticeVO;
 
+@Service
 public class NoticeService {
 	@Autowired
 	private NoticeDaoInter noticeDao;
@@ -15,7 +18,9 @@ public class NoticeService {
 	public List<NoticeVO> getNoticeList(Map<String, Integer> map){
 		return noticeDao.getNoticeList(map);
 	}
+	@Transactional
 	public NoticeVO getDetail(int nnum) {
+		noticeDao.addCount(nnum);
 		return noticeDao.getDetail(nnum);
 	}
 	public void addNotice(NoticeVO vo) {
