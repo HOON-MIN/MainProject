@@ -1,0 +1,24 @@
+diff a/springboot/src/main/resources/application.properties b/springboot/src/main/resources/application.properties	(rejected hunks)
+@@ -3,4 +3,20 @@
+ 
+ server.servlet.encoding.charset=UTF-8
+ server.servlet.encoding.enabled=true
+-server.servlet.encoding.force=true
+\ No newline at end of file
++server.servlet.encoding.force=true
++
++spring.mvc.view.prefix=/WEB-INF/views/
++spring.mvc.view.suffix=.jsp
++
++spring.sql.init.platform=oracle
++spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
++spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
++spring.datasource.username=maina
++spring.datasource.password=maina
++
++mybatis.mapper-locations=classpath:mybatis/mapper/**/*.xml
++
++spring.servlet.multipart.enabled=true
++spring.servlet.multipart.file-size-threshold=2KB
++spring.servlet.multipart.max-file-size=100MB
++spring.servlet.multipart.max-request-size=120MB
