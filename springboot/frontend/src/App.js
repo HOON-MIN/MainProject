@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import logo from "./logo.svg";
-import "./App.css";
-import Header from "./component/header";
-import Login from "./component/login";
-import axios from "axios";
+import React, {useState,useEffect} from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
-  const [date, setDate] = useState([]);
-  const [users, setUsers] = useState();
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     axios({
