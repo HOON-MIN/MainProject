@@ -17,17 +17,17 @@ function App() {
     }).then((response) => setUsers(response.data));
   });
 
-  // useEffect(() => {
-  //   fetch("/hello")
-  //     .then((response) => response.text())
-  //     .then((date) => {
-  //       setDate(date);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch("/hello")
+      .then((response) => response.text())
+      .then((date) => {
+        setDate(date);
+      });
+  }, []);
   return (
     <BrowserRouter>
       <Header />
-
+      {date}
       <Routes>
         <Route
           path="/"
