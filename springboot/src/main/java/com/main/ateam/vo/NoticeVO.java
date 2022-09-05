@@ -9,7 +9,14 @@ public class NoticeVO {
 	private String subject;
 	private String content;
 	private String ndate;
+	private int cnt;
 	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public int getNnum() {
 		return nnum;
 	}

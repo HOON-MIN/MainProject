@@ -13,5 +13,5 @@ public interface NoticeDaoInter {
 	public void addNotice(NoticeVO vo);
 	public void deleteNotice(int nnum);
 	public void updateNotice(NoticeVO vo);
-	public void addCount();
+	public void addCount(int nnum);
 }
