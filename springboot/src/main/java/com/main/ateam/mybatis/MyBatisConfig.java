@@ -1,7 +1,5 @@
 package com.main.ateam.mybatis;
 
-import java.io.IOException;
-
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,12 +11,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages = {"com.main.ateam.admin.dao"})
+@MapperScan(basePackages = {"com.main.ateam.member.dao"})
 public class MyBatisConfig {
 
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+		
 		SqlSessionFactoryBean ssf=new SqlSessionFactoryBean();
+		
+		ssf.setDataSource(dataSource);
 		PathMatchingResourcePatternResolver resolver= new PathMatchingResourcePatternResolver();
 		ssf.setMapperLocations(resolver.getResources("classpath:mybatis/mapper/*.xml"));
 		ssf.setTypeAliasesPackage("com.main.ateam.vo");
