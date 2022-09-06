@@ -23,6 +23,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update notice set subject=#{subject},content=#{content} where nnum=#{nnum}
 </update>
 <update id="addCount" parameterType="Integer">
-	update notice set cnt+=1 where 
+	update notice set cnt+=1 where nnum=#{nnum}
 </update>
 </mapper>

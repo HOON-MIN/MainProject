@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.main.ateam.member.service.MemberService;
 import com.main.ateam.vo.MemberVO;
 
@@ -23,10 +24,8 @@ public class MemberController {
 	
 	
 	@GetMapping("/memberlist")
-	public @ResponseBody String memberList(){
+	public List<MemberVO> memberList(){
 		List<MemberVO> mlist = memberService.getList();
-		Gson gson = new Gson();
-		String res = gson.toJson(mlist);
-		return res;
+		return mlist;
 	}
 }
