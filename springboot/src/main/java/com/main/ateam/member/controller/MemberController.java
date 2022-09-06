@@ -23,7 +23,7 @@ public class MemberController {
 	private MemberService memberService;
 	
 	
-	@GetMapping("/memberlist")
+	@RequestMapping(value = "/memberlist",produces = "application/json;charset=utf-8")
 	public List<MemberVO> memberList(){
 		List<MemberVO> mlist = memberService.getList();
 		return mlist;
