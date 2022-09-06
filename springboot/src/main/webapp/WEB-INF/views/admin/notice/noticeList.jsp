@@ -12,6 +12,7 @@
 					<th scope="col">번호</th>
 					<th scope="col">주제</th>
 					<th scope="col">작성자</th>
+					<th scope="col">조회수</th>
 					<th scope="col">날짜</th>
 				</tr>
 			</thead>
@@ -19,7 +20,7 @@
 				<tr>
 					<td colspan="4">
 						세션처리 필요
-						<input class="btn btn-primary" type="button" value="공지 추가" onclick="location.href='${mycontext}/manager/notice/addNotice'">
+						<input class="btn btn-primary" type="button" value="공지 추가" onclick="location.href='${mycontext}/notice/addNotice'">
 					</td>
 				<tr>
 				<tr>
@@ -30,8 +31,9 @@
 				<c:forEach var="item" items="${items}">
 				<tr>
 					<th scope="row">${item.nnum }</td>
-					<td><a href="${mycontext }/manager/notice/detail?nnum=${item.nnum}">${item.subject}</a></td>
+					<td><a href="${mycontext }/notice/detail?nnum=${item.nnum}">${item.subject}</a></td>
 					<td>${item.writer}</td>
+					<td>${item.cnt}</td>
 					<td>${item.ndate}</td>
 				</tr>
 				</c:forEach>

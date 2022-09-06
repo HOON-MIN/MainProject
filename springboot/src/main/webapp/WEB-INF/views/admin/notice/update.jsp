@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="mycontext" value="${pageContext.request.contextPath}"></c:set>
 <div class="container m-5 p-3">
-<form method="post" action="${mycontext}/manager/notice/modify">
+<form method="post" action="${mycontext}/notice/modify">
    <div>
 	<h3 style="text-align:center"> 공 지 사 항 </h3>
 	 <div class="mb-3">
@@ -22,7 +22,7 @@
 </div>
    <div class="d-flex justify-content-end">
       <input type="hidden" name="nnum" value="${item.nnum}">
-      <input type="button" value="목록" onclick="location='${mycontext}/manager/notice'" class="btn btn-primary">&nbsp;
+      <input type="button" value="목록" onclick="location='${mycontext}/notice'" class="btn btn-primary">&nbsp;
 	
       <input type="submit" value="확인" class="btn btn-success">&nbsp;
 
