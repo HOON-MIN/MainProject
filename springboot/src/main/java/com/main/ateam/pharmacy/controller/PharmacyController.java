@@ -20,11 +20,6 @@ public class PharmacyController {
 	@Autowired
 	private ShopService shopservice;
 	
-	@RequestMapping("/")
-	public String index() {
-		return "main/index";
-	}
-	
 	@GetMapping(value = "/ShopListPage")
 	public String ShopListPage(Model model, String cPage, String type, String searchf) {
 		Map<String, String> map = new HashMap<>();
