@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+
+<!-- 후기 작성 -->
+<insert id="addReviewBoard" parameterType="ReviewBoardDTO">
+  insert into reviewboard values(reviewboard_seq.nextVal,#{id},#{title},#{cont},sysdate,#{hits},#{likes},#{hname},#{dname})
+</insert>
+
+<!-- 후기 디테일 페이지 -->
+<select id="getDetail" parameterType="int" resultType="ReviewBoardDTO">
+   select * from reviewboard where rnum=#{rnum}
+</select>
+
+<!-- 후기 삭제 -->
+<delete id="upDelete" parameterType="int">
+   delete from reviewboard where rnum=#{rnum}
+</delete>
+
+<!-- 후기 업데이트 -->
+<update id="upReviewBoard" parameterType="ReviewBoardDTO">
+   update reviewboard set title=#{title}, cont=#{cont}, hname=#{hname}, dname=#{dname} where rnum=#{rnum}
+</update>
+
+<!-- Page List Query : 이부분 재대로 확인 하기 -->
+<select id="getCnt" resultType="int">
+  select count(*) from reviewboard
+</select>
+
+<select id="getList" resultType="ReviewBoardDTO" parameterType="map">
+  select * from (
+      select rownum r_rnum, a.*from (
+      select * from reviewboard order by rnum desc
+      ) a
+  )where r_rnum between #{begin} and #{end}
+  and 
+  <include refid="search"/>
+</select>
+
+<!-- 검색 기능 sql: select id="listpage"에 include함 -->
+<sql id="search">
+	<choose>
+		<when test="search_option == 'all'">
+				id like '%'||#{keyword}||'%'
+				or cont like '%'||#{keyword}||'%'
+				or title like '%'||#{keyword}||'%'
+				or hname like '%'||#{keyword}||'%'
+		</when>
+		<otherwise>
+			   ${search_option} like '%'||#{keyword}||'%'
+		</otherwise>
+	</choose>
+</sql>
+
+<!-- 조회수 업데이트 -->
+<update id="upReviewHits" parameterType="int">
+update reviewboard set hits=hits+1 where rnum=#{rnum}
+</update>
+
+</mapper>
