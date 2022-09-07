@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages = {"com.main.ateam.member.dao"})
+@MapperScan(basePackages = {"com.main.ateam.member.dao","com.main.ateam.pharmacy.dao"})
 public class MyBatisConfig {
 
 	@Bean

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="shop">
+<mapper namespace="com.main.ateam.pharmacy.dao.ShopDao">
 		<select id="getAllShop" resultType="int">
 		select count(*) from Pharmacy
 	</select>
-	<select id="ShopListPage" resultType="PharmacyVO" parameterType="map">
+	<select id="ShopListPage" resultType="com.main.ateam.pharmacy.vo.PharmacyVO" parameterType="map">
 		select * from (
 		    select rownum r_num, a.* from (
 		     select * from Pharmacy order by pnum
@@ -14,13 +14,13 @@
 		 ) where r_num BETWEEN #{begin} and #{end}
 	</select>
 	
-		<select id="ShopDetail" parameterType="int" resultType="PharmacyVO">
+		<select id="ShopDetail" parameterType="int" resultType="com.main.ateam.pharmacy.vo.PharmacyVO">
 		select * from
 		Pharmacy where pnum = #{pnum}
 	</select>
 	
 	<select id="SearchShopList" parameterType="map"
-		resultType="PharmacyVO">
+		resultType="com.main.ateam.pharmacy.vo.PharmacyVO">
 		select * from (
 		select rownum r_num, a.* from (
 		select * from Pharmacy where

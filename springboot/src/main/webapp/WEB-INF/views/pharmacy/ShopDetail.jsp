@@ -275,11 +275,11 @@ function initTmap() {
         <!-- <div class="col-6" > -->
         <div class="col-20 text-left d-flex align-items-center justify-content-between pt-2" style=" width:100%;">
           <div style="font-weight: 300;">
-              <a  href="${pageContext.request.contextPath}/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 5) }" style="color: #1d458d;font-weight: 600;text-decoration: underline;">
+              <a  href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 5) }" style="color: #1d458d;font-weight: 600;text-decoration: underline;">
                   ${fn:substring(shopDetail.fullAddress, 0, 5) }
             </a>            
             &gt;
-        	<a  href="${pageContext.request.contextPath}/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 8) }" style="color: #1d458d;font-weight: 600;text-decoration: underline;">
+        	<a  href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 8) }" style="color: #1d458d;font-weight: 600;text-decoration: underline;">
                   ${fn:substring(shopDetail.fullAddress, 6, 8) }
             </a>
           </div>
@@ -304,10 +304,10 @@ function initTmap() {
         </div>
        <div class=" pb-2 text-left my-3">
           <div style="font-size: 14px; letter-spacing: -0.4px;background-color:rgba(233, 233, 233, 0.55); display: inline-block" class="m-1 p-1">
-          <a href="${pageContext.request.contextPath}/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 2) }" style="color: #494949; word-break: keep-all;">    ${fn:substring(shopDetail.fullAddress, 0, 2) }약국</a>
+          <a href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 2) }" style="color: #494949; word-break: keep-all;">    ${fn:substring(shopDetail.fullAddress, 0, 2) }약국</a>
           </div>
            <div style="font-size: 14px; letter-spacing: -0.4px;background-color:rgba(233, 233, 233, 0.55); display: inline-block" class="m-1 p-1">
-           <a href="${pageContext.request.contextPath}/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 10) }" style="color: #494949; word-break: keep-all;">근처 병원</a>
+           <a href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 10) }" style="color: #494949; word-break: keep-all;">근처 병원</a>
           </div>
           <div style="font-size: 14px; letter-spacing: -0.4px;background-color:rgba(233, 233, 233, 0.55); display: inline-block" class="m-1 p-1">
           <a href="#" style="color: #494949; word-break: keep-all;">미정</a>
@@ -335,14 +335,13 @@ function initTmap() {
            	<input type="button" id="btn1" value="상세정보 보기">
           </div>
 
-          <div id="btn_share_hospital" style="font-size: 15px; height: 32px; line-height: 32px;" data-clipboard-text="https://www.modoodoc.com/hospital/17262/%EB%B2%A0%EB%A6%AC%EA%B5%BF%EC%84%B1%ED%98%95%EC%99%B8%EA%B3%BC%EC%9D%98%EC%9B%90-%EC%84%9C%EC%9A%B8-%EC%84%9C%EC%B4%88%EB%8F%99/" class="hospital-button d-flex mr-3 align-items-center px-4" onclick="ajax_web_event_logging('click', {component_type: 'btn', component_pos: 'top', component_func: 'share_hospital'})">
+          <div id="btn_share_hospital" style="font-size: 15px; height: 32px; line-height: 32px;">
             <img class="mr-1" src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/share_button.png" style="width:12px; height:14px; " alt="">
             공유하기
           </div> 
 
           
-            <div id="btn_bookmark_hospital" style="font-size: 15px; height: 32px; line-height: 32px;" class="hospital-button d-flex mr-3 align-items-center px-4" onclick="ajax_web_event_logging('click', {component_type: 'btn', component_pos: 'top', component_func: 'bookmark_hospital'});
-                if (window.hasOwnProperty('ChannelIO')) {ChannelIO('track', 'Click_BookmarkHospital')};">
+            <div id="btn_bookmark_hospital" style="font-size: 15px; height: 32px; line-height: 32px;" class="hospital-button d-flex mr-3 align-items-center px-4">
               <img class="mr-1" src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/bookmark_non.png" style="width:12px; height:14px; " alt="">
               찜하기
             </div>

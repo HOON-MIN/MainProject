@@ -10,6 +10,6 @@
 		<put-attribute name="footer" value="/WEB-INF/template/default/footer.jsp"/>
 	</definition>
 	<definition name="*/*" extends="defaultTemplate">
-		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 </tiles-definitions>       

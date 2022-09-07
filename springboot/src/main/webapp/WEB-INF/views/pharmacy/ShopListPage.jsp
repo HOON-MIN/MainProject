@@ -37,10 +37,10 @@
 <tbody>
 	<c:forEach var="e" items="${list }">
 			<tr>
-				<td  class="align-middle text-center"><a href="${pageContext.request.contextPath}/ShopDetail?pnum=${e.pnum}" class="nav-link" id="item3">${e.pnum }</a></td>
-				<td class="align-middle text-center"><a href="${pageContext.request.contextPath}/ShopDetail?pnum=${e.pnum}" class="nav-link" id="item3">${e.shopName }</a></td>
-				<td class="align-middle text-center"><a href="${pageContext.request.contextPath}/ShopDetail?pnum=${e.pnum}" class="nav-link" id="item3">${e.businessStatus }</a></td>
-				<td class="align-middle text-center"><a href="${pageContext.request.contextPath}/ShopDetail?pnum=${e.pnum}" class="nav-link" id="item3">${e.fullAddress }</a></td>
+				<td  class="align-middle text-center"><a href="${pageContext.request.contextPath}/pharmacy/ShopDetail?pnum=${e.pnum}" class="nav-link" id="item3">${e.pnum }</a></td>
+				<td class="align-middle text-center"><a href="${pageContext.request.contextPath}/pharmacy/ShopDetail?pnum=${e.pnum}" class="nav-link" id="item3">${e.shopName }</a></td>
+				<td class="align-middle text-center"><a href="${pageContext.request.contextPath}/pharmacy/ShopDetail?pnum=${e.pnum}" class="nav-link" id="item3">${e.businessStatus }</a></td>
+				<td class="align-middle text-center"><a href="${pageContext.request.contextPath}/pharmacy/ShopDetail?pnum=${e.pnum}" class="nav-link" id="item3">${e.fullAddress }</a></td>
 			</tr>
 		</c:forEach>
 </tbody>
@@ -53,7 +53,7 @@
 			<li class="page-item disabled"><a class="page-link">이전</a></li>
 		</c:when>
 	<c:otherwise>
-		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ShopListPage?cPage=${nowPage-pagePerBlock}&type=${type }&searchf=${searchf}">이전</a></li>
+		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/pharmacy/ShopListPage?cPage=${nowPage-pagePerBlock}&type=${type }&searchf=${searchf}">이전</a></li>
 	</c:otherwise>
 	</c:choose>
 
@@ -64,7 +64,7 @@
 	 			<li class="page-item disabled"><a class="page-link">${i.index}</a></li>
 			</c:when>
 			<c:otherwise>
-				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ShopListPage?cPage=${i.index}&type=${type }&searchf=${searchf}">${i.index}</a></li>
+				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/pharmacy/ShopListPage?cPage=${i.index}&type=${type }&searchf=${searchf}">${i.index}</a></li>
 			</c:otherwise>
 		</c:choose> 
  	</c:forEach>
@@ -73,10 +73,10 @@
 			<li class="page-item disabled"><a class="page-link">다음</a></li>
 		</c:when>
 		<c:when test="${totalPage > (nowPage+pagePerBlock)}">
-			<li class="page-item"><a class="page-link"  href="${pageContext.request.contextPath}/ShopListPage?cPage=${nowPage+pagePerBlock }&type=${type }&searchf=${searchf}">다음</a></li>
+			<li class="page-item"><a class="page-link"  href="${pageContext.request.contextPath}/pharmacy/ShopListPage?cPage=${nowPage+pagePerBlock }&type=${type }&searchf=${searchf}">다음</a></li>
 		</c:when>
 		<c:otherwise>
-     		<li class="page-item"><a class="page-link"  href="${pageContext.request.contextPath}/ShopListPage?cPage=${totalPage }&type=${type }&searchf=${searchf}">다음</a></li>
+     		<li class="page-item"><a class="page-link"  href="${pageContext.request.contextPath}/pharmacy/ShopListPage?cPage=${totalPage }&type=${type }&searchf=${searchf}">다음</a></li>
 		</c:otherwise>
  	</c:choose>
 </ol>
