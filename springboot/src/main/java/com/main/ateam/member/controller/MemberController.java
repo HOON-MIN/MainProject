@@ -49,6 +49,6 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
-		return result;
+		return mlist;
 	}
 }
