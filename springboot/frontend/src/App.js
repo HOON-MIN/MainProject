@@ -1,19 +1,28 @@
 import React, { useState , useEffect } from "react";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
-import logo from "./logo.svg";
+import Axios from 'axios';
 import "./App.css";
-import Header from "./component/header";
-import Login from "./component/login";
-import axios from 'axios';
 import Memberlist from "./component/data/member";
 
 function App() {  
-
-  return (
-    <div>
-      <Memberlist/>
-    </div>
-
-  );
+  const [users,setUsers] =useState();
+  useEffect(() => {
+  Axios.get('/memberlist').then((response) => {
+    if(response.data){
+      setUsers(response.data);
+    }else{
+      alert("failed to");
+    }
+  });
+});
+return (
+<div>
+  <ul>
+    <li>{users.id}</li>
+    <li>{users.name}</li>
+  </ul>
+    
+  
+</div>
+)
 };
 export default App;
