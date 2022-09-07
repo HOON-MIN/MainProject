@@ -2,6 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- include 제거  -->
+<!-- list.jsp 에 넣을 스크립트, 링크 코드 -->
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="/resources/taejin/datatables-simple-demo.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
