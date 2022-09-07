@@ -35,12 +35,12 @@ public class HospitalController {
 	public String hospitalList(SearchVO svo, Model m) {
 //		ModelAndView mav = new ModelAndView();
 		System.out.println("controller - hospitalList");
-//		List<HospitalVO> list = service.getList();
-//		System.out.println(list);
-//		for(HospitalDTO e : list) {
-//			System.out.println(e.getHname());
-//		}
-//		m.addAttribute("list", list);
+		List<HospitalVO> list = service.getList();
+		System.out.println(list);
+		for(HospitalVO e : list) {
+			System.out.println(e.getHname());
+		}
+		m.addAttribute("list", list);
 		return "hospital/hospitalList";	
 	}
 
