@@ -31,7 +31,7 @@
 </select>
 
 <select id="getDetail" parameterType="int" resultType="qvo">
-<!-- 	select * from hospital where hnum=#{num} -->
+	select * from quesboard where qnum=#{num}
 </select>
 
 </mapper>
