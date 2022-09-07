@@ -1,54 +1,122 @@
 package com.main.ateam.member.controller;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
-import org.json.JSONArray;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.main.ateam.member.service.MemberService;
+import com.main.ateam.vo.FileVO;
 import com.main.ateam.vo.MemberVO;
 
-@RestController
+
+@Controller
+@RequestMapping("/member")
 public class MemberController {
 
 	@Autowired
-	private MemberService memberService;
-	
-	
-	@RequestMapping(value = "/memberlist",produces = "application/json;charset=utf-8")
-	public Object memberList(){
-		List<MemberVO> mlist = memberService.getList();
-		List<Map<String,Object>> list2 = new ArrayList<>();
-		System.out.println(mlist);
-		for (MemberVO e : mlist) {
-			Map<String, Object> map = new HashMap<>();
-			map.put("num", e.getNum());
-			map.put("name", e.getName());
-			map.put("tel", e.getTel());
-			map.put("ssn", e.getSsn());
-			list2.add(map);
+	MemberService memberService;
+
+	@GetMapping("/memberLoginForm")
+	public String MemberLoginForm() {
+		return "member/member_login_form";
+	}
+
+	// 회원 로그인
+	@PostMapping("/memberLogin")
+	public ModelAndView MemberLogin(HttpSession session, MemberVO vo) {
+		ModelAndView mav = new ModelAndView("redirect:/member");
+
+		Map<String, String> map = new HashMap<>();
+		map.put("id", vo.getId());
+		map.put("pwd", vo.getPwd());
+		System.out.println("id = " + vo.getId());
+		System.out.println("pwd = " + vo.getPwd());
+		MemberVO dto = memberService.memberLogin(map);
+
+		if (dto == null) {
+			mav.setViewName("error/paramException");
+			mav.addObject("emsg", "로그인 실패 입니다.");
+		} else {
+			System.out.println("로그인했다");
+			session.setAttribute("sessionID", dto.getId());
+			session.setAttribute("sessionNUM", dto.getNum());
+			session.setAttribute("sessionNAME", dto.getName());
+
 		}
-		String result = null;
-		ObjectMapper mapper = new ObjectMapper();
+		return mav;
+	}
+
+	// 로그 아웃
+	@GetMapping(value = "/memberLogout")
+	public String memberLogout(HttpSession session) {
+		session.removeAttribute("sessionID");
+		session.removeAttribute("sessionNUM");
+		System.out.println("로그아웃성공");
+		return "redirect:/member";
+	}
+
+	// 로그인 테스트
+	@GetMapping(value = "/test")
+	public String test(HttpSession session, MemberVO vo) {
+		String id = "";
+		id = (String) session.getAttribute("sessionID");
+		System.out.println(id + "님 로그인 중");
+		return "redirect:/member";
+	}
+
+	// 회원 마이페이지
+	@GetMapping(value = "/memberMypage")
+	public String memberMypage(Model m, HttpSession session) {
+		int num = 0;
+		num = (int) session.getAttribute("sessionNUM");
+		MemberVO vo = memberService.memberMyPage(num);
+		m.addAttribute("member", vo);
+		return "member/member_mypage";
+	}
+
+	// 수정하기 폼으로
+	@GetMapping(value = "/updateMypageForm")
+	public String updateMypage(Model m,HttpSession session) {
+		int num = 0;
+		num = (int) session.getAttribute("sessionNUM");
+		MemberVO vo = memberService.memberMyPage(num);
+		m.addAttribute("member", vo);
+		return "member/updateMypage";
+	}
+
+	@RequestMapping("/updateMypage")
+	public String fileupLoad(FileVO v, HttpServletRequest request, MemberVO vo,HttpSession session) {
+		int num = 0;
+		num = (int) session.getAttribute("sessionNUM");
+		String img_path = "resources\\upload";
+		String r_path = request.getRealPath("/");
+		String oriFn = v.getFileOriName().getOriginalFilename();
+		StringBuffer path = new StringBuffer();
+		path.append(r_path).append(img_path).append("\\");
+		path.append(oriFn);
+		System.out.println("-----------------------------------");
+		System.out.println("Path :" + path);
+		vo.setNum(num);
+		vo.setProfimg(oriFn);
+		File f = new File(path.toString());
 		try {
-			result = mapper.writeValueAsString(list2);
-		} catch (Exception e) {
+			v.getFileOriName().transferTo(f);
+		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();
 		}
-		
-		return mlist;
+		memberService.memberUpdate(vo);
+		return "redirect:/member";
 	}
 }
