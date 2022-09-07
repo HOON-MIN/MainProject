@@ -1,4 +1,4 @@
-package com.main.ateam.controller.hospital;
+package com.main.ateam.hospital.controller;
 
 import java.util.List;
 
