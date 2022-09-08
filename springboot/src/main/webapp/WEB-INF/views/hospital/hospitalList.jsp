@@ -8,15 +8,7 @@
 		color:black;
 	}
 </style>
-<!-- list.jsp 에 넣을 스크립트, 링크 코드 -->
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<script src="/js/datatables-simple-demo.js?"></script>
-<script src="/js/scripts.js?"></script>
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
-<link href="/css/styles.css?" rel="stylesheet"/>
+
 
 <div class="container">
 <article>
@@ -129,14 +121,4 @@
 
 </article>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(function(){
-	$('.linktd').click(function(){
-		var href = $(this).parent("tr").children("td").children("a").attr("href")
-		alert(href);
-		window.location = href;
-	});
-});
 
-</script>
