@@ -17,18 +17,23 @@
 	delete from quesboard where qnum = #{num}
 </delete>
 
+<select id="getQBList" resultType="qvo">
+	select * from quesboard order by 1 desc
+</select>
+
+
 <!-- Page List Query -->
-<select id="totalCount" resultType="int">
-	select count(*) from quesboard
-</select>
-<select id="listpage" parameterType="map" resultType="qvo">
-				<!-- parameterType="java.util.Map" 로 해도 같음! -->
-	select * from (
-	    select rownum r_num, a.* from (
-	        select * from quesboard order by qnum desc
-	    ) a
-	) where r_num between #{begin} and #{end}
-</select>
+<!-- <select id="totalCount" resultType="int"> -->
+<!-- 	select count(*) from quesboard -->
+<!-- </select> -->
+<!-- <select id="listpage" parameterType="map" resultType="qvo"> -->
+<!-- 				parameterType="java.util.Map" 로 해도 같음! -->
+<!-- 	select * from ( -->
+<!-- 	    select rownum r_num, a.* from ( -->
+<!-- 	        select * from quesboard order by qnum desc -->
+<!-- 	    ) a -->
+<!-- 	) where r_num between #{begin} and #{end} -->
+<!-- </select> -->
 
 <select id="getDetail" parameterType="int" resultType="qvo">
 	select * from quesboard where qnum=#{num}

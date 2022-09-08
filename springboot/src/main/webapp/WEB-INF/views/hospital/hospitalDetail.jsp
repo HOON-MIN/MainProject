@@ -5,10 +5,10 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=997940d38b64cf7abf8986a573d68746"></script>
 
 	<header>
-		<h1>병원 상세정보</h1>
+		<h1 style="text-align: center;">병원 상세정보</h1>
 	</header>
 	<ul class="list-unstyled"><li class="border-top my-3"></li></ul>
-	<div class="container">
+	<div class="container" style="width: 800px;">
 	<%-- boardForm 들어갈 자리! --%>
 	<fieldset>
 <!--             <legend></legend> -->
