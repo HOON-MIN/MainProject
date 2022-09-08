@@ -1,4 +1,4 @@
-package com.main.ateam.hospital.dao;
+package com.main.ateam.quesboard.dao;
 
 import java.util.List;
 import java.util.Map;

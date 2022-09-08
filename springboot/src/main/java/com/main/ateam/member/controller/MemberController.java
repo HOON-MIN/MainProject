@@ -101,16 +101,20 @@ public class MemberController {
 		int num = 0;
 		num = (int) session.getAttribute("sessionNUM");
 		String img_path = "resources\\upload";
+		System.out.println("img_path :" + img_path);
 		String r_path = request.getRealPath("/");
+		System.out.println("r_path :" + r_path);
 		String oriFn = v.getFileOriName().getOriginalFilename();
-		StringBuffer path = new StringBuffer();
-		path.append(r_path).append(img_path).append("\\");
-		path.append(oriFn);
-		System.out.println("-----------------------------------");
-		System.out.println("Path :" + path);
+		System.out.println("oriFn : " + oriFn);
+		//StringBuffer path = new StringBuffer();
+		//path.append(r_path).append(img_path).append("\\");
+		//path.append(oriFn);
+		//System.out.println("-----------------------------------");
+		//System.out.println("Path :" + path);
+		String path = "D:\\iKosmo113\\git\\Springboot_workspace\\projectA\\src\\main\\resources\\resources\\upload\\";
 		vo.setNum(num);
 		vo.setProfimg(oriFn);
-		File f = new File(path.toString());
+		File f = new File(path);
 		try {
 			v.getFileOriName().transferTo(f);
 		} catch (IllegalStateException | IOException e) {

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.main.ateam.vo.ReviewBoardVO;
 
-public interface ReviewBoardInter {
+public interface ReviewBoardDao {
 
 	public List<ReviewBoardVO> getList(Map<String, Object> map);
 	public int getCnt();

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kr.co.kosmo.mvc.dao.QuesboardDao">
+<mapper namespace="com.main.ateam.quesboard.dao.QuesboardDao">
 
 <insert id="addQuesboard" parameterType="qvo">
 	insert into quesboard values (QUESBOARD_SEQ.nextval, 
@@ -31,7 +31,7 @@
 </select>
 
 <select id="getDetail" parameterType="int" resultType="qvo">
-<!-- 	select * from hospital where hnum=#{num} -->
+	select * from quesboard where qnum=#{num}
 </select>
 
 </mapper>
