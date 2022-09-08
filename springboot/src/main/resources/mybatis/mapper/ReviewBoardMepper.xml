@@ -2,15 +2,15 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="review">
+<mapper namespace="com.main.ateam.dao.ReviewBoardDao">
 
 <!-- 후기 작성 -->
-<insert id="addReviewBoard" parameterType="ReviewBoardDTO">
+<insert id="addReviewBoard" parameterType="ReviewBoardVO">
   insert into reviewboard values(reviewboard_seq.nextVal,#{id},#{title},#{cont},sysdate,#{hits},#{likes},#{hname},#{dname})
 </insert>
 
 <!-- 후기 디테일 페이지 -->
-<select id="getDetail" parameterType="int" resultType="ReviewBoardDTO">
+<select id="getDetail" parameterType="int" resultType="ReviewBoardVO">
    select * from reviewboard where rnum=#{rnum}
 </select>
 
@@ -20,7 +20,7 @@
 </delete>
 
 <!-- 후기 업데이트 -->
-<update id="upReviewBoard" parameterType="ReviewBoardDTO">
+<update id="upReviewBoard" parameterType="ReviewBoardVO">
    update reviewboard set title=#{title}, cont=#{cont}, hname=#{hname}, dname=#{dname} where rnum=#{rnum}
 </update>
 
@@ -29,7 +29,7 @@
   select count(*) from reviewboard
 </select>
 
-<select id="getList" resultType="ReviewBoardDTO" parameterType="map">
+<select id="getList" resultType="ReviewBoardVO" parameterType="map">
   select * from (
       select rownum r_rnum, a.*from (
       select * from reviewboard order by rnum desc

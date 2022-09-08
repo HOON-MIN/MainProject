@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.main.ateam.review.dao.ReviewBoardInter;
+import com.main.ateam.review.service.ReviewBoardService;
 import com.main.ateam.vo.ReviewBoardVO;
 
 
@@ -34,7 +34,7 @@ public class ReviewBoardController {
 	private int endPerPage =0; // 각 페이지별 마지막 게시물의 index값
 	
 	@Autowired
-	private ReviewBoardInter reviewBoardInter;
+	private ReviewBoardService service;
 	
 	// 후기 리스트
 	@RequestMapping(value = "/reviewboardlist")
@@ -45,7 +45,7 @@ public class ReviewBoardController {
 			
 			) {
 		
-		totalRecord = reviewBoardInter.getCnt();
+		totalRecord = service.getCnt();
 		totalPage = (int)Math.ceil(totalRecord/(double)numPerPage);
 		totalBlock = (int)Math.ceil(totalPage/(double)pagePerBlock);
 		
@@ -61,7 +61,7 @@ public class ReviewBoardController {
 		map.put("search_option", search_option); // 추가. map을 object로 바꿈
 		map.put("keyword",keyword); // 추가. map을 object로 바꿈
 
-		List<ReviewBoardVO> list = reviewBoardInter.getList(map);
+		List<ReviewBoardVO> list = service.getList(map);
 		
 		model.addAttribute("reviewlist", list);
 		System.out.println(list.isEmpty());
@@ -91,15 +91,15 @@ public class ReviewBoardController {
 	public String uploadFile(Model m, ReviewBoardVO dto,
 			HttpServletRequest request, HttpSession session) {
 		
-		reviewBoardInter.addReviewBoard(dto);
+		service.addReviewBoard(dto);
 		return "redirect:reviewboardlist";
 	}
 	// 리뷰상세 페이지 (후기 상세 내용 보여 줌)
 	@GetMapping(value = "/reviewDetail")
 	public String reviewboardDetail(Model model, int rnum, String mid) {
 		System.out.println("후기 게시판 디테일 페이지 시작");
-		ReviewBoardVO vo = reviewBoardInter.getDetail(rnum);
-		reviewBoardInter.upReviewHits(rnum); // 추가. 조회수
+		ReviewBoardVO vo = service.getDetail(rnum);
+		service.upReviewHits(rnum); // 추가. 조회수
 		model.addAttribute("vo", vo);		
 		return "reviewBoard/reviewDetail";
 		//return "redirect:/web/reviewboard/reviewDetail?num="+num;
@@ -107,13 +107,13 @@ public class ReviewBoardController {
 	// 리뷰삭제
 	@GetMapping(value = "/delReview")
 	public String delReview(Model m, int rnum) {
-		reviewBoardInter.upDelete(rnum);
+		service.upDelete(rnum);
 		return "redirect:reviewboardlist";
 	}
 	// 리뷰수정 페이지로 이동
 	@RequestMapping(value = "/reviewUpdate")
 	public String reviewupDefaultIndex(Model model, int rnum) {
-		ReviewBoardVO vo = reviewBoardInter.getDetail(rnum);
+		ReviewBoardVO vo = service.getDetail(rnum);
 		model.addAttribute("vo", vo);
 		return "reviewBoard/reviewUpdate";
 	}
@@ -121,7 +121,7 @@ public class ReviewBoardController {
 	@PostMapping(value = "/uploadUpdate")
 	public String upReviewBoard(Model m, ReviewBoardVO dto,
 			HttpServletRequest request) {
-		reviewBoardInter.upReviewBoard(dto);
+		service.upReviewBoard(dto);
 		//return "redirect:/reviewboard/reviewboardlist";
 		return "redirect:reviewboardlist";
 
