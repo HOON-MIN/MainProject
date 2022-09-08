@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.main.ateam.drug.service.DrugService;
-import com.main.ateam.drug.vo.DrugVO;
+import com.main.ateam.vo.DrugVO;
+
 
 
 

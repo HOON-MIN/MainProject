@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="kr.co.kosmo.mvc.dao.DrugDao">
+<mapper namespace="com.main.ateam.drug.dao.DrugDao">
 
 <select id="getDrugList" resultType="drugVO">
 	select r_num,drug_img,drug_idx,drug_name,drug_formulation,

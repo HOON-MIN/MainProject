@@ -3,7 +3,7 @@ package com.main.ateam.drug.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.main.ateam.drug.vo.DrugVO;
+import com.main.ateam.vo.DrugVO;
 
 
 

@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.main.ateam.drug.dao.DrugDao;
-import com.main.ateam.drug.vo.DrugVO;
+import com.main.ateam.vo.DrugVO;
+
 
 @Service
 public class DrugService {

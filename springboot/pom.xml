@@ -165,7 +165,8 @@
 							<npmVersion>8.15.0</npmVersion>
 						</configuration>
 					</execution>
-					<execution>
+					
+					<!-- <execution>
 						<id>npm install</id>
 						<goals>
 							<goal>npm</goal>
@@ -183,7 +184,7 @@
 						<configuration>
 							<arguments>run build</arguments>
 						</configuration>
-					</execution>
+					</execution> -->
 				</executions>
 			</plugin>
 			<plugin>

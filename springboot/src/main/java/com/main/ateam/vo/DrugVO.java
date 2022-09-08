@@ -1,4 +1,4 @@
-package com.main.ateam.drug.vo;
+package com.main.ateam.vo;
 
 import org.apache.ibatis.type.Alias;
 import org.springframework.web.multipart.MultipartFile;
