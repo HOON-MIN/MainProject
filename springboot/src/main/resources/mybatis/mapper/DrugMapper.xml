@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.co.kosmo.mvc.dao.DrugDao">
+
+<select id="getDrugList" resultType="drugVO">
+	select r_num,drug_img,drug_idx,drug_name,drug_formulation,
+	drug_component,drug_company,drug_Professional_General from(
+	select rownum r_num, a.*from(select * from drug order by drug_name asc) a
+	) where r_num between #{begin} and #{end}
+	
+</select>
+
+<select id="getDrugDetail" parameterType="int"  resultType="drugVO">
+	select * from drug where drug_idx=#{num}
+</select>
+
+<select id="getTotalCount" resultType="int">
+		select count(*) from drug
+</select>
+
+<insert id="setDrugInsert" parameterType="drugVO">
+
+	insert into drug
+	VALUES (#{drug_idx},#{drug_name},#{drug_code},#{drug_img},#{drug_identification},
+	#{drug_formulation},#{drug_component},#{drug_company},#{drug_description},#{drug_size_l},
+	#{drug_size_s},#{drug_size_w},#{drug_effect},#{drug_Professional_General},#{drug_color_F},
+	#{drug_color_B},#{drug_split_line_F},#{drug_split_line_B},#{drug_disposal},#{drug_shape})
+</insert>
+
+
+
+</mapper>
