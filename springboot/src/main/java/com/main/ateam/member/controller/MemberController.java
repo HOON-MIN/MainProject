@@ -30,6 +30,7 @@ public class MemberController {
 
 	@GetMapping("/memberLoginForm")
 	public String MemberLoginForm() {
+		
 		return "member/member_login_form";
 	}
 
@@ -37,7 +38,6 @@ public class MemberController {
 	@PostMapping("/memberLogin")
 	public ModelAndView MemberLogin(HttpSession session, MemberVO vo) {
 		ModelAndView mav = new ModelAndView("redirect:/member");
-
 		Map<String, String> map = new HashMap<>();
 		map.put("id", vo.getId());
 		map.put("pwd", vo.getPwd());
@@ -80,8 +80,8 @@ public class MemberController {
 	@GetMapping(value = "/memberMypage")
 	public String memberMypage(Model m, HttpSession session) {
 		int num = 0;
-		num = (int) session.getAttribute("sessionNUM");
-		MemberVO vo = memberService.memberMyPage(num);
+		//num = (int) session.getAttribute("sessionNUM");
+		MemberVO vo = memberService.memberMyPage(1);
 		m.addAttribute("member", vo);
 		return "member/member_mypage";
 	}
