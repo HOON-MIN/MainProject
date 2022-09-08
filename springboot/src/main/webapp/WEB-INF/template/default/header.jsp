@@ -10,6 +10,7 @@
     </button>
     <div class="d-flex" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+      
         <a class="nav-link active" aria-current="page" href="#">로그인</a>
         <a class="nav-link" href="#">회원가입</a>
         <a class="nav-link" href="#">마이페이지</a>

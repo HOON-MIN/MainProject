@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- include Á¦°Å  -->
+<!-- include ì œê±°  -->
 <style>
 	#datatablesSimple a{
 		text-decoration: none;
@@ -19,104 +19,31 @@
 		<li class="border-top my-3"></li>
 	</ul>
 
-		<%-- ¸®ÆÑÅä¸µ ÇØ¾ß ÇÔ --%>
-		<table class="table" id="datatablesSimple">
-			<thead>
-				<tr>
-					<th>¹øÈ£</th>
-					<th>º´¿ø¸í</th>
-					<th>À§Ä¡</th>
-					<th>¿µ¾÷½Ã°£</th>
-					<th>Áø·á°ú¸ñ</th>
-				</tr>
-			</thead>
+		<%-- ë¦¬íŒ©í† ë§ í•´ì•¼ í•¨ --%>
+<table class="table" id="datatablesSimple">
+	<thead>
+		<tr>
+			<th>ë²ˆí˜¸</th>
+			<th>ë³‘ì›ëª…</th>
+			<th>ìœ„ì¹˜</th>
+			<th>ì˜ì—…ì‹œê°„</th>
+			<th>ì§„ë£Œê³¼ëª©</th>
+		</tr>
+	</thead>
 
-			<tbody>
-				<%-- for start --%>
-				<c:forEach var="e" items="${list }">
-					<tr>
-						<td class="linktd">${e.hnum }</td>
-						<td class="linktd"><a href="hospitalDetail?num=${e.hnum }"> ${e.hname }</a></td>
-						<td class="linktd">${e.hloc }</td>
-						<td class="linktd">${e.otime }~${e.ctime }</td>
-						<td class="linktd">${e.hcate }</td>
-					</tr>
-				</c:forEach>
-				<%-- for end --%>
-			</tbody>
-
-<!-- <tfoot> -->
-<!-- 	<tr> -->
-<!-- 		<th colspan="5" style="text-align: center;"> -->
-<!-- 			<nav aria-label="Page navigation example"> -->
-<!-- 				<ul class="pagination pagination-sm" -->
-<!-- 					style="margin: auto; width: 60%"> -->
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${startPage < 6}"> --%>
-<!-- 							<li class="page-item disabled">ÀÌÀüÀ¸·Î</li> -->
-<%-- 						</c:when> --%>
-<%-- 						<c:otherwise> --%>
-<!-- 							<li class="page-item"><a class="page-link" -->
-<%-- 								href="hospitallist?cPage=${startPage -1}">ÀÌÀüÀ¸·Î</a></li> --%>
-<%-- 						</c:otherwise> --%>
-<%-- 					</c:choose> --%>
-<!-- 					       <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li> -->
-<%-- 					<c:forEach varStatus="i" begin="${startPage}" end="${endPage }" --%>
-<%-- 						step="1"> --%>
-<%-- 						<c:choose> --%>
-<%-- 							<c:when test="${i.index == nowPage}"> --%>
-<%-- 								<li class="page-item">${i.index}</li> --%>
-<%-- 							</c:when> --%>
-<%-- 							<c:otherwise> --%>
-<!-- 								<li class="page-item"><a class="page-link" -->
-<%-- 									href="hospitallist?cPage=${i.index}">${i.index}</a></li> --%>
-<%-- 							</c:otherwise> --%>
-<%-- 						</c:choose> --%>
-<%-- 					</c:forEach> --%>
-
-
-<!-- 					          <li class="page-item active" ><a class="page-link" href="#">1</a></li> -->
-<!-- 					          <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-<!-- 					          <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-<!-- 					          <li class="page-item"><a class="page-link" href="#">4</a></li> -->
-<!-- 					          <li class="page-item"><a class="page-link" href="#">5</a></li> -->
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${endPage >= totalPage }"> --%>
-<!-- 							<li class="page-item">´ÙÀ½À¸·Î</li> -->
-<%-- 						</c:when> --%>
-<%-- 						<c:when test="${totalPage > (nowPage+pagePerBlock)}"> --%>
-<!-- 							<li> -->
-<!-- 							<li><a class="page-link" -->
-<%-- 								href="hospitallist?cPage=${endPage +1 }">´ÙÀ½À¸·Î</a></li> --%>
-<%-- 						</c:when> --%>
-<%-- 						<c:otherwise> --%>
-<!-- 							<li> -->
-<%-- 							<li><a class="page-link" href="hospitallist?cPage=${totalPage}">´ÙÀ½À¸·Î</a></li> --%>
-<%-- 						</c:otherwise> --%>
-<%-- 					</c:choose> --%>
-<!-- 					          <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
-<!-- 				</ul> -->
-<!-- 			</nav> -->
-<!-- 		</th> -->
-<!-- 	</tr> -->
-<!-- 	<tr> -->
-<!-- 		<th colspan="5"> -->
-<!-- 			<form class="d-flex"> -->
-<!-- 				<input class="form-control me-2" type="text" -->
-<!-- 					placeholder="Search.." style="width: 300px"> -->
-<!-- 				<button class="btn btn-outline-secondary" type="button">Search</button> -->
-<!-- 			</form> -->
-<!-- 		</th> -->
-<!-- 	</tr> -->
-<!-- 	<tr> -->
-<!-- 		<td colspan="5" style="text-align: right;"> -->
-<%-- 			<%-- jQuery¸¦ »ç¿ëÇØ¼­ ±ÛÀÛ¼º ÆûÀ¸·Î ÀÌµ¿½ÃÅ°±â --%>
-<%--            				- id Ãß°¡ÇÏ±â : selector¸¦ »ç¿ëÇØ¼­ ÇÚµé¸µ --%>
-<%--            				- footer.jsp  --%>
-<!-- 			<button type="button" class="btn btn-outline-secondary" id="wbtn">±ÛÀÛ¼º</button> -->
-<!-- 		</td> -->
-<!-- 	</tr> -->
-<!-- </tfoot> -->
+	<tbody>
+		<%-- for start --%>
+		<c:forEach var="e" items="${list }">
+			<tr>
+				<td class="linktd">${e.hnum }</td>
+				<td class="linktd"><a href="hospitalDetail?num=${e.hnum }"> ${e.hname }</a></td>
+				<td class="linktd">${e.hloc }</td>
+				<td class="linktd">${e.otime }~${e.ctime }</td>
+				<td class="linktd">${e.hcate }</td>
+			</tr>
+		</c:forEach>
+		<%-- for end --%>
+	</tbody>
 </table>
 
 </article>
