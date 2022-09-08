@@ -20,7 +20,7 @@ return (
     <li>안녕</li>
     { users.map(function(username){
       return(
-        <li>{users.username}</li>
+        <li>테스트</li>
       )
     })}
   </ul>  
