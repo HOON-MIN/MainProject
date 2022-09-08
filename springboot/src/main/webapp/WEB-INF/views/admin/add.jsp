@@ -16,7 +16,7 @@
 <div>
 <input type="hidden" name="writer" value="包府磊">
 <input type="submit" value="累己">
-<input type="button" value="格废" onclick="location.href='${mycontext}/manager/notice'">
+<input type="button" value="格废" onclick="location.href='${mycontext}/notice'">
 </div>
 </div>
 </form>
