@@ -111,7 +111,7 @@ public class MemberController {
 		//path.append(oriFn);
 		//System.out.println("-----------------------------------");
 		//System.out.println("Path :" + path);
-		String path = "D:\\iKosmo113\\git\\Springboot_workspace\\projectA\\src\\main\\resources\\resources\\upload\\";
+		String path = "resources/upload/";
 		vo.setNum(num);
 		vo.setProfimg(oriFn);
 		File f = new File(path);
