@@ -19,8 +19,8 @@
   </textarea>
 </div>
    <div class="d-flex justify-content-end">
-      <input type="button" value="목록" onclick="location.href='${mycontext}/manager/notice'" class="btn btn-primary">&nbsp;
-      <input type="button" value="수정" onclick="location.href='${mycontext}/manager/notice/update?nnum=${item.nnum}'" class="btn btn-success">&nbsp;
-      <input type="button" value="삭제" onclick="location.href='${mycontext}/manager/notice/delete?nnum=${item.nnum}'" class="btn btn-danger"/>&nbsp;
+      <input type="button" value="목록" onclick="location.href='${mycontext}/notice'" class="btn btn-primary">&nbsp;
+      <input type="button" value="수정" onclick="location.href='${mycontext}/notice/update?nnum=${item.nnum}'" class="btn btn-success">&nbsp;
+      <input type="button" value="삭제" onclick="location.href='${mycontext}/notice/delete?nnum=${item.nnum}'" class="btn btn-danger"/>&nbsp;
    </div>
 </div>

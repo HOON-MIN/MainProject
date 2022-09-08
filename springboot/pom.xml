@@ -83,9 +83,19 @@
 		<dependency>
         <groupId>org.apache.tiles</groupId>
         <artifactId>tiles-jsp</artifactId>
-        <version>3.0.4</version>
+        <version>3.0.8</version>
    		 </dependency>
-
+		<dependency>			
+		<groupId>org.apache.tiles</groupId>			
+		<artifactId>tiles-core</artifactId>			
+		<version>3.0.8</version>		
+		</dependency>		
+		<dependency>			
+		<groupId>org.apache.tiles</groupId>			
+		<artifactId>tiles-servlet</artifactId>			
+		<version>3.0.8</version>		
+		</dependency>
+				<dependency>			<groupId>org.apache.tiles</groupId>			<artifactId>tiles-el</artifactId>			<version>3.0.8</version>		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
