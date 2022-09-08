@@ -26,17 +26,5 @@
   </li>
 </ul>
 
-<!--     <li class="nav-item dropdown"> -->
-<!--     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> -->
-<!--       ¹Ì¸£ -->
-<!--     </a> -->
-<!-- <!--     <ul class="dropdown-menu"> --> -->
-<%--       <li><a class="dropdown-item" href="${mycontext}/hospital/hospitalList">Hospital List</a></li> --%>
-<%--       <li><a class="dropdown-item" href="${mycontext}/quesboard/qbForm">QuesBoard Form</a></li> --%>
-<%--       <li><a class="dropdown-item" href="${mycontext}/quesboard/quesboardList">QuesBoard List</a></li> --%>
-<!--       <li><hr class="dropdown-divider"></li> -->
-<!--       <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-<!--     </ul> -->
-<!--   </li> -->
 
 </nav>
