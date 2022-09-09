@@ -21,22 +21,26 @@ public class QuesboardService {
 		dao.addQuesboard(vo);
 	}
 	
+	public List<QuesboardVO> getQBList() {
+		List<QuesboardVO> list = dao.getQBList();
+		System.out.println("QBList service => " + list);
+		return list;
+	}
+
+	public QuesboardVO getQBDetail(int num) {
+		QuesboardVO vo = dao.getQBDetail(num);
+		System.out.println("QBDetail service => " + vo);
+		return vo;
+	}
+	
 	public void qbUpdate(QuesboardVO vo) {
 		vo.setId("member");
 		dao.qbUpdate(vo);
 	}
 	
-	public List<QuesboardVO> getQBList() {
-		List<QuesboardVO> list = dao.getQBList();
-		System.out.println("QB service => " + list);
-		return list;
+	public void qbDelete(int num) {
+		dao.qbDelete(num);
 	}
-
-//	public HospitalVO getDetail(int num) {
-//		HospitalVO vo = dao.getDetail(num);
-//		System.out.println("service => " + vo);
-//		return vo;
-//	}
 	
 	
 	

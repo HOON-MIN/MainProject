@@ -30,6 +30,7 @@ public class MemberController {
 
 	@GetMapping("/memberLoginForm")
 	public String MemberLoginForm() {
+		
 		return "member/member_login_form";
 	}
 
@@ -37,7 +38,6 @@ public class MemberController {
 	@PostMapping("/memberLogin")
 	public ModelAndView MemberLogin(HttpSession session, MemberVO vo) {
 		ModelAndView mav = new ModelAndView("redirect:/member");
-
 		Map<String, String> map = new HashMap<>();
 		map.put("id", vo.getId());
 		map.put("pwd", vo.getPwd());
@@ -80,8 +80,8 @@ public class MemberController {
 	@GetMapping(value = "/memberMypage")
 	public String memberMypage(Model m, HttpSession session) {
 		int num = 0;
-		num = (int) session.getAttribute("sessionNUM");
-		MemberVO vo = memberService.memberMyPage(num);
+		//num = (int) session.getAttribute("sessionNUM");
+		MemberVO vo = memberService.memberMyPage(1);
 		m.addAttribute("member", vo);
 		return "member/member_mypage";
 	}
@@ -111,7 +111,7 @@ public class MemberController {
 		//path.append(oriFn);
 		//System.out.println("-----------------------------------");
 		//System.out.println("Path :" + path);
-		String path = "D:\\iKosmo113\\git\\Springboot_workspace\\projectA\\src\\main\\resources\\resources\\upload\\";
+		String path = "resources/upload/";
 		vo.setNum(num);
 		vo.setProfimg(oriFn);
 		File f = new File(path);
