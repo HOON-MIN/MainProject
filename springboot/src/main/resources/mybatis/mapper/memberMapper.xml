@@ -3,10 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.main.ateam.member.dao.MemberDao">
+<mapper namespace="com.main.ateam.member.dao.MemberDaoInter">
 
-<select id="getMemberList" resultType="mvo">
-	select * from member order by 1 desc
-</select>
-
+<select id="memberLogin" resultType="mvo">
+  	select * from member where id=#{id} and pwd=#{pwd}
+  	</select>
+  	<select id="memberMyPage" resultType="mvo">
+  	select * from member where num=#{num}
+  	</select>
+  	<update id="memberUpdate">
+  	update member set name=#{name},email=#{email},tel=#{tel},profimg=#{profimg} where num = #{num}
+  	</update>
 </mapper>

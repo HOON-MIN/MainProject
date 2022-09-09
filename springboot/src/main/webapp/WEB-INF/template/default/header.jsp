@@ -10,10 +10,22 @@
     </button>
     <div class="d-flex" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+<<<<<<< HEAD
       
         <a class="nav-link active" aria-current="page" href="#">로그인</a>
+=======
+      <c:choose>
+      <c:when test="${sessionID !=null}">
+      <a class="nav-link" href="${mycontext }/member/memberMypage">마이페이지</a>
+      <a class="nav-link active" aria-current="page" href="${mycontext }/member/memberLogout">로그아웃</a>
+      </c:when>
+      <c:otherwise>
+      <a class="nav-link active" aria-current="page" href="${mycontext }/member/memberLoginForm">로그인</a>
+>>>>>>> origin/taejin
         <a class="nav-link" href="#">회원가입</a>
-        <a class="nav-link" href="#">마이페이지</a>
+      </c:otherwise>
+      </c:choose>
+      
       </div>
     </div>
   </div>
