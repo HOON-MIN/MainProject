@@ -22,7 +22,7 @@
 	data-bs-ride="carousel">
 	<div class="carousel-inner">
 		<video autoplay loop muted class="" style="width: 100%;">
-			<!-- <source src="https://www.goodoc.io/intro1.webm" type="video/mp4"> -->
+			 <source src="https://www.goodoc.io/intro1.webm" type="video/mp4">
 		</video>
 		<div class="carousel-caption d-none d-md-block" style="padding-bottom : 30%;">
 			<h1>개개인 맞춤화 된 비대면 의료서비스 <br> 서비스 이름 지어주세요</h1>
