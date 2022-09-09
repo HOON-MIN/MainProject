@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -46,19 +46,19 @@ a:link{text-decoration: none;}
 <article>
 <div class="container">
 <header>
-	<h1>»ç¿ë ÈÄ±â °Ô½ÃÆÇ</h1>
+	<h1>ì‚¬ìš© í›„ê¸° ê²Œì‹œíŒ</h1>
 	</header>
 	
 <table class="table table-bordered">
 
 <thead>
 <tr class="align-middle text-center">
-  <th>¹øÈ£</th>
-  <th>Á¦¸ñ</th>
-  <th>¾ÆÀÌµð</th>
-  <th>º´¿ø¸í</th>
-  <th>ÀÛ¼ºÀÏÀÚ</th>
-  <th>Á¶È¸¼ö</th>
+  <th>ë²ˆí˜¸</th>
+  <th>ì œëª©</th>
+  <th>ì•„ì´ë””</th>
+  <th>ë³‘ì›ëª…</th>
+  <th>ìž‘ì„±ì¼ìž</th>
+  <th>ì¡°íšŒìˆ˜</th>
 </tr>
 </thead>
 
@@ -84,11 +84,11 @@ a:link{text-decoration: none;}
 <ol class="paging">
   <c:choose>
   	<c:when test="${startPage < 6 }">
-  	 <li class="disable">ÀÌÀüÀ¸·Î</li> 
+  	 <li class="disable">ì´ì „ìœ¼ë¡œ</li> 
   	</c:when>
   	<c:otherwise>
 
-  	 <li><a href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage-1}">ÀÌÀüÀ¸·Î</a></li>
+  	 <li><a href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage-1}">ì´ì „ìœ¼ë¡œ</a></li>
   	 
   	</c:otherwise>
   </c:choose>
@@ -104,48 +104,48 @@ a:link{text-decoration: none;}
   	</c:forEach>
 	<c:choose>
 	  <c:when test="${endPage >= totalPage}">
-	    <li class="disable">´ÙÀ½À¸·Î</li>
+	    <li class="disable">ë‹¤ìŒìœ¼ë¡œ</li>
 	  </c:when>
 	  <c:when test="${totalPage > (nowPage+pagePerBlock)}">
-	   <li><li><a href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage+pagePerBlock}">´ÙÀ½À¸·Î</a></li>
+	   <li><li><a href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage+pagePerBlock}">ë‹¤ìŒìœ¼ë¡œ</a></li>
 	  </c:when>
 	  <c:otherwise>
-	   <li><li><a href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage+pagePerBlock}">´ÙÀ½À¸·Î</a></li>
+	   <li><li><a href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage+pagePerBlock}">ë‹¤ìŒìœ¼ë¡œ</a></li>
 	  </c:otherwise>
 	</c:choose>
 </ol>
 
 <c:if test="${sessionID != null}">
-<input type="button" value="ÈÄ±â ÀÛ¼º" id="wbtn" class="btn btn-danger" />
+<input type="button" value="í›„ê¸° ìž‘ì„±" id="wbtn" class="btn btn-danger" />
 </c:if>
 
 <form name="sForm" method="post" action="reviewboardlist">
     <select name="search_option">
         <option value="id"
 <c:if test="${map.search_option == 'id'}">selected</c:if>
->ÀÛ¼ºÀÚ</option>
+>ìž‘ì„±ìž</option>
  
         <option value="title" 
 <c:if test="${map.search_option == 'title'}">selected</c:if>
-        >Á¦¸ñ</option>
+        >ì œëª©</option>
  
         <option value="cont" 
 <c:if test="${map.search_option == 'cont'}">selected</c:if>
-        >³»¿ë</option>
+        >ë‚´ìš©</option>
         
         <option value="hname" 
 <c:if test="${map.search_option == 'hname'}">selected</c:if>
-        >º´¿ø¸í</option>
+        >ë³‘ì›ëª…</option>
         
         <option value="all" 
 <c:if test="${map.search_option == 'all'}">selected</c:if>
-        >ÀÛ¼ºÀÚ+³»¿ë+Á¦¸ñ+º´¿ø¸í</option>
+        >ìž‘ì„±ìž+ë‚´ìš©+ì œëª©+ë³‘ì›ëª…</option>
  
     </select>
     <input name="keyword" value="${map.keyword}">
-    <input type="submit" value="Á¶È¸">
+    <input type="submit" value="ì¡°íšŒ">
 </form>
-<input type="button" value="±ÛÀÛ¼º" class="btn btn-info" id="writeBtn" />
+<input type="button" value="ê¸€ìž‘ì„±" class="btn btn-info" id="writeBtn" />
 
 </td>
 </tr>

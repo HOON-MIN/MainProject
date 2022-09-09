@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <div class="container">
-	<h1 class="p-5 m-5">¸¶À½´ë·Î »ç¿ëÇÏ¼¼¿ä</h1>
+	<h1 class="p-5 m-5">ë§ˆìŒëŒ€ë¡œ ì‚¬ìš©í•˜ì„¸ìš”</h1>
 </div>
-<%-- º»¹® ³¡ --%>
+<%-- ë³¸ë¬¸ ë --%>

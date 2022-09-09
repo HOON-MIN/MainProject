@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -59,26 +59,26 @@ table tfoot ol.paging li a:hover {
 <article>
 	<header>
 		<h1 style="text-align: center;">
-			°Ë»ö °á°ú
+			ê²€ìƒ‰ ê²°ê³¼
 			<!-- Example single danger button -->
 			<div class="btn-group ms-3 float-end">
 				<button type="button" class="btn btn-success dropdown-toggle"
-					data-bs-toggle="dropdown" aria-expanded="false">ÀÌµ¿</button>
+					data-bs-toggle="dropdown" aria-expanded="false">ì´ë™</button>
 				<ul class="dropdown-menu">
-					<li><a class="dropdown-item" href="drugSearchShape">¸ğ¾çÀ¸·Î ¾àÇ°Ã£±â
+					<li><a class="dropdown-item" href="drugSearchShape">ëª¨ì–‘ìœ¼ë¡œ ì•½í’ˆì°¾ê¸°
 					</a></li>
 					<li><a class="dropdown-item"
-						href="">ÀÌ¹ÌÁö·Î °Ë»öÇÏ±â
+						href="">ì´ë¯¸ì§€ë¡œ ê²€ìƒ‰í•˜ê¸°
 					</a></li>
 					<li><a class="dropdown-item"
-						href="">³ªÀÇ ¾àÇ° ÄÉÀÌ½º
+						href="">ë‚˜ì˜ ì•½í’ˆ ì¼€ì´ìŠ¤
 					</a></li>
 					<li><a class="dropdown-item"
-						href="drugList">ÀüÃ¼¸®½ºÆ®º¸±â
+						href="drugList">ì „ì²´ë¦¬ìŠ¤íŠ¸ë³´ê¸°
 					</a></li>
-					<!-- <li><a class="dropdown-item" href="#">Á¶È¸¼ø</a></li>
+					<!-- <li><a class="dropdown-item" href="#">ì¡°íšŒìˆœ</a></li>
 					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">°Ë»ö</a></li> -->
+					<li><a class="dropdown-item" href="#">ê²€ìƒ‰</a></li> -->
 				</ul>
 			</div>
 		</h1>
@@ -87,16 +87,16 @@ table tfoot ol.paging li a:hover {
 		<li class="border-top my-3"></li>
 	</ul>
 	<div>
-		<%-- ¸®ÆÑÅä¸µ ÇØ¾ß ÇÔ --%>
+		<%-- ë¦¬íŒ©í† ë§ í•´ì•¼ í•¨ --%>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					
-					<th>½Äº°ÀÌ¹ÌÁö</th>
-					<th>Á¦Ç°¸í</th>
-					<th>Á¦Çü</th>
-					<th>¼ººĞ</th>
-					<th>Á¦Á¶»ç</th>
+					<th>ì‹ë³„ì´ë¯¸ì§€</th>
+					<th>ì œí’ˆëª…</th>
+					<th>ì œí˜•</th>
+					<th>ì„±ë¶„</th>
+					<th>ì œì¡°ì‚¬</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -113,9 +113,9 @@ table tfoot ol.paging li a:hover {
 						<td>${e.drug_component}
 						<td>${e.drug_company}
 								<span class="float-end"><button class="btn btn-primary"
-										type="button" onclick="location='myDrugCase?drugIdx=${e.drug_idx}'">´ã±â</button>
+										type="button" onclick="location='myDrugCase?drugIdx=${e.drug_idx}'">ë‹´ê¸°</button>
 									<button class="btn btn-primary" type="button"
-										onclick="location='drugDetail?drugIdx=${e.drug_idx}'">»ó¼¼º¸±â</button> </span>
+										onclick="location='drugDetail?drugIdx=${e.drug_idx}'">ìƒì„¸ë³´ê¸°</button> </span>
 							
 
 						</td>
@@ -131,13 +131,13 @@ table tfoot ol.paging li a:hover {
 								<c:when test="${plmn eq 'totaldruglist' }">
 									<c:choose>
 										<c:when test="${startPage < 6  }">
-											<li class="disable">ÀÌÀüÀ¸·Î</li>
+											<li class="disable">ì´ì „ìœ¼ë¡œ</li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="drugList?dPage=${startPage -1 }">ÀÌÀüÀ¸·Î</a></li>
+											<li><a href="drugList?dPage=${startPage -1 }">ì´ì „ìœ¼ë¡œ</a></li>
 										</c:otherwise>
 									</c:choose>
-									<!-- i.index »ç¿ëÇØ¼­ ÆäÀÌÂ¡ÀÇ ÀÎµ¦½º°¡ À¯Áö -->
+									<!-- i.index ì‚¬ìš©í•´ì„œ í˜ì´ì§•ì˜ ì¸ë±ìŠ¤ê°€ ìœ ì§€ -->
 									<c:forEach varStatus="i" begin="${startPage }"
 										end="${endPage }" step="1">
 										<c:choose>
@@ -151,23 +151,23 @@ table tfoot ol.paging li a:hover {
 									</c:forEach>
 									<c:choose>
 										<c:when test="${endPage >= totalPage }">
-											<li class="disable">´ÙÀ½À¸·Î</li>
+											<li class="disable">ë‹¤ìŒìœ¼ë¡œ</li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="drugList?dPage=${endPage + 1 }">´ÙÀ½À¸·Î</a></li>
+											<li><a href="drugList?dPage=${endPage + 1 }">ë‹¤ìŒìœ¼ë¡œ</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:when>
 								<c:when test="${plmn eq 'mySuggestionBox' }">
 									<c:choose>
 										<c:when test="${startPage < 6  }">
-											<li class="disable">ÀÌÀüÀ¸·Î</li>
+											<li class="disable">ì´ì „ìœ¼ë¡œ</li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="mySuggestionBox?cPage=${startPage -1 }">ÀÌÀüÀ¸·Î</a></li>
+											<li><a href="mySuggestionBox?cPage=${startPage -1 }">ì´ì „ìœ¼ë¡œ</a></li>
 										</c:otherwise>
 									</c:choose>
-									<!-- i.index »ç¿ëÇØ¼­ ÆäÀÌÂ¡ÀÇ ÀÎµ¦½º°¡ À¯Áö -->
+									<!-- i.index ì‚¬ìš©í•´ì„œ í˜ì´ì§•ì˜ ì¸ë±ìŠ¤ê°€ ìœ ì§€ -->
 									<c:forEach varStatus="i" begin="${startPage }"
 										end="${endPage }" step="1">
 										<c:choose>
@@ -181,24 +181,24 @@ table tfoot ol.paging li a:hover {
 									</c:forEach>
 									<c:choose>
 										<c:when test="${endPage >= totalPage }">
-											<li class="disable">´ÙÀ½À¸·Î</li>
+											<li class="disable">ë‹¤ìŒìœ¼ë¡œ</li>
 										</c:when>
 										<c:otherwise>
-											<li><a href="mySuggestionBox?cPage=${endPage + 1 }">´ÙÀ½À¸·Î</a></li>
+											<li><a href="mySuggestionBox?cPage=${endPage + 1 }">ë‹¤ìŒìœ¼ë¡œ</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:when>
 								<c:when test="${plmn eq 'contentSearch' }">
 									<c:choose>
 										<c:when test="${startPage < 6  }">
-											<li class="disable">ÀÌÀüÀ¸·Î</li>
+											<li class="disable">ì´ì „ìœ¼ë¡œ</li>
 										</c:when>
 										<c:otherwise>
 											<li><a
-												href="contentSearch?cPage=${startPage -1 }&content=${content}&seacrchSelect=${seacrchSelect}">ÀÌÀüÀ¸·Î</a></li>
+												href="contentSearch?cPage=${startPage -1 }&content=${content}&seacrchSelect=${seacrchSelect}">ì´ì „ìœ¼ë¡œ</a></li>
 										</c:otherwise>
 									</c:choose>
-									<!-- i.index »ç¿ëÇØ¼­ ÆäÀÌÂ¡ÀÇ ÀÎµ¦½º°¡ À¯Áö -->
+									<!-- i.index ì‚¬ìš©í•´ì„œ í˜ì´ì§•ì˜ ì¸ë±ìŠ¤ê°€ ìœ ì§€ -->
 									<c:forEach varStatus="i" begin="${startPage }"
 										end="${endPage }" step="1">
 										<c:choose>
@@ -213,11 +213,11 @@ table tfoot ol.paging li a:hover {
 									</c:forEach>
 									<c:choose>
 										<c:when test="${endPage >= totalPage }">
-											<li class="disable">´ÙÀ½À¸·Î</li>
+											<li class="disable">ë‹¤ìŒìœ¼ë¡œ</li>
 										</c:when>
 										<c:otherwise>
 											<li><a
-												href="contentSearch?cPage=${endPage + 1 }&content=${content}&seacrchSelect=${seacrchSelect}">´ÙÀ½À¸·Î</a></li>
+												href="contentSearch?cPage=${endPage + 1 }&content=${content}&seacrchSelect=${seacrchSelect}">ë‹¤ìŒìœ¼ë¡œ</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:when>
@@ -231,19 +231,19 @@ table tfoot ol.paging li a:hover {
 						<form action="drugSearch" id="drugSearchTag" method="get">
 
 							<span>
-								<p style="font-size: 15px;margin-bottom: 0px">°Ë»ö ¼±ÅÃ 
+								<p style="font-size: 15px;margin-bottom: 0px">ê²€ìƒ‰ ì„ íƒ 
 								<select name="seacrchSelect">
-									<option value ="selectedName" selected>ÀÌ¸§ °Ë»ö</option>
-									<option value ="selectedCompnent">¼ººĞ °Ë»ö</option>
-									<option value ="selectedCompany">Á¦Á¶»ç °Ë»ö</option>
+									<option value ="selectedName" selected>ì´ë¦„ ê²€ìƒ‰</option>
+									<option value ="selectedCompnent">ì„±ë¶„ ê²€ìƒ‰</option>
+									<option value ="selectedCompany">ì œì¡°ì‚¬ ê²€ìƒ‰</option>
 								</select>
 								</p>
 							</span>
 
 
 							<textarea id="contentSearchID" name="content" cols="80" rows="1"
-								placeholder="°Ë»öÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä " required></textarea>
-							<input type="submit" value="°Ë»ö" id="ccbSubmitBtn"
+								placeholder="ê²€ìƒ‰í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš” " required></textarea>
+							<input type="submit" value="ê²€ìƒ‰" id="ccbSubmitBtn"
 								class="btn btn-primary float-end" />
 
 
@@ -254,7 +254,7 @@ table tfoot ol.paging li a:hover {
 
 		</table>
 
-		<%-- ¸®ÆÑÅä¸µ !!!!!!!! --%>
+		<%-- ë¦¬íŒ©í† ë§ !!!!!!!! --%>
 	</div>
 
 </article>

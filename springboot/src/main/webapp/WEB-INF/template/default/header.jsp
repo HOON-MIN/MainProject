@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="mycontext" value="${pageContext.request.contextPath}" />
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -15,15 +15,15 @@
 			<div class="navbar-nav">
 				<c:choose>
 					<c:when test="${sessionID !=null}">
-						<a class="nav-link" href="${mycontext }/member/memberMypage">¸¶ÀÌÆäÀÌÁö</a>
+						<a class="nav-link" href="${mycontext }/member/memberMypage">ë§ˆì´íŽ˜ì´ì§€</a>
 						<a class="nav-link active" aria-current="page"
-							href="${mycontext }/member/memberLogout">·Î±×¾Æ¿ô</a>
+							href="${mycontext }/member/memberLogout">ë¡œê·¸ì•„ì›ƒ</a>
 					</c:when>
 					<c:otherwise>
 						<a class="nav-link active" aria-current="page"
-							href="${mycontext }/member/memberLoginForm">·Î±×ÀÎ</a>
+							href="${mycontext }/member/memberLoginForm">ë¡œê·¸ì¸</a>
 
-						<a class="nav-link" href="#">È¸¿ø°¡ÀÔ</a>
+						<a class="nav-link" href="#">íšŒì›ê°€ìž…</a>
 					</c:otherwise>
 				</c:choose>
 			</div>

@@ -1,24 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>¸ÞÀÎÆäÀÌÁö</title>
+<title>ë©”ì¸íŽ˜ì´ì§€</title>
 </head>
 <body>
-<h1> È¸¿ø ÆäÀÌÁö </h1>
+<h1> íšŒì› íŽ˜ì´ì§€ </h1>
 <c:choose>
 	<c:when test="${sessionID != null}">
-<input type="button" value="·Î±×¾Æ¿ô" onclick="location.href='${pageContext.request.contextPath}/member/memberLogout'">
-<input type="button" value="¸¶ÀÌÆäÀÌÁö" onclick="location.href='${pageContext.request.contextPath}/member/memberMypage'">
+<input type="button" value="ë¡œê·¸ì•„ì›ƒ" onclick="location.href='${pageContext.request.contextPath}/member/memberLogout'">
+<input type="button" value="ë§ˆì´íŽ˜ì´ì§€" onclick="location.href='${pageContext.request.contextPath}/member/memberMypage'">
 	</c:when>
 	<c:otherwise>
-<input type="button" value="·Î±×ÀÎ" onclick="location.href='${pageContext.request.contextPath}/member/memberLoginForm'">
+<input type="button" value="ë¡œê·¸ì¸" onclick="location.href='${pageContext.request.contextPath}/member/memberLoginForm'">
 	</c:otherwise>
 </c:choose>
-<!--  <input type="button" value="È¸¿ø°¡ÀÔ" onclick="location.href='member'">-->
-<input type="button" value="·Î±×ÀÎÃ¼Å©" onclick="location.href='${pageContext.request.contextPath}/member/test'">
+<!--  <input type="button" value="íšŒì›ê°€ìž…" onclick="location.href='member'">-->
+<input type="button" value="ë¡œê·¸ì¸ì²´í¬" onclick="location.href='${pageContext.request.contextPath}/member/test'">
 </body>
 </html>

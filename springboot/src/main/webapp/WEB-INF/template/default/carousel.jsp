@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="mycontext" value="${pageContext.request.contextPath}" />
 <c:set var="imgUrl"
@@ -25,7 +25,7 @@
 			 <source src="https://www.goodoc.io/intro1.webm" type="video/mp4">
 		</video>
 		<div class="carousel-caption d-none d-md-block" style="padding-bottom : 30%;">
-			<h1>°³°³ÀÎ ¸ÂÃãÈ­ µÈ ºñ´ë¸é ÀÇ·á¼­ºñ½º <br> ¼­ºñ½º ÀÌ¸§ Áö¾îÁÖ¼¼¿ä</h1>
+			<h1>ê°œê°œì¸ ë§žì¶¤í™” ëœ ë¹„ëŒ€ë©´ ì˜ë£Œì„œë¹„ìŠ¤ <br> ì„œë¹„ìŠ¤ ì´ë¦„ ì§€ì–´ì£¼ì„¸ìš”</h1>
 			
 		</div>
 	</div>

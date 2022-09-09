@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <div id="content" class="container mt-5">
-<h2 class="text-center">ÀÇÇĞÁö½Ä Áú¹®ÇÏ±â</h2>
+<h2 class="text-center">ì˜í•™ì§€ì‹ ì§ˆë¬¸í•˜ê¸°</h2>
 <div class="row" style="text-align:center">
   <form method="post" action="qbUpdate">
     <fieldset>
       <p>
-		Á¦¸ñ <input type="text" value="${vo.qtitle }" 
+		ì œëª© <input type="text" value="${vo.qtitle }" 
 			name="qtitle" id="qtitle" >
 	  </p>
       <p>
@@ -16,9 +16,9 @@
       </p>
       <p style="text-align:right">
         <button type="submit" class="btn btn-primary" 
-        	id="upBtn">¼öÁ¤</button>
+        	id="upBtn">ìˆ˜ì •</button>
         <button type="submit" class="btn btn-primary" 
-        	id="delBtn">»èÁ¦</button>
+        	id="delBtn">ì‚­ì œ</button>
       </p>
     </fieldset>
   </form>
@@ -33,7 +33,7 @@ $(function() {
 			$('#qbUpdate').attr("action",
 					"${mycontext}/quesboard/qbUpdate");
 			$('#qbUpdate').submit(function() {
-				alert("¼öÁ¤µÇ¾ú½À´Ï´Ù.");
+				alert("ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			});
 		});
 
@@ -42,7 +42,7 @@ $(function() {
 			$('#qbUpdate').attr("action",
 					"${mycontext}/quesboard/qbDelete");
 			$('#qbUpdate').submit(function() {
-				alert("»èÁ¦µÇ¾ú½À´Ï´Ù.");
+				alert("ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 			});
 		});
 	

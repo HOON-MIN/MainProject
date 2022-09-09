@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <article>
 	<header>
-		<h1>¾àÇ° »ó¼¼Á¤º¸¶õ</h1>
+		<h1>ì•½í’ˆ ìƒì„¸ì •ë³´ëž€</h1>
 	</header>
 	<ul class="list-unstyled">
 		<li class="border-top my-3"></li>
@@ -11,43 +11,43 @@
 	<form action="dUpdate" id="dUpdateFormTag" method="get">
 		<div class="col-md-10 mb-3 ">
 
-			<label>¾à¸í : </label> <input class="form-control text-center"
+			<label>ì•½ëª… : </label> <input class="form-control text-center"
 				type="text" id="drug_name" name="drug_name" value="${vo.drug_name}"
 				readonly="readonly">
 		</div>
 		<div class="col-md-10 mb-3 ">
 
-			<label>Á¦Á¶»ç : </label> <input class="form-control text-center"
+			<label>ì œì¡°ì‚¬ : </label> <input class="form-control text-center"
 				type="text" id="drug_company" name="drug_company"
 				value="${vo.drug_company}" readonly="readonly">
 		</div>
 		<div class="col-md-10 mb-3 ">
 
-			<label>Á¦Çü : </label> <input class="form-control text-center"
+			<label>ì œí˜• : </label> <input class="form-control text-center"
 				type="text" id="drug_formulation" name="drug_formulation"
 				value="${vo.drug_formulation}" readonly="readonly">
 		</div>
 		<div class="col-md-10 mb-3 ">
 
-			<label>¼ººÐ : </label> <input class="form-control text-center"
+			<label>ì„±ë¶„ : </label> <input class="form-control text-center"
 				type="text" id="drug_component" name="drug_component"
 				value="${vo.drug_component}" readonly="readonly">
 		</div>
 		<div class="col-md-10 mb-3 ">
 
-			<label>¸ð¾ç : </label> <input class="form-control text-center"
+			<label>ëª¨ì–‘ : </label> <input class="form-control text-center"
 				type="text" id="drug_shape" name="drug_shape"
 				value="${vo.drug_shape}" readonly="readonly">
 		</div>
 		<div class="col-md-10 mb-3 ">
 
-			<label>½Ä¾àÃ³ºÐ·ù : </label> <input class="form-control text-center"
+			<label>ì‹ì•½ì²˜ë¶„ë¥˜ : </label> <input class="form-control text-center"
 				type="text" id="drug_disposal" name="drug_disposal"
 				value="${vo.drug_disposal}" readonly="readonly">
 		</div>
 		<div class="col-md-10 mb-3 ">
 
-			<label>Àü¹® / ÀÏ¹Ý¾àÇ° : </label> <input class="form-control text-center"
+			<label>ì „ë¬¸ / ì¼ë°˜ì•½í’ˆ : </label> <input class="form-control text-center"
 				type="text" id="drug_Professional_General"
 				name="drug_Professional_General"
 				value="${vo.drug_Professional_General}" readonly="readonly">
@@ -56,7 +56,7 @@
 
 
 		<div class="form-group mt-3 " style="align-content: center;">
-			<label for="imgname">Ã·ºÎµÈ ÀÌ¹ÌÁö </label> <img style="width: 500px"
+			<label for="imgname">ì²¨ë¶€ëœ ì´ë¯¸ì§€ </label> <img style="width: 500px"
 				; 
 			height="300px"
 				src="${pageContext.request.contextPath}/resources/imgfile/${vo.drug_img}"
@@ -67,6 +67,6 @@
 	<div class="form-group float-end"
 		style="text-align: right; margin-top: 10px;">
 		<button type="button" class="btn btn-primary" id="listbtn" 
-		onclick="location='drugList'">ÀüÃ¼¸®½ºÆ®º¸±â</button>
+		onclick="location='drugList'">ì „ì²´ë¦¬ìŠ¤íŠ¸ë³´ê¸°</button>
 	</div>
 </article>

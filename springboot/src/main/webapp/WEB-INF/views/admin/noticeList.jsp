@@ -1,25 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="mycontext" value="${pageContext.request.contextPath }"></c:set>
 <div class="container-fluid">
 <div class="row m-5">
-	<h3> °ø Áö »ç Ç×</h3>
+	<h3> ê³µ ì§€ ì‚¬ í•­</h3>
 	<div>
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th scope="col">¹øÈ£</th>
-					<th scope="col">ÁÖÁ¦</th>
-					<th scope="col">ÀÛ¼ºÀÚ</th>
-					<th scope="col">³¯Â¥</th>
+					<th scope="col">ë²ˆí˜¸</th>
+					<th scope="col">ì£¼ì œ</th>
+					<th scope="col">ìž‘ì„±ìž</th>
+					<th scope="col">ë‚ ì§œ</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 					<td colspan="4">
-						¼¼¼ÇÃ³¸® ÇÊ¿ä
-						<input class="btn btn-primary" type="button" value="°øÁö Ãß°¡" onclick="location.href='${mycontext}/notice/addNotice'">
+						ì„¸ì…˜ì²˜ë¦¬ í•„ìš”
+						<input class="btn btn-primary" type="button" value="ê³µì§€ ì¶”ê°€" onclick="location.href='${mycontext}/notice/addNotice'">
 					</td>
 				<tr>
 				<tr>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <article>
@@ -8,9 +8,9 @@
 			<div class="form-holder">
 				<div class="form-content">
 					<div class="form-items">
-						<h4 class="mt-3 mb-3 text-center">¾àÇ° µî·Ï</h4>
+						<h4 class="mt-3 mb-3 text-center">ì•½í’ˆ ë“±ë¡</h4>
 
-						<p class="text-center mb-5">¾àÇ°Á¤º¸¿Í °ü·Ã ½Äº°ÀÌ¹ÌÁö¸¦ Ã·ºÎÇØ ÁÖ¼¼¿ä.</p>
+						<p class="text-center mb-5">ì•½í’ˆì •ë³´ì™€ ê´€ë ¨ ì‹ë³„ì´ë¯¸ì§€ë¥¼ ì²¨ë¶€í•´ ì£¼ì„¸ìš”.</p>
 						<form class="requires-validation nav justify-content-center"
 							novalidate method="post" action="drugInsert"
 							enctype="multipart/form-data" id="cbupform" required>
@@ -18,112 +18,112 @@
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="number" id="drug_idx"
-									name="drug_idx" placeholder="¾àÇ° °íÀ¯ ½Äº° ¹øÈ£À» ÀÔ·ÂÇÏ¼¼¿ä " required>
+									name="drug_idx" placeholder="ì•½í’ˆ ê³ ìœ  ì‹ë³„ ë²ˆí˜¸ì„ ìž…ë ¥í•˜ì„¸ìš” " required>
 
 							</div>
 
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_name"
-									name="drug_name" placeholder="¾àÇ°¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä " required>
+									name="drug_name" placeholder="ì•½í’ˆëª…ì„ ìž…ë ¥í•˜ì„¸ìš” " required>
 							</div>
 							
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_code" maxlength="13"
-									name="drug_code" placeholder="¾àÇ°¹øÈ£À» ÀÔ·ÂÇÏ¼¼¿ä(13ÀÚ¸®) " required>
+									name="drug_code" placeholder="ì•½í’ˆë²ˆí˜¸ì„ ìž…ë ¥í•˜ì„¸ìš”(13ìžë¦¬) " required>
 
 							</div>
 							
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_identification"
-									name="drug_identification" placeholder="½Äº°Ç¥½Ã¸¦ ÀÔ·ÂÇÏ¼¼¿ä " >
+									name="drug_identification" placeholder="ì‹ë³„í‘œì‹œë¥¼ ìž…ë ¥í•˜ì„¸ìš” " >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_formulation"
-									name="drug_formulation" placeholder="Á¦ÇüÀ» ÀÔ·ÂÇÏ¼¼¿ä " >
+									name="drug_formulation" placeholder="ì œí˜•ì„ ìž…ë ¥í•˜ì„¸ìš” " >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_component"
-									name="drug_component" placeholder="¼ººÐÀ» ÀÔ·ÂÇÏ¼¼¿ä " >
+									name="drug_component" placeholder="ì„±ë¶„ì„ ìž…ë ¥í•˜ì„¸ìš” " >
 							</div>
 							
 							
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_company"
-									name="drug_company" placeholder="Á¦Á¶»ç¸¦ ÀÔ·ÂÇÏ¼¼¿ä " >
+									name="drug_company" placeholder="ì œì¡°ì‚¬ë¥¼ ìž…ë ¥í•˜ì„¸ìš” " >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_description"
-									name="drug_description" placeholder="¼º»óÀ» ÀÔ·ÂÇÏ¼¼¿ä " >
+									name="drug_description" placeholder="ì„±ìƒì„ ìž…ë ¥í•˜ì„¸ìš” " >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="number" id="drug_size_l"
-									name="drug_size_l" placeholder="ÀåÃà ÀÔ·Â " >
+									name="drug_size_l" placeholder="ìž¥ì¶• ìž…ë ¥ " >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="number" id="drug_size_s"
-									name="drug_size_s" placeholder="´ÜÃà ÀÔ·Â" >
+									name="drug_size_s" placeholder="ë‹¨ì¶• ìž…ë ¥" >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="number" id="drug_size_w"
-									name="drug_size_w" placeholder="µÎ²² ÀÔ·Â " >
+									name="drug_size_w" placeholder="ë‘ê»˜ ìž…ë ¥ " >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_effect"
-									name="drug_effect" placeholder="È¿´É.È¿°ú ÀÔ·Â" >
+									name="drug_effect" placeholder="íš¨ëŠ¥.íš¨ê³¼ ìž…ë ¥" >
 							</div>
 							<div class="col-md-10 mb-3 ">
-								<label>Àü¹®/ÀÏ¹Ý ¾àÇ° ¿©ºÎ</label>
-								<input type="radio" name="drug_Professional_General" value="Àü¹®" checked>
-								<input type="radio" name="drug_Professional_General" value="ÀÏ¹Ý" >
+								<label>ì „ë¬¸/ì¼ë°˜ ì•½í’ˆ ì—¬ë¶€</label>
+								<input type="radio" name="drug_Professional_General" value="ì „ë¬¸" checked>
+								<input type="radio" name="drug_Professional_General" value="ì¼ë°˜" >
 							</div>
 							
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_color_F"
-									name="drug_color_F" placeholder="¾àÀü¸é»ö±ò  ÀÔ·Â" >
+									name="drug_color_F" placeholder="ì•½ì „ë©´ìƒ‰ê¹”  ìž…ë ¥" >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_color_B"
-									name="drug_color_B" placeholder="¾àÈÄ¸é»ö±ò  ÀÔ·Â" >
+									name="drug_color_B" placeholder="ì•½í›„ë©´ìƒ‰ê¹”  ìž…ë ¥" >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_split_line_F"
-									name="drug_split_line_F" placeholder="¾à Àü¸é ºÐÇÒ¼±  ÀÔ·Â" >
+									name="drug_split_line_F" placeholder="ì•½ ì „ë©´ ë¶„í• ì„   ìž…ë ¥" >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_split_line_B"
-									name="drug_split_line_B" placeholder="¾à ÈÄ¸é ºÐÇÒ¼± ÀÔ·Â" >
+									name="drug_split_line_B" placeholder="ì•½ í›„ë©´ ë¶„í• ì„  ìž…ë ¥" >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_disposal"
-									name="drug_disposal" placeholder="½Ä¾àÃ³ºÐ·ù  ÀÔ·Â" >
+									name="drug_disposal" placeholder="ì‹ì•½ì²˜ë¶„ë¥˜  ìž…ë ¥" >
 							</div>
 							<div class="col-md-10 mb-3 ">
 
 								<input class="form-control text-center" type="text" id="drug_shape"
-									name="drug_shape" placeholder="¾à¸ð¾ç ÀÔ·Â" >
+									name="drug_shape" placeholder="ì•½ëª¨ì–‘ ìž…ë ¥" >
 							</div>
 							
 							
 
 							<div class="col-md-10 mb-3  nav justify-content-end">
 								<label class="col-sm-3 col-form-label btn btn-primary  mb-3"
-								for="mfile">ÀÌ¹ÌÁö¾÷·Îµå</label>
+								for="mfile">ì´ë¯¸ì§€ì—…ë¡œë“œ</label>
 								<div class="col-sm-10 class" >
 									<input type="file" name="mfile" id="mfile"
 										style="display: none;" />
@@ -137,7 +137,7 @@
 								<div class="row mb-1 mt-3 ">
 									<div class="col-sm-10">
 
-										<input type="submit" value="µî·Ï" id="btn1"
+										<input type="submit" value="ë“±ë¡" id="btn1"
 											class="btn btn-primary" />
 									</div>
 								</div>
