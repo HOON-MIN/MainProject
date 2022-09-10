@@ -1,52 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@include file="../temp/header.jsp"%>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <article>
 	<header>
-		<h1>ÈÄ±â »ó¼¼ ÆäÀÌÁö</h1>
+		<h1>í›„ê¸° ìƒì„¸ íŽ˜ì´ì§€</h1>
 	</header>
 	<ul class="list-unstyled">
 		<li class="border-top my-3"></li>
 	</ul>
 	<div class="container">
 		<div class="form-group">
-			<label for="title">Á¦¸ñ</label> <input type="text" class="form-control"
+			<label for="title">ì œëª©</label> <input type="text" class="form-control"
 				id="title" value="${vo.title }" readonly="readonly"> <input
 				type="hidden" name="rnum" id="rnum" value="${vo.rnum }">
 		</div>
 		<div class="form-group">
-			<label for="id">¾ÆÀÌµð</label> <input type="text" class="form-control"
+			<label for="id">ì•„ì´ë””</label> <input type="text" class="form-control"
 				id="id" name="id" value="${vo.id}" readonly="readonly">
 		</div>
 		<div class="form-group">
-			<label for="cont">ÈÄ±â ³»¿ë</label>
+			<label for="cont">í›„ê¸° ë‚´ìš©</label>
 			<textarea class="form-control" rows="5" id="cont" name="cont"
 				readonly="readonly">${vo.cont }</textarea>
 		</div>
 		<p></p>
 		<div class="form-group">
-			<label for="writer">ÀÛ¼º³¯Â¥ : </label> 
+			<label for="writer">ìž‘ì„±ë‚ ì§œ : </label> 
 				
 			<fmt:parseDate value="${vo.udate}" var="udate" pattern="yyyy-MM-dd HH:mm:ss"/>
 			<fmt:formatDate value="${udate }" pattern="yyyy-MM-dd"/>
 		</div>
 		<p></p>
-		<div><label>ÈÄ±â ÆòÁ¡(1~10Á¡)  :   </label> ${vo.likes } Á¡</div>
+		<div><label>í›„ê¸° í‰ì (1~10ì )  :   </label> ${vo.likes } ì </div>
 		<p></p>
 		<div class="form-group" style="text-align:">
-			<input type="button" value="µ¹¾Æ°¡±â" class="btn btn-info"
+			<input type="button" value="ëŒì•„ê°€ê¸°" class="btn btn-info"
 				id="returnBtn" onclick="location='reviewboardlist'" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 		</div>
 		<p></p>
 		<div class="form-group" style="text-align:">
-			<input type="button" value="ÈÄ±â¼öÁ¤" class="btn btn-info"
-				id="updateBtn" /> <input type="button" value="±Û »èÁ¦"
+			<input type="button" value="í›„ê¸°ìˆ˜ì •" class="btn btn-info"
+				id="updateBtn" /> <input type="button" value="ê¸€ ì‚­ì œ"
 				class="btn btn-danger" id="delBtn" />
 		</div>
 	</div>

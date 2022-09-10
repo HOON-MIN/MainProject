@@ -1,57 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<div class="container" style="width: 800px;">
 <article>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=997940d38b64cf7abf8986a573d68746"></script>
-
-	<header>
-		<h1>º´¿ø »ó¼¼Á¤º¸</h1>
-	</header>
-	<ul class="list-unstyled"><li class="border-top my-3"></li></ul>
-	<div class="container">
-	<%-- boardForm µé¾î°¥ ÀÚ¸®! --%>
-	<fieldset>
-<!--             <legend></legend> -->
-            <form method="post" action="upUpdate" enctype="multipart/form-data" id="upform">
-            <input type="hidden" id="hnum" name="hnum" value="${vo.hnum }">
-            <div class="row mb-3">
-                <label>º´¿ø¸í</label>
-            <input type="text" name="hname" id="hname" value="${vo.hname }" readonly="readonly"/>
-            <span id="target"></span>
-            </div>
-            <div class="row mb-3">
-                <label>À§Ä¡</label>
-            <input type="text" name="hloc" id="hloc" value="${vo.hloc }" readonly="readonly"/>
-            </div>
-            <div class="row mb-3">
-                <label>¿µ¾÷½Ã°£</label>
-            <input type="text" name="time" id="time" value="${time}" readonly="readonly"/>
-            </div>
-            <div class="row mb-3">
-                <label>Áø·á°ú¸ñ</label>
-            <input type="text" name="hcate" id="hcate" value="${vo.hcate }" readonly="readonly"/>
-            </div>
-            <div class="row mb-3">
-                <label>È¨ÆäÀÌÁö</label>
-            <input type="text" name="hurl" id="hurl" value="${vo.hurl }" readonly="readonly"/>
-            </div>
-            <div class="row mb-3">
-                <label>email</label>
-            <input type="text" name="hemail" id="hemail" value="${vo.hemail }" readonly="readonly"/>
-            </div>
-            
-            <div >
-            	<input type="button" value="»ó´ã¿¹¾à" id="btn1" class="btn btn-info"/>
-            	<input type="button" value="Áø·á¿¹¾à" id="btn2" class="btn btn-info"/>
-            </div>
-            
-            <div id="map" style="width:500px;height:400px;"></div>
-            </form>
-    </fieldset>
+<header>
+	<h1 style="text-align: center;">ë³‘ì› ìƒì„¸ì •ë³´</h1>
+</header>
+<ul class="list-unstyled"><li class="border-top my-3"></li></ul>
 	
-    </div>
-
+<fieldset>
+<!--             <legend></legend> -->
+  <form method="post" action="upUpdate" enctype="multipart/form-data" id="upform">
+  <input type="hidden" id="hnum" name="hnum" value="${vo.hnum }">
+  <div class="row mb-3">
+      <label>ë³‘ì›ëª…</label>
+  <input type="text" name="hname" id="hname" value="${vo.hname }" readonly="readonly"/>
+  <span id="target"></span>
+  </div>
+  <div class="row mb-3">
+      <label>ìœ„ì¹˜</label>
+  <input type="text" name="hloc" id="hloc" value="${vo.hloc }" readonly="readonly"/>
+  </div>
+  <div class="row mb-3">
+      <label>ì˜ì—…ì‹œê°„</label>
+  <input type="text" name="time" id="time" value="${time}" readonly="readonly"/>
+  </div>
+  <div class="row mb-3">
+      <label>ì§„ë£Œê³¼ëª©</label>
+  <input type="text" name="hcate" id="hcate" value="${vo.hcate }" readonly="readonly"/>
+  </div>
+  <div class="row mb-3">
+      <label>í™ˆí˜ì´ì§€</label>
+  <input type="text" name="hurl" id="hurl" value="${vo.hurl }" readonly="readonly"/>
+  </div>
+  <div class="row mb-3">
+      <label>email</label>
+  <input type="text" name="hemail" id="hemail" value="${vo.hemail }" readonly="readonly"/>
+  </div>
+  
+  <div >
+  	<input type="button" value="ìƒë‹´ì˜ˆì•½" id="btn1" class="btn btn-info"/>
+  	<input type="button" value="ì§„ë£Œì˜ˆì•½" id="btn2" class="btn btn-info"/>
+  </div>
+  
+  <div id="map" style="width:500px;height:400px;"></div>
+  </form>
+</fieldset>
 </article>
+</div>
+
 <script>
 	var container = document.getElementById('map');
 	var options = {

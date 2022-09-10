@@ -13,6 +13,10 @@ public interface QuesboardDao {
 	// 수정 
 	public void qbUpdate(QuesboardVO vo);
 	// 페이징 리스트 
-	public List<QuesboardVO> getQBList(Map<String, Integer> map);
+	public List<QuesboardVO> getQBList();
+	// 디테일
+	public QuesboardVO getQBDetail(int num);
+	// 삭제 
+	public void qbDelete(int num);
 	
 }

@@ -21,16 +21,6 @@ public class HospitalController {
 	@Autowired
 	private HospitalService service;
 
-	private int nowPage = 1;// 
-	private int nowBlock = 1;// ���� ��
-	private int totalRecord = 0;// �� �Խù� ��
-	private int numPerPage = 10;// �� �������� ������ �Խù� ��
-	private int pagePerBlock = 5;// �� ���� ������ ������ ��
-	private int totalPage = 0;// ��ü ������ �� => totalRecord/numPerPage
-	private int totalBlock = 0;// ��ü �� ��
-	private int beginPerPage = 0;// �� �������� ���� �Խù��� index��
-	private int endPerPage = 0;// �� �������� ������ �Խù��� index��
-	
 	@RequestMapping(value = "/hospitalList")
 	public String hospitalList(SearchVO svo, Model m) {
 //		ModelAndView mav = new ModelAndView();

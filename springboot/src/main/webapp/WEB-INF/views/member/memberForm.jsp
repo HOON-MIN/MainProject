@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +10,27 @@
 <form method="post" action="memberIn">
      <table style="width: 80%; margin: auto">
    		<tr>
-   		   <td>æ∆¿Ãµ</td>
+   		   <td>ÏïÑÏù¥Îîî</td>
    		   <td>
    		   <input type="text" name="id" id="id" maxlength="10" 
    		   style="width: 130px"> 
-   		   <input type="button" value="¡ﬂ∫π»Æ¿Œ" id="idChkBtn" 
+   		   <input type="button" value="Ï§ëÎ≥µÌôïÏù∏" id="idChkBtn" 
    		   style="width: 150px; font-size: 10px; height: 30px;">
    		   </td>
    		 </tr>
    		 <tr><td colspan="2" id="target"></td></tr>
    		  <tr>
-   		   <td>∫Òπ–π¯»£</td>
+   		   <td>ÎπÑÎ∞ÄÎ≤àÌò∏</td>
    		   <td><input type="password" name="pwd" maxlength="10"> 
    		   </td>
    		 </tr>
    		  <tr>
-   		   <td>¿Ã∏ß</td>
+   		   <td>Ïù¥Î¶Ñ</td>
    		   <td><input type="text" name="uname"> 
    		   </td>
    		 </tr>
    		  <tr><td colspan="2">
-   		  <input type="submit" value="∞°¿‘">
+   		  <input type="submit" value="Í∞ÄÏûÖ">
    		  </td></tr>
    </table>
      </form>

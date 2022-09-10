@@ -1,38 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>quesboardForm</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <div id="content" class="container mt-5">
-<h2 class="text-center">ÀÇÇĞÁö½Ä Áú¹®ÇÏ±â</h2>
+<h2 class="text-center">ì˜í•™ì§€ì‹ ì§ˆë¬¸í•˜ê¸°</h2>
 <div class="row" style="text-align:center">
   <form method="post" action="qbUpdate">
     <fieldset>
-<!--         <legend></legend> -->
-        <p>
-<!--             <label for="wordv"> -->
-                
-<!--             </label> -->
-            <textarea name="quesv" id="quesv" cols="80" rows="20"></textarea>
-        </p>
-        <p style="text-align:right">
-            <input type="submit" value="¼öÁ¤">
-        </p>
+      <p>
+		ì œëª© <input type="text" value="${vo.qtitle }" 
+			name="qtitle" id="qtitle" >
+	  </p>
+      <p>
+        <textarea name="quesv" id="quesv" 
+        	value="${vo.qcont }" cols="80" rows="20"></textarea>
+      </p>
+      <p style="text-align:right">
+        <button type="submit" class="btn btn-primary" 
+        	id="upBtn">ìˆ˜ì •</button>
+        <button type="submit" class="btn btn-primary" 
+        	id="delBtn">ì‚­ì œ</button>
+      </p>
     </fieldset>
   </form>
 
 </div>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-    $(function(){
+$(function() {
+$(function() {
+	$('#upBtn').click(
+		function() {
+			$('#qbUpdate').attr("action",
+					"${mycontext}/quesboard/qbUpdate");
+			$('#qbUpdate').submit(function() {
+				alert("ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
+			});
+		});
 
-    });
+	$('#delBtn').click(
+		function() {
+			$('#qbUpdate').attr("action",
+					"${mycontext}/quesboard/qbDelete");
+			$('#qbUpdate').submit(function() {
+				alert("ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
+			});
+		});
+	
+});
+});
 </script>
-</body>
-</html>
