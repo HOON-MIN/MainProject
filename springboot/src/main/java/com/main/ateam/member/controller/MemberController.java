@@ -106,15 +106,12 @@ public class MemberController {
 		System.out.println("r_path :" + r_path);
 		String oriFn = v.getFileOriName().getOriginalFilename();
 		System.out.println("oriFn : " + oriFn);
-		//StringBuffer path = new StringBuffer();
-		//path.append(r_path).append(img_path).append("\\");
-		//path.append(oriFn);
-		//System.out.println("-----------------------------------");
-		//System.out.println("Path :" + path);
-		String path = "resources/upload/";
+		
+		String path = "D:\\iKosmo113\\spring\\bootworkspace\\springboot\\src\\main\\resources\\\\static\\upload\\"+oriFn;
 		vo.setNum(num);
 		vo.setProfimg(oriFn);
 		File f = new File(path);
+		System.out.println(f.getPath());
 		try {
 			v.getFileOriName().transferTo(f);
 		} catch (IllegalStateException | IOException e) {

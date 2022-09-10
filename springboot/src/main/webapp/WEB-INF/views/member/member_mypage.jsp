@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 필요한것 -->
@@ -40,7 +40,7 @@
 				<td>${member.age }</td>
 				<td>${member.tel }</td>
 				<td>${member.email }</td>
-				<td><img src="/resources/upload/${member.profimg }">${member.profimg }</td>
+				<td><img src="${pageContext.request.contextPath }/upload/${member.profimg }" style="width:100px;height:70px;"></td>
 				<td>${member.mdate }</td>
 
 			</tr>
@@ -49,9 +49,13 @@
 	</table>
 	<div class="container">
 		<div id="map" style="width: 100%; height: 350px;"></div>
+		
 		<ul>
-			<li>위도:<span id="latitude"></span></li>
-			<li>경도:<span id="longitude"></span></li>
+			<li>병원 이름:<span id="name"></span></li>
+			<li>병원 주소:<span id="loc"></span></li>
+			<li>영업 시간:<span id="time"></span></li>
+			<li>병원 구분:<span id="cate"></span></li>
+			<li>홈페이지 주소:<span id="url"></span></li>
 		</ul>
 		<input id="btnStop" type="button" value="감시를 끝낸다" />
 	</div>
@@ -83,25 +87,9 @@
 <script>
 
 	$(function() { //상시 동작 함!
-		
-
-			// 표시 건수기능 숨기기
-			/*
-			$("#example").DataTable({
-			lengthChange: true,
-			// 검색 기능 숨기기
-			searching: true,
-			// 정렬 기능 숨기기
-			ordering: true,
-			// 정보 표시 숨기기
-			info: true,
-			// 페이징 기능 숨기기
-			paging: true
-			});
-			*/
 			<!-- 마이페이지 리스트 불러오기  -->
 			$.ajax({
-                url: 'http://192.168.0.120:9000/map/hospiter_list',
+                url: 'http://14.36.188.14:9000/map/hospiter_list',
                 type: 'GET',
                 dataType: 'jsonp',
                 jasonp: 'callback',
@@ -112,7 +100,7 @@
                     let tbodyData =[];
                    
                     for (var i of data.data[0]) {
-                    	tbodyData.push('<tr ><br><td  id="listBtn" style="cursor:pointer;">'+i.hos_name+'</td><br><td>'+i.hos_address+'</td><br><td>'+i.hos_loc+'</td><br><td>'+i.hos_tel+'</td><br></tr>')
+                    	tbodyData.push('<tr><td  id="listBtn" style="cursor:pointer;">'+i.hos_name+'</td><td>'+i.hos_address+'</td><td>'+i.hos_loc+'</td><td>'+i.hos_tel+'</td></tr>')
                     }
                     document.querySelector('.table1 > tbody').innerHTML = tbodyData.join('');
                 },
@@ -120,13 +108,14 @@
                    console.log('Error => '+$('#target').text());
                 }
             });
-			//-------------------------------------------------------------
+			//-----------------------------------------------
+			// 클릭 시
 			$(".table1").on("click","#listBtn",function(){
 				var hos_value=$(this).text();
 				//console.log('hos_value => '+hos_value);
 				//console.log('td_text => '+$(this).text());
 				$.ajax({
-	                url: 'http://192.168.0.120:9000/map/detail?name='+hos_value+'&',
+	                url: 'http://14.36.188.14:9000/map/detail?name='+hos_value+'&',
 	                type: 'GET',
 	                dataType: 'jsonp',
 	                jasonp: 'callback',
@@ -155,12 +144,11 @@
 	            		// 지도의 확대 레벨 
 	            		};
 	            		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	            		<!-- 지도 크기 조절 이벤트 -->
+	            		var zoomControl = new kakao.maps.ZoomControl();
+	            		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 	            		
 	            		<!-- 현재위치 좌표얻어오기! -->
-	            		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-	            		//if (navigator.geolocation) {
-
-            			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
             			navigator.geolocation.getCurrentPosition(function(position) {
 
            				var lat = position.coords.latitude, // 위도
@@ -179,22 +167,31 @@
 	            		        latlng: new kakao.maps.LatLng(hos_marker['hos_y'], hos_marker['hos_x'])
 	            		    }];
 	            		
+	            		console.log('lat = '+lat)
+	            		console.log('marker_y = '+hos_marker['hos_y'])
+	            		console.log('y = '+(lat+hos_marker['hos_y'])/2)
+	            		console.log('---------------')
+	            		console.log('lat = '+lon)
+	            		console.log('marker_y = '+hos_marker['hos_x'])
+	            		console.log('x = '+(lon+hos_marker['hos_x'])/2)
+	            		var center_x = (lon+hos_marker['hos_x'])/2
+	            		var center_y = (lat+hos_marker['hos_y'])/2
+	            		var center_xy= new kakao.maps.LatLng(center_y,center_x)
 	            		for (var i = 0; i < positions.length; i ++) {
-	            			
-	            		
-	            		// 마커를 생성합니다
+	            		// 마커를 생성합니다 
 	        			var marker = new kakao.maps.Marker({
 	        				map : map,
 	        				position : positions[i].latlng,
 	        				title : positions[i].title
 	        			});
+	            		
 	            		var middle = Math.abs(positions[0]-positions[1])
 	            		//console.log(typeof(positions)); object
 	            		//console.log(positions.length); 2
 	            		console.log("latlng"+[i]+'= '+positions[i].latlng);
 	            		console.log("title"+[i]+'= '+positions[i].title);
 	            		// 두 좌표 평균값
-	            		console.log('평균 구하기 step1 = '+ positions[0].latlng.);
+	            		console.log('평균 구하기 step1 = '+ positions[0].latlng);
 	        			var iwContent = positions[i].title, // 인포윈도우에 표시할 내용
 	        			iwRemoveable = true;
 	        			// 인포윈도우를 생성합니다
@@ -205,14 +202,11 @@
 	        			// 인포윈도우를 마커위에 표시합니다 
 	        			infowindow.open(map, marker);
 	        			// 지도 중심좌표를 접속위치로 변경합니다
-	        			map.setCenter(positions[1].latlng);
+	        			map.setCenter(center_xy);
+	        			// 마커를 지도에 표시합니다
 	        			marker.setMap(map);
 	            		}
 	            		});
-           				
-            			
-	            		
-	            		<!-- 마커 변수 -->
 	            		
 	                } //ajax - success 함수 
 				
