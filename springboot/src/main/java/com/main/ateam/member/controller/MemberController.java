@@ -57,7 +57,10 @@ public class MemberController {
 		}
 		return mav;
 	}
-
+	@GetMapping(value = "/tt")
+	public String test() {
+		return "member/test";
+	}
 	// 로그 아웃
 	@GetMapping(value = "/memberLogout")
 	public String memberLogout(HttpSession session) {
@@ -91,7 +94,7 @@ public class MemberController {
 	public String updateMypage(Model m,HttpSession session) {
 		int num = 0;
 		num = (int) session.getAttribute("sessionNUM");
-		MemberVO vo = memberService.memberMyPage(num);
+		MemberVO vo = memberService.memberMyPage(1);
 		m.addAttribute("member", vo);
 		return "member/updateMypage";
 	}
@@ -107,8 +110,13 @@ public class MemberController {
 		String oriFn = v.getFileOriName().getOriginalFilename();
 		System.out.println("oriFn : " + oriFn);
 		
+<<<<<<< HEAD
 		String path = "D:\\iKosmo113\\spring\\bootworkspace\\springboot\\src\\main\\resources\\\\static\\upload\\"+oriFn;
 		vo.setNum(num);
+=======
+		String path = "resources/upload/";
+		vo.setNum(1);
+>>>>>>> main
 		vo.setProfimg(oriFn);
 		File f = new File(path);
 		System.out.println(f.getPath());

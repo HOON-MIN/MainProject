@@ -78,6 +78,7 @@
 
 body {
   margin: 0;
+  
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -11699,3 +11700,7 @@ body {
   font-size: 0.75rem;
   border-radius: 0.25rem !important;
 }
+.login-div {
+         margin: 15px 0;
+    }
+

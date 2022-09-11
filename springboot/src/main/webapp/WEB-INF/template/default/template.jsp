@@ -32,9 +32,9 @@
 <!-- ----------------------------- -->
 
 <!-- LOCAL CSS , JS  -->
-<script src="/js/datatables-simple-demo.js?"></script>
-<script src="/js/scripts.js?"></script>
-<link href="/css/styles.css?" rel="stylesheet" />
+<script src="/js/datatables-simple-demo.js"></script>
+<script src="/js/scripts.js"></script>
+<link href="/css/styles.css" rel="stylesheet" />
 <!-- --------------- -->
 
 </head>

@@ -2,10 +2,14 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<style>
+.listTr > td:hover{
+	cursor:pointer;"
+	background-color:white;
+}
+</style>
 <!-- 필요한것 -->
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
+
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955"></script>
 
@@ -47,9 +51,15 @@
 
 		</tbody>
 	</table>
-	<div class="container">
+	<!-- 예약한 병원 목록 -->
+	
+	<div class="collapse" id="collapseMap">
 		<div id="map" style="width: 100%; height: 350px;"></div>
+<<<<<<< HEAD
 		
+=======
+		</div>
+>>>>>>> main
 		<ul>
 			<li>병원 이름:<span id="name"></span></li>
 			<li>병원 주소:<span id="loc"></span></li>
@@ -61,7 +71,7 @@
 	</div>
 
 	<div class="container">
-		<table class="table1 table table-striped" id="datatables">
+		<table class="table1 table table-hover" id="datatables">
 			<thead>
 				<tr>
 					<th scope="col">병원이름</th>
@@ -82,31 +92,38 @@
 			onclick="location.href='${pageContext.request.contextPath}/member'">
 	</div>
 
-</div>
+
 
 <script>
 
 	$(function() { //상시 동작 함!
+<<<<<<< HEAD
 			<!-- 마이페이지 리스트 불러오기  -->
+=======
+			// 예약한 병원 리스트 ajax
+>>>>>>> main
 			$.ajax({
                 url: 'http://14.36.188.14:9000/map/hospiter_list',
                 type: 'GET',
                 dataType: 'jsonp',
                 jasonp: 'callback',
-                success: function(data){
-                    //console.log(data);
-                    //console.log(data.columns);
-                    //console.log(data.data);
+                success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
                     let tbodyData =[];
-                   
                     for (var i of data.data[0]) {
+<<<<<<< HEAD
                     	tbodyData.push('<tr><td  id="listBtn" style="cursor:pointer;">'+i.hos_name+'</td><td>'+i.hos_address+'</td><td>'+i.hos_loc+'</td><td>'+i.hos_tel+'</td></tr>')
                     }
+=======
+                    	tbodyData.push('<tr class="listTr"data-bs-toggle="collapse" href="#collapseMap"aria-expanded="true" aria-controls="collapseMap" ><td id="listBtn"  >'+i.hos_name+'</td><td>'+i.hos_address+'</td><td>'+i.hos_loc+'</td><td>'+i.hos_tel+'</td></tr>')
+                    	}
+>>>>>>> main
                     document.querySelector('.table1 > tbody').innerHTML = tbodyData.join('');
                 },
+                
                 error: function(err){
-                   console.log('Error => '+$('#target').text());
+                   console.log('Error => '+err);
                 }
+<<<<<<< HEAD
             });
 			//-----------------------------------------------
 			// 클릭 시
@@ -114,6 +131,17 @@
 				var hos_value=$(this).text();
 				//console.log('hos_value => '+hos_value);
 				//console.log('td_text => '+$(this).text());
+=======
+            }); // 예약한 병원 리스트 ajax 끝
+            
+           
+            
+			// 병원 목록 클릭 ajax
+			$(".table1").on("click","tr",function(){
+				var hos_value=$(this).children('#listBtn').text();
+				console.log("td값"+hos_value);
+				
+>>>>>>> main
 				$.ajax({
 	                url: 'http://14.36.188.14:9000/map/detail?name='+hos_value+'&',
 	                type: 'GET',
@@ -121,11 +149,7 @@
 	                jasonp: 'callback',
 	                contentType : "application/jsonp; charset: UTF-8",
 	                success: function(data){
-	                    //console.log('data.columns= '+data.columns);
-	                    //console.log('data.columns= '+data.columns[1]);
-	                    //console.log('data.data= '+data.data[0]);
-	                    //console.log('data.data= '+data.data[0][2]);
-	                    //console.log('data.data.length= '+data.data[0].length);
+	                    
 	                    var test= {}
 	                    var hos_marker = {}
 	                    
@@ -140,8 +164,8 @@
 	            		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	            		mapOption = {
 	            			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	            			level : 5
-	            		// 지도의 확대 레벨 
+	            			level : 5 // 지도의 확대 레벨 
+	            		
 	            		};
 	            		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 	            		<!-- 지도 크기 조절 이벤트 -->
@@ -172,47 +196,71 @@
 	            		console.log('y = '+(lat+hos_marker['hos_y'])/2)
 	            		console.log('---------------')
 	            		console.log('lat = '+lon)
+<<<<<<< HEAD
 	            		console.log('marker_y = '+hos_marker['hos_x'])
+=======
+	            		console.log('marker_x = '+hos_marker['hos_x'])
+>>>>>>> main
 	            		console.log('x = '+(lon+hos_marker['hos_x'])/2)
 	            		var center_x = (lon+hos_marker['hos_x'])/2
 	            		var center_y = (lat+hos_marker['hos_y'])/2
 	            		var center_xy= new kakao.maps.LatLng(center_y,center_x)
 	            		for (var i = 0; i < positions.length; i ++) {
+<<<<<<< HEAD
 	            		// 마커를 생성합니다 
 	        			var marker = new kakao.maps.Marker({
+=======
+	            		
+	        			var marker = new kakao.maps.Marker({ // 마커를 생성합니다 
+>>>>>>> main
 	        				map : map,
 	        				position : positions[i].latlng,
 	        				title : positions[i].title
 	        			});
 	            		
 	            		var middle = Math.abs(positions[0]-positions[1])
+<<<<<<< HEAD
 	            		//console.log(typeof(positions)); object
 	            		//console.log(positions.length); 2
 	            		console.log("latlng"+[i]+'= '+positions[i].latlng);
 	            		console.log("title"+[i]+'= '+positions[i].title);
 	            		// 두 좌표 평균값
 	            		console.log('평균 구하기 step1 = '+ positions[0].latlng);
+=======
+	            		
+>>>>>>> main
 	        			var iwContent = positions[i].title, // 인포윈도우에 표시할 내용
 	        			iwRemoveable = true;
-	        			// 인포윈도우를 생성합니다
-	        			var infowindow = new kakao.maps.InfoWindow({
+	        			
+	        			var infowindow = new kakao.maps.InfoWindow({ // 인포윈도우를 생성합니다
 	        				content : iwContent,
 	        				removable : iwRemoveable
 	        			});
+<<<<<<< HEAD
 	        			// 인포윈도우를 마커위에 표시합니다 
 	        			infowindow.open(map, marker);
 	        			// 지도 중심좌표를 접속위치로 변경합니다
 	        			map.setCenter(center_xy);
 	        			// 마커를 지도에 표시합니다
 	        			marker.setMap(map);
+=======
+	        			var level = map.getLevel();
+	        			
+	        			infowindow.open(map, marker); // 인포윈도우를 마커위에 표시합니다 
+	        			map.setLevel(level + 2);
+	        			map.setCenter(center_xy); // 지도 중심좌표를 접속위치로 변경합니다
+	        			marker.setMap(map); // 마커를 지도에 표시합니다
+	        			
+>>>>>>> main
 	            		}
 	            		});
 	            		
 	                } //ajax - success 함수 
 				
-				}); // ajax 끝
-			}); //병원이름 클릭 함수
+				});
+			}); // table1 클릭 ajax 끝
+			
 			
 			
 		});
-	</script>
+</script>
