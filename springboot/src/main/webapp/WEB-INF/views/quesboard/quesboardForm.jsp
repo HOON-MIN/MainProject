@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>quesboardForm</title>
-</head>
-<body>
+
 <div id="content" class="container mt-5">
 <h2 class="text-center">의학지식 질문하기</h2>
 <div class="row" style="text-align:center">
@@ -39,5 +33,3 @@
 
     });
 </script>
-</body>
-</html>
