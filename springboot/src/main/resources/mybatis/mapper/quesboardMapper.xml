@@ -17,12 +17,13 @@
 	select * from quesboard where qnum=#{num}
 </select>
 
-<update id="qbUpdate" parameterType="qvo">
+<update id="qbUpdate" parameterType="qvo" >
 	update quesboard set qtitle = #{qtitle}, qcont = #{qcont}
+	where qnum=#{qnum}
 </update>
 
 <delete id="qbDelete" parameterType="int">
-	delete from quesboard where qnum = #{num}
+	delete from quesboard where qnum = #{qnum}
 </delete>
 
 

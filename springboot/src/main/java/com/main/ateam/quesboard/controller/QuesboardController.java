@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.main.ateam.ansboard.service.AnsboardService;
 import com.main.ateam.quesboard.service.QuesboardService;
+import com.main.ateam.vo.AnsboardVO;
 import com.main.ateam.vo.QuesboardVO;
 
 
@@ -19,6 +21,8 @@ public class QuesboardController {
 
 	@Autowired
 	private QuesboardService service;
+	@Autowired
+	private AnsboardService ansService;
 
 	@RequestMapping(value = "/qbForm")
 	public String qbForm() {
@@ -31,7 +35,7 @@ public class QuesboardController {
 		System.out.println(vo.toString());
 //		vo.setId("member");
 		service.addQuesboard(vo);
-		return "redirect:/quesboardList";
+		return "redirect:qbList";
 	}
 
 	@RequestMapping(value = "/qbList")
@@ -40,33 +44,43 @@ public class QuesboardController {
 		System.out.println("controller - qbList");
 		List<QuesboardVO> list = service.getQBList();
 		System.out.println(list);
-		for(QuesboardVO e : list) {
-			System.out.println(e.getQtitle());
-		}
+//		for(QuesboardVO e : list) {
+//			System.out.println(e.getQtitle());
+//		}
 		m.addAttribute("list", list);
 		return "quesboard/quesboardList";	
 	}
 	
 	@GetMapping(value = "/qbDetail")
 	public String qbDetail(int num, Model m) {
-		System.out.println("controller - qbDetail");
+		System.out.println("num => "+num);
+		System.out.println("-----qbDetail controll-----");
 		QuesboardVO vo = service.getQBDetail(num);
+		System.out.println(vo.getQtitle());
+		System.out.println(vo.getQcont());
+		System.out.println(vo.getId());
+		System.out.println("success");
+		List<AnsboardVO> ansList = ansService.getABList(num);
+		System.out.println("ansService success");
+		System.out.println("-----qbDetail controll-----");
 		m.addAttribute("vo", vo);
+		m.addAttribute("ansList", ansList);
 		return "quesboard/quesboardDetail";
 	}
 	
 	
 	@PostMapping(value = "/qbUpdate")
 	public String qbUpdate(QuesboardVO vo) {
+		System.out.println(vo.toString());
 		service.qbUpdate(vo);
 		System.out.println("qbUpdate controller");
-		return "redirect:/quesboardList";
+		return "redirect:qbList";
 	}
 	
 	@PostMapping(value = "/qbDelete")
-	public String qbDelete(int num) {
-		service.qbDelete(num);
-		return "redirect:/quesboardList";
+	public String qbDelete(int qnum) {
+		service.qbDelete(qnum);
+		return "redirect:qbList";
 	}
 	
 	

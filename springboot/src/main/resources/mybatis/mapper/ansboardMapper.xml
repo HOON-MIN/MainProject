@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.main.ateam.ansboard.dao.AnsboardDao">
+
+<insert id="addAnsboard" parameterType="avo">
+	insert into ansboard values (ansboard_seq.nextval, 
+	#{qnum}, #{dnum}, #{acont}, sysdate)
+</insert>
+
+<!-- 의사 마이페이지에서 자신이 단 답변 목록 보기 getABmyList -->
+<select id="getABmyList" resultType="avo" parameterType="int" >
+	select * from ansboard where dnum = #{dnum} order by 1 desc
+</select>
+<!-- 특정 질문에 달린 답변 리스트 - 모든 사람이 볼 수 있음   -->
+<select id="getABList" resultType="avo" parameterType="int" >
+	select * from ansboard where qnum = #{num} order by 1 desc
+</select>
+
+
+<select id="getABDetail" parameterType="int" resultType="avo">
+	select * from ansboard where anum=#{anum}
+</select>
+
+<update id="abUpdate" parameterType="avo" >
+	update ansboard set qtitle = #{qtitle}, qcont = #{qcont}
+	where anum=#{anum}
+</update>
+
+<delete id="abDelete" parameterType="int">
+	delete from ansboard where anum = #{anum}
+</delete>
+
+
+
+
+
+</mapper>

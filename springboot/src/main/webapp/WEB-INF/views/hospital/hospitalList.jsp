@@ -20,7 +20,7 @@
 	</ul>
 
 		<%-- 리팩토링 해야 함 --%>
-<table class="table" id="datatablesSimple">
+<table class="table" id="datatablesSimple" style="text-align: center;">
 	<thead>
 		<tr>
 			<th>번호</th>
@@ -48,4 +48,18 @@
 
 </article>
 </div>
+
+<!-- 이전 jquery 임포트 코드 ...!!! -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(function(){
+	$('.linktd').click(function(){
+		var href = $(this).parent("tr").children("td").children("a").attr("href")
+// 		alert(href);
+		window.location = href;
+	});
+});
+</script>
+
+
 

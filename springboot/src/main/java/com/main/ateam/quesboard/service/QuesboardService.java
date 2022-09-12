@@ -34,7 +34,7 @@ public class QuesboardService {
 	}
 	
 	public void qbUpdate(QuesboardVO vo) {
-		vo.setId("member");
+//		vo.setId("member");
 		dao.qbUpdate(vo);
 	}
 	
