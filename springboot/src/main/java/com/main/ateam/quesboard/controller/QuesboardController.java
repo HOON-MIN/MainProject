@@ -68,12 +68,19 @@ public class QuesboardController {
 		return "quesboard/quesboardDetail";
 	}
 	
+	@RequestMapping(value = "/qbUpdateForm")
+	public String qbUpdateForm(int num, Model m) {
+		QuesboardVO vo = service.getQBDetail(num);
+		m.addAttribute("vo", vo);
+		return "quesboard/quesboardUpdateForm";
+	}
 	
 	@PostMapping(value = "/qbUpdate")
 	public String qbUpdate(QuesboardVO vo) {
+		System.out.println("=====qbUpdate controll=====");
 		System.out.println(vo.toString());
 		service.qbUpdate(vo);
-		System.out.println("qbUpdate controller");
+		System.out.println("=====qbUpdate controll=====");
 		return "redirect:qbList";
 	}
 	

@@ -22,38 +22,42 @@
       
       <p style="text-align:right">
       <c:choose>
-      <c:when test="${sessionScope.sessionId == vo.id }">
-<!--       회원 본인글 id와 일치하면  -->
+      <c:when test="${sessionScope.sessionID == vo.id }">
+<!-- 로그인 - 일반회원인데 본인글 일 때 => id와 일치하면  -->
+	<!-- 수정폼으로 가기 -->
         <button type="submit" class="btn btn-primary" 
-        	id="upBtn">수정</button>
+        	id="upFormBtn">수정</button> 
         <button type="submit" class="btn btn-primary" 
         	id="delBtn">삭제</button>
       </c:when>
       
       </c:choose>
       </p>
-      <c:choose>
-      <c:when test="${sessionScope.sessionDid != null }">
-<!--         	의사일때  -->
-		<div>
-		  <form action="post" name="abInsert" id="abInsert">
-		  <input type="hidden" name="qnum" id="qnum" value="${vo.qnum }">
-			<p>
-		      <textarea name="acont" id="acont" 
-		      	cols="80" rows="20" ></textarea>
-		    </p>
-		    <p style="text-align:right">
-		    	<button class="btn btn-primary btn-dark text-white btn-block"
-					type="submit">답변하기</button>
-		<!--             <input type="submit" value="작성"> -->
-		    </p>
-		  </form>
-		</div>
-      </c:when>
-      </c:choose>
     </fieldset>
   </form>
-  <ul class="list-unstyled">
+  
+<!--  로그인 - 의사일 때  -->
+  <c:choose>
+  <c:when test="${sessionScope.sessionDid != null }">
+	<div>
+	  <form action="post" name="abInsert" id="abInsert">
+	  <input type="hidden" name="qnum" id="qnum" value="${vo.qnum }">
+		<p>
+	      <textarea name="acont" id="acont" 
+	      	cols="80" rows="20" ></textarea>
+	    </p>
+	    <p style="text-align:right">
+	    	<button class="btn btn-primary btn-dark text-white btn-block"
+				type="submit">답변하기</button>
+	<!--             <input type="submit" value="작성"> -->
+	    </p>
+	  </form>
+	</div>
+  </c:when>
+  </c:choose>
+
+<!-- 현재 질문에 대해 달린 답변 리스트 출력 -->
+<ul class="list-unstyled">
 	<li class="border-top my-3"></li>
 </ul>
   <div>
@@ -87,13 +91,11 @@
 <script>
 $(function() {
 $(function() {
-	$('#upBtn').click(
+	$('#upFormBtn').click(
 		function() {
 			$('#qbUpdate').attr("action",
-					"${mycontext}/quesboard/qbUpdate");
-			$('#qbUpdate').submit(function() {
-				alert("수정되었습니다.");
-			});
+					"${mycontext}/quesboard/qbUpdateForm?num="+${vo.qnum });
+			$('#qbUpdate').submit();
 		});
 
 	$('#delBtn').click(

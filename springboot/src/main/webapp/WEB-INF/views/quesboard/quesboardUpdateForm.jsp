@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <div id="content" class="container mt-5">
-<h2 class="text-center">의학지식 질문하기</h2>
+<h2 class="text-center">의학지식 질문 수정</h2>
 <div class="row" style="text-align:center">
   <form method="post" name="qbUpdate" id="qbUpdate">
   <input type="hidden" name="qnum" id="qnum" value="${vo.qnum }">
@@ -29,25 +29,13 @@
 </div>
 <script>
 $(function() {
-$(function() {
-	$('#upBtn').click(
-		function() {
-			$('#qbUpdate').attr("action",
-					"${mycontext}/quesboard/qbUpdate");
-			$('#qbUpdate').submit(function() {
-				alert("수정되었습니다.");
-			});
+	$('#upBtn').click(function() {
+		$('#qbUpdate').attr("action",
+				"${mycontext}/quesboard/qbUpdate");
+		$('#qbUpdate').submit(function() {
+			alert("수정되었습니다.");
 		});
+	});
 
-	$('#delBtn').click(
-		function() {
-			$('#qbUpdate').attr("action",
-					"${mycontext}/quesboard/qbDelete");
-			$('#qbUpdate').submit(function() {
-				alert("삭제되었습니다.");
-			});
-		});
-	
-});
 });
 </script>
