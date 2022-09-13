@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "./css/header.css";
-import logo from "../logo.svg";
+import logo from "../img/chicken.png";
 
 function Header() {
   return (
@@ -17,7 +17,7 @@ function Header() {
             height="30"
             className="d-inline-block align-top"
           />
-          React Bootstrap
+          HeyDr.
         </Navbar.Brand>
         <Navbar variant="dark">
           <Nav className="me-auto">

@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./component/header";
 import UserList from "./component/UserList";
 import Carousel from "react-bootstrap/Carousel";
-import mockup from "./img/web_app_mockup2.png";
+import mockup from "./img/main2.png";
 import mainImg from "./img/main0.png";
 
 function App() {
@@ -90,27 +90,27 @@ function App() {
           <img src={mainImg} className="mainImg" />
         </div>
         <div className="text">
-          <h2>Medical Platform</h2>
+          <h2>HeyDr. SpringBoot</h2>
           <br></br>
           <span>
-            Lorem Ipsum is simply dummy text of
-            <br />
-            the printing and typesetting industry.
+            많은 기능은 스프링부트로 구현 하였습니다.
+            <br />밑 쪽 버튼을 통해 이동 할 수 있습니다.
           </span>
           <br></br>
-          <button className="btn2">Go SpringBoot</button>
+          <button className="btn2">Go to SpringBoot</button>
         </div>
       </div>
       <div className="inner bg-blue">
         <div className="innerImg">
           <img src={mockup} className="menuImg" />
         </div>
-        <div className="text">
-          <span>
-            Lorem Ipsum is simply dummy text of
-            <br />
-            the printing and typesetting industry.
-          </span>
+        <div className="button2">
+          <button type="button" className="btn3">
+            App Store
+          </button>
+          <button type="button" className=" btn3">
+            Google Play
+          </button>
         </div>
       </div>
       <div className="inner bg-pink">3</div>

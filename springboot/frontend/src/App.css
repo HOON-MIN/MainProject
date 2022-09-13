@@ -39,6 +39,13 @@ body {
   color: white;
 }
 
+.button2 {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
 p .maintext {
   padding-bottom: 20% !important;
 }
@@ -71,4 +78,15 @@ p .maintext {
   color: #80a7ce;
   border: solid 1px #ffffff;
   border-radius: 20px;
+}
+
+.btn3 {
+  width: 200px;
+  height: 64px;
+  color: #3478f5;
+  font-weight: bolder;
+  border: solid 1px #3478f5;
+  margin: 0 16px;
+  border-radius: 20px;
+  background-color: white;
 }
