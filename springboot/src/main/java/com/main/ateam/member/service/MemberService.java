@@ -25,4 +25,8 @@ public class MemberService {
 	public void memberUpdate(MemberVO vo) {
 		memberDaoInter.memberUpdate(vo);
 	}
+	
+	public List<MemberVO> memberList() {
+		return memberDaoInter.memberList();
+	}
 }
