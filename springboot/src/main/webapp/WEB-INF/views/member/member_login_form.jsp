@@ -105,7 +105,7 @@ $('#loginBtn').click(function(){
 			 }	
 	  		})
 		}
-	});
+	 });
 });
 	
 

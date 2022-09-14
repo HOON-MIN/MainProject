@@ -163,7 +163,7 @@
 <textarea name="symptom" id="symptom" rows="10" cols="120"></textarea><br><br>
 
 <p style="text-align:right">
-<button class="btn btn-primary btn-dark text-white btn-block"
+<button id="sendBtn" class="btn btn-primary btn-dark text-white btn-block"
 	type="submit">작성</button>
 </p>
 
@@ -171,13 +171,22 @@
 
 <script>
 $(function() {
-	$('#upBtn').click(function() {
-		$('#qbUpdate').attr("action",
-				"${mycontext}/quesboard/qbUpdate");
-		$('#qbUpdate').submit(function() {
-			alert("수정되었습니다.");
-		});
+	$('#sendBtn').click(function(){
+		
+		
+		
 	});
+	
+	
+	
+	
+// 	$('#upBtn').click(function() {
+// 		$('#qbUpdate').attr("action",
+// 				"${mycontext}/quesboard/qbUpdate");
+// 		$('#qbUpdate').submit(function() {
+// 			alert("수정되었습니다.");
+// 		});
+// 	});
 
 });
 </script>
