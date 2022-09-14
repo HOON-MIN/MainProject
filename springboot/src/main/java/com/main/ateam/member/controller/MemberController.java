@@ -15,12 +15,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ResponseBody;
+=======
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+>>>>>>> taejin
 import org.springframework.web.servlet.ModelAndView;
 
 import com.main.ateam.member.service.MemberService;
 import com.main.ateam.vo.FileVO;
 import com.main.ateam.vo.MemberVO;
+
+import ch.qos.logback.classic.Logger;
 
 
 @Controller
@@ -28,14 +36,13 @@ import com.main.ateam.vo.MemberVO;
 public class MemberController {
 
 	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
 
 	@GetMapping("/memberLoginForm")
 	public String MemberLoginForm() {
-		
 		return "member/member_login_form";
 	}
-
+	
 	// 회원 로그인
 	@PostMapping("/memberLogin")
 	public ModelAndView MemberLogin(HttpSession session, MemberVO vo) {
@@ -46,23 +53,17 @@ public class MemberController {
 		System.out.println("id = " + vo.getId());
 		System.out.println("pwd = " + vo.getPwd());
 		MemberVO dto = memberService.memberLogin(map);
-
-		if (dto == null) {
-			mav.setViewName("error/paramException");
-			mav.addObject("emsg", "로그인 실패 입니다.");
-		} else {
-			System.out.println("로그인했다");
-			session.setAttribute("sessionID", dto.getId());
-			session.setAttribute("sessionNUM", dto.getNum());
-			session.setAttribute("sessionNAME", dto.getName());
-
+		if(dto == null) {
+			System.out.println("로그인 실패");
+		}else {
+		System.out.println("로그인 성공");
+		session.setAttribute("sessionID", dto.getId());
+		session.setAttribute("sessionNUM", dto.getNum());
+		session.setAttribute("sessionNAME", dto.getName());
 		}
 		return mav;
 	}
-	@GetMapping(value = "/tt")
-	public String test() {
-		return "member/test";
-	}
+	
 	// 로그 아웃
 	@GetMapping(value = "/memberLogout")
 	public String memberLogout(HttpSession session) {
@@ -71,15 +72,36 @@ public class MemberController {
 		System.out.println("로그아웃성공");
 		return "redirect:/member";
 	}
+	
+	@ResponseBody
+	@PostMapping(value = "/idchk")
+	public String idchk(String id,String pwd){
+		Map<String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("pwd",pwd);
+		
+		System.out.println("controller id => " + id);
+		System.out.println("controller pwd => " + pwd);
+		System.out.println("map =>"+map);
+		int cnt = memberService.idchk(map);
+		System.out.println("mem cnt => " + cnt);
+		String res = Integer.toString(cnt);
+		System.out.println("mem res => " + res);
+		return res; 
+	}
 
 	// 로그인 테스트
 	@GetMapping(value = "/test")
-	public String test(HttpSession session, MemberVO vo) {
-		String id = "";
-		id = (String) session.getAttribute("sessionID");
-		System.out.println(id + "님 로그인 중");
-		return "redirect:/member";
+	public String test() {
+	
+		return "member/test";
 	}
+	// 로그인 테스트
+		@GetMapping(value = "/test2")
+		public String test2() {
+		
+			return "member/index";
+		}
 
 	// 회원 마이페이지
 	@GetMapping(value = "/memberMypage")
@@ -112,10 +134,12 @@ public class MemberController {
 		String oriFn = v.getFileOriName().getOriginalFilename();
 		System.out.println("oriFn : " + oriFn);
 		
-		String path = "resources/upload/";
+		String path = "D:\\iKosmo113\\spring\\bootworkspace\\springboot\\src\\main\\resources\\static\\upload\\"+oriFn;
+//		vo.setNum(num);
 		vo.setNum(1);
 		vo.setProfimg(oriFn);
 		File f = new File(path);
+		System.out.println(f.getPath());
 		try {
 			v.getFileOriName().transferTo(f);
 		} catch (IllegalStateException | IOException e) {

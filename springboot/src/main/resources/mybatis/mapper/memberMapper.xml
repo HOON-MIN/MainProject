@@ -5,6 +5,7 @@
 
 <mapper namespace="com.main.ateam.member.dao.MemberDaoInter">
 
+<<<<<<< HEAD
 	<select id="memberLogin" resultType="mvo">
 		select * from member where id=#{id} and pwd=#{pwd}
 	</select>
@@ -18,4 +19,19 @@
 		update member set name=#{name},email=#{email},tel=#{tel},profimg=#{profimg}
 		where num = #{num}
 	</update>
+=======
+<select id="memberLogin" resultType="memberVO">
+  	select * from member where id=#{id} and pwd=#{pwd}
+  	</select>
+  	<select id="memberMyPage" resultType="memberVO">
+  	select * from member where num=#{num}
+  	</select>
+  	<update id="memberUpdate">
+  	update member set name=#{name},email=#{email},tel=#{tel},profimg=#{profimg} where num = #{num}
+  	</update>
+  	<select id="idchk" parameterType="map" resultType="int">
+	select count(*) from member where id=#{id} and pwd=#{pwd}
+</select>
+  	
+>>>>>>> taejin
 </mapper>

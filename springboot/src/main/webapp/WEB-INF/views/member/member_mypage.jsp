@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
-.listTr > td:hover{
-	cursor:pointer;"
-	background-color:white;
+.listTr>td:hover {
+	cursor: pointer; "
+	background-color: white;
 }
 </style>
 <!-- 필요한것 -->
@@ -20,51 +20,111 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <link rel="stylesheet"
 	href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<div class="container py-4">
+	<div class="p-5 mb-4 bg-light ">
+		<div class="container">
+			<h1 class="display-5 fw-bold">프로필 정보</h1>
+			<!-- <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>-->
+				<div class="container">
+				<div class="col-sm-4" style="float: left;">
+					<div class="form-group" style="margin: 0 auto;">
+						<img src="taejin/img/${member.profimg }" class="picture-src"
+							id="profimg" style="width: 200px; height: 150px;" /><br>
+							<label>프로필 사진</label> 
+					</div>
+				</div>
+				<div class="col-sm-5" style="float: left;">
+					<div class="form-group">
+						<label>ID </label> <input name="id" type="text"
+							class="form-control" readonly="readonly" value="${member.id }">
+					</div>
+					<div class="form-group">
+						<label>이름 </label> <input name="name" type="text"
+							class="form-control" readonly="readonly" value="${member.name }">
+					</div>
+					<div class="form-group">
+						<label>주민등록번호 </label> <input name="ssn" type="text"
+							class="form-control" readonly="readonly" value="${member.ssn }">
+					</div>
+					<div class="form-group">
+						<label>전화번호</label> <input name="tel" type="text"
+							class="form-control" readonly="readonly" value="${member.tel }">
+					</div>
+					<div class="form-group">
+						<label>E-mail</label> <input name="email" type="text"
+							class="form-control" readonly="readonly" value="${member.email }">
+					</div>
+				</div>
+
+				
+			
+			<button class="btn btn-primary btn-lg" type="button">Example
+				button</button>
+		</div>
+	</div>
+	<div class="row">
+	<div class="row align-items-md-stretch">
+		<div class="col-md-8">
+			<div class="h-100 p-5 text-white bg-dark rounded-3">
+
+				<div id="map" style="width: 100%; height: 350px;"></div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="h-100 p-5 bg-light border rounded-3">
+
+				<button class="btn btn-outline-secondary" type="button" style="">Example
+					button</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="container">
 	<h1>MyPage</h1>
-	<table border="1" class="table table-striped">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>NAME</th>
-				<th>SSN</th>
-				<th>AGE</th>
-				<th>TEL</th>
-				<th>EMAIL</th>
-				<th>PROFIMG</th>
-				<th>MDATE</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>${member.id }</td>
-				<td>${member.name }</td>
-				<td>${member.ssn }</td>
-				<td>${member.age }</td>
-				<td>${member.tel }</td>
-				<td>${member.email }</td>
-				<td><img src="/resources/upload/${member.profimg }">${member.profimg }</td>
-				<td>${member.mdate }</td>
-
-			</tr>
-
-		</tbody>
-	</table>
-	<!-- 예약한 병원 목록 -->
-	
-	<div class="collapse" id="collapseMap">
-		<div id="map" style="width: 100%; height: 350px;"></div>
-		</div>
-		<ul>
-			<li>위도:<span id="latitude"></span></li>
-			<li>경도:<span id="longitude"></span></li>
-		</ul>
-		<input id="btnStop" type="button" value="감시를 끝낸다" />
+	<div class="row">
+		<table border="1" class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NAME</th>
+					<th>SSN</th>
+					<th>AGE</th>
+					<th>TEL</th>
+					<th>EMAIL</th>
+					<th>PROFIMG</th>
+					<th>MDATE</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>${member.id }</td>
+					<td>${member.name }</td>
+					<td>${member.ssn }</td>
+					<td>${member.age }</td>
+					<td>${member.tel }</td>
+					<td>${member.email }</td>
+					<td><img
+						src="${pageContext.request.contextPath }/upload/${member.profimg }"
+						style="width: 100px; height: 70px;"></td>
+					<td>${member.mdate }</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
+	<!-- 예약한 병원 목록 -->
 	<div class="container">
-		<table class="table1 table table-hover" id="datatables">
+		<p>
+			<button class="btn btn-primary" type="button"
+				data-bs-toggle="collapse" data-bs-target="#collapseMap"
+				aria-expanded="false" aria-controls="collapseMap" id="mapButton">지도
+				보기</button>
+		</p>
+		<div class="collapse" id="collapseMap"></div>
+
+
+		<table class="table1 table table-hover" id="datatablesSimple">
 			<thead>
 				<tr>
 					<th scope="col">병원이름</th>
@@ -78,53 +138,53 @@
 			</tbody>
 		</table>
 	</div>
+
 	<div>
 		<input type="button" value="수정하기"
 			onclick="location.href='updateMypageForm'"> <input
 			type="button" value="뒤로가기"
 			onclick="location.href='${pageContext.request.contextPath}/member'">
 	</div>
-
+</div>
 
 
 <script>
 
 	$(function() { //상시 동작 함!
-			// 예약한 병원 리스트 ajax
-			$.ajax({
-                url: 'http://14.36.188.14:9000/map/hospiter_list',
-                type: 'GET',
-                dataType: 'jsonp',
-                jasonp: 'callback',
-                success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
-                    let tbodyData =[];
-                    for (var i of data.data[0]) {
-                    	tbodyData.push('<tr class="listTr"data-bs-toggle="collapse" href="#collapseMap"aria-expanded="true" aria-controls="collapseMap" ><td id="listBtn"  >'+i.hos_name+'</td><td>'+i.hos_address+'</td><td>'+i.hos_loc+'</td><td>'+i.hos_tel+'</td></tr>')
-                    	}
-                    document.querySelector('.table1 > tbody').innerHTML = tbodyData.join('');
-                },
-                
-                error: function(err){
-                   console.log('Error => '+err);
+		
+		//병원 예약 목록
+		$.ajax({
+            url: 'http://192.168.0.120:9000/map/hospiter_list',
+            //url: 'http://14.36.188.14:9000/map/hospiter_list',
+            type: 'GET',
+            dataType: 'jsonp',
+            jasonp: 'callback',
+            success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
+                let tbodyData =[];
+                for (var i of data.data[0]) {
+                	tbodyData.push('<tr style="cursor:pointer;"><td  id="listBtn" >'+i.hos_name+'</td><td>'+i.hos_address+'</td><td>'+i.hos_loc+'</td><td>'+i.hos_tel+'</td></tr>')
                 }
-            }); // 예약한 병원 리스트 ajax 끝
-            
-           
-            
+                document.querySelector('.table1 > tbody').innerHTML = tbodyData.join('');
+            },
+            error: function(err){
+               console.log('Error => '+err);
+            }
+        });
+			
+			//-----------------------------------------------
 			// 병원 목록 클릭 ajax
 			$(".table1").on("click","tr",function(){
 				var hos_value=$(this).children('#listBtn').text();
 				console.log("td값"+hos_value);
-				
+
 				$.ajax({
-	                url: 'http://14.36.188.14:9000/map/detail?name='+hos_value+'&',
+	                //url: 'http://14.36.188.14:9000/map/detail?name='+hos_value+'&',
+	                url: 'http://192.168.0.120:9000/map/detail?name='+hos_value+'&',
 	                type: 'GET',
 	                dataType: 'jsonp',
 	                jasonp: 'callback',
 	                contentType : "application/jsonp; charset: UTF-8",
 	                success: function(data){
-	                    
-	                    var test= {}
 	                    var hos_marker = {}
 	                    
 	                    for(var i =0; i < data.data[0].length; i++){
@@ -170,20 +230,21 @@
 	            		console.log('y = '+(lat+hos_marker['hos_y'])/2)
 	            		console.log('---------------')
 	            		console.log('lat = '+lon)
+	            		console.log('marker_y = '+hos_marker['hos_x'])
 	            		console.log('marker_x = '+hos_marker['hos_x'])
 	            		console.log('x = '+(lon+hos_marker['hos_x'])/2)
+	            		
 	            		var center_x = (lon+hos_marker['hos_x'])/2
 	            		var center_y = (lat+hos_marker['hos_y'])/2
 	            		var center_xy= new kakao.maps.LatLng(center_y,center_x)
 	            		for (var i = 0; i < positions.length; i ++) {
+	            		// 마커를 생성합니다 
 	            		
 	        			var marker = new kakao.maps.Marker({ // 마커를 생성합니다 
 	        				map : map,
 	        				position : positions[i].latlng,
 	        				title : positions[i].title
 	        			});
-	            		
-	            		var middle = Math.abs(positions[0]-positions[1])
 	            		
 	        			var iwContent = positions[i].title, // 인포윈도우에 표시할 내용
 	        			iwRemoveable = true;
@@ -192,21 +253,23 @@
 	        				content : iwContent,
 	        				removable : iwRemoveable
 	        			});
+	        			// 인포윈도우를 마커위에 표시합니다 
+	        			infowindow.open(map, marker);
+	        			// 마커를 지도에 표시합니다
+	        			marker.setMap(map);
+	            		}
 	        			var level = map.getLevel();
 	        			
 	        			infowindow.open(map, marker); // 인포윈도우를 마커위에 표시합니다 
 	        			map.setLevel(level + 2);
 	        			map.setCenter(center_xy); // 지도 중심좌표를 접속위치로 변경합니다
-	        			marker.setMap(map); // 마커를 지도에 표시합니다
-	        			
-	            		}
 	            		});
 	            		
-	                } //ajax - success 함수 
+	                } // - success 함수 
 				
-				});
+				}); // - ajax
 			}); // table1 클릭 ajax 끝
-			
+	
 			
 			
 		});

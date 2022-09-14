@@ -7,7 +7,7 @@
 <html>
 <head>
 <TITLE>New Document</TITLE>
-<meta charset="euc-kr">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- BootStrap5 -->
@@ -32,9 +32,9 @@
 <!-- ----------------------------- -->
 
 <!-- LOCAL CSS , JS  -->
-<script src="/js/datatables-simple-demo.js"></script>
-<script src="/js/scripts.js"></script>
-<link href="/css/styles.css" rel="stylesheet" />
+<script src="/js/datatables-simple-demo.js?"></script>
+<script src="/js/scripts.js?"></script>
+<link href="/css/styles.css?" rel="stylesheet" />
 <!-- --------------- -->
 
 </head>
