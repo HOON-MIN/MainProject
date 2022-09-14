@@ -40,7 +40,7 @@
 		<tbody>
 			<%-- for start --%>
 			<c:forEach var="e" items="${list}">
-				<tr>
+				<tr style="cursor: pointer;">
 					<td class="linktd">${e.qnum}</td>
 					<td class="linktd"><a href="qbDetail?num=${e.qnum}">${e.qtitle}</a></td>
 					<td class="linktd">${e.id}</td>
