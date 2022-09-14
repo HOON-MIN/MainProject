@@ -25,13 +25,11 @@ public class MemberService {
 	public void memberUpdate(MemberVO vo) {
 		memberDaoInter.memberUpdate(vo);
 	}
-<<<<<<< HEAD
 	
 	public List<MemberVO> memberList() {
 		return memberDaoInter.memberList();
-=======
+	}
 	public int idchk(Map<String, String> vo) {
 		return memberDaoInter.idchk(vo);
->>>>>>> taejin
 	}
 }

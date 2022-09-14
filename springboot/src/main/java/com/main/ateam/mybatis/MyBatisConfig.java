@@ -14,11 +14,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 @MapperScan(basePackages = {"com.main.ateam.member.dao","com.main.ateam.pharmacy.dao",
 		"com.main.ateam.hospital.dao","com.main.ateam.review.dao",
 		"com.main.ateam.quesboard.dao","com.main.ateam.admin.dao",
-<<<<<<< HEAD
-		"com.main.ateam.drug.dao", "com.main.ateam.ansboard.dao"})
-=======
-		"com.main.ateam.drug.dao","com.main.ateam.doctor.dao"})
->>>>>>> taejin
+		"com.main.ateam.drug.dao", "com.main.ateam.ansboard.dao",
+		"com.main.ateam.doctor.dao"})
 public class MyBatisConfig {
 
 	@Bean
