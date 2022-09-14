@@ -23,13 +23,15 @@ import com.main.ateam.member.service.MemberService;
 import com.main.ateam.vo.FileVO;
 import com.main.ateam.vo.MemberVO;
 
+import ch.qos.logback.classic.Logger;
+
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
 
 	@Autowired
-	MemberService memberService;
+	private MemberService memberService;
 
 	@GetMapping("/memberLoginForm")
 	public String MemberLoginForm() {
@@ -77,9 +79,9 @@ public class MemberController {
 		System.out.println("controller pwd => " + pwd);
 		System.out.println("map =>"+map);
 		int cnt = memberService.idchk(map);
-		System.out.println("cnt => " + cnt);
+		System.out.println("mem cnt => " + cnt);
 		String res = Integer.toString(cnt);
-		System.out.println("res => " + res);
+		System.out.println("mem res => " + res);
 		return res; 
 	}
 
@@ -87,8 +89,14 @@ public class MemberController {
 	@GetMapping(value = "/test")
 	public String test() {
 	
-		return "member/index";
+		return "member/test";
 	}
+	// 로그인 테스트
+		@GetMapping(value = "/test2")
+		public String test2() {
+		
+			return "member/index";
+		}
 
 	// 회원 마이페이지
 	@GetMapping(value = "/memberMypage")
@@ -121,7 +129,7 @@ public class MemberController {
 		String oriFn = v.getFileOriName().getOriginalFilename();
 		System.out.println("oriFn : " + oriFn);
 		
-		String path = "D:\\iKosmo113\\spring\\bootworkspace\\springboot\\src\\main\\resources\\\\static\\upload\\"+oriFn;
+		String path = "D:\\iKosmo113\\spring\\bootworkspace\\springboot\\src\\main\\resources\\static\\upload\\"+oriFn;
 //		vo.setNum(num);
 		vo.setNum(1);
 		vo.setProfimg(oriFn);

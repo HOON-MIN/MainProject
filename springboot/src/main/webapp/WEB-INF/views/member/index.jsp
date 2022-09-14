@@ -1,20 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="/taejin/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="/taejin/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Get Shit Done Bootstrap Wizard by Creative Tim</title>
 
-	
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+	<!--     Fonts and icons     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+
+	<!-- CSS Files -->
+    <link href="/taejin/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/taejin/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link href="/taejin/css/demo.css" rel="stylesheet" />
 </head>
 
-
-<div class="image-container set-full-height" >
+<body>
+<div class="image-container set-full-height" style="background-image: url('/taejin/img/wizard.jpg')">
     <!--   Creative Tim Branding   -->
-    <a href="http://creative-tim.com">
-         <div class="logo-container">
-            <div class="logo">
-                <img src="assets/img/new_logo.png">
-            </div>
-            <div class="brand">
-                Creative Tim
-            </div>
-        </div>
-    </a>
+   
 
 	<!--  Made With Get Shit Done Kit  -->
 		<a href="http://demos.creative-tim.com/get-shit-done/index.html?ref=get-shit-done-bootstrap-wizard" class="made-with-mk">
@@ -57,7 +67,7 @@
                                   <div class="col-sm-4 col-sm-offset-1">
                                      <div class="picture-container">
                                           <div class="picture">
-                                              <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+                                              <img src="/taejin/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
                                               <input type="file" id="wizard-picture">
                                           </div>
                                           <h6>Choose Picture</h6>
@@ -71,18 +81,6 @@
                                       <div class="form-group">
                                         <label>Last Name <small>(required)</small></label>
                                         <input name="lastname" type="text" class="form-control" placeholder="Smith...">
-                                      </div>
-                                  </div>
-                                  <div class="col-sm-10 col-sm-offset-1">
-                                      <div class="form-group">
-                                          <label>Email <small>(required)</small></label>
-                                          <input name="email" type="email" class="form-control" placeholder="andrew@creative-tim.com">
-                                      </div>
-                                  </div>
-                                  <div class="col-sm-10 col-sm-offset-1">
-                                      <div class="form-group">
-                                          <label>Email <small>(required)</small></label>
-                                          <input name="email" type="email" class="form-control" placeholder="andrew@creative-tim.com">
                                       </div>
                                   </div>
                                   <div class="col-sm-10 col-sm-offset-1">
@@ -204,14 +202,14 @@
 </body>
 
 	<!--   Core JS Files   -->
-	<script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+	<script src="/taejin/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+	<script src="/taejin/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/taejin/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
 
 	<!--  Plugin for the Wizard -->
-	<script src="assets/js/gsdk-bootstrap-wizard.js"></script>
+	<script src="/taejin/js/gsdk-bootstrap-wizard.js"></script>
 
 	<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
-	<script src="assets/js/jquery.validate.min.js"></script>
+	<script src="/taejin/js/jquery.validate.min.js"></script>
 
 </html>

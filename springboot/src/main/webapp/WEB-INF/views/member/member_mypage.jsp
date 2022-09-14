@@ -20,6 +20,65 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 <link rel="stylesheet"
 	href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<div class="container py-4">
+	<div class="p-5 mb-4 bg-light ">
+		<div class="container">
+			<h1 class="display-5 fw-bold">프로필 정보</h1>
+			<!-- <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>-->
+				<div class="container">
+				<div class="col-sm-4" style="float: left;">
+					<div class="form-group" style="margin: 0 auto;">
+						<img src="taejin/img/${member.profimg }" class="picture-src"
+							id="profimg" style="width: 200px; height: 150px;" /><br>
+							<label>프로필 사진</label> 
+					</div>
+				</div>
+				<div class="col-sm-5" style="float: left;">
+					<div class="form-group">
+						<label>ID </label> <input name="id" type="text"
+							class="form-control" readonly="readonly" value="${member.id }">
+					</div>
+					<div class="form-group">
+						<label>이름 </label> <input name="name" type="text"
+							class="form-control" readonly="readonly" value="${member.name }">
+					</div>
+					<div class="form-group">
+						<label>주민등록번호 </label> <input name="ssn" type="text"
+							class="form-control" readonly="readonly" value="${member.ssn }">
+					</div>
+					<div class="form-group">
+						<label>전화번호</label> <input name="tel" type="text"
+							class="form-control" readonly="readonly" value="${member.tel }">
+					</div>
+					<div class="form-group">
+						<label>E-mail</label> <input name="email" type="text"
+							class="form-control" readonly="readonly" value="${member.email }">
+					</div>
+				</div>
+
+				
+			
+			<button class="btn btn-primary btn-lg" type="button">Example
+				button</button>
+		</div>
+	</div>
+	<div class="row">
+	<div class="row align-items-md-stretch">
+		<div class="col-md-8">
+			<div class="h-100 p-5 text-white bg-dark rounded-3">
+
+				<div id="map" style="width: 100%; height: 350px;"></div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="h-100 p-5 bg-light border rounded-3">
+
+				<button class="btn btn-outline-secondary" type="button" style="">Example
+					button</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="container">
 	<h1>MyPage</h1>
@@ -55,41 +114,38 @@
 	</div>
 
 	<!-- 예약한 병원 목록 -->
-	<p>
-	<button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-		data-bs-target="#collapseMap" aria-expanded="false"
-		aria-controls="collapseMap" id="mapButton">지도 보기</button>
-</p>
-	<div class="collapse" id="collapseMap">
-		
-		<div id="map" style="width: 100%; height: 350px;"></div>
-		
+	<div class="container">
+		<p>
+			<button class="btn btn-primary" type="button"
+				data-bs-toggle="collapse" data-bs-target="#collapseMap"
+				aria-expanded="false" aria-controls="collapseMap" id="mapButton">지도
+				보기</button>
+		</p>
+		<div class="collapse" id="collapseMap"></div>
+
+
+		<table class="table1 table table-hover" id="datatablesSimple">
+			<thead>
+				<tr>
+					<th scope="col">병원이름</th>
+					<th scope="col">병원주소</th>
+					<th scope="col">진료구분</th>
+					<th scope="col">전화번호</th>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
 	</div>
 
+	<div>
+		<input type="button" value="수정하기"
+			onclick="location.href='updateMypageForm'"> <input
+			type="button" value="뒤로가기"
+			onclick="location.href='${pageContext.request.contextPath}/member'">
+	</div>
 </div>
-
-<div class="container">
-	<table class="table1 table table-hover" id="datatables">
-		<thead>
-			<tr>
-				<th scope="col">병원이름</th>
-				<th scope="col">병원주소</th>
-				<th scope="col">진료구분</th>
-				<th scope="col">전화번호</th>
-			</tr>
-		</thead>
-		<tbody>
-
-		</tbody>
-	</table>
-</div>
-<div>
-	<input type="button" value="수정하기"
-		onclick="location.href='updateMypageForm'"> <input
-		type="button" value="뒤로가기"
-		onclick="location.href='${pageContext.request.contextPath}/member'">
-</div>
-
 
 
 <script>

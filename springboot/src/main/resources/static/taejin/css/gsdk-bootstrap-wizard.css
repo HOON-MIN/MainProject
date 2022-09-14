@@ -127,7 +127,7 @@ input[type="button"]:focus {
 }
 
 /*           Font Smoothing      */
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, .btn-simple {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .brand, .btn-simple {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -698,7 +698,7 @@ h1 .subtitle {
 
 /*            Navigation menu                */
 .nav-pills {
-  background-color: #999999;
+  background-color: #FFFFFF;
 }
 .nav-pills > li + li {
   margin-left: 0;
@@ -843,14 +843,14 @@ label small {
   text-decoration: none;
 }
 .tooltip-inner:after {
-  content: "";
+  
   display: inline-block;
   left: 100%;
   margin-left: -56%;
   position: absolute;
 }
 .tooltip-inner:before {
-  content: "";
+
   display: inline-block;
   left: 100%;
   margin-left: -56%;
@@ -959,7 +959,7 @@ label small {
 @media (min-width: 768px) {
   .navbar-form {
     margin-top: 21px;
-    margin-bottom: 21px;
+    
     padding-left: 5px;
     padding-right: 5px;
   }

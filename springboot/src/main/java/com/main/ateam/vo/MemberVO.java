@@ -2,7 +2,7 @@ package com.main.ateam.vo;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias("mvo")
+@Alias("memberVO")
 public class MemberVO {
 	private int num;
 	private String id;
