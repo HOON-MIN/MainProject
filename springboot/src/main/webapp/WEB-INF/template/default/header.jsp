@@ -14,11 +14,23 @@
 		<div class="d-flex" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
 				<c:choose>
-					<c:when test="${sessionID !=null}">
-						<a class="nav-link" href="${mycontext }/member/memberMypage">마이페이지</a>
+					<c:when test="${sessionNUM == 1}">
+						<a class="nav-link" href="${mycontext }/member/memberMypage">관리자페이지</a>
 						<a class="nav-link active" aria-current="page"
 							href="${mycontext }/member/memberLogout">로그아웃</a>
-					</c:when>
+							</c:when>
+						<c:when test="${sessionNUM != null}">
+							<a class="nav-link" href="${mycontext }/member/memberMypage">마이페이지</a>
+							<a class="nav-link active" aria-current="page"
+							href="${mycontext }/member/memberLogout">로그아웃</a>
+								</c:when>
+							<c:when test="${sessionDNUM != null}">
+								<a class="nav-link" href="${mycontext }/member/memberMypage">의사페이지</a>
+								<a class="nav-link active" aria-current="page"
+								href="${mycontext }/doctor/doctorLogout">로그아웃</a>
+							</c:when>
+					
+					
 					<c:otherwise>
 						<a class="nav-link active" aria-current="page"
 							href="${mycontext }/member/memberLoginForm">로그인</a>

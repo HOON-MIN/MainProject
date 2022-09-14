@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,7 +25,7 @@ public class DoctorController {
 	
 	@PostMapping("/doctorLogin")
 	public ModelAndView doctorLogin(HttpSession session, DoctorVO vo) {
-		ModelAndView mav = new ModelAndView("redirect:/member");
+		ModelAndView mav = new ModelAndView("redirect:/");
 		System.out.println("doctor id = " + vo.getDid());
 		System.out.println("doctor pwd = " + vo.getDpwd());
 		Map<String, String> map = new HashMap<>();
@@ -35,8 +36,8 @@ public class DoctorController {
 			System.out.println("로그인 실패");
 		}else { 
 		System.out.println("로그인 성공");
-		session.setAttribute("sessionID", dto.getDid());
-		session.setAttribute("sessionNUM", dto.getDpwd());
+		session.setAttribute("sessionDID", dto.getDid());
+		session.setAttribute("sessionDNUM", dto.getDpwd());
 		
 		}
 		return mav;	}
@@ -56,4 +57,12 @@ public class DoctorController {
 		System.out.println("doc res => " + res);
 		return res; 
 	}
+	// 로그 아웃
+		@GetMapping(value = "/doctorLogout")
+		public String memberLogout(HttpSession session) {
+			session.removeAttribute("sessionDID");
+			session.removeAttribute("sessionDNUM");
+			System.out.println("로그아웃성공");
+			return "redirect:/";
+		}
 }

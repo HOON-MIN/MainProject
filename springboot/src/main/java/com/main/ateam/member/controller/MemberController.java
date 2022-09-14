@@ -43,7 +43,7 @@ public class MemberController {
 	// 회원 로그인
 	@PostMapping("/memberLogin")
 	public ModelAndView MemberLogin(HttpSession session, MemberVO vo) {
-		ModelAndView mav = new ModelAndView("redirect:/member");
+		ModelAndView mav = new ModelAndView("redirect:/");
 		Map<String, String> map = new HashMap<>();
 		map.put("id", vo.getId());
 		map.put("pwd", vo.getPwd());
@@ -67,7 +67,7 @@ public class MemberController {
 		session.removeAttribute("sessionID");
 		session.removeAttribute("sessionNUM");
 		System.out.println("로그아웃성공");
-		return "redirect:/member";
+		return "redirect:/";
 	}
 	
 	@ResponseBody
@@ -143,7 +143,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		memberService.memberUpdate(vo);
-		return "redirect:/member";
+		return "redirect:/";
 	}
 	
 	@ResponseBody
