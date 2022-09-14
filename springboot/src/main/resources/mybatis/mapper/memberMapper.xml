@@ -14,4 +14,8 @@
   	<update id="memberUpdate">
   	update member set name=#{name},email=#{email},tel=#{tel},profimg=#{profimg} where num = #{num}
   	</update>
+  	<select id="idchk" parameterType="map" resultType="int">
+	select count(*) from member where id=#{id} and pwd=#{pwd}
+</select>
+  	
 </mapper>

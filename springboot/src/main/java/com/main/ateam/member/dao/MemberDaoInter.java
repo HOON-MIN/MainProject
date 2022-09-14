@@ -11,6 +11,7 @@ import com.main.ateam.vo.MemberVO;
 		public MemberVO memberLogin(Map<String, String>map);
 		public MemberVO memberMyPage(int num);
 		public void memberUpdate(MemberVO vo);
+		public int idchk(Map<String, String> vo);
 	}
 
 

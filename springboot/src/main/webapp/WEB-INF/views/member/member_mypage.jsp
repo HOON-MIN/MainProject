@@ -3,9 +3,9 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
-.listTr > td:hover{
-	cursor:pointer;"
-	background-color:white;
+.listTr>td:hover {
+	cursor: pointer; "
+	background-color: white;
 }
 </style>
 <!-- 필요한것 -->
@@ -24,125 +24,111 @@
 <div class="container">
 	<h1>MyPage</h1>
 	<div class="row">
-	<table border="1" class="table table-striped">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>NAME</th>
-				<th>SSN</th>
-				<th>AGE</th>
-				<th>TEL</th>
-				<th>EMAIL</th>
-				<th>PROFIMG</th>
-				<th>MDATE</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>${member.id }</td>
-				<td>${member.name }</td>
-				<td>${member.ssn }</td>
-				<td>${member.age }</td>
-				<td>${member.tel }</td>
-				<td>${member.email }</td>
-				<td><img src="${pageContext.request.contextPath }/upload/${member.profimg }" style="width:100px;height:70px;"></td>
-				<td>${member.mdate }</td>
-
-			</tr>
-
-		</tbody>
-	</table>
-	</div>
-	<!-- 예약한 병원 목록 -->
-	
-	<div class="collapse" id="collapseMap">
-		<div id="map" style="width: 100%; height: 350px;"></div>
-
-		
-		</div>
-		<ul>
-			<li>병원 이름:<span id="name"></span></li>
-			<li>병원 주소:<span id="loc"></span></li>
-			<li>영업 시간:<span id="time"></span></li>
-			<li>병원 구분:<span id="cate"></span></li>
-			<li>홈페이지 주소:<span id="url"></span></li>
-		</ul>
-		<input id="btnStop" type="button" value="감시를 끝낸다" />
-	</div>
-
-	<div class="container">
-		<table class="table1 table table-hover" id="datatables">
+		<table border="1" class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">병원이름</th>
-					<th scope="col">병원주소</th>
-					<th scope="col">진료구분</th>
-					<th scope="col">전화번호</th>
+					<th>ID</th>
+					<th>NAME</th>
+					<th>SSN</th>
+					<th>AGE</th>
+					<th>TEL</th>
+					<th>EMAIL</th>
+					<th>PROFIMG</th>
+					<th>MDATE</th>
 				</tr>
 			</thead>
 			<tbody>
-
+				<tr>
+					<td>${member.id }</td>
+					<td>${member.name }</td>
+					<td>${member.ssn }</td>
+					<td>${member.age }</td>
+					<td>${member.tel }</td>
+					<td>${member.email }</td>
+					<td><img
+						src="${pageContext.request.contextPath }/upload/${member.profimg }"
+						style="width: 100px; height: 70px;"></td>
+					<td>${member.mdate }</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
-	<div>
-		<input type="button" value="수정하기"
-			onclick="location.href='updateMypageForm'"> <input
-			type="button" value="뒤로가기"
-			onclick="location.href='${pageContext.request.contextPath}/member'">
+
+	<!-- 예약한 병원 목록 -->
+	<p>
+	<button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+		data-bs-target="#collapseMap" aria-expanded="false"
+		aria-controls="collapseMap" id="mapButton">지도 보기</button>
+</p>
+	<div class="collapse" id="collapseMap">
+		
+		<div id="map" style="width: 100%; height: 350px;"></div>
+		
 	</div>
+
+</div>
+
+<div class="container">
+	<table class="table1 table table-hover" id="datatables">
+		<thead>
+			<tr>
+				<th scope="col">병원이름</th>
+				<th scope="col">병원주소</th>
+				<th scope="col">진료구분</th>
+				<th scope="col">전화번호</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+	</table>
+</div>
+<div>
+	<input type="button" value="수정하기"
+		onclick="location.href='updateMypageForm'"> <input
+		type="button" value="뒤로가기"
+		onclick="location.href='${pageContext.request.contextPath}/member'">
+</div>
 
 
 
 <script>
 
 	$(function() { //상시 동작 함!
-			<!-- 마이페이지 리스트 불러오기  -->
-			// 예약한 병원 리스트 ajax
-			$.ajax({
-                url: 'http://14.36.188.14:9000/map/hospiter_list',
-                type: 'GET',
-                dataType: 'jsonp',
-                jasonp: 'callback',
-                success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
-                    let tbodyData =[];
-                    for (var i of data.data[0]) {
-                    	tbodyData.push('<tr><td  id="listBtn" style="cursor:pointer;">'+i.hos_name+'</td><td>'+i.hos_address+'</td><td>'+i.hos_loc+'</td><td>'+i.hos_tel+'</td></tr>')
-                    }
-                    	
-                    document.querySelector('.table1 > tbody').innerHTML = tbodyData.join('');
-                },
-                
-                error: function(err){
-                   console.log('Error => '+err);
+		
+		//병원 예약 목록
+		$.ajax({
+            url: 'http://192.168.0.120:9000/map/hospiter_list',
+            //url: 'http://14.36.188.14:9000/map/hospiter_list',
+            type: 'GET',
+            dataType: 'jsonp',
+            jasonp: 'callback',
+            success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
+                let tbodyData =[];
+                for (var i of data.data[0]) {
+                	tbodyData.push('<tr style="cursor:pointer;"><td  id="listBtn" >'+i.hos_name+'</td><td>'+i.hos_address+'</td><td>'+i.hos_loc+'</td><td>'+i.hos_tel+'</td></tr>')
                 }
-            });
+                document.querySelector('.table1 > tbody').innerHTML = tbodyData.join('');
+            },
+            error: function(err){
+               console.log('Error => '+err);
+            }
+        });
+			
 			//-----------------------------------------------
-			// 클릭 시
-			$(".table1").on("click","#listBtn",function(){
-				var hos_value=$(this).text();
-				//console.log('hos_value => '+hos_value);
-				//console.log('td_text => '+$(this).text());
-
-            }); // 예약한 병원 리스트 ajax 끝
-            
-           
-            
 			// 병원 목록 클릭 ajax
 			$(".table1").on("click","tr",function(){
 				var hos_value=$(this).children('#listBtn').text();
 				console.log("td값"+hos_value);
-				
 
 				$.ajax({
-	                url: 'http://14.36.188.14:9000/map/detail?name='+hos_value+'&',
+	                //url: 'http://14.36.188.14:9000/map/detail?name='+hos_value+'&',
+	                url: 'http://192.168.0.120:9000/map/detail?name='+hos_value+'&',
 	                type: 'GET',
 	                dataType: 'jsonp',
 	                jasonp: 'callback',
 	                contentType : "application/jsonp; charset: UTF-8",
 	                success: function(data){
-	                    
-	                    var test= {}
 	                    var hos_marker = {}
 	                    
 	                    for(var i =0; i < data.data[0].length; i++){
@@ -191,6 +177,7 @@
 	            		console.log('marker_y = '+hos_marker['hos_x'])
 	            		console.log('marker_x = '+hos_marker['hos_x'])
 	            		console.log('x = '+(lon+hos_marker['hos_x'])/2)
+	            		
 	            		var center_x = (lon+hos_marker['hos_x'])/2
 	            		var center_y = (lat+hos_marker['hos_y'])/2
 	            		var center_xy= new kakao.maps.LatLng(center_y,center_x)
@@ -203,14 +190,6 @@
 	        				title : positions[i].title
 	        			});
 	            		
-	            		var middle = Math.abs(positions[0]-positions[1])
-	            		//console.log(typeof(positions)); object
-	            		//console.log(positions.length); 2
-	            		console.log("latlng"+[i]+'= '+positions[i].latlng);
-	            		console.log("title"+[i]+'= '+positions[i].title);
-	            		// 두 좌표 평균값
-	            		console.log('평균 구하기 step1 = '+ positions[0].latlng);
-	            		
 	        			var iwContent = positions[i].title, // 인포윈도우에 표시할 내용
 	        			iwRemoveable = true;
 	        			
@@ -220,25 +199,21 @@
 	        			});
 	        			// 인포윈도우를 마커위에 표시합니다 
 	        			infowindow.open(map, marker);
-	        			// 지도 중심좌표를 접속위치로 변경합니다
-	        			map.setCenter(center_xy);
 	        			// 마커를 지도에 표시합니다
 	        			marker.setMap(map);
+	            		}
 	        			var level = map.getLevel();
 	        			
 	        			infowindow.open(map, marker); // 인포윈도우를 마커위에 표시합니다 
 	        			map.setLevel(level + 2);
 	        			map.setCenter(center_xy); // 지도 중심좌표를 접속위치로 변경합니다
-	        			marker.setMap(map); // 마커를 지도에 표시합니다
-	        			
-	            		}
 	            		});
 	            		
-	                } //ajax - success 함수 
+	                } // - success 함수 
 				
-				});
+				}); // - ajax
 			}); // table1 클릭 ajax 끝
-			
+	
 			
 			
 		});

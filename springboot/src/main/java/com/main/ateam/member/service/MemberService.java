@@ -25,4 +25,7 @@ public class MemberService {
 	public void memberUpdate(MemberVO vo) {
 		memberDaoInter.memberUpdate(vo);
 	}
+	public int idchk(Map<String, String> vo) {
+		return memberDaoInter.idchk(vo);
+	}
 }
