@@ -1,0 +1,22 @@
+.header {
+  position: absolute !important;
+  width: 100%;
+  height: 64px;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: #80a7ce;
+}
+
+.hnav {
+  margin-left: 16px;
+  border-bottom: solid 1px #80a7ce;
+}
+
+.hnav:hover {
+  border-bottom: solid 1px white;
+}
+
+a.btn {
+  margin-left: 64px;
+}

@@ -3,6 +3,7 @@ package com.main.ateam.member.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.main.ateam.member.service.MemberService;
@@ -122,4 +124,12 @@ public class MemberController {
 		memberService.memberUpdate(vo);
 		return "redirect:/member";
 	}
+	
+	@ResponseBody
+	@GetMapping("/memberlist")
+	public List<MemberVO> memberList(){
+		List<MemberVO> mlist = memberService.memberList();
+		return mlist;
+	}
+	
 }

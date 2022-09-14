@@ -5,13 +5,17 @@
 
 <mapper namespace="com.main.ateam.member.dao.MemberDaoInter">
 
-<select id="memberLogin" resultType="mvo">
-  	select * from member where id=#{id} and pwd=#{pwd}
-  	</select>
-  	<select id="memberMyPage" resultType="mvo">
-  	select * from member where num=#{num}
-  	</select>
-  	<update id="memberUpdate">
-  	update member set name=#{name},email=#{email},tel=#{tel},profimg=#{profimg} where num = #{num}
-  	</update>
+	<select id="memberLogin" resultType="mvo">
+		select * from member where id=#{id} and pwd=#{pwd}
+	</select>
+	<select id="memberMyPage" resultType="mvo">
+		select * from member where num=#{num}
+	</select>
+	<select id="memberList" resultType="mvo">
+		select * from member order by 1 desc
+	</select>
+	<update id="memberUpdate">
+		update member set name=#{name},email=#{email},tel=#{tel},profimg=#{profimg}
+		where num = #{num}
+	</update>
 </mapper>
