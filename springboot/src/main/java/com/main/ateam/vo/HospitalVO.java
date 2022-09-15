@@ -5,10 +5,16 @@ import org.apache.ibatis.type.Alias;
 @Alias("hvo")
 public class HospitalVO {
 
-	private int hnum;
+	private int hnum, cnum;
 	private String hname, hloc, otime, ctime,
 		hcate, hurl, hemail, hgrade;
 	
+	public int getCnum() {
+		return cnum;
+	}
+	public void setCnum(int cnum) {
+		this.cnum = cnum;
+	}
 	public int getHnum() {
 		return hnum;
 	}

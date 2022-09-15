@@ -20,7 +20,7 @@
 	</ul>
 
 		<%-- 리팩토링 해야 함 --%>
-<table class="table" id="datatablesSimple" style="text-align: center;">
+<table class="table1 table" id="datatablesSimple" style="text-align: center;">
 	<thead>
 		<tr>
 			<th>번호</th>
@@ -32,17 +32,17 @@
 	</thead>
 
 	<tbody>
-		<%-- for start --%>
-		<c:forEach var="e" items="${list }">
-			<tr>
-				<td class="linktd">${e.hnum }</td>
-				<td class="linktd"><a href="hospitalDetail?num=${e.hnum }"> ${e.hname }</a></td>
-				<td class="linktd">${e.hloc }</td>
-				<td class="linktd">${e.otime }~${e.ctime }</td>
-				<td class="linktd">${e.hcate }</td>
-			</tr>
-		</c:forEach>
-		<%-- for end --%>
+<%-- 		<%-- for start --%> 
+<%-- 		<c:forEach var="e" items="${list }"> --%>
+<!-- 			<tr> -->
+<%-- 				<td class="linktd">${e.hnum }</td> --%>
+<%-- 				<td class="linktd"><a href="hospitalDetail?num=${e.hnum }"> ${e.hname }</a></td> --%>
+<%-- 				<td class="linktd">${e.hloc }</td> --%>
+<%-- 				<td class="linktd">${e.otime }~${e.ctime }</td> --%>
+<%-- 				<td class="linktd">${e.hcate }</td> --%>
+<!-- 			</tr> -->
+<%-- 		</c:forEach> --%>
+<%-- 		<%-- for end --%> 
 	</tbody>
 </table>
 
@@ -52,14 +52,53 @@
 <!-- 이전 jquery 임포트 코드 ...!!! -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+// $(function(){
+// 	$('.linktd').click(function(){
+// 		var href = $(this).parent("tr").children("td").children("a").attr("href")
+// // 		alert(href);
+// 		window.location = href;
+// 	});
+//});
+
 $(function(){
-	$('.linktd').click(function(){
-		var href = $(this).parent("tr").children("td").children("a").attr("href")
-// 		alert(href);
-		window.location = href;
-	});
+        //alert("test");
+        //Ajax
+        $.ajax({
+        //url:'http://192.168.0.113:9000/myjson/loadJson',
+	        url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
+	        type:'GET',
+	        dataType:'jsonp',
+	        jsonp:'callback',
+	        success:function(data){
+	            console.log(data);
+	            console.log(data.columns);
+	            console.log(data.data);
+	            let tbodyData =[];
+                for (var i of data.data[0]) {
+                	tbodyData.push('<tr style="cursor:pointer;">'+
+                	'<td  id="listBtn" >'+i.hname+'</td>'
+                	'<td  id="listBtn" >'+i.hname+'</td>'
+                	'<td  id="listBtn" >'+i.hname+'</td>'
+                	'<td  id="listBtn" >'+i.hname+'</td>'
+                	
+                	)
+                }
+                document.querySelector('.table1 > tbody').innerHTML = tbodyData.join('');
+            },
+            error: function(err){
+               console.log('Error => '+err);
+            }
+	        
+        });
 });
+
 </script>
+
+
+
+
+
+
 
 
 

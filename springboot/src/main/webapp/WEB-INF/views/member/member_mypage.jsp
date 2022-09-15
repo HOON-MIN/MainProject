@@ -158,7 +158,7 @@
             //url: 'http://14.36.188.14:9000/map/hospiter_list',
             type: 'GET',
             dataType: 'jsonp',
-            jasonp: 'callback',
+            jsonp: 'callback',
             success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
                 let tbodyData =[];
                 for (var i of data.data[0]) {
@@ -182,7 +182,7 @@
 	                url: 'http://192.168.0.120:9000/map/detail?name='+hos_value+'&',
 	                type: 'GET',
 	                dataType: 'jsonp',
-	                jasonp: 'callback',
+	                jsonp: 'callback',
 	                contentType : "application/jsonp; charset: UTF-8",
 	                success: function(data){
 	                    var hos_marker = {}
