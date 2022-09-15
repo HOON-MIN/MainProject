@@ -101,7 +101,35 @@ $('#loginBtn').click(function(){
           }
 		 }	
   		})
+<<<<<<< HEAD:springboot/src/main/webapp/WEB-INF/views/member/login_form.jsp
 	}
 	});
+=======
+	}else{
+		$.ajax({
+			url: "${pageContext.request.contextPath}/doctor/idchk",
+			type:"POST",
+			dataType:"text",
+			data:"did="+ id +"&dpwd="+pwd,
+		 success : function(data) {
+	         if (data == 0) {
+	        		console.log("id = >"+id);
+	        		console.log("pwd = >"+pwd);
+	              alert('로그인에 실패하였습니다.')
+	              //$('#login-form').attr("action","${pageContext.request.contextPath}/member/memberLoginForm")
+	              //$('#login-form').attr("action","${pageContext.request.contextPath}/member/memberLoginForm").submit();
+	          } else {
+	        	  
+	             // $('#login-form').attr("action","${pageContext.request.contextPath}/doctor/doctorLogin").submit();
+	              $('#login-form').attr("action","${pageContext.request.contextPath}/doctor/doctorLogin");
+	              $('#id').attr({'name':'did'});
+	              $('#pwd').attr({'name':'dpwd'});
+	              $('#login-form').submit();
+	          }
+			 }	
+	  		})
+		}
+	 });
+>>>>>>> main:springboot/src/main/webapp/WEB-INF/views/member/member_login_form.jsp
 });
 </script>

@@ -1,0 +1,27 @@
+.card {
+  max-width: 540px;
+  color: #232323;
+}
+
+.card-body button {
+  font-size: 8px;
+  max-width: 200px;
+}
+.card-text p {
+  margin-top: 16px;
+  text-decoration: none;
+}
+
+.card-title span {
+  margin-left: 16px;
+  font-size: 14px;
+  background-color: #3478f5;
+  padding: 4px 12px;
+  border-radius: 16px;
+  color: white;
+}
+
+Link {
+  color: #232323;
+  text-decoration: none;
+}

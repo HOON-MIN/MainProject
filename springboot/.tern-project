@@ -7,14 +7,34 @@
     "outline": {
       
     },
+<<<<<<< HEAD
+=======
+    "chrome-apps": {
+      
+    },
+    "chrome-extension": {
+      
+    },
+>>>>>>> main
     "browser-extension": {
       
     },
     "bootstrap": {
       
     },
+<<<<<<< HEAD
     "jquery-extension": {
       
+=======
+    "jquery-ui1-12": {
+      
+    },
+    "jquery-extension": {
+      
+    },
+    "jquery-mobile1.5": {
+      
+>>>>>>> main
     }
   },
   "libs": [
