@@ -13,8 +13,10 @@
 						
 						<form id="login-form" action="#" method="post">
 							<div class="form-floating mb-3">
-								<input type="radio" name="cate" id="choose1" value="1" /><span class="up">일반</span><br>
-								<input type="radio" name="cate" id="choose2" value="2"/> <span class="up">의사</span>
+								<input type="radio" name="cate" id="choose1" value="1" checked="checked"/>
+								<span class="up"> 일반 </span>
+								<input type="radio" name="cate" id="choose2" value="2"/><span class="up"> 의사 </span>
+								<input type="radio" name="cate" id="choose3" value="3"/><span class="up"> 사업자 </span>
 									
 							</div>
 							<div class="form-floating mb-3">
@@ -74,41 +76,32 @@ $('#loginBtn').click(function(){
          if (data == 0) {
         	 console.log('data => ' + data);
               alert('로그인에 실패하였습니다.')
-              //$('#login-form').attr("action","${pageContext.request.contextPath}/member/memberLoginForm")
-              //$('#login-form').attr("action","${pageContext.request.contextPath}/member/memberLoginForm").submit();
           } else {
               $('#login-form').attr("action","memberLogin").submit();
+			}
+		 }	
+  	 })
+}else{
+	$.ajax({
+		url: "${pageContext.request.contextPath}/doctor/idchk",
+		type:"POST",
+		dataType:"text",
+		data:"did="+ id +"&dpwd="+pwd,
+	 success : function(data) {
+         if (data == 0) {
+        		console.log("id = >"+id);
+        		console.log("pwd = >"+pwd);
+              alert('로그인에 실패하였습니다.')
+          } else {
+        	  
+              $('#id').attr({'name':'did'});
+              $('#pwd').attr({'name':'dpwd'});
+              $('#login-form').attr("action","${pageContext.request.contextPath}/doctor/doctorLogin").submit();
+              
           }
 		 }	
   		})
-	}else{
-		$.ajax({
-			url: "${pageContext.request.contextPath}/doctor/idchk",
-			type:"POST",
-			dataType:"text",
-			data:"did="+ id +"&dpwd="+pwd,
-		 success : function(data) {
-	         if (data == 0) {
-	        		console.log("id = >"+id);
-	        		console.log("pwd = >"+pwd);
-	              alert('로그인에 실패하였습니다.')
-	              //$('#login-form').attr("action","${pageContext.request.contextPath}/member/memberLoginForm")
-	              //$('#login-form').attr("action","${pageContext.request.contextPath}/member/memberLoginForm").submit();
-	          } else {
-	        	  
-	             // $('#login-form').attr("action","${pageContext.request.contextPath}/doctor/doctorLogin").submit();
-	              $('#login-form').attr("action","${pageContext.request.contextPath}/doctor/doctorLogin");
-	              $('#id').attr({'name':'did'});
-	              $('#pwd').attr({'name':'dpwd'});
-	              $('#login-form').submit();
-	          }
-			 }	
-	  		})
-		}
+	}
 	});
 });
-	
-
 </script>
-
-

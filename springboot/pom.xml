@@ -24,6 +24,14 @@
 		</repository>
 	</repositories>
 	<dependencies>
+		
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<optional>true</optional>
+			</dependency>
+		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -165,26 +173,11 @@
 							<npmVersion>8.15.0</npmVersion>
 						</configuration>
 					</execution>
-					
-					<!-- <execution>
-						<id>npm install</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<arguments>install</arguments>
-						</configuration>
-					</execution>
 
-					<execution>
-						<id>npm run build</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<arguments>run build</arguments>
-						</configuration>
-					</execution> -->
+					<!-- <execution> <id>npm install</id> <goals> <goal>npm</goal> </goals> 
+						<configuration> <arguments>install</arguments> </configuration> </execution> 
+						<execution> <id>npm run build</id> <goals> <goal>npm</goal> </goals> <configuration> 
+						<arguments>run build</arguments> </configuration> </execution> -->
 				</executions>
 			</plugin>
 			<plugin>

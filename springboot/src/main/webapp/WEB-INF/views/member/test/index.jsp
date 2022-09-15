@@ -46,14 +46,14 @@
 
                     	<div class="wizard-header">
                         	<h3>
-                        	   <b>BUILD</b> YOUR PROFILE <br>
+                        	   <b>BUILD</b> 프로필 <br>
                         	   <small>This information will let us know more about you.</small>
                         	</h3>
                     	</div>
 
 						<div class="wizard-navigation">
 							<ul>
-	                            <li><a href="#about" data-toggle="tab">About</a></li>
+	                            <li><a href="#about" data-toggle="tab">Profile</a></li>
 	                            <li><a href="#account" data-toggle="tab">Account</a></li>
 	                            <li><a href="#address" data-toggle="tab">Address</a></li>
 	                        </ul>

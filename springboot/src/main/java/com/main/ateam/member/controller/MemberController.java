@@ -37,7 +37,7 @@ public class MemberController {
 
 	@GetMapping("/memberLoginForm")
 	public String MemberLoginForm() {
-		return "member/member_login_form";
+		return "member/login_form";
 	}
 	
 	// 회원 로그인
@@ -88,26 +88,35 @@ public class MemberController {
 	}
 
 	// 로그인 테스트
-	@GetMapping(value = "/test")
+	@GetMapping(value = "/test2")
 	public String test() {
 	
-		return "member/test";
+		return "member/test/index2";
 	}
 	// 로그인 테스트
-		@GetMapping(value = "/test2")
+		@GetMapping(value = "/test")
 		public String test2() {
 		
-			return "member/index";
+			return "member/test/index";
 		}
 
 	// 회원 마이페이지
 	@GetMapping(value = "/memberMypage")
 	public String memberMypage(Model m, HttpSession session) {
 		int num = 0;
-		//num = (int) session.getAttribute("sessionNUM");
-		MemberVO vo = memberService.memberMyPage(1);
+		num = (int) session.getAttribute("sessionNUM");
+		MemberVO vo = memberService.memberMyPage(num);
 		m.addAttribute("member", vo);
-		return "member/member_mypage";
+		return "mypage/member_mypage";
+	}
+	// 회원 마이페이지 - 예약목록(지도)
+	@GetMapping(value = "/memberMypage_list")
+	public String memberMypage_list(Model m, HttpSession session) {
+		int num = 0;
+		num = (int) session.getAttribute("sessionNUM");
+		MemberVO vo = memberService.memberMyPage(num);
+		m.addAttribute("member", vo);
+		return "mypage/member_mypage_list";
 	}
 
 	// 수정하기 폼으로
@@ -115,9 +124,9 @@ public class MemberController {
 	public String updateMypage(Model m,HttpSession session) {
 		int num = 0;
 		num = (int) session.getAttribute("sessionNUM");
-		MemberVO vo = memberService.memberMyPage(1);
+		MemberVO vo = memberService.memberMyPage(num);
 		m.addAttribute("member", vo);
-		return "member/updateMypage";
+		return "mypage/updateMypage";
 	}
 
 	@RequestMapping("/updateMypage")
@@ -133,7 +142,7 @@ public class MemberController {
 		
 		String path = "D:\\iKosmo113\\spring\\bootworkspace\\springboot\\src\\main\\resources\\static\\upload\\"+oriFn;
 //		vo.setNum(num);
-		vo.setNum(1);
+		vo.setNum(num);
 		vo.setProfimg(oriFn);
 		File f = new File(path);
 		System.out.println(f.getPath());
@@ -143,7 +152,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		memberService.memberUpdate(vo);
-		return "redirect:/";
+		return "mypage/memberMypage";
 	}
 	
 	@ResponseBody
