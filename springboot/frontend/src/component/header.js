@@ -3,14 +3,15 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import "./css/header.css";
+import "../css/header.css";
 import logo from "../img/chicken.png";
+import { Route, Link } from "react-router-dom";
 
 function Header() {
   return (
     <Navbar variant="dark" className="header">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand as={Link} to="/">
           <img
             src={logo}
             width="30"
