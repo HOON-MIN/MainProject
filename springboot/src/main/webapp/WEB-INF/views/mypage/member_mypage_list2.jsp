@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
 	<div>
-		<h3>예약목록</h3>
+		<h3>${sessionNAME}님의 예약목록</h3>
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -19,6 +19,7 @@
 				</div>
 				<div class="modal-body">
 					<div id="map" style="width: 100%; height: 450px;"></div>
+					<div id="hos_status"></div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
@@ -29,15 +30,26 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body">
+      <div id="map" style="width: 100%; height: 450px;"></div>
+      </div>
+    </div>
+  </div>
+	
 	<select id="dataPerPage">
         <option value="5">5개씩보기</option>
         <option value="10">10개씩보기</option>
         <option value="20">20개씩보기</option>
 </select>
 	<div class="jb"></div>
-	
+	<div style="text-align: center;">
 	<ul class="tj" id="pagingul"></ul>
-	<div id="displayCount" style="text-align"></div>
+	</div>
+	<div id="displayCount" style="text-align: center;"></div>
+</div>
 </div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 <script type="text/javascript"
@@ -96,7 +108,6 @@ let d=[];
                     for(var i =0; i < data.data[0].length; i++){
                     	hos_marker[data.columns[i]]=data.data[0][i];
                     }
-                    
                     console.log('결과1= '+hos_marker['hos_x']);
                     console.log('결과2= '+hos_marker['hos_y']);
                     console.log('병원이름= '+hos_marker['hos_name']);
@@ -128,8 +139,8 @@ let d=[];
             		        title: hos_marker['hos_name'], 
             		        latlng: new kakao.maps.LatLng(hos_marker['hos_y'], hos_marker['hos_x'])
             		    }];
-            		
-            		console.log('=============== ')
+
+       				console.log('=============== ')
             		console.log('현위치 - lat = '+lat)
             		console.log('현위치 - lon = '+lon)
             		console.log('목적지 - marker_y = '+hos_marker['hos_y'])
@@ -259,15 +270,24 @@ let d=[];
 				  ) {
 					  
 				  console.log('i => ' + i)
-				  if(totalData >i){
+				  /* if(totalData >i){
 				    chartHtml +=
 				    	'<div class="jb-wrap">'+
-	                	'<div class="jb-image">'+
-	                	'<img src="/taejin/hospital_img/hospital.jpg" style="cursor:pointer;"data-bs-toggle="modal" '+
+	                	'<div class="jb-image"style="text-align:center;">'+
+	                	'<img src="/taejin/hospital_img/hospital.jpg" style="cursor:pointer; " data-bs-toggle="collapse" '+
+	                	'href="#multiCollapseExample1"  aria-expanded="false" aria-controls="multiCollapseExample1"'+
+	                	'data-bs-target="#exampleModal" id="listBtn">'+d[i]+'</div></div>';
+				  } */
+				 if(totalData >i){
+				    chartHtml +=
+				    	'<div class="jb-wrap">'+
+	                	'<div class="jb-image"style="text-align:center;">'+
+	                	'<img src="/taejin/hospital_img/hospital.jpg" style="cursor:pointer; " data-bs-toggle="modal"  '+
 	                	'data-bs-target="#exampleModal" id="listBtn">'+d[i]+'</div></div>';
 				  }
 				  } 
 							  document.querySelector('.jb').innerHTML =chartHtml;
+							  //document.querySelector('#multiCollapseExample1').innerHTML =chartHtml;
 				}
 		
 			

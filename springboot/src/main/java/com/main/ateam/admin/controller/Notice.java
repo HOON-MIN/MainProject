@@ -1,4 +1,4 @@
-package com.main.ateam.admin.controller.notice;
+package com.main.ateam.admin.controller;
 
 import java.util.HashMap;
 
@@ -62,4 +62,6 @@ public class Notice {
 		noticeService.updateNotice(vo);
 		return "redirect:/admin/notice";
 	}
+	//////////////////////////////////////////////////////////////////////
+	
 }
