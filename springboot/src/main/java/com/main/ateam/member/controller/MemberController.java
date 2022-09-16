@@ -94,10 +94,11 @@ public class MemberController {
 		return "member/test/index2";
 	}
 	// 로그인 테스트
-		@GetMapping(value = "/test")
-		public String test2() {
-		
-			return "member/test/index";
+		@PostMapping(value = "/test")
+		public String test2(@RequestParam Map<String, Object> param) {
+			String len = (String) param.get("len");
+			System.out.println("len = > " + len);
+			return "mypage/member_mypage";
 		}
 
 	// 회원 마이페이지
@@ -116,7 +117,7 @@ public class MemberController {
 		num = (int) session.getAttribute("sessionNUM");
 		MemberVO vo = memberService.memberMyPage(num);
 		m.addAttribute("member", vo);
-		return "mypage/member_mypage_list";
+		return "mypage/member_mypage_list2";
 	}
 
 	// 수정하기 폼으로

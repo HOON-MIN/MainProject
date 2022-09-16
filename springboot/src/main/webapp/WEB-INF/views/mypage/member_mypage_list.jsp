@@ -26,7 +26,9 @@
 
 
 <div class="container-fluid">
-
+<div>
+<h3>예약목록</h3>
+</div>
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -48,37 +50,17 @@
 			</div>
 		</div>
 	</div>
-	<!--
-	 예약한 병원 목록 테이블
-	<div class="container">
-		<table class="table1 table table-hover">
-			<thead>
-				<tr>
-					<th scope="col">병원이름</th>
-					<th scope="col">병원주소</th>
-					<th scope="col">진료구분</th>
-					<th scope="col">전화번호</th>
-				</tr>
-			</thead>
-			<tbody>
-
-			</tbody>
-		</table>
-	</div>
-	-->
-	<!-- 예약한 병원 목록 그림 -->
 	<div class="jb">
-		
 	</div>
 </div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 
 <script>
 
-	$(function() { //상시 동작 함!
+	$(function() { 
 		
+	
 		//병원 예약 목록
-		
 		$.ajax({
             url: 'http://192.168.0.120:9000/map/hospiter_list',
             //url: 'http://14.36.188.14:9000/map/hospiter_list',
@@ -87,12 +69,17 @@
             jasonp: 'callback',
             
             success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
-                let tbodyData =[];
+                console.log(data.data[0].length)
+            	let tbodyData =[];
                 let imgData =[];
                 let nameData =[];
+                
                 for (var i of data.data[0]) {
 //                	tbodyData.push('<tr style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal"><td  id="listBtn" >'+i.hos_name+'</td><td>'+i.hos_address+'</td><td>'+i.hos_loc+'</td><td>'+i.hos_tel+'</td></tr>')
-                	imgData.push('<div class="jb-wrap"><div class="jb-image"><img src="/taejin/hospital_img/hospital.jpg" style="cursor:pointer;"data-bs-toggle="modal" data-bs-target="#exampleModal" id="listBtn" >'+i.hos_name+'</div></div>')
+                	imgData.push('<div class="jb-wrap">'+
+                	'<div class="jb-image">'+
+                	'<img src="/taejin/hospital_img/hospital.jpg" style="cursor:pointer;"data-bs-toggle="modal" '+
+                	'data-bs-target="#exampleModal" id="listBtn" >'+i.hos_name+'</div></div>')
                 	nameData.push(i.hos_name)
                 }
                 // data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -101,6 +88,7 @@
             },
             error: function(err){
                console.log('Error => '+err);
+            	
             }
         });
 			
@@ -215,6 +203,48 @@
 		
 			
 		});
-	
+		function pageLink(curPage, totalPages, funName) {
+			var pageUrl = "";
+			
+			var pageLimit = 5;
+			var startPage = parseInt((curPage - 1) / pageLimit) * pageLimit + 1;
+			var endPage = startPage + pageLimit - 1;
+			
+			if (totalPages < endPage) {
+			    endPage = totalPages;
+			}
+			
+			var nextPage = endPage + 1;
+			console.log(curPage,"curPage,",startPage,"startPage,",endPage,"endPage,",nextPage,"nextPage")
+			
+			//맨 첫 페이지
+			if (curPage > 1 && pageLimit < curPage) {
+			    pageUrl += "<a class='page first' href='javascript:" + funName + "(1);'><i class='fas fa-angle-double-left'></a>";
+			}
+			//이전 페이지
+			if (curPage > pageLimit) {
+			    pageUrl += " <a class='page prev' href='javascript:" + funName + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><i class='fas fa-angle-left'></a>";
+			}
+			//~pageLimit 맞게 페이지 수 보여줌
+			for (var i = startPage; i <= endPage; i++) {
+			    //현재페이지면 진하게 표시
+			    if (i == curPage) {
+			        pageUrl += " <a href='#'><strong>" + i + "</strong></a>"
+			    } else {
+			        pageUrl += " <a href='javascript:" + funName + "(" + i + ");'> " + i + " </a>";
+			    }
+			}
+			//다음 페이지
+			if (nextPage <= totalPages) {
+			    pageUrl += "<a class='page next' href='javascript:" + funName + "(" + (nextPage < totalPages ? nextPage : totalPages) + ");'><i class='fas fa-angle-right'></a>";
+			}
+			//맨 마지막 페이지
+			if (curPage < totalPages && nextPage < totalPages) {
+			    pageUrl += "<a class='page last' href='javascript:" + funName + "(" + totalPages + ");'><i class='fas fa-angle-double-right'></a>";
+			}
+			//console.log(pageUrl);
+			
+			return pageUrl;
+		}
 	
 </script>
