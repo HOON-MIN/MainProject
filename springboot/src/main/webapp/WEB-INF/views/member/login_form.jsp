@@ -54,18 +54,25 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+const input = document.querySelector('#login-form');
+input.addEventListener('keypress',function(e){
+    if (e.code == 'Enter') {
+    login();
+  }  
+});
+	$('#loginBtn').click(function(){
+		login();
+	})
 
-$(function() {
-	var choose = $('input:radio[name="cate"]:checked','#login-form').val(); 
 	
-$('#loginBtn').click(function(){
+	function login(){
+	var choose = $('input:radio[name="cate"]:checked','#login-form').val(); 
+			
+		
 	var id = $('#id').val();
 	var pwd = $('#pwd').val();
 	
-	console.log("id = >"+id);
-	console.log("pwd = >"+pwd);
 	console.log("choose_val2 = >"+$('input:radio[name="cate"]:checked','#login-form').val());
-	console.log();    
 	if($('input:radio[name="cate"]:checked','#login-form').val() == 1){
 	$.ajax({
 		url: "idchk",
@@ -101,7 +108,8 @@ $('#loginBtn').click(function(){
           }
 		 }	
   		})
+}
+	
 	}
-	});
-});
+
 </script>

@@ -29,8 +29,6 @@
 			</div>
 		</div>
 	</div>
-	<input type="button" onclick="a()" value="show1" >-->
-	<input type="button" onclick="b()" value="show2" >-->
 	<select id="dataPerPage">
         <option value="5">5개씩보기</option>
         <option value="10">10개씩보기</option>
