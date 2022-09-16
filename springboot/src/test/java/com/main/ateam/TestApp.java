@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 
 class TestApp {
-
+//동환님때문에 씀
 	@Test
 	void test() {
 		fail("Not yet implemented");

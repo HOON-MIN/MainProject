@@ -12,7 +12,14 @@ public class DoctorVO {
 	private String did;
 	private String dpwd;
 	private String dmajor;
+	private List<HospitalVO> hospitalVO;
 	
+	public List<HospitalVO> getHospitalVO() {
+		return hospitalVO;
+	}
+	public void setHospitalVO(List<HospitalVO> hospitalVO) {
+		this.hospitalVO = hospitalVO;
+	}
 	public int getDnum() {
 		return dnum;
 	}

@@ -4,7 +4,7 @@ import "../css/doctorDetail.css";
 
 const DoctorDetail = () => {
   return (
-    <div className="body container detailbody">
+    <div className="body container detailbody mt-5">
       <div className="d-flex flex-column align-items-center p">
         <div className="text-center">
           <img src={DoctorDetailImg} className="detailImg" alt="..." />
