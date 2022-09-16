@@ -18,6 +18,19 @@
     </ul>
   </li>
   
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+    	ksw - 약품 정보</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="${mycontext }/drugList">전체 약품 정보 </a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="${mycontext }/drugMyCase">나의 의약품 케이스 </a></li>
+      <li><a class="dropdown-item" href="${mycontext }/drugSearchHistory">약품 검색 기록 </a></li>
+      <li><a class="dropdown-item" href="${mycontext }/drugSearchShape">모양으로 약품 찾기</a></li>
+      <li><a class="dropdown-item" href="${mycontext }/drugInsertForm">약품 등록</a></li>
+    </ul>
+  </li>
+  
   
 
   
