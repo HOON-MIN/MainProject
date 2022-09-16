@@ -23,6 +23,12 @@
 		</div>
 		<div class="col-md-10 mb-3 ">
 
+			<label>효능.효과 : </label> <input class="form-control text-center"
+				type="text" id="drug_effect" name="drug_effect"
+				value="${vo.drug_effect}" readonly="readonly">
+		</div>
+		<div class="col-md-10 mb-3 ">
+
 			<label>제형 : </label> <input class="form-control text-center"
 				type="text" id="drug_formulation" name="drug_formulation"
 				value="${vo.drug_formulation}" readonly="readonly">
@@ -59,13 +65,13 @@
 			<label for="imgname">첨부된 이미지 </label> <img style="width: 500px"
 				; 
 			height="300px"
-				src="${pageContext.request.contextPath}/resources/imgfile/${vo.drug_img}"
+				src="kimsungwook/imgfile/${vo.drug_img}"
 				id="imgname" value="imgname">
 		</div>
 	</form>
 
-	<div class="form-group float-end"
-		style="text-align: right; margin-top: 10px;">
+	<div class="form-group "
+		style=" margin-top: 10px;">
 		<button type="button" class="btn btn-primary" id="listbtn" 
 		onclick="location='drugList'">전체리스트보기</button>
 	</div>
