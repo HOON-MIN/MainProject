@@ -1,5 +1,6 @@
 package com.main.ateam.doctor.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,9 @@ public class DoctorService {
 	}
 	public int idchk(Map<String, String> vo) {
 		return doctordao.idchk(vo);
+	}
+	
+	public List<DoctorVO> hospitalDoctorList(){
+		return doctordao.hospitalDoctorList();
 	}
 }

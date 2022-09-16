@@ -1,5 +1,7 @@
 package com.main.ateam.vo;
 
+import java.util.List;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("hvo")
@@ -8,7 +10,14 @@ public class HospitalVO {
 	private int hnum, cnum;
 	private String hname, hloc, otime, ctime,
 		hcate, hurl, hemail, hgrade;
+	private List<DoctorVO> doctorVO;
 	
+	public List<DoctorVO> getDoctorVO() {
+		return doctorVO;
+	}
+	public void setDoctorVO(List<DoctorVO> doctorVO) {
+		this.doctorVO = doctorVO;
+	}
 	public int getCnum() {
 		return cnum;
 	}
