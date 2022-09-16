@@ -117,7 +117,7 @@ public class MemberController {
 		num = (int) session.getAttribute("sessionNUM");
 		MemberVO vo = memberService.memberMyPage(num);
 		m.addAttribute("member", vo);
-		return "mypage/member_mypage_list2";
+		return "mypage/member_mypage_list";
 	}
 
 	// 수정하기 폼으로
