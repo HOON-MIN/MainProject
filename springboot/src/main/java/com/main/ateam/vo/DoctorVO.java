@@ -1,5 +1,7 @@
 package com.main.ateam.vo;
 
+import java.util.List;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("doctorVO")

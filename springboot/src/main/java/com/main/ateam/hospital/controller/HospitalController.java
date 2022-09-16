@@ -25,23 +25,23 @@ public class HospitalController {
 	public String hospitalList(SearchVO svo, Model m) {
 //		ModelAndView mav = new ModelAndView();
 		System.out.println("controller - hospitalList");
-		List<HospitalVO> list = service.getList();
-		System.out.println(list);
-		for(HospitalVO e : list) {
-			System.out.println(e.getHname());
-		}
-		m.addAttribute("list", list);
+//		List<HospitalVO> list = service.getList();
+//		System.out.println(list);
+//		for(HospitalVO e : list) {
+//			System.out.println(e.getHname());
+//		}
+//		m.addAttribute("list", list);
 		return "hospital/hospitalList";	
 	}
 
 	@GetMapping(value = "/hospitalDetail")
 	public String hospitalDetail(int num, Model m) {
 		System.out.println("controller - hospitalDetail");
-		HospitalVO vo = service.getDetail(num);
-		String time = vo.getOtime()+"~"+vo.getCtime();
-		System.out.println("hname => "+vo.getHname());
-		m.addAttribute("vo", vo);
-		m.addAttribute("time", time);
+//		HospitalVO vo = service.getDetail(num);
+//		String time = vo.getOtime()+"~"+vo.getCtime();
+//		System.out.println("hname => "+vo.getHname());
+//		m.addAttribute("vo", vo);
+//		m.addAttribute("time", time);
 		return "hospital/hospitalDetail";
 	}
 	

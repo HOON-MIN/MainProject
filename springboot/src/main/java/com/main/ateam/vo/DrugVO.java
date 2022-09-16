@@ -14,6 +14,12 @@ public class DrugVO {
 	private String drug_component;
 	private String drug_company;
 	private String drug_description;
+	public String getDrug_date() {
+		return drug_date;
+	}
+	public void setDrug_date(String drug_date) {
+		this.drug_date = drug_date;
+	}
 	private Float drug_size_l;
 	private Float drug_size_s;
 	private Float drug_size_w;
@@ -25,6 +31,7 @@ public class DrugVO {
 	private String drug_split_line_B;
 	private String drug_disposal;
 	private String drug_shape;
+	private String drug_date;
 	// spring web 제공해주는 multipart.MultipartFile
 	private MultipartFile mfile;
 	public MultipartFile getMfile() {

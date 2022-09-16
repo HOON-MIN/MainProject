@@ -17,13 +17,6 @@
 
 							<div class="col-md-10 mb-3 ">
 
-								<input class="form-control text-center" type="number" id="drug_idx"
-									name="drug_idx" placeholder="약품 고유 식별 번호을 입력하세요 " required>
-
-							</div>
-
-							<div class="col-md-10 mb-3 ">
-
 								<input class="form-control text-center" type="text" id="drug_name"
 									name="drug_name" placeholder="약품명을 입력하세요 " required>
 							</div>

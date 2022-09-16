@@ -1,6 +1,7 @@
 package com.main.ateam.doctor.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -57,6 +58,8 @@ public class DoctorController {
 		System.out.println("doc res => " + res);
 		return res; 
 	}
+	
+	
 	// 로그 아웃
 		@GetMapping(value = "/doctorLogout")
 		public String memberLogout(HttpSession session) {
@@ -64,5 +67,12 @@ public class DoctorController {
 			session.removeAttribute("sessionDNUM");
 			System.out.println("로그아웃성공");
 			return "redirect:/";
+		}
+		
+		@ResponseBody
+		@GetMapping(value ="/dlist")
+		public List<DoctorVO> doctorHopitalList() {
+			List<DoctorVO> dlist = doctorservice.hospitalDoctorList();
+			return dlist;
 		}
 }

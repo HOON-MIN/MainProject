@@ -12,5 +12,30 @@
   	<select id="idchk" parameterType="map" resultType="int">
 	select count(*) from doctor where did=#{did} and dpwd=#{dpwd}
 </select>
+
+
+<resultMap type="hvo" id="hospitalDoctorResult">
+<id property="hnum" column ="hnum"/>
+<result property="hname" column="hname"/>
+<result property="otime" column="otime"/>
+<result property="ctime" column="ctime"/>
+
+<collection 
+	property="doctorVO" 
+	javaType="java.util.List"
+ 	ofType="doctorVO"
+ 	>
+ 	<id property="hnum" column="hnum" javaType="int"/>
+	<result property="dnum" column="dnum"/>
+	<result property="dname" column="dname"/>
+	<result property="dmajor" column="dmajor"/>
+</collection>
+</resultMap>
+
+
+<select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
+select d.dnum, d.hnum, d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.hnum = h.hnum
+</select>
+
   	
 </mapper>
