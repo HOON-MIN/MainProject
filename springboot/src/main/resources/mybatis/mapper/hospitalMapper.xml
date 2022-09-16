@@ -13,29 +13,5 @@
 </select>
 
 
-<resultMap type="doctorVO" id="hospitalDoctorResult">
-<id property="hnum" column ="hnum"/>
-<result property="dnum" column="dnum"/>
-<result property="dname" column="dname"/>
-<result property="dmajor" column="dmajor"/>
-
-<collection 
-	property="hospitalVO" 
-	javaType="java.util.List"
- 	ofType="hvo"
- 	>
- 	<id property="hnum" column="hnum" javaType="int"/>
-	<result property="hname" column="hanme"/>
-	<result property="otime" column="otime"/>
-	<result property="ctime" column="ctime"/>
-</collection>
-</resultMap>
-
-
-<select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
-select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.hnum = h.hnum;
-</select>
-
-
 </mapper>
 

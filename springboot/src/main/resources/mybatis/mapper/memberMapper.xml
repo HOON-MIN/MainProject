@@ -17,5 +17,9 @@
   	<select id="idchk" parameterType="map" resultType="int">
 	select count(*) from member where id=#{id} and pwd=#{pwd}
 </select>
+
+<select id="memberList" resultType="memberVO">
+	select * from member order by 1 desc
+</select>
   	
 </mapper>

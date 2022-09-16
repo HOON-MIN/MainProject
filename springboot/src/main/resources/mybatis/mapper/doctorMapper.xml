@@ -14,27 +14,27 @@
 </select>
 
 
-<resultMap type="doctorVO" id="hospitalDoctorResult">
+<resultMap type="hvo" id="hospitalDoctorResult">
 <id property="hnum" column ="hnum"/>
-<result property="dnum" column="dnum"/>
-<result property="dname" column="dname"/>
-<result property="dmajor" column="dmajor"/>
+<result property="hname" column="hname"/>
+<result property="otime" column="otime"/>
+<result property="ctime" column="ctime"/>
 
 <collection 
-	property="hospitalVO" 
+	property="doctorVO" 
 	javaType="java.util.List"
- 	ofType="hvo"
+ 	ofType="doctorVO"
  	>
  	<id property="hnum" column="hnum" javaType="int"/>
-	<result property="hname" column="hanme"/>
-	<result property="otime" column="otime"/>
-	<result property="ctime" column="ctime"/>
+	<result property="dnum" column="dnum"/>
+	<result property="dname" column="dname"/>
+	<result property="dmajor" column="dmajor"/>
 </collection>
 </resultMap>
 
 
 <select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
-select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.hnum = h.hnum;
+select d.dnum, d.hnum, d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.hnum = h.hnum
 </select>
 
   	
