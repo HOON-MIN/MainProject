@@ -29,12 +29,12 @@ const HospitalList = () => {
         <hr />
       </div>
       {doctors.map((doctor) => (
-        <Link to={"/detail/${doctor.dnum}"} style={{ textDecoration: "none" }}>
+        <Link to={"/detail/" + doctor.dnum} style={{ textDecoration: "none" }}>
           <DoctorList key={doctor.dnum} doctor={doctor} />
         </Link>
       ))}
 
-      <Link to="/detail" style={{ textDecoration: "none" }}>
+      <Link to={"/detail"} style={{ textDecoration: "none" }}>
         <div className="d-flex justify-content-center mt-4">
           <div className="card">
             <div className="row g-0">

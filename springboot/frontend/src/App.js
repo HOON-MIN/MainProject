@@ -3,8 +3,8 @@ import "./App.css";
 import Header from "./component/header";
 import UserList from "./component/UserList";
 import Mainpage from "./page/Mainpage";
-import DoctorList from "./page/DoctorList";
-import DoctorDetail from "./page/DoctorDetail";
+import DoctorListPage from "./page/DoctorListPage";
+import DoctorDetailPage from "./page/DoctorDetailPage";
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Mainpage />} />
         <Route path="/ulist" element={<UserList />} />
-        <Route path="/dlist/*" element={<DoctorList />} />
-        <Route path="/detail/*" element={<DoctorDetail />} />
+        <Route path="/dlist/*" element={<DoctorListPage />} />
+        <Route path="/detail/:dnum" element={<DoctorDetailPage />} />
       </Routes>
     </div>
   );
