@@ -31,6 +31,16 @@
     </ul>
   </li>
   
+      <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+    	SYP</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="${mycontext }/drugList">ReviewBoard List </a></li>
+      <li><a class="dropdown-item" href="${mycontext }/drugMyCase">ReviewBoard Form</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="${mycontext }/drugSearchHistory">DashBoard(Ing)</a></li>
+    </ul>
+  </li>
   
 
   
