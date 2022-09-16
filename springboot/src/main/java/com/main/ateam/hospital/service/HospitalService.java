@@ -17,16 +17,16 @@ public class HospitalService {
 	@Autowired
 	private HospitalDao dao;
 
-//	public List<HospitalVO> getList() {
-//		List<HospitalVO> list = dao.getList();
-//		System.out.println("service => " + list);
-//		return list;
-//	}
+	public List<HospitalVO> getList() {
+		List<HospitalVO> list = dao.getList();
+		System.out.println("service => " + list);
+		return list;
+	}
 
-//	public HospitalVO getDetail(int num) {
-//		HospitalVO vo = dao.getDetail(num);
-//		System.out.println("service => " + vo);
-//		return vo;
-//	}
+	public HospitalVO getDetail(int num) {
+		HospitalVO vo = dao.getDetail(num);
+		System.out.println("service => " + vo);
+		return vo;
+	}
 
 }

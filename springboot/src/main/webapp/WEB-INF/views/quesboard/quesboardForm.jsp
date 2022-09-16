@@ -2,14 +2,15 @@
 	pageEncoding="UTF-8"%>
 
 <div id="content" class="container mt-5">
-<h2 class="text-center">의학지식 질문하기</h2>
 <div class="row" style="text-align:center">
+<h2 class="text-center">의학지식 질문하기</h2><br><br>
   <form method="post" action="qbInsert">
+  <input type="hidden" name="id" id="id" value="${sessionID }" ><br>
     <fieldset>
-		<p>
-			아이디(나중에 세션으로 받는것으로 수정)
-			<input type="text" name="id" id="id" >
-		</p>
+<!-- 		<p> -->
+<!-- 			아이디(나중에 세션으로 받는것으로 수정) -->
+<!-- 			<input type="text" name="id" id="id" > -->
+<!-- 		</p> -->
 		<p>
 			제목 <input type="text" name="qtitle" id="qtitle" >
 		</p>

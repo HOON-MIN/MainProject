@@ -32,8 +32,7 @@
 <!-- ------------------------------->
 
 <!-- taejin -->
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955"></script>
+
 	<!--  cdn -->
 <script src="/taejin/js/scripts.js"></script>
 

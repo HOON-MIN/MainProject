@@ -14,6 +14,7 @@
       <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="${mycontext }/quesboard/qbForm">QuesBoard Form</a></li>
       <li><a class="dropdown-item" href="${mycontext }/quesboard/qbList">QuesBoard List</a></li>
+      <li><a class="dropdown-item" href="${mycontext }/medInq/medInqForm">문진표 작성</a></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </li>

@@ -42,7 +42,8 @@
 	<div id="displayCount" style="text-align"></div>
 </div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
-
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955"></script>
 <script>
 let totalData; //총 데이터 수
 let dataPerPage; //한 페이지에 나타낼 글 수

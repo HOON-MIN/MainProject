@@ -88,10 +88,10 @@ public class MemberController {
 	}
 
 	// 로그인 테스트
-	@GetMapping(value = "/test2")
+	@GetMapping(value = "/tt")
 	public String test() {
 	
-		return "member/test/index2";
+		return "member/test/tt";
 	}
 	// 로그인 테스트
 		@PostMapping(value = "/test")
