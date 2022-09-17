@@ -1,4 +1,4 @@
-package com.main.ateam.admin.controller;
+package com.main.ateam.admin.controller.notice;
 
 import java.util.HashMap;
 
