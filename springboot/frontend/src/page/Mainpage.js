@@ -114,7 +114,7 @@ const Mainpage = () => {
       </div>
       <div className="inner">
         <div className="innerImg">
-          <img src={mainImg2} className="mainImg" />
+          <img src="https://ifh.cc/g/zTr63k.jpg" className="mainImg" />
         </div>
         <div className="textMain3">
           <h2>HeyDr.</h2>

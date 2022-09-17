@@ -10,4 +10,5 @@ public interface DoctorDao {
 	public DoctorVO doctorLogin(Map<String, String>map);
 	public int idchk(Map<String, String> vo);
 	public List<DoctorVO> hospitalDoctorList();
+	public DoctorVO hospitalDoctorDetail(int dnum);
 }

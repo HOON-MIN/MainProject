@@ -2,7 +2,6 @@ import React from "react";
 import drImg from "../img/doctor.png";
 
 const DoctorList = (props) => {
-  console.log(props.doctor);
   return (
     <div className="d-flex justify-content-center mt-4">
       <div className="card">
