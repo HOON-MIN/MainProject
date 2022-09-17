@@ -21,20 +21,11 @@ const DoctorListPage = () => {
     getDoctorList();
   }, []);
 
-  const getCategory = () => {
-    const categories = [];
-    doctors.map((doctor)=>{
-      if(categories.indexOf(doctor))
-    })
-  };
-  getCategory();
-
   return (
     <div className="body container">
       <div className="body-inner text-center">
         <h2 className="h2">의사 리스트</h2>
         <Categories doctor={doctors} />
-        <hr />
       </div>
       {doctors.map((doctor) => (
         <Link to={"/detail/" + doctor.dnum} style={{ textDecoration: "none" }}>
