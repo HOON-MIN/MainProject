@@ -10,11 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.main.ateam.review.service.ReviewBoardService;
+import com.main.ateam.vo.ReviewBoardCommVO;
 import com.main.ateam.vo.ReviewBoardVO;
 
 
@@ -127,4 +131,84 @@ public class ReviewBoardController {
 
 	}
 	
+	// 댓글 리스트
+	@RequestMapping(value = "/replylist")
+	@ResponseBody
+	public List<ReviewBoardCommVO> showReply(int rnum, Model model) {
+		System.out.println("댓글 리스트");
+		System.out.println("rnum: "+rnum);
+		return service.showReply(rnum);
+	}
+	
+	// 댓글 입력(회원만 댓글 입력 가능함)
+	// reviewDetail.jsp -> <input type="button" value="삭제" id="rDelBtn" onclick="location.href=
+	// 'delReply?cnum=${e.cnum }&qnum=${vo.num }'">
+	@PostMapping(value = "/reply")
+	@ResponseBody
+	public int addReply(ReviewBoardCommVO vo, HttpSession session, int rnum) {
+		//System.out.println("Qnum"+vo.getQnum());
+		//System.out.println("Id"+vo.getId());
+		//System.out.println("Cont"+vo.getCont());
+		System.out.println("댓글 입력");
+//		String sessionID = (String) session.getAttribute("sessionID");
+		String sessionID = "xman";
+		vo.setId(sessionID);
+//		if(sessionID == null) {
+//			mav.setViewName("error/paramException");
+//			mav.addObject("emsg", "로그인후 댓글 입력 가능합니다");
+//		}else if(sessionID != null) {
+//			System.out.println(sessionID);
+			
+			service.upRcount(rnum);// * 추가/ 후기번호를 입력 받아, rcount를 업데이트하는 역할
+			//mav.addObject("sessionID", sessionID);
+			//model.addObject("sessionID", sessionID);
+			//mav.setViewName("redirect: reviewDetail?num="+rnum);
+			//mav.addAttribute("sessionID", sessionID);
+		//}
+		return service.addReply(vo);
+	}
+	// 댓글 삭제(로그인 및 댓글 작성자만 삭제 가능함)
+	// reviewDetail.jsp -> <input type="button" value="삭제" id="rDelBtn" onclick="location.href=
+	// 'delReply?cnum=${e.cnum }&qnum=${vo.num }'">
+	@RequestMapping(value = "/delReply/{cnum}")
+	@ResponseBody
+	public int delReply(HttpSession session, @PathVariable int cnum) {
+		// , int rnum, String id
+		//System.out.println("cnum값:"+cnum);
+		//System.out.println("qnum값:"+qnum);
+		//System.out.println("id:"+id);
+		//String sessionID = (String) session.getAttribute("sessionID");
+		//System.out.println("sessionID:"+sessionID);
+//		try {
+//			if(sessionID.equals(id)) {
+//				//System.out.println(sessionID);
+		System.out.println("cnum"+cnum);
+		
+//				service.upRcount(rnum);// * 추가/ 후기번호를 입력 받아, rcount를 업데이트하는 역할
+//				// mav.addObject("sessionID", sessionID);
+//				mav.setViewName("redirect: reviewDetail?num="+rnum);
+//			}else {
+//				mav.setViewName("error/paramException");
+//				mav.addObject("emsg", "댓글 작성자만 댓글 삭제 가능합니다");
+//			}
+//		} catch (NullPointerException e) {
+//			mav.setViewName("error/paramException");
+//			mav.addObject("emsg", "로그인후 댓글 삭제 가능합니다");
+//		}
+		return service.delReply(cnum);
+	}
+	// 댓글 수정
+	@RequestMapping(value = "/upReply")
+	@ResponseBody
+	public void upReply(ModelAndView mav, ReviewBoardCommVO rcvo) {
+		String id = "xman";
+		rcvo.setId(id);
+		System.out.println("Id: "+rcvo.getId());
+		System.out.println("Cnum: "+rcvo.getCnum());
+		//System.out.println("Udate: "+rcvo.getUdate());
+		System.out.println("Cont: "+rcvo.getCont());
+		
+		//mav.setViewName("redirect: reviewboardlist");
+		service.upReply(rcvo);
+	}	
 }

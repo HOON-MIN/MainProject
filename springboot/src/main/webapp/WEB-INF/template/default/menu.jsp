@@ -31,17 +31,19 @@
     </ul>
   </li>
   
-      <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
     	SYP</a>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="${mycontext }/reviewboard/reviewboardlist">ReviewBoard List </a></li>
       <li><a class="dropdown-item" href="${mycontext }/reviewboard/reviewupForm">ReviewBoard Form</a></li>
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="${mycontext }">DashBoard(Ing)</a></li>
+      <li><a class="dropdown-item" href="${mycontext }/hospitalP/dashboard">DashBoard</a></li>
     </ul>
+
+  <li class="nav-item">
+    <a class="nav-link" href="${mycontext }/admin/adminIndex">adminMain</a>
   </li>
-  
 
   
 <!--    -->
