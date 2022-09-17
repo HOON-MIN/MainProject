@@ -3,17 +3,47 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.main.ateam.member.dao.*">
+<mapper namespace="com.main.ateam.admin.dao.AdminDao">
 
 
 <select id="memberList" resultType="memberVO"> <!-- 회원 리스트 -->
 	select num,id,name,age,gender,tel,email,addr,mdate from member order by 1 desc
 </select>
-<select id="hospitalList" resultType="memberVO"> <!-- 병원 - 업체 (1:1 관계) -->
-	select h.hnum,h.hname,h.hloc,h.otime,
-	h.ctime,h.hcate,h.hurl,h.hemail,h.hgrade,
-	c.crn,c.cate,c.cdate from hospital h,cate c 
-	where h.cnum=c.cnum order by 1 desc
+<select id="ad_hospitalList" resultType="hvo"> <!-- (사이트에 등록된)병원 - 업체 리스트 (1:1 관계) -->
+	SELECT h.hnum,h.hname,h.hloc,h.otime,
+	h.ctime,h.hcate,h.htel,h.hurl,c.cdate,
+	c.ccate from hospital h, company c 
+	where h.cnum = c.cnum and c.cstatus=1
 </select>
-  	
+<select id="waitingList" resultMap="companyResult" >
+<!-- select * from company where cstatus=0 order by 1 -->
+	 select rownum r_num ,c.*,h.* from
+	 hospital h,company c where c.cstatus = 0 
+	 and c.cnum = h.cnum order by c.cdate desc 
+</select>
+
+<update id="agree" parameterType="int">
+	update company set cstatus=1 where cnum = #{cnum}
+</update>
+
+<resultMap type="cvo" id="companyResult">
+<id property="cnum" column="cnum" javaType="int"/>
+		<result property="crn" column="crn"/>
+		<result property="cpwd" column="cpwd"/>
+		<result property="ccate" column="ccate"/>
+		<result property="cdate" column="cdate"/>
+<association property="hvo" column="cnum" javaType="hvo">
+<id property="cnum" column="cnum"/>
+<result property="r_num" column="r_num" javaType="int" />
+<result property="hname" column="hname" />
+<result property="hloc" column="hloc" />
+<result property="otime" column="otime" />
+<result property="ctime" column="ctime" />
+<result property="hcate" column="hcate" />
+<result property="hurl" column="hurl" />
+<result property="htel" column="htel" />
+<result property="hemail" column="hemail" />
+<result property="hgrade" column="hgrade" />
+</association>
+</resultMap>
 </mapper>

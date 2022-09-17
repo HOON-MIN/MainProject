@@ -131,7 +131,6 @@
 				data:{}
 				
 				success:function(){
-				location	
 				
 					}
 				

@@ -15,7 +15,7 @@
 			<div class="navbar-nav">
 				<c:choose>
 					<c:when test="${sessionNUM == 1}">
-						<a class="nav-link" href="${mycontext }/member/adminMypage">관리자페이지</a>
+						<a class="nav-link" href="${mycontext }/admin/adminMypage">관리자페이지</a>
 						<a class="nav-link active" aria-current="page"
 							href="${mycontext }/member/memberLogout">로그아웃</a>
 							</c:when>

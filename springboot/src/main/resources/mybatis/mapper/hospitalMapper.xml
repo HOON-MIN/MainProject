@@ -14,6 +14,22 @@
 <select id="hospCheck" parameterType="map" resultType="int">
 	select hname,  from hospital where crn=#{crn}
 </select>
+<insert id="addCompany" parameterType="cvo">
+ 		insert into company 
+        values(company_seq.nextVal, #{crn}, #{cpwd}, #{ccate}, sysdate)
+    </insert>
+    <insert id="addHospital" parameterType="hvo">
+    	<selectKey keyProperty="cnum" resultType="int" order="BEFORE">
+    		select company_seq.currVal from dual
+    	</selectKey>
+    	insert into hospital values(hospital_seq.nextVal,#{cnum},#{hname},#{hloc},#{otime},#{ctime},
+							  #{hcate},#{hurl},#{hemail},#{hgrade})
+    </insert>
+
+ <!-- crn 중복체크 -->
+ <select id="crnCheck" parameterType="map" resultType="int">
+ select count(*) from hospital where crn = #{crnv}
+ </select>
 
 
 </mapper>

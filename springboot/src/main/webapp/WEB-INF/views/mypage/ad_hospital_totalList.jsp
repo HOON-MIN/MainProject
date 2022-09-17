@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 <!-- include 제거  -->
 <style>
 /* 	.table1 :hover { */
@@ -12,7 +13,7 @@
 <div class="container">
 <article>
 	<header>
-		<h1>Hospital List</h1>
+		<h1>전체 병원</h1>
 	</header>
 	<ul class="list-unstyled">
 		<li class="border-top my-3"></li>
@@ -46,7 +47,7 @@
 
 </article>
 </div>
-
+<jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 <!-- 이전 jquery 임포트 코드 ...!!! -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
@@ -72,12 +73,15 @@ $(function(){
         console.log(data.columns);
         console.log(data.data);
         let tbodyData =[];
+        let j=0;
            for (var i of data.data[0]) {
            	tbodyData.push('<tr style="cursor:pointer;">'+
+           	'<td  id="listBtn" >'+(j+1)+'</td>'+
            	'<td  id="listBtn" >'+i.hos_name+'</td>'+
            	'<td  id="listBtn" >'+i.hos_address+'</td>'+
            	'<td  id="listBtn" >'+i.hos_tel+'</td>'+
            	'<td  id="listBtn" >'+i.hos_loc+'</td>')
+           	j++;
            }
            document.querySelector('.table1 > tbody').innerHTML = tbodyData.join('');
        },
