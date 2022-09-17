@@ -1,38 +1,303 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-<form method="post" action="memberIn">
-     <table style="width: 80%; margin: auto">
-   		<tr>
-   		   <td>ì•„ì´ë””</td>
-   		   <td>
-   		   <input type="text" name="id" id="id" maxlength="10" 
-   		   style="width: 130px"> 
-   		   <input type="button" value="ì¤‘ë³µí™•ì¸" id="idChkBtn" 
-   		   style="width: 150px; font-size: 10px; height: 30px;">
-   		   </td>
-   		 </tr>
-   		 <tr><td colspan="2" id="target"></td></tr>
-   		  <tr>
-   		   <td>ë¹„ë°€ë²ˆí˜¸</td>
-   		   <td><input type="password" name="pwd" maxlength="10"> 
-   		   </td>
-   		 </tr>
-   		  <tr>
-   		   <td>ì´ë¦„</td>
-   		   <td><input type="text" name="uname"> 
-   		   </td>
-   		 </tr>
-   		  <tr><td colspan="2">
-   		  <input type="submit" value="ê°€ì…">
-   		  </td></tr>
-   </table>
-     </form>
-</body>
-</html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%-- º»¹® ½ÃÀÛ  --%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<article >
+<div class="page-header">
+		<center>
+			<h1>
+				<a onclick="return false; location.reload()"
+					style="cursor: pointer;"><b>È¸¿ø°¡ÀÔ</b></a>
+			</h1>
+		</center>
+		<div class="col-md-6 col-md-offset-3"></div>
+	</div>
+
+	
+<form action="addMember" method="post" id="memberForm"  enctype="multipart/form-data">
+		<input type="hidden" id="ssn" name="ssn" value=""> 
+		<input type="hidden" id="tel" name="tel" value=""> 
+		<input type="hidden" id="addr" name="addr" value=""> 
+		<div class="row g-3 needs-validation ">
+			<div class="col-md-7" style="width: 64%;">
+					<label for="id" class="form-label">¾ÆÀÌµğ</label> 
+			<div class="input-group" >
+					<input type="text" class="form-control" id="id" name="id" placeholder="INPUT YOUR ID"
+					 required="required" pattern=".{2,10}" >
+					<button class="btn btn-outline-secondary" type="button" id="id-check" style="margin-left: 19px;">Áßº¹È®ÀÎ</button>
+			</div>
+			</div>
+			<div class="col-md-4">
+				<p style="margin-top: 42px;"> </p>
+				<i id="id-check-warn" style="margin-top: 5px; "></i>
+			</div>
+			<div class="col-md-6">
+				<label for="mnum" class="form-label">ºñ¹Ğ¹øÈ£</label> 
+				<input type="password"
+					class="form-control" id="pwd" name="pwd" placeholder="YOUR PASSWORD"
+					 required="required" pattern=".{2,20}">
+			</div>
+			<div class="col-md-6">
+				<label for="mnum" class="form-label">ºñ¹Ğ¹øÈ£È®ÀÎ</label> 
+				<input type="password"
+					class="form-control" id="pwd2" name="pwd2" placeholder="PASSWORD CHECK"
+					required="required" pattern=".{2,20}"><i class="fa" id="confpwd"></i>
+			</div>	
+			 <div class="col-md-4">
+			    <label for="mname" class="form-label">ÀÌ¸§</label>
+			    <input type="text" class="form-control" id="name" name="name" placeholder="ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä" required>
+			    <div class="valid-feedback">
+			    </div>
+			    <div class="invalid-feedback">
+			       	ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.
+			    </div>
+			  </div>
+			  <div class="col-md-4">
+				<div class="form-outline">
+						<label class="form-label">ÁÖ¹Îµî·Ï¹øÈ£</label>
+					<input type="text" id="ssn1" name="ssn1" class="form-control" required placeholder="»ı³â¿ùÀÏ 6ÀÚ¸® ÀÔ·Â"
+							maxlength="6" pattern=".{6,6}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> 
+				</div>
+			</div>
+			<div class="col-md-1"
+				style="width: 10px; text-align: center;">
+				<label style="margin-top: 40px;"><b> - </b></label>
+			</div>
+			<div class="col-md-1">
+				<div class="form-outline">
+					<input type="text" id="ssn2" name="ssn2" oninput="this.value = this.value.replace(/[^1-4.]/g, '').replace(/(\..*)\./g, '$1');"
+						class="form-control" maxlength="1" style="margin-top: 32.5px;" required/>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<label style="margin-top: 42px;  font-size: 25px;" ><strong>* * * * * *</strong></label>
+			</div>		
+						
+			<div class="col-md-6">
+				<label class="form-label">ÀÌ¸ŞÀÏ</label> 
+					<input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+					required="required">
+				<button class="btn btn-outline-secondary" type="button" id="mail-check">
+					<i class="fa fa-search"></i>ÀÎÁõ¹øÈ£Àü¼Û</button>
+			</div>
+
+			<div class="col-md-6">
+				<label class="form-label">ÀÎÁõ¹øÈ£ÀÔ·Â</label>
+				<input type="text" class="form-control" id="certi-input" name="certi-input" 
+					placeholder="ÀÎÁõ¹øÈ£ 6ÀÚ¸®" disabled="disabled" maxlength="6"/>
+				<span id="mail-check-warn" class="mb-2"></span>
+			</div>
+			<div class="col-md-6">
+				<label class="form-label">ÇÁ·ÎÇÊ »çÁø µî·Ï</label> 
+				<input type="file" class="form-control" id="mfile" name="mfile">
+			<img style="width: 100%; margin-top: 8px;" src="${pageContext.request.contextPath}/resources/image/noimage.jpg" id="imgx">		
+			</div>			
+			  <div class="col-md-6">
+			    <label class="form-label">ÀüÈ­¹øÈ£</label>
+			    <input type="tel" class="form-control" id="telv" name="telv" placeholder="-¾øÀÌ ÀÔ·Â" required 
+			    		oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="11">
+			  </div>			
+			
+			
+			 <label class="form-label" style="text-align: justify;" >ÁÖ¼Ò</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" id="sample6_postcode" placeholder="¿ìÆí¹øÈ£">
+			</div>
+			<div class="col-md-3">
+				<input type="button" class="btn btn-outline-secondary" onclick="sample6_execDaumPostcode()" value="¿ìÆí¹øÈ£ Ã£±â"><br>
+			</div>
+			<div class="col-md-8">
+				<input type="text" class="form-control" id="addr1" name="addr1" placeholder="ÁÖ¼Ò"><br>
+			</div>
+			<div class="col-md-4">
+				<input type="text" class="form-control" id="addr2" name="addr2" placeholder="»ó¼¼ÁÖ¼Ò">
+			</div>
+			<div class="form-group text-center">
+				<button type="submit" id="join-submit" class="btn btn-primary btn-space" disabled="disabled">
+					È¸¿ø°¡ÀÔ<i class="fa fa-check spaceLeft"></i>
+				</button>
+
+				<button type="button" class="btn btn-danger"
+					onClick="location.href='/ateamfinal/main'">
+					Ãë¼Ò<i class="fa fa-check spaceLeft"></i>
+				</button>
+
+			</div>
+		</div>
+	</form>
+ <!-- comment end -->
+    </article>
+    <script>
+	var $js = jQuery.noConflict()
+	
+	//Email Ajax
+	$js('#mail-check').click(function() {
+		const eamil = $js('#email').val(); // ÀÌ¸ŞÀÏ ÁÖ¼Ò°ª ¾ò¾î¿À±â!
+		console.log('¿Ï¼ºµÈ ÀÌ¸ŞÀÏ : ' + eamil); // ÀÌ¸ŞÀÏ ¿À´ÂÁö È®ÀÎ
+		const checkInput = $js('#certi-input') // ÀÎÁõ¹øÈ£ ÀÔ·ÂÇÏ´Â°÷ 
+		
+		$js.ajax({
+			type : 'get',
+			url : '${pageContext.request.contextPath}/member/mailCheck?email='+eamil,
+			success : function (data) {
+				console.log("data : " +  data);
+				checkInput.attr('disabled',false);
+				code =data;
+				alert('ÀÎÁõ¹øÈ£°¡ Àü¼ÛµÇ¾ú½À´Ï´Ù.')
+			}
+		}); // end ajax
+	}); // end send eamil
+
+	// ÀÎÁõ¹øÈ£ ºñ±³
+	// blur -> focus°¡ ¹ş¾î³¯ °æ¿ì ¹ß»ı
+	$js('#certi-input').blur(function() {
+		const inputCode = $js(this).val();
+		const $resultMsg = $js('#mail-check-warn');
+		
+		if(inputCode === code){
+			$resultMsg.html('ÀÎÁõ¹øÈ£°¡ ÀÏÄ¡ÇÕ´Ï´Ù.');
+			$resultMsg.css('color','green');
+			$js('#mail-check').attr('disabled', true);
+			$js('#email').attr('readonly', true);
+			$js('#certi-input').attr('readonly', true);
+			$js('#join-submit').attr('disabled', false);
+		}else{
+			$resultMsg.html('ÀÎÁõ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù. ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä!');
+			$resultMsg.css('color', 'red');
+		}
+	});
+	
+	$js('#id-check').click(function() {
+		let param = $js('#id').val();
+		$js.ajax({
+			url: "idchk?id="+param,
+			success:function(data){
+				console.log(data);
+				if(data == 1){
+					$js('#id-check-warn').css('color','red').html('ÀÌ¹Ì »ç¿ëÁßÀÎ ¾ÆÀÌµğÀÔ´Ï´Ù.');
+				}else{
+					$js('#id-check-warn').css('color','green').html('»ç¿ë °¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.');
+				}
+			}
+		});
+	});
+$(function() {
+	var pwdchk = false;
+	  $('#pwd2').blur(function(){
+		    if($('#pwd').val() === $('#pwd2').val()){
+		      $('#confpwd').css('color','green').html('¡î ºñ¹Ğ¹øÈ£ ÀÏÄ¡ÇÕ´Ï´Ù ');
+		      pwdchk = true;
+		    }else{
+		      $('#confpwd').css('color','red').html('X ºñ¹Ğ¹øÈ£ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù ');
+		      pwdchk = false;
+		    }
+		  });
+	  $('#pwd').blur(function(){
+		    if($('#pwd').val() === $('#pwd2').val()){
+		      $('#confpwd').css('color','green').html('¡î ºñ¹Ğ¹øÈ£ ÀÏÄ¡ÇÕ´Ï´Ù ');
+		      pwdchk = true;
+		    }else{
+		      $('#confpwd').css('color','red').html('X ºñ¹Ğ¹øÈ£ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù ');
+		      pwdchk = false;
+		    }
+		  });	 
+	  
+	 
+		// ÁÖ¹Î¹øÈ£, ÀüÈ­¹øÈ£, ÁÖ¼Ò
+		
+		$('#memberForm').submit(function(event){
+			event.preventDefault();
+			
+			if($('#ssn1').val().length==0 || $('#ssn2').val().length==0 || $('#telv').val().length==0 || 
+			   $('#email').val().length==0 || $('#addr1').val().length==0 || $('#addr2').val().length==0){
+				alert("ÀÔ·ÂµÇÁö ¾ÊÀº Á¤º¸°¡ Á¸ÀçÇÕ´Ï´Ù.");
+				return false;
+			}
+			    const ssn = $('#ssn1').val()+'-'+$('#ssn2').val();
+				var telv= $('#telv').val();
+				const addr = $('#addr1').val()+" "+$('#addr2').val();
+				
+				$('#addr').val(addr); 
+				$('#ssn').val(ssn);	//ÁÖ¹Î¹øÈ£ ÇÏÀÌÇÂ Ãß°¡
+				$('#tel').val(telv.substring(0,3)+"-"+telv.substring(3,7)+"-"+telv.substring(7)); //ÀüÈ­¹øÈ£ ÇÏÀÌÇÂ Ãß°¡
+				console.log("addr"+addr);
+				// alert($('#ssn').val()+" : "+$('#id').val()+" : "+$('#tel').val());
+				alert('È¸¿ø°¡ÀÔ¿¡ ¼º°øÇÏ¼Ì½À´Ï´Ù.');
+				this.submit();
+				return true;	
+		});	 
+	  
+	  $('#mfile').change(function() {
+		console.log($(this).val());
+		readURL(this);
+	  });
+	});
+	// ÀÌ¹ÌÁö ¹Ì¸®º¸±â
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			// ÀÚ¹Ù½ºÅ©¸³Æ® I/O 
+			var reader = new FileReader();
+			//
+			reader.onload = function(e) {
+				//e.target.result
+				console.log("Path :" + e.target.result);
+				$('#imgx').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+		}
+
+	
+	
+	// ÁÖ¼Ò Ã£±â api
+	function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+
+                // °¢ ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Á¶ÇÕÇÑ´Ù.
+                // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
+                var addr = ''; // ÁÖ¼Ò º¯¼ö
+                var extraAddr = ''; // Âü°íÇ×¸ñ º¯¼ö
+
+                //»ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò Å¸ÀÔ¿¡ µû¶ó ÇØ´ç ÁÖ¼Ò °ªÀ» °¡Á®¿Â´Ù.
+                if (data.userSelectedType === 'R') { // »ç¿ëÀÚ°¡ µµ·Î¸í ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì
+                    addr = data.roadAddress;
+                } else { // »ç¿ëÀÚ°¡ Áö¹ø ÁÖ¼Ò¸¦ ¼±ÅÃÇßÀ» °æ¿ì(J)
+                    addr = data.jibunAddress;
+                }
+
+                // »ç¿ëÀÚ°¡ ¼±ÅÃÇÑ ÁÖ¼Ò°¡ µµ·Î¸í Å¸ÀÔÀÏ¶§ Âü°íÇ×¸ñÀ» Á¶ÇÕÇÑ´Ù.
+                if(data.userSelectedType === 'R'){
+                    // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
+                    // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
+                    if(data.bname !== '' && /[µ¿|·Î|°¡]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // Ç¥½ÃÇÒ Âü°íÇ×¸ñÀÌ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // Á¶ÇÕµÈ Âü°íÇ×¸ñÀ» ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+                    //document.getElementById("sample6_extraAddress").value = extraAddr;
+                
+                } else {
+                    //document.getElementById("sample6_extraAddress").value = '';
+                }
+
+                // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("addr1").value = addr;
+                // Ä¿¼­¸¦ »ó¼¼ÁÖ¼Ò ÇÊµå·Î ÀÌµ¿ÇÑ´Ù.
+                document.getElementById("addr2").focus();
+            }
+        }).open();
+    }	
+</script>
+<%-- º»¹® ³¡ --%>

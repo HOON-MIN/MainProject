@@ -13,23 +13,29 @@ import com.main.ateam.vo.MemberVO;
 public class MemberService {
 	
 	@Autowired
-	private MemberDao memberDaoInter;
+	private MemberDao memberDao;
 	
+	public void addMemberService(MemberVO mvo) {
+		memberDao.addMember(mvo);
+	}
+	public int idCheckService(Map<String, String> map) {
+		return memberDao.idCheck(map);
+	}
 	public MemberVO memberLogin(Map<String, String> map) {
-		return memberDaoInter.memberLogin(map);
+		return memberDao.memberLogin(map);
 	}
 	
 	public MemberVO memberMyPage(int num) {
-		return memberDaoInter.memberMyPage(num);
+		return memberDao.memberMyPage(num);
 	}
 	public void memberUpdate(MemberVO vo) {
-		memberDaoInter.memberUpdate(vo);
+		memberDao.memberUpdate(vo);
 	}
 	
 	public List<MemberVO> memberList() {
-		return memberDaoInter.memberList();
+		return memberDao.memberList();
 	}
 	public int idchk(Map<String, String> vo) {
-		return memberDaoInter.idchk(vo);
+		return memberDao.idchk(vo);
 	}
 }

@@ -270,14 +270,7 @@ let d=[];
 				  ) {
 					  
 				  console.log('i => ' + i)
-				  /* if(totalData >i){
-				    chartHtml +=
-				    	'<div class="jb-wrap">'+
-	                	'<div class="jb-image"style="text-align:center;">'+
-	                	'<img src="/taejin/hospital_img/hospital.jpg" style="cursor:pointer; " data-bs-toggle="collapse" '+
-	                	'href="#multiCollapseExample1"  aria-expanded="false" aria-controls="multiCollapseExample1"'+
-	                	'data-bs-target="#exampleModal" id="listBtn">'+d[i]+'</div></div>';
-				  } */
+				 
 				 if(totalData >i){
 				    chartHtml +=
 				    	'<div class="jb-wrap">'+
@@ -287,7 +280,6 @@ let d=[];
 				  }
 				  } 
 							  document.querySelector('.jb').innerHTML =chartHtml;
-							  //document.querySelector('#multiCollapseExample1').innerHTML =chartHtml;
 				}
 		
 			

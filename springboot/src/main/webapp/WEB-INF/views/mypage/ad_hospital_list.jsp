@@ -24,9 +24,10 @@
 			<thead>
 				<tr>
 					<th>번호</th>
+					<th>병원번호</th>
 					<th>병원명</th>
 					<th>위치</th>
-					<th>전화번호</th>
+					<th>영업시간</th>
 					<th>진료과목</th>
 				</tr>
 			</thead>
@@ -34,9 +35,9 @@
 			<tbody>
 				<c:forEach var="e" items="${list }">
 					<tr>
-						<td class="linktd">${e.hnum }</td>
-						<td class="linktd"><a href="hospitalDetail?num=${e.hnum }">
-								${e.hname }</a></td>
+						<td class="linktd">${e.r_num }</td>
+						<td class="linktd">${e.cnum }</td>
+						<td class="linktd">${e.hname }</td>
 						<td class="linktd">${e.hloc }</td>
 						<td class="linktd">${e.otime }~${e.ctime }</td>
 						<td class="linktd">${e.hcate }</td>

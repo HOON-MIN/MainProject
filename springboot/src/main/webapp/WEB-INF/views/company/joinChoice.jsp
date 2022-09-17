@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="mycontext" value="${pageContext.request.contextPath }"></c:set>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -10,29 +10,29 @@
 <div style="margin-top: 15px;">
 <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist" >
   <li class="nav-item" role="presentation" style="height: 60px;" >
-    <a class="nav-link active" id="mem-register-form-link" href="#" style="font-size: 25px;">°³ÀÎ ÀÏ¹İÈ¸¿ø</a>
+    <a class="nav-link active" id="mem-register-form-link" href="#" style="font-size: 25px;">ê°œì¸ ì¼ë°˜íšŒì›</a>
   </li>
   <li class="nav-item" role="presentation" style="height: 60px;">
-    <a type="" class="nav-link" id="company-register-form-link"  href="#" style="font-size: 25px;" >»ç¾÷ÀÚ º´¿øÈ¸¿ø</a>
+    <a type="" class="nav-link" id="company-register-form-link"  href="#" style="font-size: 25px;" >ì‚¬ì—…ì ë³‘ì›íšŒì›</a>
   </li>
 </ul>
 </div>
 <!-- Pills navs -->
 
-<!-- ÀÏ¹İÈ¸¿ø°¡ÀÔ -->
+<!-- ì¼ë°˜íšŒì›ê°€ì… -->
 <div class="tab-content">
     <form id="mem-register-form" role="form">
       <div class="text-center mb-3">
-        <h3 style="height: 53px; margin-top: 36px;">Ateam È¨ÆäÀÌÁö¿¡ ¿À½Å°ÍÀ» È¯¿µÇÕ´Ï´Ù.</h3>
-        <h5 style="height: 25px;">Áö±İ È¸¿ø °¡ÀÔÇÏ½Å ÈÄ AllcareÀÇ ´Ù¾çÇÑ ¼­ºñ½º¸¦ ¸¸³ªº¸¼¼¿ä.</h5>
+        <h3 style="height: 53px; margin-top: 36px;">Ateam í™ˆí˜ì´ì§€ì— ì˜¤ì‹ ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤.</h3>
+        <h5 style="height: 25px;">ì§€ê¸ˆ íšŒì› ê°€ì…í•˜ì‹  í›„ Allcareì˜ ë‹¤ì–‘í•œ ì„œë¹„ìŠ¤ë¥¼ ë§Œë‚˜ë³´ì„¸ìš”.</h5>
       </div>
 
-      <!-- È¸¿ø°¡ÀÔ¹öÆ° -->
+      <!-- íšŒì›ê°€ì…ë²„íŠ¼ -->
       <div class="text-center mb-3" style="margin-top: 55px;">
         <a type="button" class="btn btn-primary btn-block mb-4" 
         	href="${mycontext}/member/joinForm" 
         	style="width: 195px; height: 57px; text-align: inherit; font-size: 20px; font-weight: bold; padding-top : 14px;" >
-        	°¡ÀÔÇÏ±â</a>
+        	ê°€ì…í•˜ê¸°</a>
       </div>
     </form>
 
@@ -41,38 +41,38 @@
       <input type="hidden" id="ccate" name="ccate" value=""> 
       <div class="form_box">
 	      <div class="text-center mb-3">
-	        <h3 style="height: 53px; margin-top: 36px;">Allcare È¨ÆäÀÌÁö¿¡ ¿À½Å°ÍÀ» È¯¿µÇÕ´Ï´Ù.</h3>
-    	    <h5 style="height: 25px;">»ç¾÷ÀÚ º´¿øÈ¸¿ø °¡ÀÔ ÆäÀÌÁö ÀÔ´Ï´Ù.</h5>
+	        <h3 style="height: 53px; margin-top: 36px;">Allcare í™ˆí˜ì´ì§€ì— ì˜¤ì‹ ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤.</h3>
+    	    <h5 style="height: 25px;">ì‚¬ì—…ì ë³‘ì›íšŒì› ê°€ì… í˜ì´ì§€ ì…ë‹ˆë‹¤.</h5>
       	  </div>
 		<div class="col-md-4" style="margin-right: auto; margin-left: 280px; margin-top: 10px;" >
 			<div class="form-check form-check-inline">
-			  <label class="form-check-label" for="ccate">º´¿øµî·Ï</label>
-			  <input class="form-check-input" type="radio" name="ccatev" id="ccatev" value="º´¿ø" checked="checked">
+			  <label class="form-check-label" for="ccate">ë³‘ì›ë“±ë¡</label>
+			  <input class="form-check-input" type="radio" name="ccatev" id="ccatev" value="ë³‘ì›" checked="checked">
 			</div>	
 			<div class="form-check form-check-inline">
-			  <label class="form-check-label" for="ccate">¾à±¹µî·Ï</label>
-			  <input class="form-check-input" type="radio" name="ccatev" id="ccatev" value="¾à±¹" >
+			  <label class="form-check-label" for="ccate">ì•½êµ­ë“±ë¡</label>
+			  <input class="form-check-input" type="radio" name="ccatev" id="ccatev" value="ì•½êµ­" >
 			</div>	
 		</div>	      	  
 			<div class="form-group" style=" margin-top: 20px;">
-			<input type="text" name="crnv" id="crnv" tabindex="1" class="form-control" required placeholder ="»ç¾÷ÀÚ µî·Ï¹øÈ£ 10ÀÚ¸®"
+			<input type="text" name="crnv" id="crnv" tabindex="1" class="form-control" required placeholder ="ì‚¬ì—…ì ë“±ë¡ë²ˆí˜¸ 10ìë¦¬"
 				 style="height: 57px; width: 400px; margin-left: auto; margin-right: auto; text-align: center;" maxlength="10" pattern=".{10,10}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 				<div class="text-center mb-4">
-				<i class="fa" id="confcrn" style="font-size: 17px; padding-top: 15px;" ></i></div>
+				<i class="agreeInfo" id="confcrn" style="font-size: 17px; padding-top: 15px;" ></i></div>
 			</div>
 	</div>
 	
 	<div class="text-center mb-3" style="margin-top: 36px;">
 		<p id="bizMsg" class="ability_chk" style="display:none"></p>
-		<p class="agreeInfo">ÀÎÁõ¿¡ ¹®Á¦°¡ ÀÖÀ» °æ¿ì, NICEÆò°¡Á¤º¸¢ß °í°´¼¾ÅÍ(02-3771-1011)·Î ¹®ÀÇ ºÎÅ¹ µå¸³´Ï´Ù.
+		<p class="agreeInfo">ì¸ì¦ì— ë¬¸ì œê°€ ìˆì„ ê²½ìš°, NICEí‰ê°€ì •ë³´ãˆœ ê³ ê°ì„¼í„°(02-3771-1011)ë¡œ ë¬¸ì˜ ë¶€íƒ ë“œë¦½ë‹ˆë‹¤.
 		</p>
-                 <p class="agreeInfo"><strong>»ç¾÷ÀÚ ¹øÈ£¸¦ µµ¿ëÇÏ¿© °¡ÀÔ½Ã, Çü»çÃ³¹ú ´ë»ó¿¡ ÇØ´çµË´Ï´Ù.</strong></p>
+                 <p class="agreeInfo"><strong>ì‚¬ì—…ì ë²ˆí˜¸ë¥¼ ë„ìš©í•˜ì—¬ ê°€ì…ì‹œ, í˜•ì‚¬ì²˜ë²Œ ëŒ€ìƒì— í•´ë‹¹ë©ë‹ˆë‹¤.</strong></p>
 	</div>
       <div class="text-center mb-3" style="margin-top: 30px;">
         <button type="button" id="crnBtn" class="btn btn-primary btn-block mb-4" 
         	style="width: 195px; height: 57px; text-align: inherit; font-size: 20px; font-weight: bold; 
         	padding-top : 14px;" disabled="disabled" >
-        	ÀÎÁõ</button>
+        	ì¸ì¦</button>
       </div>
     </form>
 </div>
@@ -99,7 +99,7 @@ $js(function() {
     		$(this).addClass('active');
     		e.preventDefault();
     	});	
-	// db¿¡ »ç¾÷ÀÚµî·Ï¹øÈ£¿Í Áßº¹µÇ´ÂÁö È®ÀÎ
+	// dbì— ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸ì™€ ì¤‘ë³µë˜ëŠ”ì§€ í™•ì¸
 		$js('#crnv').focusout(function() {
 		let param = $js('#crnv').val();
 		console.log("param : " + param);
@@ -108,11 +108,11 @@ $js(function() {
 			success:function(data){
 				console.log(data);
 				if(data == 1){
-					$js('#confcrn').css('color','red').html('»çÀÌÆ®¿¡ µî·ÏµÈ »ç¾÷ÀÚ¹øÈ£ÀÔ´Ï´Ù.');
+					$js('#confcrn').css('color','red').html('ì‚¬ì´íŠ¸ì— ë“±ë¡ëœ ì‚¬ì—…ìë²ˆí˜¸ì…ë‹ˆë‹¤.');
 					$js('#crnBtn').attr('disabled', true);
 				}else{
-					$js('#confcrn').css('color','green').html('»çÀÌÆ®¿¡ µî·ÏÁö ¾ÊÀº »ç¾÷ÀÚ¹øÈ£ÀÔ´Ï´Ù.');
-					   // »ç¾÷ÀÚ µî·Ï¹øÈ£ openAPI ºÒ·¯¿À´Â ajax()ÇÔ¼ö ºÒ·¯¿À±â	
+					$js('#confcrn').css('color','green').html('ì‚¬ì´íŠ¸ì— ë“±ë¡ì§€ ì•Šì€ ì‚¬ì—…ìë²ˆí˜¸ì…ë‹ˆë‹¤.');
+					   // ì‚¬ì—…ì ë“±ë¡ë²ˆí˜¸ openAPI ë¶ˆëŸ¬ì˜¤ëŠ” ajax()í•¨ìˆ˜ ë¶ˆëŸ¬ì˜¤ê¸°	
 					$js('#crnBtn').attr('disabled', false);
 					   $js('#crnBtn').click(function() {
 								ajax();
@@ -144,40 +144,41 @@ $js(function() {
  	//var array = []; 
  	//array.push("3988701116");
  	//'#crn').val()
-	//data.b_no = array; */ // b_no´Â => key || crnÀº value »ç¾÷ÀÚ¹øÈ£ 
+	//data.b_no = array; */ // b_noëŠ” => key || crnì€ value ì‚¬ì—…ìë²ˆí˜¸ 
 	//var data1 ="{\"b_no\" : [3988701116]}";
 	
      // var data = {
-	//   		 "b_no": ["3988701116"] // ÀÌ·¸°ÔÇØ¼­ dataº¸³»¸é Àß³ª¿È
+	//   		 "b_no": ["3988701116"] // ì´ë ‡ê²Œí•´ì„œ dataë³´ë‚´ë©´ ì˜ë‚˜ì˜´
 	//};  
      
-    // °ø°øµ¥ÀÌÅÍ Æ÷ÅĞ»çÀÌÆ®¿¡¼­ ±¹¼¼Ã»_»ç¾÷ÀÚµî·ÏÁ¤º¸ ÁøÀ§È®ÀÎ ¹× »óÅÂÁ¶È¸ ¼­ºñ½º open Api»ç¿ë 
+    // ê³µê³µë°ì´í„° í¬í„¸ì‚¬ì´íŠ¸ì—ì„œ êµ­ì„¸ì²­_ì‚¬ì—…ìë“±ë¡ì •ë³´ ì§„ìœ„í™•ì¸ ë° ìƒíƒœì¡°íšŒ ì„œë¹„ìŠ¤ open Apiì‚¬ìš© 
 	function ajax(){
     	var cate = $('input[name="ccatev"]:checked').val();
 		var num = $('#crnv').val();
 	 	var data = '{"b_no":["'+num+'"]}';
 	 	var sKey = "nfny9fgEcFysNpZT/WcPRTtJ3F86RlxpeJkFRVxGWsXmNCJYWNPSWeF4NcUBsoqRCu9YBj9S2lG0N8727L0CQw==";	  
-		console.log("½ÇÇàÀü data : "+data);
+	 	//var sKey = "GV+G8cEsEquteXOMC7fFvyF/if0pyTS5gyKeSSHjl83AhoHuuNr2qL/37wDuGvincFMMIsagkDYayBxjtduOiQ==";	  
+		console.log("ì‹¤í–‰ì „ data : "+data);
 	$.ajax({
-	  url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey="+sKey,  // serviceKey °ªÀ» xxxxxx¿¡ ÀÔ·Â
+	  url: "https://api.odcloud.kr/api/nts-businessman/v1/status?serviceKey="+sKey,  // serviceKey ê°’ì„ xxxxxxì— ì…ë ¥
 	  type: "POST",
 	  data: data,
-	  //data: JSON.stringify(data), // json À» stringÀ¸·Î º¯È¯ÇÏ¿© Àü¼Û
+	  //data: JSON.stringify(data), // json ì„ stringìœ¼ë¡œ ë³€í™˜í•˜ì—¬ ì „ì†¡
 	  dataType: "JSON",
 	  contentType: "application/json",
 	  accept: "application/json",
 	  success: function(result) {
-		  //console.log("Å¸ÀÔ"+typeof(JSON.stringify(data_1)));
-		 // console.log("Å¸ÀÔ"+JSON.stringify(data_1));
+		  //console.log("íƒ€ì…"+typeof(JSON.stringify(data_1)));
+		 // console.log("íƒ€ì…"+JSON.stringify(data_1));
 		  console.log(typeof(data));
-		  console.log("»ç¾÷ÀÚÀÔ·Â¹øÈ£"+$('#crn').val());
-	      console.log("½ÇÇàÈÄ data : "+data);
+		  console.log("ì‚¬ì—…ìì…ë ¥ë²ˆí˜¸"+$('#crn').val());
+	      console.log("ì‹¤í–‰í›„ data : "+data);
 	      console.log(result);
 	      console.log(result.data[0].tax_type);
 	      
-	      if(result.data[0].tax_type === "±¹¼¼Ã»¿¡ µî·ÏµÇÁö ¾ÊÀº »ç¾÷ÀÚµî·Ï¹øÈ£ÀÔ´Ï´Ù."){
-	    	  if(result.data[0].b_no === "3988701111"){ // °¡Â¥ »ç¾÷µî·Ï¹øÈ£
-	    		  /*  $('#confcrn').css('color','green').html('¡î ÀÎÁõµÇ¾ú½À´Ï´Ù.');
+	      if(result.data[0].tax_type === "êµ­ì„¸ì²­ì— ë“±ë¡ë˜ì§€ ì•Šì€ ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸ì…ë‹ˆë‹¤."){
+	    	  if(result.data[0].b_no === "3988701111"){ // ê°€ì§œ ì‚¬ì—…ë“±ë¡ë²ˆí˜¸
+	    		  /*  $('#confcrn').css('color','green').html('âˆš ì¸ì¦ë˜ì—ˆìŠµë‹ˆë‹¤.');
 		      		var chk = $('#crn').val(num);
 		      		console.log("delaybefore num : "+num);
 		      	 	setTimeout(function() {
@@ -187,27 +188,27 @@ $js(function() {
 		    		  return true;
 		    	}, 3000); */
 	    	  }else{
-		    	  $('#confcrn').css('color','red').html('X ±¹¼¼Ã»¿¡ µî·ÏµÇÁö ¾ÊÀº »ç¾÷ÀÚµî·Ï¹øÈ£ÀÔ´Ï´Ù.');
+		    	  $('#confcrn').css('color','red').html('X êµ­ì„¸ì²­ì— ë“±ë¡ë˜ì§€ ì•Šì€ ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸ì…ë‹ˆë‹¤.');
 		    	  let reset = "";
 		    	  $('#crnv').val(reset);
 		    	  $js('#crnBtn').attr('disabled', true);
 		    	  return false;
 	    	  }
 	      }
-	      $('#confcrn').css('color','green').html('¡î ÀÎÁõµÇ¾ú½À´Ï´Ù.');
+	      $('#confcrn').css('color','green').html('âˆš ì¸ì¦ë˜ì—ˆìŠµë‹ˆë‹¤.');
 	      		console.log("delaybefore num : "+num);
 	      		console.log("delaybefore cate : "+cate);
 	      	setTimeout(function() {
 	    		  console.log("submit num : "+num);
 	    		  $('#crn').val(num);
 	    		  $('#ccate').val(cate);
-	    		  if(cate === 'º´¿ø'){
+	    		  if(cate === 'ë³‘ì›'){
 	    		 	 $('#company-register-form').attr("action","${mycontext}/hospital/joinHospitalForm");
-	    		 		 alert('º´¿ø µî·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
+	    		 		 alert('ë³‘ì› ë“±ë¡ í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.');
 	    		 	 $('#company-register-form').submit();
 	    		  }else{
 	    		  $('#company-register-form').attr("action","${mycontext}/pharmacy/joinPharmacyForm");
-	    			  alert('¾à±¹ µî·Ï ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.');
+	    			  alert('ì•½êµ­ ë“±ë¡ í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.');
 	    		  $('#company-register-form').submit();
 	    		  }
 	    		  return true;
@@ -215,7 +216,7 @@ $js(function() {
 	      	
 	  },
 	  error: function(result) {
-	      console.log(result.responseText); //responseTextÀÇ ¿¡·¯¸Ş¼¼Áö È®ÀÎ
+	      console.log(result.responseText); //responseTextì˜ ì—ëŸ¬ë©”ì„¸ì§€ í™•ì¸
 	  }
 	});
 	}	 

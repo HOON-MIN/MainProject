@@ -35,7 +35,7 @@
 						<a class="nav-link active" aria-current="page"
 							href="${mycontext }/member/memberLoginForm">로그인</a>
 
-						<a class="nav-link" href="#">회원가입</a>
+						<a class="nav-link" href="${mycontext }/company/joinChoice">회원가입</a>
 					</c:otherwise>
 				</c:choose>
 			</div>

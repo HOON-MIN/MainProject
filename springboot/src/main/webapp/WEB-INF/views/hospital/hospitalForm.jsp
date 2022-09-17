@@ -44,7 +44,7 @@
 			<label for="pnum2" class="form-label">비밀번호확인</label> 
 			<input type="password"
 				class="form-control" id="cpwd2" name="cpwd2" placeholder="PASSWORD CHECK"
-				required="required" pattern=".{2,20}"><i class="fa" id="confpwd"></i>
+				required="required" pattern=".{2,20}"><i class="agreeInfo" id="confpwd"></i>
 		</div>			
 		<div class="col-md-4">
 			<label for="snum" class="form-label">openTime</label> 

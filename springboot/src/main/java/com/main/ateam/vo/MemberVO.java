@@ -1,6 +1,7 @@
 package com.main.ateam.vo;
 
 import org.apache.ibatis.type.Alias;
+import org.springframework.web.multipart.MultipartFile;
 
 @Alias("memberVO")
 public class MemberVO {
@@ -10,11 +11,28 @@ public class MemberVO {
 	private String name;
 	private String ssn;
 	private int age;
+	private String addr;
 	private String gender;
 	private String tel;
 	private String email;
 	private String profimg;
 	private String mdate;
+	private MultipartFile mfile;
+	
+	
+	public MultipartFile getMfile() {
+		return mfile;
+	}
+	public void setMfile(MultipartFile mfile) {
+		this.mfile = mfile;
+	}
+	
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
 	public int getNum() {
 		return num;
 	}

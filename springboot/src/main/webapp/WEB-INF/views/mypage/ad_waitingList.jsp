@@ -20,7 +20,7 @@
 	</ul>
 
 		<%-- 리팩토링 해야 함 --%>
-		<form method="post" action="agree" id="agreeForm">
+		
 <table class="table1 table table-hover" id="" style="text-align: center;">
 	<thead>
 		<tr>
@@ -51,7 +51,7 @@
 
 	</tbody>
 </table>
-</form>
+
 </article>
 </div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
