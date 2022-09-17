@@ -1,0 +1,25 @@
+.reservation {
+  background-color: #f8f9fa;
+  padding: 24px;
+}
+
+.mb-3 {
+  margin-top: 24px;
+}
+
+.date input {
+  border: solid 1px #3478f5;
+  color: #3478f5;
+}
+
+.form-check input :hover {
+  color: #3478f5;
+}
+
+.symptom .form-check {
+  padding: 0;
+}
+
+.form-check label {
+  margin: 0 16px 8px 0;
+}

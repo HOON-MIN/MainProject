@@ -32,14 +32,33 @@
 </collection>
 </resultMap>
 
-
 <select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
 select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.hnum = h.hnum
 </select>
 
-<select id="hospitalDoctorDetail" resultMap="hospitalDoctorResult">
-select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.hnum = h.hnum and d.dnum = #{dnum}
-</select>
 
+<resultMap type="doctorVO" id="DoctorDetailResult">
+<id property="hnum" column ="hnum"/>
+<result property="dnum" column="dnum"/>
+<result property="dname" column="dname"/>
+<result property="dmajor" column="dmajor"/>
+
+<collection 
+	property="hospitalVO" 
+	javaType="java.util.List"
+ 	ofType="hvo"
+ 	>
+ 	<id property="hnum" column="hnum" javaType="int"/>
+	<result property="hname" column="hname"/>
+	<result property="otime" column="otime"/>
+	<result property="ctime" column="ctime"/>
+	<result property="hloc" column="hloc"/>
+	
+</collection>
+</resultMap>
+
+<select id="hospitalDoctorDetail" resultMap="DoctorDetailResult">
+select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.hnum = h.hnum and dnum = #{dnum}
+</select>
   	
 </mapper>
