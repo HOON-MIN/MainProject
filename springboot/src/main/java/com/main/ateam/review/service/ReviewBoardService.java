@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.main.ateam.review.dao.ReviewBoardDao;
+import com.main.ateam.vo.ReviewBoardCommVO;
 import com.main.ateam.vo.ReviewBoardVO;
 
 @Service
@@ -56,5 +57,26 @@ public class ReviewBoardService {
 		// dao.update("review.upReviewHits", num);		
 		dao.upReviewHits(num);
 	}
-	
+	// 댓글 관련 추가!-------------------
+	// 댓글 입력
+	public int addReply(ReviewBoardCommVO vo) {
+		return dao.addReply(vo);
+	}
+	// 댓글 조회
+	public List<ReviewBoardCommVO> showReply(int num){
+		return dao.showReply(num);
+	}
+	// 댓글 수정
+	public void upReply(ReviewBoardCommVO vo) {
+		dao.upReply(vo);
+	}
+	// 댓글 삭제
+	public int delReply(int cnum) {
+		
+		return dao.delReply(cnum);
+	}
+	// rcount 댓글 수 업데이트용
+	public void upRcount(int num) {
+		dao.upRcount(num);
+	}
 }

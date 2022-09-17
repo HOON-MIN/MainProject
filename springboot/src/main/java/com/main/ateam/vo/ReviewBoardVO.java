@@ -16,4 +16,6 @@ public class ReviewBoardVO {
 	int likes;
 	String hname;
 	String dname;
+	// 추가
+	int rcount;
 }
