@@ -2,27 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
-<style>
-.jb-wrap {
-	width: 18%;
-	margin: 10px 10px 10px 10px;
-	border: 1px solid #000000;
-	float:left;
-}
-
-.jb-wrap img {
-	width: 100%;
-	vertical-align: center;
-	
-}
-
-.jb-text {
-	padding: 5px 10px;
-	background-color: yellow;
-	text-align: center;
-}
-
-</style>
 
 
 <div class="container-fluid">
