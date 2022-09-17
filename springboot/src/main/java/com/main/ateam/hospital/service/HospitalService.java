@@ -6,8 +6,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.main.ateam.hospital.dao.HospitalDao;
+import com.main.ateam.vo.CompanyVO;
 import com.main.ateam.vo.HospitalVO;
 
 
@@ -27,6 +29,14 @@ public class HospitalService {
 		HospitalVO vo = dao.getDetail(num);
 		System.out.println("service => " + vo);
 		return vo;
+	}
+	@Transactional
+	public void addHospitalService(CompanyVO cvo, HospitalVO hvo) {
+		System.out.println("hospital service");
+		System.out.println("Crn service"+cvo.getCrn());
+		dao.addCompany(cvo);
+		dao.addHospital(hvo);
+		
 	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.main.ateam.admin.dao.AdminDao;
 import com.main.ateam.admin.dao.NoticeDaoInter;
+import com.main.ateam.vo.CompanyVO;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.NoticeVO;
@@ -17,11 +18,17 @@ public class AdminService {
 	@Autowired
 	private AdminDao adminDao;
 
-	public List<MemberVO> memberList(Map<String, Integer> map){
-		return adminDao.memberList(map);
+	public List<MemberVO> memberList(){
+		return adminDao.memberList();
 	}
-	public List<HospitalVO> hospitalList(Map<String, Integer> map){
-		return adminDao.hospitalList(map);
+	public List<HospitalVO> ad_hospitalList(){
+		return adminDao.ad_hospitalList();
+	}
+	public List<CompanyVO> waitingList(){
+		return adminDao.waitingList();
+	}
+	public void agree(int num) {
+		adminDao.agree(num);
 	}
 	/*
 	 * public NoticeVO getDetail(int nnum) { return noticeDao.getDetail(nnum); }

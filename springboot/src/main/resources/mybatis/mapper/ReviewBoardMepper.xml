@@ -59,4 +59,30 @@
 update reviewboard set hits=hits+1 where rnum=#{rnum}
 </update>
 
+<!-- 댓글 입력 -->
+<insert id="addReply" parameterType="ReviewBoardCommVO">
+insert into reviewboardcomm values(reviewboardcomm_seq.nextVal, #{rnum}, #{id}, #{cont},sysdate)
+</insert>
+
+<!-- 댓글 조회 -->
+<select id="showReply" parameterType="int" resultType="ReviewBoardCommVO">
+select id,cont,udate,cnum from reviewboardcomm where rnum=#{rnum}
+</select>
+
+<!-- 댓글 삭제 -->
+<delete id="delReply" parameterType="int">
+delete from reviewboardcomm where cnum=#{cnum}
+</delete>
+
+<!-- 댓글 수정 -->
+<update id="upReply" parameterType="ReviewBoardCommVO">
+update reviewboardcomm set cont=#{cont} where cnum=#{cnum} and id=#{id}
+</update>
+
+<!-- 댓글수 업데이트 -->
+<update id="upRcount" parameterType="int">
+update reviewboard set rcount = (select count(cnum) from reviewboardcomm where rnum=#{rnum}) 
+where rnum=#{rnum}
+</update>
+
 </mapper>
