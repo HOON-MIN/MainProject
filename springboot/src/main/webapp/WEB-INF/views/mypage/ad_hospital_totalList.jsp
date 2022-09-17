@@ -64,7 +64,8 @@ $(function(){
    //Ajax
    $.ajax({
    //url:'http://192.168.0.113:9000/myjson/loadJson',
-    url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
+//    url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
+    url:'http://192.168.0.120:9000/hospital/hospitalListJsonP',
     type:'GET',
     dataType:'jsonp',
     jsonp:'callback',
