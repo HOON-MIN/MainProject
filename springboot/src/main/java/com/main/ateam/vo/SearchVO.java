@@ -9,6 +9,8 @@ public class SearchVO {
 	private String cPage;
 	private String gender;
 	private String searchreset;
+	private String hos_name;
+	
 	
 	public SearchVO() {
 		this.cPage = "1";
@@ -17,6 +19,14 @@ public class SearchVO {
 		this.searchreset = "";
 	}
 	
+	public String getHos_name() {
+		return hos_name;
+	}
+
+	public void setHos_name(String hos_name) {
+		this.hos_name = hos_name;
+	}
+
 	public int getMem_no() {
 		return mem_no;
 	}

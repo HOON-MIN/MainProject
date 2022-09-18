@@ -49,9 +49,15 @@
 <%-- 		<%-- for end --%> 
 	</tbody>
 </table>
-<ul class="tj" id="pagingul"></ul>
+<div>
+<div style="text-align: center;">
+<ul class="tj" id="pagingul" ></ul>
+		<form name="search-form" id="search-form" autocomplete="off" style="float: right;">
+		<input type="text" name="keyword"id="keyword"></input>
+		<input type="button" id="searchBtn" class="btn btn-outline-primary mr-2" value="검색">
+		</form></div>
 		<div id="displayCount" style="text-align: center;"></div>
-		
+		</div>
 </article>
 </div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
@@ -66,23 +72,52 @@
 // 	});
 //});
 
-$(function(){
+
 	let totalData; //총 데이터 수
 	let dataPerPage; //한 페이지에 나타낼 글 수
 	let pageCount = 5; //페이징에 나타낼 페이지 수
 	let globalCurrentPage=1; //현재 페이지
-	let d=[];
+	let totalList=[];
+	let searchList=[];
+	var keyword;
 		$(function() {
+			$('#searchBtn').click(function(){
+				keyword = $('#keyword').val();
+					//$(this).text()
+				console.log("keyword = > " + keyword)
+				getSearchList(keyword)
+			})
+			
 			$('#dataPerPage').change(function() {
 				dataPerPage = $("#dataPerPage").val();
 			
-				paging(totalData, dataPerPage, pageCount, 1,d);
-				 displayData(1, dataPerPage,d);
+				paging(totalData, dataPerPage, pageCount, 1,totalList);
+				 displayData(1, dataPerPage,totalList);
 			})
 			console.log("dataPerPage => "+ dataPerPage)
 			dataPerPage = $("#dataPerPage").val();
-			 
 			$.ajax({
+				   //url:'http://192.168.0.113:9000/myjson/loadJson',
+//				    url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
+//				    url:'http://192.168.0.120:9000/hospital/hospitalListJsonP',
+				    url:'http://192.168.0.120:9000/hospital/hospitalListTotal',
+				    type:'GET',
+				    dataType:'jsonp',
+				    jsonp:'callback',
+				    success:function(data){
+				    	totalData = data.data.length
+				           for (var i of data.data) {
+				           	totalList.push(i)
+				       }
+				       paging(totalData, dataPerPage, pageCount, 1,totalList);
+		       		   displayData(1, dataPerPage,totalList);
+				    },
+				       error: function(err){
+				          console.log('Error => '+err);
+				       }
+			
+				   });
+			/* $.ajax({
 				   //url:'http://192.168.0.113:9000/myjson/loadJson',
 //				    url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
 //				    url:'http://192.168.0.120:9000/hospital/hospitalListJsonP',
@@ -94,7 +129,6 @@ $(function(){
 				        console.log(data);
 				        console.log(data.columns);
 				        console.log(data.data);
-				        let tbodyData =[];
 				           for (var i of data.data[0]) {
 				           	d.push(i)
 				       }
@@ -105,24 +139,21 @@ $(function(){
 				          console.log('Error => '+err);
 				       }
 			
-				   });
+				   }); */
 
-			//병원 예약 목록
-			$.ajax({
-	            url: 'http://192.168.0.120:9000/map/hospiter_list',
+			//병원 목록
+			/* $.ajax({
+	            url: 'http://192.168.0.120:9000/hospital/hospitalListTotal',
 	            //url: 'http://14.36.188.14:9000/map/hospiter_list',
 	            type: 'GET',
 	            dataType: 'jsonp',
 	            jasonp: 'callback',
 	            
 	            success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
-	                console.log(data.data[0].length)
-	                console.log(data)
-	                totalData = data.data[0].length
-	            	for(var e of data.data[0]){
+	                totalData = data.data.length
+	            	for(var e of data.data){
 	            		d.push(e)
 	            	}
-	            		console.log(d[0])
 	           
 	                paging(totalData, dataPerPage, pageCount, 1,d);
 	       			displayData(1, dataPerPage,d);
@@ -130,7 +161,7 @@ $(function(){
 	            error: function(err){
 	               console.log('Error => '+err);
 	            }
-	        });
+	        }); */
 				
 				// ---------------- 페이징 처리 -----------------------
 				function paging(totalData, dataPerPage, pageCount, currentPage,d) {
@@ -194,7 +225,7 @@ $(function(){
 						    //글 목록 표시 재호출
 						    displayData(selectedPage, dataPerPage,d);
 						  });
-					}
+					} // paging 끝
 				
 				function displayData(currentPage, dataPerPage,d) {
 
@@ -214,25 +245,61 @@ $(function(){
 					 
 					 
 					 if(totalData >i){
+						 console.log('d '+d[i])
 					    chartHtml +=
 					    	'<tr style="cursor:pointer;">'+
 				           	'<td  >'+(i+1)+'</td>'+
-				           	'<td  id="listBtn" >'+d[i].hos_name+'</td>'+
-				           	'<td  >'+d[i].hos_code_name+'</td>'+
-				           	'<td  >'+d[i].hos_tel+'</td>'+
-				           	'<td  >'+d[i].hos_loc+'</td><tr>'
-				           	
-				           	
+				           	'<td  id="listBtn" >'+d[i][0]+'</td>'+
+				           	'<td  >'+d[i][1]+'</td>'+
+				           	'<td  >'+d[i][2]+'</td>'+
+				           	'<td  >'+d[i][3]+'</td><tr>'
 					  	}
-					 
 					} 
 					     document.querySelector('.table1 > tbody').innerHTML = chartHtml;
-
-					}
+					} // displayData 끝
 				
-	
+				function getSearchList(keyword){
+							if(keyword != ""){
+					$.ajax({
+						url:'http://192.168.0.120:9000/hospital/hospitalListTotalSearch?keyword='+keyword,
+					    type:'GET',
+					    dataType:'jsonp',
+					    jsonp:'callback',
+						success : function(data){
+							totalData = data.data.length
+							//테이블 초기화
+							 $('.table1 > tbody').empty();
+							for (var i of data.data) {
+					           	searchList.push(i)
+							console.log('d = >' + i)
+					       }
+					paging(totalData, dataPerPage, pageCount, 1,searchList);
+		       		displayData(1, dataPerPage,searchList); 
+							
+						}
+					})
+					}else{
+						$.ajax({
+							    url:'http://192.168.0.120:9000/hospital/hospitalListTotal',
+							    type:'GET',
+							    dataType:'jsonp',
+							    jsonp:'callback',
+							    success:function(data){
+							    	totalData = data.data.length
+							           for (var i of data.data) {
+							           	totalList.push(i)
+							       }
+							       paging(totalData, dataPerPage, pageCount, 1,totalList);
+					       		   displayData(1, dataPerPage,totalList);
+							    },
+							       error: function(err){
+							          console.log('Error => '+err);
+							       }
+						
+							   });
+					}
+					}// getSearchList 끝
 		});
-});
 
 </script>
 
