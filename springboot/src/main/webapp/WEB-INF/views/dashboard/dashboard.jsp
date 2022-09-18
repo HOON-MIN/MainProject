@@ -155,31 +155,19 @@
 						data-bs-ride="carousel">
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img src="/soyoung/dashboard/img/carousel-1.jpg"
+								<img src="/soyoung/dashboard/img/carousel_new_1.jpg"
 									class="d-block h-100" alt="...">
-								<div class="carousel-caption">
-									<h5 class="text-white mb-1">Get started with Argon</h5>
-									<p>There’s nothing I really wanted to do in life that I
-										wasn’t able to get good at.</p>
-								</div>
+								
 							</div>
 							<div class="carousel-item">
-								<img src="/soyoung/dashboard/img/carousel-2.jpg"
+								<img src="/soyoung/dashboard/img/carousel_new_3.jpg"
 									class="d-block h-100" alt="...">
-								<div class="carousel-caption">
-									<h5 class="text-white mb-1">Get started with Argon</h5>
-									<p>There’s nothing I really wanted to do in life that I
-										wasn’t able to get good at.</p>
-								</div>
+								
 							</div>
 							<div class="carousel-item">
-								<img src="/soyoung/dashboard/img/carousel-3.jpg"
+								<img src="/soyoung/dashboard/img/carousel_new_2.png"
 									class="d-block h-100" alt="...">
-								<div class="carousel-caption">
-									<h5 class="text-white mb-1">Get started with Argon</h5>
-									<p>There’s nothing I really wanted to do in life that I
-										wasn’t able to get good at.</p>
-								</div>
+							
 							</div>
 						</div>
 						<button class="carousel-control-prev" type="button"
@@ -206,7 +194,7 @@
 					</div>
 					<tr>
 						<td colspan="6" style=""><img
-							src="/soyoung/dashboard/img/wordcnt.png" style="width: 70%">
+							src='http://192.168.0.177:9000/static/dashboard/img/wordcnt.png' style="width: 70%">
 						</td>
 					</tr>
 				</div>

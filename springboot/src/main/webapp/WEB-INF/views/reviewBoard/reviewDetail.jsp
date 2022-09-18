@@ -43,12 +43,15 @@
 
 		</div>
 		<p></p>
+	<c:if test="${sessionID != null}">
 		<div class="form-group" style="text-align:">
 			<input type="button" value="후기수정" class="btn btn-info"
 				id="updateBtn" /> <input type="button" value="글 삭제"
 				class="btn btn-danger" id="delBtn" />
 		</div>
+	</c:if>
 <!-- 댓글 -->
+	<c:if test="${sessionID != null}">
 		<div class="container">
 			<label for="content">comment</label>
 			<form name="commentInsertForm">
@@ -60,7 +63,8 @@
 					</span>
 				</div>
 			</form>
-		</div>		
+		</div>
+	</c:if>		
 		<div class="container">
 		<div class="commentList">
 		</div>
@@ -70,7 +74,7 @@
 
  <script type="text/javascript">
  
- $(function(){
+$(function(){
 		
 		$('#updateBtn').click(function(){
 			location ="reviewUpdate?rnum=${vo.rnum}";
@@ -78,13 +82,13 @@
 		$('#delBtn').click(function(){
 			location ="delReview?rnum=${vo.rnum}";
 		});
-		
 	});
 
-var rnum = '${vo.rnum}'; //게시글 번호 
+var rnum = '${vo.rnum}'; // 후기 글 번호 
+var id = '${sessionID}'; // 로그인 아이디
 
 $('[name=commentInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
-	 console.log("성공0!")
+	 //console.log("성공0!")
   var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
   commentInsert(insertData); //Insert 함수호출(아래)
 });
@@ -100,14 +104,15 @@ function commentList(){
       success : function(data){
           var a =''; 
           $.each(data, function(key,value){ 
-              a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-              a += '<div class="commentInfo'+value.cnum+'">'+'댓글번호 : '+value.cnum+' / 작성자 ID : '+value.id;
-              a += '<a onclick="commentUpdate('+value.cnum+',\''+value.cont+'\');"> 수정 </a>';
-              a += '<a onclick="commentDelete('+value.cnum+');"> 삭제 </a> </div>';
-              a += '<div class="commentContent'+value.cnum+'"> <p> 내용 : '+value.cont +'</p>';
+              a += '<div class="commentArea" style="margin-bottom: 15px;">';
+              a += '<div class="commentInfo'+value.cnum+'" >'+'댓글번호 : '+value.cnum+' / 작성자 ID : '+value.id;
+              
+              a += '<c:choose><c:when test="${sessionScope.sessionID != null }"><a onclick="commentUpdate('+value.cnum+',\''+value.cont+'\');"> 수정 </a>';
+              a += '<a onclick="commentDelete('+value.cnum+');"> 삭제 </a> </div></c:when></c:choose>';
+              
+              a += '<div class="commentContent'+value.cnum+'" style="border-bottom:1px solid darkgray;"> <p> 내용 : '+value.cont +'</p>';
               a += '</div></div>';
           });
-          
           $(".commentList").html(a);
       }
   });
@@ -122,7 +127,7 @@ function commentInsert(insertData){
       data : insertData,
       success : function(data){
           if(data == 1) {
-         	 alert('성공!');
+         	 //alert('성공!');
               commentList(); //댓글 작성 후 댓글 목록 reload
               $('[name=content]').val('');
               
@@ -152,9 +157,9 @@ function commentUpdateProc(cnum){
   $.ajax({
       url : '/reviewboard/upReply',
       type : 'post',
-      data : {'cont' : updateContent, 'cnum' : cnum, 'id' : 'xman'},
+      data : {'cont' : updateContent, 'cnum' : cnum},
       success : function(data){
-     	 alert('수정 성공!');
+     	 //alert('수정 성공!');
           if(data == 1) commentList(rnum); //댓글 수정후 목록 출력 
           alert('수정 성공2!');
       }
@@ -166,8 +171,9 @@ function commentDelete(cnum){
   $.ajax({
       url : '/reviewboard/delReply/'+cnum,
       type : 'post',
+      data : {'rnum' : rnum, 'cnum' : cnum},
       success : function(data){
-     	 alert('삭제 성공!');
+     	 //alert('삭제 성공!');
           if(data == 1) commentList(rnum); //댓글 삭제후 목록 출력 
       }
   });
