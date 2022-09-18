@@ -10,9 +10,9 @@
 		<c:choose>
 			<c:when test="${sessionNUM == 1}">
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/admin/ad_hospital_totalList">전체 병원</a>
+				href="${pageContext.request.contextPath }/admin/adminHospTotalList">전체 병원</a>
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/admin/hospitalList">등록된 병원</a> 
+				href="${pageContext.request.contextPath }/admin/adminHospRegistList">등록된 병원</a> 
 			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="${pageContext.request.contextPath }/admin/waitingList">업체승인 대기목록</a> 
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
