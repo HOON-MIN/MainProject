@@ -72,6 +72,12 @@ uri="http://tiles.apache.org/tags-tiles"%>
     <script src="/js/scripts.js?"></script>
     <link href="/css/styles.css?" rel="stylesheet" />
     <!-- --------------- -->
+    
+<!--     mireu summernote -->
+<!--     <script src="/mireu/js/summernote-lite.js?"></script> -->
+<!-- 	<script src="/mireu/js/summernote-ko-KR.js?"></script> -->
+<!-- 	<link rel="stylesheet" href="/mireu/css/summernote-lite.css?"> -->
+	
   </head>
  
   <body>

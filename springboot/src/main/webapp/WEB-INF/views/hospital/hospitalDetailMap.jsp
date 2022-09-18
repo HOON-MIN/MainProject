@@ -379,39 +379,33 @@ function initTmap() {
       <!-- 두번째 박스 시작(인증된 리뷰) -->
     
 
-	 <input type="hidden"id="endPoint" value="${shopDetail.fullAddress}">
-                   	<script type="text/javascript">
-                
-            	
-            	
-           $(function(){ 
-        	   $('#btn1').click(function(){
-        		 	
-        		   if($('#tet').css("display") == "none"){
-        			   $('#tet').show();
-        		   }else{
-        			   $('#tet').hide();
-        		   }
-        		   
-        	   });
-        	   
-           });
-            	
-   	</script>
+<%-- <input type="hidden"id="endPoint" value="${shopDsetail.fullAddress}"> --%>
+<script type="text/javascript">
+$(function(){ 
+ 	$('#btn1').click(function(){
+	
+	  if($('#tet').css("display") == "none"){
+	   $('#tet').show();
+	  }else{
+	   $('#tet').hide();
+	  }
+  
+ 	});
+});
+</script>
              
    
 	<div class="row border-top border-bottom px-3 middle-tab" style="top: 72px !important;">
     <div class="col-8 doctorpage-tabbar" id="tet" style="display: none;">
     	<p></p>
-    	<p>약국 명 : ${shopDetail.shopNumber}</p>
-    	<p>약국 번호 : ${shopDetail.pnum}</p>
+    	<p>병원 번호 : ${shopDetail.pnum}</p>
+    	<p>병원 명 : ${shopDetail.shopNumber}</p>
     	<p> ${shopDetail.sales} : ${shopDetail.businessStatus} </p>
-    	<p>현재 영업상태 : ${shopDetail.businessStatus}</p>
-    	<p>우편번호 : ${shopDetail.locationPostalCode }</p>
-		<p>도로명 주소 : ${shopDetail.roadAddress } </p>
-		<p>관리 번호 : ${shopDetail.managementNumber }</p>
-		<p>병원 내부면적 : ${shopDetail.operatingArea }m</p>
-		<p>위도 : ${shopDetail.latitude } 경도 : ${shopDetail.longitude }</p>
+<%--     	<p>현재 영업상태 : ${shopDetail.businessStatus}</p> --%>
+		<p>위치 : ${shopDetail.roadAddress } </p>
+		<p>영업시간 : ${shopDetail.managementNumber }</p>
+		<p>진료과목 : ${shopDetail.operatingArea }m</p>
+<%-- 		<p>위도 : ${shopDetail.latitude } 경도 : ${shopDetail.longitude }</p> --%>
 		
     </div>
   </div>

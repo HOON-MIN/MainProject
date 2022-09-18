@@ -5,11 +5,14 @@
 <mapper namespace="com.main.ateam.hospital.dao.HospitalDao">
 
 <select id="getList" resultType="hvo">
-	select * from hospital order by 1 desc
+	SELECT rownum r_num,c.cnum,h.hname,h.hloc,h.otime,
+	h.ctime,h.hcate,h.htel,h.hurl,c.cdate,
+	c.ccate from hospital h, company c 
+	where h.cnum = c.cnum and c.cstatus=1
 </select>
 
 <select id="getDetail" parameterType="int" resultType="hvo">
-	select * from hospital where hnum=#{num}
+	select * from hospital where cnum=#{num}
 </select>
 <select id="hospCheck" parameterType="map" resultType="int">
 	select hname from hospital where crn=#{crn}

@@ -11,6 +11,14 @@
 
 
 <div class="container">
+<div class="list-group list-group-flush">
+	<c:choose>
+		<c:when test="${sessionNUM == 1}">
+		<a	class="list-group-item list-group-item-action list-group-item-light p-3"
+			href="${pageContext.request.contextPath }/admin/adminTotalChart">전체 병원</a>
+	</c:when>
+	</c:choose>
+</div>			
 <article>
 	<header>
 		<h1>전체 병원</h1>
@@ -100,7 +108,7 @@
 				   //url:'http://192.168.0.113:9000/myjson/loadJson',
 //				    url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
 //				    url:'http://192.168.0.120:9000/hospital/hospitalListJsonP',
-				    url:'http://192.168.0.120:9000/hospital/hospitalListTotal',
+				    url:'http://192.168.0.120:9000/hospital/adminHospTotalList',
 				    type:'GET',
 				    dataType:'jsonp',
 				    jsonp:'callback',

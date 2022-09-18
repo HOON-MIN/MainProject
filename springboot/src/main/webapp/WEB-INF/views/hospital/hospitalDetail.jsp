@@ -13,7 +13,9 @@
 <fieldset>
 <!--             <legend></legend> -->
   <form method="post" action="upUpdate" enctype="multipart/form-data" id="upform">
-  <input type="hidden" id="hnum" name="hnum" value="${vo.hnum }">
+  <input type="hidden" id="cnum" name="cnum" value="${vo.cnum }">
+  <input type="hidden" id="otime" name="otime" value="${vo.otime }">
+  <input type="hidden" id="ctime" name="ctime" value="${vo.ctime }">
   <div class="row mb-3">
       <label>병원명</label>
   <input type="text" name="hname" id="hname" value="${vo.hname }" readonly="readonly"/>
@@ -35,10 +37,7 @@
       <label>홈페이지</label>
   <input type="text" name="hurl" id="hurl" value="${vo.hurl }" readonly="readonly"/>
   </div>
-  <div class="row mb-3">
-      <label>email</label>
-  <input type="text" name="hemail" id="hemail" value="${vo.hemail }" readonly="readonly"/>
-  </div>
+  
   
   <div >
   	<input type="button" value="상담예약" id="btn1" class="btn btn-info"/>

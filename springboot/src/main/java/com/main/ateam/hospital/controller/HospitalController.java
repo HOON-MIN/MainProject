@@ -32,9 +32,9 @@ public class HospitalController {
 		System.out.println("controller - hospitalList");
 		List<HospitalVO> list = service.getList();
 		System.out.println(list);
-		for(HospitalVO e : list) {
-			System.out.println(e.getHname());
-		}
+//		for(HospitalVO e : list) {
+//			System.out.println(e.getHname());
+//		}
 		m.addAttribute("list", list);
 		return "hospital/hospitalList";	
 	}
@@ -51,7 +51,7 @@ public class HospitalController {
 		System.out.println("hname => "+vo.getHname());
 		m.addAttribute("vo", vo);
 		m.addAttribute("time", time);
-		return "hospital/hospitalDetail";
+		return "hospital/hospitalDetailMap";
 	}
 	//////////////////////////////////////////////////////
 	@PostMapping(value = "/joinHospitalForm")

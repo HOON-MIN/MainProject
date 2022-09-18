@@ -2,12 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
-<!-- include 제거  -->
-<style>
-/* 	.table1 :hover { */
 
-/* 	} */
-</style>
 
 
 <div class="container">
