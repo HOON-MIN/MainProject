@@ -2,6 +2,8 @@ package com.main.ateam.hospital.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.main.ateam.hospital.service.HospitalService;
 import com.main.ateam.vo.CompanyVO;
+import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.SearchVO;
 
@@ -73,10 +76,10 @@ public class HospitalController {
 		System.out.println("Hname : "+hvo.getHname());
 		System.out.println("Otime : "+hvo.getOtime());
 		System.out.println("Ctime : "+hvo.getCtime());
-		//service.addHospitalService(cvo, hvo);
-		
+		service.addHospitalService(cvo, hvo);
 		return "redirect:/main";
 	}
+	
 }
 
 

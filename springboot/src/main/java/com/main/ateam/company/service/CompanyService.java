@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.main.ateam.company.dao.CompanyDao;
+import com.main.ateam.vo.CompanyVO;
 
 @Service
 public class CompanyService {
@@ -19,4 +20,13 @@ public class CompanyService {
 	public void caInsert() {
 		companyDao.compInsert();
 	}
+	
+	public CompanyVO companyLogin(Map<String, String>map) {
+		return companyDao.companyLogin(map);
+		
+	}
+	public int idchk(Map<String, String> vo) {
+		return companyDao.idchk(vo);
+	}
+	
 }

@@ -42,7 +42,7 @@
  				<td id="b">${e.cnum }</td>
  				<td>${e.hvo.hname }</td>
  				<td>${e.crn }</td>
- 				<td>${e.ccate }</td>
+ 				<td id="c">${e.ccate }</td>
  				<td>${e.cdate }</td>
  				<td >승인대기</td>
 				<td><input type="button" id="agreeBtn"value="가입승인" ></td>
@@ -63,11 +63,16 @@ $(function(){
 	
 	$('.table1').on("click","tr",function(){
 		var b = $(this).children('#b').text();
+		var c = $(this).children('#c').text();
+		
 		console.log("b = " +b)
+		console.log("c = " +c)
 		$.ajax({
 			    url:'agree',
 			    type:'POST',
-			    data:{'num':b},
+			    data:{'num':b,
+			    	'cate':c
+			    	},
 				success:function(data){
 					alert('가입승인 완료되었습니다!')
 					location.href='${pageContext.request.contextPath}/admin/waitingList'

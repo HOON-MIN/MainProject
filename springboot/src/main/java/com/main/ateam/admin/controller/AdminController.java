@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.main.ateam.admin.service.AdminService;
 import com.main.ateam.hospital.dao.HospitalDao;
+import com.main.ateam.hospital.service.HospitalService;
 import com.main.ateam.vo.CompanyVO;
 import com.main.ateam.vo.HospitalVO;
 
@@ -24,7 +25,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	@Autowired
-	private HospitalDao dao;
+	private HospitalService hospitalService;
 	 
 
 	@RequestMapping(value = "/adminMypage")

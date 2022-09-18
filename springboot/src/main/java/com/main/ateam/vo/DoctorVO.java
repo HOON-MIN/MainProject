@@ -7,7 +7,7 @@ import org.apache.ibatis.type.Alias;
 @Alias("doctorVO")
 public class DoctorVO {
 	private int dnum;
-	private int hnum;
+	private int cnum;
 	private String dname;
 	private String did;
 	private String dpwd;
@@ -26,11 +26,12 @@ public class DoctorVO {
 	public void setDnum(int dnum) {
 		this.dnum = dnum;
 	}
-	public int getHnum() {
-		return hnum;
+	
+	public int getCnum() {
+		return cnum;
 	}
-	public void setHnum(int hnum) {
-		this.hnum = hnum;
+	public void setCnum(int cnum) {
+		this.cnum = cnum;
 	}
 	public String getDname() {
 		return dname;

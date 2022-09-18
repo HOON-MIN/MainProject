@@ -84,4 +84,34 @@ public class DoctorController {
 			DoctorVO ddetail = doctorservice.hospitalDoctorDetail(dnum);
 			return ddetail;
 		}
+		@GetMapping(value = "/joinDoctorForm")
+		public ModelAndView joinform() {
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("hnum", 1); // 나중에 로그인할때 hnum값 가지고 와야함 임시로 넣은값
+			mav.setViewName("doctor/doctorForm");
+			return mav;
+		}
+		
+		@PostMapping(value = "/addDoctor")
+		public String addDoctor(DoctorVO dvo) {
+			System.out.println("hnum : "+dvo.getCnum());
+			System.out.println("dname : "+dvo.getDname());
+			System.out.println("did : "+dvo.getDid());
+			System.out.println("dpwd : "+dvo.getDpwd());
+			System.out.println("dmajor : "+dvo.getDmajor());
+			doctorservice.addDoctorService(dvo);
+			return "redirect:/main";
+		}
+		
+		@GetMapping(value = "/drIdCheck")
+		public ModelAndView drIdCheck(@RequestParam("did") String did) {
+			ModelAndView mav = new ModelAndView("doctor/doctor/drIdCheck");
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("did",did);
+			int cnt = doctorservice.drIdCheckService(map);
+			System.out.println("doctor 컨트롤러 did"+did);
+			System.out.println("doctor 컨트롤러 cnt=>"+cnt);
+			mav.addObject("cnt", cnt);
+			return mav;
+		}
 }

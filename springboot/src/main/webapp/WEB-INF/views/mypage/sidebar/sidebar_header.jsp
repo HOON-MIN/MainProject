@@ -10,13 +10,13 @@
 		<c:choose>
 			<c:when test="${sessionNUM == 1}">
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/admin/ad_hospital_totalList">전체 병원</a>
+				href="${pageContext.request.contextPath }/admin/adminHospTotalList">전체 병원</a>
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/admin/hospitalList">등록된 병원</a> 
+				href="${pageContext.request.contextPath }/admin/adminHospRegistList">등록된 병원</a> 
 			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="${pageContext.request.contextPath }/admin/waitingList">업체승인 대기목록</a> 
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="#!">Events</a> 
+				href="${pageContext.request.contextPath }/admin/adminRegistChart">차트</a> 
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="#!">Profile</a> 
 			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
@@ -52,6 +52,22 @@
 			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="#!">Status</a>
 			</c:when>
+			
+			<c:when test="${sessionCNUM != null}">
+			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
+				href="${pageContext.request.contextPath }/company/hospitalDoctorList">의사명단</a>
+			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
+				href="${pageContext.request.contextPath }/member/memberMypage_list">예약 목록</a> 
+			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
+				href="#!">??</a> 
+			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
+				href="#!">Events</a> 
+			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
+				href="#!">Profile</a> 
+			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
+				href="#!">Status</a>
+			</c:when>
+			
 			</c:choose>
 		</div>
 	</div>

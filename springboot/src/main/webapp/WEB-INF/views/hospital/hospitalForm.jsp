@@ -83,14 +83,18 @@
 		  <div class="col-md-8">
 			<div class="form-outline">
 					<label class="form-label">홈페이지</label>
-				<input type="url" id="hurl" name="hurl" class="form-control" required placeholder="www.example.com"/> 
+				<input type="text" id="hurl" name="hurl" class="form-control" required placeholder="www.example.com"/> 
 			</div>
 		</div>
 		
 					
-		<div class="col-md-6">
+			<div class="form-outline">
+					<label class="form-label">전화번호</label>
+				<input type="text" id="htel" name="htel" class="form-control" /> 
+			</div>
+		<div class="col-md-5">
 			<label class="form-label">이메일</label> 
-				<input type="email" class="form-control" id="hemail" name="hemail" placeholder="name@example.com"
+				<input type="text" class="form-control" id="hemail" name="hemail" placeholder="name@example.com"
 				required="required">
 		</div>
 

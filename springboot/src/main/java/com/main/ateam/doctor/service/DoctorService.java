@@ -27,4 +27,11 @@ public class DoctorService {
 	public DoctorVO hospitalDoctorDetail(int dnum) {
 		return doctordao.hospitalDoctorDetail(dnum);
 	}
+	public void addDoctorService(DoctorVO dvo) {
+		doctordao.addDoctor(dvo);
+	}
+	
+	public int drIdCheckService(Map<String, String> map) {
+		return doctordao.drIdCheck(map);
+	}
 }

@@ -12,25 +12,44 @@
 	select * from hospital where hnum=#{num}
 </select>
 <select id="hospCheck" parameterType="map" resultType="int">
-	select hname,  from hospital where crn=#{crn}
+	select hname from hospital where crn=#{crn}
 </select>
 <insert id="addCompany" parameterType="cvo">
  		insert into company 
-        values(company_seq.nextVal, #{crn}, #{cpwd}, #{ccate}, sysdate)
+        values(company_seq.nextVal, #{crn}, #{cpwd}, #{ccate}, sysdate, 0)
     </insert>
-    <insert id="addHospital" parameterType="hvo">
+<insert id="addHospital" parameterType="hvo">
     	<selectKey keyProperty="cnum" resultType="int" order="BEFORE">
     		select company_seq.currVal from dual
     	</selectKey>
-    	insert into hospital values(hospital_seq.nextVal,#{cnum},#{hname},#{hloc},#{otime},#{ctime},
-							  #{hcate},#{hurl},#{hemail},#{hgrade})
-    </insert>
+    	insert into hospital values(#{cnum},#{hname},#{hloc},#{otime},#{ctime},
+							  #{hcate},#{htel},#{hurl},#{hemail},#{hgrade})
+</insert>
 
  <!-- crn 중복체크 -->
  <select id="crnCheck" parameterType="map" resultType="int">
  select count(*) from hospital where crn = #{crnv}
  </select>
 
+<!-- 병원 - 의사 명단 -->
+<select id="hospitalDoctorList" resultMap="hospitalDoctorResult" parameterType="int">
+ 	select h.hname,d.dname from hospital h, doctor d where h.cnum=d.cnum and h.cnum=#{cnum}
+ </select>
+ <!-- resultMap -->
+<!--병원 mypage - 의사 목록 -->
+ <resultMap id="hospitalDoctorResult" type="hvo">
+<id column="cnum" property="cnum"/>
+<result column="hname" property="hname"/>
+<result column="otime" property="otime"/>
+<result column="ctime" property="ctime"/>
 
+<collection property="doctorVO" ofType="doctorVO" javaType="java.util.List"
+ >
+<id column="cnum" property="cnum" javaType="int"/>
+<result column="dnum" property="dnum"/>
+<result column="dname" property="dname"/>
+<result column="dmajor" property="dmajor"/>
+</collection>
+</resultMap>
 </mapper>
 

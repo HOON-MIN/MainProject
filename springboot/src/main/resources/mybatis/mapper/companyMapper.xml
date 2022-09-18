@@ -5,13 +5,22 @@
 <mapper namespace="com.main.ateam.company.dao.CompanyDao">
 
 
- <!-- crn 중복체크 -->
- <select id="crnCheck" parameterType="map" resultType="int">
- select count(*) from company where crn = #{crnv}
- </select>
-<insert id="compInsert"  > 
-	insert into company_agree values(ca_seq.nextVal,0, sysdate)
-</insert>
+	<!-- crn 중복체크 -->
+	<select id="crnCheck" parameterType="map" resultType="int">
+		select count(*) from company where crn = #{crnv}
+	</select>
+	<!-- 업체 등록 -->
+	<insert id="compInsert">
+		insert into company
+		values(company_seq.nextVal,#{crn},#{cpwd},#{ccate},sysdate,0)
+	</insert>
+
+	<select id="companyLogin" resultType="cvo">
+		select * from company where crn=#{crn} and cpwd=#{cpwd}
+	</select>
+	<select id="idchk" parameterType="map" resultType="int">
+		select count(*) from company where crn=#{crn} and cpwd=#{cpwd}
+	</select>
 
 
 </mapper>

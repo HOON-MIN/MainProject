@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.main.ateam.pharmacy.dao.ShopDao">
+<!-- hospital 등록 -->
+<!-- cnum, crn, cpwd, ccate, cdate   -->
+<!-- pnum / cnum / pname / ploc / ptel / plat / plong  -->
+<insert id="addCompany" parameterType="cvo">
+ 		insert into company 
+        values(company_seq.nextVal, #{crn}, #{cpwd}, #{ccate}, sysdate)
+    </insert>
+    <insert id="addPharmacy" parameterType="pvo">
+    	<selectKey keyProperty="cnum" resultType="int" order="BEFORE">
+    		select company_seq.currVal from dual
+    	</selectKey>
+    	insert into pharmacy values(pharmacy_seq.nextVal,#{cnum},#{pname},#{ploc},#{ptel},#{plat},#{plong})
+    </insert>
+
+
+
+</mapper>

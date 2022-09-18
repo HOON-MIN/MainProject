@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.main.ateam.hospital.dao.HospitalDao;
 import com.main.ateam.vo.CompanyVO;
+import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.HospitalVO;
 
 
@@ -36,7 +37,9 @@ public class HospitalService {
 		System.out.println("Crn service"+cvo.getCrn());
 		dao.addCompany(cvo);
 		dao.addHospital(hvo);
-		
+	}
+	public List<DoctorVO> hospitalDoctorList(int cnum){
+		return dao.hospitalDoctorList(cnum);
 	}
 
 }

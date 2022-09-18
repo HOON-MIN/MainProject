@@ -56,7 +56,8 @@
 		</div>	      	  
 			<div class="form-group" style=" margin-top: 20px;">
 			<input type="text" name="crnv" id="crnv" tabindex="1" class="form-control" required placeholder ="사업자 등록번호 10자리"
-				 style="height: 57px; width: 400px; margin-left: auto; margin-right: auto; text-align: center;" maxlength="10" pattern=".{10,10}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+				 style="height: 57px; width: 400px; margin-left: auto; margin-right: auto; text-align: center;"  pattern=".{10,10}" >
+<!-- 				 style="height: 57px; width: 400px; margin-left: auto; margin-right: auto; text-align: center;" maxlength="10" pattern=".{10,10}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"> -->
 				<div class="text-center mb-4">
 				<i class="agreeInfo" id="confcrn" style="font-size: 17px; padding-top: 15px;" ></i></div>
 			</div>

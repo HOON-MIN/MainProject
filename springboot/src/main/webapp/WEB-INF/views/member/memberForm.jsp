@@ -172,7 +172,7 @@
 	$js('#id-check').click(function() {
 		let param = $js('#id').val();
 		$js.ajax({
-			url: "idchk?id="+param,
+			url: "idcheck?id="+param,
 			success:function(data){
 				console.log(data);
 				if(data == 1){
