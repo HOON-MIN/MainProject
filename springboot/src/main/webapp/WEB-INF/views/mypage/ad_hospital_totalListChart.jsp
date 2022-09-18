@@ -12,7 +12,8 @@
 			<input type="button" value="click" id="jsonLoad">
 		</div>
 		<div id="target"></div>
-		<div id="chart1" style="width:1200px; height:600px; padding-top:50px; margin-bottom:100px;"></div>
+		<div id="chart1"
+			style="width: 1200px; height: 600px; padding-top: 50px; margin-bottom: 100px;"></div>
 	</div>
 </div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
@@ -27,26 +28,23 @@
 	// 		window.location = href;
 	// 	});
 	//});
-	$('#jsonLoad')
-			.click(
-					function() {
-						$
-								.ajax({
-									url : 'http://192.168.0.63:9000/hospital/hospitalListJsonP?callback',
-									type : 'GET',
-									dataType : 'jsonp',
-									jsonp : 'callback',
-									success : function(data) {
-										var datalist1 = []
-										console.log(data);
-										datalist1.push(data.data[0])
-										makeBarChar(data.data[0]);
-									},
-									error : function(err) {
-										console.log('Error => ' + err);
-									}
-								});
-					});
+	$('#jsonLoad').click(function() {
+		$.ajax({
+			url : 'http://192.168.0.63:9000/hospital/hospitalListJsonP?callback',
+			type : 'GET',
+			dataType : 'jsonp',
+			jsonp : 'callback',
+			success : function(data) {
+				var datalist1 = []
+				console.log(data);
+				datalist1.push(data.data[0])
+				makeBarChar(data.data[0]);
+			},
+			error : function(err) {
+				console.log('Error => ' + err);
+			}
+		});
+	});
 
 	//c3js의 API 를 보고 맞는 형태를 제작
 	function makeBarChar(jsonData) {
@@ -91,7 +89,6 @@
 		            height: 130
 		        }
 		    }
-		    
 		});
 	}
 </script>

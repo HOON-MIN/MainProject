@@ -26,34 +26,50 @@ public class AdminController {
 	@Autowired
 	private HospitalDao dao;
 	 
-	
-	
+
+	@RequestMapping(value = "/adminMypage")
+	public String adminMypage(Model m) {
+		return "mypage/ad_mypage";
+	}
 	@RequestMapping(value = "/memberList")
 	public String memberList() {
 		return "mypage/ad_member_list";
 	}
-	@RequestMapping(value = "/ad_hospital_totalList")
-	public String hospitalList1(Model m) {
-		
+	
+//	관리자 페이지 - 전국 병원 목록 (django jsonp)
+	@RequestMapping(value = "/adminHospTotalList")
+	public String adminHospTotalList(Model m) {
 		return "mypage/ad_hospital_totalList";
 	}
-	@RequestMapping(value = "/hospitalList")
-	public String hospitalList2(Model m) {
+// 	ㄴ> 전국 병원 목록에서 진료과목 별 비율 차트 
+	@RequestMapping(value = "/adminTotalChart")
+	public String adminTotalChart() {
+		return "mypage/ad_hospital_totalListChart";
+	}
+	
+	
+//	관리자 페이지 - 우리 사이트에 등록한 병원 업체 목록 
+	@RequestMapping(value = "/adminHospRegistList")
+	public String adminHospRegistList(Model m) {
 		List<HospitalVO> vo = adminService.ad_hospitalList();
 		m.addAttribute("list", vo);
 		return "mypage/ad_hospital_list";
 	}
-	@RequestMapping(value = "/adminMypage")
-	public String adminMypage(Model m) {
-		
-		return "mypage/ad_mypage";
+// 	ㄴ> 전국 병원 목록에서 진료과목 별 비율 차트 
+	@RequestMapping(value = "/adminRegistChart")
+	public String adminRegistChart() {
+		return "mypage/ad_hospital_totalListChart";
 	}
+	
+	
+//	업체 등록 대기 중인 업체 리스트 : 가입 승인 기능 
 	@RequestMapping(value = "/waitingList")
 	public String waitingList(Model m) {
 		List<CompanyVO> list = adminService.waitingList();
 		m.addAttribute("list", list);
 		return "mypage/ad_waitingList";
 	}
+//	가입 승인 버튼 -> 가입 완료 처리 company cstatus=1 업뎃
 	@ResponseBody
 	@PostMapping(value = "/agree")
 	public int agree(int num) {
@@ -62,11 +78,6 @@ public class AdminController {
 		int res=num;
 		System.out.println("변경완료");
 		return res;
-	}
-	
-	@RequestMapping(value = "/admincon")
-	public String admincon() {
-		return "mypage/ad_hospital_totalListChart";
 	}
 	
 	
