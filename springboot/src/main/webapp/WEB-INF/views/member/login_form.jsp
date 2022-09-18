@@ -39,11 +39,11 @@ pageEncoding="UTF-8"%>
 										</div>
 										<div class="form-group">
 											<input type="text" class="form-control form-control-user"
-												id="id" name="id" placeholder="ID">
+												id="id" placeholder="ID">
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user"
-												id="pwd" name="pwd" placeholder="Password">
+												id="pwd" placeholder="Password">
 										</div>
 										<div class="form-group">
 											<div class="custom-control custom-checkbox small">
@@ -53,8 +53,8 @@ pageEncoding="UTF-8"%>
 													Me</label>
 											</div>
 										</div>
-										<input type="button" 
-											class="btn btn-primary btn-user btn-block" id="loginBtn" value="Login"> 
+										<a href="#"
+											class="btn btn-primary btn-user btn-block"> Login </a>
 										<hr>
 										<a href="index.html" class="btn btn-google btn-user btn-block">
 											<i class="fab fa-google fa-fw"></i> Login with Google
