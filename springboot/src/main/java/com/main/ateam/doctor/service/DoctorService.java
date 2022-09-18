@@ -23,4 +23,8 @@ public class DoctorService {
 	public List<DoctorVO> hospitalDoctorList(){
 		return doctordao.hospitalDoctorList();
 	}
+	
+	public DoctorVO hospitalDoctorDetail(int dnum) {
+		return doctordao.hospitalDoctorDetail(dnum);
+	}
 }
