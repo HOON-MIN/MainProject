@@ -21,5 +21,5 @@ public interface ReviewBoardDao {
 	public List<ReviewBoardCommVO> showReply(int num);
 	public void upReply(ReviewBoardCommVO vo);
 	public int delReply(int cnum);
-	public void upRcount(int num);
+	public void upRcount(int rnum);
 }

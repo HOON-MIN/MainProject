@@ -45,10 +45,13 @@ a:link{text-decoration: none;}
 </style>
 <article>
 <div class="container">
-<header>
-	<h1>사용 후기 게시판</h1>
+	<header>
+		<h1>사용자 후기 게시판</h1>
 	</header>
-	
+	<ul class="list-unstyled">
+		<li class="border-top my-3"></li>
+	</ul>
+
 <table class="table table-bordered">
 
 <thead>
@@ -66,7 +69,7 @@ a:link{text-decoration: none;}
 <c:forEach var="e" items="${reviewlist}">
 <tr>
 <td class="align-middle text-center">${e.rnum }</td>
-<td class="text-center"><a href="reviewDetail?rnum=${e.rnum }">${e.title }</a></td>
+<td class="text-center"><a href="reviewDetail?rnum=${e.rnum }">${e.title }<b><span style="color: darkred;">[${e.rcount }]</span></b></a></td>
 
 <td class="align-middle text-center">${e.id }</td>
 <td class="align-middle text-center">${e.hname }</td>
@@ -115,9 +118,6 @@ a:link{text-decoration: none;}
 	</c:choose>
 </ol>
 
-<c:if test="${sessionID != null}">
-<input type="button" value="후기 작성" id="wbtn" class="btn btn-danger" />
-</c:if>
 
 <form name="sForm" method="post" action="reviewboardlist">
     <select name="search_option">
@@ -145,7 +145,9 @@ a:link{text-decoration: none;}
     <input name="keyword" value="${map.keyword}">
     <input type="submit" value="조회">
 </form>
+<c:if test="${sessionID != null}">
 <input type="button" value="글작성" class="btn btn-info" id="writeBtn" />
+</c:if>
 
 </td>
 </tr>

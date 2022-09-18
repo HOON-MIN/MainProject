@@ -1,24 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 <article >
 <header>
-   <h1>후기 작성</h1>
+
 </header>
    <ul class="list-unstyled"><li class="border-top my-3"></li></ul>
 
-<div class="container">       
+<div class="container" class="container mt-5">     
+<h2 class="text-center" style="padding-bottom:30px; font-size:40px;"> 사용자 후기 작성 </h2>
 <%-- boardForm 들어 갈 자리 --%>
-<fieldset>
+
+<div class="row" style="width:900px; margin:0 auto;">
+
 <!-- 액션은 컨트롤러로 보내는 역할이다 @PostMapping(value ="/upload")와 동일해야 한다 -->
-<form method="post" action="uploadpro" id="upform">
+<form class="d-flex justify-content-center" method="post" action="uploadpro" id="upform">
 <div class="row mb-3">
-   <label class="col-sm-2 col-form-label">제 목</label>
-   <div class="col-sm-10"><input type="text" name="title" id="title" placeholder="제목을 입력하세요."/></div>
+   <label for="btitle" style="font-size:20px;">후기 제목</label>
+   <input type="text" name="title" id="title" placeholder="제목을 입력하세요." style="width:700px;"/></div>
 </div> 
 <div class="row mb-3">
    <label class="col-sm-2 col-form-label">아이디</label>
-   <div class="col-sm-10"><input type="text" name="id" id="id" placeholder="제목을 입력하세요."/></div>
+   <div class="col-sm-10"><input type="text" name="id" id="id" value="${sessionID}" readonly="readonly"/></div>
 </div>
 
 <div class="row mb-3">
@@ -42,14 +50,12 @@
  <div class="col-sm-10">
  <input type="submit" value="등록" id="btn1" class="btn btn-info"/>
  <input type="button" value="이전으로" id="btn2" class="btn btn-info" onclick="location='reviewboardlist'"/>
- 
- 
  </div>
 </div>
-</form>
-</fieldset>
+
+ </form>
 </div>
+</article>
 <script>
 
 </script>
-</article>

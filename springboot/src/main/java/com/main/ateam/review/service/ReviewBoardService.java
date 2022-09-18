@@ -76,7 +76,7 @@ public class ReviewBoardService {
 		return dao.delReply(cnum);
 	}
 	// rcount 댓글 수 업데이트용
-	public void upRcount(int num) {
-		dao.upRcount(num);
+	public void upRcount(int rnum) {
+		dao.upRcount(rnum);
 	}
 }
