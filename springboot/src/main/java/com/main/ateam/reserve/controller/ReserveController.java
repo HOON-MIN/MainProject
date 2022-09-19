@@ -1,7 +1,11 @@
 package com.main.ateam.reserve.controller;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +14,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.main.ateam.doctor.dao.DoctorDao;
 import com.main.ateam.hospital.dao.HospitalDao;
+import com.main.ateam.member.dao.MemberDao;
 import com.main.ateam.reserve.dao.ReserveDao;
+import com.main.ateam.vo.DateDataVO;
 import com.main.ateam.vo.DoctorVO;
-import com.main.ateam.vo.HospitalVO;
+import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.ReserveVO;
 
 @Controller
@@ -25,40 +33,10 @@ public class ReserveController {
 	private ReserveDao reservDao;
 	@Autowired
 	private HospitalDao service;
-		
-	
-	//ȸ�� ���� Ȯ�� �� �ش� ȸ���� �Խù� �޾ƿ��� ����¡ ó��
-	/*
-	 * @RequestMapping(value = "/reservelist") public String
-	 * reservelistF(HttpServletRequest request, Model m, @RequestParam(defaultValue
-	 * = "1") int cPage) { //session�� ���̵� ȹ�� HttpSession session =
-	 * request.getSession(false); String mid = (String)
-	 * session.getAttribute("sessionid"); if(mid != null) { ReserveListParaVO lvo =
-	 * new ReserveListParaVO(); lvo.setMid(mid); totalRecord =
-	 * reserveDaoInter.reservecnt(lvo); //System.out.println(totalRecord); totalPage
-	 * = (int) Math.ceil(totalRecord / (double)numPerPage);
-	 * 
-	 * nowPage = cPage;
-	 * 
-	 * beginPerPage = (nowPage-1) * numPerPage + 1; endPerPage = (beginPerPage-1) +
-	 * numPerPage;
-	 * 
-	 * lvo.setBegin(beginPerPage); lvo.setEnd(endPerPage);
-	 * 
-	 * 
-	 * List<ReserveVO> list = reserveDaoInter.reservelist(lvo);
-	 * 
-	 * 
-	 * m.addAttribute("rlist", list);
-	 * 
-	 * int startPage = (int)((nowPage-1)/pagePerBlock)*pagePerBlock+1; int endPage =
-	 * startPage + pagePerBlock -1; if(endPage > totalPage) { endPage = totalPage; }
-	 * 
-	 * m.addAttribute("startPage", startPage); m.addAttribute("endPage", endPage);
-	 * m.addAttribute("nowPage", nowPage); m.addAttribute("pagePerBlock",
-	 * pagePerBlock); m.addAttribute("totalPage", totalPage); return
-	 * "member/reserve/reserveList"; }else { return "redirect:/member/"; } }
-	 */
+	@Autowired
+	private MemberDao memberDao;
+	@Autowired
+	private DoctorDao doctorDao;
 	
 	//예약하기 폼
 	@GetMapping(value = "/reserveForm")
@@ -67,6 +45,12 @@ public class ReserveController {
 		m.addAttribute("vo", vo);
 		
 		return "reserve/reserveForm";
+	}
+	//테스트 폼
+	@GetMapping(value = "/test")
+	public String test() {
+		
+		return "reserve/Doc_list_Test1";
 	}
 
 	/*
@@ -77,11 +61,23 @@ public class ReserveController {
 	 */
 	//예약 등록
 	@PostMapping(value = "/addReserve")
-	public String addReserve(ReserveVO vo) {
+	public String addReserve(ReserveVO vo ,HttpSession session) {
+		int num = (int) session.getAttribute("sessionNUM");
+		vo.setNum(num);
+		//vo.setRdate(rdate);
+		
+		System.out.println("reserve - insert Test(회원번호)" + vo.getNum());
+		System.out.println("reserve - insert Test(의사번호)" + vo.getDnum());
 		System.out.println("reserve - insert Test(증상)" + vo.getSymptom());
+		System.out.println("reserve - insert Test(증상)" + vo.getSymptomComm());
+		System.out.println("reserve - insert Test(시간)" + vo.getRdate());
+		System.out.println("reserve - insert Test(시간)" + vo.getRtime());
+		System.out.println("reserve - insert Test(시간)" + vo.getRdate().getClass().getName());
+		System.out.println("reserve - insert Test(시간)" + vo.getRtime().getClass().getName());
+		reservDao.addReserve(vo);
 		return "redirect:/";
 	}
-	//의사 고르기전 리스트
+	//의사 선택
 	@GetMapping(value = "/choice_doctor")
 	public String choiceDoctorList(int cnum, Model m) {
 			System.out.println("choice_doctor = cnum => " + cnum);
@@ -89,44 +85,62 @@ public class ReserveController {
 			m.addAttribute("vo", vo);
 		return "reserve/choice_doctor";
 	}
+	//의사 선택 -  캘린더
+		
+		@RequestMapping(value = "doctorCalendar", method = RequestMethod.GET)
+		public String calendar(Model model, HttpServletRequest request, DateDataVO DateDataVO,int dnum){
+			model.addAttribute("dnum", dnum);
+			Calendar cal = Calendar.getInstance();
+			DateDataVO calendarData;
+			if(DateDataVO.getDate().equals("")&&DateDataVO.getMonth().equals("")){
+				DateDataVO = new DateDataVO(String.valueOf(cal.get(Calendar.YEAR)),String.valueOf(cal.get(Calendar.MONTH)),String.valueOf(cal.get(Calendar.DATE)),null);
+			}
+
+			Map<String, Integer> today_info =  DateDataVO.today_info(DateDataVO);
+			List<DateDataVO> dateList = new ArrayList<DateDataVO>();
+		
+			for(int i=1; i<today_info.get("start"); i++){
+				calendarData= new DateDataVO(null, null, null, null);
+				dateList.add(calendarData);
+			}
+			
+			for (int i = today_info.get("startDay"); i <= today_info.get("endDay"); i++) {
+				if(i==today_info.get("today")){
+					calendarData= new DateDataVO(String.valueOf(DateDataVO.getYear()), String.valueOf(DateDataVO.getMonth()), String.valueOf(i), "today");
+				}else{
+					calendarData= new DateDataVO(String.valueOf(DateDataVO.getYear()), String.valueOf(DateDataVO.getMonth()), String.valueOf(i), "normal_date");
+				}
+				dateList.add(calendarData);
+			}
+
+			int index = 7-dateList.size()%7;
+			
+			if(dateList.size()%7!=0){
+				
+				for (int i = 0; i < index; i++) {
+					calendarData= new DateDataVO(null, null, null, null);
+					dateList.add(calendarData);
+				}
+			}
+			System.out.println(dateList);
+			
+			model.addAttribute("dateList", dateList);	
+			model.addAttribute("today_info", today_info);
+			return "reserve/doctorCalendar";
+		}
+		
+		@PostMapping(value = "/getCalendar")
+		public String getResday(Model model, String resday,HttpSession session,int dnum) {
+			int num = (int)session.getAttribute("sessionNUM");
+			System.out.println("int num = > " + num);
+			MemberVO mvo = memberDao.memberMyPage(num);
+			DoctorVO dvo = reservDao.choiceDoctor(dnum);
+			model.addAttribute("resday",resday);
+			model.addAttribute("mvo",mvo);
+			model.addAttribute("dvo",dvo);
+			
+			return "reserve/reservation";
+		}
 	
-	/*
-	 * //���� ���� �󼼺��⿡�� �����ϱ� ��ư�� ������ ������ �޾Ƽ� reserveForm���� ����
-	 * 
-	 * @RequestMapping(value = "/reservepage") public String reservepageF(Model m,
-	 * int rnum, int rprice) { m.addAttribute("rnum", rnum);
-	 * m.addAttribute("rprice", rprice); return "member/reserve/reserveForm2"; }
-	 * 
-	 * @ResponseBody
-	 * 
-	 * @GetMapping(value = "/cannotreserve") public List<CannotReserveVO>
-	 * cannotreservelist(String today, int rnum) { CannotReserveParaVO vo = new
-	 * CannotReserveParaVO(); vo.setToday(today); vo.setRnum(rnum);
-	 * System.out.println(vo.getToday()); System.out.println(vo.getRnum());
-	 * List<CannotReserveVO> list = reserveDaoInter.cannotreserve(vo);
-	 * //fullcalender�� event���� ������ ��¥�� ǥ�õǴ� ������ �Ϸ� ������ ǥ�õǾ //���Ƿ�
-	 * ������ ��¥�� +1�Ͽ� ������ Calendar cal = Calendar.getInstance();
-	 * SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-	 * 
-	 * for(CannotReserveVO e : list) { Date end2; String end3; try { end2 =
-	 * df.parse(e.getEnd()); cal.setTime(end2); cal.add(Calendar.DATE, 1); end3 =
-	 * df.format(cal.getTime()); e.setEnd(end3); } catch (ParseException e1) { //
-	 * TODO Auto-generated catch block e1.printStackTrace(); } } return list; }
-	 * 
-	 * @GetMapping(value = "/reservecancel") public String
-	 * reservecancel(HttpServletRequest request, Model m, int rvnum) { HttpSession
-	 * session = request.getSession(false); String mid = (String)
-	 * session.getAttribute("sessionid"); int rvnum2 = rvnum; if(mid != null) {
-	 * ReserveDetailParaVO vo = new ReserveDetailParaVO(); vo.setMid(mid);
-	 * vo.setRvnum(rvnum2); ReserveVO vo1 = reserveDaoInter.reservedetail(vo);
-	 * m.addAttribute("dlist", vo1);
-	 * 
-	 * return "member/reserve/reserveCancel"; }else { return "redirect:/member/"; }
-	 * }
-	 * 
-	 * @RequestMapping(value = "/reservercancelcom") public String
-	 * reservecancelcom(ReserveVO vo) { reserveDaoInter.reservecancel(vo); return
-	 * "redirect:/member/"; }
-	 */
 	
 }

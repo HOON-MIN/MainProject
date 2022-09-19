@@ -4,7 +4,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.main.ateam.reserve.dao.ReserveDao">
 	<insert id="addReserve" parameterType="reserveVO">
-		insert into reserve values(reserve_seq.nextVal,#{num},#{dnum},#{symptom},#{symptomComm},#{contectCheck},#{rdate})
+		insert into reserve values(reserve_seq.nextVal,#{num},#{dnum},#{symptom},#{symptomComm},#{contectCheck},#{rdate},#{rtime})
 	</insert>
 	<select id="choiceDoctor" resultType="doctorVO">
 		select * from doctor where dnum=#{dnum}

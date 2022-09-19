@@ -9,7 +9,7 @@
   	select * from member where id=#{id} and pwd=#{pwd}
   	</select>
   	<select id="memberMyPage" resultType="memberVO">
-  	select id,pwd,name,ssn,age,gender,tel,email,addr,profimg,to_char(mdate,'YYYY-MM-DD')mdate from member where num=#{num}
+  	select num, id,pwd,name,ssn,age,gender,tel,email,addr,profimg,to_char(mdate,'YYYY-MM-DD')mdate from member where num=#{num}
   	</select>
   	<update id="memberUpdate">
   	update member set name=#{name},email=#{email},tel=#{tel},profimg=#{profimg} where num = #{num}
