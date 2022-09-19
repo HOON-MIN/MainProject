@@ -113,6 +113,7 @@ public class DoctorController {
 			System.out.println("doctor 컨트롤러 cnt=>"+cnt);
 			mav.addObject("cnt", cnt);
 			return mav;
+		}
 		
 		@ResponseBody
 		@GetMapping(value ="/dcategory")

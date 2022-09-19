@@ -13,8 +13,6 @@
 	select count(*) from doctor where did=#{did} and dpwd=#{dpwd}
 </select>
 
-<select id="hospitalDoctorDetail" resultMap="DoctorDetailResult">
-select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.cnum = h.cnum and dnum = #{dnum}
 
 <resultMap type="doctorVO" id="hospitalDoctorResult">
 <id property="hnum" column ="hnum"/>
@@ -63,10 +61,11 @@ select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospi
 </collection>
 </resultMap>
 
-<select id="hospitalDoctorDetail" resultMap="DoctorCategoryResult">
-select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.hnum = h.hnum and dnum = #{dnum}
-</select>
+<select id="hospitalDoctorDetail" resultMap="DoctorDetailResult">
+	select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.cnum = h.cnum and dnum = #{dnum}
+	</select>
 
+<!-- 리액트 카테고리별 리스트 출력 -->
 <resultMap type="doctorVO" id="DoctorCategoryResult">
 <id property="hnum" column ="hnum"/>
 <result property="dnum" column="dnum"/>
@@ -83,12 +82,12 @@ select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d
 	<result property="otime" column="otime"/>
 	<result property="ctime" column="ctime"/>
 	<result property="hloc" column="hloc"/>
-	
 </collection>
 </resultMap>
 
 <select id="hospitalDoctorCategory" resultMap="DoctorCategoryResult">
 select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.hnum = h.hnum and dmajor = #{dmajor}
 </select>
+<!--  -->
   	
 </mapper>
