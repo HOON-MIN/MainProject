@@ -1,0 +1,25 @@
+h4 {
+  padding: 40px 0;
+  text-align: center;
+}
+.loginContainer {
+  padding: 16px 16px 40px 16px;
+}
+.links {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  text-align: center;
+}
+
+.links a {
+  text-align: center;
+  text-decoration: none;
+  color: #232323;
+}
+
+.links span {
+  padding: 0 8px;
+}

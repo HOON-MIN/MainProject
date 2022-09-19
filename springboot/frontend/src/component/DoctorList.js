@@ -3,6 +3,7 @@ import drImg from "../img/doctor.png";
 
 const DoctorList = (props) => {
   return (
+    // if(props)
     <div className="d-flex justify-content-center mt-4">
       <div className="card">
         <div className="row g-0">

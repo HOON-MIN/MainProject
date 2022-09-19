@@ -1,46 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import "../css/header.css";
-import logo from "../img/chicken.png";
-import { Route, Link } from "react-router-dom";
+import logo from "../img/logo.png";
+import { Link } from "react-router-dom";
+import LoginModal from "../modals/LoginModal";
+import SignupModals from "../modals/SignupModals";
 
 function Header() {
+  const [loginModalOn, setLoginModalOn] = useState(false);
+  const [signupModalOn, setSignupModalOn] = useState(false);
   return (
-    <Navbar variant="dark" className="header">
-      <Container>
-        <Navbar.Brand as={Link} to="/">
-          <img
-            src={logo}
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />
-          HeyDr.
-        </Navbar.Brand>
-        <Navbar variant="dark">
-          <Nav className="me-auto">
-            <Nav.Link href="#home" className="text-white hnav">
-              Login
-            </Nav.Link>
-            <Nav.Link href="#features" className="text-white hnav">
-              Join
-            </Nav.Link>
-
-            <a
-              href="http://192.168.0.98:83/"
-              className="btn text-white"
-              target="_blank"
-              rel="noreferrer"
-            >
-              병원/약국 관리자
-            </a>
-          </Nav>
-        </Navbar>
-      </Container>
-    </Navbar>
+    <>
+      <LoginModal show={loginModalOn} onHide={() => setLoginModalOn(false)} />
+      <SignupModals
+        show={signupModalOn}
+        onHide={() => setSignupModalOn(false)}
+      />
+      <Navbar variant="dark" className="header">
+        <Container>
+          <Navbar.Brand as={Link} to="/">
+            <img src={logo} height="80" className="d-inline-block align-top" />
+          </Navbar.Brand>
+          <Navbar variant="dark">
+            <Nav className="me-auto">
+              <Nav.Link
+                className="text-white hnav"
+                onClick={() => setLoginModalOn(true)}
+              >
+                Login
+              </Nav.Link>
+              <Nav.Link
+                href="#features"
+                className="text-white hnav"
+                onClick={() => setSignupModalOn(true)}
+              >
+                Signup
+              </Nav.Link>
+            </Nav>
+          </Navbar>
+        </Container>
+      </Navbar>
+    </>
   );
 }
 export default Header;

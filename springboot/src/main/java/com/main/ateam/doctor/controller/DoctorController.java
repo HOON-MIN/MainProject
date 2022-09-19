@@ -84,4 +84,11 @@ public class DoctorController {
 			DoctorVO ddetail = doctorservice.hospitalDoctorDetail(dnum);
 			return ddetail;
 		}
+		
+		@ResponseBody
+		@GetMapping(value ="/dcategory")
+		public List<DoctorVO> hospitalDoctorCategory(@RequestParam String dmajor) {
+			List<DoctorVO> dcategory = doctorservice.hospitalDoctorCategory(dmajor);
+			return dcategory;
+		}
 }
