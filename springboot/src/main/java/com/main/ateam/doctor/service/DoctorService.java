@@ -33,5 +33,8 @@ public class DoctorService {
 	
 	public int drIdCheckService(Map<String, String> map) {
 		return doctordao.drIdCheck(map);
+	
+	public List<DoctorVO> hospitalDoctorCategory(String dmajor) {
+		return doctordao.hospitalDoctorCategory(dmajor);
 	}
 }

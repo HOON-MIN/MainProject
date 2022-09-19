@@ -11,7 +11,7 @@ public interface DoctorDao {
 	public int idchk(Map<String, String> vo);
 	public List<DoctorVO> hospitalDoctorList();
 	public DoctorVO hospitalDoctorDetail(int dnum);
-	
 	public void addDoctor(DoctorVO dvo);
 	public int drIdCheck(Map<String, String> map);
+	public List<DoctorVO> hospitalDoctorCategory(String dmajor);
 }
