@@ -1,5 +1,8 @@
 package com.main.ateam.vo;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("svo")
 public class SearchVO {
 	private int beginPerPage;
 	private int endPerPage;
@@ -9,9 +12,8 @@ public class SearchVO {
 	private String cPage;
 	private String gender;
 	private String searchreset;
-	private String hos_name;
-	
-	
+	private String qustr;
+
 	public SearchVO() {
 		this.cPage = "1";
 		this.search = "";
@@ -19,12 +21,12 @@ public class SearchVO {
 		this.searchreset = "";
 	}
 	
-	public String getHos_name() {
-		return hos_name;
+	public String getQustr() {
+		return qustr;
 	}
 
-	public void setHos_name(String hos_name) {
-		this.hos_name = hos_name;
+	public void setQustr(String qustr) {
+		this.qustr = qustr;
 	}
 
 	public int getMem_no() {

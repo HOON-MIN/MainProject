@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.main.ateam.quesboard.dao.QuesboardDao;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.QuesboardVO;
+import com.main.ateam.vo.SearchVO;
 
 
 @Service
@@ -21,10 +22,14 @@ public class QuesboardService {
 		dao.addQuesboard(vo);
 	}
 	
-	public List<QuesboardVO> getQBList() {
-		List<QuesboardVO> list = dao.getQBList();
-		System.out.println("QBList service => " + list);
+	public List<QuesboardVO> getQBList(SearchVO svo) {
+		List<QuesboardVO> list = dao.getQBList(svo);
+//		System.out.println("QBList service => " + list);
 		return list;
+	}
+	public int getCnt(SearchVO svo) {
+		int cnt = dao.getCnt(svo);
+		return cnt;
 	}
 
 	public QuesboardVO getQBDetail(int num) {
