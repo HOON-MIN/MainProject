@@ -123,19 +123,6 @@ select count(*) from hospital where crn = #{crnv}
 <result column="otime" property="otime"/>
 <result column="ctime" property="ctime"/> -->
 
-<resultMap id="hospitalDoctorResult" type="hvo">
-<id column="cnum" property="cnum"/>
-<result column="hname" property="hname"/>
-<result column="otime" property="otime"/>
-<result column="ctime" property="ctime"/>
-
-<collection property="doctorVO" ofType="doctorVO" javaType="java.util.List" >
-<id column="cnum" property="cnum" javaType="int"/>
-<result column="dnum" property="dnum"/>
-<result column="dname" property="dname"/>
-<result column="dmajor" property="dmajor"/> 
-</collection>
-</resultMap>
 <!-- resultMap -->
 <!--병원 mypage - 의사 목록 -->
 <resultMap id="hospitalDoctorResult" type="hvo">

@@ -339,7 +339,7 @@ function initTmap() {
                 <!-- data-toggle="modal" data-target="#addImagesModal"> -->
             <img class="mr-1" src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/add_picture_button.png" style="width:12px; height:14px; " alt="">
 <%--            	<input type="button" id="btn1" value="예약하기" onclick="location.href='${pageContext.request.contextPath }/reserve/reserveForm'"> --%>
-           	<input type="button" id="btn1" value="예약하기" onclick="location.href='${pageContext.request.contextPath }/reserve/choice_doctor?cnum=${vo.cnum }'">
+           	<input type="button" id="reservBtn" value="예약하기" onclick="location.href='${pageContext.request.contextPath }/reserve/choice_doctor?cnum=${vo.cnum }'">
           </div>
 
           <div id="btn_share_hospital" style="font-size: 15px; height: 32px; line-height: 32px;">

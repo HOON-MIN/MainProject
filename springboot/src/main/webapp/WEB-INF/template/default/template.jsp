@@ -22,6 +22,8 @@ uri="http://tiles.apache.org/tags-tiles"%>
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- ---------- -->
 
     <!-- JQuery -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -77,7 +79,6 @@ uri="http://tiles.apache.org/tags-tiles"%>
     <!-- 	<script src="/mireu/js/summernote-ko-KR.js?"></script> -->
     <!-- 	<link rel="stylesheet" href="/mireu/css/summernote-lite.css?"> -->
     <!-- 0918 add : dhlee 추가 -->
-    >
     <link href="/css/dhlee/covidRecording.css?ver=1.7" rel="stylesheet" />
     <link href="/css/dhlee/kakao_addinfo.css?" rel="stylesheet" />
   </head>
