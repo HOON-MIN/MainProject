@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import DoctorDetailImg from "../img/doctor_detail.png";
 const DoctorDetail = (props) => {
   console.log(props.doctor);
@@ -69,9 +70,11 @@ const DoctorDetail = (props) => {
           <h5>리뷰 점수 1000 개</h5>
         </div>
       </div>
-      <button className="btn bg-primary btn-lg text-white mt-3 revBtn">
-        진료 예약하기
-      </button>
+      <Link to={"/reservation/" + props.doctor.dnum}>
+        <button className="btn bg-primary btn-lg text-white mt-3 revBtn">
+          진료 예약하기
+        </button>
+      </Link>
     </div>
   );
 };

@@ -1,0 +1,21 @@
+h4,
+footer {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.signupContainer {
+  padding: 16px;
+}
+
+.ok {
+  color: #000;
+  display: none;
+}
+
+.no,
+.noPwd,
+.emailChk {
+  color: tomato;
+  display: none;
+}
