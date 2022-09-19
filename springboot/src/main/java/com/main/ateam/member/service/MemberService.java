@@ -38,4 +38,15 @@ public class MemberService {
 	public int idchk(Map<String, String> vo) {
 		return memberDao.idchk(vo);
 	}
+	
+	/* 이동환 Service추가 */
+	public void kakaoSignup(MemberVO vo) {
+		memberDao.kakaoSignup(vo);
+	}
+	public int kakaoFlag(String id) {
+		return memberDao.kakaoFlag(id);
+	}
+	public MemberVO userdetail(String id) {
+		return memberDao.userdetail(id);
+	}
 }

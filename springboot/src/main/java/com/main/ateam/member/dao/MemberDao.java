@@ -14,6 +14,11 @@ import com.main.ateam.vo.MemberVO;
 		public MemberVO memberLogin(Map<String, String>map);
 		public int idchk(Map<String, String> vo);
 		public int idCheck(Map<String, String> map);
+		
+		/* 0918 add: dhlee 추가 */
+		public void kakaoSignup(MemberVO vo);
+		public int kakaoFlag(String id);
+		public MemberVO userdetail(String id);
 	}
 
 

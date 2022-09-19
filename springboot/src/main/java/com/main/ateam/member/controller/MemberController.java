@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +21,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.main.ateam.member.memberEtc.MailSendModule;
 import com.main.ateam.member.memberEtc.memberInfoModule;
 import com.main.ateam.member.service.MemberService;
+import com.main.ateam.modules.APILoginModule;
+import com.main.ateam.modules.Base64Module;
+import com.main.ateam.modules.GsonModule;
+import com.main.ateam.modules.SftpModule;
+import com.main.ateam.modules.UbuntuShellModule;
 import com.main.ateam.vo.FileVO;
 import com.main.ateam.vo.MemberVO;
+import com.main.ateam.vo.OAuthToken;
 
 @Controller
 @RequestMapping("/member")
@@ -35,6 +44,25 @@ public class MemberController {
 	private memberInfoModule memberInfoModule;
 	@Autowired
 	private MemberService memberService;
+	
+	/* 0918 add: 이동환 Autowired 추가 */
+	@Autowired
+	private APILoginModule apiloginmodule;
+	@Autowired
+	private SftpModule sftpmodule;
+	@Autowired
+	private Base64Module base64module;
+	@Autowired
+	private UbuntuShellModule ubuntushellmodule;
+	@Autowired
+	private GsonModule gsonmodule;
+	
+	/* 0918 add: 이동환 @Values 추가 */
+	@Value("${uploadPath}")
+	private String uploadPath;
+	@Value("${pythonPath}")
+	private String pythonPath;
+	
 
 	@GetMapping("/memberLoginForm")
 	public String MemberLoginForm() {
@@ -229,5 +257,53 @@ public class MemberController {
 	public String mailCheck(String email) {
 		System.out.println("From Ajax Email : " + email);
 		return mailSendModule.joinEmail(email);
+	}
+	
+	/*-----카카오로그인-----*/
+	@GetMapping(value = "/auth/kakao/callback")
+	public ModelAndView kakaoCallback(HttpSession session, String code) throws JsonMappingException, JsonProcessingException {
+		OAuthToken oauthToken = apiloginmodule.getAPIToken("KAKAO", code);
+		MemberVO mdto = apiloginmodule.getAPIMember("KAKAO", oauthToken);
+		
+		ModelAndView mav = new ModelAndView("redirect:/main");
+		System.out.println("KAKAOMEMBER : "+mdto.getId());
+		int flag = memberService.kakaoFlag(mdto.getId());
+		if(flag == 0){
+			mav.setViewName("member/kakao_addinfo");
+			mav.addObject("kakaoData",mdto);
+			return mav;
+		}
+		session.setAttribute("sessionID", mdto.getId());
+		//session.setAttribute("sessionNUM", mdto.getNum()); //세션넘버 보류
+		session.setAttribute("sessionNAME", mdto.getName());
+		return mav;
+	}
+	/*-----네이버로그인-----*/
+	@RequestMapping(value = "/auth/naver/callback")
+	public ModelAndView naverCallback(HttpSession session, @RequestParam String code, @RequestParam String state) throws JsonMappingException, JsonProcessingException{
+		OAuthToken oauthToken = apiloginmodule.getAPIToken("NAVER", code);
+		MemberVO mdto = apiloginmodule.getAPIMember("NAVER", oauthToken);
+		ModelAndView mav = new ModelAndView("redirect:/main");
+		int flag = memberService.kakaoFlag(mdto.getId());
+		if(flag == 0){
+			memberService.kakaoSignup(mdto);
+		}
+		session.setAttribute("sessionID", mdto.getId());
+		session.setAttribute("sessionNAME", mdto.getName());
+		return mav;
+	}
+	/*-----카카오추가정보-----*/
+	@PostMapping(value = "kakaoLogin")
+	public String kakaoLogin(HttpSession session, MemberVO dtov) {
+		dtov.setAge(apiloginmodule.getAge(dtov.getSsn()));
+		dtov.setGender(apiloginmodule.getGender(dtov.getSsn()));
+		dtov.setAddr("-");
+		System.out.println("연산된 아이디:"+dtov.getId());
+		System.out.println("연산된 나이: "+dtov.getAge());
+		System.out.println("연산된 성별: "+dtov.getGender());
+		memberService.kakaoSignup(dtov);
+		session.setAttribute("sessionID", dtov.getId());
+		session.setAttribute("sessionNAME", dtov.getName());
+		return "redirect:/main";
 	}
 }
