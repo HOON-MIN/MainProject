@@ -7,9 +7,9 @@ import org.apache.ibatis.type.Alias;
 @Alias("hvo")
 public class HospitalVO {
 
-	private int hnum, cnum;
+	private int  cnum,r_num;
 	private String hname, hloc, otime, ctime,
-		hcate, hurl, hemail, hgrade;
+		hcate, hurl, hemail, hgrade,htel;
 	private List<DoctorVO> doctorVO;
 	
 	public List<DoctorVO> getDoctorVO() {
@@ -18,18 +18,27 @@ public class HospitalVO {
 	public void setDoctorVO(List<DoctorVO> doctorVO) {
 		this.doctorVO = doctorVO;
 	}
+	
+	
+	public String getHtel() {
+		return htel;
+	}
+	public void setHtel(String htel) {
+		this.htel = htel;
+	}
+	public int getR_num() {
+		return r_num;
+	}
+	public void setR_num(int r_num) {
+		this.r_num = r_num;
+	}
 	public int getCnum() {
 		return cnum;
 	}
 	public void setCnum(int cnum) {
 		this.cnum = cnum;
 	}
-	public int getHnum() {
-		return hnum;
-	}
-	public void setHnum(int hnum) {
-		this.hnum = hnum;
-	}
+	
 	public String getHname() {
 		return hname;
 	}

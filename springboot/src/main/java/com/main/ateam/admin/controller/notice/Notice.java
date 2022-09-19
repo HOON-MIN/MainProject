@@ -62,4 +62,6 @@ public class Notice {
 		noticeService.updateNotice(vo);
 		return "redirect:/admin/notice";
 	}
+	//////////////////////////////////////////////////////////////////////
+	
 }

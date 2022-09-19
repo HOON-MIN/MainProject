@@ -3,6 +3,7 @@ pageEncoding="UTF-8"%> <%@taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="mycontext" value="${pageContext.request.contextPath}" />
 
+
 <style>
   .navitem {
     border: bottom solid 1px #232323;
@@ -164,9 +165,5 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
       </span>
     </div>
-    <!-- 
-		<div class="d-flex" id="navbarNavAltMarkup">
-			
-		</div>
-		--></div>
+	</div>
 </nav>

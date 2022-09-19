@@ -48,6 +48,23 @@
 				id="updateBtn" /> <input type="button" value="글 삭제"
 				class="btn btn-danger" id="delBtn" />
 		</div>
+<!-- 댓글 -->
+		<div class="container">
+			<label for="content">comment</label>
+			<form name="commentInsertForm">
+				<div class="input-group">
+					<input type="hidden" id="rnum" name="rnum" value="${vo.rnum}"/>
+					<input type="text" class="form-control" id="cont" name="cont" placeholder="내용을 입력하세요."/>
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" name="commentInsertBtn">등록</button>
+					</span>
+				</div>
+			</form>
+		</div>		
+		<div class="container">
+		<div class="commentList">
+		</div>
+		</div>
 	</div>
 <p></p>
 
@@ -63,6 +80,103 @@
 		});
 		
 	});
+
+var rnum = '${vo.rnum}'; //게시글 번호 
+
+$('[name=commentInsertBtn]').click(function(){ //댓글 등록 버튼 클릭시 
+	 console.log("성공0!")
+  var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
+  commentInsert(insertData); //Insert 함수호출(아래)
+});
+
+
+
+//댓글 목록 
+function commentList(){
+  $.ajax({
+      url : '/reviewboard/replylist',
+      type : 'get',
+      data : {'rnum':rnum},
+      success : function(data){
+          var a =''; 
+          $.each(data, function(key,value){ 
+              a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+              a += '<div class="commentInfo'+value.cnum+'">'+'댓글번호 : '+value.cnum+' / 작성자 ID : '+value.id;
+              a += '<a onclick="commentUpdate('+value.cnum+',\''+value.cont+'\');"> 수정 </a>';
+              a += '<a onclick="commentDelete('+value.cnum+');"> 삭제 </a> </div>';
+              a += '<div class="commentContent'+value.cnum+'"> <p> 내용 : '+value.cont +'</p>';
+              a += '</div></div>';
+          });
+          
+          $(".commentList").html(a);
+      }
+  });
+}
+
+//댓글 등록
+function commentInsert(insertData){
+	 console.log("성공1!")
+  $.ajax({
+      url : '/reviewboard/reply',
+      type : 'post',
+      data : insertData,
+      success : function(data){
+          if(data == 1) {
+         	 alert('성공!');
+              commentList(); //댓글 작성 후 댓글 목록 reload
+              $('[name=content]').val('');
+              
+          }
+      }
+  });
+	 console.log("성공3!")
+}
+
+//댓글 수정 - 댓글 내용 출력을 input 폼으로 변경 
+function commentUpdate(cnum, content){
+  var a ='';
+  
+  a += '<div class="input-group">';
+  a += '<input type="text" class="form-control" name="content_'+cnum+'" value="'+content+'"/>';
+  a += '<span class="input-group-btn"><button class="btn btn-default" type="button" onclick="commentUpdateProc('+cnum+');">수정</button> </span>';
+  a += '</div>';
+  
+  $('.commentContent'+cnum).html(a);
+  
+}
+
+//댓글 수정
+function commentUpdateProc(cnum){
+  var updateContent = $('[name=content_'+cnum+']').val();
+  
+  $.ajax({
+      url : '/reviewboard/upReply',
+      type : 'post',
+      data : {'cont' : updateContent, 'cnum' : cnum, 'id' : 'xman'},
+      success : function(data){
+     	 alert('수정 성공!');
+          if(data == 1) commentList(rnum); //댓글 수정후 목록 출력 
+          alert('수정 성공2!');
+      }
+  });
+}
+
+//댓글 삭제 
+function commentDelete(cnum){
+  $.ajax({
+      url : '/reviewboard/delReply/'+cnum,
+      type : 'post',
+      success : function(data){
+     	 alert('삭제 성공!');
+          if(data == 1) commentList(rnum); //댓글 삭제후 목록 출력 
+      }
+  });
+}
+
+$(document).ready(function(){
+  commentList(); //페이지 로딩시 댓글 목록 출력 
+});
+
  
  </script>
  

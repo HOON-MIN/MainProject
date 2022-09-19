@@ -15,7 +15,8 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 		"com.main.ateam.hospital.dao","com.main.ateam.review.dao",
 		"com.main.ateam.quesboard.dao","com.main.ateam.admin.dao",
 		"com.main.ateam.drug.dao", "com.main.ateam.ansboard.dao",
-		"com.main.ateam.doctor.dao"})
+		"com.main.ateam.doctor.dao","com.main.ateam.admin.dao",
+		"com.main.ateam.company.dao"})
 public class MyBatisConfig {
 
 	@Bean
