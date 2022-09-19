@@ -3,13 +3,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <c:set var="mycontext" value="${pageContext.request.contextPath}"/>     
 <%-- 본문 시작  --%>
+<jsp:include page="../mypage/sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <article >
 <div class="page-header">
 		<center>
 			<h1>
 				<a onclick="return false; location.reload()"
-					style="cursor: pointer;"><b>의사회원가입</b></a>
+					style="cursor: pointer;"><b>의사등록</b></a>
 			</h1>
 		</center>
 		<div class="col-md-6 col-md-offset-3"></div>
@@ -88,6 +90,7 @@
 	</form>
  <!-- comment end -->
     </article>
+    <jsp:include page="../mypage/sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
     <script>
 	var $js = jQuery.noConflict()
 	// did 중복체크

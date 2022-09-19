@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
-
-<!-- Sidebar-->
 	<div class="container py-4"
 		style="width: 80%; margin: auto; padding: 10px 5px; height: 100%;">
 			<table class="table1 table table-hover" style="text-align: center;">
@@ -16,21 +13,28 @@
 			</thead>
 
 			<tbody>
-				 <c:forEach var="hosp" items="${list }">
+				 <c:forEach var="doc" items="${vo }">
 					<tr>
-				<c:forEach var="doc" items="${hosp.doctorVO}">
-						<td >${hosp.hname }</td>
+						<td >${doc.dmajor }</td>
 						<td >${doc.dname }</td>
-					</c:forEach>
+						<td id="dnum">${doc.dnum }</td>
 					</tr>
 				</c:forEach> 
  
 			</tbody>
 		</table>
-			
 		</div>
 			
-	<jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
-	<script>
-	$(function)
-	</script>
+<script>
+var a = ${doc.dnum}
+console.log(a)
+$(function(){
+	
+	$('.table1').on('click','tr',function(){
+		var dnum = $(this).children('#dnum').text();
+		console.log(dnum)
+		location.href='${pageContext.request.contextPath}/reserve/reserveForm?dnum='+dnum
+	})
+	
+})
+</script>

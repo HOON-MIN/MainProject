@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
 	<div>
-		<h3>${sessionNAME}님의 예약목록</h3>
+		<h3>${sessionNAME}님의예약목록</h3>
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -31,25 +31,29 @@
 		</div>
 	</div>
 	<div class="row">
-  <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample1">
-      <div class="card card-body">
-      <div id="map" style="width: 100%; height: 450px;"></div>
-      </div>
-    </div>
-  </div>
-	
-	<select id="dataPerPage">
-        <option value="5">5개씩보기</option>
-        <option value="10">10개씩보기</option>
-        <option value="20">20개씩보기</option>
-</select>
-	<div class="jb"></div>
-	<div style="text-align: center;">
-	<ul class="tj" id="pagingul"></ul>
+		<div class="col">
+			<div class="collapse multi-collapse" id="multiCollapseExample1">
+				<div class="card card-body">
+					<div id="map" style="width: 100%; height: 450px;"></div>
+				</div>
+			</div>
+		</div>
+
+		<select id="dataPerPage">
+			<option value="5">5개씩보기</option>
+			<option value="10">10개씩보기</option>
+			<option value="20">20개씩보기</option>
+		</select>
+		<div class="jb"></div>
+		<div style="text-align: center;">
+			<ul class="tj" id="pagingul"></ul>
+		
+		<form name="search-form" id="search-form" autocomplete="off" style="float: right;">
+		<input type="text" name="keyword"id="keyword"></input>
+		<input type="button" id="searchBtn" class="btn btn-outline-primary mr-2" value="검색">
+		</form></div>
+		<div id="displayCount" style="text-align: center;"></div>
 	</div>
-	<div id="displayCount" style="text-align: center;"></div>
-</div>
 </div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 <script type="text/javascript"
@@ -60,11 +64,19 @@ let dataPerPage; //한 페이지에 나타낼 글 수
 let pageCount = 5; //페이징에 나타낼 페이지 수
 let globalCurrentPage=1; //현재 페이지
 let d=[];
-	
+let totalList=[];
+let searchList=[];
+var keyword;
 	
 		
 		$(function(){
 			// 페이지당 출력 개수 변경 시 적용 후 함수 재출력
+			$('#searchBtn').click(function(){
+				keyword = $('#keyword').val();
+					//$(this).text()
+				console.log("keyword = > " + keyword)
+				getSearchList(keyword)
+			})
 			$('#dataPerPage').change(function() { 
 				dataPerPage = $("#dataPerPage").val();
 			
@@ -280,6 +292,47 @@ let d=[];
 				  }
 				  } 
 							  document.querySelector('.jb').innerHTML =chartHtml;
+				}
+			function getSearchList(keyword){
+				if(keyword != ""){
+				$.ajax({
+					url:'http://192.168.0.120:9000/hospital/hospitalListTotalSearch?keyword='+keyword,
+				    type:'GET',
+				    dataType:'jsonp',
+				    jsonp:'callback',
+					success : function(data){
+						totalData = data.data.length
+						//테이블 초기화
+						 $('.table1 > tbody').empty();
+						for (var i of data.data) {
+				           	searchList.push(i)
+						console.log('d = >' + i)
+				       }
+				paging(totalData, dataPerPage, pageCount, 1,searchList);
+		   		displayData(1, dataPerPage,searchList); 
+						
+					}
+				})
+				}else{
+					$.ajax({
+						    url:'http://192.168.0.120:9000/hospital/hospitalListTotal',
+						    type:'GET',
+						    dataType:'jsonp',
+						    jsonp:'callback',
+						    success:function(data){
+						    	totalData = data.data.length
+						           for (var i of data.data) {
+						           	totalList.push(i)
+						       }
+						       paging(totalData, dataPerPage, pageCount, 1,totalList);
+				       		   displayData(1, dataPerPage,totalList);
+						    },
+						       error: function(err){
+						          console.log('Error => '+err);
+						       }
+					
+						   });
+				}
 				}
 		
 			

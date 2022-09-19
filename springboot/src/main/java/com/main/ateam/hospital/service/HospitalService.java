@@ -41,5 +41,7 @@ public class HospitalService {
 	public List<DoctorVO> hospitalDoctorList(int cnum){
 		return dao.hospitalDoctorList(cnum);
 	}
-
+	public List<DoctorVO> choiceDoctorList(int cnum){// 예약 - 의사 고르기
+		return dao.choiceDoctorList(cnum);
+	}
 }

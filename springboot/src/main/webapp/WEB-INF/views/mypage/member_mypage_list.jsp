@@ -31,12 +31,7 @@
 	</div> -->
 	<!-- table -->
 	<div class="container">
-		<p>
-			<button class="btn btn-primary" type="button"
-				data-bs-toggle="collapse" data-bs-target="#collapseMap"
-				aria-expanded="false" aria-controls="collapseMap" id="mapButton">지도
-				보기</button>
-		</p>
+		
 		<!-- <div class="collapse" id="collapseMap"></div> -->
 
 		<select id="dataPerPage">
@@ -57,7 +52,12 @@
 
 			</tbody>
 		</table>
+		<div style="text-align: center;">
 		<ul class="tj" id="pagingul"></ul>
+		<form name="search-form" id="search-form" autocomplete="off" style="float: right;">
+		<input type="text" name="keyword"id="keyword"></input>
+		<input type="button" id="searchBtn" class="btn btn-outline-primary mr-2" value="검색">
+		</form></div>
 		<div id="displayCount" style="text-align: center;"></div>
 	</div>
 	<!-- <div class="jb"> -->
@@ -71,7 +71,16 @@ let dataPerPage; //한 페이지에 나타낼 글 수
 let pageCount = 5; //페이징에 나타낼 페이지 수
 let globalCurrentPage=1; //현재 페이지
 let d=[];
+let totalList=[];
+let searchList=[];
+var keyword;
 	$(function() {
+		$('#searchBtn').click(function(){
+			keyword = $('#keyword').val();
+				//$(this).text()
+			console.log("keyword = > " + keyword)
+			getSearchList(keyword)
+		})
 		$('#dataPerPage').change(function() {
 			dataPerPage = $("#dataPerPage").val();
 		
@@ -83,20 +92,19 @@ let d=[];
 		 
 		//병원 예약 목록
 		$.ajax({
-            url: 'http://192.168.0.120:9000/map/hospiter_list',
+            url: 'http://192.168.0.120:9000/hospital/hospitalListTotal',
             //url: 'http://14.36.188.14:9000/map/hospiter_list',
             type: 'GET',
             dataType: 'jsonp',
             jasonp: 'callback',
             
             success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
-                console.log(data.data[0].length)
+                console.log(data.data.length)
                 console.log(data)
-                totalData = data.data[0].length
-            	for(var e of data.data[0]){
+                totalData = data.data.length
+            	for(var e of data.data){
             		d.push(e)
             	}
-            		console.log(d[0])
                 
                 /*               for (var i of data.data[0]) {
                 	tbodyData.push('<tr style="cursor:pointer;" ><td  id="listBtn" >'+i.hos_name+'</td><td>'+i.hos_address+'</td><td>'+i.hos_loc+'</td><td>'+i.hos_tel+'</td></tr>')
@@ -130,7 +138,7 @@ let d=[];
 				//var hos_value=$(this).text();
 				console.log("td값 => "+$(this).text());
 				$.ajax({
-				url:'reserve',					
+				url:'${pageContext.request.contextPath}/member/reserve',					
 				type:'GET',
 				success:function(){
 				
@@ -220,13 +228,52 @@ let d=[];
 				 
 				 if(totalData >i){
 				    chartHtml +=
-				    	'<tr style="cursor:pointer;" ><td  id="listBtn" >'+d[i].hos_name+'</td><td>'+d[i].hos_address+'</td><td>'+d[i].hos_loc+'</td><td>'+d[i].hos_tel+'</td></tr>';
+				    	'<tr style="cursor:pointer;" ><td  id="listBtn" >'+d[i][0]+'</td><td>'+d[i][1]+'</td><td>'+d[i][3]+'</td><td>'+d[i][2]+'</td></tr>';
 				  }
 				  } 
 				               document.querySelector('.table1 > tbody').innerHTML = chartHtml;
 
 				}
-		
+			function getSearchList(keyword){
+				if(keyword != ""){
+				$.ajax({
+					url:'http://192.168.0.120:9000/hospital/hospitalListTotalSearch?keyword='+keyword,
+				    type:'GET',
+				    dataType:'jsonp',
+				    jsonp:'callback',
+					success : function(data){
+						totalData = data.data.length
+						//테이블 초기화
+						 $('.table1 > tbody').empty();
+						for (var i of data.data) {
+				           	searchList.push(i)
+				       }
+				paging(totalData, dataPerPage, pageCount, 1,searchList);
+		   		displayData(1, dataPerPage,searchList); 
+						
+					}
+				})
+				}else{
+					$.ajax({
+						    url:'http://192.168.0.120:9000/hospital/hospitalListTotal',
+						    type:'GET',
+						    dataType:'jsonp',
+						    jsonp:'callback',
+						    success:function(data){
+						    	totalData = data.data.length
+						           for (var i of data.data) {
+						           	totalList.push(i)
+						       }
+						       paging(totalData, dataPerPage, pageCount, 1,totalList);
+				       		   displayData(1, dataPerPage,totalList);
+						    },
+						       error: function(err){
+						          console.log('Error => '+err);
+						       }
+					
+						   });
+				}
+				}
 		/* setTimeout(function() { 
 			$.ajax({
             url: 'http://192.168.0.120:9000/map/detail?name='+hos_value+'&',

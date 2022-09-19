@@ -109,31 +109,18 @@ public class CompanyController {
 		public String memberLogout(HttpSession session) {
 			session.removeAttribute("sessionCRN");
 			session.removeAttribute("sessionCNUM");
+			session.removeAttribute("sessionCCATE");
 			System.out.println("로그아웃성공");
 			return "redirect:/";
 		}
-		// tj
+		// tj 병원에 소속된 의사 목록
 		@GetMapping(value = "/hospitalDoctorList")
 		public String hospitalDoctorList(HttpSession session, Model m) {
 			int cnum = (int)session.getAttribute("sessionCNUM");
 			System.out.println("cnum =>"+cnum);
-			/*
-			 * HospitalVO hoslist = new HospitalVO(); List<DoctorVO> doclist1 =
-			 * service.hospitalDoctorList(cnum); hoslist.setDoctorVO(doclist1);
-			 * System.out.println(hoslist.getHname()); for(DoctorVO e :
-			 * hoslist.getDoctorVO()) { System.out.println(e); }
-			 */
-			List<DoctorVO> list=service.hospitalDoctorList(cnum);
-			System.out.println(service.hospitalDoctorList(cnum).getClass().getSimpleName());
-			for(DoctorVO e : list) {
-				System.out.println(e.getDname());
-			}
-//			vo.setDoctorVO(service.hospitalDoctorList(cnum));
-//			for(DoctorVO e : vo.getDoctorVO()) {
-//				System.out.println(e.getDname());
-//			}
-//			= service.hospitalDoctorList(cnum);
-//			m.addAttribute("list",list);
+			HospitalVO hoslist = new HospitalVO();
+			List<DoctorVO>list = service.hospitalDoctorList(cnum);
+			m.addAttribute("list", list);
 			return "mypage/comp_doctorList";
 		}
 	

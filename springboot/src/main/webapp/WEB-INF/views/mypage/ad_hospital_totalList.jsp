@@ -88,13 +88,21 @@
 	let totalList=[];
 	let searchList=[];
 	var keyword;
-		$(function() {
+			
 			$('#searchBtn').click(function(){
-				keyword = $('#keyword').val();
+				search();
+			}
+			function search(){
+			keyword = $('#keyword').val();	
+			console.log('s'+keyword)
+			
+			
 					//$(this).text()
 				console.log("keyword = > " + keyword)
 				getSearchList(keyword)
 			})
+		$(function() {
+				
 			
 			$('#dataPerPage').change(function() {
 				dataPerPage = $("#dataPerPage").val();

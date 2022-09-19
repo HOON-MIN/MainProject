@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.main.ateam.reserve.dao.ReserveDao">
+	<insert id="addReserve" parameterType="reserveVO">
+		insert into reserve values(reserve_seq.nextVal,#{num},#{dnum},#{symptom},#{symptomComm},#{contectCheck},#{rdate})
+	</insert>
+	<select id="choiceDoctor" resultType="doctorVO">
+		select * from doctor where dnum=#{dnum}
+	</select>
+</mapper>
