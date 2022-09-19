@@ -32,7 +32,6 @@ function Header() {
                 Login
               </Nav.Link>
               <Nav.Link
-                href="#features"
                 className="text-white hnav"
                 onClick={() => setSignupModalOn(true)}
               >

@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "../css/signupModal.css";
 import logo from "../img/logo.png";
+import axios from "axios";
 
 const SignupModals = (props) => {
+  const [mem_id, setMem_id] = useState("");
+  const [mem_pwd, setMem_pwd] = useState("");
+  const [mem_name, setMem_name] = useState("");
+  const [email, setEmail] = useState("");
+  const [ssn, setSsn] = useState("");
+  const [tel, setTel] = useState("");
+  const [addr, setAddr] = useState("");
+
+  const signUpDB = (mem_id, mem_pwd, mem_name, ssn, tel, email, addr) => {
+    console.log("회원가입", mem_id, mem_pwd, mem_name, ssn, tel, email, addr);
+    axios
+      .post("member/addMemberReact", null, {
+        params: {
+          id: mem_id,
+          pwd: mem_pwd,
+          name: mem_name,
+          ssn: ssn,
+          tel: tel,
+          email: email,
+          addr: addr,
+        },
+      })
+      .then((res) => {
+        console.log(res.params);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <Modal
       {...props}
@@ -17,16 +48,16 @@ const SignupModals = (props) => {
       </Modal.Header>
       <Modal.Body>
         <div className="Container signupContainer">
-          <form className="validation-form" method="post" action="joinMember">
+          <form className="validation-form" onSubmit={signUpDB}>
             <div className="mb-3">
               <label for="mem_id">아이디</label>
               <input
                 type="text"
                 className="form-control"
-                id="mem_id"
-                name="mem_id"
+                onChange={(e) => {
+                  setMem_id(e.target.value);
+                }}
                 required
-                oninput="checkId()"
               />
             </div>
 
@@ -36,8 +67,9 @@ const SignupModals = (props) => {
                 <input
                   type="password"
                   className="form-control"
-                  id="mem_pw"
-                  name="mem_pw"
+                  onChange={(e) => {
+                    setMem_pwd(e.target.value);
+                  }}
                   required
                 />
               </div>
@@ -59,8 +91,9 @@ const SignupModals = (props) => {
               <input
                 type="text"
                 className="form-control"
-                id="mem_name"
-                name="mem_name"
+                onChange={(e) => {
+                  setMem_name(e.target.value);
+                }}
                 placeholder="김OO"
                 required
               />
@@ -72,8 +105,9 @@ const SignupModals = (props) => {
               <input
                 type="text"
                 className="form-control"
-                id="mem_jubun"
-                name="mem_jubun"
+                onChange={(e) => {
+                  setSsn(e.target.value);
+                }}
                 placeholder="000000-1"
                 required
               />
@@ -85,8 +119,9 @@ const SignupModals = (props) => {
               <input
                 type="mem_phone"
                 className="form-control"
-                id="mem_phone"
-                name="mem_phone"
+                onChange={(e) => {
+                  setTel(e.target.value);
+                }}
                 placeholder="010-0000-0000"
                 required
               />
@@ -94,12 +129,13 @@ const SignupModals = (props) => {
             </div>
 
             <div className="mb-3">
-              <label for="mem_email">이메일</label>
+              <label for="email">이메일</label>
               <input
-                type="mem_email"
+                type="email"
                 className="form-control"
-                id="mem_email"
-                name="mem_email"
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 placeholder="you@example.com"
                 required
               />
@@ -111,8 +147,9 @@ const SignupModals = (props) => {
               <input
                 type="text"
                 className="form-control"
-                id="addr"
-                name="addr"
+                onChange={(e) => {
+                  setAddr(e.target.value);
+                }}
                 required
               />
             </div>

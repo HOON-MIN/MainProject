@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -212,6 +214,49 @@ public class MemberController {
 		memberService.addMemberService(mvo);
 		return "redirect:/main";
 	}
+	
+	@CrossOrigin
+	@ResponseBody
+	@PostMapping(value = "/addMemberReact")
+	public String addMemberReact(@RequestParam MemberVO mvo, HttpServletRequest request) {
+		System.out.println("주민번호 : " + mvo.getSsn());
+		System.out.println("id : " + mvo.getId());
+		System.out.println("email : " + mvo.getEmail());
+		System.out.println("전화번호 : " + mvo.getTel());
+
+		int age = memberInfoModule.getAge(mvo.getSsn());
+		String gender = memberInfoModule.getGender(mvo.getSsn());
+		mvo.setAge(age);
+		mvo.setGender(gender);
+		// request를 가지고 이미지의 경로를 받아서 출력
+		String img_path = "resources\\imgfile";
+		String r_path = request.getRealPath("/");
+		System.out.println("r_path : " + r_path);
+		String oriFn = mvo.getMfile().getOriginalFilename();
+		// 이미지의 사이즈 및 contentType확인
+		long size = mvo.getMfile().getSize();
+		String contentType = mvo.getMfile().getContentType();
+		System.out.println("파일 크기 : " + size);
+		System.out.println("파일 타입 : " + contentType);
+		System.out.println("oriFn : " + oriFn);
+		StringBuffer path = new StringBuffer();
+		path.append(r_path).append(img_path).append("\\");
+		path.append(oriFn);
+		System.out.println("Fullpath : " + path);
+		// 추상경로(이미지를 저장할 경로) File 객체로 생성
+		File f = new File(path.toString());
+		try {
+			mvo.getMfile().transferTo(f);
+			mvo.setProfimg(oriFn);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+
+		memberService.addMemberService(mvo);
+		return "redirect:/main";
+	}
+	
+	
 	@GetMapping(value = "/idcheck")
 	public ModelAndView idCheck(@RequestParam("id") String id) {
 		ModelAndView mav = new ModelAndView("member/member/idcheck");
