@@ -50,7 +50,7 @@
 	</div>
 	<hr>
 
-	<div class="row">
+	<div class="row covidresv">
 		<div class="col">
 			<h4>Q1. 호흡기질환 여부(천식, 폐렴 등)</h4>
 			<div class="col-md-6">

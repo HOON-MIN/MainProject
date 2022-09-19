@@ -2,6 +2,7 @@ package com.main.ateam.member.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -31,6 +33,7 @@ import com.main.ateam.modules.Base64Module;
 import com.main.ateam.modules.GsonModule;
 import com.main.ateam.modules.SftpModule;
 import com.main.ateam.modules.UbuntuShellModule;
+import com.main.ateam.vo.CovidRecordVO;
 import com.main.ateam.vo.FileVO;
 import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.OAuthToken;
@@ -306,4 +309,51 @@ public class MemberController {
 		session.setAttribute("sessionNAME", dtov.getName());
 		return "redirect:/main";
 	}
+	/* 코로나 음성 자가진단 페이지 */
+	@RequestMapping(value = "/COVIDcheck")
+	public String covidCheck() {
+		return "member/covidRecording";
+	}
+	/* 우분투서버로 코로나 음성데이터 및 JSON 전송 */
+	@RestController
+	@RequestMapping("/member")
+	public class MemberRestAPI{
+		@PostMapping(value = "/COVIDUpload", produces = "application/json;charset=utf-8")
+		public CovidRecordVO COVIDUpload(Model model, CovidRecordVO vo, HttpServletRequest request, HttpSession session) throws Exception {
+			
+			String userID = session.getAttribute("sessionID").toString();
+			
+			String filename = userID + ".wav";
+			String filepath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\audio").toString();
+			
+			String jsonname = userID + ".json";
+			String jsonpath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\json").toString();
+			MemberVO uservo = memberService.userdetail(userID);
+
+			System.out.println("JAVAPATH 실행!=>"+filepath);
+			
+			//Base64객체를 복호화한 후 파일 저장
+			base64module.base64ToMultipart(vo.getBase64str(), filename, filepath);
+			
+			//.wav Upload
+			ubuntushellmodule.upload(uploadPath, filepath+"\\"+filename);			
+
+			//{userID}.json Config
+			vo.setAge(uservo.getAge());
+			vo.setGender(uservo.getGender());
+			vo.setUserid(userID);
+			vo.setBase64str(filename);
+			gsonmodule.saveGsonFile(vo, jsonpath+"\\"+jsonname);
+			
+			//JsonFile Upload
+			ubuntushellmodule.upload(uploadPath, jsonpath+"\\"+jsonname);
+			
+			//check_covid19.py Model 실행
+			//System.out.println("python "+pythonPath+"check_covid19.py");
+			ubuntushellmodule.command("python "+pythonPath+"check_covid19.py "+userID);
+			
+			return vo; 
+		}
+	} 
+	
 }
