@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.main.ateam.review.service.ReviewBoardService;
 import com.main.ateam.vo.ReviewBoardCommVO;
 import com.main.ateam.vo.ReviewBoardVO;
+import com.main.ateam.vo.SearchPageVO;
 
 
 @Controller
@@ -53,6 +54,8 @@ public class ReviewBoardController {
 		totalPage = (int)Math.ceil(totalRecord/(double)numPerPage);
 		totalBlock = (int)Math.ceil(totalPage/(double)pagePerBlock);
 		
+		SearchPageVO svo = new SearchPageVO(); // 페이지 서치용
+		
 		if(s_page != null) {
 			nowPage = Integer.parseInt(s_page);
 		}
@@ -81,7 +84,8 @@ public class ReviewBoardController {
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
-		
+		model.addAttribute("map", map);
+
 		
 		return "reviewBoard/reviewboardList";
 	}

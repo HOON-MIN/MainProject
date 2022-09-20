@@ -194,7 +194,7 @@
 					</div>
 					<tr>
 						<td colspan="6" style=""><img
-							src='http://192.168.0.177:9000/static/dashboard/img/wordcnt.png' style="width: 70%">
+							src='http://192.168.0.177:9000/static/dashboard/img/wordcnt1.png' style="width: 70%">
 						</td>
 					</tr>
 				</div>
@@ -361,6 +361,26 @@ $(window).ready(function(){
         }
     });
 	
+	$.ajax({
+        url: 'http://192.168.0.177:9000/sypark/wordcnt_dashboard?callback',
+        type: 'GET',
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        success: function(data){ // 데이터를 불러와 tbody에 요소 집어넣기
+          console.log(data.data)
+         
+          let tbodyData =[];
+          
+          for (var i of data.data) {
+          	tbodyData.push('<tr style="cursor:pointer;"><td id="listBtn" >'+i[0]+'</td><td>'+i[1]+'</td><td>'+i[2]+'</td></tr>')
+          }
+          document.querySelector('.hostable > tbody').innerHTML = tbodyData.join('');
+          
+        },
+        error: function(err){
+           console.log('Error => '+err);
+        }
+    });
 });
 
 </script>
