@@ -1,9 +1,66 @@
-import React from "react";
+import React, { useEffect, useState, history } from "react";
 import Modal from "react-bootstrap/Modal";
 import logo from "../img/logo.png";
 import "../css/loginModal.css";
+import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const LoginModal = (props) => {
+  const navigate = useNavigate();
+  const [inputId, setInputId] = useState("");
+  const [inputPw, setInputPw] = useState("");
+  const [user, setUser] = useState("");
+  const [log, setLog] = useState();
+  const [loading, setLoading] = useState(false);
+  const [msg, setMsg] = useState("");
+  const body = {
+    id: inputId,
+    pwd: inputPw,
+  };
+
+  const loginModule = (e) => {
+    e.preventDefault();
+    setMsg("Loading...");
+    if (!inputId) {
+      return alert("ID를 입력하세요.");
+    } else if (!inputPw) {
+      return alert("Password를 입력하세요.");
+    } else {
+      let body = {
+        id: inputId,
+        pwd: inputPw,
+      };
+      axios.post("member/loginReact", body).then((res) => {
+        setLoading(false);
+        setTimeout(() => setMsg(""), 1500);
+        // code = 데이터 상태
+        const code = res.status;
+        setUser(res.data);
+        {
+          user && localStorage.setItem("name", user.name);
+          user && localStorage.setItem("num", user.num);
+        }
+        if (code === 400) {
+          // 비어있는
+          alert("비어있는 내용입니다.");
+        } else if (code === 401) {
+          // 존재하지 않는 id
+          alert("존재하지 않는 id입니다.");
+        } else if (code === 402) {
+          // 비밀번호가 틀렸을때
+          alert("비밀번호가 일치하지 않습니다.");
+        } else {
+          console.log(user);
+        }
+      });
+    }
+    setLoading(true);
+    setLog(localStorage.getItem("name"));
+    console.log(log);
+    alert("로그인되었습니다.");
+    props.onHide(false);
+  };
+
   return (
     <div>
       <Modal
@@ -18,50 +75,54 @@ const LoginModal = (props) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div class="container loginContainer">
-            <div className="text-center">
-              <img
-                src={logo}
-                height="80"
-                className="d-inline-block align-top"
-              />
-            </div>
-            <form action="loginProcess" method="post">
-              <div class="mb-3">
-                <label class="form-label" for="mem_id">
-                  아이디
-                </label>
+          {}
+          <form className="form" onSubmit={loginModule}>
+            <div className="container loginContainer">
+              <div className="text-center">
+                <img
+                  src={logo}
+                  height="80"
+                  className="d-inline-block align-top"
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">아이디</label>
                 <input
-                  class="form-control"
+                  className="form-control"
+                  value={inputId}
+                  onChange={(e) => setInputId(e.target.value)}
                   type="text"
-                  name="mem_id"
-                  id="mem_id"
                 />
               </div>
-              <div class="mb-3">
-                <label class="form-label" for="mem_pwd">
-                  비밀번호
-                </label>
+              <div className="mb-3">
+                <label className="form-label">비밀번호</label>
                 <input
-                  class="form-control"
+                  className="form-control"
+                  value={inputPw}
+                  onChange={(e) => setInputPw(e.target.value)}
                   type="password"
-                  name="mem_pw"
-                  id="mem_pw"
+                  placeholder="password"
                 />
               </div>
-              <div class="mb-3 button">
-                <button class="btn btn-outline-dark btn-sm" type="submit">
+              <div className="mb-3 button">
+                <button
+                  className="btn btn-outline-dark btn-sm"
+                  type="submit"
+                  onClick={() => {
+                    navigate("/dlist");
+                  }}
+                >
                   로그인
                 </button>
               </div>
-            </form>
 
-            <div class="links">
-              <a href="memberId">아이디 찾기</a> <span>|</span>{" "}
-              <a href="memberPw">비밀번호 찾기</a> <span>|</span>{" "}
-              <a href="memberRegist">회원가입</a>
+              <div className="links">
+                <a href="memberId">아이디 찾기</a> <span>|</span>{" "}
+                <a href="memberPw">비밀번호 찾기</a> <span>|</span>{" "}
+                <a href="memberRegist">회원가입</a>
+              </div>
             </div>
-          </div>
+          </form>
         </Modal.Body>
       </Modal>
     </div>
