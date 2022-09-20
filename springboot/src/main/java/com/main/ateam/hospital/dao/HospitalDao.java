@@ -21,4 +21,5 @@ public interface HospitalDao {
 	public List<DoctorVO> hospitalDoctorList(int cnum);
 	public List<DoctorVO> choiceDoctorList(int cnum);// 예약 - 의사 고르기
 	public List<HospitalVO> getCate();
+	public List<HospitalVO> getHospital(Map<String, String> map);
 }

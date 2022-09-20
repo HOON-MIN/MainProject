@@ -67,7 +67,7 @@ public class MemberController {
 	private String uploadPath;
 	@Value("${pythonPath}")
 	private String pythonPath;
-	
+		
 
 	@GetMapping("/memberLoginForm")
 	public String MemberLoginForm() {
@@ -354,6 +354,10 @@ public class MemberController {
 		session.setAttribute("sessionNAME", dtov.getName());
 		return "redirect:/main";
 	}
+	
+	
+
+	
 	/* 코로나 음성 자가진단 페이지 */
 	@RequestMapping(value = "/COVIDcheck")
 	public String covidCheck() {

@@ -139,5 +139,11 @@ select count(*) from hospital where crn = #{crnv}
   </collection>
 
 </resultMap>
+
+<select id="getHospital" resultType="hvo" parameterType="map">
+	select * from hospital where hloc like '%'||#{address}||'%'
+ </select>
+
+
 </mapper>
 
