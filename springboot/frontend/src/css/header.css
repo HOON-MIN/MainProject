@@ -7,6 +7,9 @@
   z-index: 999;
   background-color: #80a7ce;
 }
+.nav {
+  text-decoration: none;
+}
 
 .hnav {
   margin-left: 16px;
