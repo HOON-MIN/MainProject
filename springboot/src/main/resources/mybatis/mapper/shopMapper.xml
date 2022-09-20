@@ -56,6 +56,8 @@
 			</when>
 		</choose>
 	</select>
-	
+	<select id="getAndriod" resultType="com.main.ateam.pharmacy.vo.PharmacyVO">
+		select * from Pharmacy order by pnum
+	</select>
 	
 </mapper>

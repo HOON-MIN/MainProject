@@ -16,5 +16,6 @@ public interface ShopDao extends PageListInter{
 	public PharmacyVO ShopDetail(int pnum);
 	public int searchCount(Map<String, String> map);
 	public List<? extends SuperDTO> SearchShopList(Map<String, Object> map);
+	public List<PharmacyVO> getAndriod();
 }
 	
