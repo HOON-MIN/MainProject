@@ -20,12 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.main.ateam.review.service.ReviewBoardService;
 import com.main.ateam.vo.ReviewBoardCommVO;
 import com.main.ateam.vo.ReviewBoardVO;
-import com.main.ateam.vo.SearchPageVO;
 
 
 @Controller
 @RequestMapping(value = "/reviewboard")
-public class ReviewBoardController {
+public class ReviewBoardController2 {
 
 
 	private int nowPage = 1; // 현재 페이지 값 //**
@@ -53,8 +52,6 @@ public class ReviewBoardController {
 		totalRecord = service.getCnt();
 		totalPage = (int)Math.ceil(totalRecord/(double)numPerPage);
 		totalBlock = (int)Math.ceil(totalPage/(double)pagePerBlock);
-		
-		SearchPageVO svo = new SearchPageVO(); // 페이지 서치용
 		
 		if(s_page != null) {
 			nowPage = Integer.parseInt(s_page);
