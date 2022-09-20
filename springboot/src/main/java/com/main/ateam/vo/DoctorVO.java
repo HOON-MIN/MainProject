@@ -15,7 +15,6 @@ public class DoctorVO {
 	private HospitalVO hvo;
 	
 	
-	
 	public HospitalVO getHvo() {
 		return hvo;
 	}

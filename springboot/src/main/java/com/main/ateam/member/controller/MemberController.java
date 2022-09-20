@@ -3,7 +3,9 @@ package com.main.ateam.member.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -11,16 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Value;
-=======
 import org.springframework.http.HttpRequest;
->>>>>>> hoonmin
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -96,6 +97,24 @@ public class MemberController {
 			session.setAttribute("sessionNAME", dto.getName());
 		}
 		return mav;
+	}
+	
+	@ResponseBody
+	@PostMapping("loginReact")
+	public MemberVO loginReact(@RequestBody String id ,String pwd) {
+		Map<String, String> map = new HashMap<>();
+		char quotes = '"';
+		String[] res = id.split(":|"+quotes+"|,");
+		for (String e : res) {
+			System.out.println(e);
+		}
+		System.out.println("id: " +res[4]+"pwd : "+res[10]);
+		//String resId = res[0].substring(res[0].length(), res[0].length()-1);
+	
+		map.put("id", res[4]);
+		map.put("pwd", res[10]);
+	
+		return memberService.memberLogin(map);
 	}
 
 	// 로그 아웃
