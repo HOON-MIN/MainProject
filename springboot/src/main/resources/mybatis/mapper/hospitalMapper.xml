@@ -32,7 +32,7 @@
       select h.* from hospital h, company c  
             where h.cnum = c.cnum and c.cstatus=1 
 	  	<include refid="search"/>
-            order by 1 desc
+            order by h.cnum desc
       ) a
   	)where r_num between #{beginPerPage} and #{endPerPage}
 </select>
@@ -71,12 +71,12 @@
   </association>
 </resultMap>
 
-<select id="getListBack" resultType="hvo">
-	SELECT rownum r_num,c.cnum,h.hname,h.hloc,h.otime,
-	h.ctime,h.hcate,h.htel,h.hurl,c.cdate,
-	c.ccate from hospital h, company c 
-	where h.cnum = c.cnum and c.cstatus=1
-</select>
+<!-- <select id="getListBack" resultType="hvo"> -->
+<!-- 	SELECT rownum r_num,c.cnum,h.hname,h.hloc,h.otime, -->
+<!-- 	h.ctime,h.hcate,h.htel,h.hurl,c.cdate, -->
+<!-- 	c.ccate from hospital h, company c  -->
+<!-- 	where h.cnum = c.cnum and c.cstatus=1 -->
+<!-- </select> -->
 
 <select id="getCate" resultType="hvo">
 	select distinct hcate from hospital
