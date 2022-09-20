@@ -4,12 +4,80 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.main.ateam.hospital.dao.HospitalDao">
 
-<select id="getList" resultType="hvo">
-	SELECT rownum r_num,c.cnum,h.hname,h.hloc,h.otime,
-	h.ctime,h.hcate,h.htel,h.hurl,c.cdate,
-	c.ccate from hospital h, company c 
-	where h.cnum = c.cnum and c.cstatus=1
+<select id="getCnt" resultType="int" parameterType="svo">
+  select count(*) 
+	from hospital h, 
+	(select cnum from company where cstatus=1) c
+  where c.cnum = h.cnum 
+  <choose>
+	<when test="category != null and category != ''">
+		<choose>
+			<when test="category == 'hloc'">
+				AND h.hloc like '%' || #{search} || '%'
+			</when>
+			<when test="category == 'hname'">
+				AND h.hname like '%' || #{search} || '%'
+			</when>
+			<when test="category == 'hcate'">
+				AND h.hcate like '%' || #{search} || '%'
+			</when>
+		</choose>
+	</when>
+  </choose>
 </select>
+
+<select id="getList" resultType="hvo" parameterType="svo">
+	select * from (
+      select rownum r_num, a.* from (
+      select h.* from hospital h, company c  
+            where h.cnum = c.cnum and c.cstatus=1 
+	  	<include refid="search"/>
+            order by h.cnum desc
+      ) a
+  	)where r_num between #{beginPerPage} and #{endPerPage}
+</select>
+<!-- 검색 기능 sql: select id="listpage"에 include함 -->
+<sql id="search">
+  <choose>
+	<when test="category != null and category != ''">
+		<if test="category == 'hloc'">
+		AND hloc like '%' || #{search} || '%'</if>
+		<if test="category == 'hname'">
+		AND hname like '%' || #{search} || '%'</if>
+		<if test="category == 'hcate'">
+		AND hcate like '%' || #{search} || '%'</if>
+	</when>
+  </choose>
+</sql>
+<resultMap type="cvo" id="hospitalResult">
+  <id property="cnum" column="cnum" javaType="int"/>
+	<result property="r_num" column="r_num"/>
+	<result property="crn" column="crn"/>
+	<result property="cpwd" column="cpwd"/>
+	<result property="ccate" column="ccate"/>
+	<result property="cdate" column="cdate"/>
+	<result property="cstatus" column="cstatus"/>
+  <association property="hvo" column="cnum" javaType="hvo">
+	<id property="cnum" column="cnum"/>
+	<result property="hname" column="hname" />
+	<result property="hloc" column="hloc" />
+	<result property="otime" column="otime" />
+	<result property="ctime" column="ctime" />
+	<result property="hcate" column="hcate" />
+	<result property="hurl" column="hurl" />
+	<result property="htel" column="htel" />
+	<result property="hemail" column="hemail" />
+	<result property="hgrade" column="hgrade" />
+  </association>
+</resultMap>
+
+<!-- <select id="getListBack" resultType="hvo"> -->
+<!-- 	SELECT rownum r_num,c.cnum,h.hname,h.hloc,h.otime, -->
+<!-- 	h.ctime,h.hcate,h.htel,h.hurl,c.cdate, -->
+<!-- 	c.ccate from hospital h, company c  -->
+<!-- 	where h.cnum = c.cnum and c.cstatus=1 -->
+<!-- </select> -->
+
 
 <select id="getDetail" parameterType="int" resultType="hvo">
 	select * from hospital where cnum=#{num}

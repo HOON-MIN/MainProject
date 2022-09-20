@@ -65,9 +65,9 @@ public class HospitalController {
 		System.out.println("분류 : "+svo.getCategory());
 		
 		List<HospitalVO> hcate = service.getCate();
-		for(HospitalVO e : hcate) {
-			System.out.println(e.getHcate());
-		}
+//		for(HospitalVO e : hcate) {
+//			System.out.println(e.getHcate());
+//		}
 		totalRecord = service.getCnt(svo);
 		totalPage = (int) Math.ceil(totalRecord / (double) numPerPage);
 		totalBlock = (int) Math.ceil((double) totalPage / pagePerBlock);
@@ -127,9 +127,6 @@ public class HospitalController {
 		return "hospital/hospitalDetailMap";
 	}
 	
-	
-
-
 	@RequestMapping(value = "/ttList")
 	public String ttList(SearchVO svo, Model m) {
 		return "hospital/djHospitalList";
@@ -162,40 +159,5 @@ public class HospitalController {
 		return "redirect:/main";
 	}
 
-//	@RequestMapping(value ="/onlinecounsel/expertmb/list_ajax.do")
-//    public ModelAndView list_expertmb_ajax(            //여기서는 ModelAndView를 사용하는게 중요 포인트입니다.
-//            @ModelAttribute("searchVO") MemberVO searchVO,
-//            HttpServletRequest request,
-//            HttpServletResponse response,
-//            ModelMap model) throws Exception {
-//        
-//        String kind = request.getParameter("kind");       //request에서 getParameter를 사용하여 kind 값을 불러옵니다.
-//        
-//        searchVO.setSite_code(loginService.getSiteCode());
-//      
-//        PaginationInfo paginationInfo = new PaginationInfo();
-//        
-//        paginationInfo.setCurrentPageNo(searchVO.getPageIndex());        
-//        paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
-//        paginationInfo.setPageSize(searchVO.getPageSize());                
-//        
-//        searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-//        searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-//        searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-//        
-//        Map<String, Object> map = onlineCounselService.getExpertMbListm(searchVO);        //Map을 이용하여 List 및 페이징 기능을 구현합니다.
-//        int totCnt = Integer.parseInt((String)map.get("resultCnt"));
-//        
-//        paginationInfo.setTotalRecordCount(totCnt);
-//           
-//        ModelAndView ajaxList = new ModelAndView("tiles:bsite/onlinecounsel/expertmb/list");      //ajaxList라는 변수에 위에서 선언한 변수들을 모두 담아준 다음
-//        ajaxList.addObject("kind",kind);
-//        ajaxList.addObject("resultList",map.get("resultList"));
-//        ajaxList.addObject("resultCnt", map.get("resultCnt"));
-//        ajaxList.addObject("totalPageCnt", (int)Math.ceil(totCnt / (double)searchVO.getPageUnit()));
-//        ajaxList.addObject("paginationInfo", paginationInfo);
-//        
-//        return ajaxList;        // return 으로 빼줍니다.
-//    }
 
 }

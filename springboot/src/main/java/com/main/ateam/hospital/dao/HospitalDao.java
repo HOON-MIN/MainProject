@@ -20,6 +20,7 @@ public interface HospitalDao {
 	public void addHospital(HospitalVO hvo);
 	public List<DoctorVO> hospitalDoctorList(int cnum);
 	public List<DoctorVO> choiceDoctorList(int cnum);// 예약 - 의사 고르기
+	// 진료과목 종류 가져오기 
 	public List<HospitalVO> getCate();
 	public List<HospitalVO> getHospital(Map<String, String> map);
 }

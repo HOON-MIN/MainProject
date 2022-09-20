@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.main.ateam.ansboard.service.AnsboardService;
 import com.main.ateam.quesboard.service.QuesboardService;
@@ -62,6 +63,11 @@ public class QuesboardController {
 		System.out.println("검색 : "+svo.getSearch());
 		System.out.println("분류 : "+svo.getCategory());
 		
+		List<QuesboardVO> qcate = service.getCate();
+		for(QuesboardVO e : qcate) {
+			System.out.println(e.getQcate());
+		}
+		
 		totalRecord = service.getCnt(svo);
 		totalPage = (int) Math.ceil(totalRecord / (double) numPerPage);
 		totalBlock = (int) Math.ceil((double) totalPage / pagePerBlock);
@@ -97,6 +103,7 @@ public class QuesboardController {
 		m.addAttribute("nowPage", nowPage);
 		m.addAttribute("pagePerBlock", pagePerBlock);
 		m.addAttribute("totalPage", totalPage);
+		m.addAttribute("qcate", qcate);
 		
 		System.out.println("totalRecord :"+ totalRecord);
 		System.out.println("startPage :"+ startPage);
@@ -110,17 +117,14 @@ public class QuesboardController {
 	}
 	
 	@GetMapping(value = "/qbDetail")
-	public String qbDetail(int num, Model m) {
-		System.out.println("num => "+num);
-		System.out.println("-----qbDetail controll-----");
-		QuesboardVO vo = service.getQBDetail(num);
-		System.out.println(vo.getQtitle());
-		System.out.println(vo.getQcont());
-		System.out.println(vo.getId());
-		System.out.println("success");
-		List<AnsboardVO> ansList = ansService.getABList(num);
-		System.out.println("ansService success");
-		System.out.println("-----qbDetail controll-----");
+	public String qbDetail(int qnum, Model m) {
+		System.out.println("----- qbDetail controll -----");
+		QuesboardVO vo = service.getQBDetail(qnum);
+		System.out.println("qnum => "+qnum);
+		service.upQBHit(vo);
+//		System.out.println(vo.getQtitle());
+		List<AnsboardVO> ansList = ansService.getABList(qnum);
+//		System.out.println("ansService success");
 		m.addAttribute("vo", vo);
 		m.addAttribute("ansList", ansList);
 		return "quesboard/quesboardDetail";
@@ -147,6 +151,14 @@ public class QuesboardController {
 		service.qbDelete(qnum);
 		return "redirect:qbList";
 	}
+	@ResponseBody
+	@GetMapping(value = "/test")
+	public String test(String chk,String chk1) {
+		String res = chk1;
+		System.out.println("test res => "+res);
+		return res;
+	}
+	
 	
 	
 	

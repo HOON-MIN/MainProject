@@ -59,18 +59,31 @@ table tfoot ol.paging li a:hover {
 </style>
 
 <div class="container">
-<article>
-<header>
-	<h1>의학지식인</h1>
-</header>
-<ul class="list-unstyled">
-	<li class="border-top my-3"></li>
-</ul>
+	<article>
+	<header>
+		<h1>의학지식인</h1>
+	</header>
+	<div class="panel">
+    <div class="panel-body">
+        <div class="btns" style="text-align: center;">
+        <h4>질문 카테고리</h4>
+        <c:forEach var="e" items="${qcate }" varStatus="status">
+           <input type="button" name="hbtn${status.index}" value="${e.qcate }" class="qcatebtn btn btn-outline-primary"/>
+			<c:choose>
+				<c:when test="${status.index == 8}">
+		           <p style="margin: 5px;"></p>				
+				</c:when>
+			</c:choose>
+        </c:forEach>
+        </div><br>
+    </div> 
+	</div> 
 
-<table class="table table-bordered" id="" style="text-align: center;">
+<table class="table1 table table-hover" style="text-align: center;">
 	<thead>
 		<tr>
 			<th width="50px;">No.</th>
+			<th>카테고리</th>
 			<th>제목</th>
 			<th>ID</th>
 			<th>조회수</th>
@@ -81,10 +94,11 @@ table tfoot ol.paging li a:hover {
 		<%-- for start --%>
 		<c:forEach var="e" items="${list}">
 			<tr>
-				<td class="linktd">${e.qnum}</td>
-				<td class="linktd"><a href="qbDetail?num=${e.qnum}">${e.qtitle}</a></td>
+				<td class="linktd">${e.r_num}</td>
+				<td class="linktd">${e.qcate}</td>
+				<td class="linktd"><a href="qbDetail?qnum=${e.qnum}">${e.qtitle}</a></td>
 				<td class="linktd">${e.id}</td>
-				<td class="linktd">${e.qhit}</td>
+				<td class="linktd" id="check">${e.qhit}</td>
 				<td class="linktd">${e.qdate}</td>
 			</tr>
 		</c:forEach>
@@ -141,14 +155,15 @@ table tfoot ol.paging li a:hover {
 		<option value="qtitle">제목</option>
 		<option value="qcont">내용</option>
 		<option value="id">작성자</option>
-<!-- 		<option value="hcate" hidden="hidden" id="hcate">진료과목</option> -->
+		<option value="qcate" hidden="hidden" id="qcate">카테고리</option>
 		<option value="all">제목+내용+작성자</option>
 	</select> 
-	<input type="text" name="search" id="hsearch">
+	<input type="text" name="search" id="qsearch">
     <input type="submit" id="searBtn" value="조회">
 </form>
+<p style="margin: 5px;"></p>	
 <c:if test="${sessionID != null}">
-<input type="button" value="글작성" class="btn btn-info" id="writeBtn" />
+	<input type="button" value="질문하기" id="writeBtn" class="btn btn-primary" >
 </c:if>
 
 </td>
@@ -162,11 +177,38 @@ table tfoot ol.paging li a:hover {
 <!-- 이전 jquery 임포트 코드 ...!!! -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+var chk;
 $(function(){
 	$('.linktd').click(function(){
 		var href = $(this).parent("tr").children("td").children("a").attr("href")
 // 		alert(href);
 		window.location = href;
 	});
+	
+	$('#writeBtn').click(function(){
+		location ="qbForm";
+	});
+	
+	$('.qcatebtn').click(function(){
+    	var qcatename = $(this).val();
+    	$("#qcate").attr("selected", "selected");
+    	$("#qsearch").val(qcatename);
+    	$(".sForm").submit();
+    });
+	
+	
+	$('.table1').on('click','tr',function(){
+		chk=(this).children('#check').text();
+		chk1 = window.location.pathname;
+		console.log('chk => ' + chk);
+		console.log('path => ' + chk1);
+		console.log('chk => ' + chk);
+		$.ajax({
+			url:'test?chk1='+chk1,
+			success : function(){
+			}
+		})
+	})
+	
 });
 </script>

@@ -11,17 +11,17 @@
 <!-- 			아이디(나중에 세션으로 받는것으로 수정) -->
 <!-- 			<input type="text" name="id" id="id" > -->
 <!-- 		</p> -->
-		<p>
+		<div>
 			제목 <input type="text" name="qtitle" id="qtitle" >
-		</p>
-        <p>
+		</div>
+        <div>
             <textarea name="qcont" id="summernote" cols="80" rows="20"></textarea>
-        </p>
-        <p style="text-align:right">
+        </div>
+        <div style="text-align:right">
         	<button class="btn btn-primary btn-dark text-white btn-block"
 			 type="submit">작성</button>
 <!--             <input type="submit" value="작성"> -->
-        </p>
+        </div>
     </fieldset>
   </form>
 
@@ -72,6 +72,19 @@ $(function(){
 					}
 				}
 			}
+			// 서머노트에 text 쓰기
+			$('#summernote').summernote('insertText', 'test');
+			// 서머노트 쓰기 비활성화
+		// 	$('#summernote').summernote('disable');
+			// 서머노트 쓰기 활성화
+			$('#summernote').summernote('enable');
+			// 서머노트 리셋
+			$('#summernote').summernote('reset');
+			// 마지막으로 한 행동 취소 ( 뒤로가기 )
+			$('#summernote').summernote('undo');
+			// 앞으로가기
+			$('#summernote').summernote('redo');
+			$("#qcont").html(data.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g,'"').replace(/&#40;/g,'(').replace(/&#41;/g,')').replace(/&#35;/g,'#'));
 		});
 	});
 	/**
@@ -92,17 +105,5 @@ $(function(){
 			}
 		});
 	}
-	// 서머노트에 text 쓰기
-	$('#summernote').summernote('insertText', 'test');
-	// 서머노트 쓰기 비활성화
-	$('#summernote').summernote('disable');
-	// 서머노트 쓰기 활성화
-	$('#summernote').summernote('enable');
-	// 서머노트 리셋
-	$('#summernote').summernote('reset');
-	// 마지막으로 한 행동 취소 ( 뒤로가기 )
-	$('#summernote').summernote('undo');
-	// 앞으로가기
-	$('#summernote').summernote('redo');
 });
 </script>
