@@ -12,15 +12,14 @@ public class DoctorVO {
 	private String did;
 	private String dpwd;
 	private String dmajor;
-	private HospitalVO hvo;
+	private List<HospitalVO> hospitalVO;
 	
-	
-	
-	public HospitalVO getHvo() {
-		return hvo;
+
+	public List<HospitalVO> getHospitalVO() {
+		return hospitalVO;
 	}
-	public void setHvo(HospitalVO hvo) {
-		this.hvo = hvo;
+	public void setHospitalVO(List<HospitalVO> hospitalVO) {
+		this.hospitalVO = hospitalVO;
 	}
 	public int getDnum() {
 		return dnum;

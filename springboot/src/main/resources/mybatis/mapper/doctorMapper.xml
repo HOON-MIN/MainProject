@@ -47,13 +47,13 @@ select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospi
  
  <!--병원 mypage - 의사 목록 -->
 <resultMap type="doctorVO" id="DoctorDetailResult">
-<id property="cnum" column ="cnum"/>
+<id property="hnum" column ="hnum"/>
 <result property="dnum" column="dnum"/>
 <result property="dname" column="dname"/>
 <result property="dmajor" column="dmajor"/>
 
 <collection property="hospitalVO" javaType="java.util.List"	ofType="hvo">
- 	<id property="cnum" column="cnum" javaType="int"/>
+ 	<id property="hnum" column="hnum" javaType="int"/>
 	<result property="hname" column="hname"/>
 	<result property="otime" column="otime"/>
 	<result property="ctime" column="ctime"/>
@@ -62,7 +62,7 @@ select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospi
 </resultMap>
 
 <select id="hospitalDoctorDetail" resultMap="DoctorDetailResult">
-	select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.cnum = h.cnum and dnum = #{dnum}
+	select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.hnum = h.hnum and dnum = #{dnum}
 	</select>
 
 <!-- 리액트 카테고리별 리스트 출력 -->

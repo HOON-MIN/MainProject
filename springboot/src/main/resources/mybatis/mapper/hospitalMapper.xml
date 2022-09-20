@@ -4,82 +4,11 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.main.ateam.hospital.dao.HospitalDao">
 
-<select id="getCnt" resultType="int" parameterType="svo">
-  select count(*) 
-	from hospital h, 
-	(select cnum from company where cstatus=1) c
-  where c.cnum = h.cnum 
-  <choose>
-	<when test="category != null and category != ''">
-		<choose>
-			<when test="category == 'hloc'">
-				AND h.hloc like '%' || #{search} || '%'
-			</when>
-			<when test="category == 'hname'">
-				AND h.hname like '%' || #{search} || '%'
-			</when>
-			<when test="category == 'hcate'">
-				AND h.hcate like '%' || #{search} || '%'
-			</when>
-		</choose>
-	</when>
-  </choose>
-</select>
-
-<select id="getList" resultType="hvo" parameterType="svo">
-	select * from (
-      select rownum r_num, a.* from (
-      select h.* from hospital h, company c  
-            where h.cnum = c.cnum and c.cstatus=1 
-	  	<include refid="search"/>
-            order by 1 desc
-      ) a
-  	)where r_num between #{beginPerPage} and #{endPerPage}
-</select>
-<!-- 검색 기능 sql: select id="listpage"에 include함 -->
-<sql id="search">
-  <choose>
-	<when test="category != null and category != ''">
-		<if test="category == 'hloc'">
-		AND hloc like '%' || #{search} || '%'</if>
-		<if test="category == 'hname'">
-		AND hname like '%' || #{search} || '%'</if>
-		<if test="category == 'hcate'">
-		AND hcate like '%' || #{search} || '%'</if>
-	</when>
-  </choose>
-</sql>
-<resultMap type="cvo" id="hospitalResult">
-  <id property="cnum" column="cnum" javaType="int"/>
-	<result property="r_num" column="r_num"/>
-	<result property="crn" column="crn"/>
-	<result property="cpwd" column="cpwd"/>
-	<result property="ccate" column="ccate"/>
-	<result property="cdate" column="cdate"/>
-	<result property="cstatus" column="cstatus"/>
-  <association property="hvo" column="cnum" javaType="hvo">
-	<id property="cnum" column="cnum"/>
-	<result property="hname" column="hname" />
-	<result property="hloc" column="hloc" />
-	<result property="otime" column="otime" />
-	<result property="ctime" column="ctime" />
-	<result property="hcate" column="hcate" />
-	<result property="hurl" column="hurl" />
-	<result property="htel" column="htel" />
-	<result property="hemail" column="hemail" />
-	<result property="hgrade" column="hgrade" />
-  </association>
-</resultMap>
-
-<select id="getListBack" resultType="hvo">
+<select id="getList" resultType="hvo">
 	SELECT rownum r_num,c.cnum,h.hname,h.hloc,h.otime,
 	h.ctime,h.hcate,h.htel,h.hurl,c.cdate,
 	c.ccate from hospital h, company c 
 	where h.cnum = c.cnum and c.cstatus=1
-</select>
-
-<select id="getCate" resultType="hvo">
-	select distinct hcate from hospital
 </select>
 
 <select id="getDetail" parameterType="int" resultType="hvo">
@@ -89,21 +18,21 @@
 	select hname from hospital where crn=#{crn}
 </select>
 <insert id="addCompany" parameterType="cvo">
-	insert into company values(company_seq.nextVal, 
-	#{crn}, #{cpwd}, #{ccate}, sysdate, 0)
-</insert>
+ 		insert into company 
+        values(company_seq.nextVal, #{crn}, #{cpwd}, #{ccate}, sysdate, 0)
+    </insert>
 <insert id="addHospital" parameterType="hvo">
-   	<selectKey keyProperty="cnum" resultType="int" order="BEFORE">
-   		select company_seq.currVal from dual
-   	</selectKey>
-   	insert into hospital values(#{cnum},#{hname},#{hloc},#{otime},#{ctime},
-						  #{hcate},#{htel},#{hurl},#{hemail},#{hgrade})
+    	<selectKey keyProperty="cnum" resultType="int" order="BEFORE">
+    		select company_seq.currVal from dual
+    	</selectKey>
+    	insert into hospital values(#{cnum},#{hname},#{hloc},#{otime},#{ctime},
+							  #{hcate},#{htel},#{hurl},#{hemail},#{hgrade})
 </insert>
 
-<!-- crn 중복체크 -->
-<select id="crnCheck" parameterType="map" resultType="int">
-select count(*) from hospital where crn = #{crnv}
-</select>
+ <!-- crn 중복체크 -->
+ <select id="crnCheck" parameterType="map" resultType="int">
+ select count(*) from hospital where crn = #{crnv}
+ </select>
 
 <!-- 병원 - 의사 명단 -->
 <select id="choiceDoctorList" parameterType="int"  resultType="doctorVO">
@@ -113,7 +42,6 @@ select count(*) from hospital where crn = #{crnv}
 <!--병원 mypage - 의사 목록 -->
 <select id="hospitalDoctorList" resultMap="hospitalDoctorResult" parameterType="int">
  	select h.hname,d.dname from hospital h, doctor d where h.cnum=d.cnum and h.cnum=#{cnum}
-
  </select>
 
 
@@ -123,21 +51,18 @@ select count(*) from hospital where crn = #{crnv}
 <result column="otime" property="otime"/>
 <result column="ctime" property="ctime"/> -->
 
-<!-- resultMap -->
-<!--병원 mypage - 의사 목록 -->
 <resultMap id="hospitalDoctorResult" type="hvo">
-	<id column="cnum" property="cnum"/>
-	<result column="hname" property="hname"/>
-	<result column="otime" property="otime"/>
-	<result column="ctime" property="ctime"/>
+<id column="cnum" property="cnum"/>
+<result column="hname" property="hname"/>
+<result column="otime" property="otime"/>
+<result column="ctime" property="ctime"/>
 
-  <collection property="doctorVO" ofType="doctorVO" javaType="java.util.List">
-	<id column="cnum" property="cnum" javaType="int"/>
-	<result column="dnum" property="dnum"/>
-	<result column="dname" property="dname"/>
-	<result column="dmajor" property="dmajor"/>
-  </collection>
-
+<collection property="doctorVO" ofType="doctorVO" javaType="java.util.List" >
+<id column="cnum" property="cnum" javaType="int"/>
+<result column="dnum" property="dnum"/>
+<result column="dname" property="dname"/>
+<result column="dmajor" property="dmajor"/> 
+</collection>
 </resultMap>
 </mapper>
 
