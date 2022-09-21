@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div class="container" id="covidUpload">
+<div class="container-fluid covidUpload p-5">
 	<div class="row">
 		<div class="col">
 			<h1 id="covidh1">COVID19 검사</h1>
@@ -28,10 +28,9 @@
 
 		</div>
 
-		<div class="col"
-			style="height: 400px; display: table-cell; vertical-align: middle;">
-			<div class="upREC">
-				<div class="card" style="margin-top: 120px;">
+		<div class="col" style="height: 400px; display: table-cell; vertical-align: middle; ">
+			<div class="upREC" style="background-color: #f2f7ff;">
+				<div class="card" style="margin-top: 120px; ">
 					<h3>Upload Files</h3>
 					<div class="drop_box" style="justify-content: center;">
 						<!-- JS에서 내용이 바뀌는 부분 -->
@@ -52,7 +51,7 @@
 
 	<div class="row covidresv">
 		<div class="col">
-			<h4>Q1. 호흡기질환 여부(천식, 폐렴 등)</h4>
+			<h4>Q1. 호흡기질환(천식, 폐렴 등)이 있으십니까?</h4>
 			<div class="col-md-6">
 				<label class="radio">있음 <input type="radio"
 					checked="checked" name="is_respiratory" value="1"> <span
@@ -64,7 +63,7 @@
 		</div>
 
 		<div class="col">
-			<h4>Q2. 발열 및 근육통 여부</h4>
+			<h4>Q2. 발열 및 근육통이 있으십니까?</h4>
 			<div class="col-md-6">
 				<label class="radio">있음 <input type="radio"
 					checked="checked" name="is_fever" value="1"> <span

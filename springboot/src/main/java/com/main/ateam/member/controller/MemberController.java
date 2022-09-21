@@ -463,4 +463,9 @@ public class MemberController {
 		}
 	} 
 	
+	@RequestMapping("/COVIDResult")
+	public String covidresult() {
+		return "member/covidResult";
+	}
+	
 }

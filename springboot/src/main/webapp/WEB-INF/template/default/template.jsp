@@ -32,9 +32,24 @@
 <!-- ------------------------------->
 
 
-
-
-<!-- taejin -->
+    <!-- LOCAL CSS , JS  -->
+    <script src="/js/datatables-simple-demo.js?"></script>
+    <script src="/js/scripts.js?"></script>
+    <link href="/css/styles.css?" rel="stylesheet" />
+    <!-- --------------- -->
+    
+<!--     mireu summernote -->
+<!--     <script src="/mireu/js/summernote-lite.js?"></script> -->
+<!-- 	<script src="/mireu/js/summernote-ko-KR.js?"></script> -->
+<!-- 	<link rel="stylesheet" href="/mireu/css/summernote-lite.css?"> -->
+	<!-- 0918 add : dhlee 추가 -->
+	<link href="/css/dhlee/covidRecording.css?ver=1.9" rel="stylesheet" />
+	<link href="/css/dhlee/kakao_addinfo.css?" rel="stylesheet" />
+  </head>
+ 
+  <body>
+    <tiles:insertAttribute name="header" />
+    <tiles:insertAttribute name="menu" />
 
 	<!--  cdn -->
 <script src="/taejin/js/scripts.js"></script>
