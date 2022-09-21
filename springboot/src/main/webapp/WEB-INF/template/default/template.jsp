@@ -45,13 +45,8 @@
 	<!-- 0918 add : dhlee 추가 -->
 	<link href="/css/dhlee/covidRecording.css?ver=1.9" rel="stylesheet" />
 	<link href="/css/dhlee/kakao_addinfo.css?" rel="stylesheet" />
-  </head>
- 
-  <body>
-    <tiles:insertAttribute name="header" />
-    <tiles:insertAttribute name="menu" />
-
-	<!--  cdn -->
+	
+		<!--  cdn -->
 <script src="/taejin/js/scripts.js"></script>
 
 <!-- bootstrap5 dataTables js cdn -->
@@ -62,12 +57,6 @@
 <link rel="stylesheet"
 	href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 	<!-- ---------- -->
-
-<!-- LOCAL CSS , JS  -->
-<script src="/js/datatables-simple-demo.js?"></script>
-<script src="/js/scripts.js?"></script>
-<link href="/css/styles.css?" rel="stylesheet" />
-<!-- --------------- -->
 <!-- Map -->
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx8fc6162789f747579d26c53413bd30f7"></script>
 </head>
