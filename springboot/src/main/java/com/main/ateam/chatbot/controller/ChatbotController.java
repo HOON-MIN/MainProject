@@ -10,4 +10,9 @@ public class ChatbotController {
 	public String chat() {
 		return "chatbot/meditok";
 	}
+	
+	@RequestMapping("/mainchat")
+	public String mainchat() {
+		return "main/main_chat";
+	}
 }
