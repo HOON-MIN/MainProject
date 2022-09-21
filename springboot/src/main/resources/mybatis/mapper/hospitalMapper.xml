@@ -135,8 +135,11 @@
 
 <select id="getHospital" resultType="hvo" parameterType="map">
 	select * from hospital where hloc like '%'||#{address}||'%'
- </select>
+</select>
 
+<select id="getCate" resultType="hvo">
+	select distinct hcate from hospital 
+</select>
 
 </mapper>
 
