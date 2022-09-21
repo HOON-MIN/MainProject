@@ -1,24 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!-- <!DOCTYPE html> -->
-<!-- <html> -->
-<!-- <head> -->
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
-<!-- <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx8fc6162789f747579d26c53413bd30f7"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
-<!-- <meta charset="utf-8"> -->
-<!-- <title>Insert title here</title> -->
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <script type="text/javascript">									
 var map, marker1;
 function initTmap() {
-
-
 	map = new Tmapv2.Map("map_div", {
 		center : new Tmapv2.LatLng(37.56520450, 126.98702028),
 		width : "100%",
@@ -26,9 +12,7 @@ function initTmap() {
 		zoom : 17,
 		zoomControl : true,
 		scrollwheel : true
-
 	});
-	
 	marker1 = new Tmapv2.Marker(
 		{
 			icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
@@ -258,9 +242,8 @@ function initTmap() {
 
 }
 </script>
-<!-- </head> -->
-<!-- <body onload="initTmap()"> -->
-<div class="">
+<
+<div onload="initTmap()">
 
 		<div id="map_wrap" class="map_wrap">
 			<div id="map_div"></div>
@@ -275,12 +258,12 @@ function initTmap() {
         <!-- <div class="col-6" > -->
         <div class="col-20 text-left d-flex align-items-center justify-content-between pt-2" style=" width:100%;">
           <div style="font-weight: 300;">
-              <a  href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 5) }" style="color: #1d458d;font-weight: 600;text-decoration: underline;">
-                  ${fn:substring(shopDetail.fullAddress, 0, 5) }
+              <a  href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 5) }" style="color: #1d458d;font-weight: 600;text-decoration: underline;">
+                  ${fn:substring(shopDetail.ploc, 0, 5) }
             </a>            
             &gt;
-        	<a  href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 8) }" style="color: #1d458d;font-weight: 600;text-decoration: underline;">
-                  ${fn:substring(shopDetail.fullAddress, 6, 8) }
+        	<a  href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 8) }" style="color: #1d458d;font-weight: 600;text-decoration: underline;">
+                  ${fn:substring(shopDetail.ploc, 6, 8) }
             </a>
           </div>
 
@@ -304,10 +287,10 @@ function initTmap() {
         </div>
        <div class=" pb-2 text-left my-3">
           <div style="font-size: 14px; letter-spacing: -0.4px;background-color:rgba(233, 233, 233, 0.55); display: inline-block" class="m-1 p-1">
-          <a href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 2) }" style="color: #494949; word-break: keep-all;">    ${fn:substring(shopDetail.fullAddress, 0, 2) }약국</a>
+          <a href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 2) }" style="color: #494949; word-break: keep-all;">    ${fn:substring(shopDetail.ploc, 0, 2) }약국</a>
           </div>
            <div style="font-size: 14px; letter-spacing: -0.4px;background-color:rgba(233, 233, 233, 0.55); display: inline-block" class="m-1 p-1">
-           <a href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=fullAddress&searchf=${fn:substring(shopDetail.fullAddress, 0, 10) }" style="color: #494949; word-break: keep-all;">근처 병원</a>
+           <a href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 10) }" style="color: #494949; word-break: keep-all;">근처 병원</a>
           </div>
           <div style="font-size: 14px; letter-spacing: -0.4px;background-color:rgba(233, 233, 233, 0.55); display: inline-block" class="m-1 p-1">
           <a href="#" style="color: #494949; word-break: keep-all;">미정</a>
@@ -337,13 +320,11 @@ function initTmap() {
 
           <div id="btn_share_hospital" style="font-size: 15px; height: 32px; line-height: 32px;">
             <img class="mr-1" src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/share_button.png" style="width:12px; height:14px; " alt="">
-            공유하기
           </div> 
 
           
             <div id="btn_bookmark_hospital" style="font-size: 15px; height: 32px; line-height: 32px;" class="hospital-button d-flex mr-3 align-items-center px-4">
               <img class="mr-1" src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/bookmark_non.png" style="width:12px; height:14px; " alt="">
-              찜하기
             </div>
           
       
@@ -352,7 +333,7 @@ function initTmap() {
         <div class="text-left">
           <div class="color49 mt-3" style="font-size: 14px;font-weight: 400;letter-spacing: -0.6px;">
             <img src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/mapmarkerShape.svg" class="mb-1 mr-1" alt="Responsive image">
-            ${shopDetail.fullAddress}
+            ${shopDetail.ploc}
            
           </div>
           
@@ -368,7 +349,7 @@ function initTmap() {
           <div class="color49 mt-2" style="font-size: 14px;font-weight: 400;letter-spacing: -0.2px;">
             <img src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/phoneicon.svg" class="mb-1 mr-1" alt="Responsive image">
             
-                ${shopDetail.shopNumber} 
+                ${shopDetail.pnum} 
             
           </div>
         </div>
@@ -379,7 +360,7 @@ function initTmap() {
       <!-- 두번째 박스 시작(인증된 리뷰) -->
     
 
-	 <input type="hidden"id="endPoint" value="${shopDetail.fullAddress}">
+	 <input type="hidden"id="endPoint" value="${shopDetail.ploc}">
                    	<script type="text/javascript">
                 
             	
@@ -403,19 +384,10 @@ function initTmap() {
 	<div class="row border-top border-bottom px-3 middle-tab" style="top: 72px !important;">
     <div class="col-8 doctorpage-tabbar" id="tet" style="display: none;">
     	<p></p>
-    	<p>약국 명 : ${shopDetail.shopNumber}</p>
+    	<p>약국 명 : ${shopDetail.pname}</p>
     	<p>약국 번호 : ${shopDetail.pnum}</p>
-    	<p> ${shopDetail.sales} : ${shopDetail.businessStatus} </p>
-    	<p>현재 영업상태 : ${shopDetail.businessStatus}</p>
-    	<p>우편번호 : ${shopDetail.locationPostalCode }</p>
-		<p>도로명 주소 : ${shopDetail.roadAddress } </p>
-		<p>관리 번호 : ${shopDetail.managementNumber }</p>
-		<p>병원 내부면적 : ${shopDetail.operatingArea }m</p>
-		<p>위도 : ${shopDetail.latitude } 경도 : ${shopDetail.longitude }</p>
-		
+		<p>주소 : ${shopDetail.ploc } </p>
+		<p>위도 : ${shopDetail.plat } 경도 : ${shopDetail.plot }</p>
     </div>
   </div>
-  </div>
-	
-<!-- </body> -->
-<!-- </html> -->
+  

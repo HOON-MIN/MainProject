@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
 import com.main.ateam.pharmacy.page.PageListInter;
-import com.main.ateam.pharmacy.vo.SuperDTO;
+import com.main.ateam.vo.SuperDTO;
 
 
 
