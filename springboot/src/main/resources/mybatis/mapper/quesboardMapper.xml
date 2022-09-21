@@ -35,6 +35,7 @@
 	</choose>
 	</when>
   </choose>
+  order by qnum desc
 </select>
 <select id="getQBList" resultType="qvo" parameterType="svo">
 	select * from (
