@@ -31,6 +31,9 @@
 	crossorigin="anonymous"></script>
 <!-- ------------------------------->
 
+
+
+
 <!-- taejin -->
 
 	<!--  cdn -->
@@ -50,7 +53,8 @@
 <script src="/js/scripts.js?"></script>
 <link href="/css/styles.css?" rel="stylesheet" />
 <!-- --------------- -->
-
+<!-- Map -->
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx8fc6162789f747579d26c53413bd30f7"></script>
 </head>
 <body>
 	<tiles:insertAttribute name="header" />

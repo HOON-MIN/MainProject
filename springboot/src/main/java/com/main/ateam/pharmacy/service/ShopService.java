@@ -10,8 +10,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.main.ateam.pharmacy.dao.ShopDao;
-import com.main.ateam.pharmacy.vo.PharmacyVO;
-import com.main.ateam.pharmacy.vo.SuperDTO;
+import com.main.ateam.vo.PharmacyVO;
+import com.main.ateam.vo.SuperDTO;
+
 
 
 @Service

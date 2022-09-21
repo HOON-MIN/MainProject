@@ -5,7 +5,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.main.ateam.pharmacy.vo.SuperDTO;
+import com.main.ateam.vo.SuperDTO;
+
 
 
 public interface PageListInter {

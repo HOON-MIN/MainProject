@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.main.ateam.pharmacy.page.PageListInter;
-import com.main.ateam.pharmacy.vo.PharmacyVO;
-import com.main.ateam.pharmacy.vo.SuperDTO;
+import com.main.ateam.vo.PharmacyVO;
+import com.main.ateam.vo.SuperDTO;
+
 
 
 

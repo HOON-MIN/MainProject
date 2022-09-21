@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonObject;
 import com.main.ateam.pharmacy.service.ShopService;
-import com.main.ateam.pharmacy.vo.PharmacyVO;
+import com.main.ateam.vo.PharmacyVO;
 
 
 @RestController
@@ -26,7 +26,7 @@ public class PharmacyRestController {
 	
 
 	@PostMapping("val")
-	public List<PharmacyVO> ShopDetail() {
+	public List<com.main.ateam.vo.PharmacyVO> ShopDetail() {
 		List<PharmacyVO> shopDetail = shopservice.getAndriod();
 		return shopDetail;
 	}
