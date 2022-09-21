@@ -1,25 +1,16 @@
-.reservation {
-  background-color: #f8f9fa;
-  padding: 24px;
+.title {
+  position: absolute;
+  left: 50%;
+  top: 3%;
+  transform: translate(-50%, -5%);
+  z-index: 9999;
 }
 
-.mb-3 {
-  margin-top: 24px;
+.revPage {
+  margin-top: 64px;
+  padding-top: 40px;
 }
 
-.date input {
-  border: solid 1px #3478f5;
-  color: #3478f5;
-}
-
-.form-check input :hover {
-  color: #3478f5;
-}
-
-.symptom .form-check {
-  padding: 0;
-}
-
-.form-check label {
-  margin: 0 16px 8px 0;
+.selectBtn {
+  background-color: grey;
 }
