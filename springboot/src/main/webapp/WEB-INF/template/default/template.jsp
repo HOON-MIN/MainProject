@@ -77,8 +77,8 @@ uri="http://tiles.apache.org/tags-tiles"%>
 <!--     <script src="/mireu/js/summernote-lite.js?"></script> -->
 <!-- 	<script src="/mireu/js/summernote-ko-KR.js?"></script> -->
 <!-- 	<link rel="stylesheet" href="/mireu/css/summernote-lite.css?"> -->
-	<!-- 0918 add : dhlee 추가 -->>
-	<link href="/css/dhlee/covidRecording.css?ver=1.7" rel="stylesheet" />
+	<!-- 0918 add : dhlee 추가 -->
+	<link href="/css/dhlee/covidRecording.css?ver=1.9" rel="stylesheet" />
 	<link href="/css/dhlee/kakao_addinfo.css?" rel="stylesheet" />
   </head>
  
