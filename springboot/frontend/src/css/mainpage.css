@@ -1,6 +1,7 @@
 /* 전체 틀 */
 body {
   margin: 0;
+  padding: 0;
 }
 
 .outer {

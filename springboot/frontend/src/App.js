@@ -131,7 +131,8 @@ function App() {
       </Navbar>
       <Routes>
         <Route path="/" element={<Mainpage />} />
-        <Route
+        <Route path="/dlist" element={<DoctorListPage />} />
+        {/* <Route
           path="/dlist"
           element={
             <AuthRoute
@@ -139,7 +140,7 @@ function App() {
               component={<DoctorListPage />}
             />
           }
-        />
+        /> */}
         <Route path="/detail/:dnum" element={<DoctorDetailPage />} />
         <Route path="reservation/:dnum" element={<ReservationPage />} />
       </Routes>

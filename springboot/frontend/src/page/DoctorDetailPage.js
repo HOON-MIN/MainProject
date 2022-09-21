@@ -20,7 +20,7 @@ const DoctorDetailPage = () => {
   }, []);
 
   return (
-    <div className="body container detailbody mt-5">
+    <div className="container-fluid detailPage">
       {doctor && <DoctorDetail doctor={doctor} />}
     </div>
   );
