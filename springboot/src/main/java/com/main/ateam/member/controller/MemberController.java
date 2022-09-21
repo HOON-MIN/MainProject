@@ -179,7 +179,6 @@ public class MemberController {
 
 		String path = "D:\\iKosmo113\\spring\\bootworkspace\\springboot\\src\\main\\resources\\static\\upload\\"
 				+ oriFn;
-//		vo.setNum(num);
 		vo.setNum(num);
 		vo.setProfimg(oriFn);
 		File f = new File(path);
@@ -190,7 +189,44 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		memberService.memberUpdate(vo);
-		return "mypage/memberMypage";
+		
+//		int num = 0;
+//		num = (int) session.getAttribute("sessionNUM");
+//		
+//		String img_path = "\\imgfile";
+//		//String r_path = request.getRealPath("/");
+//		String r_path = request.getSession().getServletContext().getRealPath("/");
+//		System.out.println("r_path: "+r_path);
+//		// Return the original filename
+//		String oriFn = v.getFileOriName().getOriginalFilename();
+//		long size = v.getFileOriName().getSize();
+//		String contentType = v.getFileOriName().getContentType();
+//		
+//		System.out.println("oriFn:"+oriFn);
+//		System.out.println("파일의 크기"+size);
+//		System.out.println("파일의 type:"+contentType);
+//		// 파일명에 아이디 추가
+//		String userID = (String) session.getAttribute("sessionID");
+//		
+//		StringBuffer path = new StringBuffer();
+//		path.append(r_path).append(img_path).append("\\");
+//		path.append(userID+"_");
+//		path.append(oriFn);
+//		System.out.println("FullPath:"+path);
+//		vo.setNum(num);
+//		vo.setProfimg(oriFn);
+//		File f = new File(path.toString());
+//		System.out.println("File f:"+f.getPath());
+//		try {
+//			v.getFileOriName().transferTo(f);
+//		} catch (IllegalStateException | IOException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println("파일 테스트");
+//		System.out.println("num"+num);
+//		memberService.memberUpdate(vo);
+		
+		return "member/memberMypage";
 	}
 
 	@ResponseBody

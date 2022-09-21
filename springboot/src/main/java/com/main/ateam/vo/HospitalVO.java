@@ -9,7 +9,7 @@ public class HospitalVO {
 
 	private int  cnum,r_num;
 	private String hname, hloc, otime, ctime,
-		hcate, hurl, hemail, hgrade,htel;
+		hcate, hurl, hemail, htel;
 	private List<DoctorVO> doctorVO;
 	
 	public List<DoctorVO> getDoctorVO() {
@@ -80,13 +80,6 @@ public class HospitalVO {
 	}
 	public void setHemail(String hemail) {
 		this.hemail = hemail;
-	}
-	public String getHgrade() {
-		return hgrade;
-	}
-	public void setHgrade(String hgrade) {
-		this.hgrade = hgrade;
-	}
-	
+	}	
 	
 }

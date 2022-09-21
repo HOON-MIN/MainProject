@@ -83,6 +83,7 @@ public class CompanyController {
 			session.setAttribute("sessionCRN", dto.getCrn());
 			session.setAttribute("sessionCNUM", dto.getCnum());
 			session.setAttribute("sessionCCATE", dto.getCcate());
+			session.setAttribute("sessionHGRADE", dto.getHgrade());
 		}
 		return mav;
 	}

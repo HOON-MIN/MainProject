@@ -60,8 +60,13 @@
 				href="${pageContext.request.contextPath }/doctor/joinDoctorForm">의사등록</a>
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="${pageContext.request.contextPath }/company/hospitalDoctorList">의사명단</a> 
-			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="#!">??</a> 
+		
+			
+				<c:if test="${sessionHGRADE != '베이직'}">
+					<a  class="list-group-item list-group-item-action list-group-item-light p-3"
+						href="${mycontext }/hospitalP/dashboard">Analysis Dashboard</a> 
+				</c:if>
+			
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="#!">Events</a> 
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
