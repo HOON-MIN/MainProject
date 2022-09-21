@@ -51,4 +51,11 @@
 		tel, email, addr, profimg, mdate
 		from member where id = #{ id }
 	</select>  	
+	
+	
+	
+<select id="AndroidIdCheck" parameterType="map" resultType="int">
+	select decode(id, #{id}, 1, 0) as boolean from member
+</select>
+	
 </mapper>

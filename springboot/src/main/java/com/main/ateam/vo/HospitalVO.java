@@ -6,7 +6,13 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("hvo")
 public class HospitalVO {
-
+	private int hnum;
+	public int getHnum() {
+		return hnum;
+	}
+	public void setHnum(int hnum) {
+		this.hnum = hnum;
+	}
 	private int  cnum,r_num;
 	private String hname, hloc, otime, ctime,
 		hcate, hurl, hemail, htel;

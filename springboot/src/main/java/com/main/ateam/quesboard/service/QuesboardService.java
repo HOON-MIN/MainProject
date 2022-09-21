@@ -31,6 +31,12 @@ public class QuesboardService {
 		int cnt = dao.getCnt(svo);
 		return cnt;
 	}
+	public List<QuesboardVO> getCate() {
+		return dao.getCate();
+	}
+	public void upQBHit(QuesboardVO vo) {
+		dao.upQBHit(vo);
+	}
 
 	public QuesboardVO getQBDetail(int num) {
 		QuesboardVO vo = dao.getQBDetail(num);

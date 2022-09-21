@@ -9,9 +9,63 @@
 	#{id}, #{qtitle}, #{qcont}, 0, sysdate)
 </insert>
 
-<select id="getQBList" resultType="qvo">
-	select * from quesboard order by 1 desc
+<select id="getCnt" resultType="int" parameterType="svo">
+  select count(*) from quesboard
+  <choose>
+	<when test="category != null and category != ''">
+	<choose>
+		<when test="category == 'qtitle'">
+			where qtitle like '%' || #{search} || '%'
+		</when>
+		<when test="category == 'qcont'">
+			where qcont like '%' || #{search} || '%'
+		</when>
+		<when test="category == 'id'">
+			where id like '%' || #{search} || '%'
+		</when>
+		<when test="category == 'qcate'">
+			where qcate like '%' || #{search} || '%'
+		</when>
+		<when test="category == 'all'">
+			where id like '%'||#{search}||'%'
+			or qcont like '%'||#{search}||'%'
+			or qtitle like '%'||#{search}||'%'
+			or qcate like '%'||#{search}||'%'
+		</when>
+	</choose>
+	</when>
+  </choose>
 </select>
+<select id="getQBList" resultType="qvo" parameterType="svo">
+	select * from (
+    select rownum r_num, q.* from quesboard q 
+  <choose>
+	<when test="category != null and category != ''">
+	<choose>
+		<when test="category == 'all'">
+			where id like '%'||#{search}||'%'
+			or qcont like '%'||#{search}||'%'
+			or qtitle like '%'||#{search}||'%'
+			or qcate like '%'||#{search}||'%'
+		</when>
+		<otherwise>
+		    where ${category} like '%'||#{search}||'%'
+		</otherwise>
+	</choose>
+	</when>
+  </choose> 
+	    order by qnum desc
+	) where r_num between #{beginPerPage} and #{endPerPage}
+</select>
+
+<select id="getCate" resultType="qvo">
+	select distinct qcate from quesboard
+</select>
+
+<!-- 조회수 업데이트 -->
+<update id="upQBHit" parameterType="int">
+	update quesboard set qhit=qhit+1 where qnum=#{qnum}
+</update>
 
 <select id="getQBDetail" parameterType="int" resultType="qvo">
 	select * from quesboard where qnum=#{num}
