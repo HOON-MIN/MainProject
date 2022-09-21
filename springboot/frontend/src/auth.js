@@ -6,9 +6,13 @@ const users = [
   { id: "test3", pwd: "789", name: "Park" },
 ];
 
+const username = "김훈민";
+const user2 = {};
+user2.name = username;
+console.log("users2", user2);
+
 axios.get("/member/memberlist").then((res) => {
   users.push(...res.data);
-  console.log("users", users);
 });
 console.log(users);
 export function SignIn({ id, pwd }) {

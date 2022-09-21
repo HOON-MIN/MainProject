@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate, withRouter } from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
 
 function LogoutButton({ logout }) {
   const navigate = useNavigate();
@@ -10,9 +9,9 @@ function LogoutButton({ logout }) {
   };
 
   return (
-    <Nav.Link onClick={handleClick} className="text-white hnav">
+    <button className="btn text-white hnav" onClick={handleClick}>
       Logout
-    </Nav.Link>
+    </button>
   );
 }
 

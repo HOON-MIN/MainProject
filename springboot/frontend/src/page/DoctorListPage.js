@@ -96,7 +96,7 @@ const DoctorListPage = () => {
   });
 
   return (
-    <div className="body container">
+    <div className="body container bg-primary">
       <div className="body-inner text-center">
         <h2 className="h2">의사 리스트</h2>
         <Categories />
@@ -118,7 +118,6 @@ const DoctorListPage = () => {
               <DoctorList key={doctor.dnum} doctor={doctor} />
             </Link>
           ))}
-      ;
     </div>
   );
 };
