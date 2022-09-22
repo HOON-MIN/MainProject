@@ -83,6 +83,7 @@ public class CompanyController {
 			session.setAttribute("sessionCRN", dto.getCrn());
 			session.setAttribute("sessionCNUM", dto.getCnum());
 			session.setAttribute("sessionCCATE", dto.getCcate());
+			session.setAttribute("sessionHGRADE", dto.getHgrade());
 		}
 		return mav;
 	}
@@ -119,7 +120,7 @@ public class CompanyController {
 			int cnum = (int)session.getAttribute("sessionCNUM");
 			System.out.println("cnum =>"+cnum);
 			HospitalVO hoslist = new HospitalVO();
-			List<DoctorVO>list = service.hospitalDoctorList(cnum);
+			List<DoctorVO>list = service.hospital_DoctorList(cnum);
 			m.addAttribute("list", list);
 			return "mypage/comp_doctorList";
 		}

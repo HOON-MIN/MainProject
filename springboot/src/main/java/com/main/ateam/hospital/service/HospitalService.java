@@ -45,7 +45,7 @@ public class HospitalService {
 		dao.addHospital(hvo);
 	}
 
-	public List<DoctorVO> hospitalDoctorList(int cnum) {
+	public List<DoctorVO> hospital_DoctorList(int cnum) {
 		return dao.hospital_DoctorList(cnum);
 	}
 	public List<DoctorVO> choiceDoctorList(int cnum){// 예약 - 의사 고르기

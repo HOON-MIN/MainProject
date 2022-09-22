@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <head>
+<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -229,7 +230,7 @@
 		<footer class="footer pt-3  "> </footer>
 
 	</main>
-
+<jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 	<!--   Core JS Files   -->
 	<script src="/soyoung/dashboard/js/core/popper.min.js"></script>
 	

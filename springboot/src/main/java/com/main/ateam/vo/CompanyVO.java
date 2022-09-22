@@ -13,6 +13,6 @@ import lombok.Setter;
 public class CompanyVO {
 	
 	private int cnum,cstatus,r_num;
-	private String crn, cpwd,ccate,cdate;
+	private String crn, cpwd,ccate,cdate,hgrade;
 	private List<HospitalVO> hvo;
 }
