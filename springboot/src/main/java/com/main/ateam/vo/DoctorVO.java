@@ -20,10 +20,7 @@ public class DoctorVO {
 	private String dmajor;
 	private HospitalVO hvo;
 	private List<ReserveVO> reserveVO;
-	
-	
-	
-
+	private List<HospitalVO> hospitalVO; // 훈민
 	
 	
 }

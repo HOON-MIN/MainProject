@@ -1,6 +1,6 @@
 .card {
-  width: 450px;
   color: #232323;
+  width: 430px;
 }
 
 .card-body button {
@@ -25,3 +25,17 @@ Link {
   color: #232323;
   text-decoration: none;
 }
+
+.page {
+  background-color: #3478f5;
+  padding-bottom: 40px;
+  height: 100%;
+}
+
+/* .listTitle {
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -70%);
+} */

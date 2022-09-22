@@ -7,10 +7,10 @@ const DoctorList = (props) => {
     <div className="d-flex justify-content-center mt-4">
       <div className="card">
         <div className="row g-0">
-          <div className="col-md-3 text-center">
-            <img src={drImg} className="img-fluid p-3" alt="..." />
+          <div className="col-3 text-center">
+            <img src={drImg} className="p-3 w-100" alt="..." />
           </div>
-          <div className="col-md-9">
+          <div className="col-9">
             <div className="card-body">
               <h5 className="card-title">
                 <strong>{props.doctor.dname} 의사</strong>

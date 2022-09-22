@@ -22,6 +22,8 @@ import com.main.ateam.vo.MemberVO;
 		public int kakaoFlag(String id);
 		public MemberVO userdetail(String id);
 		
+		/* 0920 add: dhlee 추가 */
+		public int AndroidIdCheck(Map<String, String>map);
 	}
 
 

@@ -1,50 +1,53 @@
 @charset "UTF-8";
+.covidUpload{
+	background-color: #f2f7ff;
+}
 
-#covidUpload a {
+.covidUpload a {
   color: #337ab7;
 }
-#covidUpload p {
+.covidUpload p {
   margin-top: 1rem;
 }
-#covidUpload a:hover {
+.covidUpload a:hover {
   color:#23527c;
 }
-#covidUpload a:visited {
+.covidUpload a:visited {
   color: #8d75a3;
 }
 
-#covidUpload h1 {
-	text-decoration: underline red;
+.covidUpload h1 {
+	text-decoration: underline #005af0;
 	text-decoration-thickness: 3px;
 	text-underline-offset: 6px;
 	font-size: 220%;
 	font-weight: bold;
 }
-
-#covidUpload h2 {
+#f2f7ff
+.covidUpload h2 {
 	font-weight: bold;
 	color: #005A9C;
 	font-size: 140%;
 	text-transform: uppercase;
 }
 
-#covidUpload red {
+.covidUpload red {
 	color: red;
 }
 
-#covidUpload #controls {
+.covidUpload #controls {
   display: flex;
   margin-top: 2rem;
   max-width: 28em;
 } 
 
-#covidUpload button {
+.covidUpload button {
   flex-grow: 1;
   height: 3rem;
   min-width: 10rem;
   border: none;
   border-radius: 0.15rem;
-  background: #ed341d;
+  background: #005af0;
   margin-left: 2px;
   box-shadow: inset 0 -0.15rem 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -56,45 +59,46 @@
   font-size: 1rem;
 }
 
-#covidUpload button:hover, button:focus {
+.covidUpload button:hover, button:focus {
   outline: none;
-  background: #c72d1c;
+  background-color: #ffffff;
+  color: #005af0;
 }
 
-#covidUpload button::-moz-focus-inner {
+.covidUpload button::-moz-focus-inner {
   border: 0;
 }
 
-#covidUpload button:active {
+.covidUpload button:active {
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.2);
   line-height: 3rem;
 }
 
-#covidUpload button:disabled {
+.covidUpload button:disabled {
   pointer-events: none;
   background: lightgray;
 }
-#covidUpload button:first-child {
+.covidUpload button:first-child {
   margin-left: 0;
 }
 
-#covidUpload audio {
+.covidUpload audio {
   display: block;
   width: 100%;
   margin-top: 0.2rem;
 }
 
-#covidUpload li {
+.covidUpload li {
   list-style: none;
   margin-bottom: 1rem;
 }
 
-#covidUpload #formats {
+.covidUpload #formats {
   margin-top: 0.5rem;
   font-size: 80%;
 }
 
-#covidUpload #recordingsList{
+.covidUpload #recordingsList{
 	max-width: 28em;
 }
 

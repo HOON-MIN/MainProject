@@ -64,8 +64,6 @@ table tfoot ol.paging li a:hover {
 		<h1>Hospital List</h1>
 	</header>
 	
-<!-- <form:form commandName="searchVO" method="get"  id="listForm" action="${path}/onlinecounsel/expertmb/list.do"> -->
-    
     <div class="panel">
     <div class="panel-body">
         <div class="btns" style="text-align: center;">
@@ -83,14 +81,14 @@ table tfoot ol.paging li a:hover {
     </div> 
  
 
-<table class="table1 table table-hover" id="" style="text-align: center;">
+<table class="table1 table table-hover" style="text-align: center;">
 	<thead>
 		<tr>
 			<th width="50px;">No.</th>
 			<th >병원명</th>
 			<th>위치</th>
 			<th>영업시간</th>
-			<th>진료과목</th>
+			<th >진료과목</th>
 		</tr>
 	</thead>
 
@@ -190,37 +188,43 @@ $(function(){
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
+    $('.hcatebtn').click(function(){
+    	var hcatename = $(this).val();
+    	$("#hcate").attr("selected", "selected");
+    	$("#hsearch").val(hcatename);
+    	$(".sForm").submit();
+    });
  
 // var path = "${pageContext.request.contextPath }";
 // var qustr = "${searchVO.qustr}";
  
-$(function(){
-	$(".btns").on('click', "input",function(){
-		console.log("button click");
-		var cate = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
-		$.ajax({
-			 url : 'hospitalList', // 이 주소로 
-              type : "POST", // 포스트 방식으로 보내는데
-              cache: false,
-              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-              data : {
-            	  "cPage" : 1,
-            	  "hcate" : cate
+// $(function(){
+// 	$(".btns").on('click', "input",function(){
+// 		console.log("button click");
+// 		var cate = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
+// 		$.ajax({
+// 			 url : 'hospitalList', // 이 주소로 
+//               type : "POST", // 포스트 방식으로 보내는데
+//               cache: false,
+//               headers: {"cache-control":"no-cache", "pragma": "no-cache"},
+//               data : {
+//             	  "cPage" : 1,
+//             	  "hcate" : cate
             	  
-              }, // kind를 kind로 명명하여 보내겠다
-              success : function(data){ 
+//               }, // kind를 kind로 명명하여 보내겠다
+//               success : function(data){ 
 //                  console.log(data);
 //                 	location.href='${pageContext.request.contextPath}/hospital/hospitalList?cPage=1&hcate='+cate;
 					
-                 $('body').html(data); //성공할시에 body부분에 data라는 html문장들을 다 적용시키겠다
-              },
-              error : function(data){
-            	 alert('error');
+//                  $('body').html(data); //성공할시에 body부분에 data라는 html문장들을 다 적용시키겠다
+//               },
+//               error : function(data){
+//             	 alert('error');
                
-              }//error
-		})//ajax
-	});//click
-});//ready
+//               }//error
+// 		})//ajax
+// 	});//click
+// });//ready
     
 //     $("input:button[name='button']").on('click',function(){
 //         var kind = $(this).val();       //버튼이 클릭 되었을 시, 개별 버튼의 값이 kind 변수에 담겨집니다.
@@ -244,12 +248,6 @@ $(function(){
 //             }//error
 //         })//ajax
 //     });//button click
-    $('.hcatebtn').click(function(){
-    	var hcatename = $(this).val();
-    	$("#hcate").attr("selected", "selected");
-    	$("#hsearch").val(hcatename);
-    	$(".sForm").submit();
-    });
  
 </script>
 

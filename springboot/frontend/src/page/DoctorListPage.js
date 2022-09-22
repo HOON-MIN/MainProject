@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/hospitalList.css";
-import drImg from "../img/doctor.png";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -49,7 +48,12 @@ const DoctorListPage = () => {
     );
 
     return (
-      <Nav fill variant="tabs" defaultActiveKey="dlist">
+      <Nav
+        fills
+        variant="pills"
+        defaultActiveKey="dlist"
+        className="justify-content-center"
+      >
         <Nav.Item>
           <Nav.Link
             eventKey="dlist"
@@ -96,9 +100,8 @@ const DoctorListPage = () => {
   });
 
   return (
-    <div className="body container">
+    <div className="body container-fluid page">
       <div className="body-inner text-center">
-        <h2 className="h2">의사 리스트</h2>
         <Categories />
       </div>
       {select === undefined
@@ -118,7 +121,6 @@ const DoctorListPage = () => {
               <DoctorList key={doctor.dnum} doctor={doctor} />
             </Link>
           ))}
-      ;
     </div>
   );
 };

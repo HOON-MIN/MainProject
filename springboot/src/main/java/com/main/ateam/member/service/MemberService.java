@@ -55,4 +55,9 @@ public class MemberService {
 	public MemberVO userdetail(String id) {
 		return memberDao.userdetail(id);
 	}
+	
+	/* 이동환 Service추가 */
+	public int AndroidIdCheck(Map<String, String>map) {
+		return memberDao.AndroidIdCheck(map);
+	}
 }

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <div id="container" class="container mt-5">
-<!-- <div class="row" style="text-align:center"> -->
+<div class="row" style="text-align:center">
 <h2 class="text-center">의학지식 질문하기</h2><br><br>
   <form method="post" action="qbInsert">
   <input type="hidden" name="id" id="id" value="${sessionID }" ><br>
@@ -11,21 +11,37 @@
 <!-- 			아이디(나중에 세션으로 받는것으로 수정) -->
 <!-- 			<input type="text" name="id" id="id" > -->
 <!-- 		</p> -->
-		<p>
-			제목 <input type="text" name="qtitle" id="qtitle" >
-		</p>
-        <p>
+		<div>
+		<div class="btn-group">
+		  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+		    질문 카테고리
+		  </button>
+		  <ul class="dropdown-menu">
+		    <li value=""><a class="dropdown-item" href="#">질병증상</a></li>
+		    <li><a class="dropdown-item" href="#">진료과</a></li>
+		    <li><a class="dropdown-item" href="#">복약</a></li>
+		  </ul>
+		</div>
+		<select class="form-select" aria-label="Default select example">
+		  <option selected>질문 카테고리</option>
+		  <option value="질병증상">질병증상</option>
+		  <option value="진료과">진료과</option>
+		  <option value="복약">복약</option>
+		</select>
+			카테고리 <input type="text" name="qtitle" id="qtitle" width="500px;">
+			제목 <input type="text" name="qtitle" id="qtitle" width="500px;">
+		</div>
+        <div>
             <textarea name="qcont" id="summernote" cols="80" rows="20"></textarea>
-        </p>
-        <p style="text-align:right">
+        </div>
+        <div style="text-align:right">
         	<button class="btn btn-primary btn-dark text-white btn-block"
 			 type="submit">작성</button>
-<!--             <input type="submit" value="작성"> -->
-        </p>
+        </div>
     </fieldset>
   </form>
 
-<!-- </div> -->
+</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -72,6 +88,19 @@ $(function(){
 					}
 				}
 			}
+			// 서머노트에 text 쓰기
+			$('#summernote').summernote('insertText', 'test');
+			// 서머노트 쓰기 비활성화
+		// 	$('#summernote').summernote('disable');
+			// 서머노트 쓰기 활성화
+			$('#summernote').summernote('enable');
+			// 서머노트 리셋
+			$('#summernote').summernote('reset');
+			// 마지막으로 한 행동 취소 ( 뒤로가기 )
+			$('#summernote').summernote('undo');
+			// 앞으로가기
+			$('#summernote').summernote('redo');
+			$("#qcont").html(data.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g,'"').replace(/&#40;/g,'(').replace(/&#41;/g,')').replace(/&#35;/g,'#'));
 		});
 	});
 	/**
@@ -92,17 +121,5 @@ $(function(){
 			}
 		});
 	}
-	// 서머노트에 text 쓰기
-	$('#summernote').summernote('insertText', 'test');
-	// 서머노트 쓰기 비활성화
-	$('#summernote').summernote('disable');
-	// 서머노트 쓰기 활성화
-	$('#summernote').summernote('enable');
-	// 서머노트 리셋
-	$('#summernote').summernote('reset');
-	// 마지막으로 한 행동 취소 ( 뒤로가기 )
-	$('#summernote').summernote('undo');
-	// 앞으로가기
-	$('#summernote').summernote('redo');
 });
 </script>

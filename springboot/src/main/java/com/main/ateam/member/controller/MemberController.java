@@ -3,7 +3,9 @@ package com.main.ateam.member.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,11 +15,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,7 +74,7 @@ public class MemberController {
 	private String uploadPath;
 	@Value("${pythonPath}")
 	private String pythonPath;
-	
+		
 
 	@GetMapping("/memberLoginForm")
 	public String MemberLoginForm() {
@@ -96,6 +100,24 @@ public class MemberController {
 			session.setAttribute("sessionNAME", dto.getName());
 		}
 		return mav;
+	}
+	
+	@ResponseBody
+	@PostMapping("loginReact")
+	public MemberVO loginReact(@RequestBody String id ,String pwd) {
+		Map<String, String> map = new HashMap<>();
+		char quotes = '"';
+		String[] res = id.split(":|"+quotes+"|,");
+		for (String e : res) {
+			System.out.println(e);
+		}
+		System.out.println("id: " +res[4]+"pwd : "+res[10]);
+		//String resId = res[0].substring(res[0].length(), res[0].length()-1);
+	
+		map.put("id", res[4]);
+		map.put("pwd", res[10]);
+	
+		return memberService.memberLogin(map);
 	}
 
 	// 로그 아웃
@@ -202,7 +224,44 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		memberService.memberUpdate(vo);
-		return "mypage/memberMypage";
+		
+//		int num = 0;
+//		num = (int) session.getAttribute("sessionNUM");
+//		
+//		String img_path = "\\imgfile";
+//		//String r_path = request.getRealPath("/");
+//		String r_path = request.getSession().getServletContext().getRealPath("/");
+//		System.out.println("r_path: "+r_path);
+//		// Return the original filename
+//		String oriFn = v.getFileOriName().getOriginalFilename();
+//		long size = v.getFileOriName().getSize();
+//		String contentType = v.getFileOriName().getContentType();
+//		
+//		System.out.println("oriFn:"+oriFn);
+//		System.out.println("파일의 크기"+size);
+//		System.out.println("파일의 type:"+contentType);
+//		// 파일명에 아이디 추가
+//		String userID = (String) session.getAttribute("sessionID");
+//		
+//		StringBuffer path = new StringBuffer();
+//		path.append(r_path).append(img_path).append("\\");
+//		path.append(userID+"_");
+//		path.append(oriFn);
+//		System.out.println("FullPath:"+path);
+//		vo.setNum(num);
+//		vo.setProfimg(oriFn);
+//		File f = new File(path.toString());
+//		System.out.println("File f:"+f.getPath());
+//		try {
+//			v.getFileOriName().transferTo(f);
+//		} catch (IllegalStateException | IOException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println("파일 테스트");
+//		System.out.println("num"+num);
+//		memberService.memberUpdate(vo);
+		
+		return "member/memberMypage";
 	}
 
 	@ResponseBody
@@ -366,6 +425,10 @@ public class MemberController {
 		session.setAttribute("sessionNAME", dtov.getName());
 		return "redirect:/main";
 	}
+	
+	
+
+	
 	/* 코로나 음성 자가진단 페이지 */
 	@RequestMapping(value = "/COVIDcheck")
 	public String covidCheck() {
@@ -412,5 +475,10 @@ public class MemberController {
 			return vo; 
 		}
 	} 
+	
+	@RequestMapping("/COVIDResult")
+	public String covidresult() {
+		return "member/covidResult";
+	}
 	
 }

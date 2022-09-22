@@ -55,5 +55,9 @@ public class HospitalService {
 	public List<HospitalVO> getCate() {
 		return dao.getCate();
 	}
+	
+	public List<HospitalVO> getHospital(Map<String, String> map){
+		return dao.getHospital(map);
+	}
 
 }

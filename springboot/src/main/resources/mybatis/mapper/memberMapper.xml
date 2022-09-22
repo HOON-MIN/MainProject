@@ -58,7 +58,6 @@
 		from member where id = #{ id }
 	</select>  	
 	
-		
 	<select id="memberReserveList" parameterType="int" resultMap="memberReserveResult">
 		select rownum r_num,r.reservNum,r.num, d.dnum,dname,h.hcate,r.rdate,r.rtime,
 		h.hloc,h.hname,h.htel
@@ -122,6 +121,10 @@
 	<select id="mypage_detail" parameterType="int">
 	select d.dnum,d.dname,m.name,r.num,r.symptom,r.symptomComm,r.rdate,r.rtime from
 	member m,reserve r,doctor d where m.num=r.num and r.dnum=d.dnum and r.num=#{num}
+	</select>
+	
+<select id="AndroidIdCheck" parameterType="map" resultType="int">
+	select decode(id, #{id}, 1, 0) as boolean from member
 </select>
 	
 </mapper>

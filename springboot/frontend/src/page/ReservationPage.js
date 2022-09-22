@@ -3,11 +3,8 @@ import Reservation from "../component/Reservation";
 
 const ReservationPage = () => {
   return (
-    <div className="body container">
-      <div className="body-inner text-center">
-        <h2 className="h2">예약</h2>
-        <hr />
-      </div>
+    <div className="body container-fluid page">
+      <h5 className="text-center text-white title">예약하기</h5>
       <Reservation />
     </div>
   );

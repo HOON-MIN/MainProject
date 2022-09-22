@@ -1,18 +1,36 @@
-.detailImg {
-  max-width: 400px;
+.detailPage {
+  background-color: #3478f5;
+  padding-top: 120px;
+  padding-bottom: 40px;
+}
+.detail-img {
+  margin-bottom: -16px;
 }
 
-.detailCard {
-  width: 480px;
+.detailImg {
+  width: 320px;
 }
+
+.revBtn {
+  padding: 8px 0;
+}
+/* 
+.card-inner {
+  position: relative;
+  
+}
+.detailCard {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
 
 .detailTitle {
   padding-top: 16px;
 }
 
-.detailbody {
-  background-color: #efefef;
-}
+
 
 .detailImg {
   position: absolute;
@@ -36,4 +54,4 @@
 
 .revBtn {
   width: 480px;
-}
+} */

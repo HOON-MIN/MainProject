@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.main.ateam.pharmacy.service.ShopService;
-import com.main.ateam.pharmacy.vo.PharmacyVO;
+import com.main.ateam.vo.PharmacyVO;
 
 
 @Controller

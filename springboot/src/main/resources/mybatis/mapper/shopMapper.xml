@@ -6,30 +6,28 @@
 		<select id="getAllShop" resultType="int">
 		select count(*) from Pharmacy
 	</select>
-	<select id="ShopListPage" resultType="com.main.ateam.pharmacy.vo.PharmacyVO" parameterType="map">
+	<select id="ShopListPage" resultType="pvo" parameterType="map">
 		select * from (
 		    select rownum r_num, a.* from (
 		     select * from Pharmacy order by pnum
 		    ) a
 		 ) where r_num BETWEEN #{begin} and #{end}
 	</select>
-	
-		<select id="ShopDetail" parameterType="int" resultType="com.main.ateam.pharmacy.vo.PharmacyVO">
+		<select id="ShopDetail" parameterType="int" resultType="pvo">
 		select * from
 		Pharmacy where pnum = #{pnum}
 	</select>
-	
 	<select id="SearchShopList" parameterType="map"
-		resultType="com.main.ateam.pharmacy.vo.PharmacyVO">
+		resultType="pvo">
 		select * from (
 		select rownum r_num, a.* from (
 		select * from Pharmacy where
 		<choose>
-			<when test="shopName != null">
-				shopName 
+			<when test="pname != null">
+				pname 
 			</when>
-			<when test="fullAddress != null">
-				fullAddress 
+			<when test="ploc != null">
+				ploc 
 			</when>
 			<when test="pnum != null">
 				pnum 
@@ -45,17 +43,19 @@
 		select count(*) from Pharmacy
 		
 		<choose>
-			<when test="shopName != null">
-			where	shopName like '%'||#{searchf}||'%'
+			<when test="pname != null">
+			where	pname like '%'||#{searchf}||'%'
 			</when>
-			<when test="fullAddress != null">
-			where	fullAddress like '%'||#{searchf}||'%'
+			<when test="ploc != null">
+			where	ploc  like '%'||#{searchf}||'%'
 			</when>
 			<when test="pnum != null">
 			where	pnum like '%'||#{searchf}||'%'
 			</when>
 		</choose>
 	</select>
-	
+	<select id="getAndriod" resultType="pvo">
+		select * from Pharmacy order by pnum
+	</select>
 	
 </mapper>

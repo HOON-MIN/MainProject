@@ -6,16 +6,17 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-@Alias("pvo")
+
 @Getter
 @Setter
 @NoArgsConstructor
-@Data
+@Alias("pvo")
 public class PharmacyVO {
-	private int pnum ;
-	private String shopnumber, fulladdress,shopnam;
-	private double longitude, latitude;
 	
 	
+	
+	private int pnum, cnum;
+	private String pname, ploc, ptel, plat, plong;
+
 	
 }

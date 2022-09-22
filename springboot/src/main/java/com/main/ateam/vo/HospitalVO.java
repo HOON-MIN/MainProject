@@ -12,13 +12,12 @@ import lombok.Setter;
 @Setter
 @Alias("hvo")
 public class HospitalVO {
-
+	
 	private int  cnum,r_num;
 	private String hname, hloc, otime, ctime,
-		hcate, hurl, hemail, hgrade,htel;
+		hcate, hurl, htel;
 	private List<DoctorVO> doctorVO;
 	private CompanyVO cvo;
-	
 	
 	
 }

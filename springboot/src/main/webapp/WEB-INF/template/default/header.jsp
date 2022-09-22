@@ -53,12 +53,12 @@
 				<li class="nav-item dropdown me-3"><a
 					class="nav-link dropdown-toggle" href="#"
 					id="navbarScrollingDropdown" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false"> 리뷰 </a>
+					data-bs-toggle="dropdown" aria-expanded="false"> 후기 </a>
 					<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><hr class="dropdown-divider" /></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+							<li><a class="dropdown-item" href="${mycontext }/reviewboard/reviewboardlist">후기 게시판</a></li>
+						<c:if test="${sessionID != null}">
+							<li><a class="dropdown-item" href="${mycontext }/reviewboard/reviewupForm">후기 게시판 작성</a></li>
+						</c:if>
 					</ul></li>
 
 				<li class="nav-item dropdown"><a

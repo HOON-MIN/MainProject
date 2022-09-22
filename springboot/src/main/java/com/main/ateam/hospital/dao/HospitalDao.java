@@ -15,11 +15,13 @@ public interface HospitalDao {
 	public List<HospitalVO> getList(SearchVO svo);
 	public int getCnt(SearchVO svo);
 	public HospitalVO getDetail(int num);
-	public List<HospitalVO> getCate();
 	// 태진
 	public void addCompany(CompanyVO cvo);
 	public void addHospital(HospitalVO hvo);
 	public List<DoctorVO> choiceDoctorList(int cnum);// 예약 - 의사 고르기
 	public List<DoctorVO> hospital_DoctorList(int cnum);
 	
+	// 진료과목 종류 가져오기 
+	public List<HospitalVO> getCate();
+	public List<HospitalVO> getHospital(Map<String, String> map);
 }
