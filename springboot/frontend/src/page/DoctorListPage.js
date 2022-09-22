@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/hospitalList.css";
-import { useDispatch } from "react-redux";
+
 import { Link } from "react-router-dom";
 import axios from "axios";
 import DoctorList from "../component/DoctorList";
@@ -68,7 +68,7 @@ const DoctorListPage = () => {
   //   return () => observer && observer.disconnect();
   // }, [target  ]);
 
-  //진료 과목별(카테고리) 리스트 출력
+  console.log("useeffect", select);
   useEffect(() => {
     const getCategory = () => {
       axios.get("/doctor/dcategory?dmajor=" + select).then((res) => {
@@ -79,7 +79,6 @@ const DoctorListPage = () => {
     getCategory();
   }, [select]);
 
-  //카테고리
   const Categories = () => {
     //왠지 모르겠지만... 계속 4번 담겨서 다시 리팩토링..
     const refCategory = [];
@@ -150,14 +149,14 @@ const DoctorListPage = () => {
         <Categories />
       </div>
       {select === undefined
-        ? doctors.map((doctor) => {
+        ? doctors.map((doctor) => (
             <Link
               to={"/detail/" + doctor.dnum}
               style={{ textDecoration: "none" }}
             >
-              <DoctorList doctor={doctor} key={doctor.num} />;
-            </Link>;
-          })
+              <DoctorList key={doctor.dnum} doctor={doctor} />
+            </Link>
+          ))
         : selectCategory.map((doctor) => (
             <Link
               to={"/detail/" + doctor.dnum}
@@ -166,9 +165,6 @@ const DoctorListPage = () => {
               <DoctorList key={doctor.dnum} doctor={doctor} />
             </Link>
           ))}
-      <div ref={setTarget} className="Target-Element">
-        {/* {isLoaded && <Loader />} */}
-      </div>
     </div>
   );
 };
