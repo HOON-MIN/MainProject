@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.main.ateam.doctor.service.DoctorService;
 import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.MemberVO;
+import com.main.ateam.vo.ReserveVO;
 @Controller
 @RequestMapping(value = "/doctor")
 public class DoctorController {
@@ -29,8 +31,7 @@ public class DoctorController {
 	@PostMapping("/doctorLogin")
 	public ModelAndView doctorLogin(HttpSession session, DoctorVO vo) {
 		ModelAndView mav = new ModelAndView("redirect:/");
-		System.out.println("doctor id = " + vo.getDid());
-		System.out.println("doctor pwd = " + vo.getDpwd());
+		
 		Map<String, String> map = new HashMap<>();
 		map.put("did", vo.getDid());
 		map.put("dpwd", vo.getDpwd());
@@ -40,10 +41,22 @@ public class DoctorController {
 		}else { 
 		System.out.println("로그인 성공");
 		session.setAttribute("sessionDID", dto.getDid());
-		session.setAttribute("sessionDNUM", dto.getDpwd());
+		session.setAttribute("sessionDNUM", dto.getDnum());
 		
 		}
 		return mav;	}
+	
+	@RequestMapping(value = "/caldata")
+	public String calenderData(Model m, HttpSession session) {
+		int dnum = 0;
+		dnum = (int) session.getAttribute("sessionDNUM");
+		System.out.println("sessionDNUM => " +dnum);
+		
+		List<ReserveVO> list = doctorservice.doctorReserveList(dnum);
+		m.addAttribute("list", list);
+		return "reserve/data/calenderdata";
+	}
+	
 	@ResponseBody
 	@PostMapping(value = "/idchk")
 	public String idchk(String did,String dpwd){
@@ -70,6 +83,32 @@ public class DoctorController {
 			System.out.println("로그아웃성공");
 			return "redirect:/";
 		}
+		// 회원 마이페이지
+		@GetMapping(value = "/doctorMypage")
+		public String doctorMypage(Model m, HttpSession session) {
+			int dnum = 0;
+			dnum = (int) session.getAttribute("sessionDNUM");
+			System.out.println("sessionDNUM => " +dnum);
+			DoctorVO vo = doctorservice.doctorMypage(dnum);
+			m.addAttribute("doc", vo);
+			return "mypage/doc_mypage";
+		}
+		@ResponseBody
+		@GetMapping(value = "/doctorReserveList")
+		public List<ReserveVO> doctorReserveList(Model m, HttpSession session) {
+			int dnum = 0;
+			dnum = (int) session.getAttribute("sessionDNUM");
+			System.out.println("sessionDNUM => " +dnum);
+			List<ReserveVO> list = doctorservice.doctorReserveList(dnum);
+			m.addAttribute("list", list);
+			return list;
+		}
+		
+		
+		
+		
+		
+		//--------------------------------------------------------------------------
 		
 		@ResponseBody
 		@GetMapping(value ="/dlist")
@@ -121,4 +160,5 @@ public class DoctorController {
 			List<DoctorVO> dcategory = doctorservice.hospitalDoctorCategory(dmajor);
 			return dcategory;
 		}
+		
 }

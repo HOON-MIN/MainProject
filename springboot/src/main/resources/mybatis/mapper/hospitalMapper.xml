@@ -49,7 +49,8 @@
 	</when>
   </choose>
 </sql>
-<resultMap type="cvo" id="hospitalResult">
+		<!-- 
+<resultMap type="cvo" id="hospital_Result">
   <id property="cnum" column="cnum" javaType="int"/>
 	<result property="r_num" column="r_num"/>
 	<result property="crn" column="crn"/>
@@ -70,7 +71,7 @@
 	<result property="hgrade" column="hgrade" />
   </association>
 </resultMap>
-
+ -->
 <select id="getListBack" resultType="hvo">
 	SELECT rownum r_num,c.cnum,h.hname,h.hloc,h.otime,
 	h.ctime,h.hcate,h.htel,h.hurl,c.cdate,
@@ -109,19 +110,6 @@ select count(*) from hospital where crn = #{crnv}
 <select id="choiceDoctorList" parameterType="int"  resultType="doctorVO">
 	select dmajor,dname,dnum from doctor where cnum=#{cnum}
 </select>
- <!-- resultMap -->
-<!--병원 mypage - 의사 목록 -->
-<select id="hospitalDoctorList" resultMap="hospitalDoctorResult" parameterType="int">
- 	select h.hname,d.dname from hospital h, doctor d where h.cnum=d.cnum and h.cnum=#{cnum}
-
- </select>
-
-
-<!-- <collection property="hvo" ofType="hvo" javaType="java.util.List" >
- <id column="cnum" property="cnum"/>
-<result column="hname" property="hname"/>
-<result column="otime" property="otime"/>
-<result column="ctime" property="ctime"/> -->
 
 <!-- resultMap -->
 <!--병원 mypage - 의사 목록 -->
@@ -137,7 +125,12 @@ select count(*) from hospital where crn = #{crnv}
 	<result column="dname" property="dname"/>
 	<result column="dmajor" property="dmajor"/>
   </collection>
-
 </resultMap>
+
+<!--병원 mypage - 의사 목록 -->
+<select id="hospitalDoctorList" resultMap="hospitalDoctorResult" parameterType="int">
+ 	select h.hname,d.dname from hospital h, doctor d where h.cnum=d.cnum and h.cnum=#{cnum}
+ </select>
+ 
 </mapper>
 

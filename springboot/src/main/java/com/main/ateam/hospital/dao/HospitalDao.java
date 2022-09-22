@@ -10,15 +10,16 @@ import com.main.ateam.vo.SearchVO;
 
 
 public interface HospitalDao {
-
+	//	미르
 //	public List<HospitalVO> getList(Map<String, Object> map);
 	public List<HospitalVO> getList(SearchVO svo);
 	public int getCnt(SearchVO svo);
-	
 	public HospitalVO getDetail(int num);
+	public List<HospitalVO> getCate();
+	// 태진
 	public void addCompany(CompanyVO cvo);
 	public void addHospital(HospitalVO hvo);
-	public List<DoctorVO> hospitalDoctorList(int cnum);
 	public List<DoctorVO> choiceDoctorList(int cnum);// 예약 - 의사 고르기
-	public List<HospitalVO> getCate();
+	public List<DoctorVO> hospital_DoctorList(int cnum);
+	
 }

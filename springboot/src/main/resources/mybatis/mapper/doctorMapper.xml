@@ -12,8 +12,41 @@
   	<select id="idchk" parameterType="map" resultType="int">
 	select count(*) from doctor where did=#{did} and dpwd=#{dpwd}
 </select>
+<select id="doctorMypage" parameterType="int" resultType="doctorVO">
+  	select * from doctor where dnum=#{dnum} 
+  	</select>
 
 
+<!-- hoonmin -->
+<select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
+select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.hnum = h.hnum order by 1 asc
+</select>
+
+<!-- doctor 등록 -->
+<insert parameterType="doctorVO" id="addDoctor">insert into doctor values(doctor_seq.nextVal,#{cnum},#{dname},#{did},#{dpwd},#{dmajor}) </insert>
+ <!-- id 중복체크 -->
+ <select resultType="int" parameterType="map" id="drIdCheck">select count(*) from doctor where did = #{did} </select>
+
+ 
+ 
+
+
+<!-- hoonmin DoctorDetailResult -->
+<resultMap type="doctorVO" id="DoctorDetailResult">
+<id property="cnum" column ="cnum"/>
+<result property="dnum" column="dnum"/>
+<result property="dname" column="dname"/>
+<result property="dmajor" column="dmajor"/>
+
+<collection property="hospitalVO" javaType="java.util.List"	ofType="hvo">
+ 	<id property="cnum" column="cnum" javaType="int"/>
+	<result property="hname" column="hname"/>
+	<result property="otime" column="otime"/>
+	<result property="ctime" column="ctime"/>
+	<result property="hloc" column="hloc"/>
+</collection>
+</resultMap>
+<!-- hospitalDoctorResult  -->
 <resultMap type="doctorVO" id="hospitalDoctorResult">
 <id property="hnum" column ="hnum"/>
 <result property="dnum" column="dnum"/>
@@ -31,39 +64,6 @@
 	<result property="ctime" column="ctime"/>
 </collection>
 </resultMap>
-
-<select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
-select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.hnum = h.hnum order by 1 asc
-</select>
-
-
-<!-- doctor 등록 -->
- <insert parameterType="doctorVO" id="addDoctor">insert into doctor values(doctor_seq.nextVal,#{cnum},#{dname},#{did},#{dpwd},#{dmajor}) </insert>
- <!-- id 중복체크 -->
- <select resultType="int" parameterType="map" id="drIdCheck">select count(*) from doctor where did = #{did} </select>
-
- 
- <!-- resultMap -->
- 
- <!--병원 mypage - 의사 목록 -->
-<resultMap type="doctorVO" id="DoctorDetailResult">
-<id property="cnum" column ="cnum"/>
-<result property="dnum" column="dnum"/>
-<result property="dname" column="dname"/>
-<result property="dmajor" column="dmajor"/>
-
-<collection property="hospitalVO" javaType="java.util.List"	ofType="hvo">
- 	<id property="cnum" column="cnum" javaType="int"/>
-	<result property="hname" column="hname"/>
-	<result property="otime" column="otime"/>
-	<result property="ctime" column="ctime"/>
-	<result property="hloc" column="hloc"/>
-</collection>
-</resultMap>
-
-<select id="hospitalDoctorDetail" resultMap="DoctorDetailResult">
-	select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.cnum = h.cnum and dnum = #{dnum}
-	</select>
 
 <!-- 리액트 카테고리별 리스트 출력 -->
 <resultMap type="doctorVO" id="DoctorCategoryResult">
@@ -88,6 +88,39 @@ select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospi
 <select id="hospitalDoctorCategory" resultMap="DoctorCategoryResult">
 select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.hnum = h.hnum and dmajor = #{dmajor}
 </select>
-<!--  -->
-  	
+
+
+<select id="hospitalDoctorDetail" resultMap="DoctorDetailResult">
+	select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.cnum = h.cnum and dnum = #{dnum}
+	</select>
+ 
+ <!-- 태진 -->
+<resultMap type="doctorVO" id="reserve_list">
+	<id property="dnum" column="dnum"/>
+<collection property="reserveVO" javaType="java.util.List" ofType="reserveVO">
+	<id property="reservNum" column="reservNum"/>
+	<result property="symptom" column="symptom"/>
+	<result property="symptomComm" column="symptomComm"/>
+	<result property="r_num" column="r_num"/>
+	<result property="rdate" column="rdate"/>
+	<result property="rtime" column="rtime"/>
+	<result property="contectCheck" column="contectCheck"/>
+	
+<association property="memberVO">
+	<id property="num" column="num"/>
+	<result property="name" column="name"/>
+	<result property="tel" column="tel"/>
+</association>		
+</collection>
+</resultMap>
+
+<select id="doctorReserveList" parameterType="int" resultMap="reserve_list">
+	select rownum r_num,d.dnum,r.rdate,r.rtime,m.name,m.num, r.symptom,r.symptomComm
+	from member m, reserve r,doctor d where r.num=m.num and
+	 d.dnum = r.dnum and d.dnum = #{dnum} 
+</select>
+
+<!-- <select id="reserveDetail_Doctor" parameterType="map"> 
+	select m.* from reserve r,member m, medinq mq where num =  and 
+</select> -->
 </mapper>

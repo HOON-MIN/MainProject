@@ -144,7 +144,7 @@ var keyword;
        				message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
             		var positions = [
             			{
-            		        title: '현재위치', 
+            		        title: message, 
             		        latlng: locPosition
             		    },
             			{

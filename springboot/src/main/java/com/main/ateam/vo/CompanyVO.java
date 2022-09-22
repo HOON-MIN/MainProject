@@ -14,7 +14,7 @@ public class CompanyVO {
 	
 	private int cnum,cstatus,r_num;
 	private String crn, cpwd,ccate,cdate;
-	private HospitalVO hvo;
+	private List<HospitalVO> hvo;
 	
 	
 }
