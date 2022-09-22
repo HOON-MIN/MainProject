@@ -19,7 +19,6 @@
 			<thead>
 				<tr>
 					<th>번호</th>
-					<th>병원번호</th>
 					<th>병원명</th>
 					<th>위치</th>
 					<th>영업시간</th>
@@ -30,8 +29,7 @@
 			<tbody>
 				<c:forEach var="e" items="${list }">
 					<tr>
-						<td class="linktd">${e.r_num }</td>
-						<td class="linktd">${e.cnum }</td>
+						<td class="linktd">${e.r_num }<input type="hidden" value="${e.cnum }"> </td>
 						<td class="linktd">${e.hname }</td>
 						<td class="linktd">${e.hloc }</td>
 						<td class="linktd">${e.otime }~${e.ctime }</td>

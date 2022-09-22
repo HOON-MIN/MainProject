@@ -89,34 +89,37 @@
 	let searchList=[];
 	var keyword;
 			
+			
+		$(function() {
+			const input = document.querySelector('#search-form');
+			input.addEventListener('keypress', function(e) {
+				if (e.code == 'Enter') {
+					search();
+				}
+			});
 			$('#searchBtn').click(function(){
 				search();
-			}
+			});
 			function search(){
 			keyword = $('#keyword').val();	
-			console.log('s'+keyword)
-			
-			
-					//$(this).text()
-				console.log("keyword = > " + keyword)
-				getSearchList(keyword)
-			})
-		$(function() {
-				
+			console.log('s'+keyword);
+			console.log("keyword = > " + keyword);
+			getSearchList(keyword);
+			};
 			
 			$('#dataPerPage').change(function() {
 				dataPerPage = $("#dataPerPage").val();
 			
 				paging(totalData, dataPerPage, pageCount, 1,totalList);
 				 displayData(1, dataPerPage,totalList);
-			})
+			});
 			console.log("dataPerPage => "+ dataPerPage)
 			dataPerPage = $("#dataPerPage").val();
 			$.ajax({
 				   //url:'http://192.168.0.113:9000/myjson/loadJson',
 //				    url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
 //				    url:'http://192.168.0.120:9000/hospital/hospitalListJsonP',
-				    url:'http://192.168.0.120:9000/hospital/adminHospTotalList',
+				    url:'http://192.168.0.120:9000/hospital/hospitalListTotal',
 				    type:'GET',
 				    dataType:'jsonp',
 				    jsonp:'callback',

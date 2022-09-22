@@ -88,6 +88,5 @@ select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospi
 <select id="hospitalDoctorCategory" resultMap="DoctorCategoryResult">
 select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.cnum = h.cnum and dmajor = #{dmajor}
 </select>
-<!--  -->
   	
 </mapper>
