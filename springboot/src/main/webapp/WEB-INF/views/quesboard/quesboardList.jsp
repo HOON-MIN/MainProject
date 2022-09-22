@@ -96,10 +96,12 @@ table tfoot ol.paging li a:hover {
 			<tr>
 				<td class="linktd">${e.r_num}</td>
 				<td class="linktd">${e.qcate}</td>
-				<td class="linktd"><a href="qbDetail?qnum=${e.qnum}">${e.qtitle}</a></td>
+				<td class="linktd">${e.qtitle}</td>
 				<td class="linktd">${e.id}</td>
-				<td class="linktd" id="check">${e.qhit}</td>
+				<td class="linktd">${e.qhit}</td>
 				<td class="linktd">${e.qdate}</td>
+				<td class="linktd" hidden="hidden"><a href="qbDetail?qnum=${e.qnum}"></a></td>
+				<!-- link를 걸면 조회수 업데이트 되는 실행이 두 번 작용해서 hidden으로 숨김  -->
 			</tr>
 		</c:forEach>
 		<%-- for end --%>
@@ -174,7 +176,7 @@ table tfoot ol.paging li a:hover {
 
 </article>
 </div>
-<!-- 이전 jquery 임포트 코드 ...!!! -->
+<!-- 이전 jquery 임포트 코드 ...!!!  .linktd function 이 작동하기 위해서 있어야 됨   -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 var chk;
@@ -197,18 +199,18 @@ $(function(){
     });
 	
 	
-	$('.table1').on('click','tr',function(){
-		chk=(this).children('#check').text();
-		chk1 = window.location.pathname;
-		console.log('chk => ' + chk);
-		console.log('path => ' + chk1);
-		console.log('chk => ' + chk);
-		$.ajax({
-			url:'test?chk1='+chk1,
-			success : function(){
-			}
-		})
-	})
+// 	$('.table1').on('click','tr',function(){
+// 		chk=(this).children('#check').text();
+// 		chk1 = window.location.pathname;
+// 		console.log('chk => ' + chk);
+// 		console.log('path => ' + chk1);
+// 		console.log('chk => ' + chk);
+// 		$.ajax({
+// 			url:'test?chk1='+chk1,
+// 			success : function(){
+// 			}
+// 		})
+// 	})
 	
 });
 </script>

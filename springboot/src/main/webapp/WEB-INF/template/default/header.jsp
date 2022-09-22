@@ -86,7 +86,7 @@
 								href="${mycontext }/member/memberLogout">로그아웃</a>
 						</c:when>
 						<c:when test="${sessionDNUM != null}">
-							<a class="nav-link" href="${mycontext }}/doctor/doctorMypage">의사페이지</a>
+							<a class="nav-link" href="${mycontext }/mypage/doc_mypage">의사페이지</a>
 							<a class="nav-link active" aria-current="page"
 								href="${mycontext }/doctor/doctorLogout">로그아웃</a>
 						</c:when>
