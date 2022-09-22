@@ -3,28 +3,41 @@ import "../css/reservation.css";
 import DatePicker, { registerLocale, setDefaultLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const Reservation = () => {
-  const dateToday = () => {
-    let today = new Date();
-    let month = today.getMonth() + 1; // 월
-    let date = today.getDate(); // 날짜
-    let year = today.getFullYear(); // 요일
-    const res = year + "-" + month + "-" + date;
-    console.log(res, typeof res);
-  };
-  dateToday();
+  const location = useLocation();
+  console.log("헤이", location);
+  const today = new Date();
+  const month = today.getMonth() + 1; // 월
+  const date = today.getDate(); // 날짜
+  const year = today.getFullYear(); // 요일
+  const hour = today.getHours();
+  const minute = today.getMinutes() + 30;
+  const dateToday = year + "-" + month + "-" + date;
+  const time = today.setMinutes(today.getMinutes + 30);
+  const newDateObj = moment(oldDateObj).add(30, "m").toDate();
+  console.log("time", newDateObj);
 
-  const dateTomorrow = () => {
-    let today = new Date();
-    let month = today.getMonth() + 1; // 월
-    let date = today.getDate() + 1; // 날짜
-    let year = today.getFullYear(); // 요일
-    const res = year + "-" + month + "-" + date;
-    console.log(res, typeof res);
-  };
-  dateTomorrow();
+  const [input, setInput] = useState({
+    num: localStorage.getItem("num"),
+    dnum: location.state.data,
+    symptom: "",
+    symptomComm: "",
+    contactCheck: 0,
+    rdate: dateToday,
+    rtime: "",
+  });
 
+  const handleClick = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  console.log(input);
   return (
     <div className="d-flex justify-content-center revPage p-3">
       <div className="card border-0 p-2">
@@ -32,11 +45,11 @@ const Reservation = () => {
           <p className="h4 ps-2 mb-4">
             <strong>예약자 정보</strong>
           </p>
-          <label for="exampleFormControlInput1" className="form-label">
+          <label for="num" className="form-label">
             예약자 성명 : {localStorage.getItem("id")}
           </label>
           <br />
-          <label for="exampleFormControlInput1" className="form-label mb-0">
+          <label for="num" className="form-label mb-0">
             휴대폰 번호 : {localStorage.getItem("num")}
           </label>
         </div>
@@ -47,123 +60,100 @@ const Reservation = () => {
           </p>
           <div className="flex-start">
             <input
+              value="고혈압"
               type="radio"
+              onChange={handleClick}
               className="btn-check"
-              name="options"
-              id="option1"
+              name="symptom"
+              id="high"
               autoComplete="off"
             />
-            <label
-              className="btn btn-primary text-white me-2 mb-2"
-              for="option1"
-            >
+            <label className="btn btn-primary text-white me-2 mb-2" for="high">
               고혈압
             </label>
 
             <input
+              value="코로나"
               type="radio"
+              onChange={handleClick}
               className="btn-check"
-              name="options"
-              id="option2"
+              name="symptom"
+              id="corona"
               autoComplete="off"
             />
             <label
               className="btn btn-primary text-white me-2 mb-2"
-              for="option2"
+              for="corona"
             >
               코로나
             </label>
 
             <input
+              value="소아"
               type="radio"
+              onChange={handleClick}
               className="btn-check"
-              name="options"
-              id="option3"
+              name="symptom"
+              id="infant"
               autoComplete="off"
             />
             <label
               className="btn btn-primary text-white me-2 mb-2"
-              for="option3"
+              for="infant"
             >
               소아
             </label>
 
             <input
+              value="피부"
               type="radio"
+              onChange={handleClick}
               className="btn-check"
-              name="options"
-              id="option4"
+              name="symptom"
+              id="skin"
               autoComplete="off"
             />
-            <label
-              className="btn btn-primary text-white me-2 mb-2"
-              for="option4"
-            >
-              감기/호흡기
-            </label>
-            <input
-              type="radio"
-              className="btn-check"
-              name="options"
-              id="option4"
-              autoComplete="off"
-            />
-            <label
-              className="btn btn-primary text-white me-2 mb-2"
-              for="option4"
-            >
+            <label className="btn btn-primary text-white me-2 mb-2" for="skin">
               피부
             </label>
             <input
+              value="감기/호흡기"
               type="radio"
+              onChange={handleClick}
               className="btn-check"
-              name="options"
-              id="option4"
+              name="symptom"
+              id="cold"
               autoComplete="off"
             />
-            <label
-              className="btn btn-primary text-white me-2 mb-2"
-              for="option4"
-            >
-              다이어트
+            <label className="btn btn-primary text-white me-2 mb-2" for="cold">
+              감기/호흡기
             </label>
+
             <input
+              value="정신"
               type="radio"
+              onChange={handleClick}
               className="btn-check"
-              name="options"
-              id="option5"
+              name="symptom"
+              id="mental"
               autoComplete="off"
             />
             <label
               className="btn btn-primary text-white me-2 mb-2"
-              for="option5"
-            >
-              다이어트
-            </label>
-            <input
-              type="radio"
-              className="btn-check"
-              name="options"
-              id="option5"
-              autoComplete="off"
-            />
-            <label
-              className="btn btn-primary text-white me-2 mb-2"
-              for="option5"
+              for="mental"
             >
               정신
             </label>
             <input
+              value="기타"
               type="radio"
+              onChange={handleClick}
               className="btn-check"
-              name="options"
-              id="option5"
+              name="symptom"
+              id="etc"
               autoComplete="off"
             />
-            <label
-              className="btn btn-primary text-white me-2 mb-2"
-              for="option5"
-            >
+            <label className="btn btn-primary text-white me-2 mb-2" for="etc">
               기타
             </label>
           </div>
@@ -176,7 +166,9 @@ const Reservation = () => {
               <strong>증상을 상세히 입력해주세요</strong>
             </label>
             <textarea
+              onChange={handleClick}
               className="form-control"
+              name="symptomComm"
               id="exampleFormControlTextarea1"
               rows="3"
             ></textarea>
@@ -198,7 +190,12 @@ const Reservation = () => {
           </div>
         </div>
 
-        <button className="btn btn-lg btn-primary mt-3 mb-3">예약접수</button>
+        <button
+          className="btn btn-lg btn-primary mt-3 mb-3"
+          onClick={handleClick}
+        >
+          예약접수
+        </button>
       </div>
     </div>
   );
