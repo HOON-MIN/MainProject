@@ -129,12 +129,11 @@ public class ReviewBoardController {
 	public String upReviewBoard(Model m, ReviewBoardVO dto,
 			HttpServletRequest request) {
 		service.upReviewBoard(dto);
-		//return "redirect:/reviewboard/reviewboardlist";
 		return "redirect:reviewboardlist";
 
 	}
 	
-	// 댓글 리스트
+	// 댓글 리스트(기능 삭제)
 	@RequestMapping(value = "/replylist")
 	@ResponseBody
 	public List<ReviewBoardCommVO> showReply(int rnum, Model model) {
@@ -143,7 +142,7 @@ public class ReviewBoardController {
 		return service.showReply(rnum);
 	}
 	
-	// 댓글 입력
+	// 댓글 입력(기능 삭제)
 	@PostMapping(value = "/reply")
 	@ResponseBody
 	public int addReply(ModelAndView mav, ReviewBoardCommVO vo, HttpSession session, int rnum) {
@@ -155,7 +154,7 @@ public class ReviewBoardController {
 		return service.addReply(vo);
 	}
 	
-	// 댓글 삭제(로그인 및 댓글 작성자만 삭제 가능함)
+	// 댓글 삭제(기능 삭제)
 	@RequestMapping(value = "/delReply/{cnum}")
 	@ResponseBody
 	public int delReply(HttpSession session, @PathVariable int cnum, String id,int rnum) {
@@ -163,15 +162,12 @@ public class ReviewBoardController {
 		service.upRcount(rnum);
 		return service.delReply(cnum);
 	}
-	// 댓글 수정
+	// 댓글 수정(기능 삭제)
 	@RequestMapping(value = "/upReply")
 	@ResponseBody
 	public void upReply(HttpSession session,ModelAndView mav, ReviewBoardCommVO rcvo) {
 		String sessionID = (String) session.getAttribute("sessionID");
 		rcvo.setId(sessionID);
-//		System.out.println("Id: "+rcvo.getId());
-//		System.out.println("Cnum: "+rcvo.getCnum());
-//		System.out.println("Cont: "+rcvo.getCont());
 		service.upReply(rcvo);
 	}	
 }

@@ -32,40 +32,15 @@
 		<!-- End Navbar -->
 		<div class="container-fluid py-4">
 			<div class="row">
+				
 				<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
 					<div class="card">
 						<div class="card-body p-3">
 							<div class="row">
 								<div class="col-8">
 									<div class="numbers">
-										<p class="text-sm mb-0 text-uppercase font-weight-bold">Today's
-											Money</p>
-										<h5 class="font-weight-bolder">$53,000</h5>
-										<p class="mb-0">
-											<span class="text-success text-sm font-weight-bolder">+55%</span>
-											since yesterday
-										</p>
-									</div>
-								</div>
-								<div class="col-4 text-end">
-									<div
-										class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-										<i class="ni ni-money-coins text-lg opacity-10"
-											aria-hidden="true"></i>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-					<div class="card">
-						<div class="card-body p-3">
-							<div class="row">
-								<div class="col-8">
-									<div class="numbers">
-										<p class="text-sm mb-0 text-uppercase font-weight-bold">Today's
-											Users</p>
+										<p class="text-sm mb-0 text-uppercase font-weight-bold">당일 사이트 방문자
+											</p>
 										<h5 class="font-weight-bolder">2,300</h5>
 										<p class="mb-0">
 											<span class="text-success text-sm font-weight-bolder">+3%</span>
@@ -89,12 +64,12 @@
 							<div class="row">
 								<div class="col-8">
 									<div class="numbers">
-										<p class="text-sm mb-0 text-uppercase font-weight-bold">New
-											Clients</p>
-										<h5 class="font-weight-bolder">+3,462</h5>
+										<p class="text-sm mb-0 text-uppercase font-weight-bold">신규 가입자(월)
+											</p>
+										<h5 class="font-weight-bolder">+8,100</h5>
 										<p class="mb-0">
-											<span class="text-danger text-sm font-weight-bolder">-2%</span>
-											since last quarter
+											<span class="text-danger text-sm font-weight-bolder">+7%</span>
+											since last month
 										</p>
 									</div>
 								</div>
@@ -109,14 +84,40 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+					<div class="card">
+						<div class="card-body p-3">
+							<div class="row">
+								<div class="col-8">
+									<div class="numbers">
+										<p class="text-sm mb-0 text-uppercase font-weight-bold">금일 예약 건수
+											</p>
+										<h5 class="font-weight-bolder">50</h5>
+										<p class="mb-0">
+											<span class="text-success text-sm font-weight-bolder">+20%</span>
+											since yesterday
+										</p>
+									</div>
+								</div>
+								<div class="col-4 text-end">
+									<div
+										class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+										<i class="ni ni-money-coins text-lg opacity-10"
+											aria-hidden="true"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="col-xl-3 col-sm-6">
 					<div class="card">
 						<div class="card-body p-3">
 							<div class="row">
 								<div class="col-8">
 									<div class="numbers">
-										<p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-										<h5 class="font-weight-bolder">$103,430</h5>
+										<p class="text-sm mb-0 text-uppercase font-weight-bold">당월 누적 매출액</p>
+										<h5 class="font-weight-bolder">\15,188,000</h5>
 										<p class="mb-0">
 											<span class="text-success text-sm font-weight-bolder">+5%</span>
 											than last month
