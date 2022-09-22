@@ -5,70 +5,27 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import DoctorList from "../component/DoctorList";
 import Nav from "react-bootstrap/Nav";
+import Loader from "../Loader";
 
 const DoctorListPage = () => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [selectCategory, setSelectCategory] = useState([]);
   const [select, setSelect] = useState();
-
   const [doctors, setDoctors] = useState([]);
-  const [target, setTarget] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  const [page, setPage] = useState(1); //페이지
-  const limit = 10; // posts가 보일 최대한의 갯수
-  const offset = (page - 1) * limit; // 시작점과 끝점을 구하는 offset
-
-  //전체 리스트 출력
+  // 전체 리스트 출력
   useEffect(() => {
-    const getDoctorList = () => {
+    const getDoctorList = (a) => {
       axios.get("/doctor/dlist").then((res) => {
         setDoctors(res.data);
       });
     };
     setLoading(false);
     getDoctorList();
+    console.log("전체리스트 useeffect");
   }, []);
-  console.log(doctors);
 
-  // //10개씩
-  // const doctorsListData = (doctorList) => {
-  //   if (doctorList) {
-  //     let result = doctorList.slice(offset, offset + limit);
-  //     setPage(page+1);
-  //     return result;
-  //   }
-  // };
-
-  // const getMoreItem = async () => {
-  //   setIsLoaded(true);
-  //   await new Promise((resolve) => setTimeout(resolve, 1500));
-  //   const items = doctorsListData(doctors);
-  //   setItemLists((itemLists) => itemLists.concat(items));
-  //   setIsLoaded(false);
-  // };
-
-  // const onIntersect = async ([entry], observer) => {
-  //   if (entry.isIntersecting && !isLoaded) {
-  //     observer.unobserve(entry.target);
-  //     await getMoreItem();
-  //     observer.observe(entry.target);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   let observer;
-  //   if (target) {
-  //     observer = new IntersectionObserver(onIntersect, {
-  //       threshold: 0.4,
-  //     });
-  //     observer.observe(target);
-  //   }
-  //   return () => observer && observer.disconnect();
-  // }, [target  ]);
-
-  console.log("useeffect", select);
   useEffect(() => {
     const getCategory = () => {
       axios.get("/doctor/dcategory?dmajor=" + select).then((res) => {
@@ -77,6 +34,7 @@ const DoctorListPage = () => {
     };
     setLoading(false);
     getCategory();
+    console.log("카테고리 useeffect");
   }, [select]);
 
   const Categories = () => {
@@ -146,16 +104,11 @@ const DoctorListPage = () => {
   return (
     <div className="body container-fluid page">
       <div className="body-inner text-center">
-        <Categories />
+        <Categories key={1} />
       </div>
       {select === undefined
         ? doctors.map((doctor) => (
-            <Link
-              to={"/detail/" + doctor.dnum}
-              style={{ textDecoration: "none" }}
-            >
-              <DoctorList key={doctor.dnum} doctor={doctor} />
-            </Link>
+            <DoctorList key={doctor.dnum} doctor={doctor} />
           ))
         : selectCategory.map((doctor) => (
             <Link
@@ -169,3 +122,23 @@ const DoctorListPage = () => {
   );
 };
 export default DoctorListPage;
+
+// const onIntersect = async ([entry], observer) => {
+//   if (entry.isIntersecting && !isLoaded) {
+//     observer.unobserve(entry.target);
+//     getMoreItem();
+//     observer.observe(entry.target);
+//   }
+// };
+
+// useEffect(() => {
+//   console.log("타겟useeffect");
+//   let observer;
+//   if (target) {
+//     observer = new IntersectionObserver(onIntersect, {
+//       threshold: 0.4,
+//     });
+//     observer.observe(target);
+//   }
+//   return () => observer && observer.disconnect();
+// }, [target]);
