@@ -105,7 +105,31 @@ font-size: 14px;
 </tr>
 </c:forEach>
  -->
- 
+ <div style="text-align: center;">
+						<form name="sForm" method="post" action="reviewboardlist">
+							<select name="search_option">
+								<option value="id"
+									<c:if test="${map.search_option == 'id'}">selected</c:if>>작성자</option>
+
+								<option value="title"
+									<c:if test="${map.search_option == 'title'}">selected</c:if>>제목</option>
+
+								<option value="cont"
+									<c:if test="${map.search_option == 'cont'}">selected</c:if>>내용</option>
+
+								<option value="hname"
+									<c:if test="${map.search_option == 'hname'}">selected</c:if>>병원명</option>
+
+								<option value="all"
+									<c:if test="${map.search_option == 'all'}">selected</c:if>>작성자+내용+제목+병원명</option>
+
+							</select> <input name="keyword" id="searchbar" value="${map.keyword}"> 
+							<input type="submit" value="조회">
+						</form>
+</div>
+
+<p></p>
+
 <div class="flex-container justify-content-center">
 
 
@@ -138,29 +162,6 @@ font-size: 14px;
 	</div>
 	<p></p>
 	<p></p>
-<div style="text-align: center;">
-						<form name="sForm" method="post" action="reviewboardlist">
-							<select name="search_option">
-								<option value="id"
-									<c:if test="${map.search_option == 'id'}">selected</c:if>>작성자</option>
-
-								<option value="title"
-									<c:if test="${map.search_option == 'title'}">selected</c:if>>제목</option>
-
-								<option value="cont"
-									<c:if test="${map.search_option == 'cont'}">selected</c:if>>내용</option>
-
-								<option value="hname"
-									<c:if test="${map.search_option == 'hname'}">selected</c:if>>병원명</option>
-
-								<option value="all"
-									<c:if test="${map.search_option == 'all'}">selected</c:if>>작성자+내용+제목+병원명</option>
-
-							</select> <input name="keyword" id="searchbar" value="${map.keyword}"> 
-							<input type="submit" value="조회">
-						</form>
-</div>
-<p></p>
 	<script type="text/javascript">
 		$(function() {
 			$('#writeBtn').click(function() {
