@@ -65,7 +65,7 @@
 </select>
 <insert id="addCompany" parameterType="cvo">
  		insert into company 
-        values(company_seq.nextVal, #{crn}, #{cpwd}, #{ccate}, sysdate, 0,#{hgrade})
+        values(company_seq.nextVal, #{crn}, #{cpwd}, #{ccate}, 0, sysdate,#{hgrade})
     </insert>
 <insert id="addHospital" parameterType="hvo">
     	<selectKey keyProperty="cnum" resultType="int" order="BEFORE">

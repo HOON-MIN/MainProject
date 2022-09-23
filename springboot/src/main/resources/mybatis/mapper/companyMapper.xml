@@ -10,10 +10,10 @@
 		select count(*) from company where crn = #{crnv}
 	</select>
 	<!-- 업체 등록 -->
-	<insert id="compInsert" parameterType="cvo">
-		insert into company
-		values(company_seq.nextVal,#{crn},#{cpwd},#{ccate},sysdate,0,#{hgrade})
-	</insert>
+<!-- 	<insert id="compInsert" parameterType="cvo"> -->
+<!-- 		insert into company -->
+<!-- 		values(company_seq.nextVal,#{crn},#{cpwd},#{ccate},0,sysdate,'베이직') -->
+<!-- 	</insert> -->
 
 	<select id="companyLogin" resultType="cvo">
 		select * from company where crn=#{crn} and cpwd=#{cpwd}
