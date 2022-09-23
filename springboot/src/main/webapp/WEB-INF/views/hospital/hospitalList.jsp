@@ -97,10 +97,11 @@ table tfoot ol.paging li a:hover {
 		<c:forEach var="e" items="${list }">
  			<tr> 
 				<td class="linktd">${e.r_num }</td>
-				<td class="linktd"><a href="hospitalDetail?num=${e.cnum }"> ${e.hname }</a></td>
+				<td class="linktd">${e.hname }</td>
 				<td class="linktd">${e.hloc }</td>
 				<td class="linktd">${e.otime }~${e.ctime }</td>
 				<td class="linktd">${e.hcate }</td>
+				<td class="linktd" hidden="hidden"><a href="hospitalDetail?num=${e.cnum }"></a></td>
  			</tr> 
 		</c:forEach>
 		<%-- for end --%>
@@ -174,7 +175,7 @@ table tfoot ol.paging li a:hover {
 
 
 <!-- 이전 jquery 임포트 코드 ...!!! -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 $(function(){
 	$('.linktd').click(function(){

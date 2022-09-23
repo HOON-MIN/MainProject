@@ -6,7 +6,7 @@
 
 <insert id="addQuesboard" parameterType="qvo">
 	insert into quesboard values (QUESBOARD_SEQ.nextval, 
-	#{id}, #{qtitle}, #{qcont}, 0, sysdate)
+	#{id}, #{qtitle}, #{qcont}, 0, sysdate, #{qcate})
 </insert>
 
 <select id="getCnt" resultType="int" parameterType="svo">
@@ -35,11 +35,11 @@
 	</choose>
 	</when>
   </choose>
-  order by qnum desc
 </select>
 <select id="getQBList" resultType="qvo" parameterType="svo">
-	select * from (
-    select rownum r_num, q.* from quesboard q 
+select * from (
+    select rownum r_num, q.* from (
+        select * from quesboard
   <choose>
 	<when test="category != null and category != ''">
 	<choose>
@@ -56,7 +56,8 @@
 	</when>
   </choose> 
 	    order by qnum desc
-	) where r_num between #{beginPerPage} and #{endPerPage}
+	) q 
+) where r_num between #{beginPerPage} and #{endPerPage}
 </select>
 
 <select id="getCate" resultType="qvo">
