@@ -63,11 +63,8 @@
 				<label class="form-label">병원등급</label>
 				<select class="form-select" id="hgrade" name="hgrade" aria-label="Default select example" required="required">
 				  <option selected>병원등급 선택</option>
-				  <option value="1등급">1등급</option>
-				  <option value="2등급">2등급</option>
-				  <option value="3등급">3등급</option>
-				  <option value="4등급">4등급</option>
-				  <option value="5등급">5등급</option>
+				  <option value="프리미엄">프리미엄</option>
+				  <option value="베이직">베이직</option>
 				</select>
 			</div>
 		</div>	
@@ -80,12 +77,7 @@
 		       	진료과목을 입력하세요
 		    </div>
 		  </div>
-		  <div class="col-md-8">
-			<div class="form-outline">
-					<label class="form-label">홈페이지</label>
-				<input type="text" id="hurl" name="hurl" class="form-control" required placeholder="www.example.com"/> 
-			</div>
-		</div>
+		  
 		
 					
 			<div class="form-outline">

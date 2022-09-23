@@ -87,14 +87,14 @@
 </select>
 <insert id="addCompany" parameterType="cvo">
  		insert into company 
-        values(company_seq.nextVal, #{crn}, #{cpwd}, #{ccate}, sysdate, 0)
+        values(company_seq.nextVal, #{crn}, #{cpwd}, #{ccate}, sysdate, 0,#{hgrade})
     </insert>
 <insert id="addHospital" parameterType="hvo">
     	<selectKey keyProperty="cnum" resultType="int" order="BEFORE">
     		select company_seq.currVal from dual
     	</selectKey>
     	insert into hospital values(#{cnum},#{hname},#{hloc},#{otime},#{ctime},
-							  #{hcate},#{htel},#{hurl},#{hemail},#{hgrade})
+							  #{hcate},#{htel},#{hurl})
 </insert>
 
  <!-- crn 중복체크 -->

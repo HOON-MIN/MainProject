@@ -155,6 +155,7 @@ public class HospitalController {
 		System.out.println("Hname : " + hvo.getHname());
 		System.out.println("Otime : " + hvo.getOtime());
 		System.out.println("Ctime : " + hvo.getCtime());
+		System.out.println("Hgrade : "+cvo.getHgrade());
 		service.addHospitalService(cvo, hvo);
 		return "redirect:/main";
 	}

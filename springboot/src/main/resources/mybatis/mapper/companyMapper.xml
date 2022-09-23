@@ -12,7 +12,7 @@
 	<!-- 업체 등록 -->
 	<insert id="compInsert">
 		insert into company
-		values(company_seq.nextVal,#{crn},#{cpwd},#{ccate},sysdate,0)
+		values(company_seq.nextVal,#{crn},#{cpwd},#{ccate},sysdate,0,#{hgrade})
 	</insert>
 
 	<select id="companyLogin" resultType="cvo">

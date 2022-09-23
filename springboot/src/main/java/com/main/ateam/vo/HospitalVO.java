@@ -15,7 +15,7 @@ public class HospitalVO {
 	}
 	private int  cnum,r_num;
 	private String hname, hloc, otime, ctime,
-		hcate, hurl, hemail, htel;
+		hcate, hurl, htel;
 	private List<DoctorVO> doctorVO;
 	
 	public List<DoctorVO> getDoctorVO() {
@@ -81,11 +81,5 @@ public class HospitalVO {
 	public void setHurl(String hurl) {
 		this.hurl = hurl;
 	}
-	public String getHemail() {
-		return hemail;
-	}
-	public void setHemail(String hemail) {
-		this.hemail = hemail;
-	}	
 	
 }
