@@ -66,7 +66,10 @@ const DoctorDetail = (props) => {
             <div className="detailMap"></div>
           </div>
           <div className="text-center revBtn">
-            <Link to={"/reservation/" + props.doctor.dnum}>
+            <Link
+              to={"/reservation/" + props.doctor.dnum}
+              state={{ data: props.doctor.dnum }}
+            >
               <button className="btn bg-primary btn-lg text-white mt-3 revBtn">
                 진료 예약하기
               </button>

@@ -17,8 +17,8 @@ public class CompanyService {
 	public int crnCheckService(Map<String, String> map) {
 		return companyDao.crnCheck(map);
 	}	
-	public void caInsert() {
-		companyDao.compInsert();
+	public void caInsert(CompanyVO cvo) {
+		companyDao.compInsert(cvo);
 	}
 	
 	public CompanyVO companyLogin(Map<String, String>map) {

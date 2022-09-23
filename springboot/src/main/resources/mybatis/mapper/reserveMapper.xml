@@ -9,4 +9,5 @@
 	<select id="choiceDoctor" resultType="doctorVO">
 		select * from doctor where dnum=#{dnum}
 	</select>
+
 </mapper>

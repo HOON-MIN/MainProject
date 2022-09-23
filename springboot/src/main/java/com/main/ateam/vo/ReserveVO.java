@@ -12,6 +12,7 @@ public class ReserveVO {
 
 	private int reservNum;
 	private int num;
+	private int r_num;
 	private int dnum;
 	private int contectCheck;
 	private String symptom;
@@ -21,6 +22,7 @@ public class ReserveVO {
 	
 	private MemberVO memberVO;
 	private DoctorVO doctorVO;
+	
 	
 	
 	

@@ -43,9 +43,9 @@
 			
 			<c:when test="${sessionDNUM != null}">
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/member/memberMypage">프로필</a>
+				href="${pageContext.request.contextPath }/member/memberMypage"></a>
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/member/memberMypage_list">예약 목록</a> 
+				href="${pageContext.request.contextPath }/member/memberMypage_list">Reserve List</a> 
 			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="#!">??</a> 
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
@@ -55,18 +55,14 @@
 			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="#!">Status</a>
 			</c:when>
+
 			<c:when test="${sessionCNUM != null}">
 			<a 	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/doctor/joinDoctorForm">의사등록</a>
+				href="${pageContext.request.contextPath }/doctor/joinDoctorForm">Add Doctor</a>
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/company/hospitalDoctorList">의사명단</a> 
-		
-			
-				<c:if test="${sessionHGRADE != '베이직'}">
-					<a  class="list-group-item list-group-item-action list-group-item-light p-3"
-						href="${mycontext }/hospitalP/dashboard">Analysis Dashboard</a> 
-				</c:if>
-			
+				href="${pageContext.request.contextPath }/company/hospitalDoctorList">Doctor List</a> 
+			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
+				href="#" id="hgrade">Analysis Dashboard</a> 
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="#!">Events</a> 
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
@@ -79,6 +75,14 @@
 		</div>
 	</div>
 	<script>
-	
+	var sessionGrade = '${sessionHGRADE}'
+	$('#hgrade').click(function(){
+		console.log('sessionGrade = ' + sessionGrade)
+		if(sessionGrade == '베이직'){
+			alert('프리미엄등급으로 등록을 해주세요!!')
+		}else{
+			location.href='${mycontext }/hospitalP/dashboard'
+		}
+	})
 	</script>
 				

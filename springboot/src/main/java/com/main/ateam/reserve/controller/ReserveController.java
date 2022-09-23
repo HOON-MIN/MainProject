@@ -1,7 +1,10 @@
 package com.main.ateam.reserve.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -64,12 +67,24 @@ public class ReserveController {
 	public String addReserve(ReserveVO vo ,HttpSession session) {
 		int num = (int) session.getAttribute("sessionNUM");
 		vo.setNum(num);
+		String d ="";
 		//vo.setRdate(rdate);
 		
-		System.out.println("reserve - insert Test(회원번호)" + vo.getNum());
-		System.out.println("reserve - insert Test(의사번호)" + vo.getDnum());
-		System.out.println("reserve - insert Test(증상)" + vo.getSymptom());
-		System.out.println("reserve - insert Test(증상)" + vo.getSymptomComm());
+	
+		System.out.println("reserve - 변환전(시간)" + vo.getRdate());
+		
+		SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date formatDate = dtFormat.parse(vo.getRdate());
+			d = dtFormat.format(formatDate);
+			System.out.println(d);
+			System.out.println(d.getClass().getName());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// TODO Auto-generated catch block
+		vo.setRdate(d);
 		System.out.println("reserve - insert Test(시간)" + vo.getRdate());
 		System.out.println("reserve - insert Test(시간)" + vo.getRtime());
 		System.out.println("reserve - insert Test(시간)" + vo.getRdate().getClass().getName());

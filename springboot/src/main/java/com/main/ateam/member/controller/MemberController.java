@@ -40,9 +40,12 @@ import com.main.ateam.modules.GsonModule;
 import com.main.ateam.modules.SftpModule;
 import com.main.ateam.modules.UbuntuShellModule;
 import com.main.ateam.vo.CovidRecordVO;
+import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.FileVO;
+import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.OAuthToken;
+import com.main.ateam.vo.ReserveVO;
 
 @Controller
 @RequestMapping("/member")
@@ -144,18 +147,10 @@ public class MemberController {
 	}
 
 	// 로그인 테스트
-	@GetMapping(value = "/tt")
-	public String test() {
-
-		return "member/test/tt";
-	}
-
-	// 로그인 테스트
-	@PostMapping(value = "/test")
-	public String test2(@RequestParam Map<String, Object> param) {
-		String len = (String) param.get("len");
-		System.out.println("len = > " + len);
-		return "mypage/member_mypage";
+	@GetMapping(value = "/test")
+	public String test2() {
+		
+		return "mypage/ad_chart1";
 	}
 
 	// 회원 마이페이지
@@ -167,15 +162,33 @@ public class MemberController {
 		m.addAttribute("member", vo);
 		return "mypage/member_mypage";
 	}
+	
 
-	// 회원 마이페이지 - 예약목록(지도)
+	// 회원 마이페이지 - 예약목록
 	@GetMapping(value = "/memberMypage_list")
 	public String memberMypage_list(Model m, HttpSession session) {
 		int num = 0;
 		num = (int) session.getAttribute("sessionNUM");
-		MemberVO vo = memberService.memberMyPage(num);
-		m.addAttribute("member", vo);
-		return "mypage/member_mypage_list";
+		System.out.println("sessionNum=>" + num);
+		 List<HospitalVO> vo = memberService.memberReserveList(num);
+		 m.addAttribute("num",num);
+		 m.addAttribute("vo", vo);
+		return "mypage/member_mypage_reserveList";
+	}
+	// 회원 마이페이지 - 예약목록 - 디테일
+	@ResponseBody
+	@GetMapping(value = "/memberMypage_list_Detail")
+	public MemberVO memberMypage_listDetail(HttpSession session,int num) {
+		int mnum = 0;
+		mnum = (int) session.getAttribute("sessionNUM");
+		Map<String, Integer> map = new HashMap<>();
+		map.put("num", mnum);
+		map.put("reservNum", num);
+		System.out.println("num = "+  mnum);
+		System.out.println("reservNum = "+  num);
+		MemberVO vo = memberService.memberReserveDetail(map);
+		
+		return vo;
 	}
 
 	// 수정하기 폼으로

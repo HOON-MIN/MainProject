@@ -1,10 +1,12 @@
 package com.main.ateam.admin.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,6 +39,11 @@ public class AdminController {
 	@RequestMapping(value = "/adminHospTotalList")
 	public String adminHospTotalList(Model m) {
 		return "mypage/ad_hospital_totalList";
+	}
+	@GetMapping(value = "/adminChart1")
+	public String adminChart1() {
+		
+		return "mypage/ad_chart1";
 	}
 // 	ㄴ> 전국 병원 목록에서 진료과목 별 비율 차트 
 	@RequestMapping(value = "/adminTotalChart")
@@ -76,7 +83,14 @@ public class AdminController {
 		System.out.println("변경완료");
 		return res;
 	}
-	
+	//-- 등록된 병원 과별 이용 횟수!
+	@ResponseBody
+	@GetMapping(value = "/adminBarchart")
+	public List<HospitalVO> adminBarchart(){
+		List<HospitalVO> vo = adminService.adminBarchart();
+		
+		return vo;
+	}
 	
 	
 	

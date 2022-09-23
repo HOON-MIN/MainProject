@@ -3,6 +3,7 @@ package com.main.ateam.member.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 
 
@@ -14,7 +15,8 @@ import com.main.ateam.vo.MemberVO;
 		public MemberVO memberLogin(Map<String, String>map);
 		public int idchk(Map<String, String> vo);
 		public int idCheck(Map<String, String> map);
-		
+		public List<HospitalVO> memberReserveList(int num);
+		public MemberVO memberReserveDetail(Map<String, Integer> map);
 		/* 0918 add: dhlee 추가 */
 		public void kakaoSignup(MemberVO vo);
 		public int kakaoFlag(String id);

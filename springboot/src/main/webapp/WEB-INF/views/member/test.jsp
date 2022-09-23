@@ -1,50 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Simple Sidebar - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div class="d-flex" id="wrapper">
-            <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
-               
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="member">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
-                </div>
-            </div>
-            <!-- Page content wrapper-->
-            <div id="page-content-wrapper">
-                <!-- Top navigation-->
-                
-                <!-- Page content-->
-                <div class="container-fluid">
-                    <h1 class="mt-4">Simple Sidebar</h1>
-                    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                    <p>
-                        Make sure to keep all page content within the
-                        <code>#page-content-wrapper</code>
-                        . The top navbar is optional, and just for demonstration. Just create an element with the
-                        <code>#sidebarToggle</code>
-                        ID which will toggle the menu when clicked.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+    <div id='calendar'></div>
+<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+<link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+<link href='/taejin/fullcalendar/lib/main.css' rel='stylesheet' />
+    <script src='/taejin/fullcalendar/lib/main.js'></script>
+   <script>
 
+   document.addEventListener('DOMContentLoaded', function() {
+	    var calendarEl = document.getElementById('calendar');
+
+	    var calendar = new FullCalendar.Calendar(calendarEl, {
+	    	
+	      headerToolbar: {
+	        left: 'prev,next today',
+	        center: 'title',
+	        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+	      },
+	      themeSystem: 'bootstrap5',
+	      initialDate: '2020-09-12',
+	      navLinks: true, // can click day/week names to navigate views
+	      businessHours: true, // display business hours
+	      editable: true,
+	      selectable: true,
+	      events: [
+	        {
+	          title: 'Business Lunch',
+	          start: '2020-09-03T13:00:00',
+	          constraint: 'businessHours'
+	        },
+	        {
+	          title: 'Meeting',
+	          start: '2020-09-13T11:00:00',
+	          constraint: 'availableForMeeting', // defined below
+	          color: '#257e4a'
+	        },
+	        {
+	          title: 'Conference',
+	          start: '2020-09-18',
+	          end: '2020-09-20'
+	        },
+	        {
+	          title: 'Party',
+	          start: '2020-09-29T20:00:00'
+	        },
+
+	        // areas where "Meeting" must be dropped
+	        {
+	          groupId: 'availableForMeeting',
+	          start: '2020-09-11T10:00:00',
+	          end: '2020-09-11T16:00:00',
+	          display: 'background'
+	        },
+	        {
+	          groupId: 'availableForMeeting',
+	          start: '2020-09-13T10:00:00',
+	          end: '2020-09-13T16:00:00',
+	          display: 'background'
+	        },
+
+	        // red areas where no events can be dropped
+	        {
+	          start: '2020-09-24',
+	          end: '2020-09-28',
+	          overlap: false,
+	          display: 'background',
+	          color: '#ff9f89'
+	        },
+	        {
+	          start: '2020-09-06',
+	          end: '2020-09-08',
+	          overlap: false,
+	          display: 'background',
+	          color: '#ff9f89'
+	        }
+	      ]
+	    });
+
+	    calendar.render();
+	  });
+	
+</script>

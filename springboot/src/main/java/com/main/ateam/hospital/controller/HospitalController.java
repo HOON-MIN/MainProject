@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.main.ateam.company.controller.CompanyController;
+import com.main.ateam.company.service.CompanyService;
 import com.main.ateam.hospital.service.HospitalService;
 import com.main.ateam.vo.CompanyVO;
 import com.main.ateam.vo.HospitalVO;
@@ -41,6 +43,8 @@ public class HospitalController {
 	
 	@Autowired
 	private HospitalService service;
+	@Autowired
+	private CompanyService companyService;
 
 	@RequestMapping(value = "/hospitalListBack")
 	public String hospitalListBack(SearchVO svo, Model m) {
@@ -155,8 +159,9 @@ public class HospitalController {
 		System.out.println("Hname : " + hvo.getHname());
 		System.out.println("Otime : " + hvo.getOtime());
 		System.out.println("Ctime : " + hvo.getCtime());
+		System.out.println("Hgrade : "+cvo.getHgrade());
 		service.addHospitalService(cvo, hvo);
-		return "redirect:/main";
+		return "redirect:/";
 	}
 
 

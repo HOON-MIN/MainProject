@@ -7,30 +7,36 @@
 
 <select id="memberLogin" resultType="memberVO">
   	select * from member where id=#{id} and pwd=#{pwd}
-  	</select>
-  	<select id="memberMyPage" resultType="memberVO">
+</select>
+<select id="memberMyPage" resultType="memberVO">
   	select num, id,pwd,name,ssn,age,gender,tel,email,addr,profimg,to_char(mdate,'YYYY-MM-DD')mdate from member where num=#{num}
-  	</select>
-  	<update id="memberUpdate">
+</select>
+<update id="memberUpdate">
   	update member set name=#{name},email=#{email},tel=#{tel},profimg=#{profimg} where num = #{num}
-  	</update>
-  	
-  	<select id="idchk" parameterType="map" resultType="int">
+</update>
+<select id="idchk" parameterType="map" resultType="int">
 	select count(*) from member where id=#{id} and pwd=#{pwd}
 </select>
- <select id="idCheck" parameterType="map" resultType="int">
- select count(*) from member where id = #{id}
- </select>
+
+
+
+<!-- 병훈 -->
 <insert id="addMember" parameterType="memberVO">
 	insert into member values(member_seq.nextVal,#{id},#{pwd},#{name},#{ssn},
 							  #{age},#{addr},#{gender},#{tel},#{email},#{profimg},#{addr},sysdate)
 </insert>
+
+
+<!--  -->
 <select id="memberList" resultType="memberVO">
 	select * from member order by 1 desc
 </select>
   	
   	
   	<!-- 0918 add: dhlee 추가 -->
+  	 <select id="idCheck" parameterType="map" resultType="int">
+ 	select count(*) from member where id = #{id}
+ 	</select>
 	<insert id="kakaoSignup" parameterType="memberVO">
 		insert into member
 		values(member_seq.nextval, #{id}, #{pwd}, #{name},
@@ -52,7 +58,70 @@
 		from member where id = #{ id }
 	</select>  	
 	
+	<select id="memberReserveList" parameterType="int" resultMap="memberReserveResult">
+		select rownum r_num,r.reservNum,r.num, d.dnum,dname,h.hcate,r.rdate,r.rtime,
+		h.hloc,h.hname,h.htel
+		from doctor d,reserve r,hospital h where
+		d.cnum=h.cnum and r.dnum = d.dnum and r.num =#{num}
+	</select>
 	
+	<select id="memberReserveDetail" parameterType="map" resultMap="memberReserveDetail">
+		select rownum r_num,r.reservNum,r.symptom,r.symptomComm,
+		d.dname,h.hloc,h.hname
+		from doctor d,reserve r,hospital h where
+		d.cnum=h.cnum and r.dnum = d.dnum and r.num =#{num} and reservNum = #{reservNum}
+	</select>
+	
+	<!-- 태진 -->
+	<resultMap type="hvo" id="memberReserveResult">
+		<id property="cnum" column="cnum"/>
+		<result property="hcate" column="hcate"/>
+		<result property="hloc" column="hloc"/>
+		<result property="hname" column="hname"/>
+		<result property="htel" column="htel"/>
+	<collection property="doctorVO" javaType="java.util.List" ofType="doctorVO">
+		<id property="cnum" column="cnum"/>
+		<result property="dnum" column="dnum"/>
+		<result property="dname" column="dname"/>
+	<collection property="reserveVO" javaType="java.util.List" ofType="reserveVO">
+		<id property="reservNum" column="reservNum"/>
+		<result property="r_num" column="r_num"/>
+		<result property="contectCheck" column="contectCheck"/>
+		<result property="symptom" column="symptom"/>
+		<result property="symptomComm" column="symptomComm"/>
+		<result property="rdate" column="rdate"/>
+		<result property="rtime" column="rtime"/>
+	</collection>
+	</collection>
+	</resultMap>
+	
+	<!-- 회원 마이페이지-detail -->
+	<resultMap type="memberVO" id="memberReserveDetail">
+		<id property="num" column="num"/>
+		<result property="name" column="name"/>
+	<collection property="reserveVO" javaType="java.util.List" ofType="reserveVO" >
+		<id property="reservNum" column="reservNum"/>
+		<result property="r_num" column="r_num"/>
+		<result property="symptom" column="symptom"/>
+		<result property="symptomComm" column="symptomComm"/>
+		<result property="rdate" column="rdate"/>
+		<result property="rtime" column="rtime"/>
+	<association property="doctorVO" >
+		<id property="dnum" column="dnum"/>
+		<result property="dname" column="dname"/>
+	<association property="hvo" column="hvo">
+		<id property="cnum" column="cnum"/>
+		<result property="hloc" column="hloc"/>
+		<result property="hname" column="hname"/>
+	</association>
+	</association>		
+	</collection>
+	</resultMap>
+	
+	<select id="mypage_detail" parameterType="int">
+	select d.dnum,d.dname,m.name,r.num,r.symptom,r.symptomComm,r.rdate,r.rtime from
+	member m,reserve r,doctor d where m.num=r.num and r.dnum=d.dnum and r.num=#{num}
+	</select>
 	
 <select id="AndroidIdCheck" parameterType="map" resultType="int">
 	select decode(id, #{id}, 1, 0) as boolean from member
