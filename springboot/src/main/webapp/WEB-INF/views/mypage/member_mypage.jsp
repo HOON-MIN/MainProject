@@ -13,7 +13,7 @@
 	<div class="container">
 		<div class="col-sm-5" style="float: left;">
 			<div class="form-group">
-				<img src="/taejin/img/${member.profimg }" class="picture-src"
+				<img src="${pageContext.request.contextPath }/imgfile/${member.profimg }" class="picture-src"
 					id="profimg" style="width: 200px; height: 150px;" />
 			</div>
 			<div class="form-group">
