@@ -30,6 +30,9 @@ public class AdminService {
 	public void agree(int num) {
 		adminDao.agree(num);
 	}
+	public List<HospitalVO> adminBarchart(){
+		return adminDao.adminBarchart();
+	}
 	/*
 	 * public NoticeVO getDetail(int nnum) { return noticeDao.getDetail(nnum); }
 	 * public void addNotice(NoticeVO vo) { noticeDao.addNotice(vo); } public void

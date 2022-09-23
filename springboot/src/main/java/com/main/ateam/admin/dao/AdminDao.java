@@ -14,6 +14,7 @@ public interface AdminDao {
 	public List<HospitalVO> ad_hospitalList();
 	public List<CompanyVO> waitingList();
 	public void agree(int num); 
+	public List<HospitalVO> adminBarchart();
 	
 	public int totalCount();
 	public NoticeVO getDetail(int nnum);

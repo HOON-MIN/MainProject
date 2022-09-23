@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.main.ateam.member.dao.MemberDao;
+import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 
 @Service
@@ -38,7 +39,12 @@ public class MemberService {
 	public int idchk(Map<String, String> vo) {
 		return memberDao.idchk(vo);
 	}
-	
+	public  List<HospitalVO> memberReserveList(int num) {
+		return memberDao.memberReserveList(num);
+	}
+	public MemberVO memberReserveDetail(Map<String, Integer> map) {
+		return memberDao.memberReserveDetail(map);
+	}
 	/* 이동환 Service추가 */
 	public void kakaoSignup(MemberVO vo) {
 		memberDao.kakaoSignup(vo);

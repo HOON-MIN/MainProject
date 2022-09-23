@@ -1,215 +1,94 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="/taejin/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="/taejin/img/favicon.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Get Shit Done Bootstrap Wizard by Creative Tim</title>
-
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-
-	<!--     Fonts and icons     -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
-
-	<!-- CSS Files -->
-    <link href="/taejin/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="/taejin/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
-
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link href="/taejin/css/demo.css" rel="stylesheet" />
-</head>
-
-<body>
-<div class="image-container set-full-height" style="background-image: url('/taejin/img/wizard.jpg')">
-    <!--   Creative Tim Branding   -->
-   
-
-	<!--  Made With Get Shit Done Kit  -->
-		<a href="http://demos.creative-tim.com/get-shit-done/index.html?ref=get-shit-done-bootstrap-wizard" class="made-with-mk">
-			<div class="brand">GK</div>
-			<div class="made-with">Made with <strong>GSDK</strong></div>
-		</a>
-
-    <!--   Big container   -->
-    <div class="container">
-        <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-
-            <!--      Wizard container        -->
-            <div class="wizard-container">
-
-                <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                    <form action="" method="">
-                <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
-
-                    	<div class="wizard-header">
-                        	<h3>
-                        	   <b>BUILD</b> 프로필 <br>
-                        	   <small>This information will let us know more about you.</small>
-                        	</h3>
-                    	</div>
-
-						<div class="wizard-navigation">
-							<ul>
-	                            <li><a href="#about" data-toggle="tab">Profile</a></li>
-	                            <li><a href="#account" data-toggle="tab">Account</a></li>
-	                            <li><a href="#address" data-toggle="tab">Address</a></li>
-	                        </ul>
-
-						</div>
-
-                        <div class="tab-content">
-                            <div class="tab-pane" id="about">
-                              <div class="row">
-                                  <h4 class="info-text"> Let's start with the basic information (with validation)</h4>
-                                  <div class="col-sm-4 col-sm-offset-1">
-                                     <div class="picture-container">
-                                          <div class="picture">
-                                              <img src="/taejin/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                              <input type="file" id="wizard-picture">
-                                          </div>
-                                          <h6>Choose Picture</h6>
-                                      </div>
-                                  </div>
-                                  <div class="col-sm-6">
-                                      <div class="form-group">
-                                        <label>First Name <small>(required)</small></label>
-                                        <input name="firstname" type="text" class="form-control" placeholder="Andrew...">
-                                      </div>
-                                      <div class="form-group">
-                                        <label>Last Name <small>(required)</small></label>
-                                        <input name="lastname" type="text" class="form-control" placeholder="Smith...">
-                                      </div>
-                                  </div>
-                                  <div class="col-sm-10 col-sm-offset-1">
-                                      <div class="form-group">
-                                          <label>Email <small>(required)</small></label>
-                                          <input name="email" type="email" class="form-control" placeholder="andrew@creative-tim.com">
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>
-                            <div class="tab-pane" id="account">
-                                <h4 class="info-text"> What are you doing? (checkboxes) </h4>
-                                <div class="row">
-
-                                    <div class="col-sm-10 col-sm-offset-1">
-                                        <div class="col-sm-4">
-                                            <div class="choice" data-toggle="wizard-checkbox">
-                                                <input type="checkbox" name="jobb" value="Design">
-                                                <div class="icon">
-                                                    <i class="fa fa-pencil"></i>
-                                                </div>
-                                                <h6>Design</h6>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="choice" data-toggle="wizard-checkbox">
-                                                <input type="checkbox" name="jobb" value="Code">
-                                                <div class="icon">
-                                                    <i class="fa fa-terminal"></i>
-                                                </div>
-                                                <h6>Code</h6>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="choice" data-toggle="wizard-checkbox">
-                                                <input type="checkbox" name="jobb" value="Develop">
-                                                <div class="icon">
-                                                    <i class="fa fa-laptop"></i>
-                                                </div>
-                                                <h6>Develop</h6>
-                                            </div>
-
+ <main>
+                    <!-- Page header-->
+                    <header class="bg-dark">
+                        <div class="container-xl px-5"><h1 class="text-white py-3 mb-0 display-6">Account Settings - Profile</h1></div>
+                    </header>
+                    <!-- Account profile page content-->
+                    <div class="container-xl p-5">
+                        <!-- Tab bar navigation-->
+                        <mwc-tab-bar style="margin-bottom: -1px" activeindex="2">
+                            <mwc-tab label="Billing" icon="account_balance" stacked="" onclick='location.href="app-account-billing.html"'></mwc-tab>
+                            <mwc-tab label="Notifications" icon="notifications" stacked="" onclick='location.href="app-account-notifications.html"'></mwc-tab>
+                            <mwc-tab label="Profile" icon="person" stacked="" onclick='location.href="app-account-profile.html"'></mwc-tab>
+                            <mwc-tab label="Security" icon="security" stacked="" onclick='location.href="app-account-security.html"'></mwc-tab>
+                        </mwc-tab-bar>
+                        <!-- Divider-->
+                        <hr class="mt-0 mb-5" />
+                        <!-- Profile content row-->
+                        <div class="row gx-5">
+                            <div class="col-xl-4">
+                                <!-- Profile picture card-->
+                                <div class="card card-raised mb-5">
+                                    <div class="card-body p-5">
+                                        <div class="card-title">Profile Image</div>
+                                        <div class="card-subtitle mb-4">This image will be publicly visible to other users.</div>
+                                        <div class="text-center">
+                                            <!-- Profile picture image-->
+                                            <img class="img-fluid rounded-circle mb-1" src="https://source.unsplash.com/jSUsJWvnnEA/500x500" alt="..." style="max-width: 150px; max-height: 150px" />
+                                            <!-- Profile picture help block-->
+                                            <div class="caption fst-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                                            <!-- Profile picture upload button-->
+                                            <button class="btn btn-primary" type="button">
+                                                Upload new image
+                                                <i class="material-icons trailing-icon">upload</i>
+                                            </button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-                            <div class="tab-pane" id="address">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h4 class="info-text"> Are you living in a nice area? </h4>
-                                    </div>
-                                    <div class="col-sm-7 col-sm-offset-1">
-                                         <div class="form-group">
-                                            <label>Street Name</label>
-                                            <input type="text" class="form-control" placeholder="5h Avenue">
-                                          </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                         <div class="form-group">
-                                            <label>Street Number</label>
-                                            <input type="text" class="form-control" placeholder="242">
-                                          </div>
-                                    </div>
-                                    <div class="col-sm-5 col-sm-offset-1">
-                                         <div class="form-group">
-                                            <label>City</label>
-                                            <input type="text" class="form-control" placeholder="New York...">
-                                          </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                         <div class="form-group">
-                                            <label>Country</label><br>
-                                             <select name="country" class="form-control">
-                                                <option value="Afghanistan"> Afghanistan </option>
-                                                <option value="Albania"> Albania </option>
-                                                <option value="Algeria"> Algeria </option>
-                                                <option value="American Samoa"> American Samoa </option>
-                                                <option value="Andorra"> Andorra </option>
-                                                <option value="Angola"> Angola </option>
-                                                <option value="Anguilla"> Anguilla </option>
-                                                <option value="Antarctica"> Antarctica </option>
-                                                <option value="...">...</option>
-                                            </select>
-                                          </div>
+                            <div class="col-xl-8">
+                                <!-- Account details card-->
+                                <div class="card card-raised mb-5">
+                                    <div class="card-body p-5">
+                                        <div class="card-title">Account Details</div>
+                                        <div class="card-subtitle mb-4">Review and update your account information below.</div>
+                                        <form>
+                                            <!-- Form Group (username)-->
+                                            <div class="mb-4"><mwc-textfield class="w-100" label="Username" outlined="" value="my-username"></mwc-textfield></div>
+                                            <!-- Form Row-->
+                                            <div class="row mb-4">
+                                                <!-- Form Group (first name)-->
+                                                <div class="col-md-6"><mwc-textfield class="w-100" label="First Name" outlined="" value="Valerie"></mwc-textfield></div>
+                                                <!-- Form Group (last name)-->
+                                                <div class="col-md-6"><mwc-textfield class="w-100" label="Last Name" outlined="" value="Luna"></mwc-textfield></div>
+                                            </div>
+                                            <!-- Form Row        -->
+                                            <div class="row mb-4">
+                                                <!-- Form Group (organization name)-->
+                                                <div class="col-md-6"><mwc-textfield class="w-100" label="Organization Name" outlined="" value="Start Bootstrap"></mwc-textfield></div>
+                                                <!-- Form Group (location)-->
+                                                <div class="col-md-6"><mwc-textfield class="w-100" label="Location" outlined="" value="Orlando, FL"></mwc-textfield></div>
+                                            </div>
+                                            <!-- Form Group (email address)-->
+                                            <div class="mb-4"><mwc-textfield class="w-100" label="Location" outlined="" type="email" value="name@example.com"></mwc-textfield></div>
+                                            <!-- Form Row-->
+                                            <div class="row mb-4">
+                                                <!-- Form Group (phone number)-->
+                                                <div class="col-md-6"><mwc-textfield class="w-100" label="SMS Number" outlined="" type="tel" value="407-555-0187"></mwc-textfield></div>
+                                                <!-- Form Group (birth month)-->
+                                                <div class="col-md-6">
+                                                    <mwc-select class="w-100" outlined="" label="Birth Month">
+                                                        <mwc-list-item value="January" selected="">January</mwc-list-item>
+                                                        <mwc-list-item value="February">February</mwc-list-item>
+                                                        <mwc-list-item value="March">March</mwc-list-item>
+                                                        <mwc-list-item value="April">April</mwc-list-item>
+                                                        <mwc-list-item value="May">May</mwc-list-item>
+                                                        <mwc-list-item value="June">June</mwc-list-item>
+                                                        <mwc-list-item value="July">July</mwc-list-item>
+                                                        <mwc-list-item value="August">August</mwc-list-item>
+                                                        <mwc-list-item value="September">September</mwc-list-item>
+                                                        <mwc-list-item value="October">October</mwc-list-item>
+                                                        <mwc-list-item value="November">November</mwc-list-item>
+                                                        <mwc-list-item value="December">December</mwc-list-item>
+                                                    </mwc-select>
+                                                </div>
+                                            </div>
+                                            <!-- Save changes button-->
+                                            <div class="text-end"><button class="btn btn-primary" type="button">Save changes</button></div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="wizard-footer height-wizard">
-                            <div class="pull-right">
-                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' name='next' value='Next' />
-                                <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
-
-                            </div>
-
-                            <div class="pull-left">
-                                <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </form>
-                </div>
-            </div> <!-- wizard container -->
-        </div>
-        </div><!-- end row -->
-    </div> <!--  big container -->
-
-    <div class="footer">
-        <div class="container">
-             Made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>. Free download <a href="http://www.creative-tim.com/product/bootstrap-wizard">here.</a>
-        </div>
-    </div>
-
-</div>
-
-</body>
-
-	<!--   Core JS Files   -->
-	<script src="/taejin/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-	<script src="/taejin/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="/taejin/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-
-	<!--  Plugin for the Wizard -->
-	<script src="/taejin/js/gsdk-bootstrap-wizard.js"></script>
-
-	<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
-	<script src="/taejin/js/jquery.validate.min.js"></script>
-
-</html>
+                    </div>
+                </main>

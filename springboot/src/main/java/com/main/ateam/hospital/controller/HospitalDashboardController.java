@@ -11,6 +11,6 @@ public class HospitalDashboardController {
 	
 	@RequestMapping("/dashboard")
 	public String dashboard(String name){
-		return "dashboard/dashboard";
+		return "mypage/dashboard";
 	}
 }

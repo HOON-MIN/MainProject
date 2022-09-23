@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.main.ateam.doctor.dao.DoctorDao;
 import com.main.ateam.vo.DoctorVO;
+import com.main.ateam.vo.ReserveVO;
 @Service
 public class DoctorService {
 	@Autowired
@@ -37,5 +38,11 @@ public class DoctorService {
 	
 	public List<DoctorVO> hospitalDoctorCategory(String dmajor) {
 		return doctordao.hospitalDoctorCategory(dmajor);
+	}
+	public DoctorVO doctorMypage(int dnum) {
+		return doctordao.doctorMypage(dnum);
+	}
+	public List<ReserveVO> doctorReserveList(int dnum){
+		return doctordao.doctorReserveList(dnum);
 	}
 }
