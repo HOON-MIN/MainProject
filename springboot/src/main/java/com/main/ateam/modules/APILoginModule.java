@@ -79,7 +79,7 @@ public class APILoginModule {
 		if (api.equals("KAKAO")) {
 			response = rt.exchange(kakaoKey.get(4), HttpMethod.POST, profileRequest, String.class);
 			KakaoProfile kakaoProfile = objectMapper.readValue(response.getBody(), KakaoProfile.class);
-			mdto.setId("K+" + kakaoProfile.getId());
+			mdto.setId("K_" + kakaoProfile.getId());
 			mdto.setPwd(String.valueOf(tempPWD));
 			mdto.setName(kakaoProfile.getProperties().getNickname());
 			mdto.setEmail(kakaoProfile.getKakao_account().getEmail());
@@ -94,7 +94,7 @@ public class APILoginModule {
 			int age = getAge(ssn);
 
 			// id, pwd, name, ssn, age, tel, email, profimg, mdate, gender
-			mdto.setId("N+" + naverProfile.getResponse().getId());
+			mdto.setId("N_" + naverProfile.getResponse().getId());
 			mdto.setPwd(String.valueOf(tempPWD));
 			mdto.setSsn(ssn);
 			mdto.setAge(age);

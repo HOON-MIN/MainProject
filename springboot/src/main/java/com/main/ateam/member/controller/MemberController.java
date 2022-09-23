@@ -422,50 +422,52 @@ public class MemberController {
 		return "member/covidRecording";
 	}
 	/* 우분투서버로 코로나 음성데이터 및 JSON 전송 */
-	@RestController
-	@RequestMapping("/member")
-	public class MemberRestAPI{
-		@PostMapping(value = "/COVIDUpload", produces = "application/json;charset=utf-8")
-		public CovidRecordVO COVIDUpload(Model model, CovidRecordVO vo, HttpServletRequest request, HttpSession session) throws Exception {
-			
-			String userID = session.getAttribute("sessionID").toString();
-			
-			String filename = userID + ".wav";
-			String filepath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\audio").toString();
-			
-			String jsonname = userID + ".json";
-			String jsonpath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\json").toString();
-			MemberVO uservo = memberService.userdetail(userID);
+	@PostMapping(value = "/COVIDUpload", produces = "application/json;charset=utf-8")
+	public String COVIDUpload(Model model, CovidRecordVO vo, HttpServletRequest request, HttpSession session) throws Exception {
+		
+		String userID = session.getAttribute("sessionID").toString();
+		
+		String filename = userID + ".wav";
+		String filepath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\audio").toString();
+		
+		String jsonname = userID + ".json";
+		String jsonpath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\json").toString();
+		MemberVO uservo = memberService.userdetail(userID);
 
-			System.out.println("JAVAPATH 실행!=>"+filepath);
-			
-			//Base64객체를 복호화한 후 파일 저장
-			base64module.base64ToMultipart(vo.getBase64str(), filename, filepath);
-			
-			//.wav Upload
-			ubuntushellmodule.upload(uploadPath, filepath+"\\"+filename);			
+		System.out.println("JAVAPATH 실행!=>"+filepath);
+		
+		//Base64객체를 복호화한 후 파일 저장
+		base64module.base64ToMultipart(vo.getBase64str(), filename, filepath);
+		
+		//.wav Upload
+		ubuntushellmodule.upload(uploadPath, filepath+"\\"+filename);			
 
-			//{userID}.json Config
-			vo.setAge(uservo.getAge());
-			vo.setGender(uservo.getGender());
-			vo.setUserid(userID);
-			vo.setBase64str(filename);
-			gsonmodule.saveGsonFile(vo, jsonpath+"\\"+jsonname);
-			
-			//JsonFile Upload
-			ubuntushellmodule.upload(uploadPath, jsonpath+"\\"+jsonname);
-			
-			//check_covid19.py Model 실행
-			//System.out.println("python "+pythonPath+"check_covid19.py");
-			ubuntushellmodule.command("python "+pythonPath+"check_covid19.py "+userID);
-			
-			return vo; 
-		}
-	} 
+		//{userID}.json Config
+		vo.setAge(uservo.getAge());
+		vo.setGender(uservo.getGender());
+		vo.setUserid(userID);
+		vo.setBase64str(filename);
+		gsonmodule.saveGsonFile(vo, jsonpath+"\\"+jsonname);
+		
+		//JsonFile Upload
+		ubuntushellmodule.upload(uploadPath, jsonpath+"\\"+jsonname);
+		
+		//check_covid19.py Model 실행
+		//System.out.println("python "+pythonPath+"check_covid19.py");
+		ubuntushellmodule.command("python "+pythonPath+"check_covid19.py "+userID);
+		
+		return "member/covidResult"; 
+	}
 	
 	@RequestMapping("/COVIDResult")
 	public String covidresult() {
 		return "member/covidResult";
+	}
+	
+	@RequestMapping("/miruchart")
+	public String miruchart() {
+		return "mypage/miruchart1";
+		
 	}
 	
 }

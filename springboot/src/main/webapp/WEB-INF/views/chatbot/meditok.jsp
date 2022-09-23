@@ -82,7 +82,7 @@ $("#sendbtn").click(function(){
 	document.getElementById("chatbox").innerHTML += addtext;
 	
 	$.ajax({
-		url : 'http://192.168.0.83:9000/chatanswer?questext='+chattext+'&callback',
+		url : 'http://192.168.200.67:9000/chatanswer?questext='+chattext+'&callback',
 		type:'GET',
 		dataType:'jsonp',
 		jsonp: 'callback',

@@ -67,6 +67,9 @@
 	<tiles:insertAttribute name="body" />
 	<tiles:insertAttribute name="footer" />
 </body>
+    <script src="/js/dhlee/covidRecording.js?"></script>
+    <script src="/js/dhlee/recording.js?"></script>
+    <script src="/js/dhlee/kakao_addinfo.js?"></script>
 </html>
 
 
