@@ -56,10 +56,10 @@
 				data-bs-ride="carousel">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="https://ifh.cc/g/jWVBGN.jpg"
-							class="d-block w-100 testImg cwrapper" alt="...">
+						<img src="https://ifh.cc/g/xf0gMX.jpg"
+							class="d-block testImg w-100 cwrapper" alt="...">
 						<div class="ctext">
-							<h3>Hey Dr.</h3>
+							<img src="https://ifh.cc/g/ZlzOgY.png" alt="logo" style="width: 200px;">
 							<p>
 								비대면 의료 진단 포탈 서비스<br>당신의 건강을 지켜드립니다.
 							</p>
