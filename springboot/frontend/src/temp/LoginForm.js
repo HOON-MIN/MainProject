@@ -46,7 +46,7 @@ const LoginForm = (props) => {
             <label className="form-label">아이디</label>
             <input
               className="form-control"
-              value={e.target.value}
+              value={id}
               onChange={({ target: { value } }) => setId(value)}
               type="text"
             />

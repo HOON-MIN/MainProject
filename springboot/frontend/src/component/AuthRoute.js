@@ -1,7 +1,8 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 function AuthRoute({ authenticated, component: Component }) {
+  console.log("authRoute");
   return authenticated ? (
     Component
   ) : (

@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import LogoutButton from "./component/LogoutButton";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { SignIn } from "./auth";
 import { UserList } from "./temp/UserList";
@@ -19,6 +19,9 @@ import ReservationPage from "./page/ReservationPage";
 import AuthRoute from "./component/AuthRoute";
 
 function App() {
+  console.log("app");
+  const navigate = useNavigate();
+
   // 모달
   const [modalShow, setModalShow] = React.useState(false);
   const handleClose = () => setModalShow(false);
@@ -41,15 +44,15 @@ function App() {
     const handleClick = () => {
       try {
         login({ id, pwd });
-        alert("로그인 성공");
+        alert("로그인 되었습니다.");
         setModalShow(false);
+        navigate("/dlist");
       } catch (e) {
-        alert("Failed to login");
+        alert("로그인 정보가 다릅니다");
         setId("");
         setPwd("");
       }
     };
-
     return (
       <Modal
         size="lg"
@@ -97,10 +100,10 @@ function App() {
               </button>
             </div>
 
-            <div className="links">
-              <a href="memberId">아이디 찾기</a> <span>|</span>{" "}
-              <a href="memberPw">비밀번호 찾기</a> <span>|</span>{" "}
-              <a href="memberRegist">회원가입</a>
+            <div className="links mt-4">
+              <a href="http://localhost:83/company/joinChoice">
+                아직 회원가입 안되셨나요?
+              </a>
             </div>
           </div>
         </Modal.Body>
@@ -131,16 +134,17 @@ function App() {
       </Navbar>
       <Routes>
         <Route path="/" element={<Mainpage />} />
-        <Route path="/dlist" element={<DoctorListPage />} />
-        {/* <Route
-          path="/dlist"
-          element={
-            <AuthRoute
-              authenticated={authenticated}
-              component={<DoctorListPage />}
-            />
-          }
-        /> */}
+        {
+          <Route
+            path="/dlist"
+            element={
+              <AuthRoute
+                authenticated={authenticated}
+                component={<DoctorListPage />}
+              />
+            }
+          />
+        }
         <Route path="/detail/:dnum" element={<DoctorDetailPage />} />
         <Route path="reservation/:dnum" element={<ReservationPage />} />
       </Routes>
