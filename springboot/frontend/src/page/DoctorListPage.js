@@ -13,7 +13,7 @@ const DoctorListPage = () => {
   const [selectCategory, setSelectCategory] = useState([]);
   const [select, setSelect] = useState();
 
-  //전체 리스트 출력
+  //의사 리스트 출력
   useEffect(() => {
     const getDoctorList = () => {
       axios.get("/doctor/dlist").then((res) => {
@@ -24,6 +24,7 @@ const DoctorListPage = () => {
     getDoctorList();
   }, []);
 
+  //카테고리 리스트
   console.log("useeffect", select);
   useEffect(() => {
     const getCategory = () => {
@@ -35,18 +36,35 @@ const DoctorListPage = () => {
     getCategory();
   }, [select]);
 
+  //왠지 모르겠지만... 계속 4번 담겨서 다시 리팩토링..
+  //중복 다시 제거 후 내비에 출력
+  const test = [];
+  doctors &&
+    doctors.map((majors) => {
+      test.push(majors.dmajor);
+    });
+  //카테고리 중복값 제거
+  const uniqueTest = test.filter(
+    (category, index) => test.indexOf(category) === index
+  );
+
+  uniqueTest.map((name, index) => {
+    categories.push({
+      cid: index,
+      cname: name,
+    });
+  });
+
+  //정제한 카테고리 내비 출력
   const Categories = () => {
-    //왠지 모르겠지만... 계속 4번 담겨서 다시 리팩토링..
     const refCategory = [];
     categories.map((category) => {
       refCategory.push(category.cname);
     });
 
-    //중복 다시 제거..
     const resCategory = refCategory.filter(
       (number, index) => refCategory.indexOf(number) === index
     );
-
     return (
       <Nav
         fills
@@ -79,25 +97,6 @@ const DoctorListPage = () => {
       </Nav>
     );
   };
-
-  //카테고리 배열 만들기
-  const test = [];
-  doctors &&
-    doctors.map((majors) => {
-      test.push(majors.dmajor);
-    });
-
-  //카테고리 중복값 제거
-  const uniqueTest = test.filter(
-    (category, index) => test.indexOf(category) === index
-  );
-
-  uniqueTest.map((name, index) => {
-    categories.push({
-      cid: index,
-      cname: name,
-    });
-  });
 
   return (
     <div className="body container-fluid page">

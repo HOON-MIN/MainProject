@@ -1,8 +1,8 @@
 import React from "react";
-import { Route, useLocation, Navigate } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 
+//인증 라우터
 function AuthRoute({ authenticated, component: Component, render, ...rest }) {
-  const location = useLocation();
   return (
     <Route
       {...rest}

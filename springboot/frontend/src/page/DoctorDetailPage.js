@@ -9,6 +9,7 @@ const DoctorDetailPage = () => {
   const [doctor, setDoctor] = useState();
   const [loading, setLoading] = useState(false);
 
+  //의사별 디테일 axios
   useEffect(() => {
     const getDoctorDetail = () => {
       axios.get("/doctor/ddetail?dnum=" + dnum).then((res) => {

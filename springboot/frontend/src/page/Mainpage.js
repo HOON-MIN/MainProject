@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import "../css/mainpage.css";
 
 import { Link } from "react-router-dom";
-import mockup from "../img/main2.png";
-import mainImg from "../img/main0.png";
-import mainImg2 from "../img/main3.png";
 import handImg from "../img/hand.png";
 
 const Mainpage = () => {
