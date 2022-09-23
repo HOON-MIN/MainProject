@@ -216,7 +216,7 @@ body {
 					for(var m of msg.url){
 						
 						str += "<p style='color:green; display:inline;'>#</p>" +msg.hname[idx] + "<br>";
-						str += "<button onclick=location='"+m+"' style='margin-bottom:10px;'>예약하러가기</button><br>";
+						str += "<button onclick=window.open('"+m+"') style='margin-bottom:10px;'>예약하러가기</button><br>";
 						idx++;
 					}
 					
