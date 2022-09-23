@@ -23,9 +23,13 @@ select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospi
 </select>
 
 <!-- doctor 등록 -->
-<insert parameterType="doctorVO" id="addDoctor">insert into doctor values(doctor_seq.nextVal,#{cnum},#{dname},#{did},#{dpwd},#{dmajor}) </insert>
+<insert parameterType="doctorVO" id="addDoctor">
+insert into doctor values(doctor_seq.nextVal,#{cnum},#{dname},#{did},#{dpwd},#{dmajor})
+ </insert>
  <!-- id 중복체크 -->
- <select resultType="int" parameterType="map" id="drIdCheck">select count(*) from doctor where did = #{did} </select>
+ <select resultType="int" parameterType="map" id="drIdCheck">
+ select count(*) from doctor where did = #{did} 
+ </select>
 
  
  
@@ -65,42 +69,16 @@ select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospi
 </collection>
 </resultMap>
 
-<<<<<<< HEAD
-=======
-<select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
-select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.cnum = h.cnum order by 1 asc
-</select>
 
 
-<!-- doctor 등록 -->
- <insert parameterType="doctorVO" id="addDoctor">insert into doctor values(doctor_seq.nextVal,#{cnum},#{dname},#{did},#{dpwd},#{dmajor}) </insert>
- <!-- id 중복체크 -->
- <select resultType="int" parameterType="map" id="drIdCheck">select count(*) from doctor where did = #{did} </select>
+
 
  
  <!-- resultMap -->
  
- <!--병원 mypage - 의사 목록 -->
-<resultMap type="doctorVO" id="DoctorDetailResult">
-<id property="cnum" column ="cnum"/>
-<result property="dnum" column="dnum"/>
-<result property="dname" column="dname"/>
-<result property="dmajor" column="dmajor"/>
 
-<collection property="hospitalVO" javaType="java.util.List"	ofType="hvo">
- 	<id property="cnum" column="cnum" javaType="int"/>
-	<result property="hname" column="hname"/>
-	<result property="otime" column="otime"/>
-	<result property="ctime" column="ctime"/>
-	<result property="hloc" column="hloc"/>
-</collection>
-</resultMap>
 
-<select id="hospitalDoctorDetail" resultMap="DoctorDetailResult">
-	select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d , hospital h where d.cnum = h.cnum and dnum = #{dnum}
-	</select>
 
->>>>>>> main
 <!-- 리액트 카테고리별 리스트 출력 -->
 <resultMap type="doctorVO" id="DoctorCategoryResult">
 <id property="cnum" column ="cnum"/>

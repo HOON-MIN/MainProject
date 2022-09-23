@@ -150,7 +150,7 @@ public class MemberController {
 	@GetMapping(value = "/test")
 	public String test2() {
 		
-		return "member/test/index";
+		return "mypage/ad_chart1";
 	}
 
 	// 회원 마이페이지

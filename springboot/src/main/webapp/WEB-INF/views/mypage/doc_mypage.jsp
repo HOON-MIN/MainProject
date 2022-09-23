@@ -18,10 +18,7 @@
     <script src='/taejin/fullcalendar/lib/main.js'></script>
    <script>
    var today = new Date();
-   var year = today.getFullYear();
-   var month = ('0' + (today.getMonth() + 1)).slice(-2);
-   var day = ('0' + today.getDate()).slice(-2);
-   var dateString = year + '-' + month  + '-' + day;
+
    var res;
    var ref;
    var name;
@@ -30,15 +27,16 @@
    var arrt = [];
    var arrc = [];
    var dict = {};
-   var j = 0;
    var calendar;
-   var step;
    
    document.addEventListener('DOMContentLoaded', function() {
 	    var calendarEl = document.getElementById('calendar');
 	    	$.ajax({
 	    		url:'doctorReserveList',
 	    		success:function(data){
+	    			// 예약이 있을경우
+	    			if(data.length != 0){
+	    				console.log(data)
 	    			console.log(data[0].reserveVO[0].rdate)
 	    			console.log(data[0].reserveVO[0].memberVO.name)
 	    			var datas = data[0].reserveVO;
@@ -48,10 +46,10 @@
 	    				console.log('f = ' +f)
 	    				console.log('today = ' +today)
 	    				console.log(typeof(today))
-	    				
+	    				// 월이 10 이하일경우 -> 9 => 09
 	    				if(f < today){
 	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+':00',
-	    	    				'title' : ' '+i.memberVO.num+' - '+ i.memberVO.name, 'color' : "#FF0000", 'textColor' : "#FF0001"
+	    	    				'title' : ' '+i.memberVO.num+' - '+ i.memberVO.name, 'color' : "#FF0000"
 	    	    			});
 	    				}else{
 	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+':00',
@@ -70,7 +68,7 @@
 		        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
 		      },
 		      themeSystem: 'bootstrap5',
-		      initialDate: dateString,
+		      initialDate: dateFormat(today),
 		      navLinks: true, // can click day/week names to navigate views
 		      businessHours: true, // display business hours
 		      editable: true,
@@ -94,19 +92,42 @@
 		      });
 		    // calendar - 끝
 		    calendar.render();
-		    		}// success - 끝
-		    });// ajax - 끝
 		    
-		    	
+	    			}else{
+	    				
+	    		// 예약이 없을경우
+			     calendar = new FullCalendar.Calendar(calendarEl, {
+			      headerToolbar: {
+			        left: 'prev,next today',
+			        center: 'title',
+			        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+			      },
+			      themeSystem: 'bootstrap5',
+			      initialDate: dateFormat(today),
+			      navLinks: true, // can click day/week names to navigate views
+			      businessHours: true, // display business hours
+			      editable: true,
+			      selectable: true,
+			      eventClick: function(info) {
+			      },
+			      dateClick: function(info){
+			    	  res = info.dateStr
+			    	  console.log('날짜 클릭! = '+res)
+			      }
+			     });
+			    // calendar - 끝
+			    calendar.render();
+	    	    	}
+		    	}// success - 끝
+		    });// ajax - 끝
 	   });
-   
-   function dateFormat(res){		//작성일 기준 2022-03-25
+   //날짜 변환 function
+   function dateFormat(res){		
 		var date = new Date(res);
    console.log('date => ' +date)
 		var yyyy = date.getFullYear();
 		var mm = ('0' + (date.getMonth() + 1)).slice(-2);
 		var dd = ('0' + date.getDate()).slice(-2);
-		
 		return yyyy+'-'+mm+'-'+dd;
 	}
 </script>
