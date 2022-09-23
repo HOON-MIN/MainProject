@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import LogoutButton from "./component/LogoutButton";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { SignIn } from "./auth";
-import { UserList } from "./temp/UserList";
 import "./App.css";
 import Modal from "react-bootstrap/Modal";
 import logo from "./img/logo.png";
@@ -30,7 +28,7 @@ function App() {
 
   // 로그인
   const [user, setUser] = useState();
-  const authenticated = user != undefined;
+  const authenticated = user !== undefined;
   const login = ({ id, pwd }) => setUser(SignIn({ id, pwd }));
   const logout = () => {
     setUser(null);
@@ -71,6 +69,7 @@ function App() {
                 src={logo}
                 height="80"
                 className="d-inline-block align-top"
+                alt="로고"
               />
             </div>
             <div className="mb-3">
