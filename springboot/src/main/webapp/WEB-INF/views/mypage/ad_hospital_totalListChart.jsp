@@ -44,6 +44,7 @@
 				console.log('Error => ' + err);
 			}
 		});
+		
 	});
 
 	//c3js의 API 를 보고 맞는 형태를 제작
