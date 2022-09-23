@@ -1,7 +1,102 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style>
+.testImg {
+	background-color: white;
+	height: 500px;
+	border-radius: 16px;
+}
+
+.testImg2 {
+	background-color: grey;
+	height: 500px;
+	border-radius: 16px;
+}
+
+.testImg3 {
+	background-color: white;
+	border-radius: 16px;
+}
+
+.testImg4 {
+	padding: 0 15px;
+	margin: 0 15px;
+	height: 500px;
+	background-color: white;
+	border-radius: 16px;
+	margin: 0 15px;
+}
+
+.cwrapper {
+	position: relative;
+}
+
+.ctext {
+	position: absolute;
+	top: 50%;
+	left: 30%;
+	color: white;
+	transform: translate(-90%, -50%);
+}
+
+.ctext2 {
+	position: absolute;
+	top: 50%;
+	left: 20%;
+	color: white;
+	transform: translate(-90%, -50%);
+}
+</style>
+<div class="container-fluid ">
+	<div class="row mb-5">
+		<div class="col-md-8">
+			<div id="carouselExampleSlidesOnly" class="carousel-fade slide"
+				data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="https://ifh.cc/g/jWVBGN.jpg"
+							class="d-block w-100 testImg cwrapper" alt="...">
+						<div class="ctext">
+							<h3>Hey Dr.</h3>
+							<p>
+								비대면 의료 진단 포탈 서비스<br>당신의 건강을 지켜드립니다.
+							</p>
+						</div>
+					</div>
+
+					<div class="carousel-item">
+						<div class="d-block w-100 testImg2" alt="..."></div>
+					</div>
+					<div class="carousel-item">
+						<div class="d-block w-100 testImg" alt="..."></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-6 col-md-4 row align-items-stretch">
+			<div class="testImg3"></div>
+		</div>
+	</div>
+	<article class="row justify-content-center">
+		<div class="col-md-3">
+			<h4 class="text-white" style="height: 500px">타이틀</h4>
+		</div>
+		<div class="col-md-8">
+			<h4 class="text-white">Content</h4>
+		</div>
+	</article>
+
+
+	<div class="row justify-content-center">
+		<div class="col-md-5 testImg4"></div>
+		<div class="col-md-6 testImg4"></div>
+	</div>
+</div>
+</div>
+
+<%-- <style>
 /* 전체 틀 */
 body {
 	margin: 0;
@@ -130,4 +225,4 @@ body {
     
         </div>
       </div>
-<%-- 본문 끝 --%>
+본문 끝 --%>
