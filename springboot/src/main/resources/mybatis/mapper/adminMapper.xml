@@ -37,7 +37,7 @@
 		<result property="crn" column="crn" />
 		<result property="cpwd" column="cpwd" />
 		<result property="ccate" column="ccate" />
-		<association property="hvo" column="cnum" javaType="hvo">
+		<association property="hvo"  javaType="hvo">
 			<id property="cnum" column="cnum" />
 			<result property="r_num" column="r_num" javaType="int" />
 			<result property="hname" column="hname" />
@@ -56,7 +56,7 @@
 		<result property="r_num" column="r_num" />
 		<result property="hgrade" column="hgrade" />
 		
-		<collection property="hvo" javaType="java.util.List" ofType="hvo">
+		<association property="hvo" javaType="hvo">
 			<id property="cnum" column="cnum" />
 			<result property="hcate" column="hcate" />
 			
@@ -69,7 +69,7 @@
 			<result property="r_num" column="r_num" />
 		</collection>
 		</collection>
-		</collection>
+		</association>
 	</resultMap>
 		<!--이번 달 예약횟수 select d.dmajor ,count(*) r_num
 		from reserve r, doctor d ,hospital h,company c 

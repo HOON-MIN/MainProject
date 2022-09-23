@@ -66,18 +66,12 @@ body {
 					<div class="form-group">
 						<label for="doc">의사 선택 </label><br> <input type="text"
 							class="form-control" id="dname" name="dname"
-							value="${dvo.dname }"><br> <input type="hidden"
+							value="${dvo.dname}"><br> <input type="hidden"
 							id="dnum" name="dnum" value="${dvo.dnum }" readonly="readonly">
 						<!--         <button class="btn btn-info" type="submit" onclick="location.herf='Doc_list_Test1.jsp';" >선택</button> -->
 						<!--         <button class="btn btn-success" type="submit" onclick="location.herf='Doc_list_Test1.jsp';" style="margin-right: 15px;">재선택</button> -->
 					</div>
-					<div class="form-group">
-						<label for="symptom"><span style="color: red;">*</span></label> 
-							대면 <input type="radio"  id="contectCheck1"
-							name="contectCheck" value="1">
-							비대면 <input type="radio"  id="contectCheck2"
-							name="contectCheck" value="2" checked="checked">
-					</div>
+					
 					<div class="form-group">
 						<label for="symptom"><span style="color: red;">*</span>증상
 							</label> <input type="text" class="form-control" id="symptom"
@@ -92,9 +86,9 @@ body {
 					</div>
 
 					<div class="form-group">
-						<label><span style="color: red;">*</span>예약 시간 :</label> <input
-							type="text" name="rdate" id="rdate" value="${resday}" readonly="readonly">  <select
-							name="rtime" id="rtime">
+						<label><span style="color: red;">*</span>예약 시간 :</label> 
+						<input	type="text" name="rdate" id="rdate" value="${rd}" readonly="readonly">  
+						<select	name="rtime" id="rtime" required="required">
 							<option value="">예약 시간을 선택해주세요</option>
 							<option value="11:00">11:00</option>
 							<option value="12:00">12:00</option>
@@ -119,16 +113,37 @@ body {
 		</div>
 	</div>
 <script>
-var rtime;
-var rdate;
-
+var doc_rtime =[];
+var rdate = $('#rdate').val()
+var j = 0;
+		
 	$(function(){
-		$('#resBtn').click(function(){
-			rdate = $('#rdate').val()
-			rtime = $('#rtime').val()
-			console.log(rdate)
-			console.log(rtime)
+		
+		$.ajax({
+			url:'checkDate?dnum='+${dvo.dnum}+'&rdate='+rdate,
+			type:'GET',
+			success:function(data){
+				
+					//console.log('data = ' ,data)
+					//console.log('data = ' ,data[2].rtime)
+					for(var i=0;i< data.length; i++){
+					console.log('data = ' ,data[i].rtime)
+					doc_rtime.push(data[i].rtime)
+				} 
+				for(var step=0;step <doc_rtime.length;step++){
+					$("select option[value*='"+doc_rtime[step]+"']").prop('disabled',true);
+						console.log('걸러짐')
+					}
+				}
 			
+		})
+		$('#resBtn').click(function(){
+			//rdate = $('#rdate').val()
+			//rtime = $('#rtime').val()
+			console.log('dnum = ' ,${dvo.dnum});
+			console.log('rdate = ' ,rdate);
+			console.log('dnum = ' ,typeof(${dvo.dnum}));
+			console.log('rdate = ' ,typeof(rdate));
 			$('#reserveForm').attr('action','addReserve').submit();
 		})
 	})

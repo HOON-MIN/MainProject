@@ -24,7 +24,7 @@ public class AdminController {
 	private AdminService adminService;
 	@Autowired
 	private HospitalService hospitalService;
-	 
+
 
 	@RequestMapping(value = "/adminMypage")
 	public String adminMypage(Model m) {
@@ -69,7 +69,7 @@ public class AdminController {
 //	업체 등록 대기 중인 업체 리스트 : 가입 승인 기능 
 	@RequestMapping(value = "/waitingList")
 	public String waitingList(Model m) {
-		List<CompanyVO> list = adminService.waitingList();
+		CompanyVO list = adminService.waitingList();
 		m.addAttribute("list", list);
 		return "mypage/ad_waitingList";
 	}

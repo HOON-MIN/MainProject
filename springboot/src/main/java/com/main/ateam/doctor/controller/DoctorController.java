@@ -75,7 +75,7 @@ public class DoctorController {
 	}
 	
 	
-	// 로그 아웃
+		// 로그 아웃
 		@GetMapping(value = "/doctorLogout")
 		public String memberLogout(HttpSession session) {
 			session.removeAttribute("sessionDID");
@@ -83,16 +83,21 @@ public class DoctorController {
 			System.out.println("로그아웃성공");
 			return "redirect:/";
 		}
-		// 회원 마이페이지
+		// 의사 마이페이지
 		@GetMapping(value = "/doctorMypage")
 		public String doctorMypage(Model m, HttpSession session) {
+			
 			int dnum = 0;
 			dnum = (int) session.getAttribute("sessionDNUM");
 			System.out.println("sessionDNUM => " +dnum);
+			
 			DoctorVO vo = doctorservice.doctorMypage(dnum);
+			
+			m.addAttribute("sessiondnum", dnum);
 			m.addAttribute("doc", vo);
 			return "mypage/doc_mypage";
 		}
+		
 		@ResponseBody
 		@GetMapping(value = "/doctorReserveList")
 		public List<ReserveVO> doctorReserveList(Model m, HttpSession session) {
@@ -103,10 +108,6 @@ public class DoctorController {
 			m.addAttribute("list", list);
 			return list;
 		}
-		
-		
-		
-		
 		
 		//--------------------------------------------------------------------------
 		
@@ -160,5 +161,4 @@ public class DoctorController {
 			List<DoctorVO> dcategory = doctorservice.hospitalDoctorCategory(dmajor);
 			return dcategory;
 		}
-		
 }
