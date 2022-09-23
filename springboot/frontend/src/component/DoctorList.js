@@ -3,7 +3,7 @@ import drImg from "../img/doctor.png";
 
 const DoctorList = (props) => {
   return (
-    // if(props)
+    // 리스트 카드 컴포넌트 
     <div className="d-flex justify-content-center mt-4">
       <div className="card">
         <div className="row g-0">

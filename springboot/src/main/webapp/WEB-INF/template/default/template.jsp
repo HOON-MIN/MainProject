@@ -60,10 +60,13 @@
 <!-- Map -->
 <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx8fc6162789f747579d26c53413bd30f7"></script>
 </head>
+<style>
+	body{
+	background-color: #3478f5;
+	}
+</style>
 <body>
 	<tiles:insertAttribute name="header" />
-	<tiles:insertAttribute name="carousel" />
-	<tiles:insertAttribute name="menu" />
 	<tiles:insertAttribute name="body" />
 	<tiles:insertAttribute name="footer" />
 </body>

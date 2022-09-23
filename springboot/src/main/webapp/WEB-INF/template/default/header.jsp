@@ -5,11 +5,20 @@
 
 
 <style>
+.navbar{
+	margin-top : 0px !important;
+}
+
+nav {
+	background-color: #3478f5; !important;
+}
+
 .navitem {
 	border: bottom solid 1px #232323;
 }
 
-.navitem li {
+.nav-item li {
+	background-color: #232323;
 	margin-right: 16px;
 }
 
@@ -17,10 +26,10 @@
 	font-weight: bold;
 }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="${mycontext}/main"> <img
-			src="https://ifh.cc/g/G0bQfL.png" alt="" width="100"
+			src="https://ifh.cc/g/ywPMgL.png" alt="" width="100"
 			class="d-inline-block align-text-top" />
 		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,47 +39,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item dropdown ms-5 me-3"><a
-					class="nav-link dropdown-toggle" href="#"
-					id="navbarScrollingDropdown" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false"> 병원 리스트 </a>
-					<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><hr class="dropdown-divider" /></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-					</ul></li>
-				<li class="nav-item dropdown me-3"><a
-					class="nav-link dropdown-toggle" href="#"
-					id="navbarScrollingDropdown" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false"> 약품 </a>
-					<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><hr class="dropdown-divider" /></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-					</ul></li>
-				<li class="nav-item dropdown me-3"><a
-					class="nav-link dropdown-toggle" href="#"
-					id="navbarScrollingDropdown" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false"> 후기 </a>
-					<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-							<li><a class="dropdown-item" href="${mycontext }/reviewboard/reviewboardlist">후기 게시판</a></li>
-						<c:if test="${sessionID != null}">
-							<li><a class="dropdown-item" href="${mycontext }/reviewboard/reviewupForm">후기 게시판 작성</a></li>
-						</c:if>
-					</ul></li>
-
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#"
-					id="navbarScrollingDropdown" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false"> 의료 지식인 </a>
-					<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><hr class="dropdown-divider" /></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-					</ul></li>
+				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">Link</a></li>
+				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">Link</a></li>
+				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">Link</a></li>
+				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">Link</a></li>
 			</ul>
 			<span class="navbar-text">
 				<div class="navbar-nav">
