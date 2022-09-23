@@ -16,7 +16,7 @@
 		<div class="col-md-6 col-md-offset-3"></div>
 	</div>
 
-<!-- 병원명* hname /사업자번호* crn /영업시간* otime ctime /병원등급* hgrade /진료과목* hcate/ 홈페이지* hurl/ email* hemail /위치* hloc -->	
+<!-- 병원명* hname /사업자번호* crn /영업시간* otime ctime /병원등급* hgrade /진료과목* hcate/ 홈페이지* hurl/위치* hloc -->	
 <form action="" method="post" id="hospitalJoin" >
 		<input type="hidden" id="hloc" name="hloc" value=""> 
 		<input type="hidden" id="ccate" name="ccate" value="${ccate}"> 
@@ -85,9 +85,8 @@
 				<input type="text" id="htel" name="htel" class="form-control" /> 
 			</div>
 		<div class="col-md-5">
-			<label class="form-label">이메일</label> 
-				<input type="text" class="form-control" id="hemail" name="hemail" placeholder="name@example.com"
-				required="required">
+			<label class="form-label">url</label> 
+				<input type="text" class="form-control" id="hurl" name="hurl" placeholder="http://">
 		</div>
 
 		 <label class="form-label" style="text-align: justify;" >병원주소</label>
@@ -98,7 +97,7 @@
 			<input type="button" class="btn btn-outline-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 		</div>
 		<div class="col-md-8">
-			<input type="text" class="form-control" id="hloc1" name="hloc1" placeholder="주소" required="required"><br>
+			<input type="text" class="form-control" id="hloc" name="hloc" placeholder="주소" required="required"><br>
 		</div>
 		<div class="col-md-4">
 			<input type="text" class="form-control" id="hloc2" name="hloc2" placeholder="상세주소">
@@ -125,7 +124,7 @@
 			$('#hjBtn').click(function() {
 				if($('#hname').val().length==0 || $('#otime').val().length==0 || $('#ctime').val().length==0 || 
 						   $('#hgrade').val().length==0 || $('#hcate').val().length==0 || $('#hurl').val().length==0 ||
-						   $('#hemail').val().length==0 || $('#hloc1').val().length==0 ){
+						   $('#hloc').val().length==0 ){
 							alert("입력되지 않은 정보가 존재합니다.");
 							return false;
 						}

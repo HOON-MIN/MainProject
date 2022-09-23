@@ -10,7 +10,7 @@
 		select count(*) from company where crn = #{crnv}
 	</select>
 	<!-- 업체 등록 -->
-	<insert id="compInsert">
+	<insert id="compInsert" parameterType="cvo">
 		insert into company
 		values(company_seq.nextVal,#{crn},#{cpwd},#{ccate},sysdate,0,#{hgrade})
 	</insert>
