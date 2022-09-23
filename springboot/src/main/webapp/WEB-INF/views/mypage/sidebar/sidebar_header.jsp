@@ -43,9 +43,9 @@
 			
 			<c:when test="${sessionDNUM != null}">
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/member/memberMypage"></a>
+				href="#">Scheduler</a>
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="${pageContext.request.contextPath }/member/memberMypage_list">Reserve List</a> 
+				href="#">Reserve List</a> 
 			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="#!">??</a> 
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"

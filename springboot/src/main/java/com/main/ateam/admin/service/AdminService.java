@@ -24,7 +24,7 @@ public class AdminService {
 	public List<HospitalVO> ad_hospitalList(){
 		return adminDao.ad_hospitalList();
 	}
-	public List<CompanyVO> waitingList(){
+	public CompanyVO waitingList(){
 		return adminDao.waitingList();
 	}
 	public void agree(int num) {

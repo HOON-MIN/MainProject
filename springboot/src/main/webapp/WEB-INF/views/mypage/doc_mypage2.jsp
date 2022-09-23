@@ -2,24 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
-
-
-<!-- Sidebar-->
 	<div class="container py-4"
 		style="width: 80%; margin: auto; padding: 10px 5px; height: 100%;">
-			<h1 class="display-5 fw-bold">${doc.dname }님</h1>
+			<h1 class="display-5 fw-bold">예약 스케줄 잡기</h1>
 			    <div id='calendar'></div>
 			    </div>
 
-	<jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
 <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
 <link href='/taejin/fullcalendar/lib/main.css' rel='stylesheet' />
     <script src='/taejin/fullcalendar/lib/main.js'></script>
    <script>
    var today = new Date();
-
+   var dnum = ${dnum}
    var res;
    var ref;
    var name;
@@ -31,9 +26,11 @@
    var calendar;
    
    document.addEventListener('DOMContentLoaded', function() {
+	   console.log('dnum = ' ,dnum)
 	    var calendarEl = document.getElementById('calendar');
 	    	$.ajax({
-	    		url:'doctorReserveList',
+	    		url:'doctorReserveList?dnum=' + dnum,
+	    		type:'GET',
 	    		success:function(data){
 	    			// 예약이 있을경우
 	    			if(data.length != 0){
@@ -48,11 +45,7 @@
 	    				console.log('today = ' +today)
 	    				console.log(typeof(today))
 	    				// 월이 10 이하일경우 -> 9 => 09
-	    				if(f < today){
-	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+':00',
-	    	    				'title' : ' '+i.memberVO.num+' - '+ i.memberVO.name, 'color' : "#FF0000"
-	    	    			});
-	    				}else{
+	    				if(f >= today){
 	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+':00',
 	    	    				'title' : ' '+i.memberVO.num+'. '+ i.memberVO.name,
 	    	    			});
@@ -75,6 +68,7 @@
 		      eventClick: function(info) {
 				
 				console.log('클릭이벤트! ' + info.event.title)
+				
 				/*$.ajax({
 					type:'GET',
 					url:,
@@ -85,6 +79,8 @@
 		      dateClick: function(info){
 		    	  res = info.dateStr
 		    	  console.log('날짜 클릭! = '+res)
+		    	  location.href='${pageContext.request.contextPath}/reserve/reserveForm?dnum='+dnum+'&rdate='+res
+
 		      },
 		      events:arr
 		    	  
@@ -112,6 +108,7 @@
 			      dateClick: function(info){
 			    	  res = info.dateStr
 			    	  console.log('날짜 클릭! = '+res)
+			    	  location.href='${pageContext.request.contextPath}/reserve/reserveForm?dnum='+dnum+'&rdate='+res
 			      }
 			     });
 			    // calendar - 끝
@@ -119,7 +116,6 @@
 	    	    	}
 		    	}// success - 끝
 		    });// ajax - 끝
-	   
 	   });
    //날짜 변환 function
    function dateFormat(res){		

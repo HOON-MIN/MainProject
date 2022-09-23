@@ -103,12 +103,13 @@ $.ajax({
 	url:'${pageContext.request.contextPath}/admin/adminBarchart',
 	type:'get',
 	success:function(data){
-		console.log(data)
+		console.log('data ' ,data)
 		//console.log(data[0].hvo[0].hcate)
 		for(var i of data){
 			console.log(i.r_num)
-			console.log(i.hvo[0].hcate)
-			labels.push(i.hvo[0].hcate)
+			console.log(i.hvo.hcate)
+			//console.log(i.hvo[0].hcate)
+			labels.push(i.hvo.hcate)
 			datas.push(i.r_num)
 		}
 		
@@ -130,6 +131,10 @@ var myBarChart = new Chart(ctx, {
   },
   options: {
     maintainAspectRatio: false,
+    onClick: function(point, event){
+        console.log('event : ', event);
+        console.log('point : ', point);
+      },
     layout: {
       padding: {
         left: 10,

@@ -3,11 +3,23 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.main.ateam.reserve.dao.ReserveDao">
+<resultMap type="doctorVO" id="choiceDoctorInfo">
+	<id property="dnum" column="dnum"/>
+	<result property="dname" column="dname"/>
+<collection property="reserveVO" javaType="java.util.List" ofType="reserveVO">
+	<id property="reservNum" column="reservNum"/>
+	<result property="rdate" column="rdate"/>
+	<result property="rtime" column="rtime"/>
+</collection>
+</resultMap>
 	<insert id="addReserve" parameterType="reserveVO">
 		insert into reserve values(reserve_seq.nextVal,#{num},#{dnum},#{symptom},#{symptomComm},#{contectCheck},#{rdate},#{rtime})
 	</insert>
-	<select id="choiceDoctor" resultType="doctorVO">
-		select * from doctor where dnum=#{dnum}
+	<select id="choiceDoctor"  parameterType="int" resultType="doctorVO">
+		select dnum,dname from doctor where dnum=#{dnum}
+		
 	</select>
-
+	<select id="checkDate" resultType="reserveVO">
+ 	select rtime from reserve r where dnum=#{dnum} and rdate=#{rdate}
+	</select>
 </mapper>
