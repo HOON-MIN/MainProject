@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<section class="h-100 bg-dark">
+<section class="h-100">
 	<div class="container py-5 h-100">
 		<div
 			class="row d-flex justify-content-center align-items-center h-100">
