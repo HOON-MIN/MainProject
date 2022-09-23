@@ -1,10 +1,9 @@
 package com.main.ateam.reserve.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -12,12 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.main.ateam.doctor.dao.DoctorDao;
 import com.main.ateam.hospital.dao.HospitalDao;
@@ -67,24 +70,12 @@ public class ReserveController {
 	public String addReserve(ReserveVO vo ,HttpSession session) {
 		int num = (int) session.getAttribute("sessionNUM");
 		vo.setNum(num);
-		String d ="";
 		//vo.setRdate(rdate);
 		
-	
-		System.out.println("reserve - 변환전(시간)" + vo.getRdate());
-		
-		SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			Date formatDate = dtFormat.parse(vo.getRdate());
-			d = dtFormat.format(formatDate);
-			System.out.println(d);
-			System.out.println(d.getClass().getName());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// TODO Auto-generated catch block
-		vo.setRdate(d);
+		System.out.println("reserve - insert Test(회원번호)" + vo.getNum());
+		System.out.println("reserve - insert Test(의사번호)" + vo.getDnum());
+		System.out.println("reserve - insert Test(증상)" + vo.getSymptom());
+		System.out.println("reserve - insert Test(증상)" + vo.getSymptomComm());
 		System.out.println("reserve - insert Test(시간)" + vo.getRdate());
 		System.out.println("reserve - insert Test(시간)" + vo.getRtime());
 		System.out.println("reserve - insert Test(시간)" + vo.getRdate().getClass().getName());
@@ -153,11 +144,39 @@ public class ReserveController {
 			System.out.println("int num = > " + num);
 			MemberVO mvo = memberDao.memberMyPage(num);
 			DoctorVO dvo = reservDao.choiceDoctor(dnum);
-			model.addAttribute("resday",resday);
+			model.addAttribute("resday",resday);	
 			model.addAttribute("mvo",mvo);
 			model.addAttribute("dvo",dvo);
 			
 			return "reserve/reservation";
+		}
+		
+		@CrossOrigin
+		@ResponseBody
+		@PostMapping(value = "/addReserveReact")
+		public void addReserveReact(@RequestBody Map<String,String> map , ReserveVO vo ) {
+	        int num = Integer.parseInt((String)map.get("num"));
+	        int dnum = Integer.parseInt((String)map.get("dnum"));
+	        String symptom = (String)map.get("symptom");
+	        String symptomComm =  (String)map.get("symptomComm");
+	        String rdate = (String)map.get("rdate");
+	        String rtime = (String)map.get("rtime");
+	        
+	        vo.setNum(num);
+	        vo.setDnum(dnum);
+	        vo.setSymptom(symptom);
+	        vo.setSymptomComm(symptomComm);
+	        vo.setRdate(rdate);
+	        vo.setRtime(rtime);
+	        
+    		System.out.println("reserve - insert Test(회원번호)" + vo.getNum());
+    		System.out.println("reserve - insert Test(의사번호)" + vo.getDnum());
+    		System.out.println("reserve - insert Test(증상)" + vo.getSymptom());
+    		System.out.println("reserve - insert Test(증상)" + vo.getSymptomComm());
+    		System.out.println("reserve - insert Test(시간)" + vo.getRdate());
+    		System.out.println("reserve - insert Test(시간)" + vo.getRtime());    
+			reservDao.addReserve(vo);
+			
 		}
 	
 	

@@ -9,7 +9,7 @@ function LogoutButton({ logout }) {
   };
 
   return (
-    <button className="btn text-white hnav" onClick={handleClick}>
+    <button className="btn text-white border" onClick={handleClick}>
       Logout
     </button>
   );
