@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import DoctorDetailImg from "../img/doctor_detail.png";
+//의사 디테일 컴포넌트
 const DoctorDetail = (props) => {
-  console.log(props.doctor);
-
   return (
     <div>
       <div className="text-center detail-img">

@@ -19,7 +19,7 @@
 
 <!-- hoonmin -->
 <select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
-select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.hnum = h.hnum order by 1 asc
+select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d , hospital h where d.cnum = h.cnum order by 1 asc
 </select>
 
 <!-- doctor 등록 -->

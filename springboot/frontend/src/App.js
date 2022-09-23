@@ -112,7 +112,9 @@ function App() {
 
   return (
     <div>
+      {/* 모달창 함수 */}
       <LoginForm show={modalShow} onHide={() => setModalShow(false)} />
+      {/* 헤더  */}
       <Navbar variant="dark" className="header">
         <Container>
           <Navbar.Brand as={Link} to="/">
@@ -120,6 +122,7 @@ function App() {
           </Navbar.Brand>
           <Navbar variant="dark">
             <Nav className="me-auto">
+              {/* 인증값 여부로 로그인 로그아웃 */}
               {authenticated ? (
                 <LogoutButton logout={logout} />
               ) : (
@@ -134,6 +137,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Mainpage />} />
         {
+          // 로그인 여부로 페이지 제한
           <Route
             path="/dlist"
             element={

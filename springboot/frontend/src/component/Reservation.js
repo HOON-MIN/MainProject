@@ -27,14 +27,10 @@ const Reservation = () => {
   let hour = rTime.getHours();
   let minute = ("0" + rTime.getMinutes()).slice(-2);
   let monthRes = ("0" + month).slice(-2);
+  let dateToday = year + "-" + monthRes + "-" + date;
+  let timeNow = hour + ":" + minute;
 
-  const [showPopup, setShowPopup] = useState(false);
-
-  console.log(monthRes);
-  const dateToday = year + "-" + monthRes + "-" + date;
-  const timeNow = hour + ":" + minute;
-  /////
-  console.log(dateToday, typeof dateToday);
+  //인풋 내용 저장
   const [input, setInput] = useState({
     num: localStorage.getItem("num"),
     dnum: location.state.data,
@@ -44,6 +40,8 @@ const Reservation = () => {
     rdate: dateToday,
     rtime: timeNow,
   });
+
+  //인풋 내용 담기
   const handleClick = (e) => {
     setInput({
       ...input,
@@ -51,12 +49,7 @@ const Reservation = () => {
     });
   };
 
-  const togglePopup = (e) => {
-    setShowPopup(e.target.value);
-  };
-
   const reserveClick = (e) => {
-    togglePopup(e);
     e.preventDefault();
     if (input.symptom === "") {
       return alert("증상을 선택해주세요.");
@@ -70,6 +63,7 @@ const Reservation = () => {
     }
   };
 
+  //모달창
   function SuccessReserve() {
     return (
       <Modal
@@ -112,22 +106,6 @@ const Reservation = () => {
               <strong>증상 선택</strong>
             </p>
             <div className="flex-start">
-              <input
-                value="고혈압"
-                type="radio"
-                onChange={handleClick}
-                className="btn-check"
-                name="symptom"
-                id="high"
-                autoComplete="off"
-              />
-              <label
-                className="btn btn-primary text-white me-2 mb-2"
-                htmlFor="high"
-              >
-                고혈압
-              </label>
-
               <input
                 value="코로나"
                 type="radio"
@@ -206,6 +184,55 @@ const Reservation = () => {
               >
                 정신
               </label>
+
+              <input
+                value="치아"
+                type="radio"
+                onChange={handleClick}
+                className="btn-check"
+                name="symptom"
+                id="teeth"
+                autoComplete="off"
+              />
+              <label
+                className="btn btn-primary text-white me-2 mb-2"
+                htmlFor="teeth"
+              >
+                치아
+              </label>
+
+              <input
+                value="외과"
+                type="radio"
+                onChange={handleClick}
+                className="btn-check"
+                name="symptom"
+                id="out"
+                autoComplete="off"
+              />
+              <label
+                className="btn btn-primary text-white me-2 mb-2"
+                htmlFor="out"
+              >
+                외과
+              </label>
+
+              <input
+                value="고혈압"
+                type="radio"
+                onChange={handleClick}
+                className="btn-check"
+                name="symptom"
+                id="high"
+                autoComplete="off"
+              />
+              <label
+                className="btn btn-primary text-white me-2 mb-2"
+                htmlFor="high"
+              >
+                고혈압
+              </label>
+
               <input
                 value="기타"
                 type="radio"
@@ -263,16 +290,6 @@ const Reservation = () => {
           </button>
         </div>
       </div>
-      {showPopup ? (
-        <div className="popup">
-          <div className="popup_inner">
-            <h2>Success!</h2>
-            <button className="close" onClick={togglePopup}>
-              Close me
-            </button>
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 };
