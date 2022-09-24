@@ -1,8 +1,158 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <style>
+.hcategory {
+	background-color: #3478f5;
+	padding-top: 40px;
+	height: 100%;
+}
+
+.hboard {
+	background-color: #efefef;
+	border-radius: 8px;
+	margin: 40px;
+	height: 90%;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.searchForm input {
+	border: solid 1px #3478f5;
+	border-radius: 16px 0 0 16px;
+	background-color:
+}
+
+.searchForm button {
+	background-color: #3478f5;
+	width: 64px;
+	border-radius: 0 16px 16px 0;
+}
+
+.searchForm img {
+	width: 18px;
+}
+
+.htable {
+	width: 100%;
+}
+
+.htable thead {
+	height: 40px;
+	color: grey;
+}
+
+.htable th {
+	font-weight: lighter;
+	padding-left: 12px;
+}
+
+.htable tbody {
+	border-collapse: collapse;
+	border-radius: 16px;
+	box-shadow: 2px 2px 2px 2px #ababab;
+}
+
+.htable td {
+	padding: 14px 12px;
+	font-size: 14px;
+}
+</style>
+
+<div class="container-fluid" style="height: 100%;">
+	<div class="row justify-content-around" style="height: 100%;">
+		<!-- 카테고리 영역 -->
+		<div class="col-2 hcategory ">
+			<!-- 카테고리 프로필 -->
+			<div
+				class="d-flex flex-column align-items-start justify-content-center ps-5"
+				style="height: 160px;">
+				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+					class="mb-3">
+				<h5 class="hanna text-white"">게스트 님</h5>
+				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
+					・ <a href="">마이페이지</a>
+				</span>
+			</div>
+			<!-- 카테고리 프로필 끝 -->
+			<!-- 카테고리 리스트 -->
+			<div>
+				<ul class="nav flex-column">
+					<li class="nav-item pt-5 pb-2 ps-4"><a
+						class="nav-link active text-white" aria-current="page" href="#">모든
+							진료과</a></li>
+					<c:forEach var="e" items="${hcate }" varStatus="status">
+						<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}"><a
+							class="nav-link text-white" href="#">${e.hcate }</a></li>
+
+						<c:choose>
+							<c:when test="${status.index == 8}">
+								<li class="nav-item pt-2 pb-2"></li>
+							</c:when>
+						</c:choose>
+					</c:forEach>
+
+				</ul>
+			</div>
+		</div>
+		<!-- 카테고리 영역 끝 -->
+
+		<div class="col-10">
+			<div class="hboard pt-2 ps-3 pe-3">
+				<div class="input-group searchForm mb-3" style="width: 50%";>
+					<input type="text" class="form-control"
+						aria-label="Recipient's username"
+						aria-describedby="hospitalSearch" style="width: 160px;">
+					<button class="btn" type="button" id="hospitalSearch">
+						<img alt="검색아이콘" src="/img/search.png">
+					</button>
+				</div>
+				<div style="height: 80%;">
+					<h3 class="hanna ps-3">병원 리스트</h3>
+					<div>
+						<table class="htable">
+							<thead>
+								<tr>
+									<th class="hanna">병원명</th>
+									<th class="hanna">위치</th>
+									<th class="hanna">영업시간</th>
+									<th class="hanna">진료과목</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="e" items="${list }">
+									<tr>
+										<td class="linktd">${e.hname }</td>
+										<td class="linktd">${e.hloc }</td>
+										<td class="linktd">${e.otime }~${e.ctime }</td>
+										<td class="linktd">${e.hcate }</td>
+										<td class="linktd" hidden="hidden"><a
+											href="hospitalDetail?num=${e.cnum }"></a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+							
+						</table>
+						<ul class="pagination justify-content-center mt-3">
+										<li class="page-item disabled"><a class="page-link"
+											href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+										<li class="page-item"><a class="page-link" href="#">1</a></li>
+										<li class="page-item"><a class="page-link" href="#">2</a></li>
+										<li class="page-item"><a class="page-link" href="#">3</a></li>
+										<li class="page-item"><a class="page-link" href="#">Next</a>
+										</li>
+									</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <style>
 a:link {
 	text-decoration: none;
 	color: black;
@@ -56,8 +206,8 @@ table tfoot ol.paging li a:hover {
 	color: white;
 	font-weight: bold;
 }
-</style>
-
+</style> -->
+<%-- 
 <article>
 <div class="container">
 	<header>
@@ -93,7 +243,7 @@ table tfoot ol.paging li a:hover {
 	</thead>
 
 	<tbody>
-		<%-- for start --%>
+		for start
 		<c:forEach var="e" items="${list }">
  			<tr> 
 				<td class="linktd">${e.r_num }</td>
@@ -104,7 +254,7 @@ table tfoot ol.paging li a:hover {
 				<td class="linktd" hidden="hidden"><a href="hospitalDetail?num=${e.cnum }"></a></td>
  			</tr> 
 		</c:forEach>
-		<%-- for end --%>
+		for end
 	</tbody>
 <tfoot>
 <tr>
@@ -163,95 +313,93 @@ table tfoot ol.paging li a:hover {
     <input type="submit" id="searBtn" value="조회">
 </form>
 
-</td>
-</tr>
+	</td>
+	</tr>
 
-</tfoot>
-</table>
+	</tfoot>
+	</table>
 
 </div>
 
 </article>
-
+ --%>
 
 <!-- 이전 jquery 임포트 코드 ...!!! -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-$(function(){
-	$('.linktd').click(function(){
-		var href = $(this).parent("tr").children("td").children("a").attr("href")
-// 		alert(href);
-		window.location = href;
+	$(function() {
+		$('.linktd').click(
+				function() {
+					var href = $(this).parent("tr").children("td")
+							.children("a").attr("href")
+					// 		alert(href);
+					window.location = href;
+				});
 	});
-});
 </script>
 
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-    $('.hcatebtn').click(function(){
-    	var hcatename = $(this).val();
-    	$("#hcate").attr("selected", "selected");
-    	$("#hsearch").val(hcatename);
-    	$(".sForm").submit();
-    });
- 
-// var path = "${pageContext.request.contextPath }";
-// var qustr = "${searchVO.qustr}";
- 
-// $(function(){
-// 	$(".btns").on('click', "input",function(){
-// 		console.log("button click");
-// 		var cate = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
-// 		$.ajax({
-// 			 url : 'hospitalList', // 이 주소로 
-//               type : "POST", // 포스트 방식으로 보내는데
-//               cache: false,
-//               headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-//               data : {
-//             	  "cPage" : 1,
-//             	  "hcate" : cate
-            	  
-//               }, // kind를 kind로 명명하여 보내겠다
-//               success : function(data){ 
-//                  console.log(data);
-//                 	location.href='${pageContext.request.contextPath}/hospital/hospitalList?cPage=1&hcate='+cate;
-					
-//                  $('body').html(data); //성공할시에 body부분에 data라는 html문장들을 다 적용시키겠다
-//               },
-//               error : function(data){
-//             	 alert('error');
-               
-//               }//error
-// 		})//ajax
-// 	});//click
-// });//ready
-    
-//     $("input:button[name='button']").on('click',function(){
-//         var kind = $(this).val();       //버튼이 클릭 되었을 시, 개별 버튼의 값이 kind 변수에 담겨집니다.
-//         $.ajax({
-            
-//             url : path+"/onlinecounsel/expertmb/list_ajax.do",
-//             type : "post",
-//             cache : false,
-//             headers : {"cache-control":"no-cache","pragma":"no-cache"},
-//             data : {
-//                  id : $(this).val(),
-//                 "kind":kind    // 버튼의 value값에 따라 작동합니다.
-                
-//             },
-//             success : function(data){
-//                 console.log(data);
-//                 $('body').html(data); // 성공 시, body부분에 data라는 html 문장들을 다 적용시킵니다.
-//             },
-//             error : function(data){
-//                 alert('error');
-//             }//error
-//         })//ajax
-//     });//button click
- 
+	$('.hcatebtn').click(function() {
+		var hcatename = $(this).val();
+		$("#hcate").attr("selected", "selected");
+		$("#hsearch").val(hcatename);
+		$(".sForm").submit();
+	});
+
+	// var path = "${pageContext.request.contextPath }";
+	// var qustr = "${searchVO.qustr}";
+
+	// $(function(){
+	// 	$(".btns").on('click', "input",function(){
+	// 		console.log("button click");
+	// 		var cate = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
+	// 		$.ajax({
+	// 			 url : 'hospitalList', // 이 주소로 
+	//               type : "POST", // 포스트 방식으로 보내는데
+	//               cache: false,
+	//               headers: {"cache-control":"no-cache", "pragma": "no-cache"},
+	//               data : {
+	//             	  "cPage" : 1,
+	//             	  "hcate" : cate
+
+	//               }, // kind를 kind로 명명하여 보내겠다
+	//               success : function(data){ 
+	//                  console.log(data);
+	//                 	location.href='${pageContext.request.contextPath}/hospital/hospitalList?cPage=1&hcate='+cate;
+
+	//                  $('body').html(data); //성공할시에 body부분에 data라는 html문장들을 다 적용시키겠다
+	//               },
+	//               error : function(data){
+	//             	 alert('error');
+
+	//               }//error
+	// 		})//ajax
+	// 	});//click
+	// });//ready
+
+	//     $("input:button[name='button']").on('click',function(){
+	//         var kind = $(this).val();       //버튼이 클릭 되었을 시, 개별 버튼의 값이 kind 변수에 담겨집니다.
+	//         $.ajax({
+
+	//             url : path+"/onlinecounsel/expertmb/list_ajax.do",
+	//             type : "post",
+	//             cache : false,
+	//             headers : {"cache-control":"no-cache","pragma":"no-cache"},
+	//             data : {
+	//                  id : $(this).val(),
+	//                 "kind":kind    // 버튼의 value값에 따라 작동합니다.
+
+	//             },
+	//             success : function(data){
+	//                 console.log(data);
+	//                 $('body').html(data); // 성공 시, body부분에 data라는 html 문장들을 다 적용시킵니다.
+	//             },
+	//             error : function(data){
+	//                 alert('error');
+	//             }//error
+	//         })//ajax
+	//     });//button click
 </script>
-
-
-
-
