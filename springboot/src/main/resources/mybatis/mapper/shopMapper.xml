@@ -58,4 +58,18 @@
 		select * from Pharmacy order by pnum
 	</select>
 	
+	<select id="getPharmacy" parameterType="map" resultType="pvo">
+	select  pname from pharmacy 
+	<choose>
+			<when test="address == '논현'">
+			 where ploc like '%논현%'
+			</when>
+			<when test="address == '개포'">
+			where ploc like '%개포%'
+			</when>
+			<when test="address == '대치'">
+			where ploc like '%대치%'
+			</when>
+		</choose>
+	</select>
 </mapper>

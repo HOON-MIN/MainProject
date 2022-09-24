@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonObject;
@@ -25,10 +26,24 @@ public class PharmacyRestController {
 	private ShopService shopservice;
 	
 
-	@PostMapping("val")
+	@PostMapping("citypharmacy")
 	public List<com.main.ateam.vo.PharmacyVO> ShopDetail() {
-		List<PharmacyVO> shopDetail = shopservice.getAndriod();
+		List<PharmacyVO> shopDetail = shopservice.getAndroid();
 		return shopDetail;
+	}
+	@GetMapping(value = "vald")
+	public String getAnd() {
+		List<PharmacyVO> list = shopservice.getAndroid();
+		return "Hallo";
+	}
+	
+	@GetMapping(value = "citypharmacy")
+	@ResponseBody
+	public List<PharmacyVO> getPharmacy(String address) {
+		Map<String, String> map = new HashMap<>();
+		map.put("address", address);
+		List<PharmacyVO> list = shopservice.getPharmacy(map);
+		return list;
 	}
 	
 

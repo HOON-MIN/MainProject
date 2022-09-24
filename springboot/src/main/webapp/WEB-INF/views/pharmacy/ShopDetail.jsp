@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx8fc6162789f747579d26c53413bd30f7"></script>
 <script type="text/javascript">									
 var map, marker1;
 function initTmap() {
@@ -242,8 +242,8 @@ function initTmap() {
 
 }
 </script>
-<
-<div onload="initTmap()">
+<body onload="initTmap()">
+<div >
 
 		<div id="map_wrap" class="map_wrap">
 			<div id="map_div"></div>
@@ -266,16 +266,12 @@ function initTmap() {
                   ${fn:substring(shopDetail.ploc, 6, 8) }
             </a>
           </div>
-
-      
-            
-           
             
       
         </div>
 
         <h1 class="my-1 hospital-doctor-name-box d-flex align-items-center">
-         ${shopDetail.shopName }
+         ${shopDetail.pname }
         </h1>
           
         <div class="d-flex align-items-start py-2 color49 pb-1">
@@ -340,7 +336,7 @@ function initTmap() {
           
           <div style="font-size: 14px;font-weight: 400;letter-spacing: -0.6px;" class="mt-2 ">
             <img src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/homepage.svg" class="mb-1 mr-1" alt="Responsive image">
-            <a class="website-link-click" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=${shopDetail.shopName}" target="_blank" rel="noopener" style="color: #4c1192;" >
+            <a class="website-link-click" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=${shopDetail.pname}" target="_blank" rel="noopener" style="color: #4c1192;" >
        			네이버에 병원 검색하기
             </a>
           </div>
@@ -386,8 +382,10 @@ function initTmap() {
     	<p></p>
     	<p>약국 명 : ${shopDetail.pname}</p>
     	<p>약국 번호 : ${shopDetail.pnum}</p>
-		<p>주소 : ${shopDetail.ploc } </p>
-		<p>위도 : ${shopDetail.plat } 경도 : ${shopDetail.plot }</p>
+		<p>주소 : ${shopDetail.ploc} </p>
+		<p>위도 : ${shopDetail.plong} 경도 : ${shopDetail.plat}</p>
     </div>
   </div>
+  </div>
   
+  </body>
