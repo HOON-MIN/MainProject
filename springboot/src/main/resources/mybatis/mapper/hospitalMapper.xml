@@ -10,18 +10,18 @@
 		(select cnum from company where cstatus=1) c
 		where c.cnum = h.cnum
 		<choose>
-			<when test="category != null and category != ''">
-				<choose>
-					<when test="category == 'hloc'">
-						AND h.hloc like '%' || #{search} || '%'
-					</when>
-					<when test="category == 'hname'">
-						AND h.hname like '%' || #{search} || '%'
-					</when>
-					<when test="category == 'hcate'">
-						AND h.hcate like '%' || #{search} || '%'
-					</when>
-				</choose>
+			<when test="search != null and search != ''">
+<!-- 				<choose> -->
+<!-- 					<when test="category == 'all'"> -->
+						AND h.hloc || h.hname || h.hcate like '%' || #{search} || '%'
+<!-- 					</when> -->
+<!-- 					<when test="category == 'hname'"> -->
+<!-- 						AND h.hname like '%' || #{search} || '%' -->
+<!-- 					</when> -->
+<!-- 					<when test="category == 'hcate'"> -->
+<!-- 						AND h.hcate like '%' || #{search} || '%' -->
+<!-- 					</when> -->
+<!-- 				</choose> -->
 			</when>
 		</choose>
 	</select>
@@ -39,13 +39,14 @@
 	<!-- 검색 기능 sql: select id="listpage"에 include함 -->
 	<sql id="search">
 		<choose>
-			<when test="category != null and category != ''">
-				<if test="category == 'hloc'">
-					AND hloc like '%' || #{search} || '%'</if>
-				<if test="category == 'hname'">
-					AND hname like '%' || #{search} || '%'</if>
-				<if test="category == 'hcate'">
-					AND hcate like '%' || #{search} || '%'</if>
+			<when test="search != null and search != ''">
+<!-- 				<if test="category == 'hloc'"> -->
+					AND hloc || h.hname || h.hcate  like '%' || #{search} || '%'
+<!-- 					</if> -->
+<!-- 				<if test="category == 'hname'"> -->
+<!-- 					AND hname like '%' || #{search} || '%'</if> -->
+<!-- 				<if test="category == 'hcate'"> -->
+<!-- 					AND hcate like '%' || #{search} || '%'</if> -->
 			</when>
 		</choose>
 	</sql>
