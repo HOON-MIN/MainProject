@@ -1,0 +1,8 @@
+{
+  "userid": "admin",
+  "gender": "male",
+  "age": 24,
+  "respiratory_condition": 0,
+  "fever_or_muscle_pain": 0,
+  "base64str": "admin.wav"
+}

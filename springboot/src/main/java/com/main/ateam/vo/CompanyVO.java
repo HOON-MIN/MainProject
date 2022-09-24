@@ -16,4 +16,5 @@ public class CompanyVO {
 	private String crn, cpwd,ccate,cdate,hgrade;
 	private HospitalVO hvo;
 	
+	
 }

@@ -35,29 +35,35 @@
   <tbody>
     <tr>
       <th scope="row">진단 여부</th>
-      <td><input class="form-check-input" id="chkbox1_1" name="chkbox1_1" value="뇌졸중진단" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_2" name="chkbox1_2" value="심장병진단" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_3" name="chkbox1_3" value="고혈압진단" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_4" name="chkbox1_4" value="당뇨병진단" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_5" name="chkbox1_5" value="이상지질혈증진단" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_6" name="chkbox1_6" value="폐결핵진단" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_7" name="chkbox1_7" value="기타진단" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox0_0" name="chkbox0_0" value="진단없음" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox0_1" name="chkbox0_1" value="뇌졸중진단" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox0_2" name="chkbox0_2" value="심장병진단" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox0_3" name="chkbox0_3" value="고혈압진단" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox0_4" name="chkbox0_4" value="당뇨병진단" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox0_5" name="chkbox0_5" value="이상지질혈증진단" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox0_6" name="chkbox0_6" value="폐결핵진단" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox0_7" name="chkbox0_7" value="기타진단" type="checkbox" aria-label="..."></td>
     </tr>
     <tr>
       <th scope="row">약물치료 여부</th>
-      <td><input class="form-check-input" id="chkbox1_8" name="chkbox1_8" value="뇌졸중약물치료" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_9" name="chkbox1_9" value="심장병약물치료" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_10" name="chkbox1_10" value="고혈압약물치료" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_11" name="chkbox1_11" value="당뇨병약물치료" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_12" name="chkbox1_12" value="이상지질혈증약물치료" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_13" name="chkbox1_13" value="폐결핵약물치료" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_14" name="chkbox1_14" value="기타약물치료" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox1_0" name="chkbox1_0" value="약물치료없음" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox1_1" name="chkbox1_1" value="뇌졸중약물치료" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox1_2" name="chkbox1_2" value="심장병약물치료" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox1_3" name="chkbox1_3" value="고혈압약물치료" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox1_4" name="chkbox1_4" value="당뇨병약물치료" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox1_5" name="chkbox1_5" value="이상지질혈증약물치료" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox1_6" name="chkbox1_6" value="폐결핵약물치료" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input" id="chkbox1_7" name="chkbox1_7" value="기타약물치료" type="checkbox" aria-label="..."></td>
     </tr>
   </tbody>
 </table><br><br>
 
 
 <p>2. 부모, 형제, 자매 중에 다음 질환을 앓았거나 해당 질환으로 사망한 경우가 있으십니까?</p>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" checked="checked" id="chkbox2_1" name="chkbox2_1" value="뇌졸중(중풍)">
+  <label class="form-check-label" for="inlineCheckbox0">없음</label>
+</div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" id="chkbox2_1" name="chkbox2_1" value="뇌졸중(중풍)">
   <label class="form-check-label" for="inlineCheckbox1">뇌졸중(중풍)</label>

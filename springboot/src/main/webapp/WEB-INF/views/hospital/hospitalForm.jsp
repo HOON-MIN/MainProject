@@ -17,20 +17,20 @@
 	</div>
 
 <!-- 병원명* hname /사업자번호* crn /영업시간* otime ctime /병원등급* hgrade /진료과목* hcate/ 홈페이지* hurl/ email* hemail /위치* hloc -->	
-<form action="" method="post" id="hospitalJoin" >
+<form method="post" id="hospitalJoin" >
 		<input type="hidden" id="hloc" name="hloc" value=""> 
 		<input type="hidden" id="ccate" name="ccate" value="${ccate}"> 
 		<div class="row g-3 needs-validation ">
 	    <div class="col-md-4">
 				<div class="form-outline">
 						<label class="form-label">사업자 등록번호(ID사용)</label>
-					<input type="text" id="crn"crn"" name="crn" class="form-control" value="${crn}" readonly="readonly">
+					<input type="text" id="crn" name="crn" class="form-control" value="${crn}" readonly="readonly">
 				</div>
 		</div>
 		<div class="col-md-4" >
 				<label for="id" class="form-label">병원명</label> 
 		<div class="input-group" >
-				<input type="text" class="form-control" id="hname" name="hname" placeholder="INPUT YOUR HOSPITAL NAME"
+				<input type="text" class="form-control" id="hna me" name="hname" placeholder="INPUT YOUR HOSPITAL NAME"
 				 required="required" pattern=".{2,30}" >
 		</div>
 		</div>		
@@ -85,8 +85,8 @@
 				<input type="text" id="htel" name="htel" class="form-control" /> 
 			</div>
 		<div class="col-md-5">
-			<label class="form-label">이메일</label> 
-				<input type="text" class="form-control" id="hemail" name="hemail" placeholder="name@example.com"
+			<label class="form-label">URL</label> 
+				<input type="text" class="form-control" id="hurl" name="hurl" placeholder="name@example.com"
 				required="required">
 		</div>
 
@@ -118,14 +118,14 @@
 	</form>
  <!-- comment end -->
     </article>
-    <script>
-		// 주민번호, 전화번호, 주소
+<script>
+// 주민번호, 전화번호, 주소
 // 병원명* hname /사업자번호* crn /영업시간* otime ctime /병원등급* hgrade /진료과목* hcate/ 홈페이지* hurl/ email* hemail /위치* hloc 		
 		$(function(){
 			$('#hjBtn').click(function() {
 				if($('#hname').val().length==0 || $('#otime').val().length==0 || $('#ctime').val().length==0 || 
 						   $('#hgrade').val().length==0 || $('#hcate').val().length==0 || $('#hurl').val().length==0 ||
-						   $('#hemail').val().length==0 || $('#hloc1').val().length==0 ){
+						    $('#hloc1').val().length==0 ){
 							alert("입력되지 않은 정보가 존재합니다.");
 							return false;
 						}

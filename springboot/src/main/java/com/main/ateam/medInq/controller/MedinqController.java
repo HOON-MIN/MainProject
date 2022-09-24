@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.main.ateam.ansboard.service.AnsboardService;
 import com.main.ateam.quesboard.service.QuesboardService;
 import com.main.ateam.vo.AnsboardVO;
+import com.main.ateam.vo.MedInqVO;
 import com.main.ateam.vo.QuesboardVO;
 
 
 @Controller
 @RequestMapping(value = "/medInq")
-public class MedInqController {
+public class MedinqController {
 
 	@Autowired
 	private QuesboardService service;
@@ -29,14 +30,14 @@ public class MedInqController {
 		return "medInq/medInqForm";
 	}
 
-//	@PostMapping(value = "/qbInsert")
-//	public String qbInsert(QuesboardVO vo) {
-//		System.out.println("*******************");
-//		System.out.println(vo.toString());
-////		vo.setId("member");
+	@PostMapping(value = "/medInqIns")
+	public String medInqIns(MedInqVO vo) {
+		System.out.println("*******************");
+		System.out.println(vo.toString());
+//		vo.setId("member");
 //		service.addQuesboard(vo);
-//		return "redirect:qbList";
-//	}
+		return "redirect:qbList";
+	}
 //
 //	@RequestMapping(value = "/qbList")
 //	public String qbList(Model m) {

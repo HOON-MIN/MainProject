@@ -193,7 +193,7 @@ body {
 						value : 'new'
 					} ];
 					setTimeout(function() {
-						generate_message(data.anstext, 'user');
+						generate_message(data, 'user');
 					}, 1000)
 					
 					document.getElementById("chat-input").value = "";
@@ -205,14 +205,44 @@ body {
 		function generate_message(msg, type) {
 			INDEX++;
 			var str = "";
-			str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
-			str += "          <span class=\"msg-avatar\">";
-			str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
-			str += "          <\/span>";
-			str += "          <div class=\"cm-msg-text\">";
-			str += msg;
-			str += "          <\/div>";
-			str += "        <\/div>";
+			if(type == 'user'){
+				if(msg.anstext.substring(0,4) == 'http'){
+					idx = 0;
+					str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+					str += "          <span class=\"msg-avatar\">";
+					str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+					str += "          <\/span>";
+					str += "          <div class=\"cm-msg-text\">";
+					for(var m of msg.url){
+						
+						str += "<p style='color:green; display:inline;'>#</p>" +msg.hname[idx] + "<br>";
+						str += "<button onclick=window.open('"+m+"') style='margin-bottom:10px;'>예약하러가기</button><br>";
+						idx++;
+					}
+					
+					str += "          <\/div>";
+					str += "        <\/div>";
+				}else{
+					str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+					str += "          <span class=\"msg-avatar\">";
+					str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+					str += "          <\/span>";
+					str += "          <div class=\"cm-msg-text\">";
+					str += msg.anstext;
+					str += "          <\/div>";
+					str += "        <\/div>";
+				}
+			}else{
+				str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+				str += "          <span class=\"msg-avatar\">";
+				str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+				str += "          <\/span>";
+				str += "          <div class=\"cm-msg-text\">";
+				str += msg;
+				str += "          <\/div>";
+				str += "        <\/div>";
+			}
+
 			$(".chat-logs").append(str);
 			$("#cm-msg-" + INDEX).hide().fadeIn(300);
 			if (type == 'self') {
@@ -223,6 +253,7 @@ body {
 			}, 1000);
 		}
 
+		/* 미샤용 */
 		function generate_button_message(msg, buttons) {
 			/* Buttons should be object array
 			  [
