@@ -12,14 +12,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.main.ateam.doctor.service.DoctorService;
 import com.main.ateam.hospital.service.HospitalService;
 import com.main.ateam.member.service.MemberService;
+import com.main.ateam.reserve.dao.ReserveDao;
 import com.main.ateam.reserve.service.ReserveService;
 import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.MemberVO;
@@ -124,6 +127,34 @@ public class ReserveController {
 		return list;
 	}	
 	
+	
+	@CrossOrigin
+	@ResponseBody
+	@PostMapping(value = "/addReserveReact")
+	public void addReserveReact(@RequestBody Map<String,String> map , ReserveVO vo ) {
+        int num = Integer.parseInt((String)map.get("num"));
+        int dnum = Integer.parseInt((String)map.get("dnum"));
+        String symptom = (String)map.get("symptom");
+        String symptomComm =  (String)map.get("symptomComm");
+        String rdate = (String)map.get("rdate");
+        String rtime = (String)map.get("rtime");
+        
+        vo.setNum(num);
+        vo.setDnum(dnum);
+        vo.setSymptom(symptom);
+        vo.setSymptomComm(symptomComm);
+        vo.setRdate(rdate);
+        vo.setRtime(rtime);
+        
+		System.out.println("reserve - insert Test(회원번호)" + vo.getNum());
+		System.out.println("reserve - insert Test(의사번호)" + vo.getDnum());
+		System.out.println("reserve - insert Test(증상)" + vo.getSymptom());
+		System.out.println("reserve - insert Test(증상)" + vo.getSymptomComm());
+		System.out.println("reserve - insert Test(시간)" + vo.getRdate());
+		System.out.println("reserve - insert Test(시간)" + vo.getRtime());    
+		reserveService.addReserve(vo);
+		
+	}
 	
 	/*
 	 * @RequestMapping(value = "doctorCalendar", method = RequestMethod.GET) public
