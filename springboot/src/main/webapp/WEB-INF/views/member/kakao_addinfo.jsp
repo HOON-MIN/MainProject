@@ -11,7 +11,6 @@
 					<div class="row g-0">
 
 						<form id="kakaoForm" action="/member/kakaoLogin" method="post">
-							<div class="col-xl-6">
 								<div class="card-body p-md-5 text-black">
 									<h3 class="mb-5 text-uppercase">추가정보요청</h3>
 
@@ -24,7 +23,7 @@
 											value="${kakaoData.profimg}"> <input type="hidden"
 											id="ssn" name="ssn" value=""> <input type="hidden"
 											id="tel" name="tel" value="">
-										<div class="col-md-5 mb-4">
+										<div class="col-md-6 mb-4">
 											<div class="form-outline">
 												<input type="text" id="ssn1"
 													class="form-control form-control-lg" maxlength="6" /> <label
@@ -41,7 +40,7 @@
 													class="form-control form-control-lg" maxlength="1" />
 											</div>
 										</div>
-										<div class="col-md-1 mb-4">
+										<div class="col-md-4 mb-4">
 											<label>* * * * * *</label>
 										</div>
 									</div>
@@ -74,7 +73,6 @@
 									</div>
 
 								</div>
-							</div>
 						</form>
 
 					</div>

@@ -2,14 +2,30 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.main.ateam.quesboard.dao.MedinqDao">
+<mapper namespace="com.main.ateam.medInq.dao.MedinqDao">
 
-<insert id="addMedinq" parameterType="mivo">
+<!-- <insert id="addMedinq" parameterType="mivo">
 	insert into medInq values (medInq_seq.nextVal, #{id}, 
 	#{disease1}, #{disease2}, #{diseasehist}, #{diseaseetc}, 
 	#{smoke},#{alcohol},#{allergy},#{allergyetc}, 
 	#{pregnancy},#{symptom}, sysdate)
 </insert>
+
+<select id="getMIDetail" parameterType="int" resultType="mivo">
+	select * from medInq where mednum = #{num}
+</select>
+
+<update id="miUpdate" parameterType="mivo" >
+	update medInq set DISEASE1 = #{disease1}, DISEASE2 = #{disease2}, DISEASEHIST = #{diseasehist}, 
+    DISEASEETC = #{diseaseetc}, SMOKE = #{smoke}, ALCOHOL = #{alcohol}, ALLERGY = #{allergy}, 
+    ALLERGYETC = #{allergyetc}, PREGNANCY = #{pregnancy}, SYMPTOM = #{symptom}
+	where mednum = #{num} 
+</update>
+
+<delete id="miDelete" parameterType="int">
+	delete from medInq where mednum = #{num}
+</delete> -->
+
 
 <!-- <select id="getCnt" resultType="int" parameterType="svo"> -->
 <!--   select count(*) from quesboard -->
@@ -71,9 +87,6 @@
 <!-- 	update quesboard set qhit=qhit+1 where qnum=#{qnum} -->
 <!-- </update> -->
 
-<!-- <select id="getQBDetail" parameterType="int" resultType="qvo"> -->
-<!-- 	select * from quesboard where qnum=#{num} -->
-<!-- </select> -->
 
 <!-- <update id="qbUpdate" parameterType="qvo" > -->
 <!-- 	update quesboard set qtitle = #{qtitle}, qcont = #{qcont} -->

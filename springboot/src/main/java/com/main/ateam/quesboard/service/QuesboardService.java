@@ -18,7 +18,6 @@ public class QuesboardService {
 	private QuesboardDao dao;
 	
 	public void addQuesboard(QuesboardVO vo) {
-		vo.setId("member");
 		dao.addQuesboard(vo);
 	}
 	

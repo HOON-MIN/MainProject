@@ -109,8 +109,35 @@
 	</resultMap>
 
 	<select id="getHospital" resultType="hvo" parameterType="map">
-		select * from hospital where hloc like '%'||#{address}||'%'
+		select hname from hospital 
+		<choose>
+			<when test="address == '가정의학과'">
+			 where hcate like '%가정의학과%'
+			</when>
+			<when test="address == '이비인후과'">
+			where hcate like '%이비인후과%'
+			</when>
+			<when test="address == '피부과'">
+			where hcate like '%피부과%'
+			</when>
+				<when test="address == '정형외과'">
+			where hcate like '%정형외과%'
+			</when>
+				<when test="address == '치과'">
+			where hcate like '%치과%'
+			</when>
+				<when test="address == '내과'">
+			where hcate like '%내과%'
+			</when>
+			<when test="address == '정신건강의학과'">
+			where hcate like '%정신건강의학과%'
+			</when>
+		</choose>
+		
 	</select>
+	
+	
+	
 
 	<select id="getCate" resultType="hvo">
 		select distinct hcate from hospital
