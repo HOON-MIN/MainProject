@@ -142,7 +142,7 @@ public class QuesboardController {
 		System.out.println("=====qbUpdate controll=====");
 		System.out.println(vo.toString());
 		service.qbUpdate(vo);
-		System.out.println("=====qbUpdate controll=====");
+		System.out.println("==========================");
 		return "redirect:qbList";
 	}
 	

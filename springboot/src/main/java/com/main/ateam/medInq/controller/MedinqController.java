@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.main.ateam.ansboard.service.AnsboardService;
+import com.main.ateam.medInq.service.MedinqService;
 import com.main.ateam.quesboard.service.QuesboardService;
 import com.main.ateam.vo.AnsboardVO;
 import com.main.ateam.vo.MedInqVO;
@@ -21,10 +22,8 @@ import com.main.ateam.vo.QuesboardVO;
 public class MedinqController {
 
 	@Autowired
-	private QuesboardService service;
-	@Autowired
-	private AnsboardService ansService;
-
+	private MedinqService service;
+	
 	@RequestMapping(value = "/medInqForm")
 	public String medInqForm() {
 		return "medInq/medInqForm";
@@ -38,6 +37,41 @@ public class MedinqController {
 //		service.addQuesboard(vo);
 		return "redirect:qbList";
 	}
+	
+	@GetMapping(value = "/medInqDetail")
+	public String medInqDetail(int num, Model m) {
+		System.out.println("num => "+num);
+		System.out.println("----- medInqDetail controll-----");
+		MedInqVO vo = service.getMIDetail(num);
+		System.out.println(vo.getMednum());
+		System.out.println(vo.getId());
+		System.out.println("---------------------------");
+		m.addAttribute("vo", vo);
+		return "medInq/medInqDetail";
+	}
+	
+	@RequestMapping(value = "/medInqUpForm")
+	public String medInqUpForm(int num, Model m) {
+		MedInqVO vo = service.getMIDetail(num);
+		m.addAttribute("vo", vo);
+		return "medInq/medInqUpForm";
+	}
+	
+	@PostMapping(value = "/medInqUpdate")
+	public String medInqUpdate(MedInqVO vo) {
+		System.out.println("=====medInqUpdate controll=====");
+		System.out.println(vo.toString());
+		service.miUpdate(vo);
+		System.out.println("=============================");
+		return "redirect:medInqDetail";
+	}
+	
+	@PostMapping(value = "/medInqDelete")
+	public String medInqDelete(int num) {
+		service.miDelete(num);
+		return "redirect:/";
+	}
+
 //
 //	@RequestMapping(value = "/qbList")
 //	public String qbList(Model m) {
@@ -52,44 +86,6 @@ public class MedinqController {
 //		return "quesboard/quesboardList";	
 //	}
 //	
-//	@GetMapping(value = "/qbDetail")
-//	public String qbDetail(int num, Model m) {
-//		System.out.println("num => "+num);
-//		System.out.println("-----qbDetail controll-----");
-//		QuesboardVO vo = service.getQBDetail(num);
-//		System.out.println(vo.getQtitle());
-//		System.out.println(vo.getQcont());
-//		System.out.println(vo.getId());
-//		System.out.println("success");
-//		List<AnsboardVO> ansList = ansService.getABList(num);
-//		System.out.println("ansService success");
-//		System.out.println("-----qbDetail controll-----");
-//		m.addAttribute("vo", vo);
-//		m.addAttribute("ansList", ansList);
-//		return "quesboard/quesboardDetail";
-//	}
-//	
-//	@RequestMapping(value = "/qbUpdateForm")
-//	public String qbUpdateForm(int num, Model m) {
-//		QuesboardVO vo = service.getQBDetail(num);
-//		m.addAttribute("vo", vo);
-//		return "quesboard/quesboardUpdateForm";
-//	}
-//	
-//	@PostMapping(value = "/qbUpdate")
-//	public String qbUpdate(QuesboardVO vo) {
-//		System.out.println("=====qbUpdate controll=====");
-//		System.out.println(vo.toString());
-//		service.qbUpdate(vo);
-//		System.out.println("=====qbUpdate controll=====");
-//		return "redirect:qbList";
-//	}
-//	
-//	@PostMapping(value = "/qbDelete")
-//	public String qbDelete(int qnum) {
-//		service.qbDelete(qnum);
-//		return "redirect:qbList";
-//	}
 	
 	
 	
