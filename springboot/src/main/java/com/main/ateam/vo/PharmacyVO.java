@@ -13,10 +13,8 @@ import lombok.Setter;
 @Alias("pvo")
 public class PharmacyVO {
 	
-	
-	
 	private int pnum, cnum;
-	private String pname, ploc, ptel, plat, plong;
-
+	private String pname, ploc, ptel;
+	private double plat, plong;
 	
 }
