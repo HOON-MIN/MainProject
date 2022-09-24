@@ -15,6 +15,7 @@ import com.main.ateam.admin.service.AdminService;
 import com.main.ateam.hospital.dao.HospitalDao;
 import com.main.ateam.hospital.service.HospitalService;
 import com.main.ateam.vo.CompanyVO;
+import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.HospitalVO;
 
 @Controller
@@ -89,6 +90,13 @@ public class AdminController {
 	public List<HospitalVO> adminBarchart(){
 		List<HospitalVO> vo = adminService.adminBarchart();
 		
+		return vo;
+	}
+	@ResponseBody
+	@GetMapping(value = "/adminBarchart2")
+	public List<DoctorVO> adminBarchart2(String hcate){
+		List<DoctorVO> vo = adminService.adminBarchart2(hcate);
+		System.out.println("실행됨");
 		return vo;
 	}
 	

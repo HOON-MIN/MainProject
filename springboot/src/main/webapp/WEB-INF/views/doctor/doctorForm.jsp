@@ -19,9 +19,7 @@
 
 <!--dnum,hnum,dname,did,dpwd,dmajor  -->	
 <form action="" method="post" id="joinDoctor">
-		<input type="hidden" id="hnum" name="hnum" value="${hnum}"> 
-		<input type="hidden" id="dmajor" name="dmajor" value=""> 
-		<input type="hidden" id="didchk" name="didchk" value=""> 
+		<input type="hidden" id="cnum" name="cnum" value="${vo.cnum}"> 
 		<div class="row g-3 needs-validation ">
 			<div class="col-md-7" style="width: 64%;">
 					<label for="id" class="form-label">아이디</label> 
@@ -59,21 +57,17 @@
 		<div class="col-md-4">
 			<div class="form-outline">
 				<label class="form-label">진료과목</label>
-				<select class="form-select" id="selbox" name="selbox" aria-label="Default select example">
-				  <option selected>진료과목 선택</option>
-				  <option value="1등급">1등급</option>
-				  <option value="2등급">2등급</option>
-				  <option value="3등급">3등급</option>
-				  <option value="4등급">4등급</option>
-				  <option value="5등급">5등급</option>
-				  <option value="direct">직접입력</option>
-				</select>
+			    <input type="text" class="form-control" id="dmajor" name="dmajor" value="${vo.hcate}" readonly="readonly">
 			</div>
 		</div>		
-		<div class="col-md-4">
-			<label class="form-label" id="directlabel">직접입력</label>
-			<input type="text" id="selboxDirect" name="selboxDirect" class="form-control"/>
-		</div>	  	
+		<div class="col-md-6"  style="padding: 10px;">
+				<label class="form-label">프로필 사진 등록</label> 
+				<div class="col-md-4">
+			<img style="width: 100%; margin-top: 8px;" src="${pageContext.request.contextPath}/resources/image/noimage.jpg" id="imgx">
+			</div>		
+				<input type="file" class="form-control" id="mfile" name="mfile">
+				
+			</div>
 						
 			<div class="form-group text-center">
 				<button type="submit" id="join-submit" class="btn btn-primary btn-space" >
@@ -100,7 +94,7 @@
 			url: "drIdCheck?did="+param,
 			success:function(data){
 				console.log(data);
-				$('#didchk').val(data);
+				
 				if(data == 1){
 					$js('#id-check-warn').css('color','red').html('이미 사용중인 아이디입니다.');
 				}else{
@@ -130,7 +124,7 @@ $(function() {
 		    }
 	  });
       //직접입력 인풋박스 기존에는 숨어있다가
-      $("#directlabel").hide();
+     /* $("#directlabel").hide();
       $("#selboxDirect").hide();
       $("#selbox").change(function() {
             //직접입력을 누를 때 나타남
@@ -142,15 +136,16 @@ $(function() {
     			$("#directlabel").hide();
     			$("#selboxDirect").hide();
     		}
-    	}) 
+    	}) */
   // <!--dnum,hnum,dname,did,dpwd,dmajor  -->  
     $('#join-submit').click(function() {
-    	$('#dmajor').val($("#selboxDirect").val());
-    	$('#dmajor').val($("#selbox").val());
     	if($('#dname').val().length==0 || $('#did').val().length==0 || $('#dpwd').val().length==0 || 
-				   $('#dmajor').val().length==0 || $('#dmajor').val()==="진료과목 선택"){
+				   $('#dmajor').val().length==0 ){
 					alert("입력되지 않은 정보가 존재합니다.");
-					console.log('didchk : '+$('#didchk').val());
+					console.log('dname : '+$('#dname').val());
+					console.log('did : '+$('#did').val());
+					console.log('dpwd : '+$('#dpwd').val());
+					console.log('dmajor : '+$('#dmajor').val());
 					return false;
 		}else if($('#didchk').val() == 0){
 			alert("아이디 중복체크를 해주세요!");
@@ -166,9 +161,30 @@ $(function() {
 			
 			
     });
-    	
+    
+		 
+	
+		
+    $('#imgx').css('display', 'none');
+    $('#mfile').change(function() {
+		console.log($(this).val());
+		readURL(this);
+		$('#imgx').css('display', 'block');
+	  });
 	});
-	  
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		// 자바스크립트 I/O 
+		var reader = new FileReader();
+		//
+		reader.onload = function(e) {
+			//e.target.result
+			console.log("Path :" + e.target.result);
+			$('#imgx').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+	}
 
 </script>
 <%-- 본문 끝 --%>

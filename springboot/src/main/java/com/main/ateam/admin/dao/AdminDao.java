@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.main.ateam.vo.CompanyVO;
+import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.NoticeVO;
@@ -15,6 +16,7 @@ public interface AdminDao {
 	public CompanyVO waitingList();
 	public void agree(int num); 
 	public List<HospitalVO> adminBarchart();
+	public List<DoctorVO> adminBarchart2(String hcate);
 	
 	public int totalCount();
 	public NoticeVO getDetail(int nnum);

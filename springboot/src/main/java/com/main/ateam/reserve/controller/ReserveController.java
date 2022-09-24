@@ -105,7 +105,6 @@ public class ReserveController {
 			List<DoctorVO> vo = service.choiceDoctorList(cnum); //의사 리스트
 			m.addAttribute("vo", vo);
 			for(DoctorVO e: vo) {
-				System.out.println(e);
 			}
 		return "reserve/choice_doctor"; //
 	}
