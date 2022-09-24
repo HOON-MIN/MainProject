@@ -3,13 +3,135 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
-.listTr>td:hover {
-	cursor: pointer; "
-	background-color: white;
+.hcategory {
+	background-color: #3478f5;
+	padding-top: 40px;
+	height: 100%;
+}
+
+.hboard {
+	background-color: #efefef;
+	border-radius: 8px;
+	margin: 40px;
+	height: 90%;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.searchForm input {
+	border: solid 1px #3478f5;
+	border-radius: 16px 0 0 16px;
+	background-color:
+}
+
+.searchForm button {
+	background-color: #3478f5;
+	width: 64px;
+	border-radius: 0 16px 16px 0;
+}
+
+.searchForm img {
+	width: 18px;
+}
+
+.htable {
+	width: 100%;
+}
+
+.htable thead {
+	height: 40px;
+	color: grey;
+}
+
+.htable th {
+	font-weight: lighter;
+	padding-left: 12px;
+}
+
+.htable tbody {
+	border-collapse: collapse;
+	border-radius: 16px;
+	box-shadow: 2px 2px 2px 2px #ababab;
+}
+
+.htable td {
+	padding: 14px 12px;
+	font-size: 14px;
 }
 </style>
-<!-- 필요한것 -->
 
+<div class="container-fluid" style="height: 100%;">
+	<div class="row justify-content-around" style="height: 100%;">
+		<!-- 카테고리 영역 -->
+		<div class="col-2 hcategory ">
+			<!-- 카테고리 프로필 -->
+			<div
+				class="d-flex flex-column align-items-start justify-content-center ps-5"
+				style="height: 160px;">
+				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+					class="mb-3">
+				<h5 class="hanna text-white"">게스트 님</h5>
+				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
+					・ <a href="">마이페이지</a>
+				</span>
+			</div>
+			<!-- 카테고리 프로필 끝 -->
+			<!-- 카테고리 리스트 -->
+			<div>
+				<ul class="nav flex-column">
+					<li class="nav-item pt-5 pb-2 ps-4"><a
+						class="nav-link active text-white" aria-current="page" href="#">모든
+							진료과</a></li>
+
+				</ul>
+			</div>
+		</div>
+		<!-- 카테고리 영역 끝 -->
+
+		<div class="col-10">
+			<div class="hboard pt-2 ps-3 pe-3">
+				<div class="form-group" style="margin: 0 auto;">
+
+					<div class="col-sm-5" style="float: left;">
+						<div class="form-group">
+							<label>ID </label> <input name="id" type="text"
+								class="form-control" readonly="readonly" value="${member.id }">
+						</div>
+						<div class="form-group">
+							<label>이름 </label> <input name="name" type="text"
+								class="form-control" readonly="readonly" value="${member.name }">
+						</div>
+						<div class="form-group">
+							<label>주민등록번호 </label> <input name="ssn" type="text"
+								class="form-control" readonly="readonly" value="${member.ssn }">
+						</div>
+						<div class="form-group">
+							<label>전화번호</label> <input name="tel" type="text"
+								class="form-control" readonly="readonly" value="${member.tel }">
+						</div>
+						<div class="form-group">
+							<label>E-mail</label> <input name="email" type="text"
+								class="form-control" readonly="readonly"
+								value="${member.email }">
+						</div>
+					</div>
+
+
+
+					<button class="btn btn-primary btn-lg" type="button">Example
+						button</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 필요한것 -->
+<%-- 
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955"></script>
 
@@ -25,14 +147,9 @@
 		<div class="container">
 			<h1 class="display-5 fw-bold">프로필 정보</h1>
 			<!-- <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>-->
-				<div class="container">
-				<div class="col-sm-4" style="float: left;">
-					<div class="form-group" style="margin: 0 auto;">
-						<img src="taejin/img/${member.profimg }" class="picture-src"
-							id="profimg" style="width: 200px; height: 150px;" /><br>
-							<label>프로필 사진</label> 
-					</div>
-				</div>
+				
+			<div class="form-group" style="margin: 0 auto;">
+			
 				<div class="col-sm-5" style="float: left;">
 					<div class="form-group">
 						<label>ID </label> <input name="id" type="text"
@@ -146,7 +263,7 @@
 			onclick="location.href='${pageContext.request.contextPath}/member'">
 	</div>
 </div>
-
+ --%>
 
 <script>
 

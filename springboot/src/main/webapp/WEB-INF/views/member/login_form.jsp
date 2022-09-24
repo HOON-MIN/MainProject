@@ -6,17 +6,13 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
-
-
+<style>
+</style>
 <!-- Custom styles for this template-->
 <link href="/taejin/css/sb-admin-2.min.css" rel="stylesheet">
-
-<body >
-
-	<div class="container" style="background-color: 80a7ce;">
-
+	<div class="container-fluid" style="background-color: #3478f5; width: 100%;">
 		<!-- Outer Row -->
-		<div class="row justify-content-center">
+		<div class="row justify-content-center" style="width: 80%; margin : auto;">
 
 			<div class="col-xl-10 col-lg-12 col-md-9">
 

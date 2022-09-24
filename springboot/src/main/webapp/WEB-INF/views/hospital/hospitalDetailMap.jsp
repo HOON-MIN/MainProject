@@ -67,7 +67,6 @@ a {
 					<c:forEach var="e" items="${hcate }" varStatus="status">
 						<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}"><a
 							class="nav-link text-white" href="#">${e.hcate }</a></li>
-
 						<c:choose>
 							<c:when test="${status.index == 8}">
 								<li class="nav-item pt-2 pb-2"></li>
@@ -98,9 +97,14 @@ a {
 							표시 공간</div>
 						<div class="col-6 map align-items-center ">
 							<h1 class="hanna m-3">${shopDetail.shopName } 병원 이름</h1>
-							<div>
-							<h4 class="hanna m-3 pt-3"> 병원 주소 </h4>
-							</div>
+							
+							<h5 class="nanum m-3 pt-3"> 병원 주소 </h4>
+							
+							<h6 class="m-3"> 병원 URL</h6>
+							<h6 class="m-3"> 병원 오픈 시간</h6>
+							
+							<p class="m-3" style="height:240px"> 병원 소개 </p>
+							<button class="btn btn-lg mt-4 ms-3 hanna" style="border : solid 1px #3478f5; background : #3478f5 ;  color : white; width:240px">예약하기</button>
 						</div>
 					</div>
 				</div>
