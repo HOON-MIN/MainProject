@@ -133,41 +133,4 @@ public class ReviewBoardController {
 
 	}
 	
-	// 댓글 리스트(기능 삭제)
-	@RequestMapping(value = "/replylist")
-	@ResponseBody
-	public List<ReviewBoardCommVO> showReply(int rnum, Model model) {
-		System.out.println("댓글 리스트");
-		System.out.println("rnum: "+rnum);
-		return service.showReply(rnum);
-	}
-	
-	// 댓글 입력(기능 삭제)
-	@PostMapping(value = "/reply")
-	@ResponseBody
-	public int addReply(ModelAndView mav, ReviewBoardCommVO vo, HttpSession session, int rnum) {
-		System.out.println("댓글 입력");
-		String sessionID = (String) session.getAttribute("sessionID");
-		vo.setId(sessionID);
-		System.out.println("댓글 입력 rnum"+rnum);
-		service.upRcount(rnum);
-		return service.addReply(vo);
-	}
-	
-	// 댓글 삭제(기능 삭제)
-	@RequestMapping(value = "/delReply/{cnum}")
-	@ResponseBody
-	public int delReply(HttpSession session, @PathVariable int cnum, String id,int rnum) {
-		System.out.println("댓글 삭제 rnum"+rnum);
-		service.upRcount(rnum);
-		return service.delReply(cnum);
-	}
-	// 댓글 수정(기능 삭제)
-	@RequestMapping(value = "/upReply")
-	@ResponseBody
-	public void upReply(HttpSession session,ModelAndView mav, ReviewBoardCommVO rcvo) {
-		String sessionID = (String) session.getAttribute("sessionID");
-		rcvo.setId(sessionID);
-		service.upReply(rcvo);
-	}	
 }
