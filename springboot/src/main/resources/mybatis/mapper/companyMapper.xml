@@ -14,13 +14,23 @@
 		insert into company
 		values(company_seq.nextVal,#{crn},#{cpwd},#{ccate},sysdate,0,#{hgrade})
 	</insert>
-
-	<select id="companyLogin" resultType="cvo">
-		select * from company where crn=#{crn} and cpwd=#{cpwd}
+	
+	<resultMap type="cvo" id="companyLoginResult">
+	<id property="cnum" column="cnum"/>
+	<result property="crn" column="crn"/> 
+	<result property="ccate" column="ccate"/> 
+	<result property="hgrade" column="hgrade"/> 
+	<association property="hvo" javaType="hvo">
+	<id property="cnum" column="cnum"/>
+	<result property="hcate" column="hcate"/>
+	<result property="hname" column="hname"/>
+	</association> 
+	</resultMap>
+	<select id="companyLogin" resultMap="companyLoginResult">
+		select c.crn,c.ccate,c.hgrade,h.hcate,h.hname from company c,hospital h where c.crn=#{crn} and c.cpwd=#{cpwd} and c.cnum = h.hnum
 	</select>
 	<select id="idchk" parameterType="map" resultType="int">
 		select count(*) from company where crn=#{crn} and cpwd=#{cpwd}
 	</select>
-
 
 </mapper>

@@ -16,6 +16,7 @@ public interface HospitalDao {
 	public int getCnt(SearchVO svo);
 	public HospitalVO getDetail(int num);
 	// 태진
+	public HospitalVO addDoctor(int cnum);
 	public void addCompany(CompanyVO cvo);
 	public void addHospital(HospitalVO hvo);
 	public List<DoctorVO> choiceDoctorList(int cnum);// 예약 - 의사 고르기

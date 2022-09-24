@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.main.ateam.doctor.service.DoctorService;
+import com.main.ateam.hospital.service.HospitalService;
 import com.main.ateam.vo.DoctorVO;
+import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.ReserveVO;
 @Controller
@@ -27,6 +29,9 @@ public class DoctorController {
 
 	@Autowired
 	private DoctorService doctorservice;
+	
+	@Autowired
+	private HospitalService hospitalService;
 	
 	@PostMapping("/doctorLogin")
 	public ModelAndView doctorLogin(HttpSession session, DoctorVO vo) {
@@ -125,9 +130,11 @@ public class DoctorController {
 			return ddetail;
 		}
 		@GetMapping(value = "/joinDoctorForm")
-		public ModelAndView joinform() {
+		public ModelAndView joinform(HttpSession session) {
+			int cnum = (int)session.getAttribute("sessionCNUM");
 			ModelAndView mav = new ModelAndView();
-			mav.addObject("hnum", 1); // 나중에 로그인할때 hnum값 가지고 와야함 임시로 넣은값
+			HospitalVO vo = hospitalService.addDoctor(cnum);
+			mav.addObject("vo", vo); // 나중에 로그인할때 hnum값 가지고 와야함 임시로 넣은값
 			mav.setViewName("doctor/doctorForm");
 			return mav;
 		}

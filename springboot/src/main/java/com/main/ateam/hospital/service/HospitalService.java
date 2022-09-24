@@ -59,5 +59,7 @@ public class HospitalService {
 	public List<HospitalVO> getHospital(Map<String, String> map){
 		return dao.getHospital(map);
 	}
-
+	public HospitalVO addDoctor(int cnum) {
+		return dao.addDoctor(cnum);
+	}
 }

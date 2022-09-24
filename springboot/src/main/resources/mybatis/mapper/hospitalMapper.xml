@@ -115,5 +115,8 @@
 	<select id="getCate" resultType="hvo">
 		select distinct hcate from hospital
 	</select>
-
+	
+	<select id="addDoctor" parameterType="int" resultType="hvo">
+		select hname,hcate,cnum from hospital where cnum= #{cnum}
+	</select>
 </mapper>

@@ -3,94 +3,160 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 <style>
-.table tr {
+
+
+.tab {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
 	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
 }
 </style>
 
 <div class="container-fluid">
-<div>
-<h3>예약목록</h3>
-</div>
-	
-	<!-- table -->
-	<div class="container">
-		<div class="row">
-		<div class="col">
-			<div class="collapse multi-collapse" id="collapseMap">
-				<div class="card card-body">
-				<div style="text-align: center"><h3>예약 상세내역</h3>
-				<table class="table2 table">
-				<thead>
-				<tr>
-				<th>담당의사</th>
-				<th>증상</th>
-				<th>상세증상</th>
-				</tr>
-				</thead>
-				<tbody>
-				
-				</tbody>
-				
-				</table>
+	<div>
+		<h3>예약목록</h3>
+	</div>
+	<div class="modal fade" id="exampleModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"></h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
 				</div>
-					<div id="map" style="width: 100%; height: 450px;"></div>
+				<div class="modal-body">
+					<div style="text-align: center">
+						<h3>예약 상세내역</h3>
+						<!-- Tab links -->
+						<div class="tab">
+							<button class="tablinks" onclick="openCity(event, 'table2')">예약정보</button>
+							<button class="tablinks" id="defaultOpen"
+								onclick="openCity(event, 'map_div')">지도</button>
+						</div>
+						<div class="container">
+							<div class="row">
+								<!--  Tab content -->
+								<div id="table2" class="tabcontent">
+									<table class="table2 table">
+										<thead>
+											<tr  >
+												<th>담당의사</th>
+												<th>증상</th>
+												<th>상세증상</th>
+											</tr>
+										</thead>
+										<tbody>
+
+										</tbody>
+
+									</table>
+								</div>
+								<div id="map_div" class="tabcontent">
+									<h3>지도</h3>
+									<div id="map" style="width: 100%; height: 450px;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" id="loadBtn">길찾기</button>
+							<button type="button" class="btn btn-primary" id="loadBtn">상세보기</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		
-		<table class="table1 table table-hover" id="datatable" style="text-align: center">
-			<thead>
-			
-				<tr >
-					<th scope="col">번호</th>
-					<th scope="col">병원이름</th>
-					<th scope="col">병원주소</th>
-					<th scope="col">의사이름</th>
-					<th scope="col">병원구분</th>
-					<th scope="col">예약날짜</th>
-					<th scope="col">상세보기</th>
-				</tr>
-				
-			</thead>
-			<tbody>
-				<c:forEach var="hvo" items="${vo }">
-				<c:forEach var="dvo" items="${hvo.doctorVO }">
-				<c:forEach var="rvo" items="${dvo.reserveVO }">
-					<tr >
-						<td>${rvo.r_num }</td>
-						<td>${hvo.hname }</td>
-						<td>${hvo.hloc }</td>
-						<td>${dvo.dname }</td>
-						<td>${hvo.hcate }</td>
-						<td>${rvo.rdate } / ${rvo.rtime }</td>
-						<td><input type="button" value="detail"id="detail"
-						data-bs-toggle="collapse" data-bs-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
-						<input type="hidden" value="${rvo.reservNum }"id="rNum"></td>
-					</tr>
-				</c:forEach>
-				</c:forEach>
-				</c:forEach>
-			</tbody>
-		</table>
-		
 	</div>
+	<!-- table -->
+	<div class="container">
+		<div class="row">
+
+
+			<table class="table1 table table-hover" id="datatable"
+				style="text-align: center">
+				<thead>
+					<tr>
+						<th scope="col">번호</th>
+						<th scope="col">병원이름</th>
+						<th scope="col">병원주소</th>
+						<th scope="col">병원구분</th>
+						<th scope="col">예약날짜</th>
+						<th scope="col">상세보기</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="hvo" items="${vo }">
+						<c:forEach var="dvo" items="${hvo.doctorVO }">
+							<c:forEach var="rvo" items="${dvo.reserveVO }">
+								<tr >
+									<td>${rvo.r_num }</td>
+									<td>${hvo.hname }</td>
+									<td>${hvo.hloc }</td>
+									<td>${hvo.hcate }</td>
+									<td>${rvo.rdate }/${rvo.rtime }</td>
+									<td class="clicktd"><input type="button" value="detail" id="detail"
+										data-bs-toggle="modal" data-bs-target="#exampleModal"
+										aria-expanded="false" aria-controls="exampleModal"> <input
+										type="hidden" value="${rvo.reservNum }" id="rNum"></td>
+								</tr>
+							</c:forEach>
+						</c:forEach>
+					</c:forEach>
+				</tbody>
+			</table>
+
+		</div>
 	</div>
 </div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
-<script type="text/javascript" 
-src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955&libraries=services,clusterer,drawing"></script>
 <script>
 var r_num;
+var a_num;
 var box;
 var loc = {}
 	$(function(){
+		document.addEventListener('touchstart', {passive: true});
 		
-		$('.table1').on('click','tr',function(){
+		$('.clicktd').on('click', function(){
 			
-			console.log(${num});
-			r_num = $(this).children().children('#rNum').val();
+			r_num = $(this).children('#rNum').val();
 			console.log('r_num => ' + r_num)
+		
+		
+		
 			setTimeout(function() {
 			$.ajax({
 				url:'memberMypage_list_Detail?num='+r_num,
@@ -110,7 +176,7 @@ var loc = {}
 							document.querySelector('.table2 tbody').innerHTML=box
 							loc={'content':'<div style="width:150px;text-align:center;padding:6px 0;">'+ hname +'</div>'}
 			
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+			var mapContainer = document.getElementById('map') , // 지도를 표시할 div 
 		    mapOption = {
 		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 		        level: 3 // 지도의 확대 레벨
@@ -195,14 +261,39 @@ var loc = {}
 					map.setCenter(mid)
 					
 				});
+				$('#loadBtn').click(function(){
+    				location.href="https://map.kakao.com/link/to/"+hloc+","+searchY+","+searchX;
+    			})
 		    } 
 		});  // - addressSearch 
 			 // delay
 						}	//- success
 					}) //- ajax
 		},500);
-				})
+				
+		})
 				
 		});
-			
+
+function openCity(evt, cityName) {
+	  // Declare all variables
+	  var i, tabcontent, tablinks;
+	  
+	  // Get all elements with class="tabcontent" and hide them
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+	    tabcontent[i].style.display = "none";
+	  }
+
+	  // Get all elements with class="tablinks" and remove the class "active"
+	  tablinks = document.getElementsByClassName("tablinks");
+	  for (i = 0; i < tablinks.length; i++) {
+	    tablinks[i].className = tablinks[i].className.replace(" active", "");
+	  }
+
+	  // Show the current tab, and add an "active" class to the button that opened the tab
+	  document.getElementById(cityName).style.display = "block";
+	  evt.currentTarget.className += " active";
+	}
+document.getElementById("defaultOpen").click();
 </script>

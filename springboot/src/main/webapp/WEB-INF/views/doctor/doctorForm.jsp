@@ -19,9 +19,7 @@
 
 <!--dnum,hnum,dname,did,dpwd,dmajor  -->	
 <form action="" method="post" id="joinDoctor">
-		<input type="hidden" id="hnum" name="hnum" value="${hnum}"> 
-		<input type="hidden" id="dmajor" name="dmajor" value=""> 
-		<input type="hidden" id="didchk" name="didchk" value=""> 
+		<input type="hidden" id="cnum" name="cnum" value="${vo.cnum}"> 
 		<div class="row g-3 needs-validation ">
 			<div class="col-md-7" style="width: 64%;">
 					<label for="id" class="form-label">아이디</label> 
@@ -59,15 +57,7 @@
 		<div class="col-md-4">
 			<div class="form-outline">
 				<label class="form-label">진료과목</label>
-				<select class="form-select" id="selbox" name="selbox" aria-label="Default select example">
-				  <option selected>진료과목 선택</option>
-				  <option value="1등급">1등급</option>
-				  <option value="2등급">2등급</option>
-				  <option value="3등급">3등급</option>
-				  <option value="4등급">4등급</option>
-				  <option value="5등급">5등급</option>
-				  <option value="direct">직접입력</option>
-				</select>
+			    <input type="text" class="form-control" id="dmajor" name="dmajor" value="${vo.hcate}" readonly="readonly">
 			</div>
 		</div>		
 		<div class="col-md-4">
@@ -100,7 +90,7 @@
 			url: "drIdCheck?did="+param,
 			success:function(data){
 				console.log(data);
-				$('#didchk').val(data);
+				
 				if(data == 1){
 					$js('#id-check-warn').css('color','red').html('이미 사용중인 아이디입니다.');
 				}else{
@@ -130,7 +120,7 @@ $(function() {
 		    }
 	  });
       //직접입력 인풋박스 기존에는 숨어있다가
-      $("#directlabel").hide();
+     /* $("#directlabel").hide();
       $("#selboxDirect").hide();
       $("#selbox").change(function() {
             //직접입력을 누를 때 나타남
@@ -142,15 +132,16 @@ $(function() {
     			$("#directlabel").hide();
     			$("#selboxDirect").hide();
     		}
-    	}) 
+    	}) */
   // <!--dnum,hnum,dname,did,dpwd,dmajor  -->  
     $('#join-submit').click(function() {
-    	$('#dmajor').val($("#selboxDirect").val());
-    	$('#dmajor').val($("#selbox").val());
     	if($('#dname').val().length==0 || $('#did').val().length==0 || $('#dpwd').val().length==0 || 
-				   $('#dmajor').val().length==0 || $('#dmajor').val()==="진료과목 선택"){
+				   $('#dmajor').val().length==0 ){
 					alert("입력되지 않은 정보가 존재합니다.");
-					console.log('didchk : '+$('#didchk').val());
+					console.log('dname : '+$('#dname').val());
+					console.log('did : '+$('#did').val());
+					console.log('dpwd : '+$('#dpwd').val());
+					console.log('dmajor : '+$('#dmajor').val());
 					return false;
 		}else if($('#didchk').val() == 0){
 			alert("아이디 중복체크를 해주세요!");
