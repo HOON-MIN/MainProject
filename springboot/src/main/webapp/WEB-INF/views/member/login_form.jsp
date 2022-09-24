@@ -10,16 +10,10 @@
 
 <!-- Custom styles for this template-->
 <link href="/taejin/css/sb-admin-2.min.css" rel="stylesheet">
-
-<body >
-
 	<div class="container" style="background-color: 80a7ce;">
-
 		<!-- Outer Row -->
 		<div class="row justify-content-center">
-
-			<div class="col-xl-10 col-lg-12 col-md-9">
-
+			<div class="col-xzl-10 col-lg-12 col-md-9">
 				<div class="card o-hidden border-0 shadow-lg my-5">
 					<div class="card-body p-0">
 						<!-- Nested Row within Card Body -->
@@ -32,11 +26,9 @@
 									</div>
 									<form id="login-form" action="#" method="post">
 										<div class="form-group">
-											<input type="radio" name="cate" id="choose1" value="1"
-												checked="checked" /> <span class="up"> 일반 </span> <input
-												type="radio" name="cate" id="choose2" value="2" /><span
-												class="up"> 의사 </span> <input type="radio" name="cate"
-												id="choose3" value="3" /><span class="up"> 사업자 </span>
+											<input type="radio" name="cate" id="choose1" value="1"	checked="checked" /> <span class="up"> 일반 </span> 
+											<input type="radio" name="cate" id="choose2" value="2" /><span	class="up"> 의사 </span> 
+											<input type="radio" name="cate"	id="choose3" value="3" /><span class="up"> 사업자 </span>
 										</div>
 										<div class="form-group">
 											<input type="text" class="form-control form-control-user"
@@ -50,8 +42,7 @@
 											<div class="custom-control custom-checkbox small">
 												<input type="checkbox" class="custom-control-input"
 													id="customCheck"> <label
-													class="custom-control-label" for="customCheck">Remember
-													Me</label>
+													class="custom-control-label" for="customCheck">Remember	Me</label>
 											</div>
 										</div>
 										<input type="button"

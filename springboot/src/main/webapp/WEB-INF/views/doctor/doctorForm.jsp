@@ -60,10 +60,14 @@
 			    <input type="text" class="form-control" id="dmajor" name="dmajor" value="${vo.hcate}" readonly="readonly">
 			</div>
 		</div>		
-		<div class="col-md-4">
-			<label class="form-label" id="directlabel">직접입력</label>
-			<input type="text" id="selboxDirect" name="selboxDirect" class="form-control"/>
-		</div>	  	
+		<div class="col-md-6"  style="padding: 10px;">
+				<label class="form-label">프로필 사진 등록</label> 
+				<div class="col-md-4">
+			<img style="width: 100%; margin-top: 8px;" src="${pageContext.request.contextPath}/resources/image/noimage.jpg" id="imgx">
+			</div>		
+				<input type="file" class="form-control" id="mfile" name="mfile">
+				
+			</div>
 						
 			<div class="form-group text-center">
 				<button type="submit" id="join-submit" class="btn btn-primary btn-space" >
@@ -157,9 +161,30 @@ $(function() {
 			
 			
     });
-    	
+    
+		 
+	
+		
+    $('#imgx').css('display', 'none');
+    $('#mfile').change(function() {
+		console.log($(this).val());
+		readURL(this);
+		$('#imgx').css('display', 'block');
+	  });
 	});
-	  
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		// 자바스크립트 I/O 
+		var reader = new FileReader();
+		//
+		reader.onload = function(e) {
+			//e.target.result
+			console.log("Path :" + e.target.result);
+			$('#imgx').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+	}
 
 </script>
 <%-- 본문 끝 --%>

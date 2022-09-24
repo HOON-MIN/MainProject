@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.main.ateam.admin.dao.AdminDao;
 import com.main.ateam.admin.dao.NoticeDaoInter;
 import com.main.ateam.vo.CompanyVO;
+import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.NoticeVO;
@@ -32,6 +33,9 @@ public class AdminService {
 	}
 	public List<HospitalVO> adminBarchart(){
 		return adminDao.adminBarchart();
+	}
+	public List<DoctorVO> adminBarchart2(String hcate) {
+		return adminDao.adminBarchart2(hcate);
 	}
 	/*
 	 * public NoticeVO getDetail(int nnum) { return noticeDao.getDetail(nnum); }

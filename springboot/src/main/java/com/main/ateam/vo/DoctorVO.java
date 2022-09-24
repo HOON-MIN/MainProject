@@ -18,6 +18,8 @@ public class DoctorVO {
 	private String did;
 	private String dpwd;
 	private String dmajor;
+	private String profimg;
+	//private MultipartFile mfile;
 	private HospitalVO hvo;
 	private List<ReserveVO> reserveVO;
 	private List<HospitalVO> hospitalVO; // 훈민

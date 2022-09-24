@@ -12,12 +12,6 @@
 
 <div class="container">
 <div class="list-group list-group-flush">
-	<c:choose>
-		<c:when test="${sessionNUM == 1}">
-		<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-			href="${pageContext.request.contextPath }/admin/adminTotalChart">전체 병원</a>
-	</c:when>
-	</c:choose>
 </div>			
 <article>
 	<header>

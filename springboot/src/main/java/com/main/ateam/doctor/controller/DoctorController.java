@@ -1,9 +1,12 @@
 package com.main.ateam.doctor.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,7 +143,7 @@ public class DoctorController {
 		}
 		
 		@PostMapping(value = "/addDoctor")
-		public String addDoctor(DoctorVO dvo) {
+		public String addDoctor(DoctorVO dvo,HttpServletRequest request) {
 			System.out.println("hnum : "+dvo.getCnum());
 			System.out.println("dname : "+dvo.getDname());
 			System.out.println("did : "+dvo.getDid());
