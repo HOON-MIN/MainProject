@@ -95,14 +95,16 @@ a {
 				<ul class="nav flex-column">
 					<c:choose>
 						<c:when test="${sessionNUM != null}">
-		 					<li class="nav-item pt-5 pb-2 ps-4"><a
+							<li class="nav-item pt-5 pb-2 ps-4"><a
 								class="nav-link active text-white" aria-current="page"
 								href="${pageContext.request.contextPath }/admin/adminHospTotalList">
 									전체 병원 </a></li>
 							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
-								<a class="nav-link text-white" href="${pageContext.request.contextPath }/member/memberMypage_list">예약목록 </a>
+								<a class="nav-link text-white"
+								href="${pageContext.request.contextPath }/member/memberMypage_list">예약목록
+							</a>
 							</li>
-	
+
 						</c:when>
 					</c:choose>
 				</ul>
@@ -112,45 +114,69 @@ a {
 
 		<div class="col-10">
 			<div class="hboard pt-2 ps-3 pe-3">
-	
-				<div style="height: 80%;">
-					<h3 class="hanna ps-3">병원 리스트</h3>
-							<div class="hboard pt-2 ps-3 pe-3">
-				<div class="form-group" style="margin: 0 auto;">
+				<div class="hboard pt-2 ps-3 pe-3 border">
+					<div class="justify-content-center"
+						style="border: solid 1px tomato;">
+						<h3 class="hanna ps-3 text-center">개인정보</h3>
+						<div class="border  justify-content-center ">
 
-					<div class="col-sm-5" style="float: left;">
-						<div class="form-group">
-							<label>ID </label> <input name="id" type="text"
-								class="form-control" readonly="readonly" value="${member.id }">
-						</div>
-						<div class="form-group">
-							<label>이름 </label> <input name="name" type="text"
-								class="form-control" readonly="readonly" value="${member.name }">
-						</div>
-						<div class="form-group">
-							<label>주민등록번호 </label> <input name="ssn" type="text"
-								class="form-control" readonly="readonly" value="${member.ssn }">
-						</div>
-						<div class="form-group">
-							<label>전화번호</label> <input name="tel" type="text"
-								class="form-control" readonly="readonly" value="${member.tel }">
-						</div>
-						<div class="form-group">
-							<label>E-mail</label> <input name="email" type="text"
-								class="form-control" readonly="readonly"
-								value="${member.email }">
+							<form>
+								<div class="border  justify-content-center ">
+									<div class= "col-6">
+										<label>이름 </label> <input name="name" type="text"
+											class="form-control" readonly="readonly"
+											value="${member.name }">
+									</div>
+									<div class="col-6">
+										<label>ID </label> 
+										<input name="id" type="text"
+											class="form-control" readonly="readonly"
+											value="${member.id }">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="nickname">성별</label> <input type="text"
+										class="form-control" id="gender" name="gender"
+										style="width: 30%;" value="${member.gender }"
+										style=" width:30%; " readonly="readonly"> <label
+										for="nickname">나이</label> <input type="text"
+										class="form-control" id="age" name="age"
+										value="${member.age }" style="width: 30%;" readonly="readonly">
+								</div>
+
+								<div class="col-sm-5" style="float: left;">
+									<div class="form-group">
+										<label>주민등록번호 </label> <input name="ssn" type="text"
+											class="form-control" readonly="readonly"
+											value="${member.ssn }">
+									</div>
+									<div class="form-group">
+										<label>전화번호</label> <input name="tel" type="text"
+											class="form-control" readonly="readonly"
+											value="${member.tel }">
+									</div>
+									<div class="form-group">
+										<label>E-mail</label> <input name="email" type="text"
+											class="form-control" readonly="readonly"
+											value="${member.email }">
+									</div>
+									<div class="form-group">
+										<label>가입일자</label> <input name="email" type="text"
+											class="form-control" readonly="readonly"
+											value="${member.mdate }">
+									</div>
+									<button class="btn btn-primary btn-lg" type="button"
+										style="float: inherit;"
+										onclick="location.href='updateMypageForm'">정보 수정</button>
+							</form>
 						</div>
 					</div>
 
-	<button class="btn btn-primary btn-lg" type="button"
-				style="float: inherit;" onclick="location.href='updateMypageForm'">
-				정보 수정</button>
-				</div>
-			</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <%-- 
