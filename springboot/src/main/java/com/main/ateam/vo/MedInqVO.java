@@ -14,8 +14,8 @@ import lombok.Setter;
 public class MedInqVO {
 	
 	private int mednum;
-	private String id, disease, diseasehist,
-		etc, smoke, alcohol, allergy, pregnancy, 
-		symptom, meddate;
+	private String id, disease1, disease2,
+		diseasehist, diseaseetc, smoke, alcohol, allergy, 
+		allergyetc, pregnancy, symptom, meddate;
 	
 }

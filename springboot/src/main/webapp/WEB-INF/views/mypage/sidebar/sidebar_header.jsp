@@ -34,7 +34,7 @@
 				href="${pageContext.request.contextPath }/reserve/reserveForm">예약하기</a> 
 				
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
-				href="#!">Events</a> 
+				href="#!">나의 문진표</a> 
 			<a	class="list-group-item list-group-item-action list-group-item-light p-3"
 				href="#!">Profile</a> 
 			<a  class="list-group-item list-group-item-action list-group-item-light p-3"
