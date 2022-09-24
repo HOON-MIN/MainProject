@@ -82,7 +82,7 @@ a {
 
 		<div class="col-10">
 			<div class="hboard pt-2 ps-3 pe-3">
-				<div class="input-group searchForm mb-3" style="width: 50%";>
+				<div class="input-group searchForm mb-3" style="width: 50%;">
 					<input type="text" class="form-control"
 						aria-label="Recipient's username"
 						aria-describedby="hospitalSearch" style="width: 160px;">
@@ -97,9 +97,9 @@ a {
 						<div class="col-5 map" style="background-color: white;">지도
 							표시 공간</div>
 						<div class="col-6 map align-items-center ">
-							<h1 class="hanna m-3">${shopDetail.shopName } 병원 이름</h1>
+							<h1 class="hanna m-3">${shopDetail.shopName }병원이름</h1>
 							<div>
-							<h4 class="hanna m-3 pt-3"> 병원 주소 </h4>
+								<h4 class="hanna m-3 pt-3">병원 주소</h4>
 							</div>
 						</div>
 					</div>

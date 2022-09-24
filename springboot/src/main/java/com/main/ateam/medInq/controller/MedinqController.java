@@ -44,7 +44,7 @@ public class MedinqController {
 		System.out.println("----- medInqDetail controll-----");
 		MedInqVO vo = service.getMIDetail(num);
 		System.out.println(vo.getMednum());
-		System.out.println(vo.getId());
+//		System.out.println(vo.getId());
 		System.out.println("---------------------------");
 		m.addAttribute("vo", vo);
 		return "medInq/medInqDetail";
