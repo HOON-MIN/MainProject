@@ -23,29 +23,12 @@
 		<header>
 			<h1>Hospital List</h1>
 		</header>
-		<!-- Area Chart -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-			</div>
-			<div class="card-body">
-				<div class="chart-area">
-					<canvas id="myAreaChart"></canvas>
-				</div>
-				<hr>
-				Styling for the area chart can be found in the
-				<code>/js/demo/chart-area-demo.js</code>
-				file.
-			</div>
-		</div>
+		
 
-		<!-- Bar Chart
-		select d.dmajor,h.hname ,count(*) from reserve r, doctor d ,hospital h 
-		where r.dnum=d.dnum and h.cnum = d.cnum group by d.dmajor,h.hname;
-		 -->
+		<!-- Bar Chart1 -->
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">작월 이용횟수</h6>
+				<h6 class="m-0 font-weight-bold text-primary">작월 사용자이용 통계</h6>
 			</div>
 			<div class="card-body">
 				<div class="chart-bar">
@@ -59,14 +42,14 @@
 			</div>
 		
 
-	
+		<!-- Bar Chart2 -->	
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">작월 이용횟수</h6>
+				<h6 class="m-0 font-weight-bold text-primary">과별 병원 이용 통계</h6>
 			</div>
 			<div class="card-body">
 				<div class="chart-bar" id="graph-container">
-					<canvas id="myBarChart2" width="591" height="150"></canvas>
+					<!--<canvas id="myBarChart2" width="591" height="150"></canvas>-->
 				</div>
 				<hr>
 				Styling for the bar chart can be found in the
@@ -97,6 +80,8 @@
 			</div>
 		</div>
 	</div>
+	</div>
+	<!--  -->
 </article>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 <!-- Custom scripts for all pages-->
@@ -114,8 +99,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 //Bar Chart Example
-var labels =[];
-var datas = [];
+
 
 var chk=0;
 var ctx = document.getElementById("myBarChart");
@@ -125,10 +109,13 @@ $.ajax({
 	type:'get',
 	success:function(data){
 		console.log('data ' ,data)
+			var labels =[];
+			var datas = [];
 		for(var i of data){
 			labels.push(i.hvo.hcate)
 			datas.push(i.r_num)
 		}
+		
 var config = {
 		  type: 'bar',
 		  data: {
@@ -143,9 +130,8 @@ var config = {
 		  },
 		  options: {
 			  onClick: function(point, event){  //--- 클릭이벤트!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				  
 		    	  $('#graph-container').html('<canvas id="myBarChart2" width="591" height="150"></canvas>');
-		    	  
+		    	 
 		        console.log('event : ', event[0]._model.label);
 		        var hcate = event[0]._model.label
 		        console.log('hcate : ' , hcate)
@@ -160,6 +146,7 @@ var config = {
 		    		   console.log('event = ' ,data)
 		    		   console.log(data[0].hname)
 		    		   console.log(data[0].doctorVO[0].reserveVO[0].r_num)
+		    		   
 		    		   var labels2 =[];
 		    		   var datas2 =[];
 		    		   for(var e of data){
