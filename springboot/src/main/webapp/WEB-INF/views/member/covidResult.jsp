@@ -170,21 +170,6 @@
 					</div>
 			</section>
 		</div>
-
-		<footer>
-			<div class="footer clearfix mb-0 text-muted">
-				<div class="float-start">
-					<p>2021 &copy; Mazer</p>
-				</div>
-				<div class="float-end">
-					<p>
-						Crafted with <span class="text-danger"><i
-							class="bi bi-heart"></i></span> by <a href="http://ahmadsaugi.com">A.
-							Saugi</a>
-					</p>
-				</div>
-			</div>
-		</footer>
 	</div>
 </div>
 
@@ -229,7 +214,7 @@ wavesurfer.load('/upload/audio/'+userid+'.wav');
 
 $(window).ready(function(){
 	$.ajax({
-		url : 'http://192.168.0.83:9000/dhlee/covidres?id='+userid+'&callback',
+		url : 'http://192.168.200.67:9000/dhlee/covidres?id='+userid+'&callback',
 		type:'GET',
 		dataType:'jsonp',
 		jsonp: 'callback',
@@ -262,7 +247,7 @@ $(window).ready(function(){
 	var agenormal = [];
 	var agecovid = [];
 	$.ajax({
-		url : 'http://192.168.0.83:9000/dhlee/covidradar?&callback',
+		url : 'http://192.168.200.67:9000/dhlee/covidradar?&callback',
 		type:'GET',
 		dataType:'jsonp',
 		jsonp: 'callback',
