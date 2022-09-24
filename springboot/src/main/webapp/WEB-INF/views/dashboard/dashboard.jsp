@@ -142,7 +142,7 @@
 							<h6 class="text-capitalize">한국 의료 소비 금액(year)</h6>
 							<p class="text-sm mb-0">
 								<i class="fa fa-arrow-up text-success"></i> <span
-									class="font-weight-bold">8% more</span> in 2021
+									class="font-weight-bold">25% more</span> in 2021 for 5 years
 							</p>
 						</div>
 						<div class="card-body p-3">

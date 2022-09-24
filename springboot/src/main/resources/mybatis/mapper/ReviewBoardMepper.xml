@@ -24,7 +24,7 @@
    update reviewboard set title=#{title}, cont=#{cont}, hname=#{hname}, dname=#{dname} where rnum=#{rnum}
 </update>
 
-<!-- Page List Query : 이부분 재대로 확인 하기 -->
+<!-- Page List Query -->
 <select id="getCnt" resultType="int">
   select count(*) from reviewboard
 </select>
