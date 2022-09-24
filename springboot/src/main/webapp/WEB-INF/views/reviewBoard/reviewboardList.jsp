@@ -87,25 +87,8 @@ font-size: 14px;
 	<header class="text-center m-5" >
 		<h3>사용자 후기 게시판</h3>
 	</header>
-	
-	<!--  /taejin/img/사진이름 -->
 
-<!-- 
-<c:forEach var="e" items="${reviewlist}">
-<tr>
-<td class="align-middle text-center">${e.rnum }</td>
-<td class="text-center"><a href="reviewDetail?rnum=${e.rnum }">${e.title }<b><span style="color: darkred;">[${e.rcount }]</span></b></a></td>
-
-<td class="align-middle text-center">${e.id }</td>
-<td class="align-middle text-center">${e.hname }</td>
-<td class="align-middle text-center"><fmt:parseDate value="${e.udate}" var="udate" pattern="yyyy-MM-dd HH:mm:ss"/>
-<fmt:formatDate value="${udate }" pattern="yyyy-MM-dd"/></td>
-<td class="align-middle text-center">${e.hits }</td>
-
-</tr>
-</c:forEach>
- -->
- <div style="text-align: center;">
+ 					<div style="text-align: center;">
 						<form name="sForm" method="post" action="reviewboardlist">
 							<select name="search_option">
 								<option value="id"
@@ -126,7 +109,7 @@ font-size: 14px;
 							</select> <input name="keyword" id="searchbar" value="${map.keyword}"> 
 							<input type="submit" value="조회">
 						</form>
-</div>
+					</div>
 
 <p></p>
 
