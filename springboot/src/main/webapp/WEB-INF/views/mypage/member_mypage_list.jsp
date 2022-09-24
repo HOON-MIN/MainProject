@@ -5,9 +5,7 @@
 
 
 <div class="container-fluid">
-<div>
-<h3>예약목록</h3>
-</div>
+
 	
 	<!-- table -->
 	<div class="container">
