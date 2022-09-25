@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 
 <style>
@@ -93,7 +91,7 @@ a {
 					<li class=" nav-item pt-5 pb-2 ps-4"><a
 						class="hcateAllbtn nav-link active text-white" aria-current="page"
 						href="#">모든 약국</a></li>
-					<%-- 	<c:forEach var="e" items="${hcate }" varStatus="status">
+ 						<c:forEach var="e" items="${hcate }" varStatus="status">
 						
 						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.hcate }" 
 							name="hbtn${status.index}"
@@ -101,7 +99,7 @@ a {
 							class="hcatebtn nav-link text-white" href="#">${e.hcate }</a></li>
 						<input type="button" name="hbtn${status.index}"
 							value="${e.hcate }" class="hcatebtn btn btn-outline-primary" />
-					</c:forEach> --%>
+					</c:forEach> 
 
 				</ul>
 			</div>
