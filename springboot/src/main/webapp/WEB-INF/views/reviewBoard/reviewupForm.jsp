@@ -42,36 +42,6 @@ a {
 	width: 18px;
 }
 
-.htable {
-	width: 100%;
-}
-
-.htable thead {
-	height: 40px;
-	color: grey;
-}
-
-.htable th {
-	font-weight: lighter;
-	padding-left: 12px;
-}
-
-.htable tbody {
-	border-collapse: collapse;
-	border-radius: 16px;
-	box-shadow: 0px 0px 8px #ababab;
-}
-
-.htable td {
-	padding: 14px 12px;
-	font-size: 14px;
-}
-
-.htable td>a {
-	color: #232323;
-	font-weight: bold;
-}
-
 .formTitle {
 	margin-top: 40px;
 	text-align: right;

@@ -116,21 +116,7 @@ a {
 		<!-- 컨텐츠 (연회색배경) -->
 		<div class="col-10 flex-column">
 			<div class="hboard pt-2 ps-3 pe-3 pb-3">
-				<!-- 		<form class="sForm m-3" name="sForm" method="get"
-					action="hospitalList" style="width: 400px;">
-										###
-					<input type="hidden" name="category" id="category" value="all">
-					<input type="hidden" name="searchreset" value="1" hidden="hidden">
-					<div class="input-group searchForm mb-3">
-						<input type="text" class="form-control" id="hsearch"
-							aria-label="Recipient's username" name="search"
-							aria-describedby="hospitalSearch">
-						<button type="submit" class="btn searchBtn" name="searBtn"
-							id="searBtn">
-							<img alt="검색아이콘" src="/img/search.png">
-						</button>
-					</div>
-				</form> -->
+
 				<h3 class="hanna p-5" style="text-align: center;">
 					의료 지식인 보드
 					</h5>
