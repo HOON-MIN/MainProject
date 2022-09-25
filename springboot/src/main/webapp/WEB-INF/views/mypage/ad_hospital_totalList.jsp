@@ -1,32 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 <!-- include 제거  -->
-<style>
-/* 	.table1 :hover { */
-		
-/* 	} */
-</style>
+<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
 
-<div class="container">
-<div class="list-group list-group-flush">
-</div>			
-<article>
-	<header>
-		<h1>전체 병원</h1>
-	</header>
-	<ul class="list-unstyled">
-		<li class="border-top my-3"></li>
-	</ul>
-<select id="dataPerPage">
-        <option value="5">5개씩보기</option>
-        <option value="10">10개씩보기</option>
-        <option value="20">20개씩보기</option>
-</select>
-		<%-- 리팩토링 해야 함 --%>
-<table class="table1 table table-hover" style="text-align: center;">
+<%-- 리팩토링 해야 함 --%>
+<table class="htable table table-hover table-borderless"
+	style="text-align: center;">
 	<thead>
 		<tr>
 			<th>번호</th>
@@ -36,35 +17,42 @@
 			<th>진료과목</th>
 		</tr>
 	</thead>
-
 	<tbody>
-<%-- 		<%-- for start --%> 
-<%-- 		<c:forEach var="e" items="${list }"> --%>
-<!-- 			<tr> -->
-<%-- 				<td class="linktd">${e.hnum }</td> --%>
-<%-- 				<td class="linktd"><a href="hospitalDetail?num=${e.hnum }"> ${e.hname }</a></td> --%>
-<%-- 				<td class="linktd">${e.hloc }</td> --%>
-<%-- 				<td class="linktd">${e.otime }~${e.ctime }</td> --%>
-<%-- 				<td class="linktd">${e.hcate }</td> --%>
-<!-- 			</tr> -->
-<%-- 		</c:forEach> --%>
-<%-- 		<%-- for end --%> 
+		<%-- 		<%-- for start --%>
+		<%-- 		<c:forEach var="e" items="${list }"> --%>
+		<!-- 			<tr> -->
+		<%-- 				<td class="linktd">${e.hnum }</td> --%>
+		<%-- 				<td class="linktd"><a href="hospitalDetail?num=${e.hnum }"> ${e.hname }</a></td> --%>
+		<%-- 				<td class="linktd">${e.hloc }</td> --%>
+		<%-- 				<td class="linktd">${e.otime }~${e.ctime }</td> --%>
+		<%-- 				<td class="linktd">${e.hcate }</td> --%>
+		<!-- 			</tr> -->
+		<%-- 		</c:forEach> --%>
+		<%-- 		<%-- for end --%>
 	</tbody>
 </table>
 <div>
-<div style="text-align: center;">
-<ul class="tj" id="pagingul" ></ul>
-		<form name="search-form" id="search-form" autocomplete="off" style="float: right;">
-		<input type="text" name="keyword"id="keyword"></input>
-		<input type="button" id="searchBtn" class="btn btn-outline-primary mr-2" value="검색">
-		</form></div>
-		<div id="displayCount" style="text-align: center;"></div>
-		</div>
-</article>
+	<div style="text-align: center;">
+		<ul class="tj" id="pagingul"></ul>
+		<form name="search-form" id="search-form" autocomplete="off"
+			style="float: right;">
+			<input type="text" name="keyword" id="keyword"></input> <input
+				type="button" id="searchBtn" class="btn btn-outline-primary mr-2"
+				value="검색">
+		</form>
+
+	</div>
+	<select id="dataPerPage">
+		<option value="5">5개씩보기</option>
+		<option value="10">10개씩보기</option>
+		<option value="20">20개씩보기</option>
+	</select>
+	<div id="displayCount" style="text-align: center;"></div>
 </div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 <!-- 이전 jquery 임포트 코드 ...!!! -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 // $(function(){
 // 	$('.linktd').click(function(){
@@ -113,15 +101,17 @@
 				   //url:'http://192.168.0.113:9000/myjson/loadJson',
 //				    url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
 //				    url:'http://192.168.0.120:9000/hospital/hospitalListJsonP',
-				    url:'http://192.168.0.120:9000/hospital/hospitalListTotal',
+				    url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
 				    type:'GET',
 				    dataType:'jsonp',
 				    jsonp:'callback',
 				    success:function(data){
-				    	totalData = data.data.length
-				           for (var i of data.data) {
+				    	totalData = data.data[0].length
+				    	console.log(data)
+				            for (var i of data.data[0]) {
 				           	totalList.push(i)
-				       }
+				       }  
+				           	console.log('total ' ,totalList)
 				       paging(totalData, dataPerPage, pageCount, 1,totalList);
 		       		   displayData(1, dataPerPage,totalList);
 				    },
@@ -133,8 +123,7 @@
 			/* $.ajax({
 				   //url:'http://192.168.0.113:9000/myjson/loadJson',
 //				    url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
-//				    url:'http://192.168.0.120:9000/hospital/hospitalListJsonP',
-				    url:'http://192.168.0.120:9000/hospital/hospitalListTotal',
+//				  
 				    type:'GET',
 				    dataType:'jsonp',
 				    jsonp:'callback',
@@ -179,6 +168,7 @@
 				// ---------------- 페이징 처리 -----------------------
 				function paging(totalData, dataPerPage, pageCount, currentPage,d) {
 					  console.log("currentPage : " + currentPage);
+					  console.log("totalData : " + totalData);
 
 					  totalPage = Math.ceil(totalData / dataPerPage); //총 페이지 수
 					  
@@ -262,13 +252,13 @@
 					    chartHtml +=
 					    	'<tr style="cursor:pointer;">'+
 				           	'<td  >'+(i+1)+'</td>'+
-				           	'<td  id="listBtn" >'+d[i][0]+'</td>'+
-				           	'<td  >'+d[i][1]+'</td>'+
-				           	'<td  >'+d[i][2]+'</td>'+
-				           	'<td  >'+d[i][3]+'</td><tr>'
+				           	'<td  id="listBtn" >'+d[i].hos_name+'</td>'+
+				           	'<td  >'+d[i].hos_address+'</td>'+
+				           	'<td  >'+d[i].hos_tel+'</td>'+
+				           	'<td  >'+d[i].hos_loc+'</td><tr>'
 					  	}
 					} 
-					     document.querySelector('.table1 > tbody').innerHTML = chartHtml;
+					     document.querySelector('.htable > tbody').innerHTML = chartHtml;
 					} // displayData 끝
 				
 				function getSearchList(keyword){
@@ -281,7 +271,7 @@
 						success : function(data){
 							totalData = data.data.length
 							//테이블 초기화
-							 $('.table1 > tbody').empty();
+							 $('.htable > tbody').empty();
 							for (var i of data.data) {
 					           	searchList.push(i)
 							console.log('d = >' + i)

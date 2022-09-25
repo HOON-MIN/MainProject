@@ -4,8 +4,35 @@
 <!-- C3 CDN -->
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
-<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 <!-- include 제거  -->
+
+<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
+
+
+<!-- Bar Chart1 -->
+<div class="container">
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">전국 병원</h6>
+		</div>
+		<div>
+			<input type="button" value="click" id="jsonLoad">
+		</div>
+		<div class="card-body">
+			<!-- <div id="target"></div> -->
+			<div class="chart-bar">
+				<div id="chart1"></div>
+
+			</div>
+			<hr>
+			Styling for the bar chart can be found in the
+			<code>/js/demo/chart-bar-demo.js</code>
+			file.
+		</div>
+	</div>
+</div>
+
+
 <div class="row">
 	<div style="width: 500px;">
 		<div>
@@ -16,8 +43,10 @@
 			style="width: 1200px; height: 600px; padding-top: 50px; margin-bottom: 100px;"></div>
 	</div>
 </div>
+
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
-<!-- 이전 jquery 임포트 코드 ...!!! -->
+
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
@@ -30,7 +59,7 @@
 	//});
 	$('#jsonLoad').click(function() {
 		$.ajax({
-			url : 'http://192.168.0.63:9000/hospital/hospitalListJsonP?callback',
+			url : 'http://192.168.0.63:9000/hospital/hospitalListChartJsonP?callback',
 			type : 'GET',
 			dataType : 'jsonp',
 			jsonp : 'callback',

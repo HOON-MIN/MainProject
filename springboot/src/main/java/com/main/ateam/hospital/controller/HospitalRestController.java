@@ -29,4 +29,23 @@ public class HospitalRestController {
 		List<HospitalVO> list = service.getHospital(map);
 		return list;
 	}
+
+	@GetMapping(value = "selectHospitalCate")
+	@ResponseBody
+	public List<HospitalVO> selectHospitalCate() {
+		List<HospitalVO> list = service.selectHospitalCate();
+		return list;
+	}
+	
+	@GetMapping(value = "selectHospital")
+	@ResponseBody
+	public List<HospitalVO> selectHospital(String choice){
+		Map<String, String> map = new HashMap<>();
+		map.put("choice", choice);
+		List<HospitalVO> list = service.selectHospital(map);
+		return list;
+	}
+	
+
+	
 }

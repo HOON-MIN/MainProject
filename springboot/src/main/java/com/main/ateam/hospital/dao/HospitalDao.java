@@ -25,4 +25,8 @@ public interface HospitalDao {
 	// 진료과목 종류 가져오기 
 	public List<HospitalVO> getCate();
 	public List<HospitalVO> getHospital(Map<String, String> map);
+	public List<HospitalVO> selectHospitalCate();
+	public List<HospitalVO> selectHospital(Map<String, String> map);
+	
+	
 }

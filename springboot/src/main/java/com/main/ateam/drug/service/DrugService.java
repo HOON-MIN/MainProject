@@ -26,6 +26,11 @@ public class DrugService {
 	public List<DrugVO> getDrugSearchShape(Map<String, String> map) {
 		return dao.getDrugSearchShape(map);
 	}
+	
+	public List<DrugVO> getDrugSearchImage(Map<String, String> map) {
+		return dao.getImgDrugSearch(map);
+	}
+	
 
 	public int getDrugSearchShapeCount(Map<String, String> map) {
 		return dao.getDrugSearchShapeCount(map);
@@ -45,6 +50,10 @@ public class DrugService {
 
 	public int getDrugSearchHistoryTotalCount(int num) {
 		return dao.getDrugSearchHistoryTotalCount(num);
+	}
+	
+	public int getTotalImgDrugSearch(Map<String, String> map) {
+		return dao.getTotalImgDrugSearch(map);
 	}
 
 	public void setDrugInsert(DrugVO vo) {
@@ -66,5 +75,7 @@ public class DrugService {
 	public void setDrugSearchInsert(Map<String, Integer> map) {
 		dao.setDrugSearchHistoryInsert(map);
 	}
+	
+	
 
 }

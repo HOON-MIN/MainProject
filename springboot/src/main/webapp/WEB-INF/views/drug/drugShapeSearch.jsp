@@ -5,7 +5,7 @@
 <div style="text-align: center;">
 	<span>
 		<p>
-			<a href="drugList" style="margin-right: 40px">약품리스트</a> <a href=""
+			<a href="drugList" style="margin-right: 40px">약품리스트</a> <a href="drugSearchImg"
 				style="margin-right: 40px">이미지로약품조회</a> <a href="drugMyCase"
 				style="margin-right: 40px">나의의약품케이스</a> <a href="drugSearchHistory"
 				style="margin-right: 40px">약품검색기록</a>
@@ -57,7 +57,7 @@
 											<option value="전체">전체</option>
 
 										</select> 후면 / 우측 색깔 선택 : <select name="drug_color_B">
-											<option value="동일">전면과 동일</option>
+											<option value="없음">전면과 동일</option>
 											<option value="하양">하양</option>
 											<option value="노랑">노랑</option>
 											<option value="주황">주황</option>
@@ -103,23 +103,25 @@
 											<option value="전체">"전체"</option>
 									</select>
 								</p>
-								<p>
+								<!-- <p>
 
-									</span> <span style='margin-bottom: 50px'> 분할선 선택 : <select
-										name="drug_split_line_F">
-											<option value="없음">"없음"</option>
-											<option value="+">"(+)형"</option>
-											<option value="-">"(-)형"</option>
-											<option value="기타">"기타"</option>
+									</span> <span style='margin-bottom: 50px'> 
+									분할선 선택 : 
+									<select name="drug_split_line_F">
+											<option value="없음">"전 후 둘 분할선 없음"</option>
+											<option value="+">"전 후 중 (+)형 "</option>
+											<option value="-">"전 후 중 (-)형"</option>
+											<option value="기타">"전 후 중 기타 분리선 "</option>
 											<option value="전체">"전체"</option>
-									<!-- </select> 후면 분할선 선택 : <select name="drug_split_line_B">
+									</select> 
+									후면 분할선 선택 : <select name="drug_split_line_B">
 											<option value="없음">"없음"</option>
-											<option value="(+)형">"(+)형"</option>
+											<option value="+형">"(+)형"</option>
 											<option value="(-)형">"(-)형"</option>
 											<option value="전체">"전체"</option>
-									</select> -->
+									</select>
 									</span>
-								</p>
+								</p> -->
 								<div 
 									style="padding-left: 90px; padding-right: 90px;">
 

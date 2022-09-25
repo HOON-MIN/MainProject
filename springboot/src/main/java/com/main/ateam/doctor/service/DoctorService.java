@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.main.ateam.doctor.dao.DoctorDao;
 import com.main.ateam.vo.DoctorVO;
+import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.ReserveVO;
 @Service
 public class DoctorService {
@@ -45,4 +46,9 @@ public class DoctorService {
 	public List<ReserveVO> doctorReserveList(int dnum){
 		return doctordao.doctorReserveList(dnum);
 	}
+	
+	public List<DoctorVO> selecHospitaldoc(Map<String, String> map){
+		return doctordao.selecHospitaldoc(map);
+	}
+	
 }
