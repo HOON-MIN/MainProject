@@ -214,7 +214,7 @@ wavesurfer.load('/upload/audio/'+userid+'.wav');
 
 $(window).ready(function(){
 	$.ajax({
-		url : 'http://192.168.200.67:9000/dhlee/covidres?id='+userid+'&callback',
+		url : 'http://192.168.0.83:9000/dhlee/covidres?id='+userid+'&callback',
 		type:'GET',
 		dataType:'jsonp',
 		jsonp: 'callback',
@@ -247,7 +247,7 @@ $(window).ready(function(){
 	var agenormal = [];
 	var agecovid = [];
 	$.ajax({
-		url : 'http://192.168.200.67:9000/dhlee/covidradar?&callback',
+		url : 'http://192.168.0.83:9000/dhlee/covidradar?&callback',
 		type:'GET',
 		dataType:'jsonp',
 		jsonp: 'callback',
