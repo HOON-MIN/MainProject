@@ -40,24 +40,10 @@ public class HospitalController {
 	private int beginPerPage =0; // 각 페이지별 시작 게시물의 index값
 	private int endPerPage =0; // 각 페이지별 마지막 게시물의 index값
 	
-	
 	@Autowired
 	private HospitalService service;
 	@Autowired
 	private CompanyService companyService;
-
-	@RequestMapping(value = "/hospitalListBack")
-	public String hospitalListBack(SearchVO svo, Model m) {
-		ModelAndView mav = new ModelAndView();
-		System.out.println("controller - hospitalList");
-//		List<HospitalVO> list = service.getList();
-//		System.out.println(list);
-//		for(HospitalVO e : list) {
-//			System.out.println(e.getHname());
-//		}
-//		m.addAttribute("list", list);
-		return "hospital/hospitalList";
-	}
 
 	@RequestMapping(value = "/hospitalList")
 	public String hospitalList(SearchVO svo, Model model, 
@@ -164,5 +150,17 @@ public class HospitalController {
 		return "redirect:/";
 	}
 
+//	@RequestMapping(value = "/hospitalListBack")
+//	public String hospitalListBack(SearchVO svo, Model m) {
+//		ModelAndView mav = new ModelAndView();
+//		System.out.println("controller - hospitalList");
+//		List<HospitalVO> list = service.getList();
+//		System.out.println(list);
+//		for(HospitalVO e : list) {
+//			System.out.println(e.getHname());
+//		}
+//		m.addAttribute("list", list);
+//		return "hospital/hospitalList";
+//	}
 
 }
