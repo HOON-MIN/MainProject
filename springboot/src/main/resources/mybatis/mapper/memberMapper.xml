@@ -58,9 +58,15 @@
 		from member where id = #{ id }
 	</select>  	
 	
-	<select id="memberReserveList" parameterType="int" resultMap="memberReserveResult">
-		select rownum r_num,r.reservNum,r.num, d.dnum,dname,h.hcate,r.rdate,r.rtime,
+	<select id="memberReserveList" parameterType="svo" resultMap="memberReserveResult">
+		select * from (select rownum r_num ,r.reservNum,r.num, d.dnum,dname,h.hcate,r.rdate,r.rtime,
 		h.hloc,h.hname,h.htel
+		from doctor d,reserve r,hospital h where
+		d.cnum=h.cnum and r.dnum = d.dnum and r.num = #{mem_no} ) where r_num between #{beginPerPage} and #{endPerPage}
+	</select>
+	
+	<select id="getReserveCnt" parameterType="int" resultType="int">
+	select count(r.reservNum)
 		from doctor d,reserve r,hospital h where
 		d.cnum=h.cnum and r.dnum = d.dnum and r.num =#{num}
 	</select>

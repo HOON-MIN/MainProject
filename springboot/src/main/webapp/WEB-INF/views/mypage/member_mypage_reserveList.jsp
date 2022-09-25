@@ -71,6 +71,7 @@
 					<th scope="col">병원이름</th>
 					<th scope="col">병원주소</th>
 					<th scope="col">병원구분</th>
+					<th scope="col">예약구분</th>
 					<th scope="col">예약날짜</th>
 					<th scope="col">상세보기</th>
 				</tr>
@@ -84,6 +85,7 @@
 								<td>${hvo.hname }</td>
 								<td>${hvo.hloc }</td>
 								<td>${hvo.hcate }</td>
+								<td>${rvo.contectCheck }</td>
 								<td>${rvo.rdate }/${rvo.rtime }</td>
 								<td class="clicktd"><input type="button" value="detail"
 									id="detail" data-bs-toggle="modal"
@@ -96,6 +98,55 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<ul class="pagination justify-content-center mt-3">
+							<c:choose>
+								<c:when test="${startPage < 6 }">
+									<li class="page-item disabled"><a class="page-link"
+										href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+									<!-- 	<li class="disable">이전으로</li> -->
+								</c:when>
+								<c:otherwise>
+									<li class="page-item"><a class="page-link"
+										href="memberMypage_list?cPage=${startPage-1}&category=${category}&search=${search}">Previous</a></li>
+								</c:otherwise>
+							</c:choose>
+							<!-- 							<li class="page-item"><a class="page-link" href="#">1</a></li> -->
+							<!-- 							<li class="page-item"><a class="page-link" href="#">2</a></li> -->
+							<!-- 							<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
+							<c:forEach varStatus="i" begin="${startPage}" end="${endPage}"
+								step="1">
+								<c:choose>
+									<c:when test="${i.index == nowPage}">
+										<li class="page-item now"><a class="page-link"
+											style="background: #3478F5; color: white;">${i.index }</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item"><a class="page-link"
+											href="memberMypage_list?cPage=${i.index}&category=${category}&search=${search}">${i.index}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+
+							<c:choose>
+								<c:when test="${endPage >= totalPage}">
+									<li class="page-item disabled"><a class="page-link"
+										aria-disabled="true">Next</a></li>
+								</c:when>
+								<c:when test="${totalPage > (nowPage+pagePerBlock)}">
+									<li>
+									<li class="page-item"><a class="page-link"
+										href="memberMypage_list?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+								</c:when>
+								<c:otherwise>
+									<li>
+									<li class="page-item"><a class="page-link"
+										href="memberMypage_list?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+								</c:otherwise>
+							</c:choose>
+
+							<!-- 							<li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+						</ul>
 	</div>
 </div>
 
