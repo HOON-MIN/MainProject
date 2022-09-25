@@ -30,9 +30,9 @@
 								<table class="htable table">
 									<thead>
 										<tr>
-											<th>담당의사</th>
-											<th>증상</th>
-											<th>상세증상</th>
+											<th class="hanna">담당의사</th>
+											<th class="hanna">증상</th>
+											<th class="hanna">상세증상</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -41,8 +41,7 @@
 								</table>
 							</div>
 							<div id="map_div" class="tabcontent">
-								<h3>지도</h3>
-								<div id="map" style="width: 100%; height: 450px;"></div>
+								<div id="map" style="width: 100%; height: 450px; margin: auto;"></div>
 							</div>
 						</div>
 					</div>
@@ -50,7 +49,6 @@
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-primary" id="loadBtn">길찾기</button>
-						<button type="button" class="btn btn-primary" id="loadBtn">상세보기</button>
 					</div>
 				</div>
 			</div>
@@ -66,7 +64,7 @@
 		<table class="htable table table-hover" id="datatable"
 			style="text-align: center">
 			<thead>
-				<tr>
+				<tr class="hanna">
 					<th scope="col">번호</th>
 					<th scope="col">병원이름</th>
 					<th scope="col">병원주소</th>
@@ -80,7 +78,7 @@
 				<c:forEach var="hvo" items="${vo }">
 					<c:forEach var="dvo" items="${hvo.doctorVO }">
 						<c:forEach var="rvo" items="${dvo.reserveVO }">
-							<tr>
+							<tr class="hanna">
 								<td>${rvo.r_num }</td>
 								<td>${hvo.hname }</td>
 								<td>${hvo.hloc }</td>

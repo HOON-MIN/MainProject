@@ -127,33 +127,26 @@ mapOption = {
     level: 3 // 지도의 확대 레벨
 };  
 
-//지도를 생성합니다    
+// 지도 생성    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-//주소-좌표 변환 객체를 생성합니다
+// 주소검색 => 좌표 반환
 var geocoder = new kakao.maps.services.Geocoder();
-
-//주소로 좌표를 검색합니다
 geocoder.addressSearch(hloc, function(result, status) {
-
-// 정상적으로 검색이 완료됐으면 
+// 주소값이 실제 존재한다면 
  if (status === kakao.maps.services.Status.OK) {
-
-    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-    // 결과값으로 받은 위치를 마커로 표시합니다
+    	// 위도,경도(result)를 받아서 map의 좌표 객체로 변환
+	 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    // 마커로 등록
     var marker = new kakao.maps.Marker({
         map: map,
         position: coords
     });
-
-    // 인포윈도우로 장소에 대한 설명을 표시합니다
+    // 마커 설명(병원 이름)
     var infowindow = new kakao.maps.InfoWindow({
         content: '<div style="width:150px;text-align:center;padding:6px 0;">'+hname+'</div>'
     });
     infowindow.open(map, marker);
-
-    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	// 지도가 생성되었을때 병원을 지도의 중심으로 설정 
     map.setCenter(coords);
 } 
 });    
