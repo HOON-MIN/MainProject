@@ -100,7 +100,7 @@ table tfoot ol.paging li a:hover {
 				<td class="linktd">${e.id}</td>
 				<td class="linktd">${e.qhit}</td>
 				<td class="linktd">${e.qdate}</td>
-				<td class="linktd" hidden="hidden"><a href="qbDetail?qnum=${e.qnum}"></a></td>
+				<td class="linktd" hidden="hidden"><a href="qbDetail?qnum=${e.qnum}" hidden="hidden"></a></td>
 				<!-- link를 걸면 조회수 업데이트 되는 실행이 두 번 작용해서 hidden으로 숨김  -->
 			</tr>
 		</c:forEach>
@@ -183,8 +183,10 @@ var chk;
 $(function(){
 	$('.linktd').click(function(){
 		var href = $(this).parent("tr").children("td").children("a").attr("href")
-// 		alert(href);
+// 		setTimeout(function() {
+// 			console.log('test')
 		window.location = href;
+// 		}, 500);
 	});
 	
 	$('#writeBtn').click(function(){

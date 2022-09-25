@@ -96,15 +96,18 @@ a {
 						<div class="col-5 map" style="background-color: white;">지도
 							표시 공간</div>
 						<div class="col-6 map align-items-center ">
-							<h1 class="hanna m-3">${shopDetail.shopName } 병원 이름</h1>
-							
-							<h5 class="nanum m-3 pt-3"> 병원 주소 </h4>
-							
-							<h6 class="m-3"> 병원 URL</h6>
-							<h6 class="m-3"> 병원 오픈 시간</h6>
-							
-							<p class="m-3" style="height:240px"> 병원 소개 </p>
-							<button class="btn btn-lg mt-4 ms-3 hanna" style="border : solid 1px #3478f5; background : #3478f5 ;  color : white; width:240px">예약하기</button>
+							<h1 class="hanna m-3">${shopDetail.shopName }병원 이름</h1>
+
+							<h5 class="nanum m-3 pt-3">
+								병원 주소
+								</h4>
+
+								<h6 class="m-3">병원 URL</h6>
+								<h6 class="m-3">병원 오픈 시간</h6>
+
+								<p class="m-3" style="height: 240px">병원 소개</p>
+								<button class="btn btn-lg mt-4 ms-3 hanna"
+									style="border: solid 1px #3478f5; background: #3478f5; color: white; width: 240px">예약하기</button>
 						</div>
 					</div>
 				</div>
