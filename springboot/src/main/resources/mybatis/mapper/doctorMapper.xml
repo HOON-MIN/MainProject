@@ -134,6 +134,13 @@ select d.dnum , d.dname, d.dmajor ,h.hname,h.otime,h.ctime ,h.hloc from doctor d
     d.dnum = r.dnum and d.dnum = #{dnum} 
 </select>
 
+
+
+
+<select id="selecHospitaldoc" resultType="doctorVO" parameterType="map">
+select dname from doctor a, hospital b where b.hname = #{hos} and a.cnum = b.cnum order by dname asc
+</select>
+
 <!-- <select id="reserveDetail_Doctor" parameterType="map"> 
    select m.* from reserve r,member m, medinq mq where num =  and 
 </select> -->

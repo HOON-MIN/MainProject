@@ -6,7 +6,7 @@
 var map, marker1;
 function initTmap() {
 	map = new Tmapv2.Map("map_div", {
-		center : new Tmapv2.LatLng(37.56520450, 126.98702028),
+		center : new Tmapv2.LatLng(37.566481622437934,126.98502302169841),
 		width : "100%",
 		height : "400px",
 		zoom : 17,
@@ -37,10 +37,8 @@ function initTmap() {
 				var resultInfo = response.coordinateInfo; // .coordinate[0];
 				console.log(resultInfo);
 				
-			
 				marker1.setMap(null);
-				
-
+		
 				if (resultInfo.coordinate.length == 0) {
 					$("#result").text(
 					"요청 데이터가 올바르지 않습니다.");

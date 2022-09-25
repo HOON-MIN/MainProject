@@ -59,5 +59,12 @@ public class HospitalService {
 	public List<HospitalVO> getHospital(Map<String, String> map){
 		return dao.getHospital(map);
 	}
-
+	
+	public List<HospitalVO> selectHospitalCate(){
+		return dao.selectHospitalCate();
+	}
+	public List<HospitalVO> selectHospital(Map<String, String> map){
+		return dao.selectHospital(map);
+	}
+	
 }

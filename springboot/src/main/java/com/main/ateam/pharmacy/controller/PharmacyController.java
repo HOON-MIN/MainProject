@@ -33,14 +33,14 @@ public class PharmacyController {
 			shopList = shopservice.searchCount(map);
 			}
 		model.addAttribute("totalRecord", shopList);
-		return "pharmacy/shopListPage";
+		return "pharmacy/ShopListPage";
 	}
 	
 	@GetMapping(value = "/ShopDetail")
 	public String ShopDetail(Model model, int pnum) {
 		PharmacyVO shopDetail = shopservice.ShopDetail(pnum);
 		model.addAttribute("shopDetail", shopDetail);
-		return "pharmacy/shopDetail";
+		return "pharmacy/ShopDetail";
 	}
 	
 

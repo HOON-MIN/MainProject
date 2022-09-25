@@ -83,8 +83,7 @@
 	href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 <!-- ---------- -->
 <!-- Map -->
-<script
-	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx8fc6162789f747579d26c53413bd30f7"></script>
+
 </head>
 <style>
 body {
