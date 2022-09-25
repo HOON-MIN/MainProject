@@ -12,12 +12,16 @@ public interface DrugDao {
 	public List<DrugVO> getDrugContentSearch(Map<String, String> map);
 
 	public List<DrugVO> getDrugSearchShape(Map<String, String> map);
+	
+	public List<DrugVO> getImgDrugSearch(Map<String,String> map);
 
 	public int getDrugSearchShapeCount(Map<String, String> map);
 
 	public DrugVO getDrugDetail(int num);
 
 	public int getTotalCount();
+	
+	public int getTotalImgDrugSearch(Map<String,String> map);
 
 	public int getmyDrugCaseTotalCount(int num);
 

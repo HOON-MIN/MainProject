@@ -67,20 +67,25 @@ table tfoot ol li.now {
 					나의 의약품 케이스
 					</c:when>
 					<c:when test="${plmn eq 'drugSearchHistoryList' }">
-					약품 검색 기록 
+					약품 검색기록 
 					</c:when>
 					<c:when test="${plmn eq 'drugSearchList' }">
 					약품 검색 결과
 					</c:when>
+					<c:when test="${plmn eq 'drugImageSearchList' }">
+					<h2>약품 이미지 검색 결과</h2>
+					<div> 검색된 결과입니다. 찾으시는 약품과 유사한 결과를 선택하세요 </div> 
+											
+					</c:when>
 				</c:choose>
 				<!-- Example single danger button -->
 				<div class="btn-group ms-3 float-end">
-					<button type="button" class="btn btn-success dropdown-toggle "
+					<button type="button" class="btn btn-success dropdown-toggle"
 						data-bs-toggle="dropdown" aria-expanded="false">이동</button>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="drugSearchShape">모양으로
 								약품찾기 </a></li>
-						<li><a class="dropdown-item" href="">이미지로 검색하기 </a></li>
+						<li><a class="dropdown-item" href="drugSearchImg">이미지로 검색하기 </a></li>
 						<li><a class="dropdown-item" href="drugSearchHistory">약품검색
 								기록 </a></li>
 						<li><a class="dropdown-item" href="drugMyCase">나의 약품 케이스
@@ -115,7 +120,7 @@ table tfoot ol li.now {
 						<tr>
 
 							<td><a href="drugDetail?drugIdx=${e.drug_idx}"><img
-									style="width: 80px" ; height="80px"
+									style="width: 150px" ; height="150px"
 									src="kimsungwook/imgfile/${e.drug_img}" id="imgname"
 									value="imgname"></a></td>
 							<td>${e.drug_name}</td>
@@ -134,6 +139,7 @@ table tfoot ol li.now {
 										<c:when test="${plmn eq 'drugSearchHistoryList' }">
 											<label>검색 일시 : ${e.drug_date}</label>
 										</c:when>
+										
 
 									</c:choose>
 
@@ -245,6 +251,41 @@ table tfoot ol li.now {
 											<c:otherwise>
 												<li><a
 													href="drugSearchList?dPage=${endPage + 1 }&content=${content}&searchSelect=${searchSelect}">다음으로</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:when>
+									
+									
+									<c:when test="${plmn eq 'drugImageSearchList' }">
+										<c:choose>
+											<c:when test="${startPage < 6  }">
+												<li class="disable">이전으로</li>
+											</c:when>
+											<c:otherwise>
+												<li><a
+													href="drugImageSearch?dPage=${startPage -1 }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">이전으로</a></li>
+											</c:otherwise>
+										</c:choose>
+										<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
+										<c:forEach varStatus="i" begin="${startPage }"
+											end="${endPage}" step="1">
+											<c:choose>
+												<c:when test="${i.index == nowPage }">
+													<li class="now">${i.index }</li>
+												</c:when>
+												<c:otherwise>
+													<li><a
+														href="drugImageSearch?dPage=${i.index }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">${i.index }</a></li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+										<c:choose>
+											<c:when test="${endPage >= totalPage }">
+												<li class="disable">다음으로</li>
+											</c:when>
+											<c:otherwise>
+												<li><a
+													href="drugImageSearch?dPage=${endPage + 1 }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">다음으로</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:when>
