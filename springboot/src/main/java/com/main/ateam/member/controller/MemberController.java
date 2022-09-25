@@ -3,6 +3,7 @@ package com.main.ateam.member.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.security.Provider.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -356,8 +357,10 @@ public class MemberController {
 			mav.addObject("kakaoData",mdto);
 			return mav;
 		}
+		MemberVO numvo = memberService.memberidlist(mdto.getId());
+		
 		session.setAttribute("sessionID", mdto.getId());
-		//session.setAttribute("sessionNUM", mdto.getNum()); //세션넘버 보류
+		session.setAttribute("sessionNUM", numvo.getNum());
 		session.setAttribute("sessionNAME", mdto.getName());
 		return mav;
 	}
@@ -371,6 +374,7 @@ public class MemberController {
 		if(flag == 0){
 			memberService.kakaoSignup(mdto);
 		}
+		session.setAttribute("sessionNUM", memberService.memberidlist(mdto.getId()).getNum());
 		session.setAttribute("sessionID", mdto.getId());
 		session.setAttribute("sessionNAME", mdto.getName());
 		return mav;
@@ -386,6 +390,7 @@ public class MemberController {
 		System.out.println("연산된 성별: "+dtov.getGender());
 		memberService.kakaoSignup(dtov);
 		session.setAttribute("sessionID", dtov.getId());
+		session.setAttribute("sessionNUM", memberService.memberidlist(dtov.getId()).getNum());
 		session.setAttribute("sessionNAME", dtov.getName());
 		return "redirect:/main";
 	}
@@ -431,6 +436,7 @@ public class MemberController {
 		
 		//check_covid19.py Model 실행
 		//System.out.println("python "+pythonPath+"check_covid19.py");
+		System.out.println("python "+pythonPath+"check_covid19.py "+userID);
 		ubuntushellmodule.command("python "+pythonPath+"check_covid19.py "+userID);
 		
 		return "member/covidResult"; 

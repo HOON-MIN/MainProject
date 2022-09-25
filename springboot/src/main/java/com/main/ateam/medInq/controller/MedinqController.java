@@ -2,6 +2,8 @@ package com.main.ateam.medInq.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,11 +32,17 @@ public class MedinqController {
 	}
 
 	@PostMapping(value = "/medInqIns")
-	public String medInqIns(MedInqVO vo) {
+	public String medInqIns(MedInqVO vo, HttpSession session) {
 		System.out.println("*******************");
-		System.out.println(vo.toString());
-//		vo.setId("member");
-//		service.addQuesboard(vo);
+		int usernum = (int) session.getAttribute("sessionNUM");
+		
+//		System.out.println("vo.getDisease1()=>"+vo.getDisease1());
+//		System.out.println("vo.getDisease2()=>"+vo.getDisease2());
+//		System.out.println("vo."+vo.getAllergyetc());
+		System.out.println("insert into medInq values ("+usernum+",'"+vo.getDisease1()+"', '"+vo.getDisease2()+
+				"','"+vo.getDiseasehist()+"','"+vo.getDiseaseetc()+"','"+vo.getSmoke() + "','"+vo.getAlcohol()+"','"+vo.getAllergy()+"','"+vo.getAllergyetc()+
+				"','"+vo.getPregnancy()+"','"+vo.getSymptom()+"', sysdate)");
+		//service.addMedinq(vo);
 		return "redirect:qbList";
 	}
 	
@@ -44,7 +52,6 @@ public class MedinqController {
 		System.out.println("----- medInqDetail controll-----");
 		MedInqVO vo = service.getMIDetail(num);
 		System.out.println(vo.getMednum());
-//		System.out.println(vo.getId());
 		System.out.println("---------------------------");
 		m.addAttribute("vo", vo);
 		return "medInq/medInqDetail";

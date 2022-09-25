@@ -126,5 +126,9 @@
 <select id="AndroidIdCheck" parameterType="map" resultType="int">
 	select decode(id, #{id}, 1, 0) as boolean from member
 </select>
+
+<select id="memberidlist" parameterType="string" resultType="memberVO">
+	select * from member where id = #{id}
+</select>
 	
 </mapper>
