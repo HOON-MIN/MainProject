@@ -51,7 +51,6 @@
 	    	    			});
 	    				}
 	    			}
-	    			console.log('나온arr',arr)
 		    
 		     calendar = new FullCalendar.Calendar(calendarEl, {
 		      headerToolbar: {

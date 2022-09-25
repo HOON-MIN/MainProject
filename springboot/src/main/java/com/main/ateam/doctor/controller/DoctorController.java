@@ -50,6 +50,7 @@ public class DoctorController {
 		System.out.println("로그인 성공");
 		session.setAttribute("sessionDID", dto.getDid());
 		session.setAttribute("sessionDNUM", dto.getDnum());
+		session.setAttribute("sessionDNAME", dto.getDname());
 		
 		}
 		return mav;	}
@@ -88,6 +89,7 @@ public class DoctorController {
 		public String memberLogout(HttpSession session) {
 			session.removeAttribute("sessionDID");
 			session.removeAttribute("sessionDNUM");
+			session.removeAttribute("sessionDNAME");
 			System.out.println("로그아웃성공");
 			return "redirect:/";
 		}

@@ -1,28 +1,125 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 <!-- include 제거  -->
-<!-- Bootstrap core JavaScript-->
-<script src="/taejin/vendor/jquery/jquery.min.js"></script>
-<script src="/taejin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="/taejin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
 
 <style>
-/* 	.table1 :hover { */
+.hcategory {
+	background-color: #3478f5;
+	padding-top: 40px;
+	height: 100%;
+}
 
-/* 	} */
+.hboard {
+	background-color: #efefef;
+	border-radius: 8px;
+	margin: 40px;
+	height: 90%;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.searchForm input {
+	border: solid 1px #3478f5;
+	border-radius: 16px 0 0 16px;
+	background-color:
+}
+
+.searchForm button {
+	background-color: #3478f5;
+	width: 64px;
+	border-radius: 0 16px 16px 0;
+}
+
+.searchForm img {
+	width: 18px;
+}
+
+.htable {
+	width: 100%;
+}
+
+.htable thead {
+	height: 40px;
+	color: grey;
+}
+
+.htable th {
+	font-weight: lighter;
+	padding-left: 12px;
+}
+
+.htable tbody {
+	border-collapse: collapse;
+	border-radius: 16px;
+	box-shadow: 2px 2px 2px 2px #ababab;
+}
+
+.htable td {
+	padding: 14px 12px;
+	font-size: 14px;
+}
 </style>
+<!-- 전체 틀 -->
+<div class="container-fluid" style="height: 100%;">
+	<div class="row justify-content-around" style="height: 100%;">
+		<!-- 카테고리 영역 -->
+		<div class="col-2 hcategory ">
+			<!-- 카테고리 프로필 -->
+			<div
+				class="d-flex flex-column align-items-start justify-content-center ps-5"
+				style="height: 160px;">
+				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+					class="mb-3">
+				<h5 class="hanna text-white">${member.name }님</h5>
+				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
+					・ <a
+					href="${pageContext.request.contextPath }/admin/adminHospTotalList">마이페이지</a>
+				</span>
+			</div>
+			<!-- 카테고리 프로필 끝 -->
+			<!-- 카테고리 리스트 -->
+			<div>
+				<ul class="nav flex-column">
+					<c:choose>
+						<c:when test="${sessionNUM == 1}">
+							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
+								<a class="nav-link text-white"
+								href="${pageContext.request.contextPath }/admin/adminHospTotalList">전체</a>
+							</li>
+							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
+								<a class="nav-link text-white"
+								href="${pageContext.request.contextPath }/admin/adminHospRegistList">등록된</a>
+							</li>
+							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
+								<a class="nav-link text-white"
+								href="${pageContext.request.contextPath }/admin/waitingList">업체승인</a>
+							</li>
+							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
+								<a class="nav-link text-white"
+								href="${pageContext.request.contextPath }/admin/adminRegistChart">차트</a>
+							</li>
 
 
-<article>
-	<div class="container">
-		<header>
-			<h1>Hospital List</h1>
-		</header>
+						</c:when>
+					</c:choose>
+				</ul>
+			</div>
+		</div>
+		<!-- 카테고리 영역 끝 -->
+
+		<div class="col-10">
+			<div class="hboard pt-2 ps-3 pe-3">
+				<div class="hboard pt-2 ps-3 pe-3 ">
+					<div class="justify-content-center">
+						<h3 class="hanna ps-3 text-center"></h3>
+						<div class=" justify-content-center ">
+							<!-- 내용 -->
+
+
 		
 
 		<!-- Bar Chart1 -->
@@ -82,8 +179,22 @@
 	</div>
 	</div>
 	<!--  -->
-</article>
-<jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
+	<!-- 내용 끝 -->
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="/taejin/vendor/jquery/jquery.min.js"></script>
+<script src="/taejin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/taejin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
 <!-- Custom scripts for all pages-->
 <script src="/taejin/js/sb-admin-2.min.js"></script>
 

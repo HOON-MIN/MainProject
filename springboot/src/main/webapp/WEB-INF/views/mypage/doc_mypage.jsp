@@ -6,13 +6,9 @@
 
 
 <!-- Sidebar-->
-	<div class="container py-4"
-		style="width: 80%; margin: auto; padding: 10px 5px; height: 100%;">
-			<h1 class="display-5 fw-bold">${doc.dname }님</h1>
 			    <div id='calendar'></div>
-			    </div>
 
-	<jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
+<jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
 <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
 <link href='/taejin/fullcalendar/lib/main.css' rel='stylesheet' />
