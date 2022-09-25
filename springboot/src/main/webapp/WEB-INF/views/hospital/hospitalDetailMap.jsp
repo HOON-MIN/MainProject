@@ -78,7 +78,7 @@ a {
 			</div>
 		</div>
 		<!-- 카테고리 영역 끝 -->
-
+		<!-- 컨텐츠 (연회색배경) -->
 		<div class="col-10">
 			<div class="hboard pt-2 ps-3 pe-3">
 				<div class="input-group searchForm mb-3" style="width: 50%";>
@@ -105,6 +105,7 @@ a {
 							
 							<p class="m-3" style="height:240px"> 병원 소개 </p>
 							<button class="btn btn-lg mt-4 ms-3 hanna" style="border : solid 1px #3478f5; background : #3478f5 ;  color : white; width:240px">예약하기</button>
+						
 						</div>
 					</div>
 				</div>
