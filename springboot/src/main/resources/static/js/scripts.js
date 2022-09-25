@@ -25,11 +25,11 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-$(function(){
-	$('.linktd').click(function(){
-		var href = $(this).parent("tr").children("td").children("a").attr("href")
-//		alert(href);
-		window.location = href;
-	});
-});
+//$(function(){
+//	$('.linktd').click(function(){
+//		var href = $(this).parent("tr").children("td").children("a").attr("href")
+////		alert(href);
+//		window.location = href;
+//	});
+//});
 
