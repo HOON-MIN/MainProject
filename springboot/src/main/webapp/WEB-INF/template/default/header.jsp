@@ -41,7 +41,7 @@ nav {
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">Link</a></li>
 				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">Link</a></li>
-				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">Link</a></li>
+				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="${mycontext }/reviewboard/reviewboardlist">사용자 후기</a></li>
 				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">Link</a></li>
 			</ul>
 			<span class="navbar-text">

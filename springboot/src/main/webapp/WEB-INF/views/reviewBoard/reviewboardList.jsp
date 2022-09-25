@@ -81,11 +81,15 @@ font-size: 14px;
    border-radius: 2px; 
    margin:3px;
 　}
+#writeBtn{
+   text-align:center
+}
+
 </style>
 <article>
 <div class="container">
 	<header class="text-center m-5" >
-		<h3>사용자 후기 게시판</h3>
+		<h2 style="color:white;">사용자 후기 게시판</h2>
 	</header>
 
  					<div style="text-align: center;">
@@ -110,7 +114,14 @@ font-size: 14px;
 							<input type="submit" value="조회">
 						</form>
 					</div>
-
+					<p></p>
+					<p></p>
+					
+					<c:if test="${sessionNUM != null}">
+					<div id = "writeBtn">
+							<button class="btn btn-default" type="button" name="writeBtn" style="background-color:white">글작성</button>
+					</div>
+					</c:if>
 <p></p>
 
 <div class="flex-container justify-content-center">
