@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
+<!--<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>  -->
 <style>
 
 
@@ -42,6 +42,38 @@
 </style>
 
 <div class="container-fluid">
+
+<!-- 카테고리 영역 -->
+		<div class="col-2 hcategory ">
+			<!-- 카테고리 프로필 -->
+			<div
+				class="d-flex flex-column align-items-start justify-content-center ps-5"
+				style="height: 160px;">
+				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+					class="mb-3">
+				<h5 class="hanna text-white">${member.name }님</h5>
+				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
+					・ <a href="${pageContext.request.contextPath }/member/memberMypage">마이페이지</a>
+				</span>
+			</div>
+			<!-- 카테고리 프로필 끝 -->
+			<!-- 카테고리 리스트 -->
+			<div>
+				<ul class="nav flex-column">
+					<c:choose>
+						<c:when test="${sessionNUM != null}">
+							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
+								<a class="nav-link text-white"
+								href="${pageContext.request.contextPath }/member/memberMypage_list">예약목록
+							</a>
+							</li>
+
+						</c:when>
+					</c:choose>
+				</ul>
+			</div>
+		</div>
+		<!-- 카테고리 영역 끝 -->
 	<div>
 		<h3>예약목록</h3>
 	</div>
@@ -139,7 +171,7 @@
 		</div>
 	</div>
 </div>
-<jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
+<%-- <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include> --%>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955&libraries=services,clusterer,drawing"></script>
 <script>

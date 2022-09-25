@@ -73,7 +73,7 @@ a {
 				style="height: 160px;">
 				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
 					class="mb-3">
-				<h5 class="hanna text-white"">${member.name }님</h5>
+				<h5 class="hanna text-white">${member.name }님</h5>
 				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
 					・ <a href="${pageContext.request.contextPath }/member/memberMypage">마이페이지</a>
 				</span>
@@ -84,10 +84,6 @@ a {
 				<ul class="nav flex-column">
 					<c:choose>
 						<c:when test="${sessionNUM != null}">
-							<li class="nav-item pt-5 pb-2 ps-4">
-							<a	class="nav-link active text-white" aria-current="page"
-								href="${pageContext.request.contextPath }/admin/adminHospTotalList">
-									전체 병원 </a></li>
 							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
 								<a class="nav-link text-white"
 								href="${pageContext.request.contextPath }/member/memberMypage_list">예약목록
