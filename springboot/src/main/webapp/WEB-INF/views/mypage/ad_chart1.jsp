@@ -127,8 +127,8 @@ a {
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">작월 사용자이용 통계</h6>
 			</div>
-			<div class="card-body">
-				<div class="chart-bar">
+			<div class="card-body mb-5" style="height: 300px;">
+				<div class="chart-bar" style="height: 100%;">
 					<canvas id="myBarChart"></canvas>
 				</div>
 				<hr>
@@ -144,8 +144,8 @@ a {
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">과별 병원 이용 통계</h6>
 			</div>
-			<div class="card-body">
-				<div class="chart-bar" id="graph-container">
+			<div class="card-body mb-5" style="height: 300px;">
+				<div class="chart-bar" id="graph-container" style="height: 100%;">
 					<!--<canvas id="myBarChart2" width="591" height="150"></canvas>-->
 				</div>
 				<hr>
@@ -307,7 +307,7 @@ var config = {
 		    			       yAxes: [{
 		    			         ticks: {
 		    			           min: 0,
-		    			           max: 10,
+		    			           max: 30,
 		    			           maxTicksLimit: 5,
 		    			           padding: 10,
 		    			           // Include a dollar sign in the ticks
@@ -379,7 +379,7 @@ var config = {
 		      yAxes: [{
 		        ticks: {
 		          min: 0,
-		          max: 10,
+		          max: 30,
 		          maxTicksLimit: 5,
 		          padding: 10,
 		          // Include a dollar sign in the ticks
