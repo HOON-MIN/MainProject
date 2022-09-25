@@ -93,10 +93,10 @@ a {
 					<h3 class="hanna ps-3">병원 상세페이지</h3>
 					<div class="row hDetail justify-content-around"
 						style="height: 100%">
-						<div class="col-5 map" style="background-color: white;">지도
+						<div class="col-5 map" style="background-color: white;"id="map">지도
 							표시 공간</div>
 						<div class="col-6 map align-items-center ">
-							<h1 class="hanna m-3">${shopDetail.shopName }병원 이름</h1>
+							<h1 class="hanna m-3">병원 이름</h1>
 
 							<h5 class="nanum m-3 pt-3">
 								병원 주소
@@ -115,169 +115,49 @@ a {
 		</div>
 	</div>
 </div>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript">		
+var hloc = '${vo.hloc}';
+var hname = '${vo.hname}';
 
-<script type="text/javascript">									
-var map, marker1;
-function initTmap() {
-	map = new Tmapv2.Map("
-							map_div", {
-		center : new
-							Tmapv2.LatLng(37.56520450, 126.98702028),
-		width
-							: "100%",
-		height : "400px",
-		zoom : 17,
-		zoomControl :
-							true,
-		scrollwheel : true
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = {
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
+};  
 
-	});
-	
-	marker1=new
-							Tmapv2.Marker(
-		{
-			icon
-							: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
-			iconSize
-							: new Tmapv2.Size(24, 38),
-			map :
-							map
-		});
+//지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-	$(document).ready(function() {
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
 
-		var
-							fullAddr=$( "#fullAddr").val();
-		$.ajax({
-			method
-							: "GET",
-			url
-							: "https://apis.openapi.sk.com/tmap/geo/fullAddrGeo?version=1&format=json&callback=result
-							",
-			async : false,
-			data
-							: {
-				"appKey" : "l7xx8fc6162789f747579d26c53413bd30f7",
-				"coordType" : "WGS84GEO",
-				"fullAddr" : $("#endPoint").val()
-			},
-			success
-							: function(response) {
+//주소로 좌표를 검색합니다
+geocoder.addressSearch(hloc, function(result, status) {
 
-				var
-							resultInfo=response.coordinateInfo;
-							// .coordinate[0];
-				console.log(resultInfo);
-				
-			
-				marker1.setMap(null);
-				
+// 정상적으로 검색이 완료됐으면 
+ if (status === kakao.maps.services.Status.OK) {
 
-				if
-							(resultInfo.coordinate.length==
-							0) {
-					$("#result").text(
-					"요청 데이터가 올바르지
-							않습니다.");
-				} else {
-					var lon, lat;
-					var
-							resultCoordinate=resultInfo.coordinate[0]; if
-							(resultCoordinate.lon.length>
-							0) { lon = resultCoordinate.lon; lat = resultCoordinate.lat; }
-							else { lon = resultCoordinate.newLon; lat =
-							resultCoordinate.newLat } var lonEntr, latEntr; if
-							(resultCoordinate.lonEntr == undefined &&
-							resultCoordinate.newLonEntr == undefined) { lonEntr = 0; latEntr
-							= 0; } else { if (resultCoordinate.lonEntr.length > 0) { lonEntr
-							= resultCoordinate.lonEntr; latEntr = resultCoordinate.latEntr; }
-							else { lonEntr = resultCoordinate.newLonEntr; latEntr =
-							resultCoordinate.newLatEntr; } } var markerPosition = new
-							Tmapv2.LatLng(Number(lat),Number(lon)); marker1 = new
-							Tmapv2.Marker( { position : markerPosition, icon :
-							"http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
-							iconSize : new Tmapv2.Size( 24, 38), map : map });
-							map.setCenter(markerPosition); var matchFlag, newMatchFlag; var
-							address = '', newAddress = ''; var city, gu_gun, eup_myun,
-							legalDong, adminDong, ri, bunji; var buildingName, buildingDong,
-							newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
+    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
+    // 결과값으로 받은 위치를 마커로 표시합니다
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: coords
+    });
 
-							if (resultCoordinate.newMatchFlag.length > 0) { newMatchFlag =
-							resultCoordinate.newMatchFlag; if
-							(resultCoordinate.city_do.length > 0) { city =
-							resultCoordinate.city_do; newAddress += city + "\n"; } if
-							(resultCoordinate.gu_gun.length > 0) { gu_gun =
-							resultCoordinate.gu_gun; newAddress += gu_gun + "\n"; } if
-							(resultCoordinate.eup_myun.length > 0) { eup_myun =
-							resultCoordinate.eup_myun; newAddress += eup_myun + "\n"; } else
-							{ if (resultCoordinate.legalDong.length > 0) { legalDong =
-							resultCoordinate.legalDong; newAddress += legalDong + "\n"; } if
-							(resultCoordinate.adminDong.length > 0) { adminDong =
-							resultCoordinate.adminDong; newAddress += adminDong + "\n"; } }
+    // 인포윈도우로 장소에 대한 설명을 표시합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content: '<div style="width:150px;text-align:center;padding:6px 0;">'+hname+'</div>'
+    });
+    infowindow.open(map, marker);
 
-							if (resultCoordinate.ri.length > 0) { ri = resultCoordinate.ri;
-							newAddress += ri + "\n"; } if (resultCoordinate.bunji.length > 0)
-							{ bunji = resultCoordinate.bunji; newAddress += bunji + "\n"; }
-
-							if (resultCoordinate.newRoadName.length > 0) { newRoadName =
-							resultCoordinate.newRoadName; newAddress += newRoadName + "\n"; }
-
-							if (resultCoordinate.newBuildingIndex.length > 0) {
-							newBuildingIndex = resultCoordinate.newBuildingIndex; newAddress
-							+= newBuildingIndex + "\n"; } if
-							(resultCoordinate.newBuildingName.length > 0) { newBuildingName =
-							resultCoordinate.newBuildingName; newAddress += newBuildingName +
-							"\n"; } if (resultCoordinate.newBuildingDong.length > 0) {
-							newBuildingDong = resultCoordinate.newBuildingDong; newAddress +=
-							newBuildingDong + "\n"; } if (lonEntr > 0) { var docs = "<a
-								style='color: orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-							var text = "검색결과(새주소) : " + newAddress + ",\n 응답코드:" +
-							newMatchFlag + "(상세 코드 내역은 " + docs + " 에서 확인)" + "</br> 위경도좌표(중심점) :
-							" + lat + ", " + lon + "</br>위경도좌표(입구점) : " + latEntr + ", " +
-							lonEntr; $("#result").html(text); } else { var docs = "<a
-								style='color: orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-							var text = "검색결과(새주소) : " + newAddress + ",\n 응답코드:" +
-							newMatchFlag + "(상세 코드 내역은 " + docs + " 에서 확인)" + "</br> 위경도좌표(입구점) :
-							위경도좌표(입구점)이 없습니다."; $("#result").html(text); } } if
-							(resultCoordinate.matchFlag.length > 0) { matchFlag =
-							resultCoordinate.matchFlag; if (resultCoordinate.city_do.length >
-							0) { city = resultCoordinate.city_do; address += city + "\n"; }
-
-							if (resultCoordinate.gu_gun.length > 0) { gu_gun =
-							resultCoordinate.gu_gun; address += gu_gun+ "\n"; } if
-							(resultCoordinate.eup_myun.length > 0) { eup_myun =
-							resultCoordinate.eup_myun; address += eup_myun + "\n"; } if
-							(resultCoordinate.legalDong.length > 0) { legalDong =
-							resultCoordinate.legalDong; address += legalDong + "\n"; } if
-							(resultCoordinate.adminDong.length > 0) { adminDong =
-							resultCoordinate.adminDong; address += adminDong + "\n"; } if
-							(resultCoordinate.ri.length > 0) { ri = resultCoordinate.ri;
-							address += ri + "\n"; } if (resultCoordinate.bunji.length > 0) {
-							bunji = resultCoordinate.bunji; address += bunji + "\n"; } if
-							(resultCoordinate.buildingName.length > 0) { buildingName =
-							resultCoordinate.buildingName; address += buildingName + "\n"; }
-
-							if (resultCoordinate.buildingDong.length > 0) { buildingDong =
-							resultCoordinate.buildingDong; address += buildingDong + "\n"; }
-
-							if (lonEntr > 0) { var docs = "<a style='color: orange'
-								href='#webservice/docs/fullTextGeocoding'>Docs</a>"; var text =
-							"검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드
-							내역은 "+ docs+ " 에서 확인)"+ "</br>"+ "위경도좌표(중심점) : "+ lat+ ", "+ lon+ "</br>"+
-							"위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; $("#result").html(text);
-							} else { var docs = "<a style='color: orange'
-								href='#webservice/docs/fullTextGeocoding'>Docs</a>"; var text =
-							"검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드
-							내역은 "+ docs+ " 에서 확인)"+ "</br>"+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다.";
-							$("#result").html(text); } } } }, error : function(request,
-							status, error) { console.log(request);
-							console.log("code:"+request.status + "\n message:" +
-							request.responseText +"\n error:" + error); // 에러가 발생하면 맵을 초기화함
-							// markerStartLayer.clearMarkers(); // 마커초기화 map.setCenter(new
-							Tmapv2.LatLng(37.570028, 126.986072)); $("#result").html(""); }
-							}); }); }
-							</script>
+    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+    map.setCenter(coords);
+} 
+});    
+</script>
 <!-- </head> -->
 <!-- <body onload="initTmap()"> -->
 <%-- <div class="">
