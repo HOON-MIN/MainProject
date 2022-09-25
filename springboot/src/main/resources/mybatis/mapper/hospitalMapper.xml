@@ -108,6 +108,8 @@
 			<result column="dmajor" property="dmajor" />
 		</collection>
 	</resultMap>
+	
+	
 
 	<select id="getHospital" resultType="hvo" parameterType="map">
 		select hname from hospital 
@@ -138,7 +140,14 @@
 	</select>
 	
 	
-	
+<select id="selectHospitalCate" resultType="hvo">
+	select distinct hcate from hospital 
+</select>
+
+<select id="selectHospital" resultType="hvo" parameterType="map">
+select hname from hospital
+where cnum in (select cnum from company where cstatus=1) and hcate= #{choice} order by 1
+</select>
 
 	<select id="getCate" resultType="hvo">
 		select distinct hcate from hospital

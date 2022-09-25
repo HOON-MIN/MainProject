@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.main.ateam.vo.DoctorVO;
+import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.ReserveVO;
 
 public interface DoctorDao {
@@ -19,4 +20,10 @@ public interface DoctorDao {
 	public int drIdCheck(Map<String, String> map);
 	public List<DoctorVO> hospitalDoctorCategory(String dmajor);
 	public DoctorVO hospitalDoctorDetail(int dnum);
+	
+	
+	
+	public List<DoctorVO> selecHospitaldoc(Map<String, String> map);
+	
+	
 }

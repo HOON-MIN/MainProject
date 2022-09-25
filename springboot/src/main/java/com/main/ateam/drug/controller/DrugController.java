@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.main.ateam.drug.service.DrugService;
 import com.main.ateam.vo.DrugVO;
@@ -142,11 +143,12 @@ public class DrugController {
 	}
 
 	
-	  @RequestMapping(value = "/shapeSearch") public String shapSearch(Model
-	  model,@RequestParam(defaultValue = "1") int dPage, String
+	  @RequestMapping(value = "/shapeSearch")
+	  public String shapSearch(Model model,@RequestParam(defaultValue = "1") int dPage, String
 	  drug_identification,String drug_color_F,String drug_color_B, String
 	  drug_shape,String drug_formulation,String drug_split_line_F,String
-	  drug_split_line_B ) { Map<String, String> map = new HashMap<>();
+	  drug_split_line_B ) { 
+	  Map<String, String> map = new HashMap<>();
 	  model.addAttribute("plmn","shapeSearch"); 
 	  // "plmn" : PrintListMethodName
 	  //view단에서 어떤 컨트롤러로 부터 데이터가 넘어 왔는지 확인하는 용도
@@ -157,18 +159,24 @@ public class DrugController {
 	  map.put("drug_identification", drug_identification);
 	  
 	  
-	  map.put("drug_color_F", drug_color_F); map.put("drug_color_B", drug_color_B);
-	  map.put("drug_shape", drug_shape); map.put("drug_formulation",
-	  drug_formulation); map.put("drug_split_line_F", drug_split_line_F);
-	  map.put("drug_split_line_B", drug_split_line_B);
+	  map.put("drug_color_F", drug_color_F); 
+	  map.put("drug_color_B", drug_color_B);
+	  map.put("drug_shape", drug_shape); 
+	  map.put("drug_formulation",drug_formulation);
+	  map.put("drug_split_line_F", drug_split_line_F);
+	  
 	  
 	  if (dPage != 0) { nowPage = dPage; }
-	  System.out.println(dPage); System.out.println(drug_identification);
-	  /*
-		 * System.out.println(drug_color_F); System.out.println(drug_color_B);
-		 * System.out.println(drug_shape); System.out.println(drug_formulation);
-		 * System.out.println(drug_split_line_F); System.out.println(drug_split_line_B);
-		 */
+	  System.out.println(dPage);
+	  System.out.println("식별표시 : " + drug_identification);
+	  System.out.println("전면 / 좌측 색깔 :" + drug_color_F);
+	  System.out.println("후면 / 우측 색깔 :" + drug_color_B);
+	  
+	  System.out.println("모양 : " + drug_shape); 
+	  System.out.println("제형 :" + drug_formulation);
+	  System.out.println("분할선 : " + drug_split_line_F);
+	  
+		 
 	  totalRecord = service.getDrugSearchShapeCount(map); 
 	  totalPage = (int)
 	  (Math.ceil((totalRecord) / (double) numPerPage)); 
@@ -192,8 +200,8 @@ public class DrugController {
 	  = totalPage; } model.addAttribute("endPage", endPage);
 	  model.addAttribute("totalPage", totalPage);
 	  
-	  map.put("begin", String.valueOf(beginPerPage)); map.put("end",
-	  String.valueOf(endPerPage));
+	  map.put("begin", String.valueOf(beginPerPage));
+	  map.put("end",String.valueOf(endPerPage));
 	  
 	  
 	  List<DrugVO> list = service.getDrugSearchShape(map);
@@ -210,10 +218,17 @@ public class DrugController {
 
 	@RequestMapping(value = "/drugMyCase")
 	public String drugMyCaseList(Model model, @RequestParam(defaultValue = "1") int dPage) {
+		
 		model.addAttribute("plmn", "drugMyCaseList");
 		// "plmn" : PrintListMethodName view단에서 어떤 컨트롤러로 부터 데이터가 넘어 왔는지 확인하는 용도
 		// 어떤 컨트롤러로 부터 요청이 확는지 확인하여 출력되는 결과와 동작을 한 jsp로부터 jstl로 다르게 만든다.
-		int loginNUM = (int) session.getAttribute("sessionNUM");
+		int loginNUM ;
+		try {
+			loginNUM = (int) session.getAttribute("sessionNUM");
+		} catch (NullPointerException e) {
+
+			return "redirect:member/memberLoginForm";
+		}
 
 		totalRecord = service.myDrugCaseTotalCount(loginNUM);
 		System.out.println("총 게시물 수 :" + totalRecord);
@@ -417,6 +432,84 @@ public class DrugController {
 	public String getDrugMain(Model value) {
 		return "drug/drugShapeSearch";
 	}
+	
+	@RequestMapping(value = "/drugSearchImg")
+	public String drugSearchImg(Model value) {
+		return "drug/drugImgSearchForm";
+	}
+	
+	@RequestMapping(value= "/drugImageSearch")
+	public String drugImageSearch(Model value,
+			@RequestParam String drugShapeExtractResult,
+			@RequestParam String drugColorExtractResult,
+			@RequestParam String identificationCharResult,
+			@RequestParam(defaultValue = "1") int dPage) {
+		//파이썬 ocr 또는 Google Cloud Vision API 로  식별표시 인식 추가후 
+		//map으로 mapper로 보낸다음 쿼리문 써서 검색에 대한 약정보 리스트를 받은 다음 
+		//리스트로 출력할 예정 
+//		value.addAttribute("shape",drugShapeExtractResult);
+//		value.addAttribute("color",drugColorExtractResult);
+//		value.addAttribute("identificationChar",identificationCharResult);
+		
+		
+		value.addAttribute("plmn", "drugImageSearchList");
+		value.addAttribute("drugShapeExtractResult", drugShapeExtractResult);
+		value.addAttribute("drugColorExtractResult", drugColorExtractResult);
+		value.addAttribute("identificationCharResult", identificationCharResult);
+		
+		
+		
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("shape", drugShapeExtractResult);
+		map.put("color", drugColorExtractResult);
+		map.put("identification", identificationCharResult);
+		
+		//-----------------------------------------------------------------------------
+		totalRecord = service.getTotalImgDrugSearch(map);
+		System.out.println("총 게시물 수 :" + totalRecord);
+		totalPage = (int) (Math.ceil((totalRecord) / (double) numPerPage));
+		System.out.println("총 페이지 수 : !!!!!!!!!!!!!!!!!!!!" + totalPage);
+		System.out.println("dPage:" + dPage);
+
+		if (dPage != 0) {
+			nowPage = dPage;
+		}
+		value.addAttribute("nowPage", nowPage);
+		beginPerPage = (nowPage - 1) * numPerPage + 1;
+		System.out.println("각 페이지 별 시작 게시물의 index값 : " + beginPerPage);
+		endPerPage = (beginPerPage - 1) + numPerPage;
+		System.out.println("각 페이지 별 마지막 게시물의 index값 : " + endPerPage);
+		int startPage = (int) ((nowPage - 1) / pagePerBlock) * pagePerBlock + 1;
+		value.addAttribute("startPage", startPage);
+		System.out.println("startPage :" + startPage);
+		int endPage = startPage + pagePerBlock - 1;
+		System.out.println("endPage :" + endPage);
+		if (endPage > totalPage) {
+			endPage = totalPage;
+		}
+		value.addAttribute("endPage", endPage);
+		value.addAttribute("totalPage", totalPage);
+
+		map.put("begin", String.valueOf(beginPerPage));
+		map.put("end",String.valueOf(endPerPage));
+
+
+
+		List<DrugVO> list = service.getDrugSearchImage(map);
+		value.addAttribute("list", list);
+		return "drug/drugList";
+	}
+	
+
+	
+	
+	/*
+	 * @RequestMapping(value = "/drugImgSearch") public class DrugRestController{
+	 * public
+	 * 
+	 * }
+	 */
 	/*
 	 * @RequestMapping(value = "/cboardDetail") public String getcBoardDetail(Model
 	 * value, int cnum) {
