@@ -67,16 +67,26 @@ a {
 		<!-- 카테고리 영역 -->
 		<div class="col-2 hcategory ">
 			<!-- 카테고리 프로필 -->
-			<div
-				class="d-flex flex-column align-items-start justify-content-center ps-5"
+			<div class="d-flex flex-column align-items-start justify-content-center ps-5"
 				style="height: 160px;">
-				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
-					class="mb-3">
-				<h5 class="hanna text-white">게스트 님</h5>
+				<c:choose>
+				<c:when test="${sessionNUM != null }">
+				<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="/taejin/img/doc3.svg" style="height: 40%;" class="rounded-circle img-fluid">
+				<h5 class="hanna text-white">${sessionNAME } 님</h5>
 				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
 					・ <a href="">마이페이지</a>
 				</span>
+				</c:when>
+				<c:when test="${sessionNUM == null }">
+				<img src="/taejin/img/doc3.svg" alt="/taejin/img/doc3.svg" style="height: 40%;" class="rounded-circle img-fluid">
+				<h5 class="hanna text-white">게스트 님</h5>
+				<span class="nanum text-white" style="font-size: 12px;"> 
+				<a href="${pageContext.request.contextPath }/member/memberLoginForm">로그인</a> ・ <a href="${pageContext.request.contextPath }/member/joinForm">회원가입</a>
+				</span>
+				</c:when>
+				</c:choose>
 			</div>
+			
 			<!-- 카테고리 프로필 끝 -->
 			<!-- 카테고리 리스트 -->
 			<div>

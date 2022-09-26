@@ -38,94 +38,34 @@ Link {
 		<div class="justify-content-center">
 			<h3 class="hanna ps-3 text-center"></h3>
 			<div class=" justify-content-center ">
-
-
-				<div class="d-flex justify-content-center mt-4">
-					<section class="vh-100" style="background-color: #eee;">
-						<div class="container py-3 h-50">
-							<div
-								class="row d-flex justify-content-center align-items-center h-100">
-								<div style="height: 30%;">
-									<h3 class="hanna m-3 text-center">예약하실 의사선생님 목록</h3>
-									<hr>
-									<div class="row hDetail justify-content-around"
-										style="height: 100%"></div>
+				 <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+					<c:forEach var="e" items="${vo }">
+					<div class="col-md-5">
+						<div class="card" style="width : 400px; height:180px; margin:auto;">
+							<div class="row g-0">
+								<div class="col-3 text-center">
+									<img src=/img/doctor.png class="m-3 w-100" alt="..." />
 								</div>
-								<c:forEach var="doc" items="${vo }">
-									<div class="col-4 m-3">
-										<div class="card h-80" style="border-radius: 15px;">
-											<div class="card-body text-center">
-												<div class="mt-3 mb-4">
-													<img
-														src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-														class="rounded-circle img-fluid" style="width: 100px;" />
-												</div>
-												<h4 class="mb-2">${doc.dname }</h4>
-												<p class="text-muted mb-4">
-													전공<span class="mx-2">|</span>${doc.dmajor }
-												</p>
-												<div class="reserve" >
-												<input type="hidden" value="${doc.dnum }" id="dnum">
-												<input type="button" value="Reserve !"
-													class="btn btn-primary btn-rounded btn-lg" id="reserveBtn">
-													
-													
-													</div>
-											</div>
+								<div class="col-9">
+									<div class="card-body">
+										<h5 class="card-title">
+											<strong> ${e.dname} 의사</strong>
+										</h5>
+										<hr><br>
+										<div class="d-flex flex-start" style="float:right;">
+										<small class="text-muted">${e.dmajor}</small>
+											<button class="btn btn-primary me-1"  type="button">
+												예약하기</button>
 										</div>
 									</div>
-								</c:forEach>
-								<ul class="pagination justify-content-center mt-3">
-									<c:choose>
-										<c:when test="${startPage < 6 }">
-											<li class="page-item disabled"><a class="page-link"
-												href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
-											<!-- 	<li class="disable">이전으로</li> -->
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												href="choice_doctor?cPage=${startPage-1}&category=${category}&search=${search}">Previous</a></li>
-										</c:otherwise>
-									</c:choose>
-									<!-- 							<li class="page-item"><a class="page-link" href="#">1</a></li> -->
-									<!-- 							<li class="page-item"><a class="page-link" href="#">2</a></li> -->
-									<!-- 							<li class="page-item"><a class="page-link" href="#">3</a></li> -->
-
-									<c:forEach varStatus="i" begin="${startPage}" end="${endPage}"
-										step="1">
-										<c:choose>
-											<c:when test="${i.index == nowPage}">
-												<li class="page-item now"><a class="page-link"
-													style="background: #3478F5; color: white;">${i.index }</a></li>
-											</c:when>
-											<c:otherwise>
-												<li class="page-item"><a class="page-link"
-													href="choice_doctor?cPage=${i.index}&category=${category}&search=${search}">${i.index}</a></li>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-
-									<c:choose>
-										<c:when test="${endPage >= totalPage}">
-											<li class="page-item disabled"><a class="page-link"
-												aria-disabled="true">Next</a></li>
-										</c:when>
-										<c:when test="${totalPage > (nowPage+pagePerBlock)}">
-											<li>
-											<li class="page-item"><a class="page-link"
-												href="choice_doctor?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
-										</c:when>
-										<c:otherwise>
-											<li>
-											<li class="page-item"><a class="page-link"
-												href="choice_doctor?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
-										</c:otherwise>
-									</c:choose>
-									<!-- 							<li class="page-item"><a class="page-link" href="#">Next</a></li> -->
-								</ul>
+								</div>
 							</div>
 						</div>
-					</section>
+					</div>
+					</c:forEach>
+				</div> 
+				<div class="d-flex justify-content-center mt-4">
+					
 				</div>
 			</div>
 		</div>

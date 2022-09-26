@@ -12,7 +12,7 @@
 					<div
 						class="d-flex flex-column align-items-start justify-content-center ps-5"
 						style="height: 160px;">
-						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%; "
+						<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" style="height: 40%;"
 							class="mb-3">
 						<h5 class="hanna text-white">$${sessionNAME }님</h5>
 						<span class="nanum text-white" style="font-size: 12px;">
@@ -59,11 +59,10 @@
 					</div>
 					<div>
 						<ul class="nav flex-column">
-							<li class="nav-item pt-2 pb-2 ps-4">
-							<a	class="nav-link text-white"
+							<li class="nav-item pt-2 pb-2 ps-4"><a
+								class="nav-link text-white"
 								href="${pageContext.request.contextPath }/member/memberMypage_list">예약목록
-							</a>
-							</li>
+							</a></li>
 						</ul>
 					</div>
 				</div>
@@ -76,12 +75,13 @@
 						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
 							class="mb-3">
 						<h5 class="hanna text-white">${sessionDNAME }님</h5>
-						<span class="nanum text-white" style="font-size: 12px;">
-							의사 ・ <a
-							href="${pageContext.request.contextPath }/doctor/doctorMypage">스케줄 표</a>
+						<span class="nanum text-white" style="font-size: 12px;"> 의사
+							・ <a
+							href="${pageContext.request.contextPath }/doctor/doctorMypage">스케줄
+								표</a>
 						</span>
 					</div>
-					
+
 				</div>
 			</c:when>
 			<c:when test="${sessionCNUM != null}">
@@ -93,39 +93,54 @@
 							class="mb-3">
 						<h5 class="hanna text-white">${sessionCNAME }님</h5>
 						<span class="nanum text-white" style="font-size: 12px;">
-							의사 ・ <a
-							href="${pageContext.request.contextPath }/doctor/doctorMypage">스케줄 표</a>
-						</span>
+							사업주 ・ ${sessionHGRADE}</span>
 					</div>
-					
+					<div>
+						<ul class="nav flex-column">
+							<li class="nav-item pt-2 pb-2 ps-4"><a
+								class="nav-link text-white"
+								href="${pageContext.request.contextPath }/member/memberMypage_list">예약목록
+							</a></li>
+							<li class="nav-item pt-2 pb-2 ps-4"><a
+								class="nav-link text-white"
+								href="${pageContext.request.contextPath }/doctor/joinDoctorForm">Add
+									Doctor</a></li>
+							<li class="nav-item pt-2 pb-2 ps-4"><a
+								class="nav-link text-white"
+								href="${pageContext.request.contextPath }/company/hospitalDoctorList">Doctor
+									List</a></li>
+							<li class="nav-item pt-2 pb-2 ps-4"><a
+								class="nav-link text-white"
+								href="#" id="hgrade">Analysis Dashboard</a></li>
+						</ul>
+					</div>
 				</div>
 			</c:when>
-			
+
 		</c:choose>
 		<!-- 전체 틀 시작 -->
 
 		<div class="col-10">
 			<div class="hboard pt-2 ps-3 pe-3">
-					<div class="justify-content-center">
-						<h3 class="hanna ps-3 text-center"></h3>
-							<div class=" justify-content-center ">
-							<!-- 내용 -->
-							
+				<div class="justify-content-center">
+					<h3 class="hanna ps-3 text-center"></h3>
+					<div class=" justify-content-center ">
+						<!-- 내용 -->
 
 
 
-							<script>
-								var sessionGrade = '${sessionHGRADE}'
-								$('#hgrade')
-										.click(
-												function() {
-													console
-															.log('sessionGrade = '
-																	+ sessionGrade)
-													if (sessionGrade == '베이직') {
-														alert('프리미엄등급으로 등록을 해주세요!!')
-													} else {
-														location.href = '${mycontext }/hospitalP/dashboard'
-													}
-												})
-							</script>
+
+						<script>
+							var sessionGrade = '${sessionHGRADE}'
+							$('#hgrade')
+									.click(
+											function() {
+												console.log('sessionGrade = '
+														+ sessionGrade)
+												if (sessionGrade == '베이직') {
+													alert('프리미엄등급으로 등록을 해주세요!!')
+												} else {
+													location.href = '${mycontext }/hospitalP/dashboard'
+												}
+											})
+						</script>

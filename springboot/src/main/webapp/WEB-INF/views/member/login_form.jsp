@@ -102,9 +102,7 @@
 			var id = $('#id').val();
 			var pwd = $('#pwd').val();
 
-			console.log("choose_val2 = >"
-					+ $('input:radio[name="cate"]:checked', '#login-form')
-							.val());
+			console.log("choose_val2 = >"+ $('input:radio[name="cate"]:checked', '#login-form').val());
 			if ($('input:radio[name="cate"]:checked', '#login-form').val() == 1) {
 				$.ajax({
 					url : "idchk",
@@ -116,15 +114,12 @@
 							console.log('data => ' + data);
 							alert('로그인에 실패하였습니다.')
 						} else {
-							$('#login-form').attr("action", "memberLogin")
-									.submit();
+							$('#login-form').attr("action", "memberLogin").submit();
 						}
 					}
 				})
-			} else if ($('input:radio[name="cate"]:checked', '#login-form')
-					.val() == 2) {
-				$
-						.ajax({
+			} else if ($('input:radio[name="cate"]:checked', '#login-form').val() == 2) {
+				$.ajax({
 							url : "${pageContext.request.contextPath}/doctor/idchk",
 							type : "POST",
 							dataType : "text",
@@ -140,16 +135,12 @@
 									$('#pwd').attr({
 										'name' : 'dpwd'
 									});
-									$('#login-form')
-											.attr("action",
-													"${pageContext.request.contextPath}/doctor/doctorLogin")
-											.submit();
+									$('#login-form').attr("action","${pageContext.request.contextPath}/doctor/doctorLogin").submit();
 								}
 							}
 						})
 			} else {
-				$
-						.ajax({
+				$.ajax({
 							url : "${pageContext.request.contextPath}/company/idchk",
 							type : "POST",
 							dataType : "text",
@@ -167,10 +158,7 @@
 									$('#pwd').attr({
 										'name' : 'cpwd'
 									});
-									$('#login-form')
-											.attr("action",
-													"${pageContext.request.contextPath}/company/companyLogin")
-											.submit();
+									$('#login-form').attr("action",	"${pageContext.request.contextPath}/company/companyLogin").submit();
 
 								}
 							}

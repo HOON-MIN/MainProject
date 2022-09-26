@@ -62,7 +62,7 @@
 	    
 	    
    });
-	    /* $.ajax({
+	     $.ajax({
 	    		url:'doctorReserveList',
 	    		success:function(data){
 	    			// 예약이 있을경우
@@ -79,11 +79,11 @@
 	    				console.log(typeof(today))
 	    				// 월이 10 이하일경우 -> 9 => 09
 	    				if(f < today){
-	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+':00',
+	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+,
 	    	    				'title' : ' '+i.memberVO.num+' - '+ i.memberVO.name, 'color' : "#FF0000"
 	    	    			});
 	    				}else{
-	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+':00',
+	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+,
 	    	    				'title' : ' '+i.memberVO.num+'. '+ i.memberVO.name,
 	    	    			});
 	    				}
@@ -107,12 +107,7 @@
 		      eventClick: function(info) {
 				
 				console.log('클릭이벤트! ' + info.event.title)
-				/*$.ajax({
-					type:'GET',
-					url:,
-					data:{},
-					
-				})
+				
 		      },
 		      dateClick: function(info){
 		    	  res = info.dateStr
@@ -151,7 +146,7 @@
 	    	    	}
 		    	}// success - 끝
 		    });// ajax - 끝
-	   });*/
+	   });
    //날짜 변환 function
    function dateFormat(res){		
 		var date = new Date(res);

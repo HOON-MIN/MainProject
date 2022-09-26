@@ -3,97 +3,107 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
-<div style="height: 80%; ">
-	<h3 class="hanna m-3 text-center" >${sessionNAME }님의 마이페이지</h3>
+<div style="height: 80%;">
+	<h3 class="hanna m-3 text-center">${sessionNAME }님의마이페이지</h3>
 	<div class="row hDetail justify-content-around" style="height: 100%">
 	</div>
 </div>
 
 
 <section style="background-color: #eee;">
-	<div class="container" style="width:60%">
-			<div class="card mb-4">
-				<div class="card-body text-center">
-					<img
-						src="${pageContext.request.contextPath }/imgfile/${member.profimg}"
-						alt="avatar" class="rounded-circle img-fluid"
-						style="width: 150px;">
-					<h5 class="my-3 hanna">${sessionNAME }</h5>
-					<div class="d-flex justify-content-center mb-2">
-						<button type="button" class="btn btn-primary"
-							onclick="location.href='updateMypageForm'" style="float: right">Modify
-						</button>
+	<div class="container" style="width: 60%">
+		<div class="card mb-4">
+			<c:choose>
+				<c:when test="${sessionProfimg == null }">
+					<div class="card-body text-center">
+						<img src="/taejin/img/doc3.svg" class="rounded-circle img-fluid"
+							style="width: 150px;">
 					</div>
-				</div>
-			</div>
+				</c:when>
+				<c:when test="${sessionProfimg != null }">
+					<div class="card-body text-center">
+						<img
+							src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}"
+							class="rounded-circle img-fluid" style="width: 150px;">
+					</div>
+				</c:when>
+			</c:choose>
+			<h5 class="my-3 hanna text-center">${sessionNAME }</h5>
+			<div class="d-flex justify-content-center mb-2">
+				<button type="button" class="btn btn-primary"
+					onclick="location.href='updateMypageForm'" style="float: right">Modify
+				</button>
 
-				<div class="card mb-4">
-					<div class="card-body hanna">
-						<div class="row">
-							<div class="col-sm-3">
-								<p class="mb-0">Name</p>
-							</div>
-							<div class="col-sm-9">
-								<p class="text-muted mb-0">${member.name }</p>
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<p class="mb-0">Email</p>
-							</div>
-							<div class="col-sm-9">
-								<p class="text-muted mb-0">${member.email }</p>
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<p class="mb-0">Phone</p>
-							</div>
-							<div class="col-sm-9">
-								<p class="text-muted mb-0">${member.tel }</p>
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<p class="mb-0">Address</p>
-							</div>
-							<div class="col-sm-9">
-								<p class="text-muted mb-0">${member.addr }</p>
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<p class="mb-0">Age</p>
-							</div>
-							<div class="col-sm-9">
-								<p class="text-muted mb-0">${member.age }</p>
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<p class="mb-0">Gender</p>
-							</div>
-							<div class="col-sm-9">
-								<p class="text-muted mb-0">${member.gender }</p>
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-sm-3">
-								<p class="mb-0">Date</p>
-							</div>
-							<div class="col-sm-9">
-								<p class="text-muted mb-0">${member.mdate }</p>
-							</div>
-						</div>
-					</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card mb-4">
+		<div class="card-body hanna">
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">Name</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">${member.name }</p>
 				</div>
 			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">Email</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">${member.email }</p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">Phone</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">${member.tel }</p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">Address</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">${member.addr }</p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">Age</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">${member.age }</p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">Gender</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">${member.gender }</p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">Date</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">${member.mdate }</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>

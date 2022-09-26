@@ -90,14 +90,14 @@ body {
 						<input	type="text" name="rdate" id="rdate" value="${rd}" readonly="readonly">  
 						<select	name="rtime" id="rtime" required="required">
 							<option value="">예약 시간을 선택해주세요</option>
-							<option value="11:00">11:00</option>
-							<option value="12:00">12:00</option>
+							<option value="11:00:00">11:00</option>
+							<option value="12:00:00">12:00</option>
 							<option disabled="disabled">13:00 ~
 								14:00 점심시간 입니다</option>
-							<option value="14:00">15:00</option>
-							<option value="15:00">16:00</option>
-							<option value="16:00">17:00</option>
-							<option value="17:00">18:00</option>
+							<option value="14:00:00">14:00</option>
+							<option value="15:00:00">15:00</option>
+							<option value="16:00:00">16:00</option>
+							<option value="17:00:00">17:00</option>
 						</select>
 					</div>
 

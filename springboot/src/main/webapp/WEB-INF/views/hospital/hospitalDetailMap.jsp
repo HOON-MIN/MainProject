@@ -73,13 +73,14 @@ a {
 				style="height: 160px;">
 				<c:choose>
 				<c:when test="${sessionNUM != null }">
-				<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="프로필 사진을 등록하세요" style="height: 40%;" class="rounded-circle img-fluid">
+				<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="taejin/img/doc3.svg" style="height: 40%;" class="rounded-circle img-fluid">
 				<h5 class="hanna text-white">${sessionNAME } 님</h5>
 				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
 					・ <a href="">마이페이지</a>
 				</span>
 				</c:when>
 				<c:when test="${sessionNUM == null }">
+				<img src="/taejin/img/doc3.svg" alt="/taejin/img/doc3.svg" style="height: 40%;" class="rounded-circle img-fluid">
 				<h5 class="hanna text-white">게스트 님</h5>
 				<span class="nanum text-white" style="font-size: 12px;"> 
 				<a href="${pageContext.request.contextPath }/member/memberLoginForm">로그인</a> ・ <a href="${pageContext.request.contextPath }/member/joinForm">회원가입</a>

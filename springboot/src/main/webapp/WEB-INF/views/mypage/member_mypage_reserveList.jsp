@@ -241,7 +241,7 @@
 									var mid = new kakao.maps.LatLng(
 											midY,
 											midX);
-									message = '<div style="width:150px;text-align:center;padding:6px 0;">현재위치!!</div>';
+									message = '<div style="width:150px;text-align:center;">현재위치!!</div>';
 									//마커생성전에 좌표모아서 선언
 									var positions = [
 											{
