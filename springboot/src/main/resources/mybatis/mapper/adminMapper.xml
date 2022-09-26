@@ -99,6 +99,6 @@
 		select h.hname ,count(*) r_num
 		from reserve r, doctor d ,hospital h
 		where r.dnum=d.dnum and h.cnum = d.cnum 
-		and h.hcate=#{hcate} group by h.hname
+		and h.hcate=#{hcate} and substr(r.rdate,6,2)= substr(sysdate,4,2) group by h.hname
 	</select>
 </mapper>

@@ -78,7 +78,7 @@
 				<c:forEach var="hvo" items="${vo }">
 					<c:forEach var="dvo" items="${hvo.doctorVO }">
 						<c:forEach var="rvo" items="${dvo.reserveVO }">
-							<tr class="hanna">
+							<tr>
 								<td>${rvo.r_num }</td>
 								<td>${hvo.hname }</td>
 								<td>${hvo.hloc }</td>

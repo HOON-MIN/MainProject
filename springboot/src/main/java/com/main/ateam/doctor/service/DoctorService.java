@@ -10,6 +10,7 @@ import com.main.ateam.doctor.dao.DoctorDao;
 import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.ReserveVO;
+import com.main.ateam.vo.SearchVO;
 @Service
 public class DoctorService {
 	@Autowired
@@ -51,4 +52,15 @@ public class DoctorService {
 		return doctordao.selecHospitaldoc(map);
 	}
 	
+	public List<DoctorVO> doctorCategorySpring(){
+		return doctordao.doctorCategorySpring();
+	}
+	
+	public int doctorCnt(SearchVO svo) {
+		return doctordao.doctorCnt(svo);
+	}
+	
+	public List<HospitalVO> doctorListSpring(SearchVO svo){
+		return doctordao.doctorListSpring(svo);
+	}
 }

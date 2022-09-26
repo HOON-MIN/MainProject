@@ -3,6 +3,23 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
+.chatbot {
+	position : fixed;
+	width: 80px;
+	height: 80px; 
+	bottom: 5%;
+	right: 5%;
+	background-color: white;
+	border-radius: 40px;
+	position: fixed;
+	z-index: 99;
+}
+
+.chatbot img{
+	width: 60%; 
+	height : 60%;
+}
+
 .testImg {
 	background-color: white;
 	height: 500px;
@@ -10,13 +27,11 @@
 }
 
 .testImg2 {
-	position : relative;
+	position: relative;
 	background-color: white;
 	height: 500px;
 	border-radius: 16px;
 }
-
-
 
 .testImg4 {
 	padding: 0 15px;
@@ -26,7 +41,6 @@
 	border-radius: 16px;
 	margin: 0 15px;
 }
-
 
 .ctext {
 	position: absolute;
@@ -43,24 +57,24 @@
 	transform: translate(-60%, -50%);
 }
 
-.mainText{
-	min-width : 240px;
-	position : absolute;
-	left : 70%;
-	top : 50%;
+.mainText {
+	min-width: 240px;
+	position: absolute;
+	left: 70%;
+	top: 50%;
 	transform: translate(-30%, -50%);
-	text-align : right;
+	text-align: right;
 }
 
-.mainBtn{
-	margin-top : 40px; 
-	padding : 16px;
-	border : solid 1px #232323; 
-	border-radius : 4px;
+.mainBtn {
+	margin-top: 40px;
+	padding: 16px;
+	border: solid 1px #232323;
+	border-radius: 4px;
 	background-color: white;
-	width : 80%;
-	}
-	
+	width: 80%;
+}
+
 .mainImg2 {
 	position: absolute;
 	top: 50%;
@@ -68,25 +82,23 @@
 	transform: translate(-50%, -50%);
 }
 
-.mainText2{
-	min-width : 240px;
-	position : absolute;
-	left : 70%;
-	top : 50%;
+.mainText2 {
+	min-width: 240px;
+	position: absolute;
+	left: 70%;
+	top: 50%;
 	transform: translate(-30%, -50%);
-	text-align : right;
+	text-align: right;
 }
 
-.mainBtn2{
-	margin-top : 40px; 
-	padding : 16px;
-	border : solid 1px #232323; 
-	border-radius : 4px;
+.mainBtn2 {
+	margin-top: 40px;
+	padding: 16px;
+	border: solid 1px #232323;
+	border-radius: 4px;
 	background-color: white;
-	width : 80%;
-	}	
-	
-	
+	width: 80%;
+}
 
 .sideDiv {
 	background-color: #f1f9fa;
@@ -114,24 +126,32 @@
 	color: #3478f5;
 }
 
-.cbtn{
-	border: solid 1px ;
+.cbtn {
+	border: solid 1px;
 }
 </style>
 
 
 <div class="container-fluid ">
+	<div class="chatbot d-flex justify-content-center align-items-center">
+		<img alt="챗봇" src="/img/bot.png">
+	</div>
 	<!-- 메인 캐러셀 / 사이드이미지 -->
 	<div class="row mt-3 mb-3">
 		<!-- ----케러셀---- -->
 		<div class="col-md-8 mb-5">
-			<div id="carouselExampleIndicators" class="carousel slide carousel-fade carousel-dark"
+			<div id="carouselExampleIndicators"
+				class="carousel slide carousel-fade carousel-dark"
 				data-bs-ride="carousel">
-				  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active cbtn" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="cbtn" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="cbtn" aria-label="Slide 3"></button>
-  </div>
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="0" class="active cbtn" aria-current="true"
+						aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="1" class="cbtn" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide-to="2" class="cbtn" aria-label="Slide 3"></button>
+				</div>
 				<div class="carousel-inner">
 					<!-- 1 -->
 					<div class="carousel-item active ">
@@ -149,12 +169,14 @@
 						<div class="d-block w-100 testImg2">
 							<img src="/img/coronaVirus.png" alt="코로나감기확인" class="mainImg">
 							<div class="mainText">
-								<h2 class="hanna" style ="color: #232323 ; text-align : right;">코로나 자가진단 서비스</h2>
-								<p class="hanna" style="color: #565656; font-size: 16px; text-align : right;">
-						자가진단 키트 없이 기침소리로 <br>코로나 양성여부를 확인 하실 수 있습니다.
-						<button class="mainBtn w-100">자가진단 하러 가기 </button>
+								<h2 class="hanna" style="color: #232323; text-align: right;">코로나
+									자가진단 서비스</h2>
+								<p class="hanna"
+									style="color: #565656; font-size: 16px; text-align: right;">
+									자가진단 키트 없이 기침소리로 <br>코로나 양성여부를 확인 하실 수 있습니다.
+									<button class="mainBtn w-100">자가진단 하러 가기</button>
 							</div>
-							
+
 						</div>
 					</div>
 					<!-- 3 -->
@@ -162,20 +184,22 @@
 						<div class="d-block w-100 testImg2">
 							<img src="/img/drugs.png" alt="코로나감기확인" class="mainImg2">
 							<div class="mainText2">
-								<h2 class="hanna" style ="color: #232323 ; text-align : right;">약 성분 조회 서비스</h2>
-								<p class="hanna" style="color: #565656; font-size: 16px; text-align : right;">
-						사진 하나로 지금 복용 중인 약의 성분을 <br>분석해드립니다.
-						<button class="mainBtn w-100">약 조회 하기 </button>
+								<h2 class="hanna" style="color: #232323; text-align: right;">약
+									성분 조회 서비스</h2>
+								<p class="hanna"
+									style="color: #565656; font-size: 16px; text-align: right;">
+									사진 하나로 지금 복용 중인 약의 성분을 <br>분석해드립니다.
+									<button class="mainBtn w-100">약 조회 하기</button>
 							</div>
-							
+
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
 		<!-- ----------  -->
-		
+
 		<!-- 사이드 배너 -->
 		<div class="col-12 col-md-4">
 			<div class="sideDiv">

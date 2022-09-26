@@ -166,6 +166,17 @@ public class DrugController {
 	  map.put("drug_split_line_F", drug_split_line_F);
 	  
 	  
+	  
+	 model.addAttribute("drug_identification", drug_identification);
+	  
+	  
+	 model.addAttribute("drug_color_F", drug_color_F); 
+	 model.addAttribute("drug_color_B", drug_color_B);
+	 model.addAttribute("drug_shape", drug_shape); 
+	 model.addAttribute("drug_formulation",drug_formulation);
+	 model.addAttribute("drug_split_line_F", drug_split_line_F);
+	  
+	  
 	  if (dPage != 0) { nowPage = dPage; }
 	  System.out.println(dPage);
 	  System.out.println("식별표시 : " + drug_identification);

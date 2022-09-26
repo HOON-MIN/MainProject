@@ -12,10 +12,11 @@ import lombok.Setter;
 @Setter
 @Alias("mivo")
 public class MedInqVO {
-	
+
 	private int mednum;
+
 	private String disease1, disease2,
 		diseasehist, diseaseetc, smoke, alcohol, allergy, 
 		allergyetc, pregnancy, symptom, meddate;
-	
+
 }

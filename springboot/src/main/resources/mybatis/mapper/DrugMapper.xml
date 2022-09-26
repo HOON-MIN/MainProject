@@ -101,7 +101,7 @@
 			<when test="searchCompany != null">
 				where drug_company Like '%'||#{searchCompany}||'%'
 			</when>
-			
+
 		</choose>
 	</select>
 
@@ -158,29 +158,22 @@
 				'%'||#{drug_formulation}||'%'
 			</when>
 		</choose>
-		<!-- <choose>
-			<when test='drug_split_line_F =="전체"'>
-				and drug_split_line_F Like '%'||''||'%'
-			</when>
-			<when test='drug_split_line_F =="없음"'>
-				and drug_split_line_F Like '%'||'없음'||'%'
-				and
-				drug_split_line_B Like '%'||'없음'||'%'
-			</when>
-			<when test='drug_split_line_F =="기타"'>
-				and drug_split_line_F not in
-				(''||CHR(39)||'-'||CHR(39)||'형',''||CHR(39)||'+'||CHR(39)||'형','없음')
-				or drug_split_line_B not in
-				(''||CHR(39)||'-'||CHR(39)||'형',''||CHR(39)||'+'||CHR(39)||'형','없음')
-			</when>
-			<when test='drug_split_line_F !="전체" and drug_split_line_F !="기타"'>
-				and drug_split_line_F Like '%'||''||CHR(39)||''||#{drug_split_line_F}
-				and drug_split_line_B Like  ''||CHR(39)||'||#{drug_split_line_F}||'||CHR(39)||'||'형'
-			</when>
-		</choose> -->
+		<!-- <choose> <when test='drug_split_line_F =="전체"'> and drug_split_line_F 
+			Like '%'||''||'%' </when> <when test='drug_split_line_F =="없음"'> and drug_split_line_F 
+			Like '%'||'없음'||'%' and drug_split_line_B Like '%'||'없음'||'%' </when> <when 
+			test='drug_split_line_F =="기타"'> and drug_split_line_F not in (''||CHR(39)||'-'||CHR(39)||'형',''||CHR(39)||'+'||CHR(39)||'형','없음') 
+			or drug_split_line_B not in (''||CHR(39)||'-'||CHR(39)||'형',''||CHR(39)||'+'||CHR(39)||'형','없음') 
+			</when> <when test='drug_split_line_F !="전체" and drug_split_line_F !="기타"'> 
+			and drug_split_line_F Like '%'||''||CHR(39)||''||#{drug_split_line_F} and 
+			drug_split_line_B Like ''||CHR(39)||'||#{drug_split_line_F}||'||CHR(39)||'||'형' 
+			</when> </choose> -->
 	</select>
 	<select id="getDrugSearchShape" resultType="drugVO">
-		select * from drug where
+		select r_num,drug_img,drug_idx,drug_name,drug_formulation,
+		drug_component,drug_company,drug_Professional_General
+		from(
+		select rownum r_num, a.*from
+		(select * from drug where
 		<!-- 받은 값에 따라 동적 쿼리 구현 하기 -->
 		<choose>
 			<when test='drug_identification ==""'>
@@ -231,29 +224,16 @@
 				'%'||#{drug_formulation}||'%'
 			</when>
 		</choose>
-		<!-- <choose>
-			<when test='drug_split_line_F =="전체"'>
-				and drug_split_line_F Like '%'||''||'%'
-			</when>
-
-			<when test='drug_split_line_F =="없음"'>
-				and drug_split_line_F Like '%'||'없음'||'%'
-				and
-				drug_split_line_B Like '%'||'없음'||'%'
-			</when>
-
-			<when test='drug_split_line_F =="기타"'>
-				and drug_split_line_F not in
-				(''||CHR(39)||'-'||CHR(39)||'형',''||CHR(39)||'+'||CHR(39)||'형','없음')
-				or drug_split_line_B not in
-				(''||CHR(39)||'-'||CHR(39)||'형',''||CHR(39)||'+'||CHR(39)||'형','없음')
-			</when>
-			<when
-				test='drug_split_line_F !="전체" and drug_split_line_F !="기타"'>
-				and drug_split_line_F Like '%'||''||CHR(39)||''||'%'
-				and drug_split_line_B Like  ''||CHR(39)||'||#{drug_split_line_F}||'||CHR(39)||'||'형'
-			</when>
-		</choose> -->
+		)a
+		) where r_num between #{begin} and #{end}
+		<!-- <choose> <when test='drug_split_line_F =="전체"'> and drug_split_line_F 
+			Like '%'||''||'%' </when> <when test='drug_split_line_F =="없음"'> and drug_split_line_F 
+			Like '%'||'없음'||'%' and drug_split_line_B Like '%'||'없음'||'%' </when> <when 
+			test='drug_split_line_F =="기타"'> and drug_split_line_F not in (''||CHR(39)||'-'||CHR(39)||'형',''||CHR(39)||'+'||CHR(39)||'형','없음') 
+			or drug_split_line_B not in (''||CHR(39)||'-'||CHR(39)||'형',''||CHR(39)||'+'||CHR(39)||'형','없음') 
+			</when> <when test='drug_split_line_F !="전체" and drug_split_line_F !="기타"'> 
+			and drug_split_line_F Like '%'||''||CHR(39)||''||'%' and drug_split_line_B 
+			Like ''||CHR(39)||'||#{drug_split_line_F}||'||CHR(39)||'||'형' </when> </choose> -->
 	</select>
 
 	<insert id="setDrugMyCaseInsert">
@@ -280,24 +260,29 @@
 		#{drug_size_s},#{drug_size_w},#{drug_effect},#{drug_Professional_General},#{drug_color_F},
 		#{drug_color_B},#{drug_split_line_F},#{drug_split_line_B},#{drug_disposal},#{drug_shape})
 	</insert>
-	
+
 	<select id="getImgDrugSearch" resultType="drugVO">
-		select r_num,drug_img,drug_idx,drug_name,drug_formulation,
+		select
+		r_num,drug_img,drug_idx,drug_name,drug_formulation,
 		drug_component,drug_company,drug_Professional_General
 		from(
-		select rownum r_num, a.*from
-		
-		(select * from drug where drug_color_F= #{color} and drug_shape =#{shape} and drug_identification Like '%'||#{identification}||'%')a
-		
-		) where r_num between #{begin} and #{end}	
-		
+		select
+		rownum r_num, a.*from
+
+		(select * from drug where drug_color_F= #{color} and drug_shape =#{shape} and
+		drug_identification Like '%'||#{identification}||'%')a
+
+		) where r_num between #{begin} and #{end}
+
 	</select>
-	
-	
+
+
 	<select id="getTotalImgDrugSearch" resultType="int">
 
-		select count(*) from drug where drug_color_F= #{color} and drug_shape =#{shape} and drug_identification Like '%'||#{identification}||'%'
-	
+		select count(*)
+		from drug where drug_color_F= #{color} and drug_shape =#{shape} and
+		drug_identification Like '%'||#{identification}||'%'
+
 	</select>
 
 

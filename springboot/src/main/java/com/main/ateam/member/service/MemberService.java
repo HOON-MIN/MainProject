@@ -64,4 +64,8 @@ public class MemberService {
 	public int AndroidIdCheck(Map<String, String>map) {
 		return memberDao.AndroidIdCheck(map);
 	}
+	
+	public MemberVO memberidlist(String id) {
+		return memberDao.memberidlist(id);
+	}
 }

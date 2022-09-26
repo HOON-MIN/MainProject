@@ -4,13 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.main.ateam.medInq.dao.MedinqDao">
 
-<!-- <insert id="addMedinq" parameterType="mivo">
-	insert into medInq values (medInq_seq.nextVal, #{id}, 
-	#{disease1}, #{disease2}, #{diseasehist}, #{diseaseetc}, 
-	#{smoke},#{alcohol},#{allergy},#{allergyetc}, 
+<insert id="addMedinq" parameterType="mivo">
+	insert into medinq values (#{mednum}, #{disease1}, #{disease2}, #{diseasehist}, 
+	#{diseaseetc}, #{smoke},#{alcohol},#{allergy},#{allergyetc}, 
 	#{pregnancy},#{symptom}, sysdate)
 </insert>
-
+<!-- 
 <select id="getMIDetail" parameterType="int" resultType="mivo">
 	select * from medInq where mednum = #{num}
 </select>

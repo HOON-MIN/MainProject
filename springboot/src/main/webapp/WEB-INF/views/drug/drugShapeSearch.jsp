@@ -3,13 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div style="text-align: center;">
-	<span>
-		<p>
-			<a href="drugList" style="margin-right: 40px">약품리스트</a> <a href="drugSearchImg"
-				style="margin-right: 40px">이미지로약품조회</a> <a href="drugMyCase"
-				style="margin-right: 40px">나의의약품케이스</a> <a href="drugSearchHistory"
-				style="margin-right: 40px">약품검색기록</a>
-		</p>
+	<span> <a class="btn btn-light" href="drugList"
+		style="margin-right: 40px">약품 리스트</a> <a class="btn btn-light"
+		href="drugSearchImg" style="margin-right: 40px">이미지 약품조회</a> <a
+		class="btn btn-light" href="drugMyCase" style="margin-right: 40px">나의
+			의약품케이스</a> <a class="btn btn-light" href="drugSearchHistory"
+		style="margin-right: 40px">약품 검색 기록</a>
+
 	</span>
 </div>
 
@@ -17,15 +17,25 @@
 	<div class="container">
 		<div class="form-body row justify-content-center ">
 			<div class="row">
-				<div class="form-holder">
+				<div class="card col-4 mt-2" style="width: 18rem;">
+					<img src="kimsungwook/loadimg/drugimgeSearch.jpg"
+						class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">약품 이미지 분석</h5>
+						<p class="card-text">사진 한장으로 약을 찾아보세요.</p>
+						<a href="drugSearchImg" class="btn btn-secondary">약품 이미지 분석</a>
+					</div>
+				</div>
+				<div class="col-8 form-holder">
 					<div class="form-content">
-						<div class="form-items  " style="text-align: center;">
-							<h4 class="mt-3 mb-3 text-center">약품 정보란</h4>
-
-							<p class="text-center mb-5">모양으로 약품 검색</p>
+						<input class="form-control text-center  mt-5 mb-3" type="text"  style="background-color: transparent;"
+							value="약품 정보란"
+							aria-label="readonly input example" readonly>
+						<div class="form-items" style="text-align: center; background-color: white;">
+							<p class="text-center mb-5" style="background-color: aqua;">모양으로 약품 검색</p>
 							<form method="get" action="shapeSearch" id="shapeSearchform">
 
-								<div class="input-group justify-content-center mb-3">
+								<div class="input-group justify-content-center mb-5">
 									<span class="input-group-text" id="drug_identification">식별표시
 										: <input style="text-align: center;"
 										name="drug_identification" type="text" class="form-control"
@@ -35,11 +45,11 @@
 								</div>
 
 
-								<span style='margin-bottom: 50px'>
+								<span style='margin-bottom: 50px' >
 									<p style="font-size: 15px">
-										전면 / 좌측 좌측 색깔 선택 : <select name="drug_color_F">
+										전면 / 좌측 좌측 색깔 선택 : <select name="drug_color_F" class="mb-5 mx-5">
 
-											<option value="하양" selected="selected">하양</option>
+											<option value="하양">하양</option>
 											<option value="노랑">노랑</option>
 											<option value="주황">주황</option>
 											<option value="분홍">분홍</option>
@@ -54,10 +64,10 @@
 											<option value="보라">보라</option>
 											<option value="회색">회색</option>
 											<option value="검정">검정</option>
-											<option value="전체">전체</option>
+											<option value="전체" selected="selected">전체</option>
 
-										</select> 후면 / 우측 색깔 선택 : <select name="drug_color_B">
-											<option value="없음">전면과 동일</option>
+										</select> 후면 / 우측 색깔 선택 : <select name="drug_color_B" class="mb-5 mx-5">
+											<option value="없음" selected="selected">전면과 동일</option>
 											<option value="하양">하양</option>
 											<option value="노랑">노랑</option>
 											<option value="주황">주황</option>
@@ -81,7 +91,7 @@
 									</p>
 								</span>
 								<p>
-									<span style='margin-bottom: 50px'> 모양 선택 : <select
+									<span style='margin-bottom: 50px' class="mb-5 me-5"> 모양 선택 : <select class="mb-5 mx-5"
 										name="drug_shape">
 											<option value="원형">"원형"</option>
 											<option value="타원형">"타원형"</option>
@@ -94,13 +104,13 @@
 											<option value="육각형">"육각형"</option>
 											<option value="팔각형">"팔각형"</option>
 											<option value="기타">"기타"</option>
-											<option value="전체">"전체"</option>
-									</select> 제형 선택 : <select name="drug_formulation">
+											<option value="전체" selected="selected">"전체"</option>
+									</select> 제형 선택 : <select name="drug_formulation" class="mb-5 mx-5">
 											<option value="정제">"정제"</option>
 											<option value="경질캡슐">"경질캡슐"</option>
 											<option value="연질캡슐">"연질캡슐"</option>
 											<option value="기타">"기타"</option>
-											<option value="전체">"전체"</option>
+											<option value="전체" selected="selected">"전체"</option>
 									</select>
 								</p>
 								<!-- <p>
@@ -122,12 +132,11 @@
 									</select>
 									</span>
 								</p> -->
-								<div 
-									style="padding-left: 90px; padding-right: 90px;">
+								<div style="padding-left: 90px; padding-right: 90px;">
 
 
 									<input type="submit" value="검색" style="width: 400px"
-										class="btn btn-primary btn-group-sm " />
+										class="btn btn-secondary btn-group-sm " />
 
 								</div>
 						</div>

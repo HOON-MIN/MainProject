@@ -27,6 +27,8 @@ import com.main.ateam.vo.SearchVO;
 		
 		/* 0920 add: dhlee 추가 */
 		public int AndroidIdCheck(Map<String, String>map);
+		
+		public MemberVO memberidlist(String id);
 	}
 
 

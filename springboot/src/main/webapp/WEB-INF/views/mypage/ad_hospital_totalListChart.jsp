@@ -40,7 +40,7 @@
 		</div>
 		<div id="target"></div>
 		<div id="chart1"
-			style="width: 1200px; height: 600px; padding-top: 50px; margin-bottom: 100px;"></div>
+			style="width: 100%; height: 600px; padding-top: 50px; margin-bottom: 100px;"></div>
 	</div>
 </div>
 

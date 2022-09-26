@@ -2,192 +2,83 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- include 제거  -->
-
-<style>
-.hcategory {
-	background-color: #3478f5;
-	padding-top: 40px;
-	height: 100%;
-}
-
-.hboard {
-	background-color: #efefef;
-	border-radius: 8px;
-	margin: 40px;
-	height: 90%;
-}
-
-a {
-	text-decoration: none;
-	color: white;
-}
-
-.searchForm input {
-	border: solid 1px #3478f5;
-	border-radius: 16px 0 0 16px;
-	background-color:
-}
-
-.searchForm button {
-	background-color: #3478f5;
-	width: 64px;
-	border-radius: 0 16px 16px 0;
-}
-
-.searchForm img {
-	width: 18px;
-}
-
-.htable {
-	width: 100%;
-}
-
-.htable thead {
-	height: 40px;
-	color: grey;
-}
-
-.htable th {
-	font-weight: lighter;
-	padding-left: 12px;
-}
-
-.htable tbody {
-	border-collapse: collapse;
-	border-radius: 16px;
-	box-shadow: 2px 2px 2px 2px #ababab;
-}
-
-.htable td {
-	padding: 14px 12px;
-	font-size: 14px;
-}
-</style>
-<!-- 전체 틀 -->
-<div class="container-fluid" style="height: 100%;">
-	<div class="row justify-content-around" style="height: 100%;">
-		<!-- 카테고리 영역 -->
-		<div class="col-2 hcategory ">
-			<!-- 카테고리 프로필 -->
-			<div
-				class="d-flex flex-column align-items-start justify-content-center ps-5"
-				style="height: 160px;">
-				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
-					class="mb-3">
-				<h5 class="hanna text-white">${member.name }님</h5>
-				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
-					・ <a
-					href="${pageContext.request.contextPath }/admin/adminHospTotalList">마이페이지</a>
-				</span>
-			</div>
-			<!-- 카테고리 프로필 끝 -->
-			<!-- 카테고리 리스트 -->
-			<div>
-				<ul class="nav flex-column">
-					<c:choose>
-						<c:when test="${sessionNUM == 1}">
-							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
-								<a class="nav-link text-white"
-								href="${pageContext.request.contextPath }/admin/adminHospTotalList">전체</a>
-							</li>
-							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
-								<a class="nav-link text-white"
-								href="${pageContext.request.contextPath }/admin/adminHospRegistList">등록된</a>
-							</li>
-							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
-								<a class="nav-link text-white"
-								href="${pageContext.request.contextPath }/admin/waitingList">업체승인</a>
-							</li>
-							<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}">
-								<a class="nav-link text-white"
-								href="${pageContext.request.contextPath }/admin/adminRegistChart">차트</a>
-							</li>
+<jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
 
-						</c:when>
-					</c:choose>
-				</ul>
-			</div>
-		</div>
-		<!-- 카테고리 영역 끝 -->
-
-		<div class="col-10">
-			<div class="hboard pt-2 ps-3 pe-3">
-				<div class="hboard pt-2 ps-3 pe-3 ">
-					<div class="justify-content-center">
-						<h3 class="hanna ps-3 text-center"></h3>
-						<div class=" justify-content-center ">
-							<!-- 내용 -->
 
 
-		
-
-		<!-- Bar Chart1 -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">작월 사용자이용 통계</h6>
-			</div>
-			<div class="card-body mb-5" style="height: 300px;">
-				<div class="chart-bar" style="height: 100%;">
-					<canvas id="myBarChart"></canvas>
-				</div>
-				<hr>
-				Styling for the bar chart can be found in the
-				<code>/js/demo/chart-bar-demo.js</code>
-				file.
-			</div>
-			</div>
-		
-
-		<!-- Bar Chart2 -->	
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">과별 병원 이용 통계</h6>
-			</div>
-			<div class="card-body mb-5" style="height: 300px;">
-				<div class="chart-bar" id="graph-container" style="height: 100%;">
-					<!--<canvas id="myBarChart2" width="591" height="150"></canvas>-->
-				</div>
-				<hr>
-				Styling for the bar chart can be found in the
-				<code>/js/demo/chart-bar-demo.js</code>
-				file.
-			</div>
-		</div>
-
-	
+							<!-- Bar Chart1 -->
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">작월 사용자이용 통계</h6>
+								</div>
+								<div class="card-body mb-5" style="height: 300px;">
+									<div class="chart-bar" >
+										<canvas id="myBarChart"></canvas>
+									</div>
+									<hr>
+									Styling for the bar chart can be found in the
+									<code>/js/demo/chart-bar-demo.js</code>
+									file.
+								</div>
+							</div>
 
 
-	<!-- Donut Chart -->
-	<div class="col-xl-4 col-lg-5">
-		<div class="card shadow mb-4">
-			<!-- Card Header - Dropdown -->
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-			</div>
-			<!-- Card Body -->
-			<div class="card-body">
-				<div class="chart-pie pt-4">
-					<canvas id="myPieChart"></canvas>
-				</div>
-				<hr>
-				Styling for the donut chart can be found in the
-				<code>/js/demo/chart-pie-demo.js</code>
-				file.
-			</div>
-		</div>
-	</div>
-	</div>
-	<!--  -->
-	<!-- 내용 끝 -->
-						</div>
-					</div>
+							<!-- Bar Chart2 -->
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">과별 병원 이용 통계</h6>
+								</div>
+								<div class="card-body mb-5" style="height: 300px;">
+									<div class="chart-bar" id="graph-container"
+										style="height: 100%;">
+										<!--<canvas id="myBarChart2" width="591" height="150"></canvas>-->
+									</div>
+									<hr>
+									Styling for the bar chart can be found in the
+									<code>/js/demo/chart-bar-demo.js</code>
+									file.
+								</div>
+							</div>
 
-				</div>
-			</div>
-		</div>
-	</div>
 
+
+
+							<!-- Donut Chart -->
+							<div class="container">
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">전국 병원</h6>
+									</div>
+									<div>
+										<input type="button" value="click" id="jsonLoad">
+									</div>
+									<div class="card-body">
+										<!-- <div id="target"></div> -->
+										<div class="chart-bar">
+											<div id="chart1"></div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div style="width: 500px;">
+									<div>
+										<input type="button" value="click" id="jsonLoad">
+									</div>
+									<div id="target"></div>
+									<div id="chart1"
+										style="width: 1200px; height: 600px; padding-top: 50px; margin-bottom: 100px;"></div>
+								</div>
+							</div>
+<jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
+
+<!-- c3 -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
 <!-- Bootstrap core JavaScript-->
 <script src="/taejin/vendor/jquery/jquery.min.js"></script>
 <script src="/taejin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -426,6 +317,71 @@ var myBarChart = new Chart(ctx,config );
 
 	}) // - ajax
 
+	// 미르
+	$('#jsonLoad').click(function() {
+		$.ajax({
+			url : 'http://192.168.0.63:9000/hospital/hospitalListChartJsonP?callback',
+			type : 'GET',
+			dataType : 'jsonp',
+			jsonp : 'callback',
+			success : function(data) {
+				var datalist1 = []
+				console.log(data);
+				datalist1.push(data.data[0])
+				makeBarChar(data.data[0]);
+			},
+			error : function(err) {
+				console.log('Error => ' + err);
+			}
+		});
+		
+	});
+
+	//c3js의 API 를 보고 맞는 형태를 제작
+	function makeBarChar(jsonData) {
+		// bar chart에 들어갈 데이터
+		console.log(jsonData);
+		var datas = ['data1'];
+		var hosloc = ['x']
+		for (var key of jsonData) {
+			//console.log(key.count);
+			hosloc.push(key.hos_loc)
+			datas.push(key.count);  // push()  기억하자**
+		}
+		// [n개의 컬럼]  =>  str.slice(beginIndex[, endIndex])
+		var dcolumns = jsonData.length;
+
+		console.log("-------1");
+		console.log(datas);
+
+		// chart
+		var chart = c3.generate({
+			bindto : '#chart1',
+		    data: {
+		    	x : 'x',
+		        columns: [
+		        	hosloc,
+		            datas,
+		        ],
+		        type: 'bar'
+		    },
+		    bar: {
+		        width: {
+		            ratio: 0.5 // this makes bar width 50% of length between ticks
+		        }
+		    },
+		    axis: {
+		        x: {
+		            type: 'category',
+		            tick: {
+		                rotate: 90,
+		                multiline: false
+		            },
+		            height: 130
+		        }
+		    }
+		});
+	}
 </script>
 
 
