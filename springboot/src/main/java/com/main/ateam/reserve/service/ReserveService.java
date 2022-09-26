@@ -28,5 +28,7 @@ public class ReserveService {
 	public List<ReserveVO> getReserveHospital(Map<String, String> map){
 		return dao.getReserveHospital(map);
 	}
-
+	public int getDoctorCnt(int cnum) {
+		return dao.getDoctorCnt(cnum);
+	}
 }

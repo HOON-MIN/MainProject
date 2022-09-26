@@ -70,11 +70,8 @@ public class ReserveController {
 	@GetMapping(value = "checkDate")
 	public List<ReserveVO> checkDate(ReserveVO rvo){
 		List<ReserveVO> vo = reserveService.checkDate(rvo);
-		
 		return vo;
 	}
-
-	
 	
 	//의사 리스트 
 	@GetMapping(value = "/choice_doctor")
@@ -152,10 +149,8 @@ public class ReserveController {
 				System.out.println(d);
 				System.out.println(d.getClass().getName());
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			// TODO Auto-generated catch block
 			vo.setRdate(d);
 			System.out.println("reserve - insert Test(시간)" + vo.getRdate());
 			System.out.println("reserve - insert Test(시간)" + vo.getRtime());

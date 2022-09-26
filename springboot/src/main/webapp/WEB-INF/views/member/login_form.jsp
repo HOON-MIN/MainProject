@@ -10,6 +10,9 @@
 
 <!-- Custom styles for this template-->
 <link href="/taejin/css/sb-admin-2.min.css" rel="stylesheet">
+
+<div  style="height: 100%;">
+	<div class="row justify-content-around" style="height: 100%; background: #3478f5;">
 	<div class="container" style="background-color: 80a7ce;">
 		<!-- Outer Row -->
 		<div class="row justify-content-center">
@@ -73,6 +76,8 @@
 
 		</div>
 
+	</div>
+	</div>
 	</div>
 
 	<!-- Bootstrap core JavaScript-->

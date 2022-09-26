@@ -1,18 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-	<div class="container py-4"
-		style="width: 80%; margin: auto; padding: 10px 5px; height: 100%;">
-			<h1 class="display-5 fw-bold">예약 스케줄 잡기</h1>
-			    <div id='calendar'></div>
-			    </div>
-
-<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
-<link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+<div class="container-fluid" style="height: 100%;">
+	<div class="row justify-content-around" style="height: 100%; background: #3478f5;">
+	<div class="col-2 hcategory ">
+					<div
+						class="d-flex flex-column align-items-start justify-content-center ps-5"
+						style="height: 160px;">
+						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+							class="mb-3">
+						<h5 class="hanna text-white">게스트 님</h5>
+						<span class="nanum text-white" style="font-size: 12px;">
+							게스트 ・ <a
+							href="${pageContext.request.contextPath }/member/memberLoginForm">회원가입</a>
+						</span>
+					</div>
+					<div>
+						<ul class="nav flex-column">
+							<li class="nav-item pt-2 pb-2 ps-4"><a
+								class="nav-link text-white"
+								href="${pageContext.request.contextPath }/member/memberMypage_list">예약목록
+							</a></li>
+						</ul>
+					</div>
+				</div>
+		<div class="col-10">
+			<div class="hboard pt-2 ps-3 pe-3">
+				<div class="justify-content-center">
+					<h3 class="hanna ps-3 text-center"></h3>
+					<div class=" justify-content-center ">
+						<div class="container py-4"
+							style="width: 80%; margin: auto; padding: 10px 5px; height: 100%;">
+							<h1 class="display-5 fw-bold">예약 스케줄 잡기</h1>
+							<div id='calendar'></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<link
+	href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'
+	rel='stylesheet'>
+<link
+	href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css'
+	rel='stylesheet'>
 <link href='/taejin/fullcalendar/lib/main.css' rel='stylesheet' />
-    <script src='/taejin/fullcalendar/lib/main.js'></script>
-   <script>
+<script src='/taejin/fullcalendar/lib/main.js'></script>
+<script>
    var today = new Date();
    var dnum = ${dnum}
    var res;
@@ -124,4 +160,3 @@
 		return yyyy+'-'+mm+'-'+dd;
 	}
 </script>
-		
