@@ -60,7 +60,7 @@ public class DoctorService {
 		return doctordao.doctorCnt(svo);
 	}
 	
-	public List<DoctorVO> doctorListSpring(SearchVO svo){
+	public List<HospitalVO> doctorListSpring(SearchVO svo){
 		return doctordao.doctorListSpring(svo);
 	}
 }
