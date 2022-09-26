@@ -158,28 +158,41 @@ a:link {
 				<!-- 안 쪽에 자신의 컨텐츠를 넣어주세요 -->
 				<h3 class="hanna p-4" style="text-align: center;">리뷰 리스트</h3>
 				<div class="d-flex justify-content-around">
-					<div class="input-group searchForm m-3 w-50" style="margin: auto;">
-						<button class="btn btn-outline-secondary dropdown-toggle"
-							type="button" data-bs-toggle="dropdown" aria-expanded="false"
-							style="border: solid 1px #3478f5; border-radius: 16px 0 0 16px; background: #3478f5; color: white; width: 100px">카테고리</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li><a class="dropdown-item" href="#">Something else
-									here</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">Separated link</a></li>
-						</ul>
-						<input type="text" class="form-control col-lg-5">
-						<button type="submit" class="btn searchBtn" name="searBtn"
-							id="searBtn">
-							<img alt="검색아이콘" src="/img/search.png">
-						</button>
-					</div>
+				
+	<form name="sForm" method="post" action="reviewboardlist">
+    	<select name="search_option">
+        	<option value="id"
+	<c:if test="${map.search_option == 'id'}">selected</c:if>
+	>작성자</option>
+ 
+    	    <option value="title" 
+	<c:if test="${map.search_option == 'title'}">selected</c:if>
+    	    >제목</option>
+ 	
+    	    <option value="cont" 
+	<c:if test="${map.search_option == 'cont'}">selected</c:if>
+    	    >내용</option>
+        
+       	 <option value="hname" 
+	<c:if test="${map.search_option == 'hname'}">selected</c:if>
+    	    >병원명</option>
+        
+       	 <option value="all" 
+	<c:if test="${map.search_option == 'all'}">selected</c:if>
+    	    >작성자+내용+제목+병원명</option>
+ 
+    	</select>
+    	<input name="keyword" value="${map.keyword}" id="searchbar">
+    	<input type="submit" value="조회">
+	</form>
+
+					
+					<c:if test="${sessionID != null}">
 					<div>
-						<button class="btn bg-primary m-3 text-white hanna"
+						<button class="btn bg-primary m-3 text-white hanna" id="writeBtn" 
 							data-bs-toggle="modal" data-bs-target="#exampleModal">글쓰기</button>
 					</div>
+					</c:if>
 				</div>
 
 
@@ -223,7 +236,7 @@ a:link {
 						</c:when>
 						<c:otherwise>
 							<li class="page-item"><a class="page-link"
-								href="hospitalList?cPage=${startPage-1}&category=${category}&search=${search}">Previous</a></li>
+								href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage-1}">Previous</a></li>
 						</c:otherwise>
 					</c:choose>
 					<!-- 							<li class="page-item"><a class="page-link" href="#">1</a></li> -->
@@ -234,12 +247,12 @@ a:link {
 						step="1">
 						<c:choose>
 							<c:when test="${i.index == nowPage}">
-								<li class="page-item now"><a class="page-link"
+								<li class="now"><a class="page-link"
 									style="background: #3478F5; color: white;">${i.index }</a></li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item"><a class="page-link"
-									href="hospitalList?cPage=${i.index}&category=${category}&search=${search}">${i.index}</a></li>
+									href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${i.index}">${i.index}</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -252,12 +265,12 @@ a:link {
 						<c:when test="${totalPage > (nowPage+pagePerBlock)}">
 							<li>
 							<li class="page-item"><a class="page-link"
-								href="hospitalList?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+								href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage+pagePerBlock}">Next</a></li>
 						</c:when>
 						<c:otherwise>
 							<li>
 							<li class="page-item"><a class="page-link"
-								href="hospitalList?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+								href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage+pagePerBlock}">Next</a></li>
 						</c:otherwise>
 					</c:choose>
 			</div>
@@ -266,7 +279,22 @@ a:link {
 	<!-- 컨텐츠 영역 끝 -->
 </div>
 </div>
-
+<script type="text/javascript">
+ 
+ $(function(){
+		
+		$('#writeBtn').click(function(){
+			location ="reviewupForm";
+		});
+		
+	});
+ 
+ $(window).ready(function(){
+		var keyword = "${map.keyword}";
+		$("#searchbar").val(keyword);
+	});
+ 
+ </script>
 
 
 <%-- a:link {
@@ -433,4 +461,24 @@ font-size: 14px;
 			$("#searchbar").val(keyword);
 		});
 	</script>
+--- 변경하려 했던 서치 부분
+	<div class="input-group searchForm m-3 w-50" style="margin: auto;">
+						<button class="btn btn-outline-secondary dropdown-toggle"
+							type="button" data-bs-toggle="dropdown" aria-expanded="false"
+							style="border: solid 1px #3478f5; border-radius: 16px 0 0 16px; background: #3478f5; color: white; width: 100px">카테고리</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Action</a></li>
+							<li><a class="dropdown-item" href="#">Another action</a></li>
+							<li><a class="dropdown-item" href="#">Something else
+									here</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">Separated link</a></li>
+						</ul>
+						<input type="text" class="form-control col-lg-5">
+						<button type="submit" class="btn searchBtn" name="searBtn"
+							id="searBtn">
+							<img alt="검색아이콘" src="/img/search.png">
+						</button>
+					</div>
+	
 </article> --%>
