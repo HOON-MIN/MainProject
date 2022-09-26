@@ -98,6 +98,71 @@ body {
 	border-radius: 20px;
 	background-color: #3478f5;
 }
+
+.button-6 {
+	align-items: center;
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: .25rem;
+	box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+	box-sizing: border-box;
+	color: rgba(0, 0, 0, 0.85);
+	cursor: pointer;
+	display: inline-flex;
+	font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	justify-content: center;
+	line-height: 1.25;
+	margin: 0;
+	min-height: 3rem;
+	padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+	position: relative;
+	text-decoration: none;
+	transition: all 250ms;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: baseline;
+	width: auto;
+}
+
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.button-6:hover {
+  transform: translateY(-1px);
+}
+
+.button-6:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+.chatbot {
+	position : fixed;
+	width: 80px;
+	height: 80px; 
+	bottom: 5%;
+	right: 5%;
+	background-color: white;
+	border-radius: 40px;
+	position: fixed;
+	z-index: 99;
+}
+
+.chatbot img{
+	width: 60%; 
+	height : 60%;
+}
+
 </style>
 <div class="inner">
 	<div class="innerImg">
@@ -138,7 +203,7 @@ body {
 </div>
 <div id="body">
 
-	<div id="chat-circle" class="btn btn-raised">
+	<div id="chat-circle" class="btn btn-raised ">
 		<div id="chat-overlay"></div>
 		<i class="material-icons">메디톡!</i>
 	</div>
@@ -216,7 +281,7 @@ body {
 					for(var m of msg.url){
 						
 						str += "<p style='color:green; display:inline;'>#</p>" +msg.hname[idx] + "<br>";
-						str += "<button onclick=window.open('"+m+"') style='margin-bottom:10px;'>예약하러가기</button><br>";
+						str += "<button class='button-6' onclick=window.open('"+m+"') style='margin-bottom:10px;'>예약하러가기</button><br>";
 						idx++;
 					}
 					

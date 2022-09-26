@@ -42,36 +42,6 @@ a {
 	width: 18px;
 }
 
-.htable {
-	width: 100%;
-}
-
-.htable thead {
-	height: 40px;
-	color: grey;
-}
-
-.htable th {
-	font-weight: lighter;
-	padding-left: 12px;
-}
-
-.htable tbody {
-	border-collapse: collapse;
-	border-radius: 16px;
-	box-shadow: 0px 0px 8px #ababab;
-}
-
-.htable td {
-	padding: 14px 12px;
-	font-size: 14px;
-}
-
-.htable td>a {
-	color: #232323;
-	font-weight: bold;
-}
-
 .formTitle {
 	margin-top: 40px;
 	text-align: right;
@@ -137,41 +107,49 @@ a {
 							<li class=" nav-item hanna formTitle"><h5>제목</h5></li>
 							<li class=" nav-item hanna formTitle"><h5>병원명</h5></li>
 							<li class=" nav-item hanna formTitle"><h5>의사선생님</h5></li>
+							<li class=" nav-item hanna formTitle"><h5>ID</h5></li>
 							<li class=" nav-item hanna formTitle"><h5>후기점수</h5></li>
 							<li class=" nav-item hanna formTitle"><h5>후기내용</h5></li>
 						</ul>
 					</div>
 					<div class="col-9">
-						<form>
-							<input type="text" name="hname" id="hname"
-								class="form-control formInput " placeholder="병원명 입력하세요." /> <input
+						<form method="post" action="uploadpro" id="upform">
+							<input type="text" name="title" id="title"
+								class="form-control formInput " placeholder="제목을 입력하세요." /> <input
 								type="text" name="hname" id="hname"
 								class="form-control formInput" placeholder="병원명 입력하세요." /> <input
-								type="text" name="hname" id="hname"
-								class="form-control formInput" placeholder="병원명 입력하세요." /> <select
-								class="form-select formInput"
-								aria-label="Default select example">
-								<option selected>점수</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-							</select>
+								type="text" name="dname" id="dname"
+								class="form-control formInput" placeholder="의사선생님 이름을 입력하세요." /> 
+								<input type="text" name="id" id="id" value="${sessionID}"
+								class="form-control formInput " readonly="readonly" />
+							<p></p>
+							<p> </p>
+							<p> </p>
+							<p> </p>
+							<br>
+							<div>
+							<input type="number" name="likes" id="likes" min="1" max="10" step="1" value="5">
+							</div>
 							<div class="mb-3">
 								<textarea class="form-control formInput2"
-									id="exampleFormControlTextarea1" rows="3"></textarea>
+									name="cont" id="cont" rows="3"></textarea>
 							</div>
+							<input type="hidden" name="id" id="id" value="${sessionID}"
+								readonly="readonly" />
 							<div class="d-flex justify-content-end">
-								<button type="button" class="btn bg-primary text-white me-3">작성</button>
-								<button type="button" class="btn bg-dark text-white me-3">뒤로가기</button>
+								<button type="submit" class="btn bg-primary text-white me-3" id="upformBtn">작성</button>
+								<button type="button" class="btn bg-dark text-white me-3"
+								onclick="location='reviewboardlist'">뒤로가기</button>
 							</div>
-
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </div>
+
 <%-- <form method="post" action="uploadpro" id="upform">
 					<div class="mb-3">
 						<label for="btitle" style="font-size: 20px;">후기 제목</label> <input

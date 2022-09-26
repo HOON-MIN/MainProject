@@ -15,8 +15,24 @@
 <!-- 		values(company_seq.nextVal,#{crn},#{cpwd},#{ccate},0,sysdate,'베이직') -->
 <!-- 	</insert> -->
 
-	<select id="companyLogin" resultType="cvo">
-		select * from company where crn=#{crn} and cpwd=#{cpwd}
+
+<resultMap type="cvo" id="companyLoginResult">
+	<id property="cnum" column="cnum"/>
+	<result property="cstatus" column="cstatus" />
+	<result property="r_num" column="r_num" />
+	<result property="crn" column="crn" />
+	<result property="cpwd" column="cpwd" />
+	<result property="ccate" column="ccate" />
+	<result property="cdate" column="cdate" />
+	<result property="hgrade" column="hgrade" />
+<association property="hvo" javaType="hvo">
+	<id property="cnum" column="cnum"/>
+	<result property="hname" column="hname" />
+</association>
+</resultMap>
+
+	<select id="companyLogin"  resultMap="companyLoginResult">
+		select c.*,h.hname from company c ,hospital h where crn=#{crn} and cpwd=#{cpwd} and c.cnum = h.cnum
 	</select>
 	<select id="idchk" parameterType="map" resultType="int">
 		select count(*) from company where crn=#{crn} and cpwd=#{cpwd}

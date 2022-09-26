@@ -33,31 +33,17 @@ public class HospitalController {
 	private int nowPage = 1; // 현재 페이지 값 //**
 	private int nowBlock = 1; // 현재 블럭
 	private int totalRecord = 0; // 총 게시물 수
-	private int numPerPage = 10; // 한페이지당 보여질 게시물 수
+	private int numPerPage = 6; // 한페이지당 보여질 게시물 수
 	private int pagePerBlock = 5; //한 블럭당 보여질 페이지 수 //**
 	private int totalPage =0; // 전체 페이지 수 -> totalRecord/numPerPage //**
 	private int totalBlock =0; // 전체 블럭 수
 	private int beginPerPage =0; // 각 페이지별 시작 게시물의 index값
 	private int endPerPage =0; // 각 페이지별 마지막 게시물의 index값
 	
-	
 	@Autowired
 	private HospitalService service;
 	@Autowired
 	private CompanyService companyService;
-
-	@RequestMapping(value = "/hospitalListBack")
-	public String hospitalListBack(SearchVO svo, Model m) {
-		ModelAndView mav = new ModelAndView();
-		System.out.println("controller - hospitalList");
-//		List<HospitalVO> list = service.getList();
-//		System.out.println(list);
-//		for(HospitalVO e : list) {
-//			System.out.println(e.getHname());
-//		}
-//		m.addAttribute("list", list);
-		return "hospital/hospitalList";
-	}
 
 	@RequestMapping(value = "/hospitalList")
 	public String hospitalList(SearchVO svo, Model model, 
@@ -126,6 +112,9 @@ public class HospitalController {
 		HospitalVO vo = service.getDetail(num);
 		String time = vo.getOtime() + "~" + vo.getCtime();
 		System.out.println("hname => " + vo.getHname());
+		List<HospitalVO> hcate = service.getCate();
+		
+		m.addAttribute("hcate", hcate);
 		m.addAttribute("vo", vo);
 		m.addAttribute("time", time);
 		return "hospital/hospitalDetailMap";
@@ -164,5 +153,17 @@ public class HospitalController {
 		return "redirect:/";
 	}
 
+//	@RequestMapping(value = "/hospitalListBack")
+//	public String hospitalListBack(SearchVO svo, Model m) {
+//		ModelAndView mav = new ModelAndView();
+//		System.out.println("controller - hospitalList");
+//		List<HospitalVO> list = service.getList();
+//		System.out.println(list);
+//		for(HospitalVO e : list) {
+//			System.out.println(e.getHname());
+//		}
+//		m.addAttribute("list", list);
+//		return "hospital/hospitalList";
+//	}
 
 }

@@ -11752,3 +11752,60 @@ body {
 .tj li.on a {
     color: #fff;
 }
+.hcategory {
+	background-color: #3478f5;
+	padding-top: 40px;
+	height: 100%;
+}
+
+.hboard {
+	background-color: #efefef;
+	border-radius: 8px;
+	margin: 40px;
+	height: 90%;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.searchForm input {
+	border: solid 1px #3478f5;
+	border-radius: 16px 0 0 16px;
+}
+
+.searchForm button {
+	background-color: #3478f5;
+	width: 64px;
+	border-radius: 0 16px 16px 0;
+}
+
+.searchForm img {
+	width: 18px;
+}
+
+.htable {
+	width: 100%;
+}
+
+.htable thead {
+	height: 40px;
+	color: grey;
+}
+
+.htable th {
+	font-weight: lighter;
+	padding-left: 12px;
+}
+
+.htable tbody {
+	border-collapse: collapse;
+	border-radius: 16px;
+	box-shadow: 2px 2px 2px 2px #ababab;
+}
+
+.htable td {
+	padding: 14px 12px;
+	font-size: 14px;
+}

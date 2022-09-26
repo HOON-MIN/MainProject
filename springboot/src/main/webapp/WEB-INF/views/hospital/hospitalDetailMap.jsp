@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style>
 .hcategory {
 	background-color: #3478f5;
@@ -36,246 +37,167 @@ a {
 	width: 18px;
 }
 
-.map {
-	border: solid 1px tomato;
-	height: 100%;
+.htable {
+	width: 100%;
+}
+
+.htable thead {
+	height: 40px;
+	color: grey;
+}
+
+.htable th {
+	font-weight: lighter;
+	padding-left: 12px;
+}
+
+.htable tbody {
+	border-collapse: collapse;
+	border-radius: 16px;
+	box-shadow: 2px 2px 2px 2px #ababab;
+}
+
+.htable td {
+	padding: 14px 12px;
+	font-size: 14px;
 }
 </style>
 
 <div class="container-fluid" style="height: 100%;">
 	<div class="row justify-content-around" style="height: 100%;">
 		<!-- 카테고리 영역 -->
-		<div class="col-2 hcategory ">
+				<div class="col-2 hcategory ">
 			<!-- 카테고리 프로필 -->
-			<div
-				class="d-flex flex-column align-items-start justify-content-center ps-5"
+				
+			<div class="d-flex flex-column align-items-start justify-content-center ps-5"
 				style="height: 160px;">
-				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
-					class="mb-3">
-				<h5 class="hanna text-white"">게스트 님</h5>
+				<c:choose>
+				<c:when test="${sessionNUM != null }">
+				<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="프로필 사진을 등록하세요" style="height: 40%;" class="rounded-circle img-fluid">
+				<h5 class="hanna text-white">${sessionNAME } 님</h5>
 				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
 					・ <a href="">마이페이지</a>
 				</span>
+				</c:when>
+				<c:when test="${sessionNUM == null }">
+				<h5 class="hanna text-white">게스트 님</h5>
+				<span class="nanum text-white" style="font-size: 12px;"> 
+				<a href="${pageContext.request.contextPath }/member/memberLoginForm">로그인</a> ・ <a href="${pageContext.request.contextPath }/member/joinForm">회원가입</a>
+				</span>
+				</c:when>
+				</c:choose>
+				
+			
 			</div>
 			<!-- 카테고리 프로필 끝 -->
 			<!-- 카테고리 리스트 -->
+			<form class="sForm" name="sForm" method="get" action="hospitalList">
+					<input type="hidden" name="category" id="category" value="all">
+					<input type="hidden" name="searchreset" value="1" hidden="hidden"> 
+				</form>
 			<div>
 				<ul class="nav flex-column">
-					<li class="nav-item pt-5 pb-2 ps-4"><a
-						class="nav-link active text-white" aria-current="page" href="#">모든
-							진료과</a></li>
+					<li class=" nav-item pt-5 pb-2 ps-4" ><a 
+						class="hcateAllbtn nav-link active text-white" aria-current="page" href="#">모든 진료과</a></li>
 					<c:forEach var="e" items="${hcate }" varStatus="status">
-						<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}"><a
-							class="nav-link text-white" href="#">${e.hcate }</a></li>
-						<c:choose>
-							<c:when test="${status.index == 8}">
-								<li class="nav-item pt-2 pb-2"></li>
-							</c:when>
-						</c:choose>
+						
+						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.hcate }" 
+<%-- 							name="hbtn${status.index}" --%>
+							><a 
+							class="hcatebtn nav-link text-white" href="#">${e.hcate }</a></li>
+<%-- 						<input type="button" name="hbtn${status.index}" --%>
+<%-- 							value="${e.hcate }" class="hcatebtn btn btn-outline-primary" /> --%>
 					</c:forEach>
+
 
 				</ul>
 			</div>
 		</div>
 		<!-- 카테고리 영역 끝 -->
-		<!-- 컨텐츠 (연회색배경) -->
+
 		<div class="col-10">
 			<div class="hboard pt-2 ps-3 pe-3">
 				<div class="input-group searchForm mb-3" style="width: 50%";>
-					<input type="text" class="form-control"
-						aria-label="Recipient's username"
-						aria-describedby="hospitalSearch" style="width: 160px;">
-					<button class="btn" type="button" id="hospitalSearch">
-						<img alt="검색아이콘" src="/img/search.png">
-					</button>
+				
 				</div>
 				<div style="height: 80%;">
 					<h3 class="hanna ps-3">병원 상세페이지</h3>
 					<div class="row hDetail justify-content-around"
 						style="height: 100%">
-						<div class="col-5 map" style="background-color: white;">지도
+						<div class="col-5 map" style="background-color: white;"id="map">지도
 							표시 공간</div>
 						<div class="col-6 map align-items-center ">
-							<h1 class="hanna m-3">${shopDetail.shopName } 병원 이름</h1>
-							
-							<h5 class="nanum m-3 pt-3"> 병원 주소 </h4>
-							
-							<h6 class="m-3"> 병원 URL</h6>
-							<h6 class="m-3"> 병원 오픈 시간</h6>
-							
-							<p class="m-3" style="height:240px"> 병원 소개 </p>
-							<button class="btn btn-lg mt-4 ms-3 hanna" style="border : solid 1px #3478f5; background : #3478f5 ;  color : white; width:240px">예약하기</button>
-						
+							<h1 class="hanna m-3">${vo.hname }</h1>
+
+							<h5 class="nanum m-3 pt-3">
+								주소 : ${vo.hloc }
+								</h5>
+
+								<h6 class="m-3">URL : ${vo.hurl }</h6>
+								<h6 class="m-3">영업시간 : ${vo.otime} ~ ${vo.ctime }</h6>
+
+								<button class="btn btn-lg mt-4 ms-3 hanna"
+									style="border: solid 1px #3478f5; background: #3478f5; color: white; width: 240px"
+									onclick="reserve_form()" id="reserveBtn">예약하기</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript">		
+var hloc = '${vo.hloc}';
+var hname = '${vo.hname}';
+var cnum = ${vo.cnum};
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = {
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
+};  
 
-<script type="text/javascript">									
-var map, marker1;
-function initTmap() {
-	map = new Tmapv2.Map("
-							map_div", {
-		center : new
-							Tmapv2.LatLng(37.56520450, 126.98702028),
-		width
-							: "100%",
-		height : "400px",
-		zoom : 17,
-		zoomControl :
-							true,
-		scrollwheel : true
+// 지도 생성    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+// 주소검색 => 좌표 반환
+var geocoder = new kakao.maps.services.Geocoder();
+geocoder.addressSearch(hloc, function(result, status) {
+// 주소값이 실제 존재한다면 
+ if (status === kakao.maps.services.Status.OK) {
+    	// 위도,경도(result)를 받아서 map의 좌표 객체로 변환
+	 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    // 마커로 등록
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: coords
+    });
+    // 마커 설명(병원 이름)
+    var infowindow = new kakao.maps.InfoWindow({
+        content: '<div style="width:150px;text-align:center;padding:6px 0;">'+hname+'</div>'
+    });
+    infowindow.open(map, marker);
+	// 지도가 생성되었을때 병원을 지도의 중심으로 설정 
+    map.setCenter(coords);
+} 
+});  
 
-	});
-	
-	marker1=new
-							Tmapv2.Marker(
-		{
-			icon
-							: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
-			iconSize
-							: new Tmapv2.Size(24, 38),
-			map :
-							map
-		});
+$('#reserveBtn').click(function(){
+	location.href='${pageContext.request.contextPath}/reserve/choice_doctor?cnum='+cnum
+})
 
-	$(document).ready(function() {
-
-		var
-							fullAddr=$( "#fullAddr").val();
-		$.ajax({
-			method
-							: "GET",
-			url
-							: "https://apis.openapi.sk.com/tmap/geo/fullAddrGeo?version=1&format=json&callback=result
-							",
-			async : false,
-			data
-							: {
-				"appKey" : "l7xx8fc6162789f747579d26c53413bd30f7",
-				"coordType" : "WGS84GEO",
-				"fullAddr" : $("#endPoint").val()
-			},
-			success
-							: function(response) {
-
-				var
-							resultInfo=response.coordinateInfo;
-							// .coordinate[0];
-				console.log(resultInfo);
-				
-			
-				marker1.setMap(null);
-				
-
-				if
-							(resultInfo.coordinate.length==
-							0) {
-					$("#result").text(
-					"요청 데이터가 올바르지
-							않습니다.");
-				} else {
-					var lon, lat;
-					var
-							resultCoordinate=resultInfo.coordinate[0]; if
-							(resultCoordinate.lon.length>
-							0) { lon = resultCoordinate.lon; lat = resultCoordinate.lat; }
-							else { lon = resultCoordinate.newLon; lat =
-							resultCoordinate.newLat } var lonEntr, latEntr; if
-							(resultCoordinate.lonEntr == undefined &&
-							resultCoordinate.newLonEntr == undefined) { lonEntr = 0; latEntr
-							= 0; } else { if (resultCoordinate.lonEntr.length > 0) { lonEntr
-							= resultCoordinate.lonEntr; latEntr = resultCoordinate.latEntr; }
-							else { lonEntr = resultCoordinate.newLonEntr; latEntr =
-							resultCoordinate.newLatEntr; } } var markerPosition = new
-							Tmapv2.LatLng(Number(lat),Number(lon)); marker1 = new
-							Tmapv2.Marker( { position : markerPosition, icon :
-							"http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
-							iconSize : new Tmapv2.Size( 24, 38), map : map });
-							map.setCenter(markerPosition); var matchFlag, newMatchFlag; var
-							address = '', newAddress = ''; var city, gu_gun, eup_myun,
-							legalDong, adminDong, ri, bunji; var buildingName, buildingDong,
-							newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
-
-
-							if (resultCoordinate.newMatchFlag.length > 0) { newMatchFlag =
-							resultCoordinate.newMatchFlag; if
-							(resultCoordinate.city_do.length > 0) { city =
-							resultCoordinate.city_do; newAddress += city + "\n"; } if
-							(resultCoordinate.gu_gun.length > 0) { gu_gun =
-							resultCoordinate.gu_gun; newAddress += gu_gun + "\n"; } if
-							(resultCoordinate.eup_myun.length > 0) { eup_myun =
-							resultCoordinate.eup_myun; newAddress += eup_myun + "\n"; } else
-							{ if (resultCoordinate.legalDong.length > 0) { legalDong =
-							resultCoordinate.legalDong; newAddress += legalDong + "\n"; } if
-							(resultCoordinate.adminDong.length > 0) { adminDong =
-							resultCoordinate.adminDong; newAddress += adminDong + "\n"; } }
-
-							if (resultCoordinate.ri.length > 0) { ri = resultCoordinate.ri;
-							newAddress += ri + "\n"; } if (resultCoordinate.bunji.length > 0)
-							{ bunji = resultCoordinate.bunji; newAddress += bunji + "\n"; }
-
-							if (resultCoordinate.newRoadName.length > 0) { newRoadName =
-							resultCoordinate.newRoadName; newAddress += newRoadName + "\n"; }
-
-							if (resultCoordinate.newBuildingIndex.length > 0) {
-							newBuildingIndex = resultCoordinate.newBuildingIndex; newAddress
-							+= newBuildingIndex + "\n"; } if
-							(resultCoordinate.newBuildingName.length > 0) { newBuildingName =
-							resultCoordinate.newBuildingName; newAddress += newBuildingName +
-							"\n"; } if (resultCoordinate.newBuildingDong.length > 0) {
-							newBuildingDong = resultCoordinate.newBuildingDong; newAddress +=
-							newBuildingDong + "\n"; } if (lonEntr > 0) { var docs = "<a
-								style='color: orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-							var text = "검색결과(새주소) : " + newAddress + ",\n 응답코드:" +
-							newMatchFlag + "(상세 코드 내역은 " + docs + " 에서 확인)" + "</br> 위경도좌표(중심점) :
-							" + lat + ", " + lon + "</br>위경도좌표(입구점) : " + latEntr + ", " +
-							lonEntr; $("#result").html(text); } else { var docs = "<a
-								style='color: orange' href='#webservice/docs/fullTextGeocoding'>Docs</a>"
-							var text = "검색결과(새주소) : " + newAddress + ",\n 응답코드:" +
-							newMatchFlag + "(상세 코드 내역은 " + docs + " 에서 확인)" + "</br> 위경도좌표(입구점) :
-							위경도좌표(입구점)이 없습니다."; $("#result").html(text); } } if
-							(resultCoordinate.matchFlag.length > 0) { matchFlag =
-							resultCoordinate.matchFlag; if (resultCoordinate.city_do.length >
-							0) { city = resultCoordinate.city_do; address += city + "\n"; }
-
-							if (resultCoordinate.gu_gun.length > 0) { gu_gun =
-							resultCoordinate.gu_gun; address += gu_gun+ "\n"; } if
-							(resultCoordinate.eup_myun.length > 0) { eup_myun =
-							resultCoordinate.eup_myun; address += eup_myun + "\n"; } if
-							(resultCoordinate.legalDong.length > 0) { legalDong =
-							resultCoordinate.legalDong; address += legalDong + "\n"; } if
-							(resultCoordinate.adminDong.length > 0) { adminDong =
-							resultCoordinate.adminDong; address += adminDong + "\n"; } if
-							(resultCoordinate.ri.length > 0) { ri = resultCoordinate.ri;
-							address += ri + "\n"; } if (resultCoordinate.bunji.length > 0) {
-							bunji = resultCoordinate.bunji; address += bunji + "\n"; } if
-							(resultCoordinate.buildingName.length > 0) { buildingName =
-							resultCoordinate.buildingName; address += buildingName + "\n"; }
-
-							if (resultCoordinate.buildingDong.length > 0) { buildingDong =
-							resultCoordinate.buildingDong; address += buildingDong + "\n"; }
-
-							if (lonEntr > 0) { var docs = "<a style='color: orange'
-								href='#webservice/docs/fullTextGeocoding'>Docs</a>"; var text =
-							"검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드
-							내역은 "+ docs+ " 에서 확인)"+ "</br>"+ "위경도좌표(중심점) : "+ lat+ ", "+ lon+ "</br>"+
-							"위경도좌표(입구점) : "+ latEntr+ ", "+ lonEntr; $("#result").html(text);
-							} else { var docs = "<a style='color: orange'
-								href='#webservice/docs/fullTextGeocoding'>Docs</a>"; var text =
-							"검색결과(지번주소) : "+ address+ ","+ "\n"+ "응답코드:"+ matchFlag+ "(상세 코드
-							내역은 "+ docs+ " 에서 확인)"+ "</br>"+ "위경도좌표(입구점) : 위경도좌표(입구점)이 없습니다.";
-							$("#result").html(text); } } } }, error : function(request,
-							status, error) { console.log(request);
-							console.log("code:"+request.status + "\n message:" +
-							request.responseText +"\n error:" + error); // 에러가 발생하면 맵을 초기화함
-							// markerStartLayer.clearMarkers(); // 마커초기화 map.setCenter(new
-							Tmapv2.LatLng(37.570028, 126.986072)); $("#result").html(""); }
-							}); }); }
-							</script>
+$('.hcatebtn').click(function() {
+	var hcatename = $(this).text();
+//		if( $(this).val() == 'all'){
+	if( hcatename == '모든 진료과'){
+		location.href='${pageContext.request.contextPath}/hospital/hospitalList'
+	}
+	console.log('hcatename => ', hcatename)
+//		$("#hcate").attr("selected", "selected");
+	$("#hsearch").val(hcatename);
+	$(".sForm").submit();
+});
+</script>
 <!-- </head> -->
 <!-- <body onload="initTmap()"> -->
 <%-- <div class="">

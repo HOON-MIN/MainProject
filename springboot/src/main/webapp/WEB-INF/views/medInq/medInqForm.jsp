@@ -16,7 +16,7 @@
 
 <h2 style="font-weight: bold; text-align: center;">건강 문진표</h2>
 <br>
-<form action="" method="post">
+<form action="medInqIns" method="post">
 <p>1. 다음과 같은 질병으로 진단을 받았거나, 현재 약물 치료 중이십니까?</p>
 <table class="table" style="text-align: center;">
   <thead style="text-align: center;">
@@ -36,24 +36,24 @@
 
     <tr>
       <th scope="row">진단 여부</th>
-      <td><input class="form-check-input" id="chkbox0_1" name="chkbox0" value="chkbox0_1" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_2" name="chkbox0" value="chkbox0_2" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_3" name="chkbox0" value="chkbox0_3" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_4" name="chkbox0" value="chkbox0_4" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_5" name="chkbox0" value="chkbox0_5" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_6" name="chkbox0" value="chkbox0_6" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_7" name="chkbox0" value="chkbox0_7" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_1" name="chkbox0" value="chkbox0_1" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_2" name="chkbox0" value="chkbox0_2" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_3" name="chkbox0" value="chkbox0_3" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_4" name="chkbox0" value="chkbox0_4" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_5" name="chkbox0" value="chkbox0_5" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_6" name="chkbox0" value="chkbox0_6" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_7" name="chkbox0" value="chkbox0_7" type="checkbox" aria-label="..."></td>
       <td><input class="form-check-input" id="chkbox0_0" name="chkbox0" value="chkbox0_0" type="checkbox" checked="checked" aria-label="..."></td>
     </tr>
     <tr>
       <th scope="row">약물치료 여부</th>
-      <td><input class="form-check-input" id="chkbox1_1" name="chkbox1" value="chkbox1_1" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_2" name="chkbox1" value="chkbox1_2" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_3" name="chkbox1" value="chkbox1_3" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_4" name="chkbox1" value="chkbox1_4" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_5" name="chkbox1" value="chkbox1_5" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_6" name="chkbox1" value="chkbox1_6" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_7" name="chkbox1" value="chkbox1_7" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_1" name="chkbox1" value="chkbox1_1" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_2" name="chkbox1" value="chkbox1_2" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_3" name="chkbox1" value="chkbox1_3" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_4" name="chkbox1" value="chkbox1_4" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_5" name="chkbox1" value="chkbox1_5" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_6" name="chkbox1" value="chkbox1_6" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_7" name="chkbox1" value="chkbox1_7" type="checkbox" aria-label="..."></td>
       <td><input class="form-check-input" id="chkbox1_0" name="chkbox1" value="chkbox1_0" type="checkbox" checked="checked" aria-label="..."></td>
     </tr>
   </tbody>
@@ -66,147 +66,226 @@
   <label class="form-check-label" for="inlineCheckbox0">없음</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_1" name="chkbox2" value="chkbox2_1">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_1" name="chkbox2" value="chkbox2_1">
   <label class="form-check-label" for="inlineCheckbox1">뇌졸중(중풍)</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_2" name="chkbox2" value="chkbox2_2">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_2" name="chkbox2" value="chkbox2_2">
   <label class="form-check-label" for="inlineCheckbox2">심장병(심근경색/협심증)</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_3" name="chkbox2" value="chkbox2_3">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_3" name="chkbox2" value="chkbox2_3">
   <label class="form-check-label" for="inlineCheckbox3">고혈압</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_4" name="chkbox2" value="chkbox2_4">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_4" name="chkbox2" value="chkbox2_4">
   <label class="form-check-label" for="inlineCheckbox1">당뇨병</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_5" name="chkbox2" value="chkbox2_5">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_5" name="chkbox2" value="chkbox2_5">
   <label class="form-check-label" for="inlineCheckbox2">기타(암 포함)</label>
 </div><br><br>
 
 <p> - 기타 질환 - 1, 2문항에서 기타(암 포함) 표기하신 분만 작성</p>
-<textarea name="diseaseEtc" id="diseaseEtc" rows="5" cols="120"></textarea><br><br>
+<textarea name="diseaseV" id="diseaseV" rows="5" cols="120"></textarea><br><br>
 
 <p>3. 과거 혹은 현재 흡연 상태를 표시해 주십시오.</p>
 <div class="form-check ">
-  <input class="form-check-input" type="checkbox" id="chkbox3_1" name="chkbox3" value="chkbox3_1">
+  <input class="form-check-input" type="checkbox" id="chkbox3_1" name="chkbox3" value="chkbox3_1" onclick="clickCheck(this, 'input[name=chkbox3]')">
   <label class="form-check-label" for="inlineCheckbox1">전혀 피운 적 없음</label>
 </div>
 <div class="form-check ">
-  <input class="form-check-input" type="checkbox" id="chkbox3_2" name="chkbox3" value="chkbox3_2">
+  <input class="form-check-input" type="checkbox" id="chkbox3_2" name="chkbox3" value="chkbox3_2" onclick="clickCheck(this, 'input[name=chkbox3]')">
   <label class="form-check-label" for="inlineCheckbox2">지금은 끊었음</label>
 </div>
 <div class="form-check ">
-  <input class="form-check-input" type="checkbox" id="chkbox3_3" name="chkbox3" value="chkbox3_3">
+  <input class="form-check-input" type="checkbox" id="chkbox3_3" name="chkbox3" value="chkbox3_3" onclick="clickCheck(this, 'input[name=chkbox3]')">
   <label class="form-check-label" for="inlineCheckbox3">현재도 흡연 중</label>
 </div><br><br>
 
 <p>4. 1주일에 평균 며칠 술을 마십니까?</p>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox4_0" name="chkbox4" value="chkbox4_0">
+  <input class="form-check-input" type="checkbox" id="chkbox4_0" name="chkbox4" value="chkbox4_0" onclick="clickCheck(this, 'input[name=chkbox4]')">
   <label class="form-check-label" for="inlineCheckbox1">안 마심</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox4_1" name="chkbox4" value="chkbox4_1">
+  <input class="form-check-input" type="checkbox" id="chkbox4_1" name="chkbox4" value="chkbox4_1" onclick="clickCheck(this, 'input[name=chkbox4]')">
   <label class="form-check-label" for="inlineCheckbox2">1일</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox4_2" name="chkbox4" value="chkbox4_2">
+  <input class="form-check-input" type="checkbox" id="chkbox4_2" name="chkbox4" value="chkbox4_2" onclick="clickCheck(this, 'input[name=chkbox4]')">
   <label class="form-check-label" for="inlineCheckbox3">2일</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox4_3" name="chkbox4" value="chkbox4_3">
+  <input class="form-check-input" type="checkbox" id="chkbox4_3" name="chkbox4" value="chkbox4_3" onclick="clickCheck(this, 'input[name=chkbox4]')">
   <label class="form-check-label" for="inlineCheckbox1">3일</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox4_4" name="chkbox4" value="chkbox4_4">
+  <input class="form-check-input" type="checkbox" id="chkbox4_4" name="chkbox4" value="chkbox4_4" onclick="clickCheck(this, 'input[name=chkbox4]')">
   <label class="form-check-label" for="inlineCheckbox2">4일</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox4_5" name="chkbox4" value="chkbox4_5">
+  <input class="form-check-input" type="checkbox" id="chkbox4_5" name="chkbox4" value="chkbox4_5" onclick="clickCheck(this, 'input[name=chkbox4]')">
   <label class="form-check-label" for="inlineCheckbox2">5일</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox4_6" name="chkbox4" value="chkbox4_6">
+  <input class="form-check-input" type="checkbox" id="chkbox4_6" name="chkbox4" value="chkbox4_6" onclick="clickCheck(this, 'input[name=chkbox4]')">
   <label class="form-check-label" for="inlineCheckbox2">6일</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox4_7" name="chkbox4" value="chkbox4_7">
+  <input class="form-check-input" type="checkbox" id="chkbox4_7" name="chkbox4" value="chkbox4_7" onclick="clickCheck(this, 'input[name=chkbox4]')">
   <label class="form-check-label" for="inlineCheckbox2">7일</label>
 </div><br><br>
 
 
 <p>5. 약이나 음식물(계란 포함) 혹은 백신접종으로 두드러기 또는 발진 등의 알레르기 증상을 보인 적이 있습니까?</p>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox5_1" name="chkbox5" value="chkbox5_1">
+  <input class="form-check-input" type="checkbox" id="chkbox5_1" name="chkbox5" value="chkbox5_1" onclick="clickCheck(this, 'input[name=chkbox5]')">
   <label class="form-check-label" for="inlineCheckbox1">예</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox5_0" name="chkbox5" value="chkbox5_0">
+  <input class="form-check-input" type="checkbox" id="chkbox5_0" name="chkbox5" value="chkbox5_0" onclick="clickCheck(this, 'input[name=chkbox5]')">
   <label class="form-check-label" for="inlineCheckbox2">아니오</label>
 </div>
 <p>알레르기 증상이 있다면 적어주십시오.</p>
-<textarea name="allergyetc" id="allergy" rows="5" cols="120"></textarea><br><br>
+<textarea name="allergyV" id="allergyV" rows="5" cols="120"></textarea><br><br>
 
 
 <p>6. 현재 임신 중이거나 또는 다음 한 달 동안 임신할 가능성이 있습니까?</p>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox6_1" name="chkbox6" value="chkbox6_1">
+  <input class="form-check-input" type="checkbox" id="chkbox6_1" name="chkbox6" value="chkbox6_1" onclick="clickCheck(this, 'input[name=chkbox6]')">
   <label class="form-check-label" for="inlineCheckbox1">예</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox6_0" name="chkbox6" value="chkbox6_0">
+  <input class="form-check-input" type="checkbox" id="chkbox6_0" name="chkbox6" value="chkbox6_0" onclick="clickCheck(this, 'input[name=chkbox6]')">
   <label class="form-check-label" for="inlineCheckbox2">아니오</label>
 </div><br><br>
 
 
 <p>7. 현재 아픈 증상</p>
-<textarea name="symptom" id="symptom" rows="10" cols="120"></textarea><br><br>
+<textarea name="symptomV" id="symptomV" rows="10" cols="120"></textarea><br><br>
 
 <p style="text-align:right">
 <input type="hidden" id="disease1" name="disease1" value="">
 <input type="hidden" id="disease2" name="disease2" value="">
 <input type="hidden" id="diseasehist" name="diseasehist" value="">
+<input type="hidden" id="diseaseetc" name="diseaseetc" value=""> 
 <input type="hidden" id="smoke" name="smoke" value="">
 <input type="hidden" id="alcohol" name="alcohol" value="">
+<input type="hidden" id="allergy" name="allergy" value="">
+<input type="hidden" id="allergyetc" name="allergyetc", value="">
 <input type="hidden" id="pregnancy" name="pregnancy" value="">
+<input type="hidden" id="symptom" name="symptom" value="">
 <button id="sendBtn" class="btn btn-primary btn-dark text-white btn-block"
 	type="submit">작성</button>
 </p>
 </form>
 </div>
-<button id="btn12" value="test">test</button>
-<script>
 
+<script>
+function clickCheck(target, name) {
+    document.querySelectorAll(name)
+        .forEach(el => el.checked = false);
+
+    target.checked = true;
+}
 	
-	var dislist1 = [];
+
+$(".chkbox0").change(function(){
+    if($(this).is(":checked")){
+        $('#chkbox0_0').prop("checked", false);
+    }
+});
+
+$(".chkbox1").change(function(){
+    if($(this).is(":checked")){
+        $('#chkbox1_0').prop("checked", false);
+    }
+});
+
+$(".chkbox2").change(function(){
+    if($(this).is(":checked")){
+        $('#chkbox2_0').prop("checked", false);
+    }
+});
+	
 	$('#sendBtn').click(function(){
-		
+		var dislist1 = [];
+		var dislist2 = [];
+		var dishistlist = [];
 // 		disease, diseasehist,
 // 		etc, smoke, alcohol, allergy, pregnancy, symptom
+		//1.1번 문항
 		$('input[name=chkbox0]:checked').each(function(){
 			var disease1 = $(this).val();
-			dislist.push(disease1);
-			console.log(dislist1);
+			dislist1.push(disease1);
 		});
+		var inq1 = "";
+		for(var e of dislist1){
+			console.log(e);
+			inq1 += e+"/";
+		}
+		$('#disease1').val(inq1);
+		
+		//1.2번 문항
 		$('input[name=chkbox1]:checked').each(function(){
 			var disease2 = $(this).val();
+			dislist2.push(disease2);
 		});
+		var inq2 = "";
+		for(var e of dislist2){
+			console.log(e);
+			inq2 += e+"/";
+		}
+		$('#disease2').val(inq2);
+		
+		$('#diseaseetc').val($('#diseaseV').val());
+		
+		//2번 문항
 		$('input[name=chkbox2]:checked').each(function(){
-			var smoke = $(this).val();
+			var diseasehist = $(this).val();
+			dishistlist.push(disease2);
+			$('#diseasehist').val(diseasehist);
 		});
+		var inq3 = "";
+		for(var e of diseasehist){
+			console.log(e);
+			inq3 += e+"/";
+		}
+		$('#diseasehist').val(inq3);
+		
+		
+		//3번문항
 		$('input[name=chkbox3]:checked').each(function(){
-			var alcohol = $(this).val();
+			var smoke = $(this).val();
+			$('#smoke').val(smoke);
 		});
+		
+		//4번문항
 		$('input[name=chkbox4]:checked').each(function(){
-			var allergy = $(this).val();
+			var alcohol = $(this).val();
+			$('#alcohol').val(alcohol);
+			
 		});
+		
+		//5번문항:알러지
 		$('input[name=chkbox5]:checked').each(function(){
-			var pregnancy = $(this).val();
+			var allergy = $(this).val();
+			$('#allergy').val(allergy);
 		});
+		
+		$('#allergyetc').val($('#allergyV').val());
+		
+		//6번문항
+		$('input[name=chkbox6]:checked').each(function(){
+			var pregnancy = $(this).val();
+			$('#pregnancy').val(pregnancy);
+		});
+		
+		$('#symptom').val($('#symptomV').val());
 	});
+	
+/*	
 	$('#btn12').click(function(){
 		var dislist1 = [];
 		$('input[name=chkbox0]:checked').each(function(){
@@ -223,6 +302,12 @@
 		console.log("str=>"+strdis1);
 		console.log(strdis1.split(',')[2])
 	});
+*/	
+	
+	
+	
+	
+	
 	
 // 	$('#upBtn').click(function() {
 // 		$('#qbUpdate').attr("action",
@@ -234,10 +319,3 @@
 
 
 </script>
-
-
-
-
-
-
-

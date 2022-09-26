@@ -70,7 +70,7 @@ public class AdminController {
 //	업체 등록 대기 중인 업체 리스트 : 가입 승인 기능 
 	@RequestMapping(value = "/waitingList")
 	public String waitingList(Model m) {
-		CompanyVO list = adminService.waitingList();
+		List<HospitalVO> list = adminService.waitingList();
 		m.addAttribute("list", list);
 		return "mypage/ad_waitingList";
 	}

@@ -9,7 +9,7 @@
 <TITLE>Hey Dr.</TITLE>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="shortcut icon" href="/img/favicon.png">
 <!-- BootStrap5 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -22,9 +22,9 @@
 	crossorigin="anonymous"></script>
 <!-- ---------- -->
 
-<!-- JQuery -->
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<!-- ------ -->
+<!-- JQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+ <!-- -->
 
 <!-- list.jsp 에 넣을 스크립트, 링크 코드 -->
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"

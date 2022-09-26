@@ -82,6 +82,7 @@ public class CompanyController {
 			System.out.println("getCcate =>"+dto.getCcate());
 			session.setAttribute("sessionCRN", dto.getCrn());
 			session.setAttribute("sessionCNUM", dto.getCnum());
+			session.setAttribute("sessionCNAME", dto.getHvo().getHname());
 			session.setAttribute("sessionCCATE", dto.getCcate());
 			session.setAttribute("sessionHGRADE", dto.getHgrade());
 		}
@@ -111,6 +112,7 @@ public class CompanyController {
 			session.removeAttribute("sessionCRN");
 			session.removeAttribute("sessionCNUM");
 			session.removeAttribute("sessionCCATE");
+			session.removeAttribute("sessionCNAME");
 			System.out.println("로그아웃성공");
 			return "redirect:/";
 		}

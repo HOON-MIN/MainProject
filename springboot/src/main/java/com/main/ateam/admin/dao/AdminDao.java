@@ -13,7 +13,7 @@ public interface AdminDao {
 
 	public List<MemberVO> memberList();
 	public List<HospitalVO> ad_hospitalList();
-	public CompanyVO waitingList();
+	public List<HospitalVO> waitingList();
 	public void agree(int num); 
 	public List<HospitalVO> adminBarchart();
 	public List<DoctorVO> adminBarchart2(String hcate);

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.main.ateam.member.dao.MemberDao;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
+import com.main.ateam.vo.SearchVO;
 
 @Service
 public class MemberService {
@@ -39,11 +40,14 @@ public class MemberService {
 	public int idchk(Map<String, String> vo) {
 		return memberDao.idchk(vo);
 	}
-	public  List<HospitalVO> memberReserveList(int num) {
-		return memberDao.memberReserveList(num);
+	public  List<HospitalVO> memberReserveList(SearchVO svo) {
+		return memberDao.memberReserveList(svo);
 	}
 	public MemberVO memberReserveDetail(Map<String, Integer> map) {
 		return memberDao.memberReserveDetail(map);
+	}
+	public int getReserveCnt(int num) {
+		return memberDao.getReserveCnt(num);
 	}
 	/* 이동환 Service추가 */
 	public void kakaoSignup(MemberVO vo) {
@@ -59,5 +63,9 @@ public class MemberService {
 	/* 이동환 Service추가 */
 	public int AndroidIdCheck(Map<String, String>map) {
 		return memberDao.AndroidIdCheck(map);
+	}
+	
+	public MemberVO memberidlist(String id) {
+		return memberDao.memberidlist(id);
 	}
 }

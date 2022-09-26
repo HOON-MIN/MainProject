@@ -113,7 +113,7 @@
 								<div class="card-header">
 									<h4>WAV파형</h4>
 								</div>
-								<div class="card-body">
+								<div class="card-body" style="height:200px;">
 									<div id="waveform"></div>
 									<div class="covidUpload" style="display:flex; justify-content: right; background-color: #fff">
 										<button onclick="wavesurfer.playPause()" style="width:20px; height:2rem; margin-top:10px;">Play/Pause</button>
@@ -128,9 +128,9 @@
 								<div class="card-header">
 									<h4>REESULT</h4>
 								</div>
-								<div class="card-body">
+								<div class="card-body" style="height:200px;">
 									<p>검사결과 당신은 코로나 <h2 id="usercovid" style="display:inline; color: red;">양성</h2>입니다.</p>
-									<p>가까운 병원에서 검사 후 자가격리하세요.</p>
+									<p id="subment">가까운 병원에서 검사 후 자가격리하세요.</p>
 									<div class="covidUpload" style="display:flex; justify-content: right; background-color: #fff">
 										<button style="width:50%; height:2rem; margin-top:10px;" onclick="location='COVIDcheck'">다시검사하기</button>
 										<button style="width:50%; height:2rem; margin-top:10px;">병원예약하기</button>
@@ -148,7 +148,7 @@
 								<div class="card-header">
 									<h4>연령별 진단비율</h4>
 								</div>
-								<div class="card-body">
+								<div class="card-body" style="height:554px;">
 									<!-- 레이더 그래프 삽입 -->
 									<div style="width:100%">
   										<canvas id="covidcanvas"></canvas>
@@ -214,7 +214,7 @@ wavesurfer.load('/upload/audio/'+userid+'.wav');
 
 $(window).ready(function(){
 	$.ajax({
-		url : 'http://192.168.200.67:9000/dhlee/covidres?id='+userid+'&callback',
+		url : 'http://192.168.0.83:9000/dhlee/covidres?id='+userid+'&callback',
 		type:'GET',
 		dataType:'jsonp',
 		jsonp: 'callback',
@@ -235,9 +235,11 @@ $(window).ready(function(){
 			}
 			if(resdata.covid19 == 0){
 				$('#usercovid').css('color','#005af0').html('음성');
+				$('#subment').html('의사와의 검진을 통해 보다 확실한 결과를 얻으실 수 있습니다.');
 				console.log('음성');
 			}else{
 				$('#usercovid').css('color','red').html('양성');
+				$('#subment').html('가까운 병원에서 검사 후 자가격리하세요.');
 				console.log('양성');
 			}
 		}
@@ -247,7 +249,7 @@ $(window).ready(function(){
 	var agenormal = [];
 	var agecovid = [];
 	$.ajax({
-		url : 'http://192.168.200.67:9000/dhlee/covidradar?&callback',
+		url : 'http://192.168.0.83:9000/dhlee/covidradar?&callback',
 		type:'GET',
 		dataType:'jsonp',
 		jsonp: 'callback',
