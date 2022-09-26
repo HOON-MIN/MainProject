@@ -184,13 +184,12 @@
 		<result property="otime" column="otime" />
 		<result property="ctime" column="ctime" />
 
-		<collection property="doctorVO" javaType="java.util.List"
-			ofType="doctorVO">
-			<id property="cnum" column="cnum" javaType="int" />
+		<association property="dvo" column="cnum" javaType="doctorVO">
+			<id property="cnum" column="cnum" javaType="int"/>
 			<result property="dnum" column="dnum" />
 			<result property="dname" column="dname" />
 			<result property="dmajor" column="dmajor" />
-		</collection>
+		</association>
 	</resultMap>
 
 	<select id="doctorListSpring" resultMap="doctorListSpringResultMap"
@@ -201,15 +200,22 @@
 		h.hname,h.otime,h.ctime, d.* from doctor d , hospital h
 		where h.cnum =
 		d.cnum
+		<include refid="search" />
 		) a
+		order by cnum asc
 		)where r_num between
 		#{beginPerPage} and
 		#{endPerPage}
+		
 	</select>
 	<sql id="search">
 		<choose>
 			<when test="search != null and search != ''">
-				<if test="category == dmajor">
+				and d.dname like '%' || #{search} || '%' or h.hname like '%' || #{search} || '%' or dmajor like '%' || #{search} || '%'
+			</when>
+			<when test="category != null and category !=''">
+					and dmajor like '%' || #{search} || '%'
+				<if test="sear == dmajor">
 					AND d.dmajor like '%' || #{search} || '%'</if>
 				<if test="category == 'dname'">
 					AND d.dname like '%' || #{search} || '%'</if>

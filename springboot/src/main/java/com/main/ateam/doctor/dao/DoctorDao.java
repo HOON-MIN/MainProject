@@ -32,6 +32,6 @@ public interface DoctorDao {
 	public int doctorCnt(SearchVO svo);
 	
 	//의사 리스트 출력 (검색)
-	public List<DoctorVO> doctorListSpring(SearchVO svo);
+	public List<HospitalVO> doctorListSpring(SearchVO svo);
 	
 }
