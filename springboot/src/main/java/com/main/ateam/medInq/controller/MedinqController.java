@@ -1,5 +1,6 @@
 package com.main.ateam.medInq.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -35,14 +36,13 @@ public class MedinqController {
 	public String medInqIns(MedInqVO vo, HttpSession session) {
 		System.out.println("*******************");
 		int usernum = (int) session.getAttribute("sessionNUM");
-		
-//		System.out.println("vo.getDisease1()=>"+vo.getDisease1());
-//		System.out.println("vo.getDisease2()=>"+vo.getDisease2());
-//		System.out.println("vo."+vo.getAllergyetc());
+
+		vo.setMednum(usernum);
 		System.out.println("insert into medInq values ("+usernum+",'"+vo.getDisease1()+"', '"+vo.getDisease2()+
 				"','"+vo.getDiseasehist()+"','"+vo.getDiseaseetc()+"','"+vo.getSmoke() + "','"+vo.getAlcohol()+"','"+vo.getAllergy()+"','"+vo.getAllergyetc()+
 				"','"+vo.getPregnancy()+"','"+vo.getSymptom()+"', sysdate)");
-		//service.addMedinq(vo);
+		service.addMedinq(vo);
+		
 		return "redirect:qbList";
 	}
 	
@@ -51,9 +51,12 @@ public class MedinqController {
 		System.out.println("num => "+num);
 		System.out.println("----- medInqDetail controll-----");
 		MedInqVO vo = service.getMIDetail(num);
-		System.out.println(vo.getMednum());
-		System.out.println("---------------------------");
+		List<String> disease1 = new ArrayList<>();
+		for(String e : vo.getDisease1().split("/")) {
+			disease1.add(e);
+		}
 		m.addAttribute("vo", vo);
+		m.addAttribute("disease1",disease1);
 		return "medInq/medInqDetail";
 	}
 	
@@ -73,7 +76,7 @@ public class MedinqController {
 		return "redirect:medInqDetail";
 	}
 	
-	@PostMapping(value = "/medInqDelete")
+	@RequestMapping(value = "/medInqDelete")
 	public String medInqDelete(int num) {
 		service.miDelete(num);
 		return "redirect:/";
