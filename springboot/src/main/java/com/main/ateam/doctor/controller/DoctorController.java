@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,23 +33,31 @@ import com.main.ateam.vo.SearchVO;
 @RequestMapping(value = "/doctor")
 public class DoctorController {
 	
-	private int nowPage = 1; // 현재 페이지 값 //**
-	private int nowBlock = 1; // 현재 블럭
-	private int totalRecord = 0; // 총 게시물 수
-	private int numPerPage = 6; // 한페이지당 보여질 게시물 수
-	private int pagePerBlock = 5; //한 블럭당 보여질 페이지 수 //**
-	private int totalPage =0; // 전체 페이지 수 -> totalRecord/numPerPage //**
-	private int totalBlock =0; // 전체 블럭 수
-	private int beginPerPage =0; // 각 페이지별 시작 게시물의 index값
-	private int endPerPage =0; // 각 페이지별 마지막 게시물의 index값
+//	private int nowPage = 1; // 현재 페이지 값 //**
+//	private int nowBlock = 1; // 현재 블럭
+//	private int totalRecord = 0; // 총 게시물 수
+//	private int numPerPage = 6; // 한페이지당 보여질 게시물 수
+//	private int pagePerBlock = 5; //한 블럭당 보여질 페이지 수 //**
+//	private int totalPage =0; // 전체 페이지 수 -> totalRecord/numPerPage //**
+//	private int totalBlock =0; // 전체 블럭 수
+//	private int beginPerPage =0; // 각 페이지별 시작 게시물의 index값
+//	private int endPerPage =0; // 각 페이지별 마지막 게시물의 index값
 
-
+	
+	 private  int nowPage = 1;
+	 private  int nowBlock = 1;
+	 private  int totalRecord = 0; 
+	 private  int numPerPage = 6;
+	 private  int pagePerBlock = 5;
+	 private  int totalPage = 0;
+	 private  int totalBlock = 0;
+	 private  int beginPerPage = 0;
+	 private  int endPerPage = 0;
 	@Autowired
 	private DoctorService doctorservice;
 	
 	@Autowired
 	private HospitalService hospitalService;
-	
 	
 	@RequestMapping("doctorList")
 	public String doctorListPage(SearchVO svo, Model model, HttpServletRequest request) {
@@ -79,12 +88,11 @@ public class DoctorController {
 		svo.setEndPerPage(endPerPage);
 		svo.setCategory(request.getParameter("category"));
 		
+		System.out.println(request.getParameter("category"));
 		List<HospitalVO> dlist = doctorservice.doctorListSpring(svo);
 		System.out.println("hospCont => "+dlist.isEmpty());
 		
-		for (HospitalVO e : dlist) {
-			System.out.println(e.getHname());
-		}
+
 		int startPage = (int)((nowPage-1)/pagePerBlock)*pagePerBlock+1;
 		int endPage = startPage+pagePerBlock-1;
 		if(endPage > totalPage) {
@@ -132,7 +140,8 @@ public class DoctorController {
 		session.setAttribute("sessionDNAME", dto.getDname());
 		
 		}
-		return mav;	}
+		return mav;	
+	}
 	
 	@RequestMapping(value = "/caldata")
 	public String calenderData(Model m, HttpSession session) {
