@@ -110,6 +110,7 @@ public class MemberController {
 			session.setAttribute("sessionID", dto.getId());
 			session.setAttribute("sessionNUM", dto.getNum());
 			session.setAttribute("sessionNAME", dto.getName());
+			session.setAttribute("sessionProfimg", dto.getProfimg());
 			session.setAttribute("oid", oid);
 		}
 		return mav;

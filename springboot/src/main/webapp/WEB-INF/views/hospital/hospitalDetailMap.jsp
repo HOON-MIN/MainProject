@@ -1,38 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<style>
+.hcategory {
+	background-color: #3478f5;
+	padding-top: 40px;
+	height: 100%;
+}
+
+.hboard {
+	background-color: #efefef;
+	border-radius: 8px;
+	margin: 40px;
+	height: 90%;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.searchForm input {
+	border: solid 1px #3478f5;
+	border-radius: 16px 0 0 16px;
+	background-color:
+}
+
+.searchForm button {
+	background-color: #3478f5;
+	width: 64px;
+	border-radius: 0 16px 16px 0;
+}
+
+.searchForm img {
+	width: 18px;
+}
+
+.htable {
+	width: 100%;
+}
+
+.htable thead {
+	height: 40px;
+	color: grey;
+}
+
+.htable th {
+	font-weight: lighter;
+	padding-left: 12px;
+}
+
+.htable tbody {
+	border-collapse: collapse;
+	border-radius: 16px;
+	box-shadow: 2px 2px 2px 2px #ababab;
+}
+
+.htable td {
+	padding: 14px 12px;
+	font-size: 14px;
+}
+</style>
 
 <div class="container-fluid" style="height: 100%;">
 	<div class="row justify-content-around" style="height: 100%;">
 		<!-- 카테고리 영역 -->
-		<div class="col-2 hcategory ">
+				<div class="col-2 hcategory ">
 			<!-- 카테고리 프로필 -->
-			<div
-				class="d-flex flex-column align-items-start justify-content-center ps-5"
+				
+			<div class="d-flex flex-column align-items-start justify-content-center ps-5"
 				style="height: 160px;">
-				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
-					class="mb-3">
-				<h5 class="hanna text-white"">게스트 님</h5>
+				<c:choose>
+				<c:when test="${sessionNUM != null }">
+				<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="프로필 사진을 등록하세요" style="height: 40%;" class="rounded-circle img-fluid">
+				<h5 class="hanna text-white">${sessionNAME } 님</h5>
 				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
 					・ <a href="">마이페이지</a>
 				</span>
+				</c:when>
+				<c:when test="${sessionNUM == null }">
+				<h5 class="hanna text-white">게스트 님</h5>
+				<span class="nanum text-white" style="font-size: 12px;"> 
+				<a href="${pageContext.request.contextPath }/member/memberLoginForm">로그인</a> ・ <a href="${pageContext.request.contextPath }/member/joinForm">회원가입</a>
+				</span>
+				</c:when>
+				</c:choose>
+				
+			
 			</div>
 			<!-- 카테고리 프로필 끝 -->
 			<!-- 카테고리 리스트 -->
+			<form class="sForm" name="sForm" method="get" action="hospitalList">
+					<input type="hidden" name="category" id="category" value="all">
+					<input type="hidden" name="searchreset" value="1" hidden="hidden"> 
+				</form>
 			<div>
 				<ul class="nav flex-column">
-					<li class="nav-item pt-5 pb-2 ps-4"><a
-						class="nav-link active text-white" aria-current="page" href="#">모든
-							진료과</a></li>
+					<li class=" nav-item pt-5 pb-2 ps-4" ><a 
+						class="hcateAllbtn nav-link active text-white" aria-current="page" href="#">모든 진료과</a></li>
 					<c:forEach var="e" items="${hcate }" varStatus="status">
-						<li class="nav-item pt-2 pb-2 ps-4" name="hbtn${status.index}"><a
-							class="nav-link text-white" href="#">${e.hcate }</a></li>
-						<c:choose>
-							<c:when test="${status.index == 8}">
-								<li class="nav-item pt-2 pb-2"></li>
-							</c:when>
-						</c:choose>
+						
+						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.hcate }" 
+<%-- 							name="hbtn${status.index}" --%>
+							><a 
+							class="hcatebtn nav-link text-white" href="#">${e.hcate }</a></li>
+<%-- 						<input type="button" name="hbtn${status.index}" --%>
+<%-- 							value="${e.hcate }" class="hcatebtn btn btn-outline-primary" /> --%>
 					</c:forEach>
+
 
 				</ul>
 			</div>
@@ -42,12 +118,7 @@
 		<div class="col-10">
 			<div class="hboard pt-2 ps-3 pe-3">
 				<div class="input-group searchForm mb-3" style="width: 50%";>
-					<input type="text" class="form-control"
-						aria-label="Recipient's username"
-						aria-describedby="hospitalSearch" style="width: 160px;">
-					<button class="btn" type="button" id="hospitalSearch">
-						<img alt="검색아이콘" src="/img/search.png">
-					</button>
+				
 				</div>
 				<div style="height: 80%;">
 					<h3 class="hanna ps-3">병원 상세페이지</h3>
@@ -56,31 +127,31 @@
 						<div class="col-5 map" style="background-color: white;"id="map">지도
 							표시 공간</div>
 						<div class="col-6 map align-items-center ">
-							<h1 class="hanna m-3">병원 이름</h1>
+							<h1 class="hanna m-3">${vo.hname }</h1>
 
 							<h5 class="nanum m-3 pt-3">
-								병원 주소
-								</h4>
+								주소 : ${vo.hloc }
+								</h5>
 
-								<h6 class="m-3">병원 URL</h6>
-								<h6 class="m-3">병원 오픈 시간</h6>
+								<h6 class="m-3">URL : ${vo.hurl }</h6>
+								<h6 class="m-3">영업시간 : ${vo.otime} ~ ${vo.ctime }</h6>
 
-								<p class="m-3" style="height: 240px">병원 소개</p>
 								<button class="btn btn-lg mt-4 ms-3 hanna"
-									style="border: solid 1px #3478f5; background: #3478f5; color: white; width: 240px">예약하기</button>
+									style="border: solid 1px #3478f5; background: #3478f5; color: white; width: 240px"
+									onclick="reserve_form()" id="reserveBtn">예약하기</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript">		
 var hloc = '${vo.hloc}';
 var hname = '${vo.hname}';
-
+var cnum = ${vo.cnum};
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = {
     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -109,7 +180,23 @@ geocoder.addressSearch(hloc, function(result, status) {
 	// 지도가 생성되었을때 병원을 지도의 중심으로 설정 
     map.setCenter(coords);
 } 
-});    
+});  
+
+$('#reserveBtn').click(function(){
+	location.href='${pageContext.request.contextPath}/reserve/choice_doctor?cnum='+cnum
+})
+
+$('.hcatebtn').click(function() {
+	var hcatename = $(this).text();
+//		if( $(this).val() == 'all'){
+	if( hcatename == '모든 진료과'){
+		location.href='${pageContext.request.contextPath}/hospital/hospitalList'
+	}
+	console.log('hcatename => ', hcatename)
+//		$("#hcate").attr("selected", "selected");
+	$("#hsearch").val(hcatename);
+	$(".sForm").submit();
+});
 </script>
 <!-- </head> -->
 <!-- <body onload="initTmap()"> -->

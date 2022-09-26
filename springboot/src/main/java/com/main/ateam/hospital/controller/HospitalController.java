@@ -112,6 +112,9 @@ public class HospitalController {
 		HospitalVO vo = service.getDetail(num);
 		String time = vo.getOtime() + "~" + vo.getCtime();
 		System.out.println("hname => " + vo.getHname());
+		List<HospitalVO> hcate = service.getCate();
+		
+		m.addAttribute("hcate", hcate);
 		m.addAttribute("vo", vo);
 		m.addAttribute("time", time);
 		return "hospital/hospitalDetailMap";
