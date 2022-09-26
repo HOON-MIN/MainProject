@@ -67,6 +67,29 @@
 					</div>
 				</div>
 			</c:when>
+			<c:when test="${sessionNUM == null}">
+				<div class="col-2 hcategory ">
+					<div
+						class="d-flex flex-column align-items-start justify-content-center ps-5"
+						style="height: 160px;">
+						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+							class="mb-3">
+						<h5 class="hanna text-white">게스트 님</h5>
+						<span class="nanum text-white" style="font-size: 12px;">
+							게스트 ・ <a
+							href="${pageContext.request.contextPath }/member/memberLoginForm">회원가입</a>
+						</span>
+					</div>
+					<div>
+						<ul class="nav flex-column">
+							<li class="nav-item pt-2 pb-2 ps-4"><a
+								class="nav-link text-white"
+								href="${pageContext.request.contextPath }/member/memberMypage_list">예약목록
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</c:when>
 			<c:when test="${sessionDNUM != null}">
 				<div class="col-2 hcategory ">
 					<div
@@ -95,6 +118,7 @@
 						<span class="nanum text-white" style="font-size: 12px;">
 							사업주 ・ ${sessionHGRADE}</span>
 					</div>
+					
 					<div>
 						<ul class="nav flex-column">
 							<li class="nav-item pt-2 pb-2 ps-4"><a
