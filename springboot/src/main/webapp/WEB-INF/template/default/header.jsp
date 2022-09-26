@@ -43,6 +43,7 @@ nav {
 				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">의료진</a></li>
 				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">약국</a></li>
 				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="${mycontext }/quesboard/qbList">Dr.건강</a></li> <!-- Hey Health -->
+				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="${mycontext }/reviewboard/reviewboardlist">User's Review</a></li>
 <!-- 				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">공지사항</a></li> -->
 			</ul>
 			<span class="navbar-text">
