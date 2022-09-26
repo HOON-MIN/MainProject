@@ -146,6 +146,23 @@ body {
   transform: translateY(0);
 }
 
+.chatbot {
+	position : fixed;
+	width: 80px;
+	height: 80px; 
+	bottom: 5%;
+	right: 5%;
+	background-color: white;
+	border-radius: 40px;
+	position: fixed;
+	z-index: 99;
+}
+
+.chatbot img{
+	width: 60%; 
+	height : 60%;
+}
+
 </style>
 <div class="inner">
 	<div class="innerImg">
@@ -186,7 +203,7 @@ body {
 </div>
 <div id="body">
 
-	<div id="chat-circle" class="btn btn-raised">
+	<div id="chat-circle" class="btn btn-raised ">
 		<div id="chat-overlay"></div>
 		<i class="material-icons">메디톡!</i>
 	</div>
