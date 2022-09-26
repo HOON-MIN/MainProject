@@ -12,27 +12,28 @@
 <select id="getCnt" resultType="int" parameterType="svo">
   select count(*) from quesboard
   <choose>
-	<when test="category != null and category != ''">
-	<choose>
-		<when test="category == 'qtitle'">
-			where qtitle like '%' || #{search} || '%'
-		</when>
-		<when test="category == 'qcont'">
-			where qcont like '%' || #{search} || '%'
-		</when>
-		<when test="category == 'id'">
-			where id like '%' || #{search} || '%'
-		</when>
-		<when test="category == 'qcate'">
-			where qcate like '%' || #{search} || '%'
-		</when>
-		<when test="category == 'all'">
-			where id like '%'||#{search}||'%'
-			or qcont like '%'||#{search}||'%'
-			or qtitle like '%'||#{search}||'%'
-			or qcate like '%'||#{search}||'%'
-		</when>
-	</choose>
+	<when test="search != null and search != ''">
+<!-- 	<choose> -->
+<!-- 		<when test="category == 'qtitle'"> -->
+			where qtitle || qcont || qcate || id
+			like '%' || #{search} || '%'
+<!-- 		</when> -->
+<!-- 		<when test="category == 'qcont'"> -->
+<!-- 			where qcont like '%' || #{search} || '%' -->
+<!-- 		</when> -->
+<!-- 		<when test="category == 'id'"> -->
+<!-- 			where id like '%' || #{search} || '%' -->
+<!-- 		</when> -->
+<!-- 		<when test="category == 'qcate'"> -->
+<!-- 			where qcate like '%' || #{search} || '%' -->
+<!-- 		</when> -->
+<!-- 		<when test="category == 'all'"> -->
+<!-- 			where id like '%'||#{search}||'%' -->
+<!-- 			or qcont like '%'||#{search}||'%' -->
+<!-- 			or qtitle like '%'||#{search}||'%' -->
+<!-- 			or qcate like '%'||#{search}||'%' -->
+<!-- 		</when> -->
+<!-- 	</choose> -->
 	</when>
   </choose>
 </select>
@@ -41,18 +42,20 @@ select * from (
     select rownum r_num, q.* from (
         select * from quesboard
   <choose>
-	<when test="category != null and category != ''">
-	<choose>
-		<when test="category == 'all'">
-			where id like '%'||#{search}||'%'
-			or qcont like '%'||#{search}||'%'
-			or qtitle like '%'||#{search}||'%'
-			or qcate like '%'||#{search}||'%'
-		</when>
-		<otherwise>
-		    where ${category} like '%'||#{search}||'%'
-		</otherwise>
-	</choose>
+	<when test="search != null and search != ''">
+		where qtitle || qcont || qcate || id
+			like '%' || #{search} || '%'
+<!-- 	<choose> -->
+<!-- 		<when test="category == 'all'"> -->
+<!-- 			where id like '%'||#{search}||'%' -->
+<!-- 			or qcont like '%'||#{search}||'%' -->
+<!-- 			or qtitle like '%'||#{search}||'%' -->
+<!-- 			or qcate like '%'||#{search}||'%' -->
+<!-- 		</when> -->
+<!-- 		<otherwise> -->
+<!-- 		    where ${category} like '%'||#{search}||'%' -->
+<!-- 		</otherwise> -->
+<!-- 	</choose> -->
 	</when>
   </choose> 
 	    order by qnum desc
