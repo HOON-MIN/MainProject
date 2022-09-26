@@ -3,19 +3,19 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
-<div style="height: 80%;">
-	<h3 class="hanna ps-3">${sessionNAME }님의마이페이지</h3>
+<div style="height: 80%; ">
+	<h3 class="hanna m-3 text-center" >${sessionNAME }님의 마이페이지</h3>
 	<div class="row hDetail justify-content-around" style="height: 100%">
 	</div>
 </div>
 
 
 <section style="background-color: #eee;">
-	<div class="container">
+	<div class="container" style="width:60%">
 			<div class="card mb-4">
 				<div class="card-body text-center">
 					<img
-						src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+						src="${pageContext.request.contextPath }/imgfile/${member.profimg}"
 						alt="avatar" class="rounded-circle img-fluid"
 						style="width: 150px;">
 					<h5 class="my-3 hanna">${sessionNAME }</h5>
@@ -90,7 +90,6 @@
 							<div class="col-sm-9">
 								<p class="text-muted mb-0">${member.mdate }</p>
 							</div>
-							<hr>
 						</div>
 					</div>
 				</div>

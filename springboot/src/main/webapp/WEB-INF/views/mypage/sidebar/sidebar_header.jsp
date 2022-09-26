@@ -12,7 +12,7 @@
 					<div
 						class="d-flex flex-column align-items-start justify-content-center ps-5"
 						style="height: 160px;">
-						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%; "
 							class="mb-3">
 						<h5 class="hanna text-white">$${sessionNAME }님</h5>
 						<span class="nanum text-white" style="font-size: 12px;">

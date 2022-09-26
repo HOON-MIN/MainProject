@@ -33,8 +33,6 @@
 										<div class="form-group">
 											<input type="text" class="form-control form-control-user"
 												id="id" name="id" placeholder="ID">
-											<input type="text" class="form-control form-control-user"
-												id="oid" name="oid" placeholder="ID">
 										</div>
 										<div class="form-group">
 											<input type="password" class="form-control form-control-user"
