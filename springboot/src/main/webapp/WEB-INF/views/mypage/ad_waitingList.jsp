@@ -7,7 +7,7 @@
 			<table class="htable table table-hover table-borderless" id=""
 				style="text-align: center;">
 				<thead>
-					<tr>
+					<tr class="hanna">
 						<th>번호</th>
 						<th>업체번호</th>
 						<th>업체명</th>
@@ -21,7 +21,7 @@
 
 				<tbody>
 					<c:forEach var="e" items="${list }">
-						<tr>
+						<tr class="hanna">
 							<td>${e.r_num}</td>
 							<td id="b">${e.cnum }</td>
 							<td>${e.hvo.hname }</td>

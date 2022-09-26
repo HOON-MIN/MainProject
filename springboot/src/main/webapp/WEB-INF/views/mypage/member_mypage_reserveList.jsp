@@ -30,9 +30,9 @@
 								<table class="htable table">
 									<thead>
 										<tr>
-											<th>담당의사</th>
-											<th>증상</th>
-											<th>상세증상</th>
+											<th class="hanna">담당의사</th>
+											<th class="hanna">증상</th>
+											<th class="hanna">상세증상</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -41,8 +41,7 @@
 								</table>
 							</div>
 							<div id="map_div" class="tabcontent">
-								<h3>지도</h3>
-								<div id="map" style="width: 100%; height: 450px;"></div>
+								<div id="map" style="width: 100%; height: 450px; margin: auto;"></div>
 							</div>
 						</div>
 					</div>
@@ -50,7 +49,6 @@
 						<button type="button" class="btn btn-secondary"
 							data-bs-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-primary" id="loadBtn">길찾기</button>
-						<button type="button" class="btn btn-primary" id="loadBtn">상세보기</button>
 					</div>
 				</div>
 			</div>
@@ -66,11 +64,12 @@
 		<table class="htable table table-hover" id="datatable"
 			style="text-align: center">
 			<thead>
-				<tr>
+				<tr class="hanna">
 					<th scope="col">번호</th>
 					<th scope="col">병원이름</th>
 					<th scope="col">병원주소</th>
 					<th scope="col">병원구분</th>
+					<th scope="col">예약구분</th>
 					<th scope="col">예약날짜</th>
 					<th scope="col">상세보기</th>
 				</tr>
@@ -79,11 +78,12 @@
 				<c:forEach var="hvo" items="${vo }">
 					<c:forEach var="dvo" items="${hvo.doctorVO }">
 						<c:forEach var="rvo" items="${dvo.reserveVO }">
-							<tr>
+							<tr class="hanna">
 								<td>${rvo.r_num }</td>
 								<td>${hvo.hname }</td>
 								<td>${hvo.hloc }</td>
 								<td>${hvo.hcate }</td>
+								<td>${rvo.contectCheck }</td>
 								<td>${rvo.rdate }/${rvo.rtime }</td>
 								<td class="clicktd"><input type="button" value="detail"
 									id="detail" data-bs-toggle="modal"
@@ -96,6 +96,55 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<ul class="pagination justify-content-center mt-3">
+							<c:choose>
+								<c:when test="${startPage < 6 }">
+									<li class="page-item disabled"><a class="page-link"
+										href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+									<!-- 	<li class="disable">이전으로</li> -->
+								</c:when>
+								<c:otherwise>
+									<li class="page-item"><a class="page-link"
+										href="memberMypage_list?cPage=${startPage-1}&category=${category}&search=${search}">Previous</a></li>
+								</c:otherwise>
+							</c:choose>
+							<!-- 							<li class="page-item"><a class="page-link" href="#">1</a></li> -->
+							<!-- 							<li class="page-item"><a class="page-link" href="#">2</a></li> -->
+							<!-- 							<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
+							<c:forEach varStatus="i" begin="${startPage}" end="${endPage}"
+								step="1">
+								<c:choose>
+									<c:when test="${i.index == nowPage}">
+										<li class="page-item now"><a class="page-link"
+											style="background: #3478F5; color: white;">${i.index }</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item"><a class="page-link"
+											href="memberMypage_list?cPage=${i.index}&category=${category}&search=${search}">${i.index}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+
+							<c:choose>
+								<c:when test="${endPage >= totalPage}">
+									<li class="page-item disabled"><a class="page-link"
+										aria-disabled="true">Next</a></li>
+								</c:when>
+								<c:when test="${totalPage > (nowPage+pagePerBlock)}">
+									<li>
+									<li class="page-item"><a class="page-link"
+										href="memberMypage_list?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+								</c:when>
+								<c:otherwise>
+									<li>
+									<li class="page-item"><a class="page-link"
+										href="memberMypage_list?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+								</c:otherwise>
+							</c:choose>
+
+							<!-- 							<li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+						</ul>
 	</div>
 </div>
 

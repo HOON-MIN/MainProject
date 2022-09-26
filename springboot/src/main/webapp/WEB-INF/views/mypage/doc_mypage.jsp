@@ -45,14 +45,15 @@
 	    				console.log(typeof(today))
 	    				// 월이 10 이하일경우 -> 9 => 09
 	    				if(f < today){
-	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+':00',
+	    					arr.push({'start' : i.rdate+'T'+i.rtime,
 	    	    				'title' : ' '+i.memberVO.num+' - '+ i.memberVO.name, 'color' : "#FF0000"
 	    	    			});
 	    				}else{
-	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+':00',
+	    					arr.push({'start' : i.rdate+'T'+i.rtime,
 	    	    				'title' : ' '+i.memberVO.num+'. '+ i.memberVO.name,
 	    	    			});
 	    				}
+	    				
 	    			}
 	    			console.log('나온arr',arr)
 		    
@@ -69,14 +70,7 @@
 		      editable: true,
 		      selectable: true,
 		      eventClick: function(info) {
-				
 				console.log('클릭이벤트! ' + info.event.title)
-				/*$.ajax({
-					type:'GET',
-					url:,
-					data:{},
-					
-				})*/
 		      },
 		      dateClick: function(info){
 		    	  res = info.dateStr

@@ -9,7 +9,7 @@
 									<table class="htable table table-hover table-borderless"
 										style="text-align: center;">
 										<thead>
-											<tr>
+											<tr class="hanna">
 												<th>번호</th>
 												<th>병원명</th>
 												<th>위치</th>
@@ -20,7 +20,7 @@
 
 										<tbody>
 											<c:forEach var="e" items="${list }">
-												<tr>
+												<tr class="hanna">
 													<td class="linktd">${e.r_num }<input type="hidden"
 														value="${e.cnum }">
 													</td>

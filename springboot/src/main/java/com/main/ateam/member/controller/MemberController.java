@@ -1,12 +1,15 @@
+
 package com.main.ateam.member.controller;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+<<<<<<< HEAD
 import java.security.Provider.Service;
 import java.util.ArrayList;
+=======
+>>>>>>> origin/taejin
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -15,8 +18,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,11 +28,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.main.ateam.hospital.service.HospitalService;
 import com.main.ateam.member.memberEtc.MailSendModule;
 import com.main.ateam.member.memberEtc.memberInfoModule;
 import com.main.ateam.member.service.MemberService;
@@ -41,12 +42,11 @@ import com.main.ateam.modules.GsonModule;
 import com.main.ateam.modules.SftpModule;
 import com.main.ateam.modules.UbuntuShellModule;
 import com.main.ateam.vo.CovidRecordVO;
-import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.FileVO;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.OAuthToken;
-import com.main.ateam.vo.ReserveVO;
+import com.main.ateam.vo.SearchVO;
 
 @Controller
 @RequestMapping("/member")
@@ -57,7 +57,7 @@ public class MemberController {
 	private memberInfoModule memberInfoModule;
 	@Autowired
 	private MemberService memberService;
-	
+
 	/* 0918 add: 이동환 Autowired 추가 */
 	@Autowired
 	private APILoginModule apiloginmodule;
@@ -69,14 +69,26 @@ public class MemberController {
 	private UbuntuShellModule ubuntushellmodule;
 	@Autowired
 	private GsonModule gsonmodule;
-	
+	@Autowired
+	private HospitalService service;
+
 	/* 0918 add: 이동환 @Values 추가 */
 	@Value("${uploadPath}")
 	private String uploadPath;
 	@Value("${pythonPath}")
 	private String pythonPath;
-		
-
+	
+	private int nowPage = 1; // 현재 페이지 값 //**
+	private int nowBlock = 1; // 현재 블럭
+	private int totalRecord = 0; // 총 게시물 수
+	private int numPerPage = 8; // 한페이지당 보여질 게시물 수
+	private int pagePerBlock = 5; //한 블럭당 보여질 페이지 수 //**
+	private int totalPage =0; // 전체 페이지 수 -> totalRecord/numPerPage //**
+	private int totalBlock =0; // 전체 블럭 수
+	private int beginPerPage =0; // 각 페이지별 시작 게시물의 index값
+	private int endPerPage =0; // 각 페이지별 마지막 게시물의 index값
+	
+	
 	@GetMapping("/memberLoginForm")
 	public String MemberLoginForm() {
 		return "member/login_form";
@@ -102,22 +114,22 @@ public class MemberController {
 		}
 		return mav;
 	}
-	
+
 	@ResponseBody
 	@PostMapping("loginReact")
-	public MemberVO loginReact(@RequestBody String id ,String pwd) {
+	public MemberVO loginReact(@RequestBody String id, String pwd) {
 		Map<String, String> map = new HashMap<>();
 		char quotes = '"';
-		String[] res = id.split(":|"+quotes+"|,");
+		String[] res = id.split(":|" + quotes + "|,");
 		for (String e : res) {
 			System.out.println(e);
 		}
-		System.out.println("id: " +res[4]+"pwd : "+res[10]);
-		//String resId = res[0].substring(res[0].length(), res[0].length()-1);
-	
+		System.out.println("id: " + res[4] + "pwd : " + res[10]);
+		// String resId = res[0].substring(res[0].length(), res[0].length()-1);
+
 		map.put("id", res[4]);
 		map.put("pwd", res[10]);
-	
+
 		return memberService.memberLogin(map);
 	}
 
@@ -150,7 +162,7 @@ public class MemberController {
 	// 로그인 테스트
 	@GetMapping(value = "/test")
 	public String test2() {
-		
+
 		return "mypage/ad_chart1";
 	}
 
@@ -163,32 +175,85 @@ public class MemberController {
 		m.addAttribute("member", vo);
 		return "mypage/member_mypage";
 	}
-	
 
 	// 회원 마이페이지 - 예약목록
 	@GetMapping(value = "/memberMypage_list")
-	public String memberMypage_list(Model m, HttpSession session) {
+	public String memberMypage_list( HttpSession session ,SearchVO svo, Model model, 
+			HttpServletRequest request ) {
 		int num = 0;
 		num = (int) session.getAttribute("sessionNUM");
 		System.out.println("sessionNum=>" + num);
-		 List<HospitalVO> vo = memberService.memberReserveList(num);
-		 m.addAttribute("num",num);
-		 m.addAttribute("vo", vo);
+		 
+				totalRecord =  memberService.getReserveCnt(num);
+				System.out.println("totalRecord "+ totalRecord);
+				totalPage = (int) Math.ceil(totalRecord / (double) numPerPage);
+				totalBlock = (int) Math.ceil((double) totalPage / pagePerBlock);
+				
+				if (svo.getSearchreset().equals("1")) {
+					System.out.println("cPage hosp 리셋 =>"+ svo.getcPage());
+					nowPage = Integer.parseInt(svo.getcPage());
+				}else {
+					System.out.println("cPage hosp 페이지 번호 선택시 =>"+svo.getcPage());
+					nowPage = Integer.parseInt(svo.getcPage());
+				}
+				// begin ~ end  구하는 공식
+				beginPerPage = (nowPage-1)*numPerPage + 1;
+				endPerPage = (beginPerPage-1)+numPerPage;
+				svo.setMem_no(num);
+				svo.setBeginPerPage(beginPerPage);
+				svo.setEndPerPage(endPerPage);
+				svo.setCategory(request.getParameter("category"));
+				
+				System.out.println("---------- hospControll ----------");
+				System.out.println("시작페이지 : "+svo.getBeginPerPage());
+				System.out.println("마지막페이지 : "+svo.getEndPerPage());
+				System.out.println("검색 : "+svo.getSearch());
+				System.out.println("분류 : "+svo.getCategory());
+				List<HospitalVO> vo = memberService.memberReserveList(svo);
+				 model.addAttribute("num",num);
+				 model.addAttribute("vo", vo);
+
+				int startPage = (int)((nowPage-1)/pagePerBlock)*pagePerBlock+1;
+				int endPage = startPage+pagePerBlock-1;
+				if(endPage > totalPage) {
+					endPage = totalPage;
+				}
+				
+				model.addAttribute("category", svo.getCategory());
+				model.addAttribute("search", svo.getSearch());
+				model.addAttribute("startPage", startPage);
+				model.addAttribute("endPage", endPage);
+				model.addAttribute("nowPage", nowPage);
+				model.addAttribute("pagePerBlock", pagePerBlock);
+				model.addAttribute("totalPage", totalPage);
+				
+				System.out.println("totalRecord :"+ totalRecord);
+				System.out.println("startPage :"+ startPage);
+				System.out.println("endPage :"+ endPage);
+				System.out.println("nowPage :"+ nowPage);
+				System.out.println("pagePerBlock :"+ pagePerBlock);
+				System.out.println("totalPage :"+ totalPage);
+
+				System.out.println("----------------------------");
+		 
+		 
+		 
 		return "mypage/member_mypage_reserveList";
 	}
+
 	// 회원 마이페이지 - 예약목록 - 디테일
 	@ResponseBody
 	@GetMapping(value = "/memberMypage_list_Detail")
-	public MemberVO memberMypage_listDetail(HttpSession session,int num) {
+	public MemberVO memberMypage_listDetail(HttpSession session, int num) {
 		int mnum = 0;
 		mnum = (int) session.getAttribute("sessionNUM");
 		Map<String, Integer> map = new HashMap<>();
 		map.put("num", mnum);
 		map.put("reservNum", num);
-		System.out.println("num = "+  mnum);
-		System.out.println("reservNum = "+  num);
+		System.out.println("num = " + mnum);
+		System.out.println("reservNum = " + num);
 		MemberVO vo = memberService.memberReserveDetail(map);
-		
+
 		return vo;
 	}
 
@@ -202,7 +267,7 @@ public class MemberController {
 		return "mypage/updateMypage";
 	}
 
-	@RequestMapping(value = "/updateMypage" ,method = RequestMethod.POST)
+	@RequestMapping(value = "/updateMypage", method = RequestMethod.POST)
 	public String fileupLoad(FileVO v, HttpServletRequest request, MemberVO vo, HttpSession session) {
 		int num = 0;
 		num = (int) session.getAttribute("sessionNUM");
@@ -225,7 +290,7 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		memberService.memberUpdate(vo);
-		
+
 		return "redirect:memberMypage";
 	}
 
@@ -281,7 +346,7 @@ public class MemberController {
 		memberService.addMemberService(mvo);
 		return "redirect:/main";
 	}
-	
+
 	@CrossOrigin
 	@ResponseBody
 	@PostMapping(value = "/addMemberReact")
@@ -322,16 +387,15 @@ public class MemberController {
 		memberService.addMemberService(mvo);
 		return "redirect:/main";
 	}
-	
-	
+
 	@GetMapping(value = "/idcheck")
 	public ModelAndView idCheck(@RequestParam("id") String id) {
 		ModelAndView mav = new ModelAndView("member/member/idcheck");
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("id",id);
+		map.put("id", id);
 		int cnt = memberService.idCheckService(map);
-		System.out.println("컨트롤러 id"+id);
-		System.out.println("컨트롤러 cnt=>"+cnt);
+		System.out.println("컨트롤러 id" + id);
+		System.out.println("컨트롤러 cnt=>" + cnt);
 		mav.addObject("cnt", cnt);
 		return mav;
 	}
@@ -342,36 +406,43 @@ public class MemberController {
 		System.out.println("From Ajax Email : " + email);
 		return mailSendModule.joinEmail(email);
 	}
-	
+
 	/*-----카카오로그인-----*/
 	@GetMapping(value = "/auth/kakao/callback")
-	public ModelAndView kakaoCallback(HttpSession session, String code) throws JsonMappingException, JsonProcessingException {
+	public ModelAndView kakaoCallback(HttpSession session, String code)
+			throws JsonMappingException, JsonProcessingException {
 		OAuthToken oauthToken = apiloginmodule.getAPIToken("KAKAO", code);
 		MemberVO mdto = apiloginmodule.getAPIMember("KAKAO", oauthToken);
-		
+
 		ModelAndView mav = new ModelAndView("redirect:/main");
-		System.out.println("KAKAOMEMBER : "+mdto.getId());
+		System.out.println("KAKAOMEMBER : " + mdto.getId());
 		int flag = memberService.kakaoFlag(mdto.getId());
-		if(flag == 0){
+		if (flag == 0) {
 			mav.setViewName("member/kakao_addinfo");
-			mav.addObject("kakaoData",mdto);
+			mav.addObject("kakaoData", mdto);
 			return mav;
 		}
 		MemberVO numvo = memberService.memberidlist(mdto.getId());
 		
 		session.setAttribute("sessionID", mdto.getId());
+<<<<<<< HEAD
 		session.setAttribute("sessionNUM", numvo.getNum());
+=======
+		// session.setAttribute("sessionNUM", mdto.getNum()); //세션넘버 보류
+>>>>>>> origin/taejin
 		session.setAttribute("sessionNAME", mdto.getName());
 		return mav;
 	}
+
 	/*-----네이버로그인-----*/
 	@RequestMapping(value = "/auth/naver/callback")
-	public ModelAndView naverCallback(HttpSession session, @RequestParam String code, @RequestParam String state) throws JsonMappingException, JsonProcessingException{
+	public ModelAndView naverCallback(HttpSession session, @RequestParam String code, @RequestParam String state)
+			throws JsonMappingException, JsonProcessingException {
 		OAuthToken oauthToken = apiloginmodule.getAPIToken("NAVER", code);
 		MemberVO mdto = apiloginmodule.getAPIMember("NAVER", oauthToken);
 		ModelAndView mav = new ModelAndView("redirect:/main");
 		int flag = memberService.kakaoFlag(mdto.getId());
-		if(flag == 0){
+		if (flag == 0) {
 			memberService.kakaoSignup(mdto);
 		}
 		session.setAttribute("sessionNUM", memberService.memberidlist(mdto.getId()).getNum());
@@ -379,56 +450,59 @@ public class MemberController {
 		session.setAttribute("sessionNAME", mdto.getName());
 		return mav;
 	}
+
 	/*-----카카오추가정보-----*/
 	@PostMapping(value = "kakaoLogin")
 	public String kakaoLogin(HttpSession session, MemberVO dtov) {
 		dtov.setAge(apiloginmodule.getAge(dtov.getSsn()));
 		dtov.setGender(apiloginmodule.getGender(dtov.getSsn()));
 		dtov.setAddr("-");
-		System.out.println("연산된 아이디:"+dtov.getId());
-		System.out.println("연산된 나이: "+dtov.getAge());
-		System.out.println("연산된 성별: "+dtov.getGender());
+		System.out.println("연산된 아이디:" + dtov.getId());
+		System.out.println("연산된 나이: " + dtov.getAge());
+		System.out.println("연산된 성별: " + dtov.getGender());
 		memberService.kakaoSignup(dtov);
 		session.setAttribute("sessionID", dtov.getId());
 		session.setAttribute("sessionNUM", memberService.memberidlist(dtov.getId()).getNum());
 		session.setAttribute("sessionNAME", dtov.getName());
 		return "redirect:/main";
 	}
-	
-	
 
-	
 	/* 코로나 음성 자가진단 페이지 */
 	@RequestMapping(value = "/COVIDcheck")
 	public String covidCheck() {
 		return "member/covidRecording";
 	}
+
 	/* 우분투서버로 코로나 음성데이터 및 JSON 전송 */
 	@PostMapping(value = "/COVIDUpload", produces = "application/json;charset=utf-8")
-	public String COVIDUpload(Model model, CovidRecordVO vo, HttpServletRequest request, HttpSession session) throws Exception {
-		
+	public String COVIDUpload(Model model, CovidRecordVO vo, HttpServletRequest request, HttpSession session)
+			throws Exception {
+
 		String userID = session.getAttribute("sessionID").toString();
-		
+
 		String filename = userID + ".wav";
-		String filepath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\audio").toString();
-		
+		String filepath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\audio")
+				.toString();
+
 		String jsonname = userID + ".json";
-		String jsonpath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\json").toString();
+		String jsonpath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\json")
+				.toString();
 		MemberVO uservo = memberService.userdetail(userID);
 
-		System.out.println("JAVAPATH 실행!=>"+filepath);
-		
-		//Base64객체를 복호화한 후 파일 저장
-		base64module.base64ToMultipart(vo.getBase64str(), filename, filepath);
-		
-		//.wav Upload
-		ubuntushellmodule.upload(uploadPath, filepath+"\\"+filename);			
+		System.out.println("JAVAPATH 실행!=>" + filepath);
 
-		//{userID}.json Config
+		// Base64객체를 복호화한 후 파일 저장
+		base64module.base64ToMultipart(vo.getBase64str(), filename, filepath);
+
+		// .wav Upload
+		ubuntushellmodule.upload(uploadPath, filepath + "\\" + filename);
+
+		// {userID}.json Config
 		vo.setAge(uservo.getAge());
 		vo.setGender(uservo.getGender());
 		vo.setUserid(userID);
 		vo.setBase64str(filename);
+<<<<<<< HEAD
 		gsonmodule.saveGsonFile(vo, jsonpath+"\\"+jsonname);
 		
 		//JsonFile Upload
@@ -440,17 +514,29 @@ public class MemberController {
 		ubuntushellmodule.command("python "+pythonPath+"check_covid19.py "+userID);
 		
 		return "member/covidResult"; 
+=======
+		gsonmodule.saveGsonFile(vo, jsonpath + "\\" + jsonname);
+
+		// JsonFile Upload
+		ubuntushellmodule.upload(uploadPath, jsonpath + "\\" + jsonname);
+
+		// check_covid19.py Model 실행
+		// System.out.println("python "+pythonPath+"check_covid19.py");
+		ubuntushellmodule.command("python " + pythonPath + "check_covid19.py " + userID);
+
+		return "member/covidResult";
+>>>>>>> origin/taejin
 	}
-	
+
 	@RequestMapping("/COVIDResult")
 	public String covidresult() {
 		return "member/covidResult";
 	}
-	
+
 	@RequestMapping("/miruchart")
 	public String miruchart() {
 		return "mypage/miruchart1";
-		
+
 	}
-	
+
 }
