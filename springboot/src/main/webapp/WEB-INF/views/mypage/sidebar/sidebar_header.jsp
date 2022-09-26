@@ -53,17 +53,17 @@
 							class="mb-3">
 						<h5 class="hanna text-white">${sessionNAME }님</h5>
 						<span class="nanum text-white" style="font-size: 12px;">
-							관리자 ・ <a
+							일반회원 ・ <a
 							href="${pageContext.request.contextPath }/member/memberMypage">마이페이지</a>
 						</span>
 					</div>
 					<div>
 						<ul class="nav flex-column">
-
-							<li class="nav-item pt-2 pb-2 ps-4"><a
-								class="nav-link text-white"
+							<li class="nav-item pt-2 pb-2 ps-4">
+							<a	class="nav-link text-white"
 								href="${pageContext.request.contextPath }/member/memberMypage_list">예약목록
-							</a></li>
+							</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -100,16 +100,17 @@
 					
 				</div>
 			</c:when>
+			
 		</c:choose>
 		<!-- 전체 틀 시작 -->
 
 		<div class="col-10">
 			<div class="hboard pt-2 ps-3 pe-3">
-				<div class="hboard pt-2 ps-3 pe-3 ">
 					<div class="justify-content-center">
 						<h3 class="hanna ps-3 text-center"></h3>
-						<div class=" justify-content-center ">
+							<div class=" justify-content-center ">
 							<!-- 내용 -->
+							
 
 
 

@@ -3,13 +3,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
+<div style="height: 80%;">
+					<h3 class="hanna ps-3">${sessionNAME }님의 마이페이지</h3>
+					<div class="row hDetail justify-content-around"
+						style="height: 100%">
 <div class="container">
 	<div class="input-form-backgroud row">
 		<div class="input-form col-md-12 mx-auto">
 			<form>
 				<div class="container">
-					<div class="border  justify-content-center ">
-						<div class="form-group">
+					<div class="justify-content-center ">
+						<div class="form-group" >
 							<div class="form-group">
 								<label>이름 </label> <input name="name" type="text"
 									class="form-control" readonly="readonly"

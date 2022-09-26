@@ -1,46 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<style>
-.hcategory {
-	background-color: #3478f5;
-	padding-top: 40px;
-	height: 100%;
-}
-
-.hboard {
-	background-color: #efefef;
-	border-radius: 8px;
-	margin: 40px;
-	height: 90%;
-}
-
-a {
-	text-decoration: none;
-	color: white;
-}
-
-.searchForm input {
-	border: solid 1px #3478f5;
-	border-radius: 16px 0 0 16px;
-	background-color:
-}
-
-.searchForm button {
-	background-color: #3478f5;
-	width: 64px;
-	border-radius: 0 16px 16px 0;
-}
-
-.searchForm img {
-	width: 18px;
-}
-
-.map {
-	border: solid 1px tomato;
-	height: 100%;
-}
-</style>
 
 <div class="container-fluid" style="height: 100%;">
 	<div class="row justify-content-around" style="height: 100%;">

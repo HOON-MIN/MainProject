@@ -4,11 +4,6 @@ package com.main.ateam.member.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-<<<<<<< HEAD
-import java.security.Provider.Service;
-import java.util.ArrayList;
-=======
->>>>>>> origin/taejin
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -425,11 +420,8 @@ public class MemberController {
 		MemberVO numvo = memberService.memberidlist(mdto.getId());
 		
 		session.setAttribute("sessionID", mdto.getId());
-<<<<<<< HEAD
 		session.setAttribute("sessionNUM", numvo.getNum());
-=======
 		// session.setAttribute("sessionNUM", mdto.getNum()); //세션넘버 보류
->>>>>>> origin/taejin
 		session.setAttribute("sessionNAME", mdto.getName());
 		return mav;
 	}
@@ -502,7 +494,6 @@ public class MemberController {
 		vo.setGender(uservo.getGender());
 		vo.setUserid(userID);
 		vo.setBase64str(filename);
-<<<<<<< HEAD
 		gsonmodule.saveGsonFile(vo, jsonpath+"\\"+jsonname);
 		
 		//JsonFile Upload
@@ -514,18 +505,7 @@ public class MemberController {
 		ubuntushellmodule.command("python "+pythonPath+"check_covid19.py "+userID);
 		
 		return "member/covidResult"; 
-=======
-		gsonmodule.saveGsonFile(vo, jsonpath + "\\" + jsonname);
-
-		// JsonFile Upload
-		ubuntushellmodule.upload(uploadPath, jsonpath + "\\" + jsonname);
-
-		// check_covid19.py Model 실행
-		// System.out.println("python "+pythonPath+"check_covid19.py");
-		ubuntushellmodule.command("python " + pythonPath + "check_covid19.py " + userID);
-
-		return "member/covidResult";
->>>>>>> origin/taejin
+		
 	}
 
 	@RequestMapping("/COVIDResult")
