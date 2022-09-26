@@ -49,6 +49,11 @@ public class ShopService implements ShopDao {
 	public List<PharmacyVO> getPharmacy(Map<String, String> map) {
 		return shopdao.getPharmacy(map);
 	}
+	@Override
+	public List<PharmacyVO> getShopPharmacy(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return shopdao.getShopPharmacy(map);
+	}
 
 	
 }

@@ -347,7 +347,7 @@ a {
 	width: 18px;
 }
 </style>
-
+<input type="hidden"id="endPoint" value="${shopDetail.ploc}">
 	<div class="container-fluid" style="height: 100%;">
 		<div class="row justify-content-around" style="height: 100%;">
 			<!-- 카테고리 영역 -->
@@ -360,11 +360,12 @@ a {
 						class="mb-3">
 					<h5 class="hanna text-white"">게스트 님</h5>
 					<span class="nanum text-white" style="font-size: 12px;">
-						일반회원 ・ <a href="">마이페이지</a>
+					일반회원・<a href="">마이페이지</a>
 					</span>
 				</div>
 				<!-- 카테고리 프로필 끝 -->
 				<!-- 카테고리 리스트 -->
+				<!-- 약국 추가할 시 
 				<div>
 					<ul class="nav flex-column">
 						<li class="nav-item pt-5 pb-2 ps-4"><a
@@ -385,44 +386,43 @@ a {
 
 					</ul>
 				</div>
+					 -->
 			</div>
+		
 			<!-- 카테고리 영역 끝 -->
 			<!-- 컨텐츠 (연회색배경) -->
+			
 			<div class="col-10">
-				<div class="hboard pt-2 ps-3 pe-3">
-					<!-- 검색바(필요없으면 없애세요) -->
-					<div class="input-group searchForm mb-3" style="width: 50%";>
-						<input type="text" class="form-control"
-							aria-label="Recipient's username"
-							aria-describedby="hospitalSearch" style="width: 160px;"
-							placeholder="필요없으면 지워요
-						">
-						<button class="btn" type="button" id="hospitalSearch">
-							<img alt="검색아이콘" src="/img/search.png">
-						</button>
-					</div>
+				<div class="hboard pt-2 ps-3 pe-3" style="height: 60%;">
+								<div	class="col-20 text-left d-flex align-items-center justify-content-between pt-2"
+										style="width: 100%;">
+				<div style="font-weight: 300;">
+					<!-- 근처 지역확인 -->
+					<a
+						href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 5) }"
+						style="color: #1d458d; font-weight: 600; text-decoration: underline;">
+						${fn:substring(shopDetail.ploc, 0, 5) } </a> &gt; <a
+						href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 8) }"
+						style="color: #1d458d; font-weight: 600; text-decoration: underline;">
+						${fn:substring(shopDetail.ploc, 6, 8) } </a>
+				</div>
+</div>
 					<div style="height: 80%;">
 						<h3 class="hanna ps-3">약국 상세페이지</h3>
 						<div class="row hDetail justify-content-around"
-							style="height: 100%">
-							<div class="col-5 map"
-								style="background-color: white; border-radius: 8px;">
-								<div id="map_div" class="mt-3" style="border-radius: 8px;"></div>
-								<div class="map_act_btn_wrap clear_box"></div>
-								<div>이쪽에 이름 넣고해도 되고 편하신대로 지도를 늘려도 되고</div>
-							</div>
+							style="height: 70%">
+							<div class="col-5 map" border-radius: 8px;">
+						
+							 <div id="map_div" class="mt-2" style="border-radius: 8px;"></div>
+						</div>		
 							<div class="col-6 map align-items-center ">
 								<h1 class="hanna m-3">약국 이름</h1>
-
+								<h1 class="hanna m-3">${shopDetail.pname }</h1>
 								<h5 class="nanum m-3 pt-3">약국 주소</h5>
-
-								<h6 class="m-3">약국 URL</h6>
-								<h6 class="m-3">약국 오픈 시간</h6>
-
-								<p class="m-3" style="height: 240px">약국 소개</p>
-								<button class="btn btn-lg mt-4 ms-3 hanna"
-									style="border: solid 1px #3478f5; background: #3478f5; color: white; width: 240px">만들
-									버튼</button>
+								<h5 class="nanum m-3 pt-3">${shopDetail.ploc}</h5>
+							
+								<h6 class="m-3">약국 번호</h6>
+								<h6 class="m-3">${shopDetail.pnum}</h6>
 
 							</div>
 						</div>
@@ -432,188 +432,5 @@ a {
 		</div>
 	</div>
 
-	<div>
-		<!-- 
-	
-	 -->
-	</div>
-	<div class="row p-3">
-		<div class="doctor-in-detail-doctor-box col-8 border-0">
-
-			<!-- 첫번째 박스시작 -->
-			<!-- <div class="col-6" > -->
-			<div
-				class="col-20 text-left d-flex align-items-center justify-content-between pt-2"
-				style="width: 100%;">
-				<div style="font-weight: 300;">
-					<a
-						href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 5) }"
-						style="color: #1d458d; font-weight: 600; text-decoration: underline;">
-						${fn:substring(shopDetail.ploc, 0, 5) } </a> &gt; <a
-						href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 8) }"
-						style="color: #1d458d; font-weight: 600; text-decoration: underline;">
-						${fn:substring(shopDetail.ploc, 6, 8) } </a>
-				</div>
-
-
-			</div>
-
-			<h1 class="my-1 hospital-doctor-name-box d-flex align-items-center">
-				${shopDetail.pname }</h1>
-
-			<div class="d-flex align-items-start py-2 color49 pb-1">
-				<img
-					src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/mdd_event/Star-Full-icon.svg"
-					class="star-image2"> <img
-					src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/mdd_event/Star-Full-icon.svg"
-					class="star-image2"> <img
-					src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/mdd_event/Star-Full-icon.svg"
-					class="star-image2"> <img
-					src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/mdd_event/Star-Full-icon.svg"
-					class="star-image2"> <img
-					src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/mdd_event/Star-Full-icon.svg"
-					class="star-image2">
-			</div>
-			<div class=" pb-2 text-left my-3">
-				<div
-					style="font-size: 14px; letter-spacing: -0.4px; background-color: rgba(233, 233, 233, 0.55); display: inline-block"
-					class="m-1 p-1">
-					<a
-						href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 2) }"
-						style="color: #494949; word-break: keep-all;">
-						${fn:substring(shopDetail.ploc, 0, 2) }약국</a>
-				</div>
-				<div
-					style="font-size: 14px; letter-spacing: -0.4px; background-color: rgba(233, 233, 233, 0.55); display: inline-block"
-					class="m-1 p-1">
-					<a
-						href="${pageContext.request.contextPath}/pharmacy/ShopListPage?pnum=1&type=ploc&searchf=${fn:substring(shopDetail.ploc, 0, 10) }"
-						style="color: #494949; word-break: keep-all;">근처 병원</a>
-				</div>
-				<div
-					style="font-size: 14px; letter-spacing: -0.4px; background-color: rgba(233, 233, 233, 0.55); display: inline-block"
-					class="m-1 p-1">
-					<a href="#" style="color: #494949; word-break: keep-all;">미정</a>
-				</div>
-				<div
-					style="font-size: 14px; letter-spacing: -0.4px; background-color: rgba(233, 233, 233, 0.55); display: inline-block"
-					class="m-1 p-1">
-					<a href="/hospitals/?search_query=강남역 슈링크"
-						style="color: #494949; word-break: keep-all;">미 정</a>
-				</div>
-
-			</div>
-
-
-
-			<!--찜하기, 공유하기 버튼-->
-			<div class="pb-4  border-bottom d-flex">
-
-				<div id="btn_write_review"
-					style="background-color: #4C1192; color: white; font-size: 15px; height: 32px; line-height: 32px;"
-					class="hospital-button d-flex mr-3 align-items-center px-4"
-					onclick="ajax_web_event_logging('click', {component_type: 'btn', component_pos: 'top', component_func: 'write_review', following_page_url: '/mdd_event/?past_url=https%3A//www.modoodoc.com/hospital/17262/%25EB%25B2%25A0%25EB%25A6%25AC%25EA%25B5%25BF%25EC%2584%25B1%25ED%2598%2595%25EC%2599%25B8%25EA%25B3%25BC%25EC%259D%2598%25EC%259B%2590-%25EC%2584%259C%25EC%259A%25B8-%25EC%2584%259C%25EC%25B4%2588%25EB%258F%2599/'})">
-					<img class="mr-1"
-						src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/write_review_button.png"
-						style="width: 12px; height: 14px;" alt=""> 리뷰하기
-				</div>
-
-
-				<div id="btn_add_hospital_picture"
-					style="font-size: 15px; height: 32px; line-height: 32px;"
-					class="hospital-button d-flex mr-3 align-items-center px-4">
-					<!-- data-toggle="modal" data-target="#addImagesModal"> -->
-					<img class="mr-1"
-						src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/add_picture_button.png"
-						style="width: 12px; height: 14px;" alt=""> <input
-						type="button" id="btn1" value="상세정보 보기">
-				</div>
-
-				<div id="btn_share_hospital"
-					style="font-size: 15px; height: 32px; line-height: 32px;">
-					<img class="mr-1"
-						src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/share_button.png"
-						style="width: 12px; height: 14px;" alt="">
-				</div>
-
-
-				<div id="btn_bookmark_hospital"
-					style="font-size: 15px; height: 32px; line-height: 32px;"
-					class="hospital-button d-flex mr-3 align-items-center px-4">
-					<img class="mr-1"
-						src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/bookmark_non.png"
-						style="width: 12px; height: 14px;" alt="">
-				</div>
-
-
-			</div>
-
-			<div class="text-left">
-				<div class="color49 mt-3"
-					style="font-size: 14px; font-weight: 400; letter-spacing: -0.6px;">
-					<img
-						src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/mapmarkerShape.svg"
-						class="mb-1 mr-1" alt="Responsive image"> ${shopDetail.ploc}
-
-				</div>
-
-
-				<div
-					style="font-size: 14px; font-weight: 400; letter-spacing: -0.6px;"
-					class="mt-2 ">
-					<img
-						src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/homepage.svg"
-						class="mb-1 mr-1" alt="Responsive image"> <a
-						class="website-link-click"
-						href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=${shopDetail.pname}"
-						target="_blank" rel="noopener" style="color: #4c1192;"> 네이버에
-						병원 검색하기 </a>
-				</div>
-
-
-				<div class="color49 mt-2"
-					style="font-size: 14px; font-weight: 400; letter-spacing: -0.2px;">
-					<img
-						src="https://d23zwvh2kbhdec.cloudfront.net/static_22_09_01_1/img/phoneicon.svg"
-						class="mb-1 mr-1" alt="Responsive image"> ${shopDetail.pnum}
-
-				</div>
-			</div>
-
-
-		</div>
-		<!--첫번째 박스 끝 -->
-
-		<!-- 두번째 박스 시작(인증된 리뷰) -->
-
-
-		<input type="hidden" id="endPoint" value="${shopDetail.ploc}">
-		<script type="text/javascript">
-			$(function() {
-				$('#btn1').click(function() {
-
-					if ($('#tet').css("display") == "none") {
-						$('#tet').show();
-					} else {
-						$('#tet').hide();
-					}
-
-				});
-
-			});
-		</script>
-
-
-		<div class="row border-top border-bottom px-3 middle-tab"
-			style="top: 72px !important;">
-			<div class="col-8 doctorpage-tabbar" id="tet" style="display: none;">
-				<p></p>
-				<p>약국 명 : ${shopDetail.pname}</p>
-				<p>약국 번호 : ${shopDetail.pnum}</p>
-				<p>주소 : ${shopDetail.ploc}</p>
-				<p>위도 : ${shopDetail.plong} 경도 : ${shopDetail.plat}</p>
-			</div>
-		</div>
-	</div>
 
 </body>

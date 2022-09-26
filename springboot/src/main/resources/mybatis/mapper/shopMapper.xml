@@ -44,13 +44,13 @@
 		
 		<choose>
 			<when test="pname != null">
-			where	pname like '%'||#{searchf}||'%'
+			where pname like '%'||#{searchf}||'%'
 			</when>
 			<when test="ploc != null">
-			where	ploc  like '%'||#{searchf}||'%'
+			where ploc  like '%'||#{searchf}||'%'
 			</when>
 			<when test="pnum != null">
-			where	pnum like '%'||#{searchf}||'%'
+			where pnum like '%'||#{searchf}||'%'
 			</when>
 		</choose>
 	</select>
@@ -71,5 +71,8 @@
 			where ploc like '%´ëÄ¡%'
 			</when>
 		</choose>
+	</select>
+	<select id="getShopPharmacy" parameterType="map" resultType="pvo">
+	select * from pharmacy where pname = #{name}
 	</select>
 </mapper>

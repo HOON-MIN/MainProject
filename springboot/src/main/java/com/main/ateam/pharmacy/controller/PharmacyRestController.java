@@ -46,7 +46,14 @@ public class PharmacyRestController {
 		return list;
 	}
 	
+	@GetMapping(value = "getshoppharmacy")
+	@ResponseBody
+	public List<PharmacyVO> getShopPharmacy(String name) {
+		Map<String, String> map = new HashMap<>();
+		map.put("name", name);
+		List<PharmacyVO> list = shopservice.getShopPharmacy(map);
+		return list;
+	}
+	
 
-	
-	
 }

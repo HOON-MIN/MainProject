@@ -85,4 +85,9 @@ update reviewboard set rcount = (select count(cnum) from reviewboardcomm where r
 where rnum=#{rnum}
 </update>
 
+<select id="getHospitalReview" parameterType="map" resultType="ReviewBoardCommVO">
+	select * from reviewboard  where hname = #{name}
+</select>
+
+
 </mapper>
