@@ -20,21 +20,6 @@ a {
 	color: white;
 }
 
-.searchForm input {
-	border: solid 1px #3478f5;
-	border-radius: 16px 0 0 16px;
-	background-color:
-}
-
-.searchForm button {
-	background-color: #3478f5;
-	width: 64px;
-	border-radius: 0 16px 16px 0;
-}
-
-.searchForm img {
-	width: 18px;
-}
 </style>
 
 <div class="container-fluid">
@@ -85,7 +70,7 @@ a {
 		</div>
 		<!-- 컨텐츠 영역 끝 -->
 	</div>
-
+</div>
 
 
 
@@ -201,7 +186,7 @@ a {
 					href="hospitalList?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
 			</c:otherwise>
 		</c:choose>
-</div>
+</ul>
 --%>
 
 
@@ -269,7 +254,7 @@ a {
 	<div class="input-group searchForm m-3 w-50" style="margin: auto;">
 		<button class="btn btn-outline-secondary dropdown-toggle"
 			type="button" data-bs-toggle="dropdown" aria-expanded="false"
-			style="border: solid 1px #3478f5; border-radius: 16px 0 0 16px; background: #3478f5; color: white;">카테고리</button>
+			style="border: solid 1px #3478f5; border-radius: 16px 0 0 16px; background: #3478f5; color: white; width:100px;">카테고리</button>
 		<ul class="dropdown-menu">
 			<li><a class="dropdown-item" href="#">Action</a></li>
 			<li><a class="dropdown-item" href="#">Another action</a></li>

@@ -33,7 +33,7 @@ public class HospitalController {
 	private int nowPage = 1; // 현재 페이지 값 //**
 	private int nowBlock = 1; // 현재 블럭
 	private int totalRecord = 0; // 총 게시물 수
-	private int numPerPage = 10; // 한페이지당 보여질 게시물 수
+	private int numPerPage = 6; // 한페이지당 보여질 게시물 수
 	private int pagePerBlock = 5; //한 블럭당 보여질 페이지 수 //**
 	private int totalPage =0; // 전체 페이지 수 -> totalRecord/numPerPage //**
 	private int totalBlock =0; // 전체 블럭 수
