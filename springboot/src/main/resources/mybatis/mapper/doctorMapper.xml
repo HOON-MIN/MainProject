@@ -22,29 +22,6 @@
 	</select>
 
 
-	<!-- hoonmin -->
-	<select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
-		select d.dnum ,
-		d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d ,
-		hospital h
-		where d.cnum = h.cnum order by 1 asc
-	</select>
-
-	<!-- doctor 등록 -->
-	<insert parameterType="doctorVO" id="addDoctor">
-		insert into doctor
-		values(doctor_seq.nextVal,#{cnum},#{dname},#{did},#{dpwd},#{dmajor})
-	</insert>
-	<!-- id 중복체크 -->
-	<select resultType="int" parameterType="map" id="drIdCheck">
-		select count(*)
-		from doctor where did = #{did}
-	</select>
-
-
-
-
-
 	<!-- hoonmin DoctorDetailResult -->
 	<resultMap type="doctorVO" id="DoctorDetailResult">
 		<id property="cnum" column="cnum" />
@@ -167,66 +144,98 @@
 		doctor group by dmajor
 	</select>
 
-	<select id="doctorCnt" resultType="int" parameterType="svo">
-		select count(*) from doctor
-		<choose>
-			<when test="search != null and search != ''">
-			</when>
-		</choose>
-	</select>
 
 
 
-
+	<!-- <resultMap type="hvo" id="doctorListSpringResultMap"> <id property="cnum" 
+		column="cnum" /> <result property="hname" column="hname" /> <result property="otime" 
+		column="otime" /> <result property="ctime" column="ctime" /> <association 
+		property="dvo" column="cnum" javaType="doctorVO"> <id property="cnum" column="cnum" 
+		javaType="int"/> <result property="dnum" column="dnum" /> <result property="dname" 
+		column="dname" /> <result property="dmajor" column="dmajor" /> </association> 
+		</resultMap> -->
 	<resultMap type="hvo" id="doctorListSpringResultMap">
 		<id property="cnum" column="cnum" />
 		<result property="hname" column="hname" />
 		<result property="otime" column="otime" />
 		<result property="ctime" column="ctime" />
+		<result property="r_num" column="r_num" />
 
-		<association property="dvo" column="cnum" javaType="doctorVO">
-			<id property="cnum" column="cnum" javaType="int"/>
-			<result property="dnum" column="dnum" />
+		<collection property="doctorVO" javaType="java.util.List"
+			ofType="doctorVO">
+			<id property="cnum" column="cnum" javaType="int" />
 			<result property="dname" column="dname" />
 			<result property="dmajor" column="dmajor" />
-		</association>
+		</collection>
 	</resultMap>
 
-	<select id="doctorListSpring" resultMap="doctorListSpringResultMap"
-		parameterType="svo" >
+
+	<select id="doctorCnt" resultType="int" parameterType="svo">
+		select count(*) from doctor d ,hospital h where d.cnum=h.cnum
+		<choose>
+			<when test="search != null and search != ''">
+				<if test="category == 'all'">
+					AND d.dname || d.dmajor || h.hname like '%' || #{search} || '%'
+				</if>
+				<if test="category == 'dmajor'"> AND d.dmajor like
+					'%' || #{search} || '%'</if>
+				<if test="category == 'dname'"> AND d.dname
+					like '%' || #{search} || '%'</if>
+				<if test="category == 'hname'"> AND h.hname
+					like '%' || #{search} || '%'</if>
+			</when>
+		</choose>
+	</select>
+
+
+	<!-- hoonmin -->
+	<select id="hospitalDoctorList" resultMap="hospitalDoctorResult">
+		select d.dnum ,
+		d.dname, d.dmajor ,h.hname,h.otime,h.ctime from doctor d ,
+		hospital h
+		where d.cnum = h.cnum order by 1 asc
+	</select>
+
+	<!-- doctor 등록 -->
+	<insert parameterType="doctorVO" id="addDoctor">
+		insert into doctor
+		values(doctor_seq.nextVal,#{cnum},#{dname},#{did},#{dpwd},#{dmajor})
+	</insert>
+	<!-- id 중복체크 -->
+	<select resultType="int" parameterType="map" id="drIdCheck">
+		select count(*)
+		from doctor where did = #{did}
+	</select>
+
+	<!-- doctorListSpringResultMap -->
+	<select id="doctorListSpring"
+		resultMap="doctorListSpringResultMap" parameterType="svo">
 		select * from (
 		select rownum r_num, a.* from (
 		select
-		h.hname,h.otime,h.ctime, d.* from doctor d , hospital h
+		h.hname,h.otime,h.ctime, d.dname , d.dmajor from doctor d , hospital h
 		where h.cnum =
 		d.cnum
 		<include refid="search" />
 		) a
-		order by cnum asc
 		)where r_num between
 		#{beginPerPage} and
 		#{endPerPage}
-		
+
 	</select>
 	<sql id="search">
 		<choose>
 			<when test="search != null and search != ''">
-				and d.dname like '%' || #{search} || '%' or h.hname like '%' || #{search} || '%' or dmajor like '%' || #{search} || '%'
-			</when>
-			<when test="category != null and category !=''">
-					and dmajor like '%' || #{search} || '%'
-				<if test="sear == dmajor">
-					AND d.dmajor like '%' || #{search} || '%'</if>
-				<if test="category == 'dname'">
-					AND d.dname like '%' || #{search} || '%'</if>
-				<if test="category == 'hname'">
-					AND h.hname like '%' || #{search} || '%'</if>
+				<if test="category == 'all'">
+					AND d.dname || d.dmajor || h.hname like '%' || #{search} || '%'
+				</if>
+				<if test="category == 'dmajor'"> AND d.dmajor like
+					'%' || #{search} || '%'</if>
+				<if test="category == 'dname'"> AND d.dname
+					like '%' || #{search} || '%'</if>
+				<if test="category == 'hname'"> AND h.hname
+					like '%' || #{search} || '%'</if>
 			</when>
 		</choose>
 	</sql>
-
-
-
-	<!-- <select id="reserveDetail_Doctor" parameterType="map"> select m.* from 
-		reserve r,member m, medinq mq where num = and </select> -->
 </mapper>

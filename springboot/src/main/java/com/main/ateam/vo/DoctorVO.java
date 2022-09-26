@@ -19,6 +19,7 @@ public class DoctorVO {
 	private String dpwd;
 	private String dmajor;
 	private String profimg;
+	
 	//private MultipartFile mfile;
 	private HospitalVO hvo;
 	private List<ReserveVO> reserveVO;

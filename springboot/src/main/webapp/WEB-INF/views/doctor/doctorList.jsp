@@ -112,7 +112,7 @@ a {
 						<select class="form-select form-select-sm " name="category"
 							id="category" aria-label=".form-select-sm example"
 							style="border: solid 1px #3478f5; width: 64px;">
-							<option value="" selected>카테고리</option>
+							<option value="all" selected>카테고리</option>
 							<option value="dmajor">진료과</option>
 							<option value="dname">의사명</option>
 							<option value="hname">병원명</option>
@@ -125,7 +125,7 @@ a {
 				</form>
 				<div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
 					<c:forEach var="e" items="${dlist }">
-						<c:forEach var="f" items="${e.dvo }">
+					<c:forEach var="f" items="${e.doctorVO }">
 							<div class="col-md-5">
 								<div class="card"
 									style="width: 400px; height: 180px; margin: auto;">
@@ -136,25 +136,27 @@ a {
 										<div class="col-9">
 											<div class="card-body">
 												<h5 class="card-title">
-													<strong> <%-- ${f.dname} --%> 의사</strong>
+												
+													<strong> ${f.dname} 의사</strong>
+													
 												</h5>
-												<p class="card-text">${e.hname }
-													<br> <small class="text-muted"> ${e.otime}~
-														${e.ctime } </small>
+												<p class="card-text">
+												${e.hname}	<br> <small class="text-muted"> ${e.otime}~${e.ctime}		
+										</small>
 												</p>
 
 
 												<div class="d-flex flex-start">
 													<button class="btn btn-primary me-1 disabled" type="button">
-														<%-- ${f.dmajor } --%></button>
+														${f.dmajor }</button>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</c:forEach>
-					</c:forEach>
+							</c:forEach>
+							</c:forEach>
 				</div>
 				<!-- 페이지 네이션 -->
 				<ul class="pagination justify-content-center p-3">
