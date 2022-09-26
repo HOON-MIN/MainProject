@@ -25,7 +25,7 @@ let muted=false;
 let cameraoff=false;
 
 async function makeConn(ip){
-	conn= new WebSocket("wss://"+ip+":83/webcam/socket");
+	conn= new WebSocket("ws://"+ip+":83/webcam/socket");
 	conn.onopen=function(){
 		console.log("socket connected!");
 		peercon();

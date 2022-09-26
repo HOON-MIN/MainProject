@@ -159,7 +159,7 @@ background: #eee;
 <script type="text/javascript">
 $(function(){
 	startCanvas();
-	makeConn('192.168.0.27');
+	makeConn('192.168.0.104');
 	myMsg='${sessionScope.id}';
 	console.log('${sessionScope.id}');
 	$('#navPinfoId').click(function(e) {
