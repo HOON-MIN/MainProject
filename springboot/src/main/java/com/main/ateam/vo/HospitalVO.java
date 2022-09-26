@@ -17,6 +17,7 @@ public class HospitalVO {
 	private String hname, hloc, otime, ctime,
 		hcate, hurl, htel;
 	private List<DoctorVO> doctorVO;
+	private DoctorVO dvo;
 	private CompanyVO cvo;
 	
 }

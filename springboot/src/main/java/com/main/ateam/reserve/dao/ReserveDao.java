@@ -10,6 +10,7 @@ public interface ReserveDao{
 	public void addReserve(ReserveVO vo);
 	public DoctorVO choiceDoctor(int dnum);
 	public List<ReserveVO> checkDate(ReserveVO rvo);
-	public int getDoctorCnt(int cum);
+	public List<ReserveVO> getReserveHospital(Map<String, String> map);
+	
   }
   

@@ -91,13 +91,17 @@ a {
 			<!-- 카테고리 리스트 -->
 			<div>
 				<ul class="nav flex-column">
-					<li class=" nav-item pt-5 pb-2 ps-4" ><a 
-						class="hcateAllbtn nav-link active text-white" aria-current="page" href="#">모든 진료과</a></li>
+					<li class=" nav-item pt-5 pb-2 ps-4" >
+					<a 
+						class="hcateAllbtn nav-link active text-white" 
+						aria-current="page" 
+						href="#">모든 진료과</a></li>
 					<c:forEach var="e" items="${hcate }" varStatus="status">
 						
 						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.hcate }" 
 <%-- 							name="hbtn${status.index}" --%>
-							><a 
+							>
+						<a 
 							class="hcatebtn nav-link text-white" href="#">${e.hcate }</a></li>
 <%-- 						<input type="button" name="hbtn${status.index}" --%>
 <%-- 							value="${e.hcate }" class="hcatebtn btn btn-outline-primary" /> --%>
@@ -107,7 +111,6 @@ a {
 			</div>
 		</div>
 		<!-- 카테고리 영역 끝 -->
-
 		<div class="col-10">
 			<div class="hboard pt-2 ps-3 pe-3">
 
@@ -257,58 +260,3 @@ a {
 		$("#hsearch").val(hcatename);
 		$(".sForm").submit();
 	});
-
-	// var path = "${pageContext.request.contextPath }";
-	// var qustr = "${searchVO.qustr}";
-
-	// $(function(){
-	// 	$(".btns").on('click', "input",function(){
-	// 		console.log("button click");
-	// 		var cate = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
-	// 		$.ajax({
-	// 			 url : 'hospitalList', // 이 주소로 
-	//               type : "POST", // 포스트 방식으로 보내는데
-	//               cache: false,
-	//               headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-	//               data : {
-	//             	  "cPage" : 1,
-	//             	  "hcate" : cate
-
-	//               }, // kind를 kind로 명명하여 보내겠다
-	//               success : function(data){ 
-	//                  console.log(data);
-	//                 	location.href='${pageContext.request.contextPath}/hospital/hospitalList?cPage=1&hcate='+cate;
-
-	//                  $('body').html(data); //성공할시에 body부분에 data라는 html문장들을 다 적용시키겠다
-	//               },
-	//               error : function(data){
-	//             	 alert('error');
-
-	//               }//error
-	// 		})//ajax
-	// 	});//click
-	// });//ready
-
-	//     $("input:button[name='button']").on('click',function(){
-	//         var kind = $(this).val();       //버튼이 클릭 되었을 시, 개별 버튼의 값이 kind 변수에 담겨집니다.
-	//         $.ajax({
-
-	//             url : path+"/onlinecounsel/expertmb/list_ajax.do",
-	//             type : "post",
-	//             cache : false,
-	//             headers : {"cache-control":"no-cache","pragma":"no-cache"},
-	//             data : {
-	//                  id : $(this).val(),
-	//                 "kind":kind    // 버튼의 value값에 따라 작동합니다.
-
-	//             },
-	//             success : function(data){
-	//                 console.log(data);
-	//                 $('body').html(data); // 성공 시, body부분에 data라는 html 문장들을 다 적용시킵니다.
-	//             },
-	//             error : function(data){
-	//                 alert('error');
-	//             }//error
-	//         })//ajax
-	//     });//button click
-</script>

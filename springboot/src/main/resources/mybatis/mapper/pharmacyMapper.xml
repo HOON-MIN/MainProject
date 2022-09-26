@@ -16,7 +16,7 @@
     	</selectKey>
     	insert into pharmacy values(pharmacy_seq.nextVal,#{cnum},#{pname},#{ploc},#{ptel},#{plat},#{plong})
     </insert>
-
+	
 
 
 </mapper>

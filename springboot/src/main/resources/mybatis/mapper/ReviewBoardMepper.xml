@@ -6,7 +6,7 @@
 
 <!-- 후기 작성 -->
 <insert id="addReviewBoard" parameterType="ReviewBoardVO">
-  insert into reviewboard values(reviewboard_seq.nextVal,#{id},#{title},#{cont},sysdate,#{hits},#{likes},#{hname},#{dname},#{rnum})
+  insert into reviewboard values(ReviewBoard_seq.nextVal,#{id},#{title},#{cont},sysdate,#{hits},#{likes},#{hname},#{dname},#{rnum})
 </insert>
 
 <!-- 후기 디테일 페이지 -->
@@ -84,5 +84,10 @@ update reviewboardcomm set cont=#{cont} where cnum=#{cnum} and id=#{id}
 update reviewboard set rcount = (select count(cnum) from reviewboardcomm where rnum=#{rnum}) 
 where rnum=#{rnum}
 </update>
+
+<select id="getHospitalReview" parameterType="map" resultType="ReviewBoardCommVO">
+	select * from reviewboard  where hname = #{name}
+</select>
+
 
 </mapper>

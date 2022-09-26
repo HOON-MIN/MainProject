@@ -46,6 +46,14 @@ public class HospitalRestController {
 		return list;
 	}
 	
-
+	@GetMapping(value = "getSelectHospital")
+	@ResponseBody
+	public List<HospitalVO> getSelectHospital(String name){
+		Map<String, String> map = new HashMap<>();
+		map.put("name", name);
+		List<HospitalVO> list = service.getSelectHospital(map);
+		return list;
+	}
+	
 	
 }

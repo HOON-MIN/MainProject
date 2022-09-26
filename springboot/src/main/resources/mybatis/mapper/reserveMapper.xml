@@ -27,4 +27,8 @@
 	<select id="checkDate" resultType="reserveVO">
  	select rtime from reserve r where dnum=#{dnum} and rdate=#{rdate}
 	</select>
+	<select id="getReserveHospital" resultType="reserveVO" parameterType="map">
+	select * from reserve where dnum in (select dnum from doctor where cnum in (select cnum from hospital where hname = #{name})) order by reservnum
+	</select>
+	
 </mapper>

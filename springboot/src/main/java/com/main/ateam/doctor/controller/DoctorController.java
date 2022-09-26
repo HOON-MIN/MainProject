@@ -3,6 +3,7 @@ package com.main.ateam.doctor.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -57,7 +58,6 @@ public class DoctorController {
 		System.out.println("마지막페이지 : "+svo.getEndPerPage());
 		System.out.println("검색 : "+svo.getSearch());
 		System.out.println("분류 : "+svo.getCategory());
-		
 		List<DoctorVO> dcategory = doctorservice.doctorCategorySpring();
 		
 		totalRecord = doctorservice.doctorCnt(svo);
@@ -79,10 +79,12 @@ public class DoctorController {
 		svo.setEndPerPage(endPerPage);
 		svo.setCategory(request.getParameter("category"));
 		
-		List<DoctorVO> dlist = doctorservice.doctorListSpring(svo);
+		List<HospitalVO> dlist = doctorservice.doctorListSpring(svo);
 		System.out.println("hospCont => "+dlist.isEmpty());
-	
 		
+		for (HospitalVO e : dlist) {
+			System.out.println(e.getHname());
+		}
 		int startPage = (int)((nowPage-1)/pagePerBlock)*pagePerBlock+1;
 		int endPage = startPage+pagePerBlock-1;
 		if(endPage > totalPage) {

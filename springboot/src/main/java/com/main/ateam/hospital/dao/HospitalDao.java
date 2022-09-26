@@ -27,6 +27,6 @@ public interface HospitalDao {
 	public List<HospitalVO> getHospital(Map<String, String> map);
 	public List<HospitalVO> selectHospitalCate();
 	public List<HospitalVO> selectHospital(Map<String, String> map);
-	
+	public List<HospitalVO> getSelectHospital(Map<String, String> map);
 	
 }

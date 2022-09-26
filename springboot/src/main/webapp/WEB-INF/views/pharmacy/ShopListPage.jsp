@@ -109,20 +109,19 @@ a {
 		<div class="col-10 flex-column">
 
 			<div class="hboard pt-2 ps-3 pe-3 pb-3">
-				<form class="sForm m-3" name="sForm" method="get" action="hospitalList"
-					style="width: 400px;">
-					<!-- 					### -->
-					<input type="hidden" name="category" id="category" value="all">
-					<input type="hidden" name="searchreset" value="1" hidden="hidden">
-					<div class="input-group searchForm mb-3">
-						<input type="text" class="form-control" id="hsearch"
-							aria-label="Recipient's username" name="search"
-							aria-describedby="hospitalSearch">
-						<button type="submit" class="btn" name="searBtn" id="searBtn">
+				<form method="get" action="ShopListPage" accept-charset="utf-8">
+						<select class="form-select" name="type" style="color: black;">
+							<option selected="${type}" value="sname">검색 내용</option>
+							<option value="pname">상호명</option>
+							<option value="ploc">지역명</option>
+							<option value="pnum">관리번호</option>
+						</select> 
+						<input class="form-control me-2" type="text" id="searchf" name="searchf" style="color:#000;">
+						<button type="submit" class="btn" name="searchv" id="searchv">
 							<img alt="검색아이콘" src="/img/search.png">
 						</button>
 					</div>
-
+					
 				</form>
 
 				<div>
@@ -162,7 +161,7 @@ a {
 							</c:when>
 							<c:otherwise>
 								<li class="page-item"><a class="page-link"
-									href="hospitalList?cPage=${startPage-1}&category=${category}&search=${search}">Previous</a></li>
+									href="${pageContext.request.contextPath}/pharmacy/ShopListPage?cPage=${nowPage-pagePerBlock}&type=${type }&searchf=${searchf}">Previous</a></li>
 							</c:otherwise>
 						</c:choose>
 						<!-- 							<li class="page-item"><a class="page-link" href="#">1</a></li> -->
@@ -178,7 +177,7 @@ a {
 								</c:when>
 								<c:otherwise>
 									<li class="page-item"><a class="page-link"
-										href="hospitalList?cPage=${i.index}&category=${category}&search=${search}">${i.index}</a></li>
+										href="${pageContext.request.contextPath}/pharmacy/ShopListPage?cPage=${i.index}&type=${type }&searchf=${searchf}">${i.index}</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
@@ -191,12 +190,12 @@ a {
 							<c:when test="${totalPage > (nowPage+pagePerBlock)}">
 								<li>
 								<li class="page-item"><a class="page-link"
-									href="hospitalList?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+									href="${pageContext.request.contextPath}/pharmacy/ShopListPage?cPage=${nowPage+pagePerBlock }&type=${type }&searchf=${searchf}">Next</a></li>
 							</c:when>
 							<c:otherwise>
 								<li>
 								<li class="page-item"><a class="page-link"
-									href="hospitalList?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+									href="${pageContext.request.contextPath}/pharmacy/ShopListPage?cPage=${totalPage }&type=${type }&searchf=${searchf}">Next</a></li>
 							</c:otherwise>
 						</c:choose>
 				</div>

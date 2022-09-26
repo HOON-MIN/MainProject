@@ -22,4 +22,8 @@ public interface ReviewBoardDao {
 	public void upReply(ReviewBoardCommVO vo);
 	public int delReply(int cnum);
 	public void upRcount(int rnum);
+	
+	
+	public List<ReviewBoardVO> getHospitalReview(Map<String, String> map);
+	
 }

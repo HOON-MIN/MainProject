@@ -19,5 +19,7 @@ public interface ShopDao extends PageListInter{
 	public List<? extends SuperDTO> SearchShopList(Map<String, Object> map);
 	public List<PharmacyVO> getAndroid();
 	public List<PharmacyVO> getPharmacy(Map<String, String> map);
+	public List<PharmacyVO> getShopPharmacy(Map<String, String> map);
+	
 }
 	

@@ -25,7 +25,8 @@ public class ReserveService {
 	public List<ReserveVO> checkDate(ReserveVO rvo){
 		return dao.checkDate(rvo);
 	}
-	public int getDoctorCnt(int cum) {
-		return dao.getDoctorCnt(cum);
+	public List<ReserveVO> getReserveHospital(Map<String, String> map){
+		return dao.getReserveHospital(map);
 	}
+
 }

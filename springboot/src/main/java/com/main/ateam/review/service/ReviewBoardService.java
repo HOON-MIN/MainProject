@@ -79,4 +79,11 @@ public class ReviewBoardService {
 	public void upRcount(int rnum) {
 		dao.upRcount(rnum);
 	}
+	
+	
+	public List<ReviewBoardVO> getHospitalReview(Map<String, String> map){
+		return dao.getHospitalReview(map);
+	}
+	
+	
 }
