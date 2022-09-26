@@ -36,24 +36,24 @@
 
     <tr>
       <th scope="row">진단 여부</th>
-      <td><input class="form-check-input" id="chkbox0_1" name="chkbox0" value="chkbox0_1" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_2" name="chkbox0" value="chkbox0_2" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_3" name="chkbox0" value="chkbox0_3" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_4" name="chkbox0" value="chkbox0_4" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_5" name="chkbox0" value="chkbox0_5" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_6" name="chkbox0" value="chkbox0_6" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox0_7" name="chkbox0" value="chkbox0_7" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_1" name="chkbox0" value="chkbox0_1" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_2" name="chkbox0" value="chkbox0_2" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_3" name="chkbox0" value="chkbox0_3" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_4" name="chkbox0" value="chkbox0_4" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_5" name="chkbox0" value="chkbox0_5" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_6" name="chkbox0" value="chkbox0_6" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox0" id="chkbox0_7" name="chkbox0" value="chkbox0_7" type="checkbox" aria-label="..."></td>
       <td><input class="form-check-input" id="chkbox0_0" name="chkbox0" value="chkbox0_0" type="checkbox" checked="checked" aria-label="..."></td>
     </tr>
     <tr>
       <th scope="row">약물치료 여부</th>
-      <td><input class="form-check-input" id="chkbox1_1" name="chkbox1" value="chkbox1_1" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_2" name="chkbox1" value="chkbox1_2" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_3" name="chkbox1" value="chkbox1_3" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_4" name="chkbox1" value="chkbox1_4" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_5" name="chkbox1" value="chkbox1_5" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_6" name="chkbox1" value="chkbox1_6" type="checkbox" aria-label="..."></td>
-      <td><input class="form-check-input" id="chkbox1_7" name="chkbox1" value="chkbox1_7" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_1" name="chkbox1" value="chkbox1_1" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_2" name="chkbox1" value="chkbox1_2" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_3" name="chkbox1" value="chkbox1_3" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_4" name="chkbox1" value="chkbox1_4" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_5" name="chkbox1" value="chkbox1_5" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_6" name="chkbox1" value="chkbox1_6" type="checkbox" aria-label="..."></td>
+      <td><input class="form-check-input chkbox1" id="chkbox1_7" name="chkbox1" value="chkbox1_7" type="checkbox" aria-label="..."></td>
       <td><input class="form-check-input" id="chkbox1_0" name="chkbox1" value="chkbox1_0" type="checkbox" checked="checked" aria-label="..."></td>
     </tr>
   </tbody>
@@ -66,23 +66,23 @@
   <label class="form-check-label" for="inlineCheckbox0">없음</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_1" name="chkbox2" value="chkbox2_1">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_1" name="chkbox2" value="chkbox2_1">
   <label class="form-check-label" for="inlineCheckbox1">뇌졸중(중풍)</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_2" name="chkbox2" value="chkbox2_2">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_2" name="chkbox2" value="chkbox2_2">
   <label class="form-check-label" for="inlineCheckbox2">심장병(심근경색/협심증)</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_3" name="chkbox2" value="chkbox2_3">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_3" name="chkbox2" value="chkbox2_3">
   <label class="form-check-label" for="inlineCheckbox3">고혈압</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_4" name="chkbox2" value="chkbox2_4">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_4" name="chkbox2" value="chkbox2_4">
   <label class="form-check-label" for="inlineCheckbox1">당뇨병</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="chkbox2_5" name="chkbox2" value="chkbox2_5">
+  <input class="form-check-input chkbox2" type="checkbox" id="chkbox2_5" name="chkbox2" value="chkbox2_5">
   <label class="form-check-label" for="inlineCheckbox2">기타(암 포함)</label>
 </div><br><br>
 
@@ -182,8 +182,6 @@
 </form>
 </div>
 
-
-<button id="btn12" value="test">test</button>
 <script>
 function clickCheck(target, name) {
     document.querySelectorAll(name)
@@ -192,9 +190,29 @@ function clickCheck(target, name) {
     target.checked = true;
 }
 	
+
+$(".chkbox0").change(function(){
+    if($(this).is(":checked")){
+        $('#chkbox0_0').prop("checked", false);
+    }
+});
+
+$(".chkbox1").change(function(){
+    if($(this).is(":checked")){
+        $('#chkbox1_0').prop("checked", false);
+    }
+});
+
+$(".chkbox2").change(function(){
+    if($(this).is(":checked")){
+        $('#chkbox2_0').prop("checked", false);
+    }
+});
+	
 	$('#sendBtn').click(function(){
 		var dislist1 = [];
 		var dislist2 = [];
+		var dishistlist = [];
 // 		disease, diseasehist,
 // 		etc, smoke, alcohol, allergy, pregnancy, symptom
 		//1.1번 문항
@@ -226,8 +244,16 @@ function clickCheck(target, name) {
 		//2번 문항
 		$('input[name=chkbox2]:checked').each(function(){
 			var diseasehist = $(this).val();
+			dishistlist.push(disease2);
 			$('#diseasehist').val(diseasehist);
 		});
+		var inq3 = "";
+		for(var e of diseasehist){
+			console.log(e);
+			inq3 += e+"/";
+		}
+		$('#diseasehist').val(inq3);
+		
 		
 		//3번문항
 		$('input[name=chkbox3]:checked').each(function(){
@@ -248,7 +274,7 @@ function clickCheck(target, name) {
 			$('#allergy').val(allergy);
 		});
 		
-		$('#allergyetc').val($('#allergV').val());
+		$('#allergyetc').val($('#allergyV').val());
 		
 		//6번문항
 		$('input[name=chkbox6]:checked').each(function(){
