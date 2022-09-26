@@ -1,12 +1,13 @@
 package com.main.ateam.reserve.controller;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.main.ateam.doctor.service.DoctorService;
 import com.main.ateam.hospital.service.HospitalService;
 import com.main.ateam.member.service.MemberService;
-import com.main.ateam.reserve.dao.ReserveDao;
 import com.main.ateam.reserve.service.ReserveService;
 import com.main.ateam.vo.DoctorVO;
+import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.ReserveVO;
+import com.main.ateam.vo.SearchVO;
 
 @Controller
 @RequestMapping(value = "/reserve")
@@ -40,6 +42,16 @@ public class ReserveController {
 	private MemberService memberService;
 	@Autowired
 	private DoctorService doctorService;
+	
+	private int nowPage = 1; // 현재 페이지 값 //**
+	private int nowBlock = 1; // 현재 블럭
+	private int totalRecord = 0; // 총 게시물 수
+	private int numPerPage = 6; // 한페이지당 보여질 게시물 수
+	private int pagePerBlock = 5; //한 블럭당 보여질 페이지 수 //**
+	private int totalPage =0; // 전체 페이지 수 -> totalRecord/numPerPage //**
+	private int totalBlock =0; // 전체 블럭 수
+	private int beginPerPage =0; // 각 페이지별 시작 게시물의 index값
+	private int endPerPage =0; 
 	
 	//예약하기 폼
 	@GetMapping(value = "/reserveForm")
@@ -61,53 +73,97 @@ public class ReserveController {
 		
 		return vo;
 	}
-	
 
-	/*
-	 * @GetMapping(value = "/choice_doctor") public String choice_doctor(int
-	 * cnum,Model m) { System.out.println("의사고르기 = > " + cnum); List<DoctorVO>list =
-	 * service.hospitalDoctorList(cnum); m.addAttribute("list", list); return
-	 * "reserve/choice_doctor"; }
-	 */
-	//예약 등록
-	@PostMapping(value = "/addReserve")
-	public String addReserve(ReserveVO vo ,HttpSession session) {
-		int num = (int) session.getAttribute("sessionNUM");
-		vo.setNum(num);
-		String d ="";
-		//vo.setRdate(rdate);
-		
-		System.out.println("reserve - 변환전(시간)" + vo.getRdate());
-		
-		SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
-		try {
-			Date formatDate = dtFormat.parse(vo.getRdate());
-			d = dtFormat.format(formatDate);
-			System.out.println(d);
-			System.out.println(d.getClass().getName());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// TODO Auto-generated catch block
-		vo.setRdate(d);
-		System.out.println("reserve - insert Test(시간)" + vo.getRdate());
-		System.out.println("reserve - insert Test(시간)" + vo.getRtime());
-		System.out.println("reserve - insert Test(시간)" + vo.getRdate().getClass().getName());
-		System.out.println("reserve - insert Test(시간)" + vo.getRtime().getClass().getName());
-		reserveService.addReserve(vo);
-		return "redirect:/";
-	}
+	
+	
 	//의사 리스트 
 	@GetMapping(value = "/choice_doctor")
-	public String choiceDoctorList(int cnum, Model m) {
+	public String choiceDoctorList(int cnum,SearchVO svo, Model model, 
+			HttpServletRequest request) {
 			System.out.println("choice_doctor = cnum => " + cnum);
 			List<DoctorVO> vo = service.choiceDoctorList(cnum); //의사 리스트
-			m.addAttribute("vo", vo);
-			for(DoctorVO e: vo) {
+			model.addAttribute("vo", vo);
+		
+			/////////////////////////////////////////////////////
+			System.out.println("---------- hospControll ----------");
+			System.out.println("시작페이지 : "+svo.getBeginPerPage());
+			System.out.println("마지막페이지 : "+svo.getEndPerPage());
+			System.out.println("검색 : "+svo.getSearch());
+			System.out.println("분류 : "+svo.getCategory());
+			
+			totalRecord = reserveService.getDoctorCnt(cnum);
+			totalPage = (int) Math.ceil(totalRecord / (double) numPerPage);
+			totalBlock = (int) Math.ceil((double) totalPage / pagePerBlock);
+			
+			if (svo.getSearchreset().equals("1")) {
+				System.out.println("cPage hosp 리셋 =>"+ svo.getcPage());
+				nowPage = Integer.parseInt(svo.getcPage());
+			}else {
+				System.out.println("cPage hosp 페이지 번호 선택시 =>"+svo.getcPage());
+				nowPage = Integer.parseInt(svo.getcPage());
 			}
+			// begin ~ end  구하는 공식
+			beginPerPage = (nowPage-1)*numPerPage + 1;
+			endPerPage = (beginPerPage-1)+numPerPage;
+			
+			svo.setBeginPerPage(beginPerPage);
+			svo.setEndPerPage(endPerPage);
+			svo.setCategory(request.getParameter("category"));
+			
+			int startPage = (int)((nowPage-1)/pagePerBlock)*pagePerBlock+1;
+			int endPage = startPage+pagePerBlock-1;
+			if(endPage > totalPage) {
+				endPage = totalPage;
+			}
+			
+			model.addAttribute("vo", vo);
+			model.addAttribute("category", svo.getCategory());
+			model.addAttribute("search", svo.getSearch());
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+			model.addAttribute("nowPage", nowPage);
+			model.addAttribute("pagePerBlock", pagePerBlock);
+			model.addAttribute("totalPage", totalPage);
+			
+			System.out.println("totalRecord :"+ totalRecord);
+			System.out.println("startPage :"+ startPage);
+			System.out.println("endPage :"+ endPage);
+			System.out.println("nowPage :"+ nowPage);
+			System.out.println("pagePerBlock :"+ pagePerBlock);
+			System.out.println("totalPage :"+ totalPage);
+			System.out.println("----------------------------");
+			
 		return "reserve/choice_doctor"; //
 	}
+	//예약 등록
+		@PostMapping(value = "/addReserve")
+		public String addReserve(ReserveVO vo ,HttpSession session) {
+			int num = (int) session.getAttribute("sessionNUM");
+			vo.setNum(num);
+			String d ="";
+			//vo.setRdate(rdate);
+			
+			System.out.println("reserve - 변환전(시간)" + vo.getRdate());
+			
+			SimpleDateFormat dtFormat = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				Date formatDate = dtFormat.parse(vo.getRdate());
+				d = dtFormat.format(formatDate);
+				System.out.println(d);
+				System.out.println(d.getClass().getName());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// TODO Auto-generated catch block
+			vo.setRdate(d);
+			System.out.println("reserve - insert Test(시간)" + vo.getRdate());
+			System.out.println("reserve - insert Test(시간)" + vo.getRtime());
+			System.out.println("reserve - insert Test(시간)" + vo.getRdate().getClass().getName());
+			System.out.println("reserve - insert Test(시간)" + vo.getRtime().getClass().getName());
+			reserveService.addReserve(vo);
+			return "redirect:/";
+		}
 	
 	//의사 선택 
 	@GetMapping(value = "/doctorCalendar")
@@ -152,52 +208,5 @@ public class ReserveController {
 		System.out.println("reserve - insert Test(시간)" + vo.getRdate());
 		System.out.println("reserve - insert Test(시간)" + vo.getRtime());    
 		reserveService.addReserve(vo);
-		
 	}
-	
-	/*
-	 * @RequestMapping(value = "doctorCalendar", method = RequestMethod.GET) public
-	 * String calendar(Model model, HttpServletRequest request, DateDataVO
-	 * DateDataVO,int dnum){ model.addAttribute("dnum", dnum); Calendar cal =
-	 * Calendar.getInstance(); DateDataVO calendarData;
-	 * if(DateDataVO.getDate().equals("")&&DateDataVO.getMonth().equals("")){
-	 * DateDataVO = new
-	 * DateDataVO(String.valueOf(cal.get(Calendar.YEAR)),String.valueOf(cal.get(
-	 * Calendar.MONTH)),String.valueOf(cal.get(Calendar.DATE)),null); }
-	 * 
-	 * Map<String, Integer> today_info = DateDataVO.today_info(DateDataVO);
-	 * List<DateDataVO> dateList = new ArrayList<DateDataVO>();
-	 * 
-	 * for(int i=1; i<today_info.get("start"); i++){ calendarData= new
-	 * DateDataVO(null, null, null, null); dateList.add(calendarData); }
-	 * 
-	 * for (int i = today_info.get("startDay"); i <= today_info.get("endDay"); i++)
-	 * { if(i==today_info.get("today")){ calendarData= new
-	 * DateDataVO(String.valueOf(DateDataVO.getYear()),
-	 * String.valueOf(DateDataVO.getMonth()), String.valueOf(i), "today"); }else{
-	 * calendarData= new DateDataVO(String.valueOf(DateDataVO.getYear()),
-	 * String.valueOf(DateDataVO.getMonth()), String.valueOf(i), "normal_date"); }
-	 * dateList.add(calendarData); }
-	 * 
-	 * int index = 7-dateList.size()%7;
-	 * 
-	 * if(dateList.size()%7!=0){
-	 * 
-	 * for (int i = 0; i < index; i++) { calendarData= new DateDataVO(null, null,
-	 * null, null); dateList.add(calendarData); } } System.out.println(dateList);
-	 * 
-	 * model.addAttribute("dateList", dateList); model.addAttribute("today_info",
-	 * today_info); return "reserve/doctorCalendar"; }
-	 * 
-	 * @PostMapping(value = "/getCalendar") public String getResday(Model model,
-	 * String resday,HttpSession session,int dnum) { int num =
-	 * (int)session.getAttribute("sessionNUM"); System.out.println("int num = > " +
-	 * num); MemberVO mvo = memberService.memberMyPage(num); DoctorVO dvo =
-	 * reserveService.choiceDoctor(dnum); model.addAttribute("resday",resday);
-	 * model.addAttribute("mvo",mvo); model.addAttribute("dvo",dvo);
-	 * 
-	 * return "reserve/reservation"; }
-	 */
-	
-	
 }

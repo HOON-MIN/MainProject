@@ -4,8 +4,9 @@
 
 <style>
 .card {
-	width:400px;
+	width: 350px;
 	color: #232323;
+	height: 300px;
 }
 
 .card-body button {
@@ -32,137 +33,112 @@ Link {
 	text-decoration: none;
 }
 </style>
+<div class="col-10">
+	<div class="hboard pt-2 ps-3 pe-3">
+		<div class="justify-content-center">
+			<h3 class="hanna ps-3 text-center"></h3>
+			<div class=" justify-content-center ">
 
 
-<div class="d-flex justify-content-center mt-4">
-
-<section class="vh-100" style="background-color: #eee;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-<c:forEach var="doc" items="${vo }">
-      <div class="col-md-12 col-xl-4">
-
-          	
-        <div class="card" style="border-radius: 15px;">
-          <div class="card-body text-center">
-            <div class="mt-3 mb-4">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                class="rounded-circle img-fluid" style="width: 100px;" />
-            </div>
-            <h4 class="mb-2">Julie L. Arsenault</h4>
-            <p class="text-muted mb-4">@Programmer <span class="mx-2">|</span> <a
-                href="#!">mdbootstrap.com</a></p>
-            <div class="mb-4 pb-2">
-              <button type="button" class="btn btn-outline-primary btn-floating">
-                <i class="fab fa-facebook-f fa-lg"></i>
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-floating">
-                <i class="fab fa-twitter fa-lg"></i>
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-floating">
-                <i class="fab fa-skype fa-lg"></i>
-              </button>
-            </div>
-            <button type="button" class="btn btn-primary btn-rounded btn-lg">
-              Message now
-            </button>
-            <div class="d-flex justify-content-between text-center mt-5 mb-2">
-              <div>
-                <p class="mb-2 h5">8471</p>
-                <p class="text-muted mb-0">Wallets Balance</p>
-              </div>
-              <div class="px-3">
-                <p class="mb-2 h5">8512</p>
-                <p class="text-muted mb-0">Income amounts</p>
-              </div>
-              <div>
-                <p class="mb-2 h5">4751</p>
-                <p class="text-muted mb-0">Total Transactions</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-            </c:forEach>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<div class="row row-cols-1 row-cols-md-2 g-4">
-		<div class="col">
-			<c:forEach var="doc" items="${vo }">
-				<div class="card">
-					<div class="row">
-						<div class="col-md-3 text-center">
-							<img src=/taejin/img/doc1.svg class="img-fluid p-3" alt="..." />
-						</div>
-						<div class="col-md-9">
-							<div class="card-body">
-								<h5 class="card-title">
-									<strong> ${doc.dname }</strong> <span>진료가능</span>
-								</h5>
-								<p class="card-text">${doc.dmajor }</p>
-								<p class="card-text">
-									<small class="text-muted"> <i class="bi bi-clock"></i>
-										09:00 ~ 18:00
-									</small>
-								</p>
-								<div class="reserve d-flex flex-start">
-									<button class="btn btn-primary me-1 " value="${doc.dnum}"
-										id="reserveBtn" type="button">예약하기</button>
+				<div class="d-flex justify-content-center mt-4">
+					<section class="vh-100" style="background-color: #eee;">
+						<div class="container py-3 h-50">
+							<div
+								class="row d-flex justify-content-center align-items-center h-100">
+								<div style="height: 30%;">
+									<h3 class="hanna m-3 text-center">예약하실 의사선생님 목록</h3>
+									<hr>
+									<div class="row hDetail justify-content-around"
+										style="height: 100%"></div>
 								</div>
+								<c:forEach var="doc" items="${vo }">
+									<div class="col-4 m-3">
+										<div class="card h-80" style="border-radius: 15px;">
+											<div class="card-body text-center">
+												<div class="mt-3 mb-4">
+													<img
+														src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+														class="rounded-circle img-fluid" style="width: 100px;" />
+												</div>
+												<h4 class="mb-2">${doc.dname }</h4>
+												<p class="text-muted mb-4">
+													전공<span class="mx-2">|</span>${doc.dmajor }
+												</p>
+												<div class="reserve" >
+												<input type="hidden" value="${doc.dnum }" id="dnum">
+												<input type="button" value="Reserve !"
+													class="btn btn-primary btn-rounded btn-lg" id="reserveBtn">
+													
+													
+													</div>
+											</div>
+										</div>
+									</div>
+								</c:forEach>
+								<ul class="pagination justify-content-center mt-3">
+									<c:choose>
+										<c:when test="${startPage < 6 }">
+											<li class="page-item disabled"><a class="page-link"
+												href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+											<!-- 	<li class="disable">이전으로</li> -->
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												href="choice_doctor?cPage=${startPage-1}&category=${category}&search=${search}">Previous</a></li>
+										</c:otherwise>
+									</c:choose>
+									<!-- 							<li class="page-item"><a class="page-link" href="#">1</a></li> -->
+									<!-- 							<li class="page-item"><a class="page-link" href="#">2</a></li> -->
+									<!-- 							<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
+									<c:forEach varStatus="i" begin="${startPage}" end="${endPage}"
+										step="1">
+										<c:choose>
+											<c:when test="${i.index == nowPage}">
+												<li class="page-item now"><a class="page-link"
+													style="background: #3478F5; color: white;">${i.index }</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a class="page-link"
+													href="choice_doctor?cPage=${i.index}&category=${category}&search=${search}">${i.index}</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+
+									<c:choose>
+										<c:when test="${endPage >= totalPage}">
+											<li class="page-item disabled"><a class="page-link"
+												aria-disabled="true">Next</a></li>
+										</c:when>
+										<c:when test="${totalPage > (nowPage+pagePerBlock)}">
+											<li>
+											<li class="page-item"><a class="page-link"
+												href="choice_doctor?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+										</c:when>
+										<c:otherwise>
+											<li>
+											<li class="page-item"><a class="page-link"
+												href="choice_doctor?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+										</c:otherwise>
+									</c:choose>
+									<!-- 							<li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+								</ul>
 							</div>
 						</div>
-					</div>
+					</section>
 				</div>
-			</c:forEach>
+			</div>
 		</div>
 	</div>
 </div>
-
 <script>
-	var a = ${doc.dnum}
-	console.log(a)
+	
 	$(function() {
-		$('.reserve').on('click','button',function() {
-				var dnum = $(this).val();
-				console.log(dnum)
-				location.href = '${pageContext.request.contextPath}/reserve/doctorCalendar?dnum='+ dnum
-				//location.href='${pageContext.request.contextPath}/reserve/reserveForm?dnum='+dnum
-			})
-		})
+		$('.reserve').on('click',function() {
+							var dnum = $(this).children('#dnum').val();
+							console.log(dnum)
+							location.href = '${pageContext.request.contextPath}/reserve/doctorCalendar?dnum='+ dnum
+							//location.href='${pageContext.request.contextPath}/reserve/reserveForm?dnum='+dnum
+						})
+	})
 </script>

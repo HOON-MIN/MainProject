@@ -24,7 +24,7 @@
    var arrc = [];
    var dict = {};
    var calendar;
-   
+   var sessionNum = ${sessionNUM}
    document.addEventListener('DOMContentLoaded', function() {
 	   console.log('dnum = ' ,dnum)
 	    var calendarEl = document.getElementById('calendar');
@@ -34,22 +34,24 @@
 	    		success:function(data){
 	    			// 예약이 있을경우
 	    			if(data.length != 0){
-	    				console.log(data)
+	    				console.log(' data = > ' ,data)
 	    			console.log(data[0].reserveVO[0].rdate)
 	    			console.log(data[0].reserveVO[0].memberVO.name)
 	    			var datas = data[0].reserveVO;
 	    			for(var i of datas){
+	    				console.log('i = ',i)
 	    				f = new Date(i.rdate)
-	    				console.log(typeof(f))
-	    				console.log('f = ' +f)
-	    				console.log('today = ' +today)
-	    				console.log(typeof(today))
+	    				//console.log(typeof(f))
+	    				//console.log('f = ' +f)
+	    				//console.log('today = ' +today)
+	    				//console.log(typeof(today))
 	    				// 월이 10 이하일경우 -> 9 => 09
 	    				if(f >= today){
-	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime+':00',
+	    					arr.push({'start' : dateFormat(i.rdate)+'T'+i.rtime,
 	    	    				'title' : ' '+i.memberVO.num+'. '+ i.memberVO.name,
 	    	    			});
 	    				}
+	    				console.log('arr = ',arr)
 	    			}
 		    
 		     calendar = new FullCalendar.Calendar(calendarEl, {
@@ -65,21 +67,17 @@
 		      editable: true,
 		      selectable: true,
 		      eventClick: function(info) {
-				
 				console.log('클릭이벤트! ' + info.event.title)
-				
-				/*$.ajax({
-					type:'GET',
-					url:,
-					data:{},
-					
-				})*/
 		      },
 		      dateClick: function(info){
 		    	  res = info.dateStr
 		    	  console.log('날짜 클릭! = '+res)
+		    	  if(sessionNum==null){
+		    		  var message = '로그인하세요!'
+		    		  alert(message)
+		    	  }else{
 		    	  location.href='${pageContext.request.contextPath}/reserve/reserveForm?dnum='+dnum+'&rdate='+res
-
+		    	  }
 		      },
 		      events:arr
 		    	  
@@ -119,7 +117,7 @@
    //날짜 변환 function
    function dateFormat(res){		
 		var date = new Date(res);
-   console.log('date => ' +date)
+   //console.log('date => ' +date)
 		var yyyy = date.getFullYear();
 		var mm = ('0' + (date.getMonth() + 1)).slice(-2);
 		var dd = ('0' + date.getDate()).slice(-2);

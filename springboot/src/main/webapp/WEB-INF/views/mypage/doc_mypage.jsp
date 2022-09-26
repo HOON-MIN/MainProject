@@ -40,9 +40,9 @@
 	    			for(var i of datas){
 	    				f = new Date(i.rdate)
 	    				console.log(typeof(f))
-	    				console.log('f = ' +f)
-	    				console.log('today = ' +today)
-	    				console.log(typeof(today))
+	    				//console.log('f = ' +f)
+	    				//console.log('today = ' +today)
+	    				//console.log(typeof(today))
 	    				// 월이 10 이하일경우 -> 9 => 09
 	    				if(f < today){
 	    					arr.push({'start' : i.rdate+'T'+i.rtime,
@@ -83,7 +83,7 @@
 		    calendar.render();
 		    
 	    			}else{
-	    				
+	    				console.log('예약없음!!')
 	    		// 예약이 없을경우
 			     calendar = new FullCalendar.Calendar(calendarEl, {
 			      headerToolbar: {

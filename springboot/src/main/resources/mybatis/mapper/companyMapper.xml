@@ -9,11 +9,6 @@
 	<select id="crnCheck" parameterType="map" resultType="int">
 		select count(*) from company where crn = #{crnv}
 	</select>
-	<!-- 업체 등록 -->
-<!-- 	<insert id="compInsert" parameterType="cvo"> -->
-<!-- 		insert into company -->
-<!-- 		values(company_seq.nextVal,#{crn},#{cpwd},#{ccate},0,sysdate,'베이직') -->
-<!-- 	</insert> -->
 
 
 <resultMap type="cvo" id="companyLoginResult">
