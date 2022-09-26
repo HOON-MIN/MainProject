@@ -22,9 +22,9 @@
 	crossorigin="anonymous"></script>
 <!-- ---------- -->
 
-<!-- JQuery -->
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<!-- ------ -->
+<!-- JQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+ <!-- -->
 
 <!-- list.jsp 에 넣을 스크립트, 링크 코드 -->
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"

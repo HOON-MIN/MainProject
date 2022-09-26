@@ -4,8 +4,10 @@ package com.main.ateam.member.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+
 import java.security.Provider.Service;
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,7 +95,7 @@ public class MemberController {
 
 	// 회원 로그인
 	@PostMapping("/memberLogin")
-	public ModelAndView MemberLogin(HttpSession session, MemberVO vo) {
+	public ModelAndView MemberLogin(HttpSession session, MemberVO vo,String oid) {
 		ModelAndView mav = new ModelAndView("redirect:/");
 		Map<String, String> map = new HashMap<>();
 		map.put("id", vo.getId());
@@ -108,6 +110,7 @@ public class MemberController {
 			session.setAttribute("sessionID", dto.getId());
 			session.setAttribute("sessionNUM", dto.getNum());
 			session.setAttribute("sessionNAME", dto.getName());
+			session.setAttribute("oid", oid);
 		}
 		return mav;
 	}
@@ -423,7 +426,6 @@ public class MemberController {
 		
 		session.setAttribute("sessionID", mdto.getId());
 		session.setAttribute("sessionNUM", numvo.getNum());
-		// session.setAttribute("sessionNUM", mdto.getNum()); //세션넘버 보류
 		session.setAttribute("sessionNAME", mdto.getName());
 		return mav;
 	}
