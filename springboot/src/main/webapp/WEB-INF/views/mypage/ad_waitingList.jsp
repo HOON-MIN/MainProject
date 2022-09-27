@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
-
+<h3 class="hanna p-4" style="text-align: center;">가입 대기목록</h3>
 			<%-- 리팩토링 해야 함 --%>
 			<table class="htable table table-hover table-borderless" id=""
 				style="text-align: center;">

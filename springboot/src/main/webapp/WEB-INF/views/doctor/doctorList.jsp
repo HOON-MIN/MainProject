@@ -78,8 +78,7 @@ nav a {
 					<div
 						class="d-flex flex-column align-items-start justify-content-center ps-5"
 						style="height: 160px;">
-						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
-							class="mb-3">
+						<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="/taejin/img/doc3.svg" style="height: 40%;" class="rounded-circle img-fluid">
 						<h5 class="hanna text-white">${sessionNAME }님</h5>
 						<span class="nanum text-white" style="font-size: 12px;">
 							일반회원 ・ <a href="">마이페이지</a>

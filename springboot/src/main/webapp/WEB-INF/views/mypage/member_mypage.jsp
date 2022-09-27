@@ -11,23 +11,32 @@
 
 
 <section style="background-color: #eee;">
-	<div class="container" style="width: 60%">
-		<div class="card mb-4">
 			<c:choose>
 				<c:when test="${sessionProfimg == null }">
+	<div class="container" style="width: 60%">
+		<div class="card mb-4">
 					<div class="card-body text-center">
-						<img src="/taejin/img/doc3.svg" class="rounded-circle img-fluid"
+						<img src="${pageContext.request.contextPath }/taejin/img/doc3.svg" class="rounded-circle img-fluid"
 							style="width: 150px;">
 					</div>
+					<h5 class="my-3 hanna text-center">${sessionNAME }</h5>
+			<div class="d-flex justify-content-center mb-2">
+				<button type="button" class="btn btn-primary"
+					onclick="location.href='updateMypageForm'" style="float: right">Modify
+				</button>
+
+			</div>
+		</div>
+	</div>
 				</c:when>
-				<c:when test="${sessionProfimg != null }">
+				<c:when test="${sessionNUM != null }">
+	<div class="container" style="width: 60%">
+		<div class="card mb-4">
 					<div class="card-body text-center">
 						<img
 							src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}"
 							class="rounded-circle img-fluid" style="width: 150px;">
 					</div>
-				</c:when>
-			</c:choose>
 			<h5 class="my-3 hanna text-center">${sessionNAME }</h5>
 			<div class="d-flex justify-content-center mb-2">
 				<button type="button" class="btn btn-primary"
@@ -37,6 +46,8 @@
 			</div>
 		</div>
 	</div>
+				</c:when>
+			</c:choose>
 
 	<div class="card mb-4">
 		<div class="card-body hanna">
