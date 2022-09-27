@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="mycontext" value="${pageContext.request.contextPath }"></c:set>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 .hcategory {
 	background-color: #3478f5;
@@ -27,11 +25,10 @@ a {
 
 
 	<!-- 컨텐츠 (연회색배경) -->
-	<div class="col-10 flex-column" style="margin: auto;">
+	<div class="col-10 flex-column" style="margin:auto;">
 		<div class="hboard pt-2 ps-3 pe-3 pb-3">
 			<!-- 안 쪽에 자신의 컨텐츠를 넣어주세요 -->
-			<article>
-				<!-- Pills navs -->
+<!-- Pills navs -->
 				<div style="margin-top: 15px;">
 					<ul class="nav nav-pills nav-justified mb-3" id="ex1"
 						role="tablist">
@@ -46,26 +43,29 @@ a {
 					</ul>
 				</div>
 				<!-- Pills navs -->
-
 				<!-- 일반회원가입 -->
-				<div class="tab-content">
-					<form id="mem-register-form" role="form">
-						<div class="text-center mb-3">
+				<div class="tab-content"style="height: 500px;">
+
+					
+						<div class="text-center mt-5">
 							<h3 style="height: 53px; margin-top: 36px;">Ateam 홈페이지에 오신것을
 								환영합니다.</h3>
 							<h5 style="height: 25px;">지금 회원 가입하신 후 Allcare의 다양한 서비스를
 								만나보세요.</h5>
-						</div>
+						
 
 						<!-- 회원가입버튼 -->
-						<div class="text-center mb-3" style="margin-top: 55px;">
-							<a type="button" class="btn btn-primary mb-4"
-								href="${mycontext}/member/joinForm"
-								style="width: 195px; height: 57px; text-align: inherit; font-size: 20px; font-weight: bold; padding-top: 14px;">
-								가입하기</a>
-						</div>
-					</form>
+						<div class="text-center mb-3" style="margin-top: 40px;">
+							<form id="mem-register-form" role="form">
 
+								<a type="button" class="btn btn-primary mb-4"
+									href="${mycontext}/member/joinForm"
+									style="width: 195px; height: 57px; text-align: inherit; font-size: 20px; font-weight: bold; padding-top: 14px;">
+									가입하기</a>
+							</form>
+						</div>
+
+					</div>
 					<form id="company-register-form" method="post"
 						action="${pageContext.request.contextPath }/admin/caInsert"
 						role="form">
@@ -113,15 +113,12 @@ a {
 						</div>
 						<div class="text-center mb-3" style="margin-top: 30px;">
 							<button type="button" id="crnBtn"
-								class="btn btn-primary mb-4"
+								class="btn btn-primary btn-block mb-4"
 								style="width: 195px; height: 57px; text-align: inherit; font-size: 20px; font-weight: bold; padding-top: 14px;"
 								disabled="disabled">인증</button>
 						</div>
 					</form>
 				</div>
-				<!-- Pills content -->
-			</article>
-
 		</div>
 	</div>
 	<!-- 컨텐츠 영역 끝 -->
