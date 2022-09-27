@@ -166,6 +166,7 @@
 			<id property="cnum" column="cnum" javaType="int" />
 			<result property="dname" column="dname" />
 			<result property="dmajor" column="dmajor" />
+			<result property="dnum" column="dnum"/>
 		</collection>
 	</resultMap>
 
@@ -213,7 +214,7 @@
 		select * from (
 		select rownum r_num, a.* from (
 		select
-		h.hname,h.otime,h.ctime, d.dname , d.dmajor from doctor d , hospital h
+		h.hname,h.otime,h.ctime, d.dname , d.dmajor ,d.dnum from doctor d , hospital h
 		where h.cnum =
 		d.cnum
 		<include refid="search" />
@@ -238,4 +239,9 @@
 			</when>
 		</choose>
 	</sql>
+	
+	
+	<select id="doctorDetailSpring" resultMap="doctorListSpringResultMap">
+	select h.hname ,h.hloc , h.otime , h.ctime , d.dname , d.dmajor , d.dnum from doctor d , hospital h where d.cnum = h.cnum and dnum=${d.dnum};
+	</select>
 </mapper>
