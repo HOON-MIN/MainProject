@@ -130,8 +130,7 @@
 
 <div class="container-fluid ">
 
-<div id="body">
-
+<div class="meditok">
 	<div id="chat-circle" class="btn btn-raised chatbot d-flex justify-content-center align-items-center bg-white">
 		<div id="chat-overlay"></div>
 		<img alt="챗봇" src="/img/bot.png">
