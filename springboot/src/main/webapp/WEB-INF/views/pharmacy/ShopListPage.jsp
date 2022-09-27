@@ -109,15 +109,23 @@ a {
 		<div class="col-10 flex-column">
 
 			<div class="hboard pt-2 ps-3 pe-3 pb-3">
-				<form method="get" action="ShopListPage" accept-charset="utf-8">
-						<select class="form-select" name="type" style="color: black;">
+				<form method="get" class="sForm" name="Frm" action="ShopListPage" accept-charset="utf-8"
+					style="display: flex; justify-content: center;">
+					<div class="input-group searchForm mt-3 mb-3 w-50">
+						<select class="form-select form-select-sm" name="type" aria-label=".form-select-sm example"
+						style="border: solid 1px #3478f5; width: 64px;">
 							<option selected="${type}" value="sname">검색 내용</option>
 							<option value="pname">상호명</option>
 							<option value="ploc">지역명</option>
 							<option value="pnum">관리번호</option>
 						</select> 
-						<input class="form-control me-2" type="text" id="searchf" name="searchf" style="color:#000;">
-					
+					 <input type="text" class="form-control" style="width: 180px;"
+							name="searchf" id="searchf">
+						<button type="submit" class="btn searchBtn">
+							<img alt="검색아이콘" src="/img/search.png">
+						</button>
+					</div>
+				</form>
 
 					
 				</form>

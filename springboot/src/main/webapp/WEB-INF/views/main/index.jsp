@@ -216,7 +216,7 @@
 									style="color: #565656; font-size: 16px; text-align: right;">
 									사진 하나로 지금 복용 중인 약의 성분을 <br>분석해드립니다.
 
-									<button class="mainBtn w-100" onclick="location='${mycontext}/member/COVIDcheck'">약 조회 하기</button>
+									<button class="mainBtn w-100" onclick="location='${mycontext}/drugSearchShape'">약 조회 하기</button>
 							</div>
 
 						</div>
@@ -363,7 +363,7 @@
 				</div>
 			</div>
 			<div style="position: absolute; right: 24px; bottom: 24px;">
-				<a href="#" class="hanna" style="text-decoration: none"> 전체보기 >>
+				<a href="${mycontext}/ansboard/abList" class="hanna" style="text-decoration: none"> 전체보기 >>
 				</a>
 			</div>
 		</div>
