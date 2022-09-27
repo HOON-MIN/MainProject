@@ -154,13 +154,11 @@ body {
 	right: 5%;
 	background-color: white;
 	border-radius: 40px;
-	position: fixed;
-	z-index: 99;
 }
 
 .chatbot img{
-	width: 60%; 
-	height : 60%;
+	width: 50px; 
+	height : 50px;
 }
 
 </style>
@@ -203,9 +201,9 @@ body {
 </div>
 <div id="body">
 
-	<div id="chat-circle" class="btn btn-raised ">
+	<div id="chat-circle" class="btn btn-raised chatbot d-flex justify-content-center align-items-center bg-white">
 		<div id="chat-overlay"></div>
-		<i class="material-icons">메디톡!</i>
+		<img alt="챗봇" src="/img/bot.png">
 	</div>
 
 	<div class="chat-box">
