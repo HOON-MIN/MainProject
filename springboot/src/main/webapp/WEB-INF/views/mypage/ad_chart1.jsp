@@ -51,7 +51,7 @@
 										<h6 class="m-0 font-weight-bold text-primary">전국 병원</h6>
 									</div>
 									<div>
-										<input type="button" value="click" id="jsonLoad">
+										<input type="button" value="click" id="jsonLoad" style="display: none;" >
 									</div>
 									<div class="card-body">
 										<!-- <div id="target"></div> -->
@@ -66,9 +66,7 @@
 
 							<div class="row">
 								<div style="width: 500px;">
-									<div>
-										<input type="button" value="click" id="jsonLoad">
-									</div>
+									
 									<div id="target"></div>
 									<div id="chart1"
 										style="width: 1200px; height: 600px; padding-top: 50px; margin-bottom: 100px;"></div>
@@ -319,7 +317,7 @@ var myBarChart = new Chart(ctx,config );
 	}) // - ajax
 
 	// 미르
-	$('#jsonLoad').click(function() {
+	$('#jsonLoad').ready(function() {
 		$.ajax({
 			url : 'http://192.168.0.63:9000/hospital/hospitalListChartJsonP?callback',
 			type : 'GET',
