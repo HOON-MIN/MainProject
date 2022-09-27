@@ -169,6 +169,22 @@
 			<result property="dnum" column="dnum"/>
 		</collection>
 	</resultMap>
+	<!-- doctorDetailSpring -->
+	<resultMap type="doctorVO" id="doctorListSpringDetail">
+	<id property="cnum" column="cnum" javaType="int" />
+			<result property="dname" column="dname" />
+			<result property="dmajor" column="dmajor" />
+			<result property="dnum" column="dnum"/>
+
+		<association property="hvo" >
+			<id property="cnum" column="cnum" />
+		<result property="hname" column="hname" />
+		<result property="hloc" column="hloc" />
+		<result property="otime" column="otime" />
+		<result property="ctime" column="ctime" />
+		<result property="r_num" column="r_num" />
+		</association>
+	</resultMap>
 
 
 	<select id="doctorCnt" resultType="int" parameterType="svo">
@@ -241,7 +257,7 @@
 	</sql>
 	
 	
-	<select id="doctorDetailSpring" resultMap="doctorListSpringResultMap">
-	select h.hname ,h.hloc , h.otime , h.ctime , d.dname , d.dmajor , d.dnum from doctor d , hospital h where d.cnum = h.cnum and dnum=${d.dnum};
+	<select id="doctorDetailSpring" resultMap="doctorListSpringDetail">
+	select h.hname,h.cnum ,h.hloc , h.otime , h.ctime , d.dname , d.dmajor , d.dnum from doctor d , hospital h where d.cnum = h.cnum and d.dnum=${dnum}
 	</select>
 </mapper>

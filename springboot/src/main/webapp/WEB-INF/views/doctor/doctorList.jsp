@@ -240,7 +240,8 @@ nav a {
 
 	$('.aclass').on('click',function(){
 		console.log($(this).children('#hiddenDnum').val());
-		console.log($(this).children().children().val());
+		var dnum= $(this).children('#hiddenDnum').val()
+		location.href = '${pageContext.request.contextPath}/doctor/doctorDetail?dnum='+dnum
 	})
 function atag(){
 	var d = $(this).children('#hiddenDnum').val();

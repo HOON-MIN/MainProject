@@ -123,9 +123,10 @@ public class DoctorController {
 		
 	}
 	
-	@GetMapping("doctorDetail")
-	public String doctorDetailPage(Model model) {
-		
+	@GetMapping("/doctorDetail")
+	public String doctorDetailPage(Model model,int dnum) {
+		DoctorVO vo = doctorservice.doctorDetailSpring(dnum);
+		model.addAttribute("dvo", vo);
 		return "doctor/doctorDetail";
 	}
 	
