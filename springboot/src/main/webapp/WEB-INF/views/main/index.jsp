@@ -112,6 +112,19 @@
 .cbtn {
 	border: solid 1px;
 }
+
+.reviewScore {
+	font-size: 14px;
+	background-color: #3478f5;
+	padding: 4px 12px;
+	border-radius: 16px;
+	color: white;
+}
+
+.cardLink {
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(10px);
+}
 </style>
 
 
@@ -237,34 +250,169 @@
 
 
 
-	<article class="row justify-content-center">
-		<div class="col-md-3">
-			<h4 class="text-white" style="height: 500px">타이틀</h4>
+	<article class="row justify-content-center mb-5">
+		<div class="col-md-2">
+			<h4 class="text-white hanna" style="height: 400px">
+				HeyDr. <br>이용후기리뷰
+				<br>
+				<br>
+				<a href="#" class="hanna"
+				style="text-decoration: none; color: white; font-size:16px;"> 전체보기 >> </a>
+			</h4>
+			
 		</div>
-		<div class="col-md-8">
-			<h4 class="text-white">Content</h4>
+		<div class="col-md-9 pe-3">
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-3">
+									<img src="/taejin/img/doc2.svg" alt="프로필사진"
+										style="width: 40px;">
+								</div>
+								<div class="col-8 d-flex flex-column">
+									<h6
+										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
+										Username</h6>
+									<small
+										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
+								</div>
+							</div>
+							<p class="card-text mt-3 nanum"
+								style="color: #232323; font-size: 16px; font-weight: 300;">With
+								supporting text below as a natural lead-in to additional
+								content. With supporting text below as a natural lead-in to
+								additional content.</p>
+							<span class="reviewScore mt-2">점수 : 10/10</span>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-3">
+									<img src="/taejin/img/doc2.svg" alt="프로필사진"
+										style="width: 40px;">
+								</div>
+								<div class="col-8 d-flex flex-column">
+									<h6
+										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
+										Username</h6>
+									<small
+										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
+								</div>
+							</div>
+							<p class="card-text mt-3 nanum"
+								style="color: #232323; font-size: 16px; font-weight: 300;">With
+								supporting text below as a natural lead-in to additional
+								content. With supporting text below as a natural lead-in to
+								additional content.</p>
+							<span class="reviewScore mt-2">점수 : 10/10</span>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-3">
+									<img src="/taejin/img/doc2.svg" alt="프로필사진"
+										style="width: 40px;">
+								</div>
+								<div class="col-8 d-flex flex-column">
+									<h6
+										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
+										Username</h6>
+									<small
+										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
+								</div>
+							</div>
+							<p class="card-text mt-3 nanum"
+								style="color: #232323; font-size: 16px; font-weight: 300;">With
+								supporting text below as a natural lead-in to additional
+								content. With supporting text below as a natural lead-in to
+								additional content.</p>
+							<span class="reviewScore mt-2">점수 : 10/10</span>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-3">
+									<img src="/taejin/img/doc2.svg" alt="프로필사진"
+										style="width: 40px;">
+								</div>
+								<div class="col-8 d-flex flex-column">
+									<h6
+										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
+										Username</h6>
+									<small
+										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
+								</div>
+							</div>
+							<p class="card-text mt-3 nanum"
+								style="color: #232323; font-size: 16px; font-weight: 300;">With
+								supporting text below as a natural lead-in to additional
+								content. With supporting text below as a natural lead-in to
+								additional content.</p>
+							<span class="reviewScore mt-2">점수 : 10/10</span>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-3">
+									<img src="/taejin/img/doc2.svg" alt="프로필사진"
+										style="width: 40px;">
+								</div>
+								<div class="col-8 d-flex flex-column">
+									<h6
+										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
+										Username</h6>
+									<small
+										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
+								</div>
+							</div>
+							<p class="card-text mt-3 nanum"
+								style="color: #232323; font-size: 16px; font-weight: 300;">With
+								supporting text below as a natural lead-in to additional
+								content. With supporting text below as a natural lead-in to
+								additional content.</p>
+							<span class="reviewScore mt-2">점수 : 10/10</span>
+						</div>
+					</div>
+				</div>
+				<!-- 카드 -->
+
+			</div>
+			<div style="position: absolute; right: 20%; bottom: 40px;"></div>
+
 		</div>
 	</article>
-
-
 	<div class="row justify-content-center">
 		<div class="col-md-5 testImg4">
-			<h4 class="hanna text-center m-3">의료 지식인</h4>
+			<h4 class="hanna text-center m-3">공지사항</h4>
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col">글쓴이</th>
 						<th scope="col">글제목</th>
+						<th scope="col">날짜</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
+						<th scope="row">공지사항 입니다</th>
+						<td>09-21</td>
 					</tr>
 					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
+						<th scope="row">새로운 뭐시기입니다</th>
+						<td>09-22</td>
 					</tr>
 					<tr>
 						<th scope="row">3</th>
@@ -278,7 +426,7 @@
 			</div>
 		</div>
 		<div class="col-md-6 testImg4">
-			<h4 class="hanna text-center m-3"> Dr.건강 </h4>
+			<h4 class="hanna text-center m-3">Dr.건강</h4>
 			<div class="card qacard mb-3" style="width: 90%; margin: auto;">
 				<h5 class="card-header">
 					<span class="hanna" style="color: #3478f5; font-size: 32px;">Q</span>
