@@ -277,28 +277,27 @@
 				</a>
 			</div>
 		</div>
+		
+<!-- 		메인페이지 - 조회수 가장 높은 Dr.건강  -->
 		<div class="col-md-6 testImg4">
-			<h4 class="hanna text-center m-3"> Dr.건강 </h4>
+			<h4 class="hanna text-center m-3"> 많이 본 Dr.건강 </h4>
 			<div class="card qacard mb-3" style="width: 90%; margin: auto;">
 				<h5 class="card-header">
 					<span class="hanna" style="color: #3478f5; font-size: 32px;">Q</span>
-					질문 제목
+					${vo.qtitle }
 				</h5>
 				<div class="card-body col-10 ">
-					<p class="card-text">With supporting text below as a natural
-						lead-in to additional content.</p>
-
+					<p class="card-text">${vo.qcont }</p>
 				</div>
+<%-- 			<c:forEach var="e" items="${ansList}"> --%>
 				<h5 class="card-header">
 					<span class="hanna" style="color: #3478f5; font-size: 32px;">A</span>
-					답변 제목
 				</h5>
 				<div class="card-body row">
 					<div class="col-10">
-						<h5 class="card-title">진료과 의사 이름</h5>
+						<h5 class="card-title">Dr. ${avo.dnum}</h5>
 						<p class="card-text">
-							답변내용 <br>With supporting text below as a natural lead-in to
-							additional content.
+							${avo.acont}
 						</p>
 					</div>
 
@@ -307,9 +306,10 @@
 					</div>
 
 				</div>
+<%-- 			</c:forEach> --%>
 			</div>
-			<div style="position: absolute; right: 24px; bottom: 24px;">
-				<a href="#" class="hanna" style="text-decoration: none"> 전체보기 >>
+			<div style="position: absolute; right: 24px; bottom: 24px; ">
+				<a href="${mycontext }/quesboard/qbList" class="hanna" style="text-decoration: none"> 전체보기 >>
 				</a>
 			</div>
 		</div>

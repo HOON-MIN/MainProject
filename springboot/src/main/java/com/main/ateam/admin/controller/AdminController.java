@@ -57,7 +57,7 @@ public class AdminController {
 	@RequestMapping(value = "/adminHospRegistList")
 	public String adminHospRegistList(Model m) {
 		List<HospitalVO> vo = adminService.ad_hospitalList();
-		m.addAttribute("list", vo);
+		m.addAttribute("list", vo); 
 		return "mypage/ad_hospital_list";
 	}
 // 	ㄴ> 전국 병원 목록에서 진료과목 별 비율 차트 

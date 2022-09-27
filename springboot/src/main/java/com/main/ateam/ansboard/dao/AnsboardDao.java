@@ -14,7 +14,7 @@ public interface AnsboardDao {
 	public List<AnsboardVO> getABmyList(int num );
 //	
 //	// 디테일
-//	public AnsboardVO getABDetail(int num);
+	public AnsboardVO getABDetail(int num);
 //
 //	// 수정
 //	public void abUpdate(AnsboardVO vo);

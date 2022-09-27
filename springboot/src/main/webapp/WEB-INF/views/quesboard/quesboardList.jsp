@@ -96,18 +96,18 @@ a {
 			<div>
 				<ul class="nav flex-column">
 					<li class=" nav-item pt-5 pb-2 ps-4"><a
-						class="hcateAllbtn nav-link active text-white" aria-current="page"
+						class="qcateAllbtn nav-link active text-white" aria-current="page"
 						href="#">카테고리 리스트</a></li>
 					<!-- 이안에 본인 카테고리 나눠주세요 -->
-					<%-- 	<c:forEach var="e" items="${hcate }" varStatus="status">
+					<c:forEach var="e" items="${qcate }" varStatus="status">
 						
-						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.hcate }" 
-							name="hbtn${status.index}"
+						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.qcate }" 
+<%-- 							name="hbtn${status.index}" --%>
 							><a 
-							class="hcatebtn nav-link text-white" href="#">${e.hcate }</a></li>
-						<input type="button" name="hbtn${status.index}"
-							value="${e.hcate }" class="hcatebtn btn btn-outline-primary" />
-					</c:forEach> --%>
+							class="qcatebtn nav-link text-white" href="#">${e.qcate }</a></li>
+<%-- 						<input type="button" name="qbtn${status.index}" --%>
+<%-- 							value="${e.qcate }" class="qcatebtn btn btn-outline-primary" /> --%>
+					</c:forEach> 
 				</ul>
 			</div>
 			<!-- 카테고리 리스트 끝 -->
