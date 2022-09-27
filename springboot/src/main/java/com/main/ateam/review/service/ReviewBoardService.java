@@ -84,6 +84,9 @@ public class ReviewBoardService {
 	public List<ReviewBoardVO> getHospitalReview(Map<String, String> map){
 		return dao.getHospitalReview(map);
 	}
+	public List<ReviewBoardVO> getReviewSearch(){
+		return dao.getReviewSearch();
+	}
 	
 	
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <style>
 .testImg {
@@ -214,7 +215,7 @@
 									style="color: #565656; font-size: 16px; text-align: right;">
 									사진 하나로 지금 복용 중인 약의 성분을 <br>분석해드립니다.
 
-									<button class="mainBtn w-100">약 조회 하기</button>
+									<button class="mainBtn w-100" onclick="location='${mycontext}/member/COVIDcheck'">약 조회 하기</button>
 							</div>
 
 						</div>
@@ -255,13 +256,14 @@
 				HeyDr. <br>이용후기리뷰
 				<br>
 				<br>
-				<a href="#" class="hanna"
+				<a href="${mycontext}/reviewboard/reviewboardlist" class="hanna"
 				style="text-decoration: none; color: white; font-size:16px;"> 전체보기 >> </a>
 			</h4>
 			
 		</div>
 		<div class="col-md-9 pe-3">
 			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<c:forEach var="i" items="${re}" begin="0" end="5">
 				<div class="col">
 					<div class="card" style="width: 18rem;">
 						<div class="card-body">
@@ -273,120 +275,24 @@
 								<div class="col-8 d-flex flex-column">
 									<h6
 										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
-										Username</h6>
+										${i.id}</h6>
 									<small
-										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
+										style="color: #898989; font-size: 12px; line-height: 1rem;">${fn:substring(i.udate,0 , 10)}</small>
 								</div>
 							</div>
 							<p class="card-text mt-3 nanum"
-								style="color: #232323; font-size: 16px; font-weight: 300;">With
-								supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content.</p>
-							<span class="reviewScore mt-2">점수 : 10/10</span>
+								style="color: #232323; font-size: 16px; font-weight: 300;">
+								<a href="${mycontext}/reviewboard/reviewboardlist" class="hanna"
+								style="text-decoration: none; color: rgb(0, 0, 0); font-size:16px;" >${fn:substring(i.cont,0 , 50)}...<p></a>
+								<span class="reviewScore mt-2">좋아요 수  ${i.likes}</span>
+								
+							</p>
+							
 						</div>
 					</div>
 				</div>
-				<div class="col">
-					<div class="card" style="width: 18rem;">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-3">
-									<img src="/taejin/img/doc2.svg" alt="프로필사진"
-										style="width: 40px;">
-								</div>
-								<div class="col-8 d-flex flex-column">
-									<h6
-										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
-										Username</h6>
-									<small
-										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
-								</div>
-							</div>
-							<p class="card-text mt-3 nanum"
-								style="color: #232323; font-size: 16px; font-weight: 300;">With
-								supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content.</p>
-							<span class="reviewScore mt-2">점수 : 10/10</span>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card" style="width: 18rem;">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-3">
-									<img src="/taejin/img/doc2.svg" alt="프로필사진"
-										style="width: 40px;">
-								</div>
-								<div class="col-8 d-flex flex-column">
-									<h6
-										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
-										Username</h6>
-									<small
-										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
-								</div>
-							</div>
-							<p class="card-text mt-3 nanum"
-								style="color: #232323; font-size: 16px; font-weight: 300;">With
-								supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content.</p>
-							<span class="reviewScore mt-2">점수 : 10/10</span>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card" style="width: 18rem;">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-3">
-									<img src="/taejin/img/doc2.svg" alt="프로필사진"
-										style="width: 40px;">
-								</div>
-								<div class="col-8 d-flex flex-column">
-									<h6
-										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
-										Username</h6>
-									<small
-										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
-								</div>
-							</div>
-							<p class="card-text mt-3 nanum"
-								style="color: #232323; font-size: 16px; font-weight: 300;">With
-								supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content.</p>
-							<span class="reviewScore mt-2">점수 : 10/10</span>
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card" style="width: 18rem;">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-3">
-									<img src="/taejin/img/doc2.svg" alt="프로필사진"
-										style="width: 40px;">
-								</div>
-								<div class="col-8 d-flex flex-column">
-									<h6
-										style="color: #232323; font-size: 16px; line-height: 0.5rem; margin-top: 8px;"'>
-										Username</h6>
-									<small
-										style="color: #898989; font-size: 12px; line-height: 1rem;">2022-09-22</small>
-								</div>
-							</div>
-							<p class="card-text mt-3 nanum"
-								style="color: #232323; font-size: 16px; font-weight: 300;">With
-								supporting text below as a natural lead-in to additional
-								content. With supporting text below as a natural lead-in to
-								additional content.</p>
-							<span class="reviewScore mt-2">점수 : 10/10</span>
-						</div>
-					</div>
-				</div>
+				</c:forEach>	
+				
 				<!-- 카드 -->
 
 			</div>
