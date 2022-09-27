@@ -9,8 +9,8 @@
 </head>
 <body>
 	<article>
-		<div class="col-10 flex-column">
-			<div class="hboard pt-2 ps-3 pe-3 pb-3">
+		<div class="col-10 flex-column" style="margin-left: 150px">
+			<div class="hboard pt-2 ps-3 pe-3 pb-3 text-center">
 				<!-- 안 쪽에 자신의 컨텐츠를 넣어주세요 -->
 				<div class="container-fluid" style="margin-left: 50px">
 					<div class="row">
@@ -69,7 +69,7 @@
 		</ul> -->
 
 					<div class="row">
-						<div class="col">
+						<div class="col" style="margin-left: 300px">
 
 							<table class="text-center table-light table-striped"
 								style="width: 70%">
@@ -94,7 +94,8 @@
 											<td>${e.drug_name}</td>
 											<%-- <td>${e.content}</td> --%>
 											<td>${e.drug_formulation}</td>
-											<td>${e.drug_component}${e.drug_company}<span
+											<td>${e.drug_component}</td>
+											<td>${e.drug_company}<span
 												class="float-end"> <c:choose>
 												<c:when
 															test="${plmn eq 'totaldruglist' or 'drugSearchList' or 'shapeSearch' }">
