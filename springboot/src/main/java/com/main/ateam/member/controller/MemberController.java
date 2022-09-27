@@ -48,9 +48,6 @@ import com.main.ateam.vo.SearchVO;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	/*
-	 * @Autowired
-	 private MailSendModule mailSendModule;*/
 	@Autowired
 	private memberInfoModule memberInfoModule;
 	@Autowired
