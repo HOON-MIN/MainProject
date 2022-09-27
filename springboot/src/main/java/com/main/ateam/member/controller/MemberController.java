@@ -32,7 +32,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.main.ateam.hospital.service.HospitalService;
-import com.main.ateam.member.memberEtc.MailSendModule;
+//import com.main.ateam.member.memberEtc.MailSendModule;
 import com.main.ateam.member.memberEtc.memberInfoModule;
 import com.main.ateam.member.service.MemberService;
 import com.main.ateam.modules.APILoginModule;
@@ -50,8 +50,9 @@ import com.main.ateam.vo.SearchVO;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	@Autowired
-	private MailSendModule mailSendModule;
+	/*
+	 * @Autowired
+	 private MailSendModule mailSendModule;*/
 	@Autowired
 	private memberInfoModule memberInfoModule;
 	@Autowired
@@ -111,6 +112,7 @@ public class MemberController {
 			session.setAttribute("sessionNUM", dto.getNum());
 			session.setAttribute("sessionNAME", dto.getName());
 			session.setAttribute("sessionProfimg", dto.getProfimg());
+			System.out.println("프로필이름 :" +dto.getProfimg());
 			session.setAttribute("oid", oid);
 		}
 		return mav;
@@ -312,14 +314,18 @@ public class MemberController {
 	@PostMapping(value = "/addMember")
 	public String addMember(MemberVO mvo, HttpServletRequest request) {
 		System.out.println("주민번호 : " + mvo.getSsn());
+		System.out.println("pwd : " + mvo.getPwd());
 		System.out.println("id : " + mvo.getId());
 		System.out.println("email : " + mvo.getEmail());
 		System.out.println("전화번호 : " + mvo.getTel());
+		System.out.println("이름 : " + mvo.getName());
 
 		int age = memberInfoModule.getAge(mvo.getSsn());
 		String gender = memberInfoModule.getGender(mvo.getSsn());
+		System.out.println("gender !!! " + gender);
 		mvo.setAge(age);
 		mvo.setGender(gender);
+		System.out.println("gender 2 " + mvo.getGender());
 		// request를 가지고 이미지의 경로를 받아서 출력
 		String img_path = "resources\\imgfile";
 		String r_path = request.getRealPath("/");
@@ -332,7 +338,6 @@ public class MemberController {
 		System.out.println("파일 타입 : " + contentType);
 		System.out.println("oriFn : " + oriFn);
 		StringBuffer path = new StringBuffer();
-		path.append(r_path).append(img_path).append("\\");
 		path.append(oriFn);
 		System.out.println("Fullpath : " + path);
 		// 추상경로(이미지를 저장할 경로) File 객체로 생성
@@ -401,12 +406,13 @@ public class MemberController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
-	@ResponseBody // 비동기 응답본문, url이 아닌 String값 자체 반환
-	public String mailCheck(String email) {
-		System.out.println("From Ajax Email : " + email);
-		return mailSendModule.joinEmail(email);
-	}
+	/*
+	 * @RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
+	 * 
+	 * @ResponseBody // 비동기 응답본문, url이 아닌 String값 자체 반환 public String
+	 * mailCheck(String email) { System.out.println("From Ajax Email : " + email);
+	 * return mailSendModule.joinEmail(email); }
+	 */
 
 	/*-----카카오로그인-----*/
 	@GetMapping(value = "/auth/kakao/callback")

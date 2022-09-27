@@ -8,7 +8,7 @@
 
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
-
+<h3 class="hanna p-4" style="text-align: center;">통계 페이지</h3>
 <!-- Bar Chart1 -->
 <div class="container">
 	<div class="card shadow mb-4">
