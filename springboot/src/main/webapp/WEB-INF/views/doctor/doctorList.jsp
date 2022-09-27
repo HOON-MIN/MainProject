@@ -63,40 +63,53 @@ a {
 <div class="container-fluid">
 	<div class="row justify-content-around">
 		<!-- 카테고리 영역 -->
-		<div class="col-2 hcategory ">
-			<!-- 카테고리 프로필 (이쪽 세션 처리 하셔야합니다)-->
-			<div
-				class="d-flex flex-column align-items-start justify-content-center ps-5"
-				style="height: 160px;">
-				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
-					class="mb-3">
-				<h5 class="hanna text-white">게스트 님</h5>
-				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
-					・ <a href="">마이페이지</a>
-				</span>
-			</div>
-			<!-- 카테고리 프로필 끝 -->
-
-			<!-- 카테고리 리스트 -->
-			<div>
-				<ul class="nav flex-column">
-					<li class=" nav-item pt-5 pb-2 ps-4">
-					<a
-						class="dcategoryAll nav-link active text-white"
-						aria-current="page" 
-						href="#">모든진료과</a></li>
-					<c:forEach var="e" items="${dcategory }">
-						<c:forEach var="f" items="${e.dmajor}">						
-						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.dmajor }">
-						<a
+				<div class="col-2 hcategory ">
+		<c:choose>
+			<c:when test="${sessionNUM != null}">
+					<div
+						class="d-flex flex-column align-items-start justify-content-center ps-5"
+						style="height: 160px;">
+						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+							class="mb-3">
+						<h5 class="hanna text-white">${sessionNAME }님</h5>
+						<span class="nanum text-white" style="font-size: 12px;">
+							일반회원 ・ <a href="">마이페이지</a>
+						</span>
+					</div>
+					
+			</c:when>
+			<c:when test="${sessionNUM == null}">
+					<div
+						class="d-flex flex-column align-items-start justify-content-center ps-5"
+						style="height: 160px;">
+						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+							class="mb-3">
+						<h5 class="hanna text-white">게스트 님</h5>
+						<span class="nanum text-white" style="font-size: 12px;">
+							게스트 ・ <a
+							href="${pageContext.request.contextPath }/member/joinForm">회원가입</a>
+						</span>
+					</div>
+					
+			</c:when>
+		</c:choose>
+		<div>
+			<ul class="nav flex-column">
+				<li class=" nav-item pt-5 pb-2 ps-4"><a
+					class="dcategoryAll nav-link active text-white" aria-current="page"
+					href="#">모든진료과</a></li>
+				<c:forEach var="e" items="${dcategory }">
+					<c:forEach var="f" items="${e.dmajor}">
+						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.dmajor }"><a
 							class="dcategoryBtn nav-link text-white" href="#">${e.dmajor}</a>
 						</li>
-						</c:forEach>
 					</c:forEach>
-				</ul>
-			</div>
-			<!-- 카테고리 리스트 끝 -->
+				</c:forEach>
+			</ul>
 		</div>
+	</div>
+
+
 		<!-- 카테고리 영역 끝 -->
 
 		<!-- 컨텐츠 (연회색배경) -->
@@ -106,7 +119,7 @@ a {
 
 				<form class="sForm" name="sForm" method="get" action="doctorList"
 					style="display: flex; justify-content: center;">
-					
+
 					<input type="hidden" name="searchreset" value="1" hidden="hidden">
 					<div class="input-group searchForm mt-3 mb-3 w-50">
 						<select class="form-select form-select-sm " name="category"
@@ -116,8 +129,8 @@ a {
 							<option value="dmajor">진료과</option>
 							<option value="dname">의사명</option>
 							<option value="hname">병원명</option>
-						</select>
-						<input type="text" class="form-control" style="width: 180px;" name="search" id="dsearch">
+						</select> <input type="text" class="form-control" style="width: 180px;"
+							name="search" id="dsearch">
 						<button type="submit" class="btn searchBtn">
 							<img alt="검색아이콘" src="/img/search.png">
 						</button>
@@ -125,7 +138,7 @@ a {
 				</form>
 				<div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
 					<c:forEach var="e" items="${dlist }">
-					<c:forEach var="f" items="${e.doctorVO }">
+						<c:forEach var="f" items="${e.doctorVO }">
 							<div class="col-md-5">
 								<div class="card"
 									style="width: 400px; height: 180px; margin: auto;">
@@ -136,13 +149,13 @@ a {
 										<div class="col-9">
 											<div class="card-body">
 												<h5 class="card-title">
-												
+
 													<strong> ${f.dname} 의사</strong>
-													
+
 												</h5>
 												<p class="card-text">
-												${e.hname}	<br> <small class="text-muted"> ${e.otime}~${e.ctime}		
-										</small>
+													${e.hname} <br> <small class="text-muted">
+														${e.otime}~${e.ctime} </small>
 												</p>
 
 
@@ -155,8 +168,8 @@ a {
 									</div>
 								</div>
 							</div>
-							</c:forEach>
-							</c:forEach>
+						</c:forEach>
+					</c:forEach>
 				</div>
 				<!-- 페이지 네이션 -->
 				<ul class="pagination justify-content-center p-3">
@@ -214,11 +227,12 @@ a {
 </div>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-
 	$('.dcategoryAll').click(function() {
 		location.href = '${pageContext.request.contextPath}/doctor/doctorList'
 	});
-	$('.dcategoryBtn').click(function() {
+	$('.dcategoryBtn')
+			.click(
+					function() {
 						var dcategory = $(this).text();
 						console.log(dcategory);
 						// 		if( $(this).val() == 'all'){
