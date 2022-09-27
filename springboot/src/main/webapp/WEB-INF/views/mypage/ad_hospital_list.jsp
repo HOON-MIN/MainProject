@@ -4,7 +4,7 @@
 
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 						
-
+<h3 class="hanna p-4" style="text-align: center;">등록된 병원</h3>
 									<%-- 리팩토링 해야 함 --%>
 									<table class="htable table table-hover table-borderless"
 										style="text-align: center;">

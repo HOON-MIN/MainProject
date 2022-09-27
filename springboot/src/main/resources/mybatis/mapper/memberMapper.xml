@@ -23,7 +23,7 @@
 <!-- 병훈 -->
 <insert id="addMember" parameterType="memberVO">
 	insert into member values(member_seq.nextVal,#{id},#{pwd},#{name},#{ssn},
-							  #{age},#{addr},#{gender},#{tel},#{email},#{profimg},#{addr},sysdate)
+							  #{age},#{gender},#{tel},#{email},#{addr},#{profimg},sysdate)
 </insert>
 
 

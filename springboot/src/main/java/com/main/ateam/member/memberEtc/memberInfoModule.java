@@ -12,6 +12,7 @@ public class memberInfoModule {
         System.out.println("나이계산 메서드");
         System.out.println("ssn"+ssn);
     	char ch = ssn.charAt(7);
+    	System.out.println("나이 = >" + ch);
         int age = Integer.parseInt(ssn.substring(0,2)); 
         LocalDate now = LocalDate.now();
         int year = now.getYear();
