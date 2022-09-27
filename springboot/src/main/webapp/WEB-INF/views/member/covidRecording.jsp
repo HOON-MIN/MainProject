@@ -1,7 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<style>
+#loading {
+ width: 100%;  
+ height: 100%;  
+ top: 30%;
+ left: 0px;
+ position: fixed;  
+ display: block;  
+ opacity: 0.7;  
+ background-color: #fff;  
+ z-index: 99;  
+ display: none;
+ text-align: center; 
+ }
+  
+#loading-image {  
+ position: absolute;  
+ top: 30%;  
+ left: 40%; 
+ z-index: 100; }
+</style>
 <div class="container-fluid covidUpload p-5">
 	<div class="row">
 		<div class="col">
@@ -80,6 +100,8 @@
 	</div>
 </div>
 
+<div id="loading" class="loading">
+<img src="/images/dhlee/loading.gif"></div>
 <script>
 $(window).ready(function(){
 	var sessionID = "<c:out value='${sessionID}'/>";
@@ -89,5 +111,8 @@ $(window).ready(function(){
 	}
 });
 
+$(document).ready(function() {
+    $('#loading').hide();
+});
 </script>
 <%-- 본문 끝 --%>
