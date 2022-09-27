@@ -6,42 +6,12 @@ a:link {
 	text-decoration: none;
 }
 
-table img {
-	width: 80px;
-}
 
 #datatablesSimple a {
 	text-decoration: none;
 	color: black;
 }
 
-table tbody tr {
-	cursor: pointer;
-}
-
-table tfoot ol.paging {
-	margin-left: 30%;
-	list-style: none;
-}
-
-table tfoot ol.paging li {
-	float: left;
-	margin-right: 8px;
-}
-
-table tfoot ol.paging li a {
-	display: block;
-	padding: 3px 7px;
-	border: 1px solid #00B3DC;
-	color: #2f313e;
-	font-weight: bold;
-}
-
-table tfoot ol.paging li a:hover {
-	background: #00B3DC;
-	color: white;
-	font-weight: bold;
-}
 
 .disable {
 	padding: 3px 7px;
@@ -60,19 +30,47 @@ table tfoot ol.paging li a:hover {
 .hcategory {
 	background-color: #3478f5;
 	padding-top: 40px;
-	height: 100%;
 }
 
 .hboard {
 	background-color: #efefef;
 	border-radius: 8px;
-	margin: 40px;
 }
 
 a {
 	text-decoration: none;
 	color: white;
 }
+
+.htable {
+		width: 100%;
+	}
+	
+	.htable thead {
+		height: 40px;
+		color: grey;
+	}
+	
+	.htable th {
+		font-weight: lighter;
+		padding-left: 12px;
+	}
+	
+	.htable tbody {
+		border-collapse: collapse;
+		border-radius: 16px;
+		box-shadow: 0px 0px 8px #ababab;
+	}
+	
+	.htable td {
+		padding: 14px 12px;
+		font-size: 14px;
+	}
+	
+	.htable td>a {
+		color: #232323;
+		font-weight: bold;
+	}
 </style>
 
 <div class="container-fluid">
@@ -95,19 +93,14 @@ a {
 			<!-- 카테고리 리스트 -->
 			<div>
 				<ul class="nav flex-column">
-					<li class=" nav-item pt-5 pb-2 ps-4"><a
-						class="hcateAllbtn nav-link active text-white" aria-current="page"
-						href="#">카테고리 리스트</a></li>
+					<li class=" nav-item ms-3 pt-5 pb-2 ps-4 mb-4"><a href="#"><strong>질문 카테고리</strong></a></li>
 					<!-- 이안에 본인 카테고리 나눠주세요 -->
-					<%-- 	<c:forEach var="e" items="${hcate }" varStatus="status">
+					<c:forEach var="e" items="${qcate }" varStatus="status">
 						
-						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.hcate }" 
-							name="hbtn${status.index}"
+						<li class=" nav-item pt-2 pb-2 ps-4" value= "${e.qcate }" 
 							><a 
-							class="hcatebtn nav-link text-white" href="#">${e.hcate }</a></li>
-						<input type="button" name="hbtn${status.index}"
-							value="${e.hcate }" class="hcatebtn btn btn-outline-primary" />
-					</c:forEach> --%>
+							class="qcatebtn nav-link text-white" href="#">${e.qcate }</a></li>
+					</c:forEach>
 				</ul>
 			</div>
 			<!-- 카테고리 리스트 끝 -->
@@ -119,28 +112,29 @@ a {
 			<div class="hboard pt-2 ps-3 pe-3 pb-3">
 				<!-- 안 쪽에 자신의 컨텐츠를 넣어주세요 -->
 				<header>
-					<h1>의학지식인</h1>
+					<h3 class="hanna p-4" style="text-align: center;">의학 지식인</h3>
 				</header>
-				<div class="panel">
-					<div class="panel-body">
-						<div class="btns" style="text-align: center;">
-							<h4>질문 카테고리</h4>
-							<c:forEach var="e" items="${qcate }" varStatus="status">
-								<input type="button" name="hbtn${status.index}"
-									value="${e.qcate }" class="qcatebtn btn btn-outline-primary" />
-								<c:choose>
-									<c:when test="${status.index == 8}">
-										<p style="margin: 5px;"></p>
-									</c:when>
-								</c:choose>
-							</c:forEach>
-						</div>
-						<br>
-					</div>
-				</div>
+				<form class="sForm" name="sForm" method="get" action="doctorList"
+					style="display: flex; justify-content: center;">
 
-				<table class="table1 table table-hover" style="text-align: center;">
-					<thead>
+					<input type="hidden" name="searchreset" value="1" hidden="hidden">
+					<div class="input-group searchForm mt-3 mb-3 w-50">
+						<select class="form-select form-select-sm " name="category"
+							id="category" aria-label=".form-select-sm example"
+							style="border: solid 1px #3478f5; width: 64px;">
+							<option value="all" selected>카테고리</option>
+							<option value="dmajor">진료과</option>
+							<option value="dname">의사명</option>
+							<option value="hname">병원명</option>
+						</select> <input type="text" class="form-control" style="width: 180px;"
+							name="search" id="dsearch">
+						<button type="submit" class="btn searchBtn">
+							<img alt="검색아이콘" src="/img/search.png">
+						</button>
+					</div>
+				</form>
+				<table class="table1 htable table-hover" ">
+					<thead class="hanna">
 						<tr>
 							<th width="50px;">No.</th>
 							<th>카테고리</th>
@@ -167,10 +161,9 @@ a {
 						</c:forEach>
 						<%-- for end --%>
 					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="5">
-								<ol class="paging">
+				</table>
+				
+							<%-- 	<ol class="paging">
 									<c:choose>
 										<c:when test="${startPage < 6 }">
 											<li class="disable">이전으로</li>
@@ -207,12 +200,9 @@ a {
 												href="qbList?cPage=${endPage+1 }&category=${category}&search=${search}">다음으로</a></li>
 										</c:otherwise>
 									</c:choose>
-								</ol>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="5">
-								<form class="sForm" name="sForm" method="get" action="qbList">
+								</ol> --%>
+												
+								<%-- <form class="sForm" name="sForm" method="get" action="qbList">
 									<input type="hidden" name="searchreset" value="1"> <select
 										name="category" id="category">
 										<option value="qtitle">제목</option>
@@ -226,13 +216,9 @@ a {
 								<p style="margin: 5px;"></p> <c:if test="${sessionID != null}">
 									<input type="button" value="질문하기" id="writeBtn"
 										class="btn btn-primary">
-								</c:if>
+								</c:if> --%>
 
-							</td>
-						</tr>
-
-					</tfoot>
-				</table>
+				
 			</div>
 		</div>
 		<!-- 컨텐츠 영역 끝 -->
