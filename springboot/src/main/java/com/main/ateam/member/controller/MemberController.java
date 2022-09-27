@@ -32,7 +32,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.main.ateam.hospital.service.HospitalService;
-//import com.main.ateam.member.memberEtc.MailSendModule;
 import com.main.ateam.member.memberEtc.memberInfoModule;
 import com.main.ateam.member.service.MemberService;
 import com.main.ateam.modules.APILoginModule;
@@ -49,9 +48,6 @@ import com.main.ateam.vo.SearchVO;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	/*
-	 * @Autowired
-	 private MailSendModule mailSendModule;*/
 	@Autowired
 	private memberInfoModule memberInfoModule;
 	@Autowired

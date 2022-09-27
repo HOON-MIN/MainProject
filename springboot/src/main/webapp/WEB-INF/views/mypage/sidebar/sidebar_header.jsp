@@ -49,7 +49,7 @@
 					<div
 						class="d-flex flex-column align-items-start justify-content-center ps-5"
 						style="height: 160px;">
-						<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="/taejin/img/doc3.svg" style="height: 40%;" class="rounded-circle img-fluid">
+						<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}"  style="height: 40%;" class="rounded-circle img-fluid">
 						<h5 class="hanna text-white">${sessionNAME }님</h5>
 						<span class="nanum text-white" style="font-size: 12px;">
 							일반회원 ・ <a
