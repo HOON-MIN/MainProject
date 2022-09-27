@@ -266,29 +266,36 @@
 			</div>
 		</div>
 		<div class="col-md-6 testImg4">
-			<h4 class="hanna text-center m-3">의료 지식인</h4>
-			<table class="table">
-				<thead>
-					<tr>
-						<th scope="col">글쓴이</th>
-						<th scope="col">글제목</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td colspan="2">Larry the Bird</td>
-					</tr>
-				</tbody>
-			</table>
+			<h4 class="hanna text-center m-3"> Dr.건강 </h4>
+			<div class="card qacard mb-3" style="width: 90%; margin: auto;">
+				<h5 class="card-header">
+					<span class="hanna" style="color: #3478f5; font-size: 32px;">Q</span>
+					질문 제목
+				</h5>
+				<div class="card-body col-10 ">
+					<p class="card-text">With supporting text below as a natural
+						lead-in to additional content.</p>
+
+				</div>
+				<h5 class="card-header">
+					<span class="hanna" style="color: #3478f5; font-size: 32px;">A</span>
+					답변 제목
+				</h5>
+				<div class="card-body row">
+					<div class="col-10">
+						<h5 class="card-title">진료과 의사 이름</h5>
+						<p class="card-text">
+							답변내용 <br>With supporting text below as a natural lead-in to
+							additional content.
+						</p>
+					</div>
+
+					<div class="col-2">
+						<img src="/taejin/img/doc3.svg">
+					</div>
+
+				</div>
+			</div>
 			<div style="position: absolute; right: 24px; bottom: 24px;">
 				<a href="#" class="hanna" style="text-decoration: none"> 전체보기 >>
 				</a>
