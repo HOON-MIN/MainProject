@@ -237,8 +237,8 @@ $("#checkbtn").click(function(){
 		console.log(is_respiratory+":"+is_fever);
 		$("#respiratory_condition").val(is_respiratory);
 		$("#fever_or_muscle_pain").val(is_fever);
-		alert($('#recfile').attr('src'));
 		$('#base64str').val($('#recfile').attr('src'))
+		$('#loading').show();   	
 		$(".recForm").submit();
 	}else{
 		console.log("form is exists");
