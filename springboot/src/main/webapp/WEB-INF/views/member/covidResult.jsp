@@ -133,7 +133,7 @@
 									<p id="subment">가까운 병원에서 검사 후 자가격리하세요.</p>
 									<div class="covidUpload" style="display:flex; justify-content: right; background-color: #fff">
 										<button style="width:50%; height:2rem; margin-top:10px;" onclick="location='COVIDcheck'">다시검사하기</button>
-										<button style="width:50%; height:2rem; margin-top:10px;">병원예약하기</button>
+										<button style="width:50%; height:2rem; margin-top:10px;" onclick="location.href='http://192.168.0.50:3000/'">병원예약하기</button>
 									</div>
 								</div>
 							</div>

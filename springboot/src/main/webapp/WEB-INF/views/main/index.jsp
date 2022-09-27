@@ -362,7 +362,7 @@
 				</div>
 			</div>
 			<div style="position: absolute; right: 24px; bottom: 24px;">
-				<a href="${mycontext}/ansboard/abList" class="hanna" style="text-decoration: none"> 전체보기 >>
+				<a href="${mycontext}/quesboard/qbList" class="hanna" style="text-decoration: none"> 전체보기 >>
 				</a>
 			</div>
 		</div>
