@@ -12,7 +12,10 @@ import com.main.ateam.vo.NoticeVO;
 public interface AdminDao {
 
 	public List<MemberVO> memberList();
-	public List<HospitalVO> ad_hospitalList();
+	public List<HospitalVO> ad_hospitalList(Map<String, Integer> map);
+	
+	public int ad_hospitalList_totalCount();
+	
 	public List<HospitalVO> waitingList();
 	public void agree(int num); 
 	public List<HospitalVO> adminBarchart();

@@ -22,9 +22,18 @@ public class AdminService {
 	public List<MemberVO> memberList(){
 		return adminDao.memberList();
 	}
-	public List<HospitalVO> ad_hospitalList(){
-		return adminDao.ad_hospitalList();
+	
+	
+	
+	public List<HospitalVO> ad_hospitalList(Map<String, Integer> map){
+		return adminDao.ad_hospitalList(map);
 	}
+	
+	public int ad_hospitalList_totalCount() {
+		return adminDao.ad_hospitalList_totalCount();
+	}
+	
+	
 	public List<HospitalVO> waitingList(){
 		return adminDao.waitingList();
 	}
