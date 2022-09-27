@@ -14,6 +14,7 @@ import Mainpage from "./page/Mainpage";
 import DoctorListPage from "./page/DoctorListPage";
 import DoctorDetailPage from "./page/DoctorDetailPage";
 import ReservationPage from "./page/ReservationPage";
+import drugDeliverPage from "./page/drugDeliverPage";
 import AuthRoute from "./component/AuthRoute";
 
 function App() {
@@ -137,17 +138,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Mainpage />} />
         {
-          // 로그인 여부로 페이지 제한
+          // v6 AuthRoute 로그인 여부로 페이지 제한
           <Route
             path="/dlist"
             element={
               <AuthRoute
                 authenticated={authenticated}
-                component={<DoctorListPage />}
+                component={<drugDeliverPage />}
               />
             }
           />
         }
+
+        <Route path="/delivery" element={<drugDeliverPage />} />
         <Route path="/detail/:dnum" element={<DoctorDetailPage />} />
         <Route path="reservation/:dnum" element={<ReservationPage />} />
       </Routes>

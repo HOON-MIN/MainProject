@@ -21,6 +21,7 @@ const Mainpage = () => {
           <Link to="/dlist">
             <button className="btnMain3">예약 하기</button>
           </Link>
+          <br />
         </div>
       </div>
     </div>
