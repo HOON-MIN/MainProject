@@ -73,15 +73,24 @@ a {
 		<!-- 카테고리 영역 -->
 		<div class="col-2 hcategory ">
 			<!-- 카테고리 프로필 -->
-			<div
-				class="d-flex flex-column align-items-start justify-content-center ps-5"
+			<div class="d-flex flex-column align-items-start justify-content-center ps-5"
 				style="height: 160px;">
-				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
-					class="mb-3">
-				<h5 class="hanna text-white">게스트 님</h5>
+				<c:choose>
+				<c:when test="${sessionNUM != null }">
+				<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="/taejin/img/doc3.svg" style="height: 40%;" class="rounded-circle img-fluid">
+				<h5 class="hanna text-white">${sessionNAME } 님</h5>
 				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
 					・ <a href="">마이페이지</a>
 				</span>
+				</c:when>
+				<c:when test="${sessionNUM == null }">
+				<img src="/taejin/img/doc3.svg" alt="/taejin/img/doc3.svg" style="height: 40%;" class="rounded-circle img-fluid">
+				<h5 class="hanna text-white">게스트 님</h5>
+				<span class="nanum text-white" style="font-size: 12px;"> 
+				<a href="${pageContext.request.contextPath }/member/memberLoginForm">로그인</a> ・ <a href="${pageContext.request.contextPath }/member/joinForm">회원가입</a>
+				</span>
+				</c:when>
+				</c:choose>
 			</div>
 			<!-- 카테고리 프로필 끝 -->
 			<!-- 카테고리 리스트 -->
@@ -109,23 +118,15 @@ a {
 		<div class="col-10 flex-column">
 
 			<div class="hboard pt-2 ps-3 pe-3 pb-3">
-				<form method="get" class="sForm" name="Frm" action="ShopListPage" accept-charset="utf-8"
-					style="display: flex; justify-content: center;">
-					<div class="input-group searchForm mt-3 mb-3 w-50">
-						<select class="form-select form-select-sm" name="type" aria-label=".form-select-sm example"
-						style="border: solid 1px #3478f5; width: 64px;">
+				<form method="get" action="ShopListPage" accept-charset="utf-8">
+						<select class="form-select" name="type" style="color: black;">
 							<option selected="${type}" value="sname">검색 내용</option>
 							<option value="pname">상호명</option>
 							<option value="ploc">지역명</option>
 							<option value="pnum">관리번호</option>
 						</select> 
-					 <input type="text" class="form-control" style="width: 180px;"
-							name="searchf" id="searchf">
-						<button type="submit" class="btn searchBtn">
-							<img alt="검색아이콘" src="/img/search.png">
-						</button>
-					</div>
-				</form>
+						<input class="form-control me-2" type="text" id="searchf" name="searchf" style="color:#000;">
+					
 
 					
 				</form>
