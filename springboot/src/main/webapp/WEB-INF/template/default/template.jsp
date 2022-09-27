@@ -9,8 +9,6 @@
 <TITLE>Hey Dr.</TITLE>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
 <!-- BootStrap5 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -71,6 +69,8 @@
 <!-- 0918 add : dhlee 추가 -->
 <link href="/css/dhlee/covidRecording.css?ver=1.9" rel="stylesheet" />
 <link href="/css/dhlee/kakao_addinfo.css?" rel="stylesheet" />
+<link href="/mireu/css/chatbot.css?" rel="stylesheet" />
+<link href="/css/chatCircle.css?" rel="stylesheet" />
 
 <!--  cdn -->
 <script src="/taejin/js/scripts.js"></script>
@@ -99,6 +99,7 @@ body {
 <script src="/js/dhlee/covidRecording.js?"></script>
 <script src="/js/dhlee/recording.js?"></script>
 <script src="/js/dhlee/kakao_addinfo.js?"></script>
+<script src="/js/chatbot.js"></script>
 </html>
 
 

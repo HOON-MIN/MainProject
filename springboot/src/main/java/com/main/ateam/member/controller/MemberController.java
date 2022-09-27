@@ -38,7 +38,6 @@ import com.main.ateam.member.service.MemberService;
 import com.main.ateam.modules.APILoginModule;
 import com.main.ateam.modules.Base64Module;
 import com.main.ateam.modules.GsonModule;
-import com.main.ateam.modules.SftpModule;
 import com.main.ateam.modules.UbuntuShellModule;
 import com.main.ateam.vo.CovidRecordVO;
 import com.main.ateam.vo.FileVO;
@@ -60,8 +59,6 @@ public class MemberController {
 	/* 0918 add: 이동환 Autowired 추가 */
 	@Autowired
 	private APILoginModule apiloginmodule;
-	@Autowired
-	private SftpModule sftpmodule;
 	@Autowired
 	private Base64Module base64module;
 	@Autowired
@@ -484,7 +481,30 @@ public class MemberController {
 		String jsonpath = Paths.get(System.getProperty("user.dir"), "src/main/resources/static/upload\\json")
 				.toString();
 		MemberVO uservo = memberService.userdetail(userID);
-
+		//.wav 로컬 파일 초기화
+		File wavexist = new File(filepath + "\\" + filename);
+		if(wavexist.exists()) {
+			if(wavexist.delete()){
+    			System.out.println("기존 음성파일 삭제성공.");
+    		}else{
+    			System.out.println("기존 음성파일 삭제실패.");
+    		}
+		}else {
+			System.out.println("#COVIDWAV : 새로 업도르된 음성데이터");
+		}
+		System.out.println("#########################################################");
+		//.json 로컬 파일 초기화
+		File jsonexist = new File(filepath + "\\" + userID+".json");
+		if(jsonexist.exists()) {
+			if(jsonexist.delete()){
+    			System.out.println("기존 JSON파일 삭제성공.");
+    		}else{
+    			System.out.println("기존 JSON파일 삭제실패.");
+    		}
+		}else {
+			System.out.println("#COVIDJSON : 새로 업도르된 JSON데이터");
+		}
+			
 		System.out.println("JAVAPATH 실행!=>" + filepath);
 
 		// Base64객체를 복호화한 후 파일 저장
