@@ -251,6 +251,7 @@ a {
 	});
 	$('.hcatebtn').click(function() {
 		var hcatename = $(this).text();
+		console.log(hcatename)
 // 		if( $(this).val() == 'all'){
 		if( hcatename == '모든 진료과'){
 			location.href='${pageContext.request.contextPath}/hospital/hospitalList'
@@ -260,3 +261,4 @@ a {
 		$("#hsearch").val(hcatename);
 		$(".sForm").submit();
 	});
+	</script>
