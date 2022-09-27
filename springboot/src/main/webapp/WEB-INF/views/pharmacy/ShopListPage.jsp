@@ -117,10 +117,8 @@ a {
 							<option value="pnum">관리번호</option>
 						</select> 
 						<input class="form-control me-2" type="text" id="searchf" name="searchf" style="color:#000;">
-						<button type="submit" class="btn" name="searchv" id="searchv">
-							<img alt="검색아이콘" src="/img/search.png">
-						</button>
-					</div>
+					
+
 					
 				</form>
 
@@ -198,6 +196,7 @@ a {
 									href="${pageContext.request.contextPath}/pharmacy/ShopListPage?cPage=${totalPage }&type=${type }&searchf=${searchf}">Next</a></li>
 							</c:otherwise>
 						</c:choose>
+					</div>
 				</div>
 			</div>
 		</div>

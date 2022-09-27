@@ -25,5 +25,6 @@ public interface ReviewBoardDao {
 	
 	
 	public List<ReviewBoardVO> getHospitalReview(Map<String, String> map);
+	public List<ReviewBoardVO> getReviewSearch();
 	
 }

@@ -89,5 +89,9 @@ where rnum=#{rnum}
 	select * from reviewboard  where hname = #{name}
 </select>
 
+<select id="getReviewSearch"  resultType="ReviewBoardVO">
+	select * from reviewboard  order by udate DESC
+</select>
+
 
 </mapper>

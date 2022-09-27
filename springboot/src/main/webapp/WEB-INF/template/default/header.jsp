@@ -42,14 +42,14 @@ nav {
 					href="${mycontext }/hospital/hospitalList">진료과</a></li>
 				<li class="nav-item"><a class="nav-link  pe-5"
 					href="${mycontext }/doctor/doctorList"">의료진</a></li>
-				<li class="nav-item"><a class="nav-link  pe-5" href="#">약국</a></li>
+				<li class="nav-item"><a class="nav-link  pe-5" href="${mycontext }/pharmacy/ShopListPage">약국</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#"
 					id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
 					aria-expanded="false"> 의료서비스 </a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<li><a class="dropdown-item" href="#">코로나진단</a></li>
-						<li><a class="dropdown-item" href="#">약조회서비스</a></li>
+						<li><a class="dropdown-item" href="${mycontext}/member/COVIDcheck">코로나진단</a></li>
+						<li><a class="dropdown-item" href="${mycontext}/drugSearchShape">약조회서비스</a></li>
 						<li><a class="dropdown-item" href="http://localhost:3000/" target='_blank'>비대면진료서비스</a></li>
 					</ul></li>
 			</ul>
