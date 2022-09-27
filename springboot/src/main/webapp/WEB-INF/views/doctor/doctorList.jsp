@@ -14,11 +14,20 @@
 	margin: 40px;
 }
 
-a {
+nav a {
 	text-decoration: none;
 	color: white;
 }
 
+.card a {
+	text-decoration: none;
+	color : #232323;
+}
+
+.card a:hover{
+	text-decoration: none;
+	color : #3478f5;
+}
 .searchForm input {
 	border: solid 1px #3478f5;
 	border-radius: 16px 0 0 16px;
@@ -148,16 +157,17 @@ a {
 										</div>
 										<div class="col-9">
 											<div class="card-body">
-												<h5 class="card-title">
-
+												<h5 class="card-title"><a class="aclass" style="cursor: pointer;" id="aBtn" >
 													<strong> ${f.dname} 의사</strong>
+													<input type="hidden" value="${f.dnum }" id="hiddenDnum" >
+													</a>
 
 												</h5>
 												<p class="card-text">
 													${e.hname} <br> <small class="text-muted">
 														${e.otime}~${e.ctime} </small>
 												</p>
-
+												
 
 												<div class="d-flex flex-start">
 													<button class="btn btn-primary me-1 disabled" type="button">
@@ -227,12 +237,21 @@ a {
 </div>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
+
+	$('.aclass').on('click',function(){
+		console.log($(this).children('#hiddenDnum').val());
+		console.log($(this).children().children().val());
+	})
+function atag(){
+	var d = $(this).children('#hiddenDnum').val();
+	console.log($(this).children('#hiddenDnum').val());
+	console.log($(this).children().children().val());
+}
+
 	$('.dcategoryAll').click(function() {
 		location.href = '${pageContext.request.contextPath}/doctor/doctorList'
 	});
-	$('.dcategoryBtn')
-			.click(
-					function() {
+	$('.dcategoryBtn').click(function() {
 						var dcategory = $(this).text();
 						console.log(dcategory);
 						// 		if( $(this).val() == 'all'){
@@ -243,4 +262,5 @@ a {
 						$("#dsearch").val(dcategory);
 						$(".sForm").submit();
 					});
+
 </script>
