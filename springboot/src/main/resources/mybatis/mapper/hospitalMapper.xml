@@ -28,12 +28,12 @@
 
 	<select id="getList" resultType="hvo" parameterType="svo">
 		select * from (
-		select rownum r_num, a.* from (
-		select h.* from hospital h, company c
-		where h.cnum = c.cnum and c.cstatus=1
-		<include refid="search" />
-		order by h.cnum desc
-		) a
+			select rownum r_num, a.* from (
+				select h.* from hospital h, company c
+				where h.cnum = c.cnum and c.cstatus=1
+				<include refid="search" />
+				order by h.cnum desc
+			) a
 		)where r_num between #{beginPerPage} and #{endPerPage}
 	</select>
 	<!-- 검색 기능 sql: select id="listpage"에 include함 -->
