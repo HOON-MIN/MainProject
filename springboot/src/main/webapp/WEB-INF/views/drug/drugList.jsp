@@ -77,11 +77,11 @@ table tfoot ol li.now {
 							약품 검색 결과
 							</c:when>
 							<c:when test="${plmn eq 'drugImageSearchList' }">
-							<h2>약품 이미지 검색 결과</h2>
-							<div>검색된 결과입니다. 찾으시는 약품과 유사한 결과를 선택하세요</div>
+								<h2>약품 이미지 검색 결과</h2>
+								<div>검색된 결과입니다. 찾으시는 약품과 유사한 결과를 선택하세요</div>
 							</c:when>
 							<c:when test="${plmn eq 'shapeSearch'}">
-							<p style="background-color: aqua;">모양 검색 결과</p> 
+								<p style="background-color: aqua;">모양 검색 결과</p>
 							</c:when>
 						</c:choose>
 					</h1>
@@ -117,7 +117,8 @@ table tfoot ol li.now {
 			<div class="row">
 				<div class="col">
 
-					<table class="text-center table-light table-striped" style="width: 70%">
+					<table class="text-center table-light table-striped"
+						style="width: 70%">
 						<thead>
 							<tr>
 								<th>식별이미지</th>
@@ -133,7 +134,7 @@ table tfoot ol li.now {
 								<tr class="align-middle">
 
 									<td><a href="drugDetail?drugIdx=${e.drug_idx}"><img
-											style="width: 380px"  height="250px"
+											style="width: 380px" height="250px"
 											src="kimsungwook/imgfile/${e.drug_img}" id="imgname"
 											value="imgname"></a></td>
 									<td>${e.drug_name}</td>
@@ -167,217 +168,6 @@ table tfoot ol li.now {
 							<%-- for end --%>
 						</tbody>
 						<tfoot>
-							<tr class="text-center ">
-								<td colspan="6">
-									<ol class="paging">
-										<c:choose>
-											<c:when test="${plmn eq 'totaldruglist' }">
-												<c:choose>
-													<c:when test="${startPage < 6  }">
-														<li class="disable">이전으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li>
-													</c:otherwise>
-												</c:choose>
-												<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
-												<c:forEach varStatus="i" begin="${startPage}"
-													end="${endPage }" step="1">
-													<c:choose>
-														<c:when test="${i.index == nowPage }">
-															<li class="now">${i.index }</li>
-														</c:when>
-														<c:otherwise>
-															<li><a href="drugList?dPage=${i.index }">${i.index }</a></li>
-														</c:otherwise>
-													</c:choose>
-												</c:forEach>
-												<c:choose>
-													<c:when test="${endPage >= totalPage }">
-														<li class="disable">다음으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a href="drugList?dPage=${endPage + 1 }">다음으로</a></li>
-													</c:otherwise>
-												</c:choose>
-											</c:when>
-											<c:when test="${plmn eq 'drugMyCaseList' }">
-												<c:choose>
-													<c:when test="${startPage < 6  }">
-														<li class="disable">이전으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a href="drugMyCase?dPage=${startPage -1 }">이전으로</a></li>
-													</c:otherwise>
-												</c:choose>
-												<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
-												<c:forEach varStatus="i" begin="${startPage }"
-													end="${endPage }" step="1">
-													<c:choose>
-														<c:when test="${i.index == nowPage }">
-															<li class="now">${i.index }</li>
-														</c:when>
-														<c:otherwise>
-															<li><a href="drugMyCase?dPage=${i.index }">${i.index }</a></li>
-														</c:otherwise>
-													</c:choose>
-												</c:forEach>
-												<c:choose>
-													<c:when test="${endPage >= totalPage }">
-														<li class="disable">다음으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a href="drugMyCase?dPage=${endPage + 1 }">다음으로</a></li>
-													</c:otherwise>
-												</c:choose>
-											</c:when>
-											<c:when test="${plmn eq 'drugSearchList' }">
-												<c:choose>
-													<c:when test="${startPage < 6  }">
-														<li class="disable">이전으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a
-															href="drugSearchList?dPage=${startPage -1 }&content=${content}&searchSelect=${searchSelect}">이전으로</a></li>
-													</c:otherwise>
-												</c:choose>
-												<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
-												<c:forEach varStatus="i" begin="${startPage }"
-													end="${endPage}" step="1">
-													<c:choose>
-														<c:when test="${i.index == nowPage }">
-															<li class="now">${i.index }</li>
-														</c:when>
-														<c:otherwise>
-															<li><a
-																href="drugSearchList?dPage=${i.index }&content=${content}&searchSelect=${searchSelect}">${i.index }</a></li>
-														</c:otherwise>
-													</c:choose>
-												</c:forEach>
-												<c:choose>
-													<c:when test="${endPage >= totalPage }">
-														<li class="disable">다음으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a
-															href="drugSearchList?dPage=${endPage + 1 }&content=${content}&searchSelect=${searchSelect}">다음으로</a></li>
-													</c:otherwise>
-												</c:choose>
-											</c:when>
-
-
-											<c:when test="${plmn eq 'drugImageSearchList' }">
-												<c:choose>
-													<c:when test="${startPage < 6  }">
-														<li class="disable">이전으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a
-															href="drugImageSearch?dPage=${startPage -1 }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">이전으로</a></li>
-													</c:otherwise>
-												</c:choose>
-												<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
-												<c:forEach varStatus="i" begin="${startPage }"
-													end="${endPage}" step="1">
-													<c:choose>
-														<c:when test="${i.index == nowPage }">
-															<li class="now">${i.index }</li>
-														</c:when>
-														<c:otherwise>
-															<li><a
-																href="drugImageSearch?dPage=${i.index }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">${i.index }</a></li>
-														</c:otherwise>
-													</c:choose>
-												</c:forEach>
-												<c:choose>
-													<c:when test="${endPage >= totalPage }">
-														<li class="disable">다음으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a
-															href="drugImageSearch?dPage=${endPage + 1 }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">다음으로</a></li>
-													</c:otherwise>
-												</c:choose>
-											</c:when>
-											
-											
-											
-											<c:when test="${plmn eq 'shapeSearch' }">
-												<c:choose>
-													<c:when test="${startPage < 6  }">
-														<li class="disable">이전으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a
-															href="shapeSearch?dPage=${startPage -1 }&drug_identification=${drug_identification}&drug_color_F=${drug_color_F}&drug_color_B=${drug_color_B}&drug_shape=${drug_shape}&drug_formulation=${drug_formulation}">이전으로</a></li>
-													</c:otherwise>
-												</c:choose>
-												<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
-												<c:forEach varStatus="i" begin="${startPage }"
-													end="${endPage}" step="1">
-													<c:choose>
-														<c:when test="${i.index == nowPage }">
-															<li class="now">${i.index }</li>
-														</c:when>
-														<c:otherwise>
-															<li><a
-																href="shapeSearch?dPage=${i.index }&drug_identification=${drug_identification}&drug_color_F=${drug_color_F}&drug_color_B=${drug_color_B}&drug_shape=${drug_shape}&drug_formulation=${drug_formulation}">${i.index }</a></li>
-														</c:otherwise>
-													</c:choose>
-												</c:forEach>
-												<c:choose>
-													<c:when test="${endPage >= totalPage }">
-														<li class="disable">다음으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a
-															href="shapeSearch?dPage=${endPage + 1 }&drug_identification=${drug_identification}&drug_color_F=${drug_color_F}&drug_color_B=${drug_color_B}&drug_shape=${drug_shape}&drug_formulation=${drug_formulation}">다음으로</a></li>
-													</c:otherwise>
-												</c:choose>
-											</c:when>
-											
-											<c:when test="${plmn eq 'drugSearchHistoryList' }">
-												<c:choose>
-													<c:when test="${startPage < 6  }">
-														<li class="disable">이전으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a
-															href="drugSearchHistory?dPage=${startPage -1 }">이전으로</a></li>
-													</c:otherwise>
-												</c:choose>
-												<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
-												<c:forEach varStatus="i" begin="${startPage }"
-													end="${endPage}" step="1">
-													<c:choose>
-														<c:when test="${i.index == nowPage }">
-															<li class="now">${i.index }</li>
-														</c:when>
-														<c:otherwise>
-															<li><a
-																href="drugSearchHistory?dPage=${i.index }">${i.index }</a></li>
-														</c:otherwise>
-													</c:choose>
-												</c:forEach>
-												<c:choose>
-													<c:when test="${endPage >= totalPage }">
-														<li class="disable">다음으로</li>
-													</c:when>
-													<c:otherwise>
-														<li><a
-															href="drugSearchHistory?dPage=${endPage + 1 }">다음으로</a></li>
-													</c:otherwise>
-												</c:choose>
-											</c:when>
-											
-											
-											
-											
-										</c:choose>
-									</ol>
-
-								</td>
-							</tr>
 							<tr>
 								<th colspan="6">
 									<form action="drugSearchList" id="drugSearchTag" method="get">
@@ -396,16 +186,240 @@ table tfoot ol li.now {
 
 												<button type="button" class="btn btn-primary ml-2"
 													id="listbtn" onclick="location='drugList'">전체리스트보기</button>
-
 											</p>
-
 										</span>
 									</form>
-
 								</th>
 							</tr>
 						</tfoot>
 					</table>
+
+					<!-- 페이지 네이션 -->
+					<ul class="pagination justify-content-center p-3">
+
+						<c:choose>
+							<c:when test="${plmn eq 'totaldruglist' }">
+								<c:choose>
+									<c:when test="${startPage < 6  }">
+										<li class="page-item disabled"><a class="page-link"
+											href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
+										<!-- <li class="disable">이전으로</li> -->
+									</c:when>
+									<c:otherwise>
+										<%-- <li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li> --%>
+
+										<li class="page-item"><a class="page-link"
+											href="drugList?dPage=${startPage -1 }">Previous</a></li>
+									</c:otherwise>
+								</c:choose>
+								<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
+								<c:forEach varStatus="i" begin="${startPage}" end="${endPage }"
+									step="1">
+									<c:choose>
+										<c:when test="${i.index == nowPage }">
+											<li class="page-item now"><a class="page-link"
+												style="background: #3478F5; color: white;""">${i.index }</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												href="drugList?dPage=${i.index }">${i.index}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+
+
+								<c:choose>
+									<c:when test="${endPage >= totalPage}">
+										<li class="page-item disabled"><a class="page-link"
+											aria-disabled="true">Next</a></li>
+									</c:when>
+
+
+									<c:when test="${totalPage > (nowPage+pagePerBlock)}">
+										<li>
+										<li class="page-item"><a class="page-link"
+											href="drugList?dPage=${endPage + 1 }">Next</a></li>
+									</c:when>
+
+									<c:otherwise>
+										<li>
+										<li class="page-item"><a class="page-link"
+											href="drugList?dPage=${endPage + 1 }">Next</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:when test="${plmn eq 'drugMyCaseList' }">
+								<c:choose>
+									<c:when test="${startPage < 6  }">
+										<li class="disable">이전으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="drugMyCase?dPage=${startPage -1 }">이전으로</a></li>
+									</c:otherwise>
+								</c:choose>
+								<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
+								<c:forEach varStatus="i" begin="${startPage }" end="${endPage }"
+									step="1">
+									<c:choose>
+										<c:when test="${i.index == nowPage }">
+											<li class="now">${i.index }</li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="drugMyCase?dPage=${i.index }">${i.index }</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${endPage >= totalPage }">
+										<li class="disable">다음으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="drugMyCase?dPage=${endPage + 1 }">다음으로</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:when test="${plmn eq 'drugSearchList' }">
+								<c:choose>
+									<c:when test="${startPage < 6  }">
+										<li class="disable">이전으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="drugSearchList?dPage=${startPage -1 }&content=${content}&searchSelect=${searchSelect}">이전으로</a></li>
+									</c:otherwise>
+								</c:choose>
+								<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
+								<c:forEach varStatus="i" begin="${startPage }" end="${endPage}"
+									step="1">
+									<c:choose>
+										<c:when test="${i.index == nowPage }">
+											<li class="now">${i.index }</li>
+										</c:when>
+										<c:otherwise>
+											<li><a
+												href="drugSearchList?dPage=${i.index }&content=${content}&searchSelect=${searchSelect}">${i.index }</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${endPage >= totalPage }">
+										<li class="disable">다음으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="drugSearchList?dPage=${endPage + 1 }&content=${content}&searchSelect=${searchSelect}">다음으로</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+
+
+							<c:when test="${plmn eq 'drugImageSearchList' }">
+								<c:choose>
+									<c:when test="${startPage < 6  }">
+										<li class="disable">이전으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="drugImageSearch?dPage=${startPage -1 }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">이전으로</a></li>
+									</c:otherwise>
+								</c:choose>
+								<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
+								<c:forEach varStatus="i" begin="${startPage }" end="${endPage}"
+									step="1">
+									<c:choose>
+										<c:when test="${i.index == nowPage }">
+											<li class="now">${i.index }</li>
+										</c:when>
+										<c:otherwise>
+											<li><a
+												href="drugImageSearch?dPage=${i.index }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">${i.index }</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${endPage >= totalPage }">
+										<li class="disable">다음으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="drugImageSearch?dPage=${endPage + 1 }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">다음으로</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+
+
+
+							<c:when test="${plmn eq 'shapeSearch' }">
+								<c:choose>
+									<c:when test="${startPage < 6  }">
+										<li class="disable">이전으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="shapeSearch?dPage=${startPage -1 }&drug_identification=${drug_identification}&drug_color_F=${drug_color_F}&drug_color_B=${drug_color_B}&drug_shape=${drug_shape}&drug_formulation=${drug_formulation}">이전으로</a></li>
+									</c:otherwise>
+								</c:choose>
+								<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
+								<c:forEach varStatus="i" begin="${startPage }" end="${endPage}"
+									step="1">
+									<c:choose>
+										<c:when test="${i.index == nowPage }">
+											<li class="now">${i.index }</li>
+										</c:when>
+										<c:otherwise>
+											<li><a
+												href="shapeSearch?dPage=${i.index }&drug_identification=${drug_identification}&drug_color_F=${drug_color_F}&drug_color_B=${drug_color_B}&drug_shape=${drug_shape}&drug_formulation=${drug_formulation}">${i.index }</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${endPage >= totalPage }">
+										<li class="disable">다음으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="shapeSearch?dPage=${endPage + 1 }&drug_identification=${drug_identification}&drug_color_F=${drug_color_F}&drug_color_B=${drug_color_B}&drug_shape=${drug_shape}&drug_formulation=${drug_formulation}">다음으로</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+
+							<c:when test="${plmn eq 'drugSearchHistoryList' }">
+								<c:choose>
+									<c:when test="${startPage < 6  }">
+										<li class="disable">이전으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="drugSearchHistory?dPage=${startPage -1 }">이전으로</a></li>
+									</c:otherwise>
+								</c:choose>
+								<!-- i.index 사용해서 페이징의 인덱스가 유지 -->
+								<c:forEach varStatus="i" begin="${startPage }" end="${endPage}"
+									step="1">
+									<c:choose>
+										<c:when test="${i.index == nowPage }">
+											<li class="now">${i.index }</li>
+										</c:when>
+										<c:otherwise>
+											<li><a href="drugSearchHistory?dPage=${i.index }">${i.index }</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${endPage >= totalPage }">
+										<li class="disable">다음으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="drugSearchHistory?dPage=${endPage + 1 }">다음으로</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+
+
+
+
+						</c:choose>
+					</ul>
+					<!-- -- -->
 
 				</div>
 			</div>
