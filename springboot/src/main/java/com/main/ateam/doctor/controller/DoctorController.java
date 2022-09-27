@@ -123,6 +123,13 @@ public class DoctorController {
 		
 	}
 	
+	@GetMapping("doctorDetail")
+	public String doctorDetailPage(Model model) {
+		
+		return "doctor/doctorDetail";
+	}
+	
+	
 	@PostMapping("/doctorLogin")
 	public ModelAndView doctorLogin(HttpSession session, DoctorVO vo) {
 		ModelAndView mav = new ModelAndView("redirect:/");
