@@ -93,7 +93,8 @@ a {
 			<!-- 카테고리 리스트 -->
 			<div>
 				<ul class="nav flex-column">
-					<li class=" nav-item ms-3 pt-5 pb-2 ps-4 mb-4"><a href="#"><strong>질문 카테고리</strong></a></li>
+
+					<li class=" nav-item ms-3 pt-5 pb-2 ps-4 mb-4" style="color: white;"><strong>질문 카테고리</strong></li>
 					<!-- 이안에 본인 카테고리 나눠주세요 -->
 					<c:forEach var="e" items="${qcate }" varStatus="status">
 						
@@ -133,7 +134,7 @@ a {
 						</button>
 					</div>
 				</form>
-				<table class="table1 htable table-hover" ">
+				<table class="table1 htable table-hover">
 					<thead class="hanna">
 						<tr>
 							<th width="50px;">No.</th>

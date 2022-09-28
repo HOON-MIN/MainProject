@@ -38,6 +38,14 @@ public class AnsboardService {
 		System.out.println("getABmyList service => " + list);
 		return list;
 	}
+	// 메인페이지 - 조회수 가장 높은 Dr.건강
+	public AnsboardVO getABDetail(int num) {
+		num = 37;
+		AnsboardVO vo = dao.getABDetail(num);
+		System.out.println("getABDetail service => " + vo);
+		return vo;
+	}
+	
 	
 //	public void qbUpdate(QuesboardVO vo) {
 ////		vo.setId("member");

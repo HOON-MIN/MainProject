@@ -225,13 +225,15 @@ a {
 				<c:forEach var="e" items="${ansList}">
 					<h5 class="card-header">
 						<span class="hanna" style="color: #3478f5; font-size: 32px;">A</span>
-						답변 제목
+						
+<!-- 						답변 제목 -->
 					</h5>
 					<div class="card-body row">
 						<div class="col-10">
 							<h5 class="card-title">Dr. ${e.dnum}</h5>
 							<p class="card-text">
-								답변내용 <br> ${e.acont}
+<!-- 								답변내용 <br>  -->
+								 ${e.acont}
 							</p>
 							<p>${e.adate}</p>
 						</div>
