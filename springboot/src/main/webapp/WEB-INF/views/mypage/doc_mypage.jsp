@@ -1,13 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
 
+</style>
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
-
+<input type="hidden" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="reservation">
+<!-- modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">진료</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        진료 하시겠습니까?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/'">예</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 본문 -->
 <div class="container py-4"
 	style="width: 80%; margin: auto; padding: 10px 5px;">
-	<h1 class="display-5 fw-bold">예약 스케줄</h1>
+	<h1 class="display-5 fw-bold">의사 스케줄</h1>
 	<div id='calendar' style="height: 80%;"></div>
 </div>
 
@@ -75,13 +96,8 @@
 				console.log('클릭이벤트! ' + info.event.title)
 				var num = info.event.title.substr(1,1);
 				console.log(num)
-				$.ajax({
-					url:'${pageContext.request.contextPath}/member/medical?num='+num,
-					success:function(){
-						location.href='${pageContext.request.contextPath}/'
-					}
-				})
-				//location.href='${pageContext.request.contextPath}/member/medical?num='+num
+				$('#reservation').click()
+				
 		      },
 		      dateClick: function(info){
 		    	  res = info.dateStr
