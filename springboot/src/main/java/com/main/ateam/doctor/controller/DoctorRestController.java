@@ -10,9 +10,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,7 +34,7 @@ public class DoctorRestController {
 	 private  int nowPage = 1;
 	 private  int nowBlock = 1;
 	 private  int totalRecord = 0; 
-	 private  int numPerPage = 6;
+	 private  int numPerPage = 10;
 	 private  int pagePerBlock = 5;
 	 private  int totalPage = 0;
 	 private  int totalBlock = 0;
@@ -51,16 +53,15 @@ public class DoctorRestController {
 		return list;
 	}
 	
+	@CrossOrigin
 	@ResponseBody
-	@RequestMapping("doctorList")
-	public String doctorListPage(SearchVO svo, Model model, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView();
+	@GetMapping("doctorListReact")
+	public List<HospitalVO> doctorListPage(SearchVO svo, HttpServletRequest request) {
 		System.out.println("---------- hospControll ----------");
 		System.out.println("시작페이지 : "+svo.getBeginPerPage());
 		System.out.println("마지막페이지 : "+svo.getEndPerPage());
 		System.out.println("검색 : "+svo.getSearch());
 		System.out.println("분류 : "+svo.getCategory());
-		List<DoctorVO> dcategory = doctorservice.doctorCategorySpring();
 		
 		totalRecord = doctorservice.doctorCnt(svo);
 		totalPage = (int) Math.ceil(totalRecord / (double) numPerPage                          );
@@ -82,7 +83,7 @@ public class DoctorRestController {
 		svo.setCategory(request.getParameter("category"));
 		
 		System.out.println(request.getParameter("category"));
-		List<HospitalVO> dlist = doctorservice.doctorListSpring(svo);
+		List<HospitalVO> dlist = doctorservice.doctorListReact(svo);
 		System.out.println("hospCont => "+dlist.isEmpty());
 		
 
@@ -93,16 +94,6 @@ public class DoctorRestController {
 		}
 		
 
-		model.addAttribute("dcategory",dcategory);
-		model.addAttribute("dlist", dlist);
-		model.addAttribute("category", svo.getCategory());
-		model.addAttribute("search", svo.getSearch());
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		model.addAttribute("nowPage", nowPage);
-		model.addAttribute("pagePerBlock", pagePerBlock);
-		model.addAttribute("totalPage", totalPage);
-		
 		System.out.println("totalRecord :"+ totalRecord);
 		System.out.println("startPage :"+ startPage);
 		System.out.println("endPage :"+ endPage);
@@ -112,7 +103,7 @@ public class DoctorRestController {
 
 		System.out.println("----------------------------");
 		
-		return "doctor/doctorList";
+		return dlist;
 		
 	}
 	
