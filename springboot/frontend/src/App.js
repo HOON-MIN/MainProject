@@ -14,7 +14,7 @@ import Mainpage from "./page/Mainpage";
 import DoctorListPage from "./page/DoctorListPage";
 import DoctorDetailPage from "./page/DoctorDetailPage";
 import ReservationPage from "./page/ReservationPage";
-import drugDeliverPage from "./page/drugDeliverPage";
+import DrugDeliverPage from "./page/DrugDeliverPage";
 import AuthRoute from "./component/AuthRoute";
 
 function App() {
@@ -144,13 +144,12 @@ function App() {
             element={
               <AuthRoute
                 authenticated={authenticated}
-                component={<drugDeliverPage />}
+                component={<DoctorListPage />}
               />
             }
           />
         }
-
-        <Route path="/delivery" element={<drugDeliverPage />} />
+        <Route path="/delivery" element={<DrugDeliverPage />} />
         <Route path="/detail/:dnum" element={<DoctorDetailPage />} />
         <Route path="reservation/:dnum" element={<ReservationPage />} />
       </Routes>
