@@ -112,7 +112,7 @@ a {
 							<h5 class="card-title hanna">약품 이미지 분석</h5>
 
 							<p class="card-text nanum">사진으로 약을 찾아보세요.</p>
-							<a href="drugSearchImg hanna" class="btn btn-secondary">약품
+							<a href="drugSearchImg" class="btn btn-secondary">약품
 								이미지 분석</a>
 						</div>
 					</div>
@@ -124,78 +124,90 @@ a {
 									<li class=" nav-item hanna formTitle"><h6>식별표시</h6></li>
 									<li class=" nav-item hanna formTitle"><h6>모양선택</h6></li>
 									<li class=" nav-item hanna formTitle"><h6>색깔선택</h6></li>
-									<li class=" nav-item hanna formTitle"><h6>외형선택</h6></li>
+									<li class=" nav-item hanna formTitle"></li>
+									<li class=" nav-item hanna formTitle"><h6>제형선택</h6></li>
 								</ul>
 							</div>
 							<div class="col-9">
-								<form>
-									<input type="text" name="hname" id="hname"
-										class="form-control-sm formInput  " placeholder="병원명 입력하세요." />
-									<select class="form-select formInput form-select-sm"
+								<form method="get" action="shapeSearch" id="shapeSearchform">
+									<input type="text" name="drug_identification" id="drug_identification"
+										class="form-control-sm formInput  " placeholder="식별표시를 입력하세요." />
+									<select class="form-select formInput form-select-sm"  name="drug_shape"
 										aria-label=".form-select-sm example">
-										<option selected>Open this select menu</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
+										<option value="전체" selected>모양을 선택하세요.</option>
+										<option value="원형">"원형"</option>
+										<option value="타원형">"타원형"</option>
+										<option value="장방형">"장방형"</option>
+										<option value="반원형">"반원형"</option>
+										<option value="삼각형">"삼각형"</option>
+										<option value="사각형">"사각형"</option>
+										<option value="마름모형">"마름모형"</option>
+										<option value="오각형">"오각형"</option>
+										<option value="육각형">"육각형"</option>
+										<option value="팔각형">"팔각형"</option>
+										<option value="기타">"기타"</option>
+										<option value="전체">"전체"</option>
+									</select> <select class="form-select form-select-sm formInput" name="drug_color_F"
+										aria-label="Default select example">
+										<option value="전체" selected>전면/좌측 선택</option>
+										<option value="하양">하양</option>
+										<option value="노랑">노랑</option>
+										<option value="주황">주황</option>
+										<option value="분홍">분홍</option>
+										<option value="빨강">빨강</option>
+										<option value="갈색">갈색</option>
+										<option value="연두">연두</option>
+										<option value="초록">초록</option>
+										<option value="청록">청록</option>
+										<option value="파랑">파랑</option>
+										<option value="남색">남색</option>
+										<option value="자주">자주</option>
+										<option value="보라">보라</option>
+										<option value="회색">회색</option>
+										<option value="검정">검정</option>
+										<option value="전체">전체</option>
+									</select> <select class="form-select form-select-sm" name="drug_color_B"
+										aria-label="Default select example">
+										<option value="전체" selected>후면/좌측 선택</option>
+										<option value="없음">전면과 동일</option>
+										<option value="하양">하양</option>
+										<option value="노랑">노랑</option>
+										<option value="주황">주황</option>
+										<option value="분홍">분홍</option>
+										<option value="빨강">빨강</option>
+										<option value="갈색">갈색</option>
+										<option value="연두">연두</option>
+										<option value="초록">초록</option>
+										<option value="청록">청록</option>
+										<option value="파랑">파랑</option>
+										<option value="남색">남색</option>
+										<option value="자주">자주</option>
+										<option value="보라">보라</option>
+										<option value="회색">회색</option>
+										<option value="검정">검정</option>
+										<option value="투명">투명</option>
+										<option value="전체">전체</option>
 									</select> 
-									<select
-										class="form-select form-select-sm formInput"
-										aria-label="Default select example">
-										<option selected>전면/좌측 선택</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
+
+									<select class="form-select form-select-sm formInput" style="margin-top: 45px"
+										aria-label="Default select example" name="drug_formulation">
+										<option value="전체" selected>제형 선택</option>
+										<option value="정제">"정제"</option>
+										<option value="경질캡슐">"경질캡슐"</option>
+										<option value="연질캡슐">"연질캡슐"</option>
+										<option value="기타">"기타"</option>
+										<option value="전체">"전체"</option>
 									</select>
-									<select
-										class="form-select form-select-sm"
-										aria-label="Default select example">
-										<option selected>후면/좌측 선택</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-									<select
-										class="form-select form-select-sm formInput"
-										aria-label="Default select example">
-										<option selected>모양 선택</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-									<select
-										class="form-select form-select-sm"
-										aria-label="Default select example">
-										<option selected>제형 선택</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-									<select
-										class="form-select form-select-sm"
-										aria-label="Default select example">
-										<option selected>분할선 선택</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-									<select
-										class="form-select form-select-sm"
-										aria-label="Default select example">
-										<option selected>후면 분할선 여부</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-									</select>
-									<div class="d-flex justify-content-end">
-										<button type="button" class="btn bg-primary text-white me-3">작성</button>
-										<button type="button" class="btn bg-dark text-white me-3">뒤로가기</button>
+									<div class="d-flex justify-content-end mt-3">
+										<input type="submit" class="btn bg-primary text-white me-3" value="검색"/>
+
 									</div>
 
 								</form>
 							</div>
 						</div>
-
-						<p class="text-center mb-5 hanna">모양으로 약품 검색</p>
+						<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+						<!-- <p class="text-center mb-5 hanna">모양으로 약품 검색</p>
 						<form method="get" action="shapeSearch" id="shapeSearchform">
 							<div class="input-group justify-content-center mb-5 col-md-8">
 								<span class="input-group-text hanna" id="drug_identification">식별표시
@@ -301,11 +313,13 @@ a {
 
 						</div>
 					</div>
-					</form>
+					</form> -->
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<!-- <div class="card col-7 mt-2">
 						<div class="card-body">
 						
