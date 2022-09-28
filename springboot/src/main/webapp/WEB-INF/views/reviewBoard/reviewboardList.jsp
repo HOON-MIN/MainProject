@@ -112,50 +112,8 @@ a:link {
 	text-align: center
 }
 </style>
+<jsp:include page="../mypage/sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
-<div class="container-fluid">
-	<div class="row justify-content-around">
-		<!-- 카테고리 영역 -->
-		<div class="col-2 hcategory ">
-			<!-- 카테고리 프로필 (이쪽 세션 처리 하셔야합니다)-->
-			<div
-				class="d-flex flex-column align-items-start justify-content-center ps-5"
-				style="height: 160px;">
-				<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
-					class="mb-3">
-				<h5 class="hanna text-white">게스트 님</h5>
-				<span class="nanum text-white" style="font-size: 12px;"> 일반회원
-					・ <a href="">마이페이지</a>
-				</span>
-			</div>
-			<!-- 카테고리 프로필 끝 -->
-
-			<!-- 카테고리 리스트 -->
-			<div>
-				<ul class="nav flex-column">
-					<li class=" nav-item pt-5 pb-2 ps-4"><a
-						class="hcateAllbtn nav-link active text-white" aria-current="page"
-						href="#">카테고리 리스트</a></li>
-					<!-- 이안에 본인 카테고리 나눠주세요 -->
-					<%-- 	<c:forEach var="e" items="${hcate }" varStatus="status">
-						
-						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.hcate }" 
-							name="hbtn${status.index}"
-							><a 
-							class="hcatebtn nav-link text-white" href="#">${e.hcate }</a></li>
-						<input type="button" name="hbtn${status.index}"
-							value="${e.hcate }" class="hcatebtn btn btn-outline-primary" />
-					</c:forEach> --%>
-				</ul>
-			</div>
-			<!-- 카테고리 리스트 끝 -->
-		</div>
-		<!-- 카테고리 영역 끝 -->
-
-		<!-- 컨텐츠 (연회색배경) -->
-		<div class="col-10 flex-column">
-			<div class="hboard pt-2 ps-3 pe-3 pb-3">
-				<!-- 안 쪽에 자신의 컨텐츠를 넣어주세요 -->
 				<h3 class="hanna p-4" style="text-align: center;">리뷰 리스트</h3>
 				<div class="d-flex justify-content-around">
 				
