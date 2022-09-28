@@ -19,6 +19,19 @@ a {
 	text-decoration: none;
 	color: white;
 }
+.formTitle {
+	margin-top: 40px;
+	text-align: right;
+}
+
+.formInput {
+	margin-top: 34px;
+	margin-right : 40px;
+}
+
+.formInput2 {
+	margin-top: 40px;
+} 
 
 </style>
 
