@@ -9,11 +9,19 @@
 	#{diseaseetc}, #{smoke},#{alcohol},#{allergy},#{allergyetc}, 
 	#{pregnancy},#{symptom}, sysdate)
 </insert>
-<!-- 
-<select id="getMIDetail" parameterType="int" resultType="mivo">
-	select * from medInq where mednum = #{num}
+
+<select id="checkMedNum" parameterType="int" resultType="int">
+	select count(*) from medinq where mednum = #{num}
 </select>
 
+<select id="showMedinq" parameterType="int" resultType="int">
+	select * from medinq where mednum = #{num}
+</select>
+ 
+<select id="getMIDetail" parameterType="int" resultType="mivo">
+	select * from medInq where mednum = #{mednum}
+</select>
+<!--
 <update id="miUpdate" parameterType="mivo" >
 	update medInq set DISEASE1 = #{disease1}, DISEASE2 = #{disease2}, DISEASEHIST = #{diseasehist}, 
     DISEASEETC = #{diseaseetc}, SMOKE = #{smoke}, ALCOHOL = #{alcohol}, ALLERGY = #{allergy}, 

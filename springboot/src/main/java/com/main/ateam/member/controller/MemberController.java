@@ -572,12 +572,7 @@ public class MemberController {
 //		System.out.println("num = " +num);
 //		return "redirect:/";
 //	}
-	@RequestMapping("/medical")
-	public String medical(int num) {
-		System.out.println("진료 start!!");
-		System.out.println("num = " +num);
-		return "redirect:/";
-	}
+	
 
 	@RequestMapping("/miruchart")
 	public String miruchart() {

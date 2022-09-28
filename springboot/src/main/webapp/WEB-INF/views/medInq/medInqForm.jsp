@@ -33,7 +33,11 @@ p {
 
 			<h2 class="hanna m-3"style="font-weight: bold; text-align: center;">건강 문진표</h2>
 			<br>
-			<form action="medInqIns" method="post" class="p-5">
+			
+			
+			<div id="target">
+			
+			<form action="medical" method="post" class="p-5">
 				<p>1. 다음과 같은 질병으로 진단을 받았거나, 현재 약물 치료 중이십니까?</p>
 				<table class="table" style="text-align: center;">
 					<thead style="text-align: center;">
@@ -293,9 +297,36 @@ p {
 	</div>
 	<!-- 컨텐츠 영역 끝 -->
 </div>
+</div>
 
 
 <script>
+var num = ${sessionNUM}
+ $(function(){
+	$.ajax({
+		url:'checkMedNum?num='+ num,
+		success:function(data){
+			//console.log('check = ' , data);
+			if(data == 0){
+				console.log('문진표 작성 내역 없음')
+			}else{
+				console.log('문진표 작성 내역 존재함')
+				var box = [];
+				$.ajax({
+					url:'medInqSave?mednum='+num,
+					success:function(data){
+						for(var e in data){
+							box.push(e);
+						}
+						var b = document.getElementById("#target2");
+
+						$("#target").html(data);
+					}
+				})
+			}		
+		}
+	})
+}) 
 function clickCheck(target, name) {
     document.querySelectorAll(name)
         .forEach(el => el.checked = false);
@@ -307,6 +338,7 @@ function clickCheck(target, name) {
 $(".chkbox0").change(function(){
     if($(this).is(":checked")){
         $('#chkbox0_0').prop("checked", false);
+        
     }
 });
 

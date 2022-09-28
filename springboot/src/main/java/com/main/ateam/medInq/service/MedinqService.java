@@ -39,6 +39,12 @@ public class MedinqService {
 	public void miDelete(int num) {
 		dao.miDelete(num);
 	}
+	public int checkMedNum(int num) {
+		return dao.checkMedNum(num);
+	}
+	public MedInqVO showMedinq(int num) {
+		return dao.showMedinq(num);
+	}
 
 //	public void addQuesboard(QuesboardVO vo) {
 //		vo.setId("member");
