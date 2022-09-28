@@ -5,7 +5,11 @@
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
 
-<div style="float: center; width:80%; margin-left: auto; margin-right: auto;" id='calendar'></div>
+<div class="container py-4"
+							style="width: 80%; margin: auto; padding: 10px 5px;">
+							<h1 class="display-5 fw-bold">예약 스케줄</h1>
+							<div id='calendar' style="height: 80%;"></div>
+						</div>
 
 
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
@@ -69,8 +73,8 @@
 				console.log(num)
 				$.ajax({
 					url:'${pageContext.request.contextPath}/member/medical?num='+num,
-					success:function(data){
-						console.log(data)
+					success:function(){
+						location.href='${pageContext.request.contextPath}/'
 					}
 				})
 				//location.href='${pageContext.request.contextPath}/member/medical?num='+num

@@ -1,7 +1,7 @@
 package com.main.ateam.admin.controller.notice;
 
 import java.util.HashMap;
-
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.main.ateam.admin.service.NoticeService;
@@ -20,14 +21,28 @@ public class Notice {
 	@Autowired
 	private NoticeService noticeService;
 	
-	@GetMapping(value = {"","/"})
-	public ModelAndView basicPage(ModelAndView mv) {
+	@GetMapping(value = {"/nlist"})
+	public ModelAndView nlist(ModelAndView mv) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("begin", 1);
 		map.put("end", 10);
+		List<NoticeVO> vo = noticeService.getNoticeList(map);
+		for(NoticeVO e: vo) {
+			System.out.println(e.getSubject());
+		}
 		mv.addObject("items", noticeService.getNoticeList(map));	
-		mv.setViewName("admin/noticeList");
 		return mv;
+	}
+	@ResponseBody
+	@GetMapping(value = "/basicPage")
+	public List<NoticeVO> basicPage(ModelAndView mv) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("begin", 1);
+		map.put("end", 10);
+		List<NoticeVO> vo = noticeService.getNoticeList(map);
+		
+			
+		return vo;
 	}
 	@GetMapping("/detail")
 	public ModelAndView totalCount(ModelAndView mv,int nnum) {

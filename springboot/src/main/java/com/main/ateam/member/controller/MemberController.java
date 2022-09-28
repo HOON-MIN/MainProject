@@ -565,7 +565,13 @@ public class MemberController {
 		return "mypage/member_test2";
 	}
 	// 의사 - 진료
-//	@ResponseBody
+////	@ResponseBody
+//	@RequestMapping("/medical")
+//	public String medical(int num) {
+//		System.out.println("진료 start!!");
+//		System.out.println("num = " +num);
+//		return "redirect:/";
+//	}
 	@RequestMapping("/medical")
 	public String medical(int num) {
 		System.out.println("진료 start!!");
