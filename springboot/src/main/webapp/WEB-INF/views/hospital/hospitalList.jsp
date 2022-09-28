@@ -112,8 +112,11 @@ a {
 		</div>
 		<!-- 카테고리 영역 끝 -->
 		<div class="col-10">
+		
 			<div class="hboard pt-2 ps-3 pe-3">
-
+<div style="height: 80%;">
+					<h3 class="hanna p-4" style="text-align: center;">전국 병원</h3>
+					<div>
 				<form class="sForm" name="sForm" method="get" action="hospitalList"
 					style="width: 400px;">
 					<!-- 					### -->
@@ -144,9 +147,7 @@ a {
 <!-- 						type="submit" id="searBtn" value="조회"> -->
 				</form>
 
-				<div style="height: 80%;">
-					<h3 class="hanna ps-3">병원 리스트</h3>
-					<div>
+				
 						<table class="htable" style="cursor: pointer;">
 							<thead>
 								<tr>
