@@ -156,8 +156,7 @@
 		<div class="col-10">
 			<div class="hboard pt-2 ps-3 pe-3">
 				<div class="justify-content-center">
-					<h3 class="hanna ps-3 text-center"></h3>
-					<div class=" justify-content-center ">
+				
 						<!-- 내용 -->
 
 
