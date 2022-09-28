@@ -157,7 +157,8 @@ public class ReserveController {
 			System.out.println(""+vo.getSymptom());
 			System.out.println(""+vo.getSymptomComm());
 			reserveService.addReserve(vo);
-			return "redirect:/";
+			
+			return "redirect:/medInq/medInqForm";
 		}
 	
 	//의사 선택 
