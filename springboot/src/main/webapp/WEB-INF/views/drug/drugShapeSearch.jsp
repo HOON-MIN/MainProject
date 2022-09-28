@@ -26,7 +26,7 @@
 							<div class="card-body">
 								<h5 class="card-title hanna">약품 이미지 분석</h5>
 								<p class="card-text hanna">사진 한장으로 약을 찾아보세요.</p>
-								<a href="drugSearchImg hanna" class="btn btn-secondary">약품 이미지 분석</a>
+								<a href="drugSearchImg" class="btn btn-secondary">약품 이미지 분석</a>
 							</div>
 						</div>
 						<div class="col-8 form-holder">
