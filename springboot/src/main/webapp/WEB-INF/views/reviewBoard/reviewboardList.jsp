@@ -114,10 +114,6 @@ a:link {
 </style>
 <jsp:include page="../mypage/sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
-<<<<<<< HEAD
-=======
-
-
 
 
 
@@ -206,7 +202,7 @@ a:link {
 					<div class="col-2 text-center mt-3">
                         <c:if test="${sessionID != null}">
 						<button class="btn bg-primary m-3 text-white hanna" id="writeBtn" 
-							data-bs-toggle="modal" data-bs-target="#exampleModal">글쓰기</button>
+							data-bs-toggle="modal" data-bs-target="#exampleModal">작성</button>
 					</c:if>
 					</div>
    </form>
