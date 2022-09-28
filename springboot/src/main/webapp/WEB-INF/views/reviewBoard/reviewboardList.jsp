@@ -142,7 +142,7 @@ a:link {
 				
 				
 				
-				<form class="sForm col-8" name="sForm" method="post" action="reviewboardlist"
+				<form class="sForm col-6" name="sForm" method="post" action="reviewboardlist"
           style="display: flex; justify-content: center;">
 
 						<input type="hidden" name="searchreset" value="1" hidden="hidden">
@@ -166,13 +166,13 @@ a:link {
                             <img alt="검색아이콘" src="/img/search.png" style=" height:20px;" >
                         </button>
                         </div>
+   </form>
 					<div class="col-2 text-center mt-3">
                         <c:if test="${sessionID != null}">
 						<button class="btn bg-primary m-3 text-white hanna" id="writeBtn" 
-							data-bs-toggle="modal" data-bs-target="#exampleModal">작성</button>
+							>작성</button>
 					</c:if>
 					</div>
-   </form>
                         </div>
                     </div>
    
@@ -303,7 +303,7 @@ a:link {
  $(function(){
 		
 		$('#writeBtn').click(function(){
-			location ="reviewupForm";
+			location.href="${pageContext.request.contextPath}/reviewboard/reviewupForm";
 		});
 		
 	});
