@@ -26,7 +26,7 @@ a {
 }
 
 .formInput {
-	margin-top: 34px;
+	margin-top: 36px;
 	margin-right: 40px;
 }
 
@@ -123,9 +123,8 @@ a {
 								<ul class="nav flex-column">
 									<li class=" nav-item hanna formTitle"><h6>식별표시</h6></li>
 									<li class=" nav-item hanna formTitle"><h6>모양선택</h6></li>
-									<li class=" nav-item hanna formTitle"><h6>의사선생님</h6></li>
-									<li class=" nav-item hanna formTitle"><h6>후기점수</h6></li>
-									<li class=" nav-item hanna formTitle"><h6>후기내용</h6></li>
+									<li class=" nav-item hanna formTitle"><h6>색깔선택</h6></li>
+									<li class=" nav-item hanna formTitle"><h6>외형선택</h6></li>
 								</ul>
 							</div>
 							<div class="col-9">
@@ -139,19 +138,54 @@ a {
 										<option value="2">Two</option>
 										<option value="3">Three</option>
 									</select> 
-									<input type="text" name="hname" id="hname"
-										class="form-control formInput" placeholder="병원명 입력하세요." /> <select
-										class="form-select formInput"
+									<select
+										class="form-select form-select-sm formInput"
 										aria-label="Default select example">
-										<option selected>점수</option>
+										<option selected>전면/좌측 선택</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
 									</select>
-									<div class="mb-3">
-										<textarea class="form-control formInput2"
-											id="exampleFormControlTextarea1" rows="3"></textarea>
-									</div>
+									<select
+										class="form-select form-select-sm"
+										aria-label="Default select example">
+										<option selected>후면/좌측 선택</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+									<select
+										class="form-select form-select-sm formInput"
+										aria-label="Default select example">
+										<option selected>모양 선택</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+									<select
+										class="form-select form-select-sm"
+										aria-label="Default select example">
+										<option selected>제형 선택</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+									<select
+										class="form-select form-select-sm"
+										aria-label="Default select example">
+										<option selected>분할선 선택</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+									<select
+										class="form-select form-select-sm"
+										aria-label="Default select example">
+										<option selected>후면 분할선 여부</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
 									<div class="d-flex justify-content-end">
 										<button type="button" class="btn bg-primary text-white me-3">작성</button>
 										<button type="button" class="btn bg-dark text-white me-3">뒤로가기</button>
