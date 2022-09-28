@@ -13,9 +13,9 @@ label {
 			<!-- 안 쪽에 자신의 컨텐츠를 넣어주세요 -->
 			<div class="container-fluid" style="text-align: center;">
 				<div class="row">
-					<div class="col-10" style="background-color: white;">
+					<div class="col-10" style="background-color: white; margin-left: 135px">
 						<header>
-							<h5 style="background-color: aqua;">약품 상세정보란</h5>
+							<h5 class="hanna" style="background-color: aqua;">약품 상세정보란</h5>
 						</header>
 						<ul class="list-unstyled">
 							<li class="border-top my-3"></li>
@@ -23,49 +23,49 @@ label {
 						<form action="dUpdate" id="dUpdateFormTag" method="get" style="">
 							<div class="col-md-10 mb-3 ">
 
-								<label>약명 </label> <input class="form-control text-center"
+								<label class="hanna text-center">약명 </label> <input class="form-control text-center"
 									type="text" id="drug_name" name="drug_name"
 									value="${vo.drug_name}" readonly="readonly">
 							</div>
 							<div class="col-md-10 mb-3 ">
 
-								<label>제조사 </label> <input class="form-control text-center"
+								<label class="hanna">제조사 </label> <input class="form-control text-center"
 									type="text" id="drug_company" name="drug_company"
 									value="${vo.drug_company}" readonly="readonly">
 							</div>
 							<div class="col-md-10 mb-3 ">
 
-								<label>효능.효과 </label> <input class="form-control text-center"
+								<label class="hanna">효능.효과 </label> <input class="form-control text-center"
 									type="text" id="drug_effect" name="drug_effect"
 									value="${vo.drug_effect}" readonly="readonly">
 							</div>
 							<div class="col-md-10 mb-3 ">
 
-								<label>제형 </label> <input class="form-control text-center"
+								<label class="hanna">제형 </label> <input class="form-control text-center"
 									type="text" id="drug_formulation" name="drug_formulation"
 									value="${vo.drug_formulation}" readonly="readonly">
 							</div>
 							<div class="col-md-10 mb-3 ">
 
-								<label>성분 </label> <input class="form-control text-center"
+								<label class="hanna">성분 </label> <input class="form-control text-center"
 									type="text" id="drug_component" name="drug_component"
 									value="${vo.drug_component}" readonly="readonly">
 							</div>
 							<div class="col-md-10 mb-3 ">
 
-								<label>모양 </label> <input class="form-control text-center"
+								<label class="hanna">모양 </label> <input class="form-control text-center"
 									type="text" id="drug_shape" name="drug_shape"
 									value="${vo.drug_shape}" readonly="readonly">
 							</div>
 							<div class="col-md-10 mb-3 ">
 
-								<label>식약처분류 </label> <input class="form-control text-center"
+								<label class="hanna">식약처분류 </label> <input class="form-control text-center"
 									type="text" id="drug_disposal" name="drug_disposal"
 									value="${vo.drug_disposal}" readonly="readonly">
 							</div>
 							<div class="col-md-10 mb-3 ">
 
-								<label>전문 / 일반약품 </label> <input
+								<label class="hanna">전문 / 일반약품 </label> <input
 									class="form-control text-center" type="text"
 									id="drug_Professional_General" name="drug_Professional_General"
 									value="${vo.drug_Professional_General}" readonly="readonly">
