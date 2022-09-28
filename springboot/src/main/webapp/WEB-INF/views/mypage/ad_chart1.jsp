@@ -4,74 +4,67 @@
 <!-- include 제거  -->
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
-
-
-
-							<!-- Bar Chart1 -->
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">작월 사용자이용 통계</h6>
-								</div>
-								<div class="card-body mb-5" style="height: 300px;">
-									<div class="chart-bar" >
-										<canvas id="myBarChart"></canvas>
-									</div>
-									<hr>
-									Styling for the bar chart can be found in the
-									<code>/js/demo/chart-bar-demo.js</code>
-									file.
-								</div>
-							</div>
-
-
-							<!-- Bar Chart2 -->
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">과별 병원 이용 통계</h6>
-								</div>
-								<div class="card-body mb-5" style="height: 300px;">
-									<div class="chart-bar" id="graph-container"
-										style="height: 100%;">
-										<!--<canvas id="myBarChart2" width="591" height="150"></canvas>-->
-									</div>
-									<hr>
-									Styling for the bar chart can be found in the
-									<code>/js/demo/chart-bar-demo.js</code>
-									file.
-								</div>
-							</div>
+<!-- Bar Chart1 -->
+<div class="row row-col-2 justify-content-center" >
+<div class="col-lg-5 mb-lg-0 mb-4">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">작월 사용자이용 통계</h6>
+			</div>
+			<div class="card-body mb-5" style="height: 300px;">
+				<div class="chart-bar" style="height: 100%;">
+					<canvas id="myBarChart"></canvas>
+				</div>
+				<hr>
+				Styling for the bar chart can be found in the
+				<code>/js/demo/chart-bar-demo.js</code>
+				file.
+			</div>
+		</div>
+		<!-- Bar Chart2 -->
+		<div class="card shadow mb-4">
+			<div class="card-header py-3 mb-3">
+				<h6 class="m-0 font-weight-bold text-primary">과별 병원 이용 통계</h6>
+			</div>
+			<div class="card-body mb-5" style="height: 300px;">
+				<div class="chart-bar" id="graph-container" style="height: 100%;">
+					<!--<canvas id="myBarChart2" width="591" height="150"></canvas>-->
+				</div>
+				<hr>
+				Styling for the bar chart can be found in the
+				<code>/js/demo/chart-bar-demo.js</code>
+				file.
+			</div>
+		</div>
+	</div>
 
 
 
 
-							<!-- Donut Chart -->
-							<div class="container">
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">전국 병원</h6>
-									</div>
-									<div>
-										<input type="button" value="click" id="jsonLoad" style="display: none;" >
-									</div>
-									<div class="card-body">
-										<!-- <div id="target"></div> -->
-										<div class="chart-bar">
-											<div id="chart1"></div>
+<div class="col-lg-5 mb-lg-0 mb-4">
+		<!-- Donut Chart -->
+		<div class="container">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">전국 병원</h6>
+				</div>
+				<div>
+					<input type="button" value="click" id="jsonLoad"
+						style="display: none;">
+				</div>
+				<div class="card-body">
+					<!-- <div id="target"></div> -->
+					<div class="chart-bar">
+						<div id="chart1"></div>
 
-										</div>
-									</div>
-								</div>
-							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<div></div>
+</div>
 
-
-							<div class="row">
-								<div style="width: 500px;">
-									
-									<div id="target"></div>
-									<div id="chart1"
-										style="width: 1200px; height: 600px; padding-top: 50px; margin-bottom: 100px;"></div>
-								</div>
-							</div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 
 <!-- c3 -->
@@ -197,7 +190,7 @@ var config = {
 		    			       yAxes: [{
 		    			         ticks: {
 		    			           min: 0,
-		    			           max: 30,
+		    			           max: 20,
 		    			           maxTicksLimit: 5,
 		    			           padding: 10,
 		    			           // Include a dollar sign in the ticks

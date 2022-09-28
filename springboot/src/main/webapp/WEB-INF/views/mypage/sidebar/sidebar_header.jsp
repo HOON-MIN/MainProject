@@ -38,7 +38,7 @@
 							</li>
 							<li class="nav-item pt-2 pb-2 ps-4"><a
 								class="nav-link text-white"
-								href="${pageContext.request.contextPath }/admin/adminRegistChart">차트</a>
+								href="${pageContext.request.contextPath }/member/test">차트</a>
 							</li>
 						</ul>
 					</div>
