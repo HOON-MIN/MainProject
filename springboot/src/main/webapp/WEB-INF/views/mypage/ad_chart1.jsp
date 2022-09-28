@@ -4,65 +4,64 @@
 <!-- include 제거  -->
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
+<h3 class="hanna p-2" style="text-align: center;">사용자 통계</h3>
+
 <!-- Bar Chart1 -->
-<div class="row row-col-2 justify-content-center" >
-<div class="col-lg-5 mb-lg-0 mb-4">
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">작월 사용자이용 통계</h6>
-			</div>
-			<div class="card-body mb-5" style="height: 300px;">
-				<div class="chart-bar" style="height: 100%;">
-					<canvas id="myBarChart"></canvas>
+<div class="container justify-content-center">
+
+	<div class="row row-cols-2 ">
+		<div class="col">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3 mb-3">
+					<h6 class="m-0 font-weight-bold text-primary">작월 사용자이용 통계</h6>
 				</div>
-				<hr>
-				Styling for the bar chart can be found in the
-				<code>/js/demo/chart-bar-demo.js</code>
-				file.
+				<div class="card-body mb-4" style="height: 300px;">
+					<div class="chart-bar" style="height: 100%;">
+						<canvas id="myBarChart"></canvas>
+					</div>
+					<hr>
+				</div>
 			</div>
 		</div>
-		<!-- Bar Chart2 -->
-		<div class="card shadow mb-4">
-			<div class="card-header py-3 mb-3">
-				<h6 class="m-0 font-weight-bold text-primary">과별 병원 이용 통계</h6>
-			</div>
-			<div class="card-body mb-5" style="height: 300px;">
-				<div class="chart-bar" id="graph-container" style="height: 100%;">
-					<!--<canvas id="myBarChart2" width="591" height="150"></canvas>-->
+		<div class="col">
+			<!-- Bar Chart2 -->
+			<div class="card shadow mb-4">
+				<div class="card-header py-3 mb-3">
+					<h6 class="m-0 font-weight-bold text-primary">과별 병원 이용 통계</h6>
 				</div>
-				<hr>
-				Styling for the bar chart can be found in the
-				<code>/js/demo/chart-bar-demo.js</code>
-				file.
+
+				<div class="card-body mb-4" style="height: 300px;">
+					<div class="chart-bar" id="graph-container" style="height: 100%;">
+						<!--<canvas id="myBarChart2" width="591" height="150"></canvas>-->
+					</div>
+					<hr>
+
+				</div>
 			</div>
 		</div>
 	</div>
+	<!-- Donut Chart -->
+	<div class="container">
+		<div class="row">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">전국 병원</h6>
+			</div>
+			<div>
+				<input type="button" value="click" id="jsonLoad"
+					style="display: none;">
+			</div>
+			<div class="card-body">
+				<!-- <div id="target"></div> -->
+				<div class="chart-bar">
+					<div id="chart1"></div>
 
-
-
-
-<div class="col-lg-5 mb-lg-0 mb-4">
-		<!-- Donut Chart -->
-		<div class="container">
-			<div class="card shadow mb-4">
-				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">전국 병원</h6>
-				</div>
-				<div>
-					<input type="button" value="click" id="jsonLoad"
-						style="display: none;">
-				</div>
-				<div class="card-body">
-					<!-- <div id="target"></div> -->
-					<div class="chart-bar">
-						<div id="chart1"></div>
-
-					</div>
 				</div>
 			</div>
 		</div>
-</div>
-<div></div>
+	</div>
+	</div>
+
 </div>
 
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>

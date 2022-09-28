@@ -14,7 +14,7 @@
 						style="height: 160px;">
 						<img src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" alt="${pageContext.request.contextPath }/imgfile/${sessionProfimg}" style="height: 40%;"
 							class="mb-3">
-						<h5 class="hanna text-white">$${sessionNAME }님</h5>
+						<h5 class="hanna text-white">${sessionNAME }님</h5>
 						<span class="nanum text-white" style="font-size: 12px;">
 							관리자 ・ <a
 							href="${pageContext.request.contextPath }/admin/adminHospTotalList" style="text-decoration: none;color: white;">관리자
