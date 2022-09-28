@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/deliveryForm.css";
 const DeliveryForm = () => {
+  const navigate = useNavigate();
+
   return (
     <div style={{ backgroundColor: "#3478f5", height: "" }}>
       <div className="delPage">
@@ -24,7 +27,7 @@ const DeliveryForm = () => {
               <div className="row">
                 <div className="col-9">
                   <label htmlFor="num" className="form-label ">
-                    <small>받는 주소</small>
+                    <small className="small">받는 주소</small>
                   </label>
                   <p className="delInfo">{localStorage.getItem("addr")}</p>
                 </div>
@@ -35,7 +38,7 @@ const DeliveryForm = () => {
               <div className="row">
                 <div className="col-9">
                   <label htmlFor="num" className="form-label ">
-                    <small>받는 사람</small>
+                    <small className="small">받는 사람</small>
                   </label>
                   <p className="delInfo">{localStorage.getItem("id")}</p>
                 </div>
@@ -46,7 +49,7 @@ const DeliveryForm = () => {
               <div className="row">
                 <div className="col-9">
                   <label htmlFor="num" className="form-label ">
-                    <small>연락처</small>
+                    <small className="small">연락처</small>
                   </label>
                   <p className="delInfo">{localStorage.getItem("tel")}</p>
                 </div>
@@ -67,7 +70,7 @@ const DeliveryForm = () => {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-center pt-5 pb-5 ">
+        <div className="d-flex justify-content-center ps-3 pe-3 pt-5 pb-5 ">
           <div className="card mb-5">
             <div className="card-body">
               <h5 className="card-title">
@@ -78,7 +81,15 @@ const DeliveryForm = () => {
                 아직 구현되지 않은 서비스입니다
               </h6>
             </div>
-            <button className="btn btn-lg btn-primary m-4">입력완료</button>
+            <button
+              className="btn btn-lg btn-primary m-4"
+              onClick={() => {
+                alert("저희 서비스를 이용해주셔서 감사합니다");
+                navigate("/");
+              }}
+            >
+              입력완료
+            </button>
           </div>
         </div>
       </div>
