@@ -15,6 +15,7 @@ import DoctorListPage from "./page/DoctorListPage";
 import DoctorDetailPage from "./page/DoctorDetailPage";
 import ReservationPage from "./page/ReservationPage";
 import AuthRoute from "./component/AuthRoute";
+import DeliveryForm from "./component/DeliveryForm";
 
 function App() {
   const navigate = useNavigate();
@@ -80,14 +81,13 @@ function App() {
                 value={id}
                 onChange={({ target: { value } }) => setId(value)}
                 type="text"
-                placeholder="member1"
               />
             </div>
             <div className="mb-3">
               <label className="form-label">비밀번호</label>
               <input
                 className="form-control"
-                value="{pwd}"
+                value={pwd}
                 onChange={({ target: { value } }) => setPwd(value)}
                 type="password"
               />
@@ -152,6 +152,8 @@ function App() {
         }
         <Route path="/detail/:dnum" element={<DoctorDetailPage />} />
         <Route path="reservation/:dnum" element={<ReservationPage />} />
+        <Route path="/" element={<ReservationPage />} />
+        <Route path="/drug" element={<DeliveryForm />}></Route>
       </Routes>
     </div>
   );
