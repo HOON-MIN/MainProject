@@ -4,10 +4,7 @@ package com.main.ateam.member.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-
-import java.security.Provider.Service;
 import java.util.ArrayList;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.main.ateam.doctor.service.DoctorService;
 import com.main.ateam.hospital.service.HospitalService;
 import com.main.ateam.member.memberEtc.memberInfoModule;
 import com.main.ateam.member.service.MemberService;
@@ -39,10 +37,12 @@ import com.main.ateam.modules.Base64Module;
 import com.main.ateam.modules.GsonModule;
 import com.main.ateam.modules.UbuntuShellModule;
 import com.main.ateam.vo.CovidRecordVO;
+import com.main.ateam.vo.DoctorVO;
 import com.main.ateam.vo.FileVO;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
 import com.main.ateam.vo.OAuthToken;
+import com.main.ateam.vo.PrescriptionVO;
 import com.main.ateam.vo.SearchVO;
 
 @Controller
@@ -64,6 +64,8 @@ public class MemberController {
 	private GsonModule gsonmodule;
 	@Autowired
 	private HospitalService service;
+	@Autowired
+	private DoctorService doctorService;
 
 	/* 0918 add: 이동환 @Values 추가 */
 	@Value("${uploadPath}")
@@ -537,6 +539,38 @@ public class MemberController {
 	@RequestMapping("/COVIDResult")
 	public String covidresult() {
 		return "member/covidResult";
+		
+	}
+	/* 처방전 추가 */
+	@GetMapping("/selectPlist")
+	public String selectPlist(HttpSession session,Model m) {
+		int num =0;
+		num = (int)session.getAttribute("sessionNUM");
+		DoctorVO dvo = doctorService.doctorMypage(38);
+		List<PrescriptionVO> prvo = new ArrayList<>();
+		List<PrescriptionVO> list =memberService.selectPlist(num);
+		for(PrescriptionVO e : list) {
+			e.setDnum(38);
+			e.setDname("배상원");
+			prvo.add(e);
+		}
+		m.addAttribute("prvo", prvo);
+		return "mypage/member_test";
+	}
+	
+	@GetMapping("/selectPone")
+	public String selectPone(Model m,int pnum) {
+		PrescriptionVO prvo = memberService.selectPone(pnum);
+		m.addAttribute("prvo", prvo);
+		return "mypage/member_test2";
+	}
+	// 의사 - 진료
+//	@ResponseBody
+	@RequestMapping("/medical")
+	public String medical(int num) {
+		System.out.println("진료 start!!");
+		System.out.println("num = " +num);
+		return "redirect:/";
 	}
 
 	@RequestMapping("/miruchart")

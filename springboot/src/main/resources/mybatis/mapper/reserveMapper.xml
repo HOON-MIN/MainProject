@@ -17,7 +17,7 @@
 		insert into reserve values(reserve_seq.nextVal,#{num},#{dnum},#{symptom},#{symptomComm},#{contectCheck},#{rdate},#{rtime})
 	</insert>
 	<select id="choiceDoctor"  parameterType="int" resultType="doctorVO">
-		select dname,dmajor from doctor where dnum=#{dnum}
+		select dnum,dname,dmajor from doctor where dnum=#{dnum}
 	</select>
 	<select id="getDoctorCnt"  parameterType="int" resultType="int">
 		select count(*) from doctor where cnum = #{cnum}
