@@ -5,8 +5,7 @@
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 <h3 class="hanna p-4" style="text-align: center;">등록한 병원</h3>
 <%-- 리팩토링 해야 함 --%>
-<table class="htable table table-hover table-borderless"
-	style="text-align: center;">
+<table class="htable table table-hover table-borderless">
 	<thead>
 		<tr class="hanna">
 			<th>번호</th>
@@ -19,7 +18,7 @@
 
 	<tbody>
 		<c:forEach var="e" items="${list }">
-			<tr class="hanna">
+			<tr>
 				<td class="linktd">${e.r_num }<input type="hidden"
 					value="${e.cnum }">
 				</td>
