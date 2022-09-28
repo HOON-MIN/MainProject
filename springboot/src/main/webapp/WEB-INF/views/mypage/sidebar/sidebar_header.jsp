@@ -40,6 +40,10 @@
 								class="nav-link text-white"
 								href="${pageContext.request.contextPath }/member/test">차트</a>
 							</li>
+							<li class="nav-item pt-2 pb-2 ps-4"><a
+								class="nav-link text-white"
+								href="${pageContext.request.contextPath }/hospitalP/dashboard">Analysis Dashboard</a>
+							</li>
 						</ul>
 					</div>
 				</div>

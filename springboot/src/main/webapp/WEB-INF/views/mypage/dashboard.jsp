@@ -201,16 +201,16 @@
 					</tr>
 				</div>
 			</div>
-			<div class="col-lg-5">
-				<div class="card">
+			<div class="col-lg-5" >
+				<div class="card" >
 					<div class="card-header pb-0 p-3">
 						<div class="d-flex justify-content-between">
 							<h6 class="mb-2">이용자 후기 평가 - 병원 랭킹(치과)</h6>
 						</div>
 					</div>
-					<p></p>
-					<div class="table-responsive">
-						<table class="table table-hover hostable">
+				
+					<div class="table-responsive" >
+						<table class="table table-hover hostable" style="height: 300px;">
 							<thead>
 								<tr>
 									<th scope="col">순위</th>
