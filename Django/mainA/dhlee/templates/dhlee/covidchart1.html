@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="width:40%">
+  <canvas id="canvas"></canvas>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+var randomScalingFactor = function () {
+  console.log(Math.random() * 100)
+  return Math.round(Math.random() * 1000);
+};
+
+var chartColors = {
+  red: "rgb(255, 99, 132)",
+  orange: "rgb(255, 159, 64)",
+  yellow: "rgb(255, 205, 86)",
+  green: "rgb(75, 192, 192)",
+  blue: "rgb(54, 162, 235)",
+  purple: "rgb(153, 102, 255)",
+  grey: "rgb(231,233,237)"
+};
+
+var color = Chart.helpers.color;
+var config = {
+  type: "radar",
+  data: {
+    labels: [
+      "10대",
+      "20대",
+      "30대",
+      "40대",
+      "50대",
+      ["60대","이상"],
+    ],
+    datasets: [
+      {
+        label: "COVID19 양성",
+        backgroundColor: color(chartColors.red).alpha(0.2).rgbString(),
+        borderColor: chartColors.red,
+        pointBackgroundColor: chartColors.red,
+        data: [
+          8.48,
+          25.96,
+          25.18,
+          20.64,
+          11.44,
+          8.31,
+        ]
+      },
+      {
+        label: "COVID19 음성",
+        backgroundColor: color(chartColors.blue).alpha(0.2).rgbString(),
+        borderColor: chartColors.blue,
+        pointBackgroundColor: chartColors.blue,
+        data: [
+          14.38,
+          30.77,
+          25.08,
+          15.38,
+          8.7,
+          5.69,
+        ]
+      },
+    ]
+  },
+  options: {
+    legend: {
+      position: "top",
+      labels: {
+        fontColor: "rgb(255, 99, 132)"
+      },
+      onHover: function (event, legendItem) {
+        document.getElementById("canvas").style.cursor = "pointer";
+      },
+      onClick: function (e, legendItem) {
+        var index = legendItem.datasetIndex;
+        var ci = this.chart;
+        var alreadyHidden =
+          ci.getDatasetMeta(index).hidden === null
+            ? false
+            : ci.getDatasetMeta(index).hidden;
+
+        ci.data.datasets.forEach(function (e, i) {
+          var meta = ci.getDatasetMeta(i);
+
+          if (i !== index) {
+            if (!alreadyHidden) {
+              meta.hidden = meta.hidden === null ? !meta.hidden : null;
+            } else if (meta.hidden === null) {
+              meta.hidden = true;
+            }
+          } else if (i === index) {
+            meta.hidden = null;
+          }
+        });
+
+        ci.update();
+      }
+    },
+    tooltips: {
+      custom: function (tooltip) {
+        if (!tooltip.opacity) {
+          document.getElementById("canvas").style.cursor = "default";
+          return;
+        }
+      }
+    },
+    title: {
+      display: true,
+      text: "Chart.js Radar Chart"
+    },
+    scale: {
+      ticks: {
+        beginAtZero: true
+      }
+    }
+  }
+};
+
+window.onload = function () {
+  window.myRadar = new Chart(document.getElementById("canvas"), config);
+};
+
+</script>
+</html>
