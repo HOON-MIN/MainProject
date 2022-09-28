@@ -106,7 +106,7 @@ body {
 						<button type="button" id="resBtn" class="btn btn-secondary"
 							>등록</button>
 						<button type="button" id="backBtn" class="btn btn-warning"
-							onclick="location.href='redirect:/'">돌아가기</button>
+							onclick="location.href='doctorCalendar?dnum=${dvo.dnum }'">돌아가기</button>
 					</div>
 				</form>
 			</div>

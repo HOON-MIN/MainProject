@@ -74,7 +74,7 @@ public class MedinqController {
 		//service.addMedinq(vo);
 		
 
-		return "redirect:/member/memberMypage";
+		return "redirect:/";
 	}
 	@RequestMapping("/medical")
 	public String medical() {

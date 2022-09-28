@@ -37,7 +37,7 @@ p {
 			
 			<div id="target">
 			
-			<form action="medical" method="post" class="p-5">
+			<form action="medInqIns" method="post" class="p-5">
 				<p>1. 다음과 같은 질병으로 진단을 받았거나, 현재 약물 치료 중이십니까?</p>
 				<table class="table" style="text-align: center;">
 					<thead style="text-align: center;">

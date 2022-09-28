@@ -112,8 +112,6 @@ a:link {
 	text-align: center
 }
 </style>
-<jsp:include page="../mypage/sidebar/sidebar_header.jsp" flush="true"></jsp:include>
-
 
 
 
