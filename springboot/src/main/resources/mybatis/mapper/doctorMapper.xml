@@ -67,6 +67,7 @@
 	<!-- 리액트 카테고리별 리스트 출력 -->
 	<resultMap type="doctorVO" id="DoctorCategoryResult">
 		<id property="cnum" column="cnum" />
+		
 		<result property="dnum" column="dnum" />
 		<result property="dname" column="dname" />
 		<result property="dmajor" column="dmajor" />
@@ -74,6 +75,7 @@
 		<collection property="hospitalVO" javaType="java.util.List"
 			ofType="hvo">
 			<id property="cnum" column="cnum" javaType="int" />
+			<result property="r_num" column="r_num" />	
 			<result property="hname" column="hname" />
 			<result property="otime" column="otime" />
 			<result property="ctime" column="ctime" />
@@ -227,6 +229,21 @@
 	<!-- doctorListSpringResultMap -->
 	<select id="doctorListSpring"
 		resultMap="doctorListSpringResultMap" parameterType="svo">
+		select * from (
+		select rownum r_num, a.* from (
+		select
+		h.hname,h.otime,h.ctime, d.dname , d.dmajor ,d.dnum from doctor d , hospital h
+		where h.cnum =
+		d.cnum
+		<include refid="search" />
+		) a
+		)where r_num between
+		#{beginPerPage} and
+		#{endPerPage}
+
+	</select>
+	<select id="doctorListReact"
+		resultMap="DoctorCategoryResult" parameterType="svo">
 		select * from (
 		select rownum r_num, a.* from (
 		select

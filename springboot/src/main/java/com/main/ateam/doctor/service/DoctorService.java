@@ -64,6 +64,10 @@ public class DoctorService {
 		return doctordao.doctorListSpring(svo);
 	}
 	
+	public List<HospitalVO> doctorListReact(SearchVO svo){
+		return doctordao.doctorListReact(svo);
+	}
+	
 	public DoctorVO doctorDetailSpring(int dnum) {
 		return doctordao.doctorDetailSpring(dnum);
 	}
