@@ -4,7 +4,7 @@
 
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 <div style="height: 80%;">
-	<h3 class="hanna m-3 text-center">${sessionNAME }님의마이페이지</h3>
+	<h3 class="hanna m-3 text-center">${sessionNAME }님의 마이페이지</h3>
 	<div class="row hDetail justify-content-around" style="height: 100%">
 	</div>
 </div>

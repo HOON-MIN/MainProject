@@ -59,10 +59,12 @@
 
 <div class="container">
 	<div class="row">
-
+<div style="height: 80%;">
+					<h3 class="hanna p-4" style="text-align: center;">병원 목록</h3>
+					<div>
 
 		<table class="htable table table-hover" id="datatable"
-			style="text-align: center">
+			>
 			<thead>
 				<tr class="hanna">
 					<th scope="col">번호</th>
@@ -148,7 +150,7 @@
 	</div>
 </div>
 
-
+</div></div>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=70d0af4a9fb4dc2835eb629734419955&libraries=services,clusterer,drawing"></script>

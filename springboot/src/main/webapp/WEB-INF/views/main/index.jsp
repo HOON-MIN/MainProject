@@ -301,28 +301,17 @@
 		</div>
 	</article>
 	<div class="row justify-content-center">
-		<div class="col-md-5 testImg4">
-			<h4 class="hanna text-center m-3">공지사항</h4>
-			<table class="table">
-				<thead>
+		<div class="col-md-5 testImg4 overflow-auto">
+			<h4 class="hanna text-center m-3 ">공지사항</h4>
+			<table class=" table table1">
+				<thead class="hanna">
 					<tr>
 						<th scope="col">글제목</th>
 						<th scope="col">날짜</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">공지사항 입니다</th>
-						<td>09-21</td>
-					</tr>
-					<tr>
-						<th scope="row">새로운 뭐시기입니다</th>
-						<td>09-22</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td colspan="2">Larry the Bird</td>
-					</tr>
+
 				</tbody>
 			</table>
 			<div style="position: absolute; right: 24px; bottom: 24px;">
@@ -368,7 +357,28 @@
 		</div>
 	</div>
 </div>
-
+<script>
+var box = "";
+$(function(){
+	
+$.ajax({
+	url:'notice/basicPage',
+	success:function(data){
+		console.log(data)
+		var i=0;
+		data.forEach(e=>{
+			if(i<6){
+			box+="<tr><td>"+e.subject.substring(0,14)+"..."+"</td><td><small>"+e.ndate.substring(0,10)+"</small></td></tr>";	
+			}
+			i++;
+		})
+		console.log("box"+box);
+		$('.table1 > tbody').html(box);
+		}
+});
+	
+})
+</script>
 
 <%-- <style>
 /* 전체 틀 */

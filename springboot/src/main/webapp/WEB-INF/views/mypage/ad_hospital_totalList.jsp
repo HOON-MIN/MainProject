@@ -6,9 +6,11 @@
 
 
 <%-- 리팩토링 해야 함 --%>
-<h3 class="hanna p-4" style="text-align: center;">전국 병원</h3>
+<div style="height: 80%;">
+					<h3 class="hanna p-4" style="text-align: center;">전국 병원</h3>
+					</div>
 <table class="htable table table-hover table-borderless">
-	<thead>
+	<thead class="hanna">
 		<tr>
 			<th>번호</th>
 			<th>병원명</th>
