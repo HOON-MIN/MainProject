@@ -6,12 +6,10 @@ a:link {
 	text-decoration: none;
 }
 
-
 #datatablesSimple a {
 	text-decoration: none;
 	color: black;
 }
-
 
 .disable {
 	padding: 3px 7px;
@@ -19,13 +17,6 @@ a:link {
 	color: silver;
 }
 
-.now {
-	padding: 3px 7px;
-	border: 1px solid #ff4aa5;
-	background: #ff4aa5;
-	color: white;
-	font-weight: bold;
-}
 
 .hcategory {
 	background-color: #3478f5;
@@ -43,34 +34,34 @@ a {
 }
 
 .htable {
-		width: 100%;
-	}
-	
-	.htable thead {
-		height: 40px;
-		color: grey;
-	}
-	
-	.htable th {
-		font-weight: lighter;
-		padding-left: 12px;
-	}
-	
-	.htable tbody {
-		border-collapse: collapse;
-		border-radius: 16px;
-		box-shadow: 0px 0px 8px #ababab;
-	}
-	
-	.htable td {
-		padding: 14px 12px;
-		font-size: 14px;
-	}
-	
-	.htable td>a {
-		color: #232323;
-		font-weight: bold;
-	}
+	width: 100%;
+}
+
+.htable thead {
+	height: 40px;
+	color: grey;
+}
+
+.htable th {
+	font-weight: lighter;
+	padding-left: 12px;
+}
+
+.htable tbody {
+	border-collapse: collapse;
+	border-radius: 16px;
+	box-shadow: 0px 0px 8px #ababab;
+}
+
+.htable td {
+	padding: 14px 12px;
+	font-size: 14px;
+}
+
+.htable td>a {
+	color: #232323;
+	font-weight: bold;
+}
 </style>
 
 <div class="container-fluid">
@@ -94,12 +85,12 @@ a {
 			<div>
 				<ul class="nav flex-column">
 
-					<li class=" nav-item ms-3 pt-5 pb-2 ps-4 mb-4" style="color: white;"><strong>질문 카테고리</strong></li>
+					<li class=" nav-item ms-3 pt-5 pb-2 ps-4 mb-4"
+						style="color: white;"><strong>질문 카테고리</strong></li>
 					<!-- 이안에 본인 카테고리 나눠주세요 -->
 					<c:forEach var="e" items="${qcate }" varStatus="status">
-						
-						<li class=" nav-item pt-2 pb-2 ps-4" value= "${e.qcate }" 
-							><a 
+
+						<li class=" nav-item pt-2 pb-2 ps-4" value="${e.qcate }"><a
 							class="qcatebtn nav-link text-white" href="#">${e.qcate }</a></li>
 					</c:forEach>
 				</ul>
@@ -163,8 +154,8 @@ a {
 						<%-- for end --%>
 					</tbody>
 				</table>
-				
-							<%-- 	<ol class="paging">
+
+				<%-- 	<ol class="paging">
 									<c:choose>
 										<c:when test="${startPage < 6 }">
 											<li class="disable">이전으로</li>
@@ -202,8 +193,8 @@ a {
 										</c:otherwise>
 									</c:choose>
 								</ol> --%>
-												
-								<%-- <form class="sForm" name="sForm" method="get" action="qbList">
+
+				<%-- <form class="sForm" name="sForm" method="get" action="qbList">
 									<input type="hidden" name="searchreset" value="1"> <select
 										name="category" id="category">
 										<option value="qtitle">제목</option>
@@ -219,12 +210,61 @@ a {
 										class="btn btn-primary">
 								</c:if> --%>
 
-				
+
 			</div>
 		</div>
 		<!-- 컨텐츠 영역 끝 -->
 	</div>
 </div>
+
+<!-- 페이지 네이션 -->
+<ul class="pagination justify-content-center p-3">
+	<c:choose>
+		<c:when test="${startPage < 6 }">
+			<li class="page-item disabled"><a class="page-link" href="#"
+				tabindex="-1" aria-disabled="true">Previous</a></li>
+			<!-- 	<li class="disable">이전으로</li> -->
+		</c:when>
+		<c:otherwise>
+			<li class="page-item"><a class="page-link"
+				href="qbList?cPage=${startPage-1}&category=${category}&search=${search}">Previous</a></li>
+		</c:otherwise>
+	</c:choose>
+	<!-- 							<li class="page-item"><a class="page-link" href="#">1</a></li> -->
+	<!-- 							<li class="page-item"><a class="page-link" href="#">2</a></li> -->
+	<!-- 							<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
+	<c:forEach varStatus="i" begin="${startPage}" end="${endPage}" step="1">
+		<c:choose>
+			<c:when test="${i.index == nowPage}">
+				<li class="page-item now"><a class="page-link"
+					style="background: #3478F5; color: white;""">${i.index }</a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="page-item"><a class="page-link"
+					href="qbList?cPage=${i.index}&category=${category}&search=${search}">${i.index}</a></li>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+
+	<c:choose>
+		<c:when test="${endPage >= totalPage}">
+			<li class="page-item disabled"><a class="page-link"
+				aria-disabled="true">Next</a></li>
+		</c:when>
+		<c:when test="${totalPage > (nowPage+pagePerBlock)}">
+			<li>
+			<li class="page-item"><a class="page-link"
+				href="qbList?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+		</c:when>
+		<c:otherwise>
+			<li>
+			<li class="page-item"><a class="page-link"
+				href="qbList?cPage=${endPage+1 }&category=${category}&search=${search}">Next</a></li>
+		</c:otherwise>
+	</c:choose>
+</ul>
+
 
 
 
