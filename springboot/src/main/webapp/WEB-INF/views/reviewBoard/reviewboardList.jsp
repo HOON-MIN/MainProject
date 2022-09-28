@@ -113,6 +113,14 @@ a:link {
 }
 </style>
 
+
+
+
+
+
+
+
+
 <div class="container-fluid">
 	<div class="row justify-content-around">
 		<!-- 카테고리 영역 -->
@@ -153,13 +161,59 @@ a:link {
 		<!-- 카테고리 영역 끝 -->
 
 		<!-- 컨텐츠 (연회색배경) -->
-		<div class="col-10 flex-column">
+<!-- 		<div class="col-10 flex-column">
 			<div class="hboard pt-2 ps-3 pe-3 pb-3">
-				<!-- 안 쪽에 자신의 컨텐츠를 넣어주세요 -->
+				안 쪽에 자신의 컨텐츠를 넣어주세요
 				<h3 class="hanna p-4" style="text-align: center;">리뷰 리스트</h3>
-				<div class="d-flex justify-content-around">
+				 -->
+					<div class="col-10 h-100">
+			<div class="hboard pt-2 ps-3 pe-3">
+				<div class="justify-content-center">
+					<h3 class="hanna ps-3 text-center">리뷰 리스트</h3>
+					
+				<div class="row justify-content-around">
 				
-	<form name="sForm" method="post" action="reviewboardlist">
+				
+				
+				<form class="sForm col-8" name="sForm" method="post" action="reviewboardlist"
+          style="display: flex; justify-content: center;">
+
+						<input type="hidden" name="searchreset" value="1" hidden="hidden">
+	                    <div class="input-group searchForm mt-3 mb-3 ">
+	                        <select class="form-select form-select-sm "name="search_option"
+                            id="category" aria-label=".form-select-sm example"
+                            style="border: solid 1px #3478f5;height:70%; width: 64px;">
+
+					
+                            
+                            <option value="id" <c:if test="${map.search_option == 'id'}">selected</c:if>>작성자</option>
+                            <option value="title" <c:if test="${map.search_option == 'title'}">selected</c:if>>제목</option>
+                            <option value="cont" <c:if test="${map.search_option == 'cont'}">selected</c:if>>내용</option>
+                            <option value="hname" <c:if test="${map.search_option == 'hname'}">selected</c:if>>병원명</option>
+                            <option value="all" <c:if test="${map.search_option == 'all'}">selected</c:if>>작성자+내용+제목+병원명</option>
+                            
+                        </select>
+
+                        <input type="text" name="keyword" value="${map.keyword}" id="searchbar" class="form-control" style="height:70%; width: 180px;">
+                        <button type="submit" class="btn searchBtn"style=" height:70%;">
+                            <img alt="검색아이콘" src="/img/search.png" style=" height:20px;" >
+                        </button>
+                        </div>
+					<div class="col-2 text-center mt-3">
+                        <c:if test="${sessionID != null}">
+						<button class="btn bg-primary m-3 text-white hanna" id="writeBtn" 
+							data-bs-toggle="modal" data-bs-target="#exampleModal">글쓰기</button>
+					</c:if>
+					</div>
+   </form>
+                        </div>
+                    </div>
+   
+   
+   
+   
+
+	<%-- <form name="sForm" method="post" action="reviewboardlist">
     	<select name="search_option">
         	<option value="id"
 	<c:if test="${map.search_option == 'id'}">selected</c:if>
@@ -184,21 +238,17 @@ a:link {
     	</select>
     	<input name="keyword" value="${map.keyword}" id="searchbar">
     	<input type="submit" value="조회">
-	</form>
+	</form> --%>
 
+
+
+                
+                
 					
-					<c:if test="${sessionID != null}">
-					<div>
-						<button class="btn bg-primary m-3 text-white hanna" id="writeBtn" 
-							data-bs-toggle="modal" data-bs-target="#exampleModal">글쓰기</button>
-					</div>
-					</c:if>
-				</div>
+                  
 
 
-				<div class="flex-container justify-content-center">
-
-
+			<div class="row row-col-2 justify-content-center" >
 					<c:forEach var="e" items="${reviewlist}">
 						<div class="card m-3" style="width: 18rem;">
 							<div
@@ -226,7 +276,7 @@ a:link {
 							</div>
 						</div>
 					</c:forEach>
-				</div>
+				
 				<ul class="pagination justify-content-center mt-5 mb-5">
 					<c:choose>
 						<c:when test="${startPage < 6 }">
@@ -263,21 +313,23 @@ a:link {
 								aria-disabled="true">Next</a></li>
 						</c:when>
 						<c:when test="${totalPage > (nowPage+pagePerBlock)}">
-							<li>
 							<li class="page-item"><a class="page-link"
 								href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage+pagePerBlock}">Next</a></li>
 						</c:when>
 						<c:otherwise>
-							<li>
 							<li class="page-item"><a class="page-link"
 								href="${pageContext.request.contextPath}/reviewboard/reviewboardlist?cPage=${startPage+pagePerBlock}">Next</a></li>
 						</c:otherwise>
 					</c:choose>
+					</ul>
+					</div>
 			</div>
 		</div>
 	</div>
 	<!-- 컨텐츠 영역 끝 -->
-</div>
+	
+	
+	
 </div>
 <script type="text/javascript">
  
