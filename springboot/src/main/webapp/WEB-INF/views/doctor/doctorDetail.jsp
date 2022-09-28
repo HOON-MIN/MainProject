@@ -75,11 +75,7 @@ a {
 				<ul class="nav flex-column">
 					<li class=" nav-item pt-5 pb-2 ps-4"><a
 						class="hcateAllbtn nav-link active text-white" aria-current="page"
-						href="#">의사 디테일</a></li>
-					<li class=" nav-item pt-5 pb-2 ps-4"><a
-						class="hcateAllbtn nav-link active text-white" aria-current="page"
-						href="${pageContext.request.contextPath}/doctor/doctorList">의사
-							리스트</a></li>
+						href="${pageContext.request.contextPath}/doctor/doctorList">돌아가기</a></li>
 					<!-- 이안에 본인 카테고리 나눠주세요 -->
 					<%-- 	<c:forEach var="e" items="${hcate }" varStatus="status">
 						
