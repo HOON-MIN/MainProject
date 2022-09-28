@@ -18,7 +18,6 @@ import DrugDeliverPage from "./page/DrugDeliverPage";
 import AuthRoute from "./component/AuthRoute";
 
 function App() {
-  console.log("app");
   const navigate = useNavigate();
 
   // 모달
