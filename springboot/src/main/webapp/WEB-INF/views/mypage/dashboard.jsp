@@ -24,6 +24,10 @@
 	crossorigin="anonymous"></script>
 <link href="/soyoung/dashboard/css/nucleo-svg.css" rel="stylesheet" />
 <!-- CSS Files -->
+
+<style>
+.carousel-item img {width:100%;}
+</style>
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -118,7 +122,7 @@
 								<div class="col-8">
 									<div class="numbers">
 										<p class="text-sm mb-0 text-uppercase font-weight-bold">당월 누적 매출액</p>
-										<h5 class="font-weight-bolder">\15,188,000</h5>
+										<h5 class="font-weight-bolder">15,188,000원</h5>
 										<p class="mb-0">
 											<span class="text-success text-sm font-weight-bolder">+5%</span>
 											than last month
@@ -201,16 +205,16 @@
 					</tr>
 				</div>
 			</div>
-			<div class="col-lg-5" >
-				<div class="card" >
+			<div class="col-lg-5">
+				<div class="card">
 					<div class="card-header pb-0 p-3">
 						<div class="d-flex justify-content-between">
 							<h6 class="mb-2">이용자 후기 평가 - 병원 랭킹(치과)</h6>
 						</div>
 					</div>
-				
-					<div class="table-responsive" >
-						<table class="table table-hover hostable" style="height: 300px;">
+					<p></p>
+					<div class="table-responsive">
+						<table class="table table-hover hostable">
 							<thead>
 								<tr>
 									<th scope="col">순위</th>
@@ -227,7 +231,6 @@
 				</div>
 			</div>
 		</div>
-		<footer class="footer pt-3  "> </footer>
 
 	</main>
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
@@ -237,6 +240,7 @@
 	<script src="/soyoung/dashboard/js/plugins/perfect-scrollbar.min.js"></script>
 	<script src="/soyoung/dashboard/js/plugins/smooth-scrollbar.min.js"></script>
 	<script src="/soyoung/dashboard/js/plugins/chartjs.min.js"></script>
+
 
 	<script>
 
