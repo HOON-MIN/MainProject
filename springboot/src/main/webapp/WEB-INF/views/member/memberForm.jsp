@@ -1,9 +1,171 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<style>
+section {
+background-color: #3478f5;
+}
+</style>    
 <%-- 본문 시작  --%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+<section class="h-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                alt="Sample photo" class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height: 100%;" />
+            </div>
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Student registration form</h3>
+
+             <form action="addMember" method="post" id="memberForm"  enctype="multipart/form-data">
+                <div class="row">
+                <input type="hidden" id="ssn" name="ssn" value=""> 
+				<input type="hidden" id="tel" name="tel" value=""> 
+				<input type="hidden" id="addr" name="addr" value=""> 
+				<input type="hidden" id="profimg" name="profimg" value="">
+				<input type="hidden" id="pwd" name="pwd" value="">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text"  id="id" name="id" class="form-control form-control-lg" />
+                      <label class="form-label" for="id">ID</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                     <button class="btn btn-outline-secondary" type="button" id="id-check" style="margin-left: 19px;">중복확인</button>
+                   	<p style="margin-top: 2px;"></p>
+				<i id="id-check-warn" style="margin-top: 5px; "></i>
+                    </div>
+                  </div>
+                </div>
+				<div class="row">
+                    <div class="form-outline">
+                      <input type="password" id="pwd1" name="pwd1" class="form-control form-control-lg" />
+                      <label class="form-label" for="pwd1">비밀번호</label>
+                    </div>
+                  </div>
+                  </div>
+                <div class="form-outline mb-4">
+                  <input type="text" id="name" name="name"class="form-control form-control-lg" />
+                  <label class="form-label" for="name">이름</label>
+                </div>
+
+                <!-- radio 
+                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                  <h6 class="mb-0 me-4">gender: </h6>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                      value="option1" />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                      value="option2" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                      value="option3" />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div> -->
+                <div class="row">
+					<div class="form-outline mb-4">
+						<input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="name@example.com"
+						required="required">
+						<label class="form-label">이메일</label> 
+					</div>
+				</div>
+				<div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      	<input type="text" id="ssn1" name="ssn1" class="form-control form-control-lg" required placeholder="생년월일 6자리 입력"
+							maxlength="6" pattern=".{6,6}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/> 
+                      <label class="form-label" for="ssn1">주민등록번호</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      	<input type="text" id="ssn2" name="ssn2" oninput="this.value = this.value.replace(/[^1-4.]/g, '').replace(/(\..*)\./g, '$1');"
+						class="form-control form-control-lg" maxlength="1"  required/> 
+                      <label class="form-label" for="ssn2">주민등록번호</label>
+                      
+                    </div>
+                  </div>
+                </div>
+				
+			<div class="row">
+				<div class="col-md-6">
+				<label class="form-label">프로필 사진 등록</label> 
+			<img style="width: 150px; margin-top: 8px;" src="${pageContext.request.contextPath}/resources/image/noimage.jpg" id="imgx">
+				<input type="file" class="form-control" id="mfile" name="mfile">
+					
+
+			</div>		
+				
+			  <div class="col-md-6">
+			    <label class="form-label">전화번호</label>
+			    <input type="tel" class="form-control" id="telv" name="telv" placeholder="-없이 입력" required 
+			    		oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="11">
+			  </div>
+			
+                <label class="form-label" style="text-align: justify;" >주소</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
+			</div>
+			<div class="col-md-3">
+				<input type="button" class="btn btn-outline-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+			</div>
+			<div class="col-md-8">
+				<input type="text" class="form-control" id="addr1" name="addr1" placeholder="주소"><br>
+			</div>
+			<div class="col-md-4">
+				<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소">
+			</div>
+			<div class="form-group text-center">
+				
+			</div>
+			</div>
+			
+                  <div class="d-flex justify-content-end pt-3">
+                  <button type="submit" id="join-submit" class="btn btn-primary btn-space" >
+					회원가입<i class="fa fa-check spaceLeft"></i>
+				</button>
+
+				<button type="button" class="btn btn-danger"
+					onClick="location.href='/ateamfinal/main'">
+					취소<i class="fa fa-check spaceLeft"></i>
+				</button>
+                  
+                </div>
+				</form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+ <!--
 <article >
 <div class="page-header">
 		<center>
@@ -127,13 +289,13 @@
 			</div>
 		</div>
 	</form>
- <!-- comment end -->
-    </article>
+ comment end 
+    </article> -->
     <script>
-	var $js = jQuery.noConflict()
+	//var $js = jQuery.noConflict()
 	
 	//Email Ajax
-	$js('#mail-check').click(function() {
+	/*$js('#mail-check').click(function() {
 		const eamil = $js('#email').val(); // 이메일 주소값 얻어오기!
 		console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
 		const checkInput = $js('#certi-input') // 인증번호 입력하는곳 
@@ -168,42 +330,23 @@
 			$resultMsg.css('color', 'red');
 		}
 	});
-	
-	$js('#id-check').click(function() {
-		let param = $js('#id').val();
-		$js.ajax({
+	*/
+	$('#id-check').click(function() {
+		let param = $('#id').val();
+		$.ajax({
 			url: "idcheck?id="+param,
 			success:function(data){
 				console.log(data);
 				if(data == 1){
-					$js('#id-check-warn').css('color','red').html('이미 사용중인 아이디입니다.');
+					$('#id-check-warn').css('color','red').html('이미 사용중인 아이디입니다.');
 				}else{
-					$js('#id-check-warn').css('color','green').html('사용 가능한 아이디입니다.');
+					$('#id-check-warn').css('color','green').html('사용 가능한 아이디입니다.');
 				}
 			}
 		});
 	});
 $(function() {
-	var pwdchk = false;
-	  $('#pwd2').blur(function(){
-		    if($('#pwd').val() === $('#pwd2').val()){
-		      $('#confpwd').css('color','green').html('√ 비밀번호 일치합니다 ');
-		      pwdchk = true;
-		    }else{
-		      $('#confpwd').css('color','red').html('X 비밀번호 일치하지 않습니다 ');
-		      pwdchk = false;
-		    }
-		  });
-	  $('#pwd').blur(function(){
-		    if($('#pwd').val() === $('#pwd2').val()){
-		      $('#confpwd').css('color','green').html('√ 비밀번호 일치합니다 ');
-		      pwdchk = true;
-		    }else{
-		      $('#confpwd').css('color','red').html('X 비밀번호 일치하지 않습니다 ');
-		      pwdchk = false;
-		    }
-		  });	 
-	  
+	 
 	 
 		// 주민번호, 전화번호, 주소
 		
@@ -211,17 +354,22 @@ $(function() {
 			event.preventDefault();
 			
 			if($('#ssn1').val().length==0 || $('#ssn2').val().length==0 || $('#telv').val().length==0 || 
-			   $('#email').val().length==0 || $('#addr1').val().length==0 || $('#addr2').val().length==0){
+			   $('#email').val().length==0 || $('#addr1').val().length==0 ){
 				alert("입력되지 않은 정보가 존재합니다.");
 				return false;
 			}
 			    const ssn = $('#ssn1').val()+'-'+$('#ssn2').val();
 				var telv= $('#telv').val();
 				const addr = $('#addr1').val()+" "+$('#addr2').val();
+				var prof = $('#mfile').val();
+				var pwd = $('#pwd1').val();
 				
 				$('#addr').val(addr); 
 				$('#ssn').val(ssn);	//주민번호 하이픈 추가
 				$('#tel').val(telv.substring(0,3)+"-"+telv.substring(3,7)+"-"+telv.substring(7)); //전화번호 하이픈 추가
+				$('#profimg').val(prof);
+				$('#pwd').val(pwd);
+				
 				console.log("addr"+addr);
 				// alert($('#ssn').val()+" : "+$('#id').val()+" : "+$('#tel').val());
 				alert('회원가입에 성공하셨습니다.');

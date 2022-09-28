@@ -5,22 +5,21 @@
 
 
 <style>
-.navbar{
-	margin-top : 0px !important;
+.navbar {
+	margin-top: 0px !important;
 }
 
 nav {
-	background-color: #3478f5; !important;
+	background-color: #3478f5;
+	!
+	important;
 }
 
 .navitem {
 	border: bottom solid 1px #232323;
 }
 
-.nav-item li {
-	background-color: #232323;
-	margin-right: 16px;
-}
+
 
 .navitem a {
 	font-weight: bold;
@@ -30,7 +29,7 @@ nav {
 	<div class="container-fluid">
 		<a class="navbar-brand" href="${mycontext}/main"> <img
 			src="/img/logo_white.png" alt="" width="100"
-			class="d-inline-block align-text-top" />
+			class="d-inline-block align-text-top me-3" />
 		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarText" aria-controls="navbarText"
@@ -39,12 +38,21 @@ nav {
 		</button>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="${mycontext }/hospital/hospitalList">진료과</a></li>
-				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="${mycontext }/doctor/doctorList">의료진</a></li>
-				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">약국</a></li>
-				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="${mycontext }/quesboard/qbList">Dr.건강</a></li> <!-- Hey Health -->
-				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="${mycontext }/reviewboard/reviewboardlist">User's Review</a></li>
-<!-- 				<li class="nav-item"><a class="nav-link ps-5 pe-5" href="#">공지사항</a></li> -->
+
+				<li class="nav-item"><a class="nav-link  pe-5"
+					href="${mycontext }/hospital/hospitalList">진료과</a></li>
+				<li class="nav-item"><a class="nav-link  pe-5"
+					href="${mycontext }/doctor/doctorList"">의료진</a></li>
+				<li class="nav-item"><a class="nav-link  pe-5" href="${mycontext }/pharmacy/ShopListPage">약국</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#"
+					id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+					aria-expanded="false"> 의료서비스 </a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<li><a class="dropdown-item" href="${mycontext}/member/COVIDcheck">코로나진단</a></li>
+						<li><a class="dropdown-item" href="${mycontext}/drugSearchShape">약조회서비스</a></li>
+						<li><a class="dropdown-item" href="http://localhost:3000/" target='_blank'>비대면진료서비스</a></li>
+					</ul></li>
 			</ul>
 			<span class="navbar-text">
 				<div class="navbar-nav">

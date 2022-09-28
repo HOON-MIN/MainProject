@@ -14,10 +14,10 @@ import Mainpage from "./page/Mainpage";
 import DoctorListPage from "./page/DoctorListPage";
 import DoctorDetailPage from "./page/DoctorDetailPage";
 import ReservationPage from "./page/ReservationPage";
+import DrugDeliverPage from "./page/DrugDeliverPage";
 import AuthRoute from "./component/AuthRoute";
 
 function App() {
-  console.log("app");
   const navigate = useNavigate();
 
   // 모달
@@ -137,7 +137,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Mainpage />} />
         {
-          // 로그인 여부로 페이지 제한
+          // v6 AuthRoute 로그인 여부로 페이지 제한
           <Route
             path="/dlist"
             element={
@@ -148,6 +148,7 @@ function App() {
             }
           />
         }
+        <Route path="/delivery" element={<DrugDeliverPage />} />
         <Route path="/detail/:dnum" element={<DoctorDetailPage />} />
         <Route path="reservation/:dnum" element={<ReservationPage />} />
       </Routes>

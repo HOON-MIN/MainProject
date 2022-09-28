@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.button-6 {
+.meditok .button-6 {
 	align-items: center;
 	background-color: #FFFFFF;
 	border: 1px solid rgba(0, 0, 0, 0.1);
@@ -28,18 +28,18 @@
 	width: auto;
 }
 
-.button-6:hover,
-.button-6:focus {
+.meditok .button-6:hover,
+.meditok .button-6:focus {
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
   color: rgba(0, 0, 0, 0.65);
 }
 
-.button-6:hover {
+.meditok .button-6:hover {
   transform: translateY(-1px);
 }
 
-.button-6:active {
+.meditok .button-6:active {
   background-color: #F0F0F1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
@@ -47,22 +47,8 @@
   transform: translateY(0);
 }
 
-.chatbot {
-	position : fixed;
-	width: 80px;
-	height: 80px; 
-	bottom: 5%;
-	right: 5%;
-	background-color: white;
-	border-radius: 40px;
-}
 
-.chatbot img{
-	width: 50px; 
-	height : 50px;
-}
-
-.chatbot {
+.meditok .chatbot {
 	position : fixed;
 	width: 80px;
 	height: 80px; 
@@ -73,7 +59,7 @@
 	z-index: 99;
 }
 
-.chatbot img{
+.meditok .chatbot img{
 	width: 50px; 
 	height : 50px;
 }

@@ -12,12 +12,24 @@
 	</select>
 
 	<select id="ad_hospitalList" resultType="hvo"> <!-- (사이트에 등록된)병원 - 업체 리스트 (1:1 관계) -->
-		SELECT rownum r_num,c.cnum,h.hname,h.hloc,h.otime,
+		select * from (select rownum r_num,a.*from
+		(SELECT c.cnum,h.hname,h.hloc,h.otime,
 		h.ctime,h.hcate,h.htel,h.hurl,
-		c.ccate from hospital h, company c
+		c.ccate
+		from hospital h, company c
 		where
-		h.cnum = c.cnum and c.cstatus=1
+		h.cnum = c.cnum and c.cstatus=1)a)
+		where r_num between #{begin} and #{end} 
 	</select>
+
+	<select id="ad_hospitalList_totalCount" resultType="int">
+		SELECT
+		count(*) from hospital h, company c
+		where
+		h.cnum = c.cnum and
+		c.cstatus=1
+	</select>
+
 	<select id="waitingList" resultMap="companyResult">
 		<!-- select * from company where cstatus=0 order by 1 -->
 		select rownum r_num ,c.*,h.* from
@@ -37,7 +49,7 @@
 		<result property="crn" column="crn" />
 		<result property="cpwd" column="cpwd" />
 		<result property="ccate" column="ccate" />
-		<association property="hvo"  javaType="hvo">
+		<association property="hvo" javaType="hvo">
 			<id property="cnum" column="cnum" />
 			<result property="r_num" column="r_num" javaType="int" />
 			<result property="hname" column="hname" />
@@ -55,50 +67,58 @@
 		<id property="cnum" column="cnum" javaType="int" />
 		<result property="r_num" column="r_num" />
 		<result property="hgrade" column="hgrade" />
-		
+
 		<association property="hvo" javaType="hvo">
 			<id property="cnum" column="cnum" />
 			<result property="hcate" column="hcate" />
-			
-		<collection property="doctorVO"  javaType="java.util.List" ofType="doctorVO">
-			<id property="dnum" column="dnum" />
-			<result property="dmajor" column="dmajor" />
-			
-		<collection property="reserveVO" javaType="java.util.List" ofType="reserveVO">
-			<id property="reservNum" column="reservNum" />
-			<result property="r_num" column="r_num" />
-		</collection>
-		</collection>
+
+			<collection property="doctorVO" javaType="java.util.List"
+				ofType="doctorVO">
+				<id property="dnum" column="dnum" />
+				<result property="dmajor" column="dmajor" />
+
+				<collection property="reserveVO"
+					javaType="java.util.List" ofType="reserveVO">
+					<id property="reservNum" column="reservNum" />
+					<result property="r_num" column="r_num" />
+				</collection>
+			</collection>
 		</association>
 	</resultMap>
-		<!--한달 예약횟수  -->
+	<!--한달 예약횟수 -->
 	<select id="adminBarchart" resultMap="adminBarchart1">
-		select h.hcate ,count(*) r_num
-		from reserve r, doctor d ,hospital h,company c 
-		where r.dnum=d.dnum and h.cnum = d.cnum and h.cnum = c.cnum 
+		select h.hcate ,count(*)
+		r_num
+		from reserve r, doctor d ,hospital h,company c
+		where r.dnum=d.dnum and h.cnum = d.cnum and h.cnum = c.cnum
 		and substr(r.rdate,6,2)= substr(sysdate,4,2) group by h.hcate
 	</select>
 	<!-- 해당병원 한달 예약횟수 1 - 1 -->
 	<resultMap type="hvo" id="adminBarchart2">
 		<id property="cnum" column="cnum" javaType="int" />
 		<result property="hname" column="hname" />
-		
-			
-		<collection property="doctorVO"  javaType="java.util.List" ofType="doctorVO">
+
+
+		<collection property="doctorVO" javaType="java.util.List"
+			ofType="doctorVO">
 			<id property="dnum" column="dnum" />
 			<result property="dmajor" column="dmajor" />
-			
-		<collection property="reserveVO" javaType="java.util.List" ofType="reserveVO">
-			<id property="reservNum" column="reservNum" />
-			<result property="r_num" column="r_num" />
-		</collection>
+
+			<collection property="reserveVO" javaType="java.util.List"
+				ofType="reserveVO">
+				<id property="reservNum" column="reservNum" />
+				<result property="r_num" column="r_num" />
+			</collection>
 		</collection>
 	</resultMap>
 	<!-- 해당병원 한달 예약횟수 1 - 2 -->
 	<select id="adminBarchart2" resultMap="adminBarchart2">
-		select h.hname ,count(*) r_num
+		select h.hname ,count(*)
+		r_num
 		from reserve r, doctor d ,hospital h
-		where r.dnum=d.dnum and h.cnum = d.cnum 
-		and h.hcate=#{hcate} and substr(r.rdate,6,2)= substr(sysdate,4,2) group by h.hname
+		where r.dnum=d.dnum and
+		h.cnum = d.cnum
+		and h.hcate=#{hcate} and substr(r.rdate,6,2)= substr(sysdate,4,2) group
+		by h.hname
 	</select>
 </mapper>

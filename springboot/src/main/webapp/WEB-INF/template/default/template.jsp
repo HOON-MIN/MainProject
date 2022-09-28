@@ -9,9 +9,7 @@
 <TITLE>Hey Dr.</TITLE>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="shortcut icon" href="/img/favicon.png">
-
 <!-- BootStrap5 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -72,9 +70,8 @@
 <!-- 0918 add : dhlee 추가 -->
 <link href="/css/dhlee/covidRecording.css?ver=1.9" rel="stylesheet" />
 <link href="/css/dhlee/kakao_addinfo.css?" rel="stylesheet" />
-<link href="/mireu/css/chatbot.css?" rel="stylesheet" />
-<link href="/css/chatCircle.css?" rel="stylesheet" />
-
+<link href="/css/chatbot.css" rel="stylesheet" />
+<link href="/css/chatCircle.css" rel="stylesheet" />
 <!--  cdn -->
 <script src="/taejin/js/scripts.js"></script>
 

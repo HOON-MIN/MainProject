@@ -152,10 +152,10 @@ public class ReserveController {
 				e.printStackTrace();
 			}
 			vo.setRdate(d);
-			System.out.println("reserve - insert Test(시간)" + vo.getRdate());
-			System.out.println("reserve - insert Test(시간)" + vo.getRtime());
-			System.out.println("reserve - insert Test(시간)" + vo.getRdate().getClass().getName());
-			System.out.println("reserve - insert Test(시간)" + vo.getRtime().getClass().getName());
+			System.out.println(""+vo.getNum());
+			System.out.println(""+vo.getDnum());
+			System.out.println(""+vo.getSymptom());
+			System.out.println(""+vo.getSymptomComm());
 			reserveService.addReserve(vo);
 			return "redirect:/";
 		}

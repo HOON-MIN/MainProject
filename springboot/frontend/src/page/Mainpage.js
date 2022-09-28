@@ -21,6 +21,12 @@ const Mainpage = () => {
           <Link to="/dlist">
             <button className="btnMain3">예약 하기</button>
           </Link>
+          <br></br>
+          {localStorage.getItem("addr") == undefined ? null : (
+            <Link to="/delivery">
+              <button className="btnMain3">약 배달 받기</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

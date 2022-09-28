@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.main.ateam.member.dao.MemberDao;
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
+import com.main.ateam.vo.PrescriptionVO;
 import com.main.ateam.vo.SearchVO;
 
 @Service
@@ -68,4 +69,11 @@ public class MemberService {
 	public MemberVO memberidlist(String id) {
 		return memberDao.memberidlist(id);
 	}
+	public List<PrescriptionVO> selectPlist(int num){
+		return memberDao.selectPlist(num);
+	}
+	public PrescriptionVO selectPone(int pnum) {
+		return memberDao.selectPone(pnum);
+	}
+	
 }

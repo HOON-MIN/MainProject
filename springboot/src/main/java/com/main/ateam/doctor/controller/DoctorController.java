@@ -146,6 +146,7 @@ public class DoctorController {
 		session.setAttribute("sessionDID", dto.getDid());
 		session.setAttribute("sessionDNUM", dto.getDnum());
 		session.setAttribute("sessionDNAME", dto.getDname());
+		System.out.println("sessionDnum = " + dto.getDnum());
 		
 		}
 		return mav;	
@@ -192,7 +193,6 @@ public class DoctorController {
 		// 의사 마이페이지
 		@GetMapping(value = "/doctorMypage")
 		public String doctorMypage(Model m, HttpSession session) {
-			
 			int dnum = 0;
 			dnum = (int) session.getAttribute("sessionDNUM");
 			System.out.println("sessionDNUM => " +dnum);

@@ -6,8 +6,8 @@
 
 
 <%-- 리팩토링 해야 함 --%>
-<table class="htable table table-hover table-borderless"
-	style="text-align: center;">
+<h3 class="hanna p-4" style="text-align: center;">전국 병원</h3>
+<table class="htable table table-hover table-borderless">
 	<thead>
 		<tr>
 			<th>번호</th>

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.main.ateam.vo.HospitalVO;
 import com.main.ateam.vo.MemberVO;
+import com.main.ateam.vo.PrescriptionVO;
 import com.main.ateam.vo.SearchVO;
 
 
@@ -29,6 +30,11 @@ import com.main.ateam.vo.SearchVO;
 		public int AndroidIdCheck(Map<String, String>map);
 		
 		public MemberVO memberidlist(String id);
+		/* 0927 처방전 추가*/
+		public List<PrescriptionVO> selectPlist(int num);
+		public PrescriptionVO selectPone(int pnum);
+		
+
 	}
 
 

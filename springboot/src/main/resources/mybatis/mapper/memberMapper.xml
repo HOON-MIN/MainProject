@@ -23,7 +23,7 @@
 <!-- 병훈 -->
 <insert id="addMember" parameterType="memberVO">
 	insert into member values(member_seq.nextVal,#{id},#{pwd},#{name},#{ssn},
-							  #{age},#{addr},#{gender},#{tel},#{email},#{profimg},#{addr},sysdate)
+							  #{age},#{gender},#{tel},#{email},#{addr},#{profimg},sysdate)
 </insert>
 
 
@@ -137,5 +137,13 @@
 <select id="memberidlist" parameterType="string" resultType="memberVO">
 	select * from member where id = #{id}
 </select>
+<!-- 동명이형 -->
 	
+	<select id="selectPlist" parameterType="Integer" resultType="prvo">
+   select * from prescription where num=${num}
+</select>
+<select id="selectPone" parameterType="Integer" resultType="prvo">
+   select * from prescription where pnum=${pnum}
+</select>
+
 </mapper>
