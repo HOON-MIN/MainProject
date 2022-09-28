@@ -1,7 +1,152 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<style>
+.hcategory {
+	background-color: #3478f5;
+	padding-top: 40px;
+	height: 100%;
+}
+
+.hboard {
+	background-color: #efefef;
+	border-radius: 8px;
+	margin: 40px;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.formTitle {
+	margin-top: 40px;
+	text-align: right;
+}
+
+.formInput {
+	margin-top: 36px;
+	margin-right: 40px;
+}
+
+.formInput2 {
+	margin-top: 40px;
+}
+</style>
+
+<div class="container-fluid">
+	<div class="row justify-content-around">
+		<!-- 카테고리 영역 -->
+		<div class="col-2 hcategory">
+			<!-- 카테고리 프로필 (이쪽 세션 처리 하셔야합니다)-->
+			<c:choose>
+				<c:when test="${sessionNUM != null}">
+					<div
+						class="d-flex flex-column align-items-start justify-content-center ps-5"
+						style="height: 160px;">
+						<img
+							src="${pageContext.request.contextPath }/imgfile/${sessionProfimg}"
+							alt="${pageContext.request.contextPath }/imgfile/${sessionProfimg}"
+							style="height: 40%;" class="mb-3">
+						<h5 class="hanna text-white">${sessionNAME }님</h5>
+						<span class="nanum text-white" style="font-size: 12px;">
+							관리자 ・ <a
+							href="${pageContext.request.contextPath }/admin/adminHospTotalList"
+							style="text-decoration: none; color: white;">관리자 페이지</a>
+						</span>
+					</div>
+				</c:when>
+				<c:when test="${sessionNUM == null}">
+					<div
+						class="d-flex flex-column align-items-start justify-content-center ps-5"
+						style="height: 160px;">
+						<img src="/taejin/img/doc3.svg" alt="프로필사진" style="height: 40%;"
+							class="mb-3">
+						<h5 class="hanna text-white">게스트 님</h5>
+						<span class="nanum text-white" style="font-size: 12px;">
+							비회원 ・ <a
+							href="${pageContext.request.contextPath }/company/joinchoice">회원가입</a>
+						</span>
+					</div>
+				</c:when>
+			</c:choose>
+			<!-- 카테고리 프로필 끝 -->
+
+			<!-- 카테고리 리스트 -->
+			<div>
+				<ul class="nav flex-column">
+					<li class=" nav-item pt-5 pb-2 ps-4"><a
+						class="hcateAllbtn nav-link text-white" aria-current="page"
+						href="#">약 찾기 서비스</a></li>
+					<!-- 이안에 본인 카테고리 나눠주세요 -->
+
+
+					<li class=" nav-item pt-2 pb-2 ps-4" value="약 리스트"><a
+						class="hcatebtn nav-link text-white"
+						href="${pageContext.request.contextPath }/drugInsertForm">약
+							등록하기</a></li>
+					<li class=" nav-item pt-2 pb-2 ps-4" value="약 리스트"><a
+						class="hcatebtn nav-link text-white"
+						href="${pageContext.request.contextPath }/drugList">약 리스트</a></li>
+				</ul>
+			</div>
+			<!-- 카테고리 리스트 끝 -->
+		</div>
+		<!-- 카테고리 영역 끝 -->
+
+		<!-- 컨텐츠 (연회색배경) -->
+		<div class="col-10 flex-column">
+			<div class="hboard pt-2 ps-3 pe-3 pb-3">
+				<div class="row row-cols-1 row-cols-md-3 g-4">
+					<div class="col">
+						<div class="card">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">This is a longer card with supporting
+									text below as a natural lead-in to additional content. This
+									content is a little bit longer.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">This is a longer card with supporting
+									text below as a natural lead-in to additional content. This
+									content is a little bit longer.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">This is a longer card with supporting
+									text below as a natural lead-in to additional content.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card">
+							<img src="..." class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">This is a longer card with supporting
+									text below as a natural lead-in to additional content. This
+									content is a little bit longer.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
@@ -83,7 +228,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<%-- for start --%>
+									for start
 									<c:forEach var="e" items="${list}">
 										<tr class="align-middle">
 
@@ -92,7 +237,7 @@
 													src="kimsungwook/imgfile/${e.drug_img}" id="imgname"
 													value="imgname"></a></td>
 											<td>${e.drug_name}</td>
-											<%-- <td>${e.content}</td> --%>
+											<td>${e.content}</td>
 											<td>${e.drug_formulation}</td>
 											<td>${e.drug_component}</td>
 											<td>${e.drug_company}<span
@@ -122,7 +267,7 @@
 								
 										</tr>
 							</c:forEach>
-							<%-- for end --%>
+							for end
 						</tbody>
 
 					</table>
@@ -139,7 +284,7 @@
 										<!-- <li class="disable">이전으로</li> -->
 									</c:when>
 									<c:otherwise>
-										<%-- <li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li> --%>
+										<li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li>
 
 										<li class="page-item"><a class="page-link"
 													href="drugList?dPage=${startPage -1 }">Previous</a></li>
@@ -191,7 +336,7 @@
 										<!-- <li class="disable">이전으로</li> -->
 									</c:when>
 									<c:otherwise>
-										<%-- <li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li> --%>
+										<li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li>
 
 										<li class="page-item"><a class="page-link"
 													href="drugMyCase?dPage=${startPage -1 }">Previous</a></li>
@@ -241,7 +386,7 @@
 										<!-- <li class="disable">이전으로</li> -->
 									</c:when>
 									<c:otherwise>
-										<%-- <li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li> --%>
+										<li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li>
 
 										<li class="page-item"><a class="page-link"
 													href="drugSearchList?dPage=${startPage -1 }&content=${content}&searchSelect=${searchSelect}">Previous</a></li>
@@ -295,7 +440,7 @@
 										<!-- <li class="disable">이전으로</li> -->
 									</c:when>
 									<c:otherwise>
-										<%-- <li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li> --%>
+										<li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li>
 
 										<li class="page-item"><a class="page-link"
 													href="drugImageSearch?dPage=${startPage -1 }&drugShapeExtractResult=${drugShapeExtractResult}&drugColorExtractResult=${drugColorExtractResult}&identificationCharResult=${identificationCharResult}">Previous</a></li>
@@ -350,7 +495,7 @@
 										<!-- <li class="disable">이전으로</li> -->
 									</c:when>
 									<c:otherwise>
-										<%-- <li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li> --%>
+										<li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li>
 
 										<li class="page-item"><a class="page-link"
 													href="shapeSearch?dPage=${startPage -1 }&drug_identification=${drug_identification}&drug_color_F=${drug_color_F}&drug_color_B=${drug_color_B}&drug_shape=${drug_shape}&drug_formulation=${drug_formulation}">Previous</a></li>
@@ -403,7 +548,7 @@
 										<!-- <li class="disable">이전으로</li> -->
 									</c:when>
 									<c:otherwise>
-										<%-- <li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li> --%>
+										<li><a href="drugList?dPage=${startPage -1 }">이전으로</a></li>
 
 										<li class="page-item"><a class="page-link"
 													href="drugSearchHistory?dPage=${startPage -1 }">Previous</a></li>
@@ -485,4 +630,4 @@
 
 
 </body>
-</html>
+</html> --%>
