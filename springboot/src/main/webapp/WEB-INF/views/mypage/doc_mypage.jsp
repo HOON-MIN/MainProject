@@ -15,12 +15,12 @@
         <h5 class="modal-title" id="exampleModalLabel">진료</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        진료 하시겠습니까?
+      <div class="modal-body" id="modal_body">
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
         <button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/'">예</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
       </div>
     </div>
   </div>
@@ -93,10 +93,12 @@
 		      editable: true,
 		      selectable: true,
 		      eventClick: function(info) {
-				console.log('클릭이벤트! ' + info.event.title)
+		    	console.log('info = ' + info.event.title)
+				//console.log('클릭이벤트! ' + info.event.title)
 				var num = info.event.title.substr(1,1);
 				console.log(num)
-				$('#reservation').click()
+				
+				//$('#reservation').click()
 				
 		      },
 		      dateClick: function(info){
