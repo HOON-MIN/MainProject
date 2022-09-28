@@ -109,7 +109,7 @@
 		console.log(formData);
 
 		$.ajax({
-			url : "http://localhost:9000/drug/json_Drug_Extract",
+			url : "http://192.168.0.68:9000/drug/json_Drug_Extract",
 			type : 'POST',
 			data : formData,
 			contentType : false,
