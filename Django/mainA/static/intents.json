@@ -1,0 +1,151 @@
+{"intents": [
+    {"tag": "greeting",
+     "patterns": ["안녕", "반가워", "도와줘", "이거", "안녕~~"],
+     "responses": ["반가워요", "안녕하세요", "안녕하세요. 반갑습니다.", "하이루!"]
+    },
+    {"tag": "recommend",
+    "patterns": ["병원 추천", "병원 추천해줘", "병원 어디에 있어?", "병원에 가야겠어"],
+    "responses": ["어느 구 병원을 찾으시나요?"]
+    },
+    {"tag": "hospGN",
+    "patterns": ["강남구 병원"],
+    "responses": ["http://"]
+    },
+    {"tag": "hospDJ",
+    "patterns": ["동작구 병원", "동작구", "동작", "동작구 병원 찾아줘", "동작 병원 찾아줘", "!search동작구", "!search동작구?내과"],
+    "responses": ["http://localhost:83/hospital/hospitalDetail?num=1@365미소내과의원,http://localhost:83/hospital/hospitalDetail?num=8@정든의원,http://localhost:83/hospital/hospitalDetail?num=40@중앙대학교병원"]
+    },
+    {"tag": "hospSB",
+    "patterns": ["성북구 병원"],
+    "responses": ["http://www.naver.com"]
+    },
+    {"tag": "hospSC",
+    "patterns": ["서초구 병원"],
+    "responses": ["http://"]
+    },
+    {"tag": "hospYDP",
+    "patterns": ["영등포구 병원"],
+    "responses": ["http://"]
+    },
+    {"tag": "hospGA",
+    "patterns": ["관악구 병원"],
+    "responses": ["http://"]
+    },
+    {"tag": "hospYC",
+    "patterns": ["양천구 병원"],
+    "responses": ["http://"]
+    },
+    {"tag": "hospGS",
+    "patterns": ["강서구 병원"],
+    "responses": ["http://"]
+    },
+    {"tag": "hospEP",
+    "patterns": ["은평구 병원"],
+    "responses": ["http://"]
+    },
+    {"tag": "hospJR",
+    "patterns": ["종로구 병원"],
+    "responses": ["http://"]
+    },
+    {"tag": "goodbye",
+     "patterns": ["잘가", "또 올게", "다음에 봐"],
+     "responses": ["잘가세요~", "다음에 또 봬요", "다음에 또 뵙길 바랍니다"]
+    },
+    {"tag": "thanks",
+     "patterns": ["고마워", "감사", "ㄳ", "도움이 되네"],
+     "responses": ["천만에~", "언제든!", "저도 기뻐요", "행복해요!"]
+    },
+    {"tag": "about",
+     "patterns": ["넌 누구니?", "넌 뭐니?", "넌 누구야?" ],
+     "responses": ["저는 추천을 해주는 챗봇입니다^^", "저는 똑똑이입니다.", "저는 의학챗봇~~"]
+    },
+    {"tag": "name",
+    "patterns": ["what is your name", "what should I call you", "whats your name?"],
+    "responses": ["You can call me 깨비.", "I'm 깨비!", "Just call me as 깨비"]
+    },
+    {"tag": "stomach",
+    "patterns": ["배가 아파", "복통이 있어", "배가 아파요", "복통이 심해요"],
+    "responses": ["배 어디가 아픈가요?"]
+    },
+    { "tag": "stomachMyeong",
+    "patterns": ["명치가 아파","가슴이 아파"],
+    "responses": ["명치 부근이 아프다면 급성/만성 위염일 수 있어요"]
+    },
+    { "tag": "stomachTense",
+    "patterns": ["긴장하면 배가 아파"],
+    "responses": ["긴장할 때마다 아프다면 과민성 대장증후군이 있나봐요"]
+    },
+    { "tag": "stomachNoReason",
+    "patterns": ["배 아픈데 이유를 모르겠어"],
+    "responses": ["스트레스성 복통일 수 있어요"]
+    },
+    {"tag": "headache",
+    "patterns": ["머리가 아파", "두통이 있어","두통이 심해","머리가 지끈거려","머리가 쑤셔"],
+    "responses": ["머리 어디가 아픈가요?"]
+    },
+    {"tag": "headacheBack",
+    "patterns": ["뒤쪽이 아파"],
+    "responses": ["긴장성 두통일 수 있어요."]
+    },
+    {"tag": "headachePoint",
+    "patterns": ["쑤시듯이 아파"],
+    "responses": ["머리 한쪽이 쑤신다면 편두통일 수 있어요."]
+    },
+    {"tag": "headacheEye",
+    "patterns": ["눈과 머리가 아파요"],
+    "responses": ["군발 두통일 수 있어요. 군발 두통 유발하는 생활 습관으로는 흡연과 과도한 음주를 들 수 있어요."]
+    },
+    {"tag": "headacheCold",
+    "patterns": ["감기 걸리고 나서 아파요.","감기를 앓고 나서 아파요.","감기 걸린 이후 아파요."],
+    "responses": ["흔히 축농증으로 알려진 부비동염일 수 있어요. 콧물이 목 뒤로 넘어가는 후비루 증상과 함께 얼굴이나 머리에 통증이 느껴지는 것이 특징입니다."]
+    },
+    {"tag": "neck",
+    "patterns": ["목이 아파요."],
+    "responses": ["목이 어떻게 아픈가요?"]
+    },
+    {"tag": "neckNoreason",
+    "patterns": ["목이 그냥 아파"],
+    "responses": ["목질환의 85%는 급성 목손상, 만성 스트레스, 과도한 긴장 등에 의해 생겨요."]
+    },
+    {"tag": "neckAccident",
+    "patterns": ["교통사고 이후로 아파요"],
+    "responses": ["자동차 사고로 인한 증상은 채찍질 증후군이에요. 차량 추돌 시 목 부위가 갑자기 젖혀지며 손상을 입게 되죠."]
+    },
+    {"tag": "waist",
+    "patterns": ["허리가 아파요"],
+    "responses": ["허리 통증은 꾸준한 관리가 필요해요."]
+    },
+    {"tag": "waistManage",
+    "patterns": ["허리 관리에는 무엇이 있어?", "허리 관리","허리 관리 어떻게 해요?"],
+    "responses": ["가벼운 스트레칭이나 바른 자세로 걷는 방법 등 있습니다."]
+    },
+    {"tag": "feet",
+    "patterns": ["발이 아파요"],
+    "responses": ["발 어디가 아파요?"]
+    },
+    {"tag": "feetAnkleInside",
+    "patterns": ["발목 안쪽이 아파요"],
+    "responses": ["골관절염이 가장 흔한 원인이고, 발목을 급격히 돌리거나 잘못된 사용으로 염좌가 유발될 수 있어요."]
+    },
+    {"tag": "feetAnkleFront",
+    "patterns": ["발목 앞쪽이 아파요"],
+    "responses": ["꽉 조이는 신발을 신거나, 류마티스관절염이 원인일 수 있어요."]
+    },
+    {"tag": "feetHeel",
+    "patterns": ["뒤꿈치가 아파요"],
+    "responses": ["점프나 장시간 서 있기, 비만, 평발 들 통증의 원인이에요."]
+    },
+    {"tag": "feetToe",
+    "patterns": ["발가락이 아파요"],
+    "responses": ["오래 서 있거나 걷는 경우 통증이 심해지며, 불편한 신발을 피해야 돼요."]
+    },
+    {"tag": "knee",
+    "patterns": ["무릎이 아파요"],
+    "responses": ["무릎이 어떻게 아파요?"]
+    },
+    {"tag": "kneeSound",
+    "patterns": ["무릎에서 뚝 소리가 나요", "뚝 소리가 나요", "무릎에서 소리가 나요"],
+    "responses": ["크게 문제되진 않지만, 무릎인대가 너무 타이트하고 딱딱한 경우 원인이 될 수 있어요."]
+    }
+]
+}

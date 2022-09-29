@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "../css/hospitalList.css";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
 import DoctorList from "../component/DoctorList";
 import Nav from "react-bootstrap/Nav";
+import Loader from "../component/Loader";
 
 const DoctorListPage = () => {
   const [doctors, setDoctors] = useState([]);
@@ -12,6 +13,58 @@ const DoctorListPage = () => {
   const [categories, setCategories] = useState([]);
   const [selectCategory, setSelectCategory] = useState([]);
   const [select, setSelect] = useState();
+
+  const [List, setList] = useState([]); //Post List
+  const [page, setPage] = useState(1);
+  const preventRef = useRef(true); //중복 실행 방지
+  const obsRef = useRef(null); //observer Element
+  const endRef = useRef(false); //모든 글 로드 확인
+
+  useEffect(() => {
+    if (page !== 1) getPost();
+  }, [page]);
+
+  useEffect(() => {
+    //옵저버 생성
+    const observer = new IntersectionObserver(obsHandler, { threshold: 0.5 });
+    if (obsRef.current) observer.observe(obsRef.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    getPost();
+  }, [page]);
+
+  const obsHandler = (entries) => {
+    //옵저버 콜백함수
+    const target = entries[0];
+    if (!endRef.current && target.isIntersecting && preventRef.current) {
+      //옵저버 중복 실행 방지
+      preventRef.current = false; //옵저버 중복 실행 방지
+      setPage((prev) => prev + 1); //페이지 값 증가
+    }
+  };
+
+  const getPost = useCallback(async () => {
+    //글 불러오기
+    setLoading(true); //로딩 시작
+
+    const res = await axios({
+      method: "GET",
+      url: `/doctorListReact?cPage=${page}`,
+    });
+    if (res.data) {
+      console.log(res.data);
+      setList((prev) => [...prev, ...res.data]); //리스트 배열에 추가
+      preventRef.current = true;
+      console.log(page);
+    } else {
+      console.log(res);
+    }
+    setLoading(false); //로딩 종료
+  }, [page]);
 
   //의사 리스트 출력
   useEffect(() => {
@@ -104,7 +157,7 @@ const DoctorListPage = () => {
         <Categories />
       </div>
       {select === undefined
-        ? doctors.map((doctor) => (
+        ? List.map((doctor) => (
             <Link
               to={"/detail/" + doctor.dnum}
               style={{ textDecoration: "none" }}
@@ -120,6 +173,10 @@ const DoctorListPage = () => {
               <DoctorList key={doctor.dnum} doctor={doctor} />
             </Link>
           ))}
+
+      <div ref={obsRef} className="Target-Element">
+        {loading && <Loader />}
+      </div>
     </div>
   );
 };

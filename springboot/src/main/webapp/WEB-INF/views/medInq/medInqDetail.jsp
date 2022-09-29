@@ -16,7 +16,6 @@
 
 <h2 style="font-weight: bold; text-align: center;">건강 문진표</h2>
 <br>
-
 <p>1. 다음과 같은 질병으로 진단을 받았거나, 현재 약물 치료 중이십니까?</p>
 <table class="table" style="text-align: center;">
   <thead style="text-align: center;">
@@ -170,7 +169,6 @@
 <button id="inqUpbtn" class="btn btn-primary btn-dark text-white btn-block" onclick="location='medInqUpForm?num=${sessionScope.sessionNUM}'">문진표 수정</button>
 <button id="inqDelbtn" class="btn btn-primary btn-dark text-white btn-block">문진표 삭제</button>
 </p>
-
 </div>
 
 <script>

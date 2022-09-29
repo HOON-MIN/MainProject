@@ -1,0 +1,97 @@
+{% extends "body.html" %}
+
+{% block content%}
+{% load static %}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Tables</title>
+
+    <!-- Custom fonts for this template -->
+    <link href= "{% static 'board/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'board/css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="{% static 'board/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+</head>
+<body id="page-top">
+<div id="content" class="container mt-5">
+<h2 class="text-center"> 영화 후기 작성 </h2>
+<div class="row">
+ <form method="post" name="form1" id="form1" enctype="multipart/form-data">
+     {% csrf_token %}
+ <fieldset style="width:400px;margin:auto;">
+        <p>
+            <label for="id">아이디 : </label>
+            <input type="text" name="id" id="id">
+        </p>
+        <p>
+            <label for="title">제목 : </label>
+            <input type="text" name="title" id="title">
+        </p>
+        <p>
+            <label for="cont">내용 : </label>
+            <textarea name="cont" id="cont" cols="30" rows="10"></textarea>
+        </p>
+        <p>
+            <label for="file1">파일 : </label>
+            <input type="file" name="file1" id="file1">
+        </p>
+
+        <p>
+        <input type="button" id="wrtBtn" value="등록">&nbsp;
+        <input type="button" value="목록" id="listBtn">
+        </p>
+ </fieldset>
+ </form>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(function(){
+    $('#listBtn').click(function(){
+        location='board_list';
+    });
+    $('#wrtBtn').click(function(){
+        alert("write");
+        document.form1.action='board_insert'
+        document.form1.submit();
+    });
+});
+</script>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'board/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'board/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'board/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'board/js/sb-admin-2.min.js' %}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{% static 'board/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'board/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'board/js/demo/datatables-demo.js' %}"></script>
+
+</body>
+{% endblock content%}

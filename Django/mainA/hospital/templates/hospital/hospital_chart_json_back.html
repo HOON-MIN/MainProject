@@ -1,0 +1,68 @@
+{% include "header.html" %}
+<div id="content" class="container mt-5">
+<h2 class="text-center">Ajax & Json Chart Demo</h2>
+<div class="row">
+    <div style="width: 500px;">
+    <div><input type="button" value="click" id="jsonLoad"></div>
+    <div id="target"></div>
+    <div id="chart1"></div>
+    </div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+<!-- ajax의 의의?  :  서버의 데이터를 활용해달라 -->
+    $(function(){
+        $('#jsonLoad').click(function(){
+            // alert("test");
+            // Ajax
+            $.ajax({
+                url:'http://192.168.0.63:9000/hospital/hospitalListJsonP',
+                success: function(data){  // 익명함수
+                    // console.log(data);
+                    // console.log(data.columns);
+                    // console.log(data.data);
+                    makeBarChar(data.data, data.columns);
+                }
+            });
+        });
+    });
+
+    // c3js의 API 를 보고 맞는 형태를 제작
+    function makeBarChar(jsonData, dcol){
+      // bar chart에 들어갈 데이터
+      var datas = [];
+
+      // [n개의 컬럼]  =>  str.slice(beginIndex[, endIndex])
+      var dcolumns = dcol.slice(1, dcol.length);
+
+      for(var key in jsonData){
+        datas.push(jsonData[key])  // push()  기억하자**
+      }
+      console.log("-------1");
+      console.log(datas);
+
+      // chart
+      var chart = c3.generate({
+        bindto:'#chart1',
+        data: {
+            columns: datas,
+            type: 'bar'
+        },
+        bar: {
+            width: {
+                ratio: 0.5
+            }
+        },
+        axis:{
+            x:{
+                type:'category',
+                categories:dcolumns
+            }
+        }
+      }); // chart end!
+    }
+
+  </script>
+</head>
+{% include "footer.html" %}

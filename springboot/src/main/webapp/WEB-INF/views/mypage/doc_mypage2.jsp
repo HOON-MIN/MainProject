@@ -40,10 +40,10 @@
 				<div class="justify-content-center">
 					<h3 class="hanna ps-3 text-center"></h3>
 					<div class=" justify-content-center ">
-						<div class="container py-4"
-							style="width: 80%; margin: auto; padding: 10px 5px; height: 100%;">
-							<h1 class="display-5 fw-bold">예약 스케줄 잡기</h1>
-							<div id='calendar'></div>
+					<div class="container py-4"
+							style="width: 80%; margin: auto; padding: 10px 5px;">
+							<h1 class="display-5 fw-bold">의사 예약 스케줄 잡기</h1>
+							<div id='calendar' style="height: 80%;"></div>
 						</div>
 					</div>
 				</div>

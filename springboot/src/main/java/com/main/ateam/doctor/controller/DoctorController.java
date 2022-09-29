@@ -125,8 +125,10 @@ public class DoctorController {
 	
 	@GetMapping("/doctorDetail")
 	public String doctorDetailPage(Model model,int dnum) {
+		List<DoctorVO> dcategory = doctorservice.doctorCategorySpring();
 		DoctorVO vo = doctorservice.doctorDetailSpring(dnum);
 		model.addAttribute("dvo", vo);
+		model.addAttribute("dcategory",dcategory);
 		return "doctor/doctorDetail";
 	}
 	

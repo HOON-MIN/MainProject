@@ -1,19 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
 
+</style>
 <jsp:include page="./sidebar/sidebar_header.jsp" flush="true"></jsp:include>
 
-
-<div style="float: center; width:80%; margin-left: auto; margin-right: auto;" id='calendar'></div>
+<input type="hidden" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="reservation">
+<!-- modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">진료</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        진료 하시겠습니까?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}/medInq/medical'">예</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">아니오</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 본문 -->
+<div class="container py-4"
+	style="width: 60%;  margin: auto; padding: 10px 5px;">
+	<h1 class="display-5 fw-bold">의사 스케줄</h1>
+	<div id='calendar'></div>
+</div>
 
 
 <jsp:include page="./sidebar/sidebar_footer.jsp" flush="true"></jsp:include>
-<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' rel='stylesheet'>
-<link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+<link
+	href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'
+	rel='stylesheet'>
+<link
+	href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css'
+	rel='stylesheet'>
 <link href='/taejin/fullcalendar/lib/main.css' rel='stylesheet' />
-    <script src='/taejin/fullcalendar/lib/main.js'></script>
-   <script>
+<script src='/taejin/fullcalendar/lib/main.js'></script>
+<script>
    var today = new Date();
 
    var res;
@@ -67,13 +96,8 @@
 				console.log('클릭이벤트! ' + info.event.title)
 				var num = info.event.title.substr(1,1);
 				console.log(num)
-				$.ajax({
-					url:'${pageContext.request.contextPath}/member/medical?num='+num,
-					success:function(data){
-						console.log(data)
-					}
-				})
-				//location.href='${pageContext.request.contextPath}/member/medical?num='+num
+				$('#reservation').click()
+				
 		      },
 		      dateClick: function(info){
 		    	  res = info.dateStr
@@ -101,6 +125,8 @@
 			      editable: true,
 			      selectable: true,
 			      eventClick: function(info) {
+			    	  
+			    	  $('#reservation').click()
 			      },
 			      dateClick: function(info){
 			    	  res = info.dateStr
@@ -123,4 +149,3 @@
 		return yyyy+'-'+mm+'-'+dd;
 	}
 </script>
-		

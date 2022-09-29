@@ -6,7 +6,7 @@
 	}
 </style>	
 	
- <div class="container-fluid text-white footer">
+ <div class="text-white footer mt-5">
  <footer class="p-3 ">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li>

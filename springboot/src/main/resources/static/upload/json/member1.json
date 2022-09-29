@@ -1,0 +1,8 @@
+{
+  "userid": "member1",
+  "gender": "female",
+  "age": 28,
+  "respiratory_condition": 0,
+  "fever_or_muscle_pain": 0,
+  "base64str": "member1.wav"
+}

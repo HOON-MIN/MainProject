@@ -140,7 +140,7 @@
 <!-- 동명이형 -->
 	
 	<select id="selectPlist" parameterType="Integer" resultType="prvo">
-   select * from prescription where num=${num}
+   select * from prescription where num=${num} order by 1 desc
 </select>
 <select id="selectPone" parameterType="Integer" resultType="prvo">
    select * from prescription where pnum=${pnum}

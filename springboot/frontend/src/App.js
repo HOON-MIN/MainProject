@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import LogoutButton from "./component/LogoutButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { SignIn } from "./auth";
 import "./App.css";
@@ -14,8 +14,8 @@ import Mainpage from "./page/Mainpage";
 import DoctorListPage from "./page/DoctorListPage";
 import DoctorDetailPage from "./page/DoctorDetailPage";
 import ReservationPage from "./page/ReservationPage";
-import DrugDeliverPage from "./page/DrugDeliverPage";
 import AuthRoute from "./component/AuthRoute";
+import DeliveryForm from "./component/DeliveryForm";
 
 function App() {
   const navigate = useNavigate();
@@ -28,11 +28,13 @@ function App() {
 
   // 로그인
   const [user, setUser] = useState();
+  const [msg, setMsg] = useState();
   const authenticated = user !== undefined;
   const login = ({ id, pwd }) => setUser(SignIn({ id, pwd }));
   const logout = () => {
     setUser(null);
     localStorage.clear();
+    alert("로그아웃 하셨습니다");
   };
   ///////
 
@@ -123,7 +125,7 @@ function App() {
           <Navbar variant="dark">
             <Nav className="me-auto">
               {/* 인증값 여부로 로그인 로그아웃 */}
-              {authenticated ? (
+              {localStorage.getItem("name") == undefined && authenticated ? (
                 <LogoutButton logout={logout} />
               ) : (
                 <button className="btn text-white border" onClick={handleShow}>
@@ -137,7 +139,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Mainpage />} />
         {
-          // v6 AuthRoute 로그인 여부로 페이지 제한
+          // Router v6 AuthRoute 로그인 여부로 페이지 제한
           <Route
             path="/dlist"
             element={
@@ -148,9 +150,10 @@ function App() {
             }
           />
         }
-        <Route path="/delivery" element={<DrugDeliverPage />} />
         <Route path="/detail/:dnum" element={<DoctorDetailPage />} />
         <Route path="reservation/:dnum" element={<ReservationPage />} />
+        <Route path="/" element={<ReservationPage />} />
+        <Route path="/drug" element={<DeliveryForm />}></Route>
       </Routes>
     </div>
   );

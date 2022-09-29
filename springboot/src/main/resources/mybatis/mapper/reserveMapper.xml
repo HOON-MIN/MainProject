@@ -8,6 +8,7 @@
 	<result property="dname" column="dname"/>
 <collection property="reserveVO" javaType="java.util.List" ofType="reserveVO">
 	<id property="reservNum" column="reservNum"/>
+	<result property="num" column="num"/>
 	<result property="rdate" column="rdate"/>
 	<result property="rtime" column="rtime"/>
 </collection>
@@ -31,4 +32,7 @@
 	select * from reserve where dnum in (select dnum from doctor where cnum in (select cnum from hospital where hname = #{name})) order by reservnum
 	</select>
 	
+	<!-- 진료 -->
+	
+	<select id="checkReserve"/>
 </mapper>

@@ -115,7 +115,7 @@ a {
 		
 			<div class="hboard pt-2 ps-3 pe-3">
 <div style="height: 80%;">
-					<h3 class="hanna p-4" style="text-align: center;">전국 병원</h3>
+					<h3 class="hanna p-4" style="text-align: center;">병원 목록</h3>
 					<div>
 				<form class="sForm" name="sForm" method="get" action="hospitalList"
 					style="width: 400px;">

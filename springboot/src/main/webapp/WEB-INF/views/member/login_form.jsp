@@ -52,10 +52,10 @@
 											class="btn btn-primary btn-user btn-block" id="loginBtn"
 											value="Login">
 										<hr>
-										<a href="https://kauth.kakao.com/oauth/authorize?client_id=9dccb2506523629f6ab9df1594435577&redirect_uri=http://localhost:83/member/auth/kakao/callback&response_type=code" class="btn btn-google btn-user btn-block">
-											<i class="fab fa-google fa-fw"></i> Login with Google
-										</a> <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=OBHzshEvvkK9IWFlTExv&state=maina&redirect_uri=http://localhost:83/member/auth/naver/callback" class="btn btn-facebook btn-user btn-block">
-											<i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+										<a href="https://kauth.kakao.com/oauth/authorize?client_id=9dccb2506523629f6ab9df1594435577&redirect_uri=http://localhost:83/member/auth/kakao/callback&response_type=code" class="btn btn-google btn-user btn-block" style="background-color: 	#f9e000;">
+											Login with KaKao
+										</a> <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=OBHzshEvvkK9IWFlTExv&state=maina&redirect_uri=http://localhost:83/member/auth/naver/callback" class="btn btn-facebook btn-user btn-block" style="background-color: #1ec800">
+											Login with Naver
 										</a>
 									</form>
 									<hr>

@@ -23,7 +23,7 @@ const Mainpage = () => {
           </Link>
           <br></br>
           {localStorage.getItem("addr") == undefined ? null : (
-            <Link to="/delivery">
+            <Link to="/drug">
               <button className="btnMain3">약 배달 받기</button>
             </Link>
           )}

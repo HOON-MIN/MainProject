@@ -1,0 +1,26 @@
+.delPage {
+  margin-top: 64px;
+}
+
+.formBody {
+  background-color: #3478f5;
+  height: 100%;
+}
+
+.delBtn1 {
+  background-color: white;
+  border: solid 1px #3478f5;
+  color: #3478f5;
+  width: 64px;
+  height: 32px;
+  border-radius: 8px;
+  margin-top: 14px;
+}
+
+.small {
+  font-weight: 900;
+}
+
+.delInfo {
+  color: #898989;
+}

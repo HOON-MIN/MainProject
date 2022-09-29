@@ -21,7 +21,8 @@ public interface MedinqDao {
 	public void miUpdate(MedInqVO vo);
 	// 삭제 
 	public void miDelete(int num);
-
+	public int checkMedNum(int num);
+	public MedInqVO showMedinq(int num);
 //	// 페이징 리스트 
 //	public List<QuesboardVO> getQBList(SearchVO svo);
 //	//  + 총 게시물 수 가져오기
