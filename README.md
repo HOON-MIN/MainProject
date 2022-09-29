@@ -13,10 +13,10 @@
 #### Amazon RDS(Oracle)와 스프링부트를 연결 하여 DB를 관리, 스프링부트 JSP와 RestController로 Json으로 React에 호출 하여 View를 구현하였습니다
 #### 우분투에서 작업한 디장고 데이터 , Mysql은 합치는 작업에 진행중입니다.
 
-
-#### 리액트 페이지 구현방법
-#### 리액트는 frontend 폴더에서 터미널로 npm start  
-
 ### 관련 자료 PPT도 깃 안에 포함하였습니다. 자세한 기능 구현 내용은 PPT 참고 부탁드리곘습니다
+
+
+##### 리액트 페이지 실행방법 
+##### 리액트는 frontend 폴더에서 터미널로 npm start  
 
 
