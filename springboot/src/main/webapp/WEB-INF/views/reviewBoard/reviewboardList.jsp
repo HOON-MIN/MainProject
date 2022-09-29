@@ -142,7 +142,7 @@ a:link {
 				
 				
 				
-				<form class="sForm col-6" name="sForm" method="post" action="reviewboardlist"
+				<form class="sForm col-5" name="sForm" method="post" action="reviewboardlist"
           style="display: flex; justify-content: center;">
 
 						<input type="hidden" name="searchreset" value="1" hidden="hidden">
