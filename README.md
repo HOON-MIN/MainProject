@@ -27,8 +27,3 @@ React : springboot/frontend 폴더에서 npm install -> npm start 진행
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/106335468/193599547-4d45c541-e3fb-434f-b567-862a13e20893.png">
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/106335468/193599672-2e1869fc-2e29-427f-b020-9904e4cb9281.png">
 
-👀<strong>브랜드 별 클릭수로 브랜드 별 랭킹 차트화</strong> <br><br>
-<img width="450" alt="image" src="https://user-images.githubusercontent.com/106335468/193578052-15739459-8443-469f-ab84-9c4ab7164974.png"><br>
-<img width="450" alt="image" src="https://user-images.githubusercontent.com/106335468/193578247-37bcd67b-40a5-4a62-af8f-eeb86f628837.png"><br>
-<img width="450" alt="image" src="https://user-images.githubusercontent.com/106335468/193581152-25bdebe4-a48c-43e4-9985-50198ead4593.png"><br>
-<br>
